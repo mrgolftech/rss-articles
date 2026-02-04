@@ -1,0 +1,904 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/seangoedecke.com/How%20I%20estimate%20work%20as%20a%20staff%20software%20engineer_20260124/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>How I estimate work as a staff software engineer - RSS Articles</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-i-estimate-work-as-a-staff-software-engineer" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="RSS Articles" class="md-header__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RSS Articles
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              How I estimate work as a staff software engineer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ai-ml/" class="md-tabs__link">
+          
+  
+  
+  文章分类
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  关于
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RSS Articles" class="md-nav__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RSS Articles
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文章分类
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    文章分类
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI与机器学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    编程与开发
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    硬件与工程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../startup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    创业与商业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../culture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文化与思考
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/seangoedecke.com/How I estimate work as a staff software engineer_20260124.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="how-i-estimate-work-as-a-staff-software-engineer">How I estimate work as a staff software engineer<a class="headerlink" href="#how-i-estimate-work-as-a-staff-software-engineer" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> <a href="https://seangoedecke.com">seangoedecke.com</a>
+<strong>发布时间:</strong> Sat, 24 Jan 2026 00:00:00 GMT
+<strong>链接:</strong> https://seangoedecke.com/how-i-estimate-work/</p>
+<hr />
+<p>There’s a kind of polite fiction at the heart of the software industry. It goes something like this:</p>
+<blockquote>
+<p>Estimating how long software projects will take is very hard, but not impossible. A skilled engineering team can, with time and effort, learn how long it will take for them to deliver work, which will in turn allow their organization to make good business plans.</p>
+</blockquote>
+<p>This is, of course, false. As every experienced software engineer knows, <strong>it is not possible to accurately estimate software projects</strong>. The tension between this polite fiction and its well-understood falseness causes a lot of strange activity in tech companies.</p>
+<p>For instance, many engineering teams estimate work in <a href="https://asana.com/resources/t-shirt-sizing">t-shirt sizes</a> instead of time, because it just feels too obviously silly to the engineers in question to give direct time estimates. Naturally, these t-shirt sizes are immediately translated into hours and days when the estimates make their way up the management chain.</p>
+<p>Alternatively, software engineers who are genuinely trying to give good time estimates have ridiculous <a href="https://news.ycombinator.com/item?id=19671824">heuristics</a> like “double your initial estimate and add 20%“. This is basically the same as giving up and saying “just estimate everything at a month”.</p>
+<p>Should tech companies just stop estimating? One of my guiding principles is that <strong>when a tech company is doing something silly, they’re probably doing it for a good reason</strong>. In other words, practices that appear to not make sense are often serving some more basic, <a href="https://www.seangoedecke.com/seeing-like-a-software-company">illegible</a> role in the organization. So what is the actual purpose of estimation, and how can you do it well as a software engineer?</p>
+<h3>Why estimation is impossible</h3>
+<p>Before I get into that, I should justify my core assumption a little more. People <a href="https://world.hey.com/dhh/software-estimates-have-never-worked-and-never-will-a41a9c71">have</a> <a href="https://news.ycombinator.com/item?id=18487253">written</a> <a href="https://medium.com/@riaanfnel/the-problem-with-estimates-f3d5cddd5e62">a lot</a> about this already, so I’ll keep it brief.</p>
+<p>I’m also going to concede that <strong>sometimes you can accurately estimate software work</strong>, when that work is very well-understood and very small in scope. For instance, if I know it takes half an hour to deploy a service<sup id="fnref-1"><a class="footnote-ref" href="https://www.seangoedecke.com/rss.xml#fn-1">1</a></sup>, and I’m being asked to update the text in a link, I can accurately estimate the work at something like 45 minutes: five minutes to push the change up, ten minutes to wait for CI, thirty minutes to deploy.</p>
+<p>For most of us, the majority of software work is not like this. We work on poorly-understood systems and cannot predict exactly what must be done in advance. Most programming in large systems is <em>research</em>: identifying prior art, mapping out enough of the system to understand the effects of changes, and so on. Even for fairly small changes, we simply do not know what’s involved in making the change until we go and look.</p>
+<p>The pro-estimation dogma says that these questions ought to be answered during the planning process, so that each individual piece of work being discussed is scoped small enough to be accurately estimated. I’m not impressed by this answer. It seems to me to be a throwback to the bad old days of <a href="https://en.wikipedia.org/wiki/Software_architect">software architecture</a>, where one architect would map everything out in advance, so that individual programmers simply had to mechanically follow instructions. Nobody does that now, because it doesn’t work: programmers must be empowered to make architectural decisions, because they’re the ones who are actually in contact with the code<sup id="fnref-2"><a class="footnote-ref" href="https://www.seangoedecke.com/rss.xml#fn-2">2</a></sup>. Even if it did work, that would simply shift the impossible-to-estimate part of the process backwards, into the planning meeting (where of course you can’t write or run code, which makes it near-impossible to accurately answer the kind of questions involved).</p>
+<p>In short: software engineering projects are not dominated by the known work, but by the unknown work, which always takes 90% of the time. However, only the known work can be accurately estimated. It’s therefore impossible to accurately estimate software projects in advance.</p>
+<h3>Estimates do not come from engineers</h3>
+<p>Estimates do not help engineering teams deliver work more efficiently. Many of the most productive years of my career were spent on teams that did no estimation at all: we were either working on projects that had to be done no matter what, and so didn’t really need an estimate, or on projects that would deliver a constant drip of value as we went, so we could just keep going indefinitely<sup id="fnref-3"><a class="footnote-ref" href="https://www.seangoedecke.com/rss.xml#fn-3">3</a></sup>.</p>
+<p>In a very real sense, <strong>estimates aren’t even made by engineers at all</strong>. If an engineering team comes up with a long estimate for a project that some VP really wants, they will be pressured into lowering it (or some other, more compliant engineering team will be handed the work). If the estimate on an undesirable project - or a project that’s intended to “hold space” for future unplanned work - is too short, the team will often be encouraged to increase it, or their manager will just add a 30% buffer.</p>
+<p>One exception to this is projects that are technically impossible, or just genuinely prohibitively difficult. If a manager consistently fails to pressure their teams into giving the “right” estimates, that can send a signal up that maybe the work can’t be done after all. Smart VPs and directors will try to avoid taking on technically impossible projects.</p>
+<p>Another exception to this is areas of the organization that senior leadership doesn’t really care about. In a sleepy backwater, often the formal estimation process does actually get followed to the letter, because there’s no director or VP who wants to jump in and shape the estimates to their ends. This is one way that some parts of a tech company can have drastically different engineering cultures to other parts. I’ll let you imagine the consequences when the company is re-orged and these teams are pulled into the spotlight.</p>
+<p><strong>Estimates are political tools for non-engineers in the organization</strong>. They help managers, VPs, directors, and C-staff decide on which projects get funded and which projects get cancelled. </p>
+<h3>Estimates define the work, not the other way around</h3>
+<p>The standard way of thinking about estimates is that you start with a proposed piece of software work, and you then go and figure out how long it will take. <strong>This is entirely backwards.</strong> Instead, teams will often start with the estimate, and then go and figure out what kind of software work they can do to meet it.</p>
+<p>Suppose you’re working on a LLM chatbot, and your director wants to implement “talk with a PDF”. If you have six months to do the work, you might implement a robust file upload system, some pipeline to chunk and embed the PDF content for semantic search, a way to extract PDF pages as image content to capture formatting and diagrams, and so on. If you have one day to do the work, you will naturally search for simpler approaches: for instance, converting the PDF to text client-side and sticking the entire thing in the LLM context, or offering a plain-text “grep the PDF” tool.</p>
+<p>This is true at even at the level of individual lines of code. When you have weeks or months until your deadline, you might spend a lot of time thinking airily about how you could refactor the codebase to make your new feature fit in as elegantly as possible. When you have hours, you will typically be laser-focused on finding an approach that will actually work. There are always many different ways to solve software problems. Engineers thus have quite a lot of discretion about how to get it done.</p>
+<h3>How I estimate work</h3>
+<p>So how do I estimate, given all that?</p>
+<p><strong>I gather as much political context as possible before I even look at the code</strong>. How much pressure is on this project? Is it a casual ask, or do we <em>have</em> to find a way to do this? What kind of estimate is my management chain looking for? There’s a huge difference between “the CTO <em>really</em> wants this in one week” and “we were looking for work for your team and this seemed like it could fit”.</p>
+<p>Ideally, I go to the code <strong>with an estimate already in hand</strong>. Instead of asking myself “how long would it take to do this”, where “this” could be any one of a hundred different software designs, I ask myself “which approaches could be done in one week?“.</p>
+<p><strong>I spend more time worrying about unknowns than knowns</strong>. As I said above, unknown work always dominates software projects. The more “dark forests” in the codebase this feature has to touch, the higher my estimate will be - or, more concretely, the tighter I need to constrain the set of approaches to the known work.</p>
+<p>Finally, <strong>I go back to my manager with a risk assessment, not with a concrete estimate</strong>. I don’t ever say “this is a four-week project”. I say something like “I don’t think we’ll get this done in one week, because X Y Z would need to all go right, and at least one of those things is bound to take a lot more work than we expect. Ideally, I go back to my manager with a <em>series</em> of plans, not just one:</p>
+<ul>
+<li>We tackle X Y Z directly, which <em>might</em> all go smoothly but if it blows out we’ll be here for a month</li>
+<li>We bypass Y and Z entirely, which would introduce these other risks but possibly allow us to hit the deadline</li>
+<li>We bring in help from another team who’s more familiar with X and Y, so we just have to focus on Z</li>
+</ul>
+<p>In other words, I don’t “break down the work to determine how long it will take”. My management chain already knows how long they want it to take. <strong>My job is to figure out the set of software approaches that match that estimate.</strong></p>
+<p>Sometimes that set is empty: the project is just impossible, no matter how you slice it. In that case, my management chain needs to get together and figure out some way to alter the requirements. But if I always said “this is impossible”, my managers would find someone else to do their estimates. When I do that, I’m drawing on a well of trust that I build up by making pragmatic estimates the rest of the time.</p>
+<h3>Addressing some objections</h3>
+<p>Many engineers find this approach distasteful. One reason is that they don’t like estimating in conditions of uncertainty, so they insist on having all the unknown questions answered in advance. I have written a lot about this in <a href="https://www.seangoedecke.com/taking-a-position"><em>Engineers who won’t commit</em></a> and <a href="https://www.seangoedecke.com/clarity"><em>How I provide technical clarity to non-technical leaders</em></a>, but suffice to say that I think it’s cowardly. If you refuse to estimate, you’re forcing someone less technical to estimate for you.</p>
+<p>Some engineers think that their job is to constantly push back against engineering management, and that helping their manager find technical compromises is betraying some kind of sacred engineering trust. I wrote about this in <a href="https://www.seangoedecke.com/a-little-bit-cynical"><em>Software engineers should be a little bit cynical</em></a>. If you want to spend your career doing that, that’s fine, but I personally find it more rewarding to find ways to work with my managers (who have almost exclusively been nice people).</p>
+<p>Other engineers might say that they rarely feel this kind of pressure from their directors or VPs to alter estimates, and that this is really just the sign of a dysfunctional engineering organization. Maybe! I can only speak for the engineering organizations I’ve worked in. But my suspicion is that these engineers are really just saying that they work “out of the spotlight”, where there’s not much pressure in general and teams can adopt whatever processes they want. There’s nothing wrong with that. But I don’t think it qualifies you to give helpful advice to engineers who do feel this kind of pressure.</p>
+<h3>Summary</h3>
+<p>I think software engineering estimation is generally misunderstood.</p>
+<p>The common view is that a manager proposes some technical project, the team gets together to figure out how long it would take to build, and then the manager makes staffing and planning decisions with that information. In fact, it’s the reverse: a manager comes to the team with an estimate already in hand (though they might not come out and admit it), and then the team must figure out what kind of technical project might be possible within that estimate.</p>
+<p>This is because estimates are not by or for engineering teams. They are tools used for managers to negotiate with each other about planned work. Very occasionally, when a project is literally impossible, the estimate can serve as a way for the team to communicate that fact upwards. But that requires trust. A team that is always pushing back on estimates will not be believed when they do encounter a genuinely impossible proposal.</p>
+<p>When I estimate, I extract the range my manager is looking for, and only then do I go through the code and figure out what can be done in that time. I never come back with a flat “two weeks” figure. Instead, I come back with a range of possibilities, each with their own risks, and let my manager make that tradeoff.</p>
+<p><strong>It is not possible to accurately estimate software work.</strong> Software projects spend most of their time grappling with unknown problems, which by definition can’t be estimated in advance. To estimate well, you must therefore basically ignore all the known aspects of the work, and instead try and make educated guesses about how many unknowns there are, and how scary each unknown is.</p>
+<p>edit: I should thank one of my readers, Karthik, who emailed me to ask about estimates, thus revealing to me that I had many more opinions than I thought.</p>
+<p>edit: This post got a bunch of comments on <a href="https://news.ycombinator.com/item?id=46742389">Hacker News</a>. Some non-engineers made the <a href="https://news.ycombinator.com/item?id=46744538">point</a> that well-paid professionals should be expected to estimate their work, even if the estimate is completely fictional. Sure, I agree, as long as we’re on the same page that it’s fictional!</p>
+<p>A couple of <a href="https://news.ycombinator.com/item?id=46744696">engineers</a> <a href="https://news.ycombinator.com/item?id=46744876">argued</a> that estimation was a solved problem. I’m not convinced by their examples. I agree you can probably estimate “build a user flow in Svelte”, but it’s much harder to estimate “build a user flow in Svelte <em>on top of an existing large codebase</em>”. I should have been more clear in the post that I think that’s the hard part, for the normal reasons that it’s very hard to work in large codebases, which I <a href="https://www.seangoedecke.com/large-established-codebases">write</a> <a href="https://www.seangoedecke.com/wicked-features">about</a> <a href="https://www.seangoedecke.com/clarity">endlessly</a> on this blog.</p>
+<p>edit: There are also some comments on <a href="https://lobste.rs/s/dspppf/how_i_estimate_work_as_staff_software">Lobste.rs</a>, including a good <a href="https://lobste.rs/c/i0sxht">note</a> that the capability of the team obviously has a huge impact on any estimates. In my experience, this is not commonly understood: companies expect estimates to be fungible between engineers or teams, when in fact some engineers and teams can deliver work ten times more quickly (and others cannot deliver work <em>at all</em>, no matter how much time they have).</p>
+<p>Another commenter <a href="https://news.ycombinator.com/item?id=46745726">politely suggested</a> I read <a href="https://www.amazon.com.au/Software-Estimation-Demystifying-Black-Art/dp/%200735605351"><em>Software Estimation: Demystifying the Black Art</em></a>, which I’ve never heard of. I’ll put it on my list.</p>
+<p>There are also some <a href="https://www.reddit.com/r/programming/comments/1qoj5mb/how_i_estimate_work_as_a_staff_software_engineer/">comments</a> on Reddit’s r/programming subreddit: mostly people just generically discussing estimation, but there are <a href="https://www.reddit.com/r/programming/comments/1qoj5mb/comment/o22t1vm/">interesting anecdotes</a> and <a href="https://www.reddit.com/r/programming/comments/1qoj5mb/comment/o2271vx/">good criticism</a> of the post.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn-1">
+<p>For anyone wincing at that time, I mean like three minutes of actual deployment and twenty-seven minutes of waiting for checks to pass or monitors to turn up green.</p>
+<a class="footnote-backref" href="https://www.seangoedecke.com/rss.xml#fnref-1">↩</a>
+</li>
+<li id="fn-2">
+<p>I write a lot more about this in <a href="https://www.seangoedecke.com/you-cant-design-software-you-dont-work-on"><em>You can’t design software you don’t work on</em></a>.</p>
+<a class="footnote-backref" href="https://www.seangoedecke.com/rss.xml#fnref-2">↩</a>
+</li>
+<li id="fn-3">
+<p>For instance, imagine a mandate to improve the performance of some large Rails API, one piece at a time. I could happily do that kind of work forever.</p>
+<a class="footnote-backref" href="https://www.seangoedecke.com/rss.xml#fnref-3">↩</a>
+</li>
+</ol>
+</div>
+
+<hr />
+<p><em>抓取时间: 2026-02-04 12:55:57</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月4日 10:20:08 UTC">2026-02-04</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

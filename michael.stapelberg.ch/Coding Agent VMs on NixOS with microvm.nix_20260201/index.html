@@ -1,0 +1,1434 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/michael.stapelberg.ch/Coding%20Agent%20VMs%20on%20NixOS%20with%20microvm.nix_20260201/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Coding Agent VMs on NixOS with microvm.nix - RSS Articles</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#coding-agent-vms-on-nixos-with-microvmnix" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="RSS Articles" class="md-header__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RSS Articles
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Coding Agent VMs on NixOS with microvm.nix
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ai-ml/" class="md-tabs__link">
+          
+  
+  
+  文章分类
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  关于
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RSS Articles" class="md-nav__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RSS Articles
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文章分类
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    文章分类
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI与机器学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    编程与开发
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    硬件与工程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../startup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    创业与商业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../culture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文化与思考
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/michael.stapelberg.ch/Coding Agent VMs on NixOS with microvm.nix_20260201.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="coding-agent-vms-on-nixos-with-microvmnix">Coding Agent VMs on NixOS with microvm.nix<a class="headerlink" href="#coding-agent-vms-on-nixos-with-microvmnix" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> <a href="https://michael.stapelberg.ch">michael.stapelberg.ch</a>
+<strong>发布时间:</strong> 2026-02-01T09:00:00+01:00
+<strong>链接:</strong> https://michael.stapelberg.ch/posts/2026-02-01-coding-agent-microvm-nix/</p>
+<hr />
+<p>I have come to appreciate <a href="https://en.wikipedia.org/wiki/AI-assisted_software_development">coding
+agents</a> to be
+valuable tools for working with computer program code in any capacity, such as
+learning about any program’s architecture, diagnosing bugs or developing proofs
+of concept. Depending on the use-case, reviewing each command the agent wants to
+run can get tedious and time-consuming very quickly. To safely run a coding
+agent without review, I wanted a Virtual Machine (VM) solution where the agent
+has no access to my personal files and where it’s no big deal if the agent gets
+compromised by malware: I can just throw away the VM and start over.</p>
+<p>Instead of setting up a stateful VM and re-installing it when needed (ugh!), I
+prefer the model of ephemeral VMs where nothing persists on disk, except for
+what is explicitly shared with the host.</p>
+<p>The <a href="https://github.com/microvm-nix/microvm.nix"><code>microvm.nix</code> project</a> makes it
+easy to create such VMs on NixOS, and this article shows you how I like to set
+up my VMs.</p>
+<h2 id="see-also">See also</h2>
+<p>If you haven’t heard of NixOS before, check out <a href="https://en.wikipedia.org/wiki/NixOS">the NixOS Wikipedia
+page</a> and
+<a href="https://nixos.org/">nixos.org</a>. I <a href="https://michael.stapelberg.ch/talks/#2025">spoke about why I switched to Nix in
+2025</a> and have published a <a href="https://michael.stapelberg.ch/posts/tags/nix/">few blog posts about
+Nix</a>.</p>
+<p>For understanding the threat model of AI agents, read <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/">Simon Willison’s “The
+lethal trifecta for AI agents: private data, untrusted content, and external
+communication” (June
+2025)</a>. This
+article’s approach to working with the threat model is to remove the “private
+data” part from the equation.</p>
+<p>If you want to learn about the whole field of sandboxing, check out <a href="https://www.luiscardoso.dev/blog/sandboxes-for-ai">Luis
+Cardoso’s “A field guide to sandboxes for AI” (Jan
+2026)</a>. I will not be
+comparing different solutions in this article, I will just show you one possible
+path.</p>
+<p>And lastly, maybe you’re not in the mood to build/run sandboxing infrastructure
+yourself. Good news: Sandboxing is a hot topic and there are many commercial
+offerings popping up that address this need. For example, David Crawshaw and
+Josh Bleecher Snyder (I know both from the Go community) recently launched
+<a href="https://blog.exe.dev/meet-exe.dev">exe.dev</a>, an agent-friendly VM hosting
+service. Another example is <a href="https://fly.io/blog/code-and-let-live/">Fly.io, who launched
+Sprites</a>.</p>
+<h2 id="setting-up-microvmnix">Setting up microvm.nix</h2>
+<p>Let’s jump right in! The next sections walk you through how I set up my config.</p>
+<h3 id="step-1-network-prep">Step 1: network prep</h3>
+<p>First, I created a new <code>microbr</code> bridge which uses <code>192.168.33.1/24</code> as IP address range and NATs out of the <code>eno1</code> network interface. All <code>microvm*</code> interfaces will be added to that bridge:</p>
+<div class="highlight"><pre tabindex="0"><code class="language-nix"><span style="display: flex;"><span>systemd<span style="color: #666;">.</span>network<span style="color: #666;">.</span>netdevs<span style="color: #666;">.</span><span style="color: #4070a0;">"20-microbr"</span><span style="color: #666;">.</span>netdevConfig <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>  Kind <span style="color: #666;">=</span> <span style="color: #4070a0;">"bridge"</span>;
+</span></span><span style="display: flex;"><span>  Name <span style="color: #666;">=</span> <span style="color: #4070a0;">"microbr"</span>;
+</span></span><span style="display: flex;"><span>};
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>systemd<span style="color: #666;">.</span>network<span style="color: #666;">.</span>networks<span style="color: #666;">.</span><span style="color: #4070a0;">"20-microbr"</span> <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>  matchConfig<span style="color: #666;">.</span>Name <span style="color: #666;">=</span> <span style="color: #4070a0;">"microbr"</span>;
+</span></span><span style="display: flex;"><span>  addresses <span style="color: #666;">=</span> [ { Address <span style="color: #666;">=</span> <span style="color: #4070a0;">"192.168.83.1/24"</span>; } ];
+</span></span><span style="display: flex;"><span>  networkConfig <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>    ConfigureWithoutCarrier <span style="color: #666;">=</span> <span style="color: #60add5;">true</span>;
+</span></span><span style="display: flex;"><span>  };
+</span></span><span style="display: flex;"><span>};
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>systemd<span style="color: #666;">.</span>network<span style="color: #666;">.</span>networks<span style="color: #666;">.</span><span style="color: #4070a0;">"21-microvm-tap"</span> <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>  matchConfig<span style="color: #666;">.</span>Name <span style="color: #666;">=</span> <span style="color: #4070a0;">"microvm*"</span>;
+</span></span><span style="display: flex;"><span>  networkConfig<span style="color: #666;">.</span>Bridge <span style="color: #666;">=</span> <span style="color: #4070a0;">"microbr"</span>;
+</span></span><span style="display: flex;"><span>};
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>networking<span style="color: #666;">.</span>nat <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>  enable <span style="color: #666;">=</span> <span style="color: #60add5;">true</span>;
+</span></span><span style="display: flex;"><span>  internalInterfaces <span style="color: #666;">=</span> [ <span style="color: #4070a0;">"microbr"</span> ];
+</span></span><span style="display: flex;"><span>  externalInterface <span style="color: #666;">=</span> <span style="color: #4070a0;">"eno1"</span>;
+</span></span><span style="display: flex;"><span>};
+</span></span></code></pre></div>
+<h3 id="step-2-flakenix">Step 2: <code>flake.nix</code></h3>
+<p>Then, I added the <code>microvm</code> module as a new input to my <code>flake.nix</code> (check out
+the <a href="https://microvm-nix.github.io/microvm.nix/">microvm.nix documentation</a> for
+details) and enabled the <code>microvm.nixosModules.host</code> module on the NixOS
+configuration for my PC (midna). I also created a new <code>microvm.nix</code> file, in
+which I declare all my VMs. Here’s what my <code>flake.nix</code> looks like:</p>
+<div class="highlight"><pre tabindex="0"><code class="language-nix"><span style="display: flex;"><span>{
+</span></span><span style="display: flex;"><span>  inputs <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>    nixpkgs <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>      url <span style="color: #666;">=</span> <span style="color: #4070a0;">"github:nixos/nixpkgs/nixos-25.11"</span>;
+</span></span><span style="display: flex;"><span>    };
+</span></span><span style="display: flex; background-color: #d8d8d8;"><span>    <span style="color: #60a0b0; font-style: italic;"># For more recent claude-code</span>
+</span></span><span style="display: flex; background-color: #d8d8d8;"><span>    nixpkgs-unstable <span style="color: #666;">=</span> {
+</span></span><span style="display: flex; background-color: #d8d8d8;"><span>      url <span style="color: #666;">=</span> <span style="color: #4070a0;">"github:nixos/nixpkgs/nixos-unstable"</span>;
+</span></span><span style="display: flex; background-color: #d8d8d8;"><span>    };
+</span></span><span style="display: flex;"><span>    stapelbergnix <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>      url <span style="color: #666;">=</span> <span style="color: #4070a0;">"github:stapelberg/nix"</span>;
+</span></span><span style="display: flex;"><span>      inputs<span style="color: #666;">.</span>nixpkgs<span style="color: #666;">.</span>follows <span style="color: #666;">=</span> <span style="color: #4070a0;">"nixpkgs"</span>;
+</span></span><span style="display: flex;"><span>    };
+</span></span><span style="display: flex;"><span>    zkjnastools <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>      url <span style="color: #666;">=</span> <span style="color: #4070a0;">"github:stapelberg/zkj-nas-tools"</span>;
+</span></span><span style="display: flex;"><span>      inputs<span style="color: #666;">.</span>nixpkgs<span style="color: #666;">.</span>follows <span style="color: #666;">=</span> <span style="color: #4070a0;">"nixpkgs"</span>;
+</span></span><span style="display: flex;"><span>    };
+</span></span><span style="display: flex; background-color: #d8d8d8;"><span>    microvm <span style="color: #666;">=</span> {
+</span></span><span style="display: flex; background-color: #d8d8d8;"><span>      url <span style="color: #666;">=</span> <span style="color: #4070a0;">"github:microvm-nix/microvm.nix"</span>;
+</span></span><span style="display: flex; background-color: #d8d8d8;"><span>      inputs<span style="color: #666;">.</span>nixpkgs<span style="color: #666;">.</span>follows <span style="color: #666;">=</span> <span style="color: #4070a0;">"nixpkgs"</span>;
+</span></span><span style="display: flex; background-color: #d8d8d8;"><span>    };
+</span></span><span style="display: flex;"><span>    home-manager <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>      url <span style="color: #666;">=</span> <span style="color: #4070a0;">"github:nix-community/home-manager/release-25.11"</span>;
+</span></span><span style="display: flex;"><span>      inputs<span style="color: #666;">.</span>nixpkgs<span style="color: #666;">.</span>follows <span style="color: #666;">=</span> <span style="color: #4070a0;">"nixpkgs"</span>;
+</span></span><span style="display: flex;"><span>    };
+</span></span><span style="display: flex;"><span>    configfiles <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>      url <span style="color: #666;">=</span> <span style="color: #4070a0;">"github:stapelberg/configfiles"</span>;
+</span></span><span style="display: flex;"><span>      flake <span style="color: #666;">=</span> <span style="color: #60add5;">false</span>; <span style="color: #60a0b0; font-style: italic;"># repo is not a flake</span>
+</span></span><span style="display: flex;"><span>    };
+</span></span><span style="display: flex;"><span>  };
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>  outputs <span style="color: #666;">=</span>
+</span></span><span style="display: flex;"><span>    {
+</span></span><span style="display: flex;"><span>      self<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>      stapelbergnix<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>      zkjnastools<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>      nixpkgs<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>      nixpkgs-unstable<span style="color: #666;">,</span>
+</span></span><span style="display: flex; background-color: #d8d8d8;"><span>      microvm<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>      home-manager<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>      configfiles<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>    }<span style="color: #666;">@</span>inputs:
+</span></span><span style="display: flex;"><span>    <span style="color: #007020; font-weight: bold;">let</span>
+</span></span><span style="display: flex;"><span>      system <span style="color: #666;">=</span> <span style="color: #4070a0;">"x86_64-linux"</span>;
+</span></span><span style="display: flex;"><span>      pkgs <span style="color: #666;">=</span> <span style="color: #007020; font-weight: bold;">import</span> nixpkgs {
+</span></span><span style="display: flex;"><span>        <span style="color: #007020; font-weight: bold;">inherit</span> system;
+</span></span><span style="display: flex;"><span>        config<span style="color: #666;">.</span>allowUnfree <span style="color: #666;">=</span> <span style="color: #60add5;">false</span>;
+</span></span><span style="display: flex;"><span>      };
+</span></span><span style="display: flex;"><span>      pkgs-unstable <span style="color: #666;">=</span> <span style="color: #007020; font-weight: bold;">import</span> nixpkgs-unstable {
+</span></span><span style="display: flex;"><span>        <span style="color: #007020; font-weight: bold;">inherit</span> system;
+</span></span><span style="display: flex;"><span>        config<span style="color: #666;">.</span>allowUnfree <span style="color: #666;">=</span> <span style="color: #60add5;">true</span>;
+</span></span><span style="display: flex;"><span>      };
+</span></span><span style="display: flex;"><span>    <span style="color: #007020; font-weight: bold;">in</span>
+</span></span><span style="display: flex;"><span>    {
+</span></span><span style="display: flex;"><span>      nixosConfigurations <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>        midna <span style="color: #666;">=</span> nixpkgs<span style="color: #666;">.</span>lib<span style="color: #666;">.</span>nixosSystem {
+</span></span><span style="display: flex;"><span>          system <span style="color: #666;">=</span> <span style="color: #4070a0;">"x86_64-linux"</span>;
+</span></span><span style="display: flex;"><span>          specialArgs <span style="color: #666;">=</span> { <span style="color: #007020; font-weight: bold;">inherit</span> inputs; };
+</span></span><span style="display: flex;"><span>          modules <span style="color: #666;">=</span> [
+</span></span><span style="display: flex;"><span>            (<span style="color: #007020; font-weight: bold;">import</span> <span style="color: #235388;">./configuration.nix</span>)
+</span></span><span style="display: flex;"><span>            stapelbergnix<span style="color: #666;">.</span>lib<span style="color: #666;">.</span>userSettings
+</span></span><span style="display: flex;"><span>            <span style="color: #60a0b0; font-style: italic;"># Use systemd for network configuration</span>
+</span></span><span style="display: flex;"><span>            stapelbergnix<span style="color: #666;">.</span>lib<span style="color: #666;">.</span>systemdNetwork
+</span></span><span style="display: flex;"><span>            <span style="color: #60a0b0; font-style: italic;"># Use systemd-boot as bootloader</span>
+</span></span><span style="display: flex;"><span>            stapelbergnix<span style="color: #666;">.</span>lib<span style="color: #666;">.</span>systemdBoot
+</span></span><span style="display: flex;"><span>            <span style="color: #60a0b0; font-style: italic;"># Run prometheus node exporter in tailnet</span>
+</span></span><span style="display: flex;"><span>            stapelbergnix<span style="color: #666;">.</span>lib<span style="color: #666;">.</span>prometheusNode
+</span></span><span style="display: flex;"><span>            zkjnastools<span style="color: #666;">.</span>nixosModules<span style="color: #666;">.</span>zkjbackup
+</span></span><span style="display: flex; background-color: #d8d8d8;"><span>            microvm<span style="color: #666;">.</span>nixosModules<span style="color: #666;">.</span>host
+</span></span><span style="display: flex; background-color: #d8d8d8;"><span>            <span style="color: #235388;">./microvm.nix</span>
+</span></span><span style="display: flex;"><span>          ];
+</span></span><span style="display: flex;"><span>        };
+</span></span><span style="display: flex;"><span>      };
+</span></span><span style="display: flex;"><span>    };
+</span></span><span style="display: flex;"><span>}</span></span></code></pre></div>
+<h3 id="step-3-microvmnix">Step 3: <code>microvm.nix</code></h3>
+<p>The following <code>microvm.nix</code> declares two microvms, one for Emacs (about which I wanted to learn more) and one for Go Protobuf, a code base I am familiar with and can use to understand Claude’s capabilities:</p>
+<div class="highlight"><pre tabindex="0"><code class="language-nix"><span style="display: flex;"><span>{
+</span></span><span style="display: flex;"><span>  config<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>  lib<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>  pkgs<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>  inputs<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>  <span style="color: #666;">...</span>
+</span></span><span style="display: flex;"><span>}:
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span><span style="color: #007020; font-weight: bold;">let</span>
+</span></span><span style="display: flex;"><span>  <span style="color: #007020; font-weight: bold;">inherit</span> (inputs)
+</span></span><span style="display: flex;"><span>    nixpkgs-unstable
+</span></span><span style="display: flex;"><span>    stapelbergnix
+</span></span><span style="display: flex;"><span>    microvm
+</span></span><span style="display: flex;"><span>    configfiles
+</span></span><span style="display: flex;"><span>    home-manager
+</span></span><span style="display: flex;"><span>    ;
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>  microvmBase <span style="color: #666;">=</span> <span style="color: #007020; font-weight: bold;">import</span> <span style="color: #235388;">./microvm-base.nix</span>;
+</span></span><span style="display: flex;"><span><span style="color: #007020; font-weight: bold;">in</span>
+</span></span><span style="display: flex;"><span>{
+</span></span><span style="display: flex;"><span>  microvm<span style="color: #666;">.</span>vms<span style="color: #666;">.</span>emacsvm <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>    autostart <span style="color: #666;">=</span> <span style="color: #60add5;">false</span>;
+</span></span><span style="display: flex;"><span>    config <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>      imports <span style="color: #666;">=</span> [
+</span></span><span style="display: flex;"><span>        stapelbergnix<span style="color: #666;">.</span>lib<span style="color: #666;">.</span>userSettings
+</span></span><span style="display: flex;"><span>        microvm<span style="color: #666;">.</span>nixosModules<span style="color: #666;">.</span>microvm
+</span></span><span style="display: flex;"><span>        (microvmBase {
+</span></span><span style="display: flex;"><span>          hostName <span style="color: #666;">=</span> <span style="color: #4070a0;">"emacsvm"</span>;
+</span></span><span style="display: flex;"><span>          ipAddress <span style="color: #666;">=</span> <span style="color: #4070a0;">"192.168.83.6"</span>;
+</span></span><span style="display: flex;"><span>          tapId <span style="color: #666;">=</span> <span style="color: #4070a0;">"microvm4"</span>;
+</span></span><span style="display: flex;"><span>          mac <span style="color: #666;">=</span> <span style="color: #4070a0;">"02:00:00:00:00:05"</span>;
+</span></span><span style="display: flex;"><span>          workspace <span style="color: #666;">=</span> <span style="color: #4070a0;">"/home/michael/microvm/emacs"</span>;
+</span></span><span style="display: flex;"><span>          <span style="color: #007020; font-weight: bold;">inherit</span>
+</span></span><span style="display: flex;"><span>            nixpkgs-unstable
+</span></span><span style="display: flex;"><span>            configfiles
+</span></span><span style="display: flex;"><span>            home-manager
+</span></span><span style="display: flex;"><span>            stapelbergnix
+</span></span><span style="display: flex;"><span>            ;
+</span></span><span style="display: flex;"><span>        })
+</span></span><span style="display: flex;"><span>        <span style="color: #235388;">./microvms/emacs.nix</span>
+</span></span><span style="display: flex;"><span>      ];
+</span></span><span style="display: flex;"><span>    };
+</span></span><span style="display: flex;"><span>  };
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>  microvm<span style="color: #666;">.</span>vms<span style="color: #666;">.</span>goprotobufvm <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>    autostart <span style="color: #666;">=</span> <span style="color: #60add5;">false</span>;
+</span></span><span style="display: flex;"><span>    config <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>      imports <span style="color: #666;">=</span> [
+</span></span><span style="display: flex;"><span>        stapelbergnix<span style="color: #666;">.</span>lib<span style="color: #666;">.</span>userSettings
+</span></span><span style="display: flex;"><span>        microvm<span style="color: #666;">.</span>nixosModules<span style="color: #666;">.</span>microvm
+</span></span><span style="display: flex;"><span>        (microvmBase {
+</span></span><span style="display: flex;"><span>          hostName <span style="color: #666;">=</span> <span style="color: #4070a0;">"goprotobufvm"</span>;
+</span></span><span style="display: flex;"><span>          ipAddress <span style="color: #666;">=</span> <span style="color: #4070a0;">"192.168.83.7"</span>;
+</span></span><span style="display: flex;"><span>          tapId <span style="color: #666;">=</span> <span style="color: #4070a0;">"microvm5"</span>;
+</span></span><span style="display: flex;"><span>          mac <span style="color: #666;">=</span> <span style="color: #4070a0;">"02:00:00:00:00:06"</span>;
+</span></span><span style="display: flex;"><span>          workspace <span style="color: #666;">=</span> <span style="color: #4070a0;">"/home/michael/microvm/goprotobuf"</span>;
+</span></span><span style="display: flex;"><span>          <span style="color: #007020; font-weight: bold;">inherit</span>
+</span></span><span style="display: flex;"><span>            nixpkgs-unstable
+</span></span><span style="display: flex;"><span>            configfiles
+</span></span><span style="display: flex;"><span>            home-manager
+</span></span><span style="display: flex;"><span>            stapelbergnix
+</span></span><span style="display: flex;"><span>            ;
+</span></span><span style="display: flex;"><span>          extraZshInit <span style="color: #666;">=</span> <span style="color: #4070a0;">''
+</span></span></span><span style="display: flex;"><span><span style="color: #4070a0;">            export GOPATH=$HOME/go
+</span></span></span><span style="display: flex;"><span><span style="color: #4070a0;">            export PATH=$GOPATH/bin:$PATH
+</span></span></span><span style="display: flex;"><span><span style="color: #4070a0;">          ''</span>;
+</span></span><span style="display: flex;"><span>        })
+</span></span><span style="display: flex;"><span>        <span style="color: #235388;">./microvms/goprotobuf.nix</span>
+</span></span><span style="display: flex;"><span>      ];
+</span></span><span style="display: flex;"><span>    };
+</span></span><span style="display: flex;"><span>  };
+</span></span><span style="display: flex;"><span>}
+</span></span></code></pre></div>
+<h3 id="step-4-microvm-basenix">Step 4: <code>microvm-base.nix</code></h3>
+<p>The <code>microvm-base.nix</code> module takes these parameters and declares:</p>
+<ul>
+<li>Network settings: I like using <a href="https://manpages.debian.org/systemd-networkd.8"><code>systemd-networkd(8)</code></a>
+ and <a href="https://manpages.debian.org/systemd-resolved.8"><code>systemd-resolved(8)</code></a>
+.</li>
+<li>Shared directories for:
+<ul>
+<li>the workspace directory, e.g. <code>~/microvm/emacs</code></li>
+<li>the host’s Nix store, so the VM can access software from cache (often)</li>
+<li>this VM’s SSH host keys</li>
+<li><code>~/claude-microvm</code>, which is a separate state directory, used only on the microvms.</li>
+</ul>
+</li>
+<li>an 8 GB disk overlay (var.img), stored in <code>/var/lib/microvms/&lt;name&gt;</code></li>
+<li><code>cloud-hypervisor</code> (QEMU also works well!) as the hypervisor, with 8 vCPUs and 4 GB RAM.</li>
+<li>A workaround for systemd trying to unmount <code>/nix/store</code> (which causes a deadlock).</li>
+</ul>
+<details>
+Expand full <code>microvm-base.nix</code> code
+<div class="highlight"><pre tabindex="0"><code class="language-nix"><span style="display: flex;"><span>{
+</span></span><span style="display: flex;"><span>  hostName<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>  ipAddress<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>  tapId<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>  mac<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>  workspace<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>  nixpkgs-unstable<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>  configfiles<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>  home-manager<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>  stapelbergnix<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>  extraZshInit <span style="color: #666;">?</span> <span style="color: #4070a0;">""</span><span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>}:
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>{
+</span></span><span style="display: flex;"><span>  config<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>  lib<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>  pkgs<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>  <span style="color: #666;">...</span>
+</span></span><span style="display: flex;"><span>}:
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span><span style="color: #007020; font-weight: bold;">let</span>
+</span></span><span style="display: flex;"><span>  system <span style="color: #666;">=</span> pkgs<span style="color: #666;">.</span>stdenv<span style="color: #666;">.</span>hostPlatform<span style="color: #666;">.</span>system;
+</span></span><span style="display: flex;"><span>  pkgsUnstable <span style="color: #666;">=</span> <span style="color: #007020; font-weight: bold;">import</span> nixpkgs-unstable {
+</span></span><span style="display: flex;"><span>    <span style="color: #007020; font-weight: bold;">inherit</span> system;
+</span></span><span style="display: flex;"><span>    config<span style="color: #666;">.</span>allowUnfree <span style="color: #666;">=</span> <span style="color: #60add5;">true</span>;
+</span></span><span style="display: flex;"><span>  };
+</span></span><span style="display: flex;"><span><span style="color: #007020; font-weight: bold;">in</span>
+</span></span><span style="display: flex;"><span>{
+</span></span><span style="display: flex;"><span>  imports <span style="color: #666;">=</span> [ home-manager<span style="color: #666;">.</span>nixosModules<span style="color: #666;">.</span>home-manager ];
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>  <span style="color: #60a0b0; font-style: italic;"># home-manager configuration</span>
+</span></span><span style="display: flex;"><span>  home-manager<span style="color: #666;">.</span>useGlobalPkgs <span style="color: #666;">=</span> <span style="color: #60add5;">true</span>;
+</span></span><span style="display: flex;"><span>  home-manager<span style="color: #666;">.</span>useUserPackages <span style="color: #666;">=</span> <span style="color: #60add5;">true</span>;
+</span></span><span style="display: flex;"><span>  home-manager<span style="color: #666;">.</span>extraSpecialArgs <span style="color: #666;">=</span> { <span style="color: #007020; font-weight: bold;">inherit</span> configfiles stapelbergnix; };
+</span></span><span style="display: flex;"><span>  home-manager<span style="color: #666;">.</span>users<span style="color: #666;">.</span>michael <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>    imports <span style="color: #666;">=</span> [ <span style="color: #235388;">./microvm-home.nix</span> ];
+</span></span><span style="display: flex;"><span>    microvm<span style="color: #666;">.</span>extraZshInit <span style="color: #666;">=</span> extraZshInit;
+</span></span><span style="display: flex;"><span>  };
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>  <span style="color: #60a0b0; font-style: italic;"># Claude Code CLI (from nixpkgs-unstable, unfree)</span>
+</span></span><span style="display: flex;"><span>  environment<span style="color: #666;">.</span>systemPackages <span style="color: #666;">=</span> [
+</span></span><span style="display: flex;"><span>    pkgsUnstable<span style="color: #666;">.</span>claude-code
+</span></span><span style="display: flex;"><span>  ];
+</span></span><span style="display: flex;"><span>  networking<span style="color: #666;">.</span>hostName <span style="color: #666;">=</span> hostName;
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>  system<span style="color: #666;">.</span>stateVersion <span style="color: #666;">=</span> <span style="color: #4070a0;">"25.11"</span>;
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>  services<span style="color: #666;">.</span>openssh<span style="color: #666;">.</span>enable <span style="color: #666;">=</span> <span style="color: #60add5;">true</span>;
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>  <span style="color: #60a0b0; font-style: italic;"># To match midna (host)</span>
+</span></span><span style="display: flex;"><span>  users<span style="color: #666;">.</span>groups<span style="color: #666;">.</span>michael <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>    gid <span style="color: #666;">=</span> <span style="color: #40a070;">1000</span>;
+</span></span><span style="display: flex;"><span>  };
+</span></span><span style="display: flex;"><span>  users<span style="color: #666;">.</span>users<span style="color: #666;">.</span>michael <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>    group <span style="color: #666;">=</span> <span style="color: #4070a0;">"michael"</span>;
+</span></span><span style="display: flex;"><span>  };
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>  services<span style="color: #666;">.</span>resolved<span style="color: #666;">.</span>enable <span style="color: #666;">=</span> <span style="color: #60add5;">true</span>;
+</span></span><span style="display: flex;"><span>  networking<span style="color: #666;">.</span>useDHCP <span style="color: #666;">=</span> <span style="color: #60add5;">false</span>;
+</span></span><span style="display: flex;"><span>  networking<span style="color: #666;">.</span>useNetworkd <span style="color: #666;">=</span> <span style="color: #60add5;">true</span>;
+</span></span><span style="display: flex;"><span>  networking<span style="color: #666;">.</span>tempAddresses <span style="color: #666;">=</span> <span style="color: #4070a0;">"disabled"</span>;
+</span></span><span style="display: flex;"><span>  systemd<span style="color: #666;">.</span>network<span style="color: #666;">.</span>enable <span style="color: #666;">=</span> <span style="color: #60add5;">true</span>;
+</span></span><span style="display: flex;"><span>  systemd<span style="color: #666;">.</span>network<span style="color: #666;">.</span>networks<span style="color: #666;">.</span><span style="color: #4070a0;">"10-e"</span> <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>    matchConfig<span style="color: #666;">.</span>Name <span style="color: #666;">=</span> <span style="color: #4070a0;">"e*"</span>;
+</span></span><span style="display: flex;"><span>    addresses <span style="color: #666;">=</span> [ { Address <span style="color: #666;">=</span> <span style="color: #4070a0;">"</span><span style="color: #70a0d0;">${</span>ipAddress<span style="color: #70a0d0;">}</span><span style="color: #4070a0;">/24"</span>; } ];
+</span></span><span style="display: flex;"><span>    routes <span style="color: #666;">=</span> [ { Gateway <span style="color: #666;">=</span> <span style="color: #4070a0;">"192.168.83.1"</span>; } ];
+</span></span><span style="display: flex;"><span>  };
+</span></span><span style="display: flex;"><span>  networking<span style="color: #666;">.</span>nameservers <span style="color: #666;">=</span> [
+</span></span><span style="display: flex;"><span>    <span style="color: #4070a0;">"8.8.8.8"</span>
+</span></span><span style="display: flex;"><span>    <span style="color: #4070a0;">"1.1.1.1"</span>
+</span></span><span style="display: flex;"><span>  ];
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>  <span style="color: #60a0b0; font-style: italic;"># Disable firewall for faster boot and less hassle;</span>
+</span></span><span style="display: flex;"><span>  <span style="color: #60a0b0; font-style: italic;"># we are behind a layer of NAT anyway.</span>
+</span></span><span style="display: flex;"><span>  networking<span style="color: #666;">.</span>firewall<span style="color: #666;">.</span>enable <span style="color: #666;">=</span> <span style="color: #60add5;">false</span>;
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>  systemd<span style="color: #666;">.</span>settings<span style="color: #666;">.</span>Manager <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>    <span style="color: #60a0b0; font-style: italic;"># fast shutdowns/reboots! https://mas.to/@zekjur/113109742103219075</span>
+</span></span><span style="display: flex;"><span>    DefaultTimeoutStopSec <span style="color: #666;">=</span> <span style="color: #4070a0;">"5s"</span>;
+</span></span><span style="display: flex;"><span>  };
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>  <span style="color: #60a0b0; font-style: italic;"># Fix for microvm shutdown hang (issue #170):</span>
+</span></span><span style="display: flex;"><span>  <span style="color: #60a0b0; font-style: italic;"># Without this, systemd tries to unmount /nix/store during shutdown,</span>
+</span></span><span style="display: flex;"><span>  <span style="color: #60a0b0; font-style: italic;"># but umount lives in /nix/store, causing a deadlock.</span>
+</span></span><span style="display: flex;"><span>  systemd<span style="color: #666;">.</span>mounts <span style="color: #666;">=</span> [
+</span></span><span style="display: flex;"><span>    {
+</span></span><span style="display: flex;"><span>      what <span style="color: #666;">=</span> <span style="color: #4070a0;">"store"</span>;
+</span></span><span style="display: flex;"><span>      where <span style="color: #666;">=</span> <span style="color: #4070a0;">"/nix/store"</span>;
+</span></span><span style="display: flex;"><span>      overrideStrategy <span style="color: #666;">=</span> <span style="color: #4070a0;">"asDropin"</span>;
+</span></span><span style="display: flex;"><span>      unitConfig<span style="color: #666;">.</span>DefaultDependencies <span style="color: #666;">=</span> <span style="color: #60add5;">false</span>;
+</span></span><span style="display: flex;"><span>    }
+</span></span><span style="display: flex;"><span>  ];
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>  <span style="color: #60a0b0; font-style: italic;"># Use SSH host keys mounted from outside the VM (remain identical).</span>
+</span></span><span style="display: flex;"><span>  services<span style="color: #666;">.</span>openssh<span style="color: #666;">.</span>hostKeys <span style="color: #666;">=</span> [
+</span></span><span style="display: flex;"><span>    {
+</span></span><span style="display: flex;"><span>      path <span style="color: #666;">=</span> <span style="color: #4070a0;">"/etc/ssh/host-keys/ssh_host_ed25519_key"</span>;
+</span></span><span style="display: flex;"><span>      type <span style="color: #666;">=</span> <span style="color: #4070a0;">"ed25519"</span>;
+</span></span><span style="display: flex;"><span>    }
+</span></span><span style="display: flex;"><span>  ];
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>  microvm <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>    <span style="color: #60a0b0; font-style: italic;"># Enable writable nix store overlay so nix-daemon works.</span>
+</span></span><span style="display: flex;"><span>    <span style="color: #60a0b0; font-style: italic;"># This is required for home-manager activation.</span>
+</span></span><span style="display: flex;"><span>    <span style="color: #60a0b0; font-style: italic;"># Uses tmpfs by default (ephemeral), which is fine since we</span>
+</span></span><span style="display: flex;"><span>    <span style="color: #60a0b0; font-style: italic;"># don't build anything in the VM.</span>
+</span></span><span style="display: flex;"><span>    writableStoreOverlay <span style="color: #666;">=</span> <span style="color: #4070a0;">"/nix/.rw-store"</span>;
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>    volumes <span style="color: #666;">=</span> [
+</span></span><span style="display: flex;"><span>      {
+</span></span><span style="display: flex;"><span>        mountPoint <span style="color: #666;">=</span> <span style="color: #4070a0;">"/var"</span>;
+</span></span><span style="display: flex;"><span>        image <span style="color: #666;">=</span> <span style="color: #4070a0;">"var.img"</span>;
+</span></span><span style="display: flex;"><span>        size <span style="color: #666;">=</span> <span style="color: #40a070;">8192</span>; <span style="color: #60a0b0; font-style: italic;"># MB</span>
+</span></span><span style="display: flex;"><span>      }
+</span></span><span style="display: flex;"><span>    ];
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>    shares <span style="color: #666;">=</span> [
+</span></span><span style="display: flex;"><span>      {
+</span></span><span style="display: flex;"><span>        <span style="color: #60a0b0; font-style: italic;"># use proto = "virtiofs" for MicroVMs that are started by systemd</span>
+</span></span><span style="display: flex;"><span>        proto <span style="color: #666;">=</span> <span style="color: #4070a0;">"virtiofs"</span>;
+</span></span><span style="display: flex;"><span>        tag <span style="color: #666;">=</span> <span style="color: #4070a0;">"ro-store"</span>;
+</span></span><span style="display: flex;"><span>        <span style="color: #60a0b0; font-style: italic;"># a host's /nix/store will be picked up so that no</span>
+</span></span><span style="display: flex;"><span>        <span style="color: #60a0b0; font-style: italic;"># squashfs/erofs will be built for it.</span>
+</span></span><span style="display: flex;"><span>        source <span style="color: #666;">=</span> <span style="color: #4070a0;">"/nix/store"</span>;
+</span></span><span style="display: flex;"><span>        mountPoint <span style="color: #666;">=</span> <span style="color: #4070a0;">"/nix/.ro-store"</span>;
+</span></span><span style="display: flex;"><span>      }
+</span></span><span style="display: flex;"><span>      {
+</span></span><span style="display: flex;"><span>        proto <span style="color: #666;">=</span> <span style="color: #4070a0;">"virtiofs"</span>;
+</span></span><span style="display: flex;"><span>        tag <span style="color: #666;">=</span> <span style="color: #4070a0;">"ssh-keys"</span>;
+</span></span><span style="display: flex;"><span>        source <span style="color: #666;">=</span> <span style="color: #4070a0;">"</span><span style="color: #70a0d0;">${</span>workspace<span style="color: #70a0d0;">}</span><span style="color: #4070a0;">/ssh-host-keys"</span>;
+</span></span><span style="display: flex;"><span>        mountPoint <span style="color: #666;">=</span> <span style="color: #4070a0;">"/etc/ssh/host-keys"</span>;
+</span></span><span style="display: flex;"><span>      }
+</span></span><span style="display: flex;"><span>      {
+</span></span><span style="display: flex;"><span>        proto <span style="color: #666;">=</span> <span style="color: #4070a0;">"virtiofs"</span>;
+</span></span><span style="display: flex;"><span>        tag <span style="color: #666;">=</span> <span style="color: #4070a0;">"claude-credentials"</span>;
+</span></span><span style="display: flex;"><span>        source <span style="color: #666;">=</span> <span style="color: #4070a0;">"/home/michael/claude-microvm"</span>;
+</span></span><span style="display: flex;"><span>        mountPoint <span style="color: #666;">=</span> <span style="color: #4070a0;">"/home/michael/claude-microvm"</span>;
+</span></span><span style="display: flex;"><span>      }
+</span></span><span style="display: flex;"><span>      {
+</span></span><span style="display: flex;"><span>        proto <span style="color: #666;">=</span> <span style="color: #4070a0;">"virtiofs"</span>;
+</span></span><span style="display: flex;"><span>        tag <span style="color: #666;">=</span> <span style="color: #4070a0;">"workspace"</span>;
+</span></span><span style="display: flex;"><span>        source <span style="color: #666;">=</span> workspace;
+</span></span><span style="display: flex;"><span>        mountPoint <span style="color: #666;">=</span> workspace;
+</span></span><span style="display: flex;"><span>      }
+</span></span><span style="display: flex;"><span>    ];
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>    interfaces <span style="color: #666;">=</span> [
+</span></span><span style="display: flex;"><span>      {
+</span></span><span style="display: flex;"><span>        type <span style="color: #666;">=</span> <span style="color: #4070a0;">"tap"</span>;
+</span></span><span style="display: flex;"><span>        id <span style="color: #666;">=</span> tapId;
+</span></span><span style="display: flex;"><span>        mac <span style="color: #666;">=</span> mac;
+</span></span><span style="display: flex;"><span>      }
+</span></span><span style="display: flex;"><span>    ];
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>    hypervisor <span style="color: #666;">=</span> <span style="color: #4070a0;">"cloud-hypervisor"</span>;
+</span></span><span style="display: flex;"><span>    vcpu <span style="color: #666;">=</span> <span style="color: #40a070;">8</span>;
+</span></span><span style="display: flex;"><span>    mem <span style="color: #666;">=</span> <span style="color: #40a070;">4096</span>;
+</span></span><span style="display: flex;"><span>    socket <span style="color: #666;">=</span> <span style="color: #4070a0;">"control.socket"</span>;
+</span></span><span style="display: flex;"><span>  };
+</span></span><span style="display: flex;"><span>}
+</span></span></code></pre></div></details>
+<h3 id="step-5-microvm-homenix">Step 5: <code>microvm-home.nix</code></h3>
+<p><code>microvm-base.nix</code> in turn pulls in <code>microvm-home.nix</code>, which sets up home-manager to:</p>
+<ul>
+<li>Set up Zsh with my configuration</li>
+<li>Set up Emacs with my configuration</li>
+<li>Set up Claude Code in shared directory <code>~/claude-microvm</code>.</li>
+</ul>
+<details>
+Expand full <code>microvm-home.nix</code> code
+<div class="highlight"><pre tabindex="0"><code class="language-nix"><span style="display: flex;"><span>{
+</span></span><span style="display: flex;"><span>  config<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>  pkgs<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>  lib<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>  configfiles<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>  stapelbergnix<span style="color: #666;">,</span>
+</span></span><span style="display: flex;"><span>  <span style="color: #666;">...</span>
+</span></span><span style="display: flex;"><span>}:
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>{
+</span></span><span style="display: flex;"><span>  options<span style="color: #666;">.</span>microvm <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>    extraZshInit <span style="color: #666;">=</span> lib<span style="color: #666;">.</span>mkOption {
+</span></span><span style="display: flex;"><span>      type <span style="color: #666;">=</span> lib<span style="color: #666;">.</span>types<span style="color: #666;">.</span>lines;
+</span></span><span style="display: flex;"><span>      default <span style="color: #666;">=</span> <span style="color: #4070a0;">""</span>;
+</span></span><span style="display: flex;"><span>      description <span style="color: #666;">=</span> <span style="color: #4070a0;">"Extra lines to add to zsh initContent"</span>;
+</span></span><span style="display: flex;"><span>    };
+</span></span><span style="display: flex;"><span>  };
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>  config <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>    home<span style="color: #666;">.</span>username <span style="color: #666;">=</span> <span style="color: #4070a0;">"michael"</span>;
+</span></span><span style="display: flex;"><span>    home<span style="color: #666;">.</span>homeDirectory <span style="color: #666;">=</span> <span style="color: #4070a0;">"/home/michael"</span>;
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>    programs<span style="color: #666;">.</span>zsh <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>      enable <span style="color: #666;">=</span> <span style="color: #60add5;">true</span>;
+</span></span><span style="display: flex;"><span>      history <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>        size <span style="color: #666;">=</span> <span style="color: #40a070;">4000</span>;
+</span></span><span style="display: flex;"><span>        save <span style="color: #666;">=</span> <span style="color: #40a070;">10000000</span>;
+</span></span><span style="display: flex;"><span>        ignoreDups <span style="color: #666;">=</span> <span style="color: #60add5;">true</span>;
+</span></span><span style="display: flex;"><span>        share <span style="color: #666;">=</span> <span style="color: #60add5;">false</span>;
+</span></span><span style="display: flex;"><span>        append <span style="color: #666;">=</span> <span style="color: #60add5;">true</span>;
+</span></span><span style="display: flex;"><span>      };
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>      initContent <span style="color: #666;">=</span> <span style="color: #4070a0;">''
+</span></span></span><span style="display: flex;"><span><span style="color: #4070a0;">        </span><span style="color: #70a0d0;">${</span><span style="color: #007020;">builtins</span><span style="color: #666;">.</span>readFile <span style="color: #4070a0;">"</span><span style="color: #70a0d0;">${</span>configfiles<span style="color: #70a0d0;">}</span><span style="color: #4070a0;">/zshrc"</span><span style="color: #70a0d0;">}</span><span style="color: #4070a0;">
+</span></span></span><span style="display: flex;"><span><span style="color: #4070a0;">        export CLAUDE_CONFIG_DIR=/home/michael/claude-microvm
+</span></span></span><span style="display: flex;"><span><span style="color: #4070a0;">        </span><span style="color: #70a0d0;">${</span>config<span style="color: #666;">.</span>microvm<span style="color: #666;">.</span>extraZshInit<span style="color: #70a0d0;">}</span><span style="color: #4070a0;">
+</span></span></span><span style="display: flex;"><span><span style="color: #4070a0;">      ''</span>;
+</span></span><span style="display: flex;"><span>    };
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>    programs<span style="color: #666;">.</span>emacs <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>      enable <span style="color: #666;">=</span> <span style="color: #60add5;">true</span>;
+</span></span><span style="display: flex;"><span>      package <span style="color: #666;">=</span> stapelbergnix<span style="color: #666;">.</span>lib<span style="color: #666;">.</span>emacsWithPackages { <span style="color: #007020; font-weight: bold;">inherit</span> pkgs; };
+</span></span><span style="display: flex;"><span>    };
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>    home<span style="color: #666;">.</span>file<span style="color: #666;">.</span><span style="color: #4070a0;">".config/emacs"</span> <span style="color: #666;">=</span> {
+</span></span><span style="display: flex;"><span>      source <span style="color: #666;">=</span> <span style="color: #4070a0;">"</span><span style="color: #70a0d0;">${</span>configfiles<span style="color: #70a0d0;">}</span><span style="color: #4070a0;">/config/emacs"</span>;
+</span></span><span style="display: flex;"><span>    };
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>    home<span style="color: #666;">.</span>stateVersion <span style="color: #666;">=</span> <span style="color: #4070a0;">"25.11"</span>;
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>    programs<span style="color: #666;">.</span>home-manager<span style="color: #666;">.</span>enable <span style="color: #666;">=</span> <span style="color: #60add5;">true</span>;
+</span></span><span style="display: flex;"><span>  };
+</span></span><span style="display: flex;"><span>}
+</span></span></code></pre></div></details>
+<h3 id="step-6-goprotobufnix">Step 6: <code>goprotobuf.nix</code></h3>
+<p>The <code>goprotobuf.nix</code> makes available a bunch of required and convenient packages:</p>
+<div class="highlight"><pre tabindex="0"><code class="language-nix"><span style="display: flex;"><span><span style="color: #60a0b0; font-style: italic;"># Project-specific configuration for goprotobufvm</span>
+</span></span><span style="display: flex;"><span>{ pkgs<span style="color: #666;">,</span> <span style="color: #666;">...</span> }:
+</span></span><span style="display: flex;"><span>{
+</span></span><span style="display: flex;"><span>  <span style="color: #60a0b0; font-style: italic;"># Development environment for Go Protobuf</span>
+</span></span><span style="display: flex;"><span>  environment<span style="color: #666;">.</span>systemPackages <span style="color: #666;">=</span> <span style="color: #007020; font-weight: bold;">with</span> pkgs; [
+</span></span><span style="display: flex;"><span>    <span style="color: #60a0b0; font-style: italic;"># Go toolchain</span>
+</span></span><span style="display: flex;"><span>    go
+</span></span><span style="display: flex;"><span>    gopls
+</span></span><span style="display: flex;"><span>    delve
+</span></span><span style="display: flex;"><span>    protobuf
+</span></span><span style="display: flex;"><span>    gnumake
+</span></span><span style="display: flex;"><span>    gcc
+</span></span><span style="display: flex;"><span>    git
+</span></span><span style="display: flex;"><span>    ripgrep
+</span></span><span style="display: flex;"><span>  ];
+</span></span><span style="display: flex;"><span>}
+</span></span></code></pre></div>
+<h3 id="running-the-vm">Running the VM</h3>
+<p>Let’s create the workspace directory and create an SSH host key:</p>
+<pre tabindex="0"><code>mkdir -p ~/microvm/emacs/ssh-host-keys
+ssh-keygen -t ed25519 -N "" \
+  -f ~/microvm/emacs/ssh-host-keys/ssh_host_ed25519_key
+</code></pre>
+<p>Now we can start the VM:</p>
+<pre tabindex="0"><code>sudo systemctl start microvm@emacsvm
+</code></pre>
+<p>It boots and responds to pings within a few seconds.</p>
+<p>Then, SSH into the VM (perhaps in a <a href="https://manpages.debian.org/tmux.1"><code>tmux(1)</code></a>
+ session) and run Claude
+(or your Coding Agent of choice) without permission prompts in the shared
+workspace directory:</p>
+<pre tabindex="0"><code>% ssh 192.168.83.2
+emacsvm% cd microvm/emacs
+emacsvm% claude --dangerously-skip-permissions
+</code></pre>
+<p>This is what running Claude in such a setup looks like:</p>
+
+<p><a href="https://michael.stapelberg.ch/posts/2026-02-01-coding-agent-microvm-nix/2026-01-28-neofetch-featured.png"><img alt="Claude Code in “bypass permissions” mode" height="479" src="https://michael.stapelberg.ch/posts/2026-02-01-coding-agent-microvm-nix/2026-01-28-neofetch-featured_hu_d06e7aa7176833b3.png" style="border: 1px solid #000;" title="Claude Code in “bypass permissions” mode" width="600" /></a></p>
+<h2 id="creating-vms-with-claude">Creating VMs with Claude</h2>
+<p>After going through the process of setting up a MicroVM once, it becomes tedious.</p>
+<p>I was curious if <a href="https://code.claude.com/docs/en/skills">Claude Skills</a> could
+help with a task like this. Skills are markdown files that instruct Claude to do
+certain steps in certain situations.</p>
+<p>I created <code>.claude/skills/create-microvm/SKILL.md</code> as follows:</p>
+<div class="highlight"><pre tabindex="0"><code class="language-markdown"><span style="display: flex;"><span>---
+</span></span><span style="display: flex;"><span>name: create-microvm
+</span></span><span style="display: flex;"><span>description: Creates a new microvm Virtual Machine on midna for running Claude in, with source code repositories and build dependencies available inside the microvm. Use when the user asks to create a new microvm.
+</span></span><span style="display: flex;"><span>---
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>Inspect the existing structure at ~/machines/midna (NixOS configuration using Flakes), which includes several MicroVMs in the ~/machines/midna/microvms/ directory.
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>Then, create a similar structure for the microvm the user asked to create. Be sure to consider:
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span><span style="color: #007020; font-weight: bold;">1.</span> Create a new subdirectory for this microvm, named NAME (the microvm name).
+</span></span><span style="display: flex;"><span><span style="color: #007020; font-weight: bold;">2.</span> Create an entry in microvm.nix similar to an existing microvm's, but:
+</span></span><span style="display: flex;"><span><span style="color: #007020; font-weight: bold;">3.</span> Change hostname to NAME
+</span></span><span style="display: flex;"><span><span style="color: #007020; font-weight: bold;">4.</span> Change IP address (e.g., 192.168.83.3): find used ones and chose next free
+</span></span><span style="display: flex;"><span><span style="color: #007020; font-weight: bold;">5.</span> Change workspace share to /home/michael/microvm/NAME
+</span></span><span style="display: flex;"><span><span style="color: #007020; font-weight: bold;">6.</span> Include build dependencies for the new microvm based on user request
+</span></span><span style="display: flex;"><span><span style="color: #007020; font-weight: bold;">7.</span> Create ssh-host-keys directory
+</span></span><span style="display: flex;"><span><span style="color: #007020; font-weight: bold;">8.</span> Generate SSH host keys
+</span></span><span style="display: flex;"><span><span style="color: #007020; font-weight: bold;">9.</span> Clone/download source code repositories into this microvm based on user request
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>Once the microvm is defined, update ~/machines/midna to pull it in. To verify, build the config (but do not deploy).
+</span></span><span style="display: flex;"><span>
+</span></span><span style="display: flex;"><span>You need to git-commit changes to the microvm before ~/machines/midna can see them.
+</span></span></code></pre></div>
+<p>When using this skill with Claude Code (tested version: v2.0.76 and v2.1.15), with the <a href="https://www.anthropic.com/news/claude-opus-4-5">Opus 4.5 model</a>, I can send a prompt like this:</p>
+<blockquote>
+<p>please set up a microvm for Debian Code Search (dcs). see ~/dcs for the source code (but clone from <a href="https://github.com/Debian/dcs">https://github.com/Debian/dcs</a>)</p>
+</blockquote>
+<p>Now Claude churns for a few minutes, possibly asking a clarification question
+before that. Afterwards, Claude reports back with:</p>
+<blockquote>
+<p>The dcsvm microvm has been set up successfully. Here&rsquo;s what was created:</p>
+<p>Configuration:</p>
+<ul>
+<li>/home/michael/machines/midna/microvms/dcs.nix - Project-specific packages (Go toolchain, protobuf tools, uglify-js, yuicompressor,
+zopfli)</li>
+<li>Updated /home/michael/machines/midna/microvm.nix to include dcsvm with:
+<ul>
+<li>IP: 192.168.83.8</li>
+<li>tapId: microvm6</li>
+<li>mac: 02:00:00:00:00:07</li>
+</ul>
+</li>
+</ul>
+<p>Workspace:</p>
+<ul>
+<li>/home/michael/microvm/dcs/ - Workspace directory</li>
+<li>/home/michael/microvm/dcs/ssh-host-keys/ - SSH host keys (ed25519)</li>
+<li>/home/michael/microvm/dcs/dcs/ - Cloned repository from <a href="https://github.com/Debian/dcs">https://github.com/Debian/dcs</a></li>
+</ul>
+<p>Build verified - The configuration builds successfully.</p>
+<p>To start the microvm after deploying:
+<code>systemctl start microvm@dcsvm</code></p>
+<p>To SSH into it:
+<code>ssh michael@192.168.83.8</code></p>
+</blockquote>
+<p>Wonderful! In my experience, Claude always got the VM creation correct.</p>
+<h2 id="replicating-this-setup-with-claude-code">Replicating this setup with Claude Code</h2>
+<p>In fact, you can go one step further: Instead of just asking Claude to create
+new MicroVMs, you can also ask Claude to replicate this entire setup into your
+NixOS configuration!</p>
+<p>Try a prompt like this:</p>
+<blockquote>
+<p>read
+<a href="https://michael.stapelberg.ch/posts/2026-02-01-coding-agent-microvm-nix/">https://michael.stapelberg.ch/posts/2026-02-01-coding-agent-microvm-nix/</a>
+— I want the exact same setup in my midna NixOS configuration please!</p>
+</blockquote>
+<h2 id="conclusion">Conclusion</h2>
+<p>NixOS has a reputation of being hard to adopt, but once you are using NixOS, you
+can do powerful things like spinning up ephemeral MicroVMs for a new project
+within minutes.</p>
+<p>The maintenance effort is minimal: When I update my personal PC, my MicroVM
+configurations start using the new software versions, too. Customization is easy
+if needed.</p>
+<p>This actually mirrors my experience with Coding Agents: I don’t feel like
+they’re <em>automatically</em> making existing tasks more efficient, I feel that they
+make things possible that were previously out of reach (similar to <a href="https://en.wikipedia.org/wiki/Jevons_paradox">Jevons
+paradox</a>).</p>
+<p>It was fascinating (and scary!) to experience the quality increase of Coding
+Agents during 2025. At the beginning of 2025 I thought that LLMs are an
+overhyped toy, and felt it was almost insulting when people showed me text or
+code produced by these models. But almost every new frontier model release got
+significantly better, and by now I have been positively surprised by Claude
+Code’s capabilities and quality many times. It has produced code that handles
+legitimate edge cases I would not have considered.</p>
+<p>With this article, I showed one possible way to run Coding Agents safely (or any
+workload that shouldn’t access your private data, really) that you can adjust in
+many ways for your needs.</p>
+
+<hr />
+<p><em>抓取时间: 2026-02-04 12:58:17</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月4日 10:20:08 UTC">2026-02-04</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

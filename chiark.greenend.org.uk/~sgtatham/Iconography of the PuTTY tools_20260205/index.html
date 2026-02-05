@@ -25,7 +25,7 @@
     
     
       
-        <title>Iconography of the PuTTY tools\n\n来源: https://www.chiark.greenend.org.uk/~sgtatham\n链接: https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/putty-icons/\n日期: 2025-03-12T00:00:00+00:00\n\n---\n\nA PuTTY user asked about the history of its logo and icon collection. I discuss the design intentions and technical aspects. - Hacker News 精选博客</title>
+        <title>Iconography of the PuTTY tools - Hacker News 精选博客</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#iconography-of-the-putty-toolsnn-httpswwwchiarkgreenendorguksgtathamn-httpswwwchiarkgreenendorguksgtathamquasiblogputty-iconsn-2025-03-12t0000000000nn-nna-putty-user-asked-about-the-history-of-its-logo-and-icon-collection-i-discuss-the-design-intentions-and-technical-aspects" class="md-skip">
+        <a href="#iconography-of-the-putty-tools" class="md-skip">
           跳转至
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Iconography of the PuTTY tools\n\n来源: https://www.chiark.greenend.org.uk/~sgtatham\n链接: https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/putty-icons/\n日期: 2025-03-12T00:00:00+00:00\n\n---\n\nA PuTTY user asked about the history of its logo and icon collection. I discuss the design intentions and technical aspects.
+              Iconography of the PuTTY tools
             
           </span>
         </div>
@@ -404,7 +404,162 @@
   
 
 
-<h1 id="iconography-of-the-putty-toolsnn-httpswwwchiarkgreenendorguksgtathamn-httpswwwchiarkgreenendorguksgtathamquasiblogputty-iconsn-2025-03-12t0000000000nn-nna-putty-user-asked-about-the-history-of-its-logo-and-icon-collection-i-discuss-the-design-intentions-and-technical-aspects">Iconography of the PuTTY tools\n\n<strong>来源:</strong> https://www.chiark.greenend.org.uk/~sgtatham\n<strong>链接:</strong> https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/putty-icons/\n<strong>日期:</strong> 2025-03-12T00:00:00+00:00\n\n---\n\nA PuTTY user asked about the history of its logo and icon collection. I discuss the design intentions and technical aspects.<a class="headerlink" href="#iconography-of-the-putty-toolsnn-httpswwwchiarkgreenendorguksgtathamn-httpswwwchiarkgreenendorguksgtathamquasiblogputty-iconsn-2025-03-12t0000000000nn-nna-putty-user-asked-about-the-history-of-its-logo-and-icon-collection-i-discuss-the-design-intentions-and-technical-aspects" title="Permanent link">&para;</a></h1>
+<h1 id="iconography-of-the-putty-tools">Iconography of the PuTTY tools<a class="headerlink" href="#iconography-of-the-putty-tools" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://chiark.greenend.org.uk/~sgtatham
+<strong>链接:</strong> https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/putty-icons/
+<strong>日期:</strong> 2025-03-12T00:00:00+00:00</p>
+<hr />
+<h1 id="iconography-of-the-putty-tools_1">Iconography of the PuTTY tools<a class="headerlink" href="#iconography-of-the-putty-tools_1" title="Permanent link">&para;</a></h1>
+<p>[Simon Tatham, 2025-03-12]</p>
+<ul>
+<li>Introduction</li>
+<li>Hand-drawn era<ul>
+<li>PuTTY itself</li>
+<li>PSCP (and PSFTP): file transfer</li>
+<li>Pageant: SSH agent</li>
+<li>PuTTYgen: key generator</li>
+<li>Configuration dialog box</li>
+</ul>
+</li>
+<li>Scripted era<ul>
+<li>pterm</li>
+<li>Installer</li>
+</ul>
+</li>
+<li>SVG revamp</li>
+<li>Thatâs all, folks!</li>
+</ul>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>In March 2025 I received an email asking about PuTTYâs âlogoâ â the icon used by the Windows executable. The sender wanted to know where it had come from, and how it had evolved over time.</p>
+<p>Sometimes I receive an email asking a question, and by the time Iâve finished answering it, I realise itâs worth turning into a blog post. This time I knew it was going to be one of those before I even started typing, because thereâs a graphic design angle to the question <em>and</em> a technical angle. So I had a lot to say.</p>
+<p>PuTTYâs icon designs date from the late 1990s and early 2000s. Theyâve never had a major <em>stylistic</em> redesign, but over the years, the icons have had to be re-rendered under various constraints, which made for a technical challenge as well.</p>
+<h2 id="hand-drawn-era">Hand-drawn era<a class="headerlink" href="#hand-drawn-era" title="Permanent link">&para;</a></h2>
+<p>When I first started drawing PuTTY icons, I didnât know I was going to need lots of them at different sizes. So I didnât start off with any automation â I just drew each one by hand in the MSVC icon editor.</p>
+<h3 id="putty-itself">PuTTY itself<a class="headerlink" href="#putty-itself" title="Permanent link">&para;</a></h3>
+<p>Expanded to a visible size, hereâs the earliest version of the original PuTTY icon that I still have in my source control. That means it was current in early 1999; my source control doesnât go all the way back to the very project start in the summer of 1996, but if it did, I expect this was <em>probably</em> the same icon I originally drew. Iâd have drawn one quite early, because Windows GUI programs look pretty unhelpful without an icon.</p>
+<p><img alt="[putty-original.png]" src="putty-original.png" /></p>
+<p><img alt="[putty-original-bw.png]" src="putty-original-bw.png" /></p>
+<p>The original PuTTY icon, in colour and in monochrome</p>
+<p>Itâs 32Â ÃÂ 32 pixels, and uses a limited palette of primary colours and shades of grey. Thatâs because I started the project in the mid-1990s, when non-truecolour displays were very common. There was a fixed 16-colour palette recommended for use in icons, consisting of the obvious primary and secondary colours and dim versions of them, plus a couple of spare shades of grey. That way all the icons in the entire GUI could reuse the same 16 palette entries and not run the display out of colours. So this icon is drawn using that palette.</p>
+<p>Providing a plain black-and-white version was another standard recommendation at the time. But I canât remember why â I certainly never actually <em>saw</em> a computer running Win95 or later with a B&amp;W display! My best guess is that the recommendation was intended for use with the âWin32sâ extension that would let 32-bit programs at least <em>try</em> to run on Windows 3.1 (on suitable underlying hardware). Probably Windows 3 still supported black and white displays.</p>
+<p>I donât think I thought about the design very much. I just dashed it off because I needed <em>some</em> kind of an icon. The two computers are drawn in a style that was common in the â90s: a system box sitting under a CRT monitor, with a floppy disk drive visible at the right-hand end. Theyâre connected with a lightning bolt to suggest electrical communication between them. I didnât <em>believe</em> I was being very original: I had the vague idea that several icons of this kind already existed (although Iâve never been able to find any specific example of what I was thinking of), so in my head, it fit with the general iconography of the day, and seemed as if it would be immediately understandable.</p>
+<p>I canât remember why the lightning bolt was <em>yellow</em>. With hindsight that seems the strangest thing about it; cyan would have been a more obvious choice for electricity. Possibly it was just to contrast more with the blue screens of the computers.</p>
+<p>Speaking of which â¦ I canât remember why the screens were blue, either. I <em>think</em> I just intended it as a neutral-ish sort of colour which wasnât black, so that it was clear that the screens were turned on. Iâm pretty sure the blue <em>wasnât</em> an allusion to the Windows Blue Screen of Death â that wouldnât make sense, because in a typical use of PuTTY, only <em>one</em> end of the connection is running Windows, and neither end has crashed!</p>
+<p>Looking back, I suppose I might also have considered making the two computers look different from each other, on the theory that the client machine might be sitting on someoneâs desk, and the server might be in a rack in a datacentre? But I was a student when I started writing PuTTY, and <em>my</em> Linux server you could remotely log into was on my desk and not in a rack. So I think that just never even occurred to me.</p>
+<h3 id="pscp-and-psftp-file-transfer">PSCP (and PSFTP): file transfer<a class="headerlink" href="#pscp-and-psftp-file-transfer" title="Permanent link">&para;</a></h3>
+<p>In 1999, a contributor sent an SCP implementation, and PSCP was born. I decided to draw it an icon of its own.</p>
+<p>It wasnât especially important for PSCP to have an icon at all. You donât run it <em>from</em> a GUI (itâs useless without command-line arguments), so it doesnât need an icon for you to find it in Explorer or identify it in the Start Menu. And it doesnât put up GUI windows, so it wouldnât need an icon to identify those in the taskbar either. But I drew an icon anyway. I canât remember why. Maybe it was just for completeness, or I felt like doing a bit of drawing, or something.</p>
+<p>I made the PSCP icon by modifying the existing PuTTY icon, replacing one of the two computers with a piece of paper with variable-length lines on it, suggesting a written document:</p>
+<p><img alt="[pscp-original.png]" src="pscp-original.png" /></p>
+<p><img alt="[pscp-original-bw.png]" src="pscp-original-bw.png" /></p>
+<p>The original PSCP icon, in colour and in monochrome</p>
+<p>I kept the lightning bolt connecting the remaining computer to that document, the theory being that you use PSCP to remotely access documents. (In some fairly vague sense.)</p>
+<p>Later on, we gained a second file transfer tool, PSFTP, and I reused the same icon for that, on the basis that theyâre both file transfer tools and the icon doesnât really say anything specific to one of them. PSFTP is still a command-line application, but unlike PSCP, itâs possible to run it <em>from</em> the GUI (by clicking on it in Explorer or the Start Menu), because it has an interactive prompt, so if you donât run it with any command-line arguments, you can tell it at the prompt where to connect to. So PSFTP put the same icon to a more practical use than PSCP did.</p>
+<p>(On the other hand, giving two tools the same icon means you have to check carefully which one youâre dragging around in Explorer! Perhaps it would have been better to make the PSCP and PSFTP icons different in some way. But I couldnât easily think of a visual depiction of the ways the two tools differ.)</p>
+<h3 id="pageant-ssh-agent">Pageant: SSH agent<a class="headerlink" href="#pageant-ssh-agent" title="Permanent link">&para;</a></h3>
+<p>Pageant, our SSH agent, was the next tool in the suite that needed an icon.</p>
+<p>My original idea for an icon depicting an SSH agent was to draw the face of a <em>secret</em> agent â in the stereotypical outfit from the sillier end of spy fiction, with a wide-brimmed hat and a turned-up collar.</p>
+<p>But Iâm terrible at drawing faces. After a few failed attempts, I realised that Pageant would never get released <em>at all</em> if I waited until Iâd drawn the icon I wanted. So instead I took the secret agentâs hat â the only part which I <em>had</em> drawn to my satisfaction â and simply sat it on top of a larger version of the computer from the original PuTTY icon, at a rakish angle.</p>
+<p><img alt="[pageant-original.png]" src="pageant-original.png" /></p>
+<p>The original Pageant icon</p>
+<p>Iâd intended that as a placeholder, planning to come back and have another try later at drawing my original idea of a human secret agent. But then I realised the icon Iâd already drawn was simply <em>better!</em> It fits visually with the rest of the suite by reusing the same computer design; itâs more appropriate because the âagentâ in question <em>is</em> computerised rather than human. And most importantly of all, a computer wearing a hat turned out to be cute. So I kept it.</p>
+<p>On the technical side: Pageantâs original icon <em>didnât</em> come with a black and white version. I donât remember why not; perhaps, with Windows 3 a few more years in the past, it just didnât seem important enough any more. But on the other hand, Pageant introduced a new requirement: I had to draw a <em>small</em> version of the icon. Up to this point Iâd just drawn everything at the (then) standard icon size of 32Â ÃÂ 32; but Pageant puts an icon in the System Tray on the taskbar, so it needed a smaller 16Â ÃÂ 16 icon to fit there. If you just let Windows scale down the 32Â ÃÂ 32 version, it didnât do such a good job of it.</p>
+<p><img alt="[pageant-original-small.png]" src="pageant-original-small.png" /></p>
+<p>Half-size version of the original Pageant icon</p>
+<p>Drawing a small version of the same computer logo was a challenge, especially while still using that 16-colour fixed palette. You can see that Iâve done some tricks with the darker palette entries, âhand-antialiasingâ the hatband, and replacing the internal black outline at the bottom of the computer monitor with a dark grey one to try to make it less prominent â as if the original 1-pixel black outline had been scaled down to half a pixel.</p>
+<p>(But the <em>external</em> outline is still solid black, so that it separates the entire icon clearly from whatever background colour itâs shown on. The taskbar is grey, and so is most of the icon, so thatâs still important!)</p>
+<h3 id="puttygen-key-generator">PuTTYgen: key generator<a class="headerlink" href="#puttygen-key-generator" title="Permanent link">&para;</a></h3>
+<p>After that came PuTTYgen. I drew another âcomputer + lightning bolt + objectâ icon, this time with the other object being a key â a weak visual pun, since PuTTYgen generates and works with cryptographic keys.</p>
+<p><img alt="[puttygen-original.png]" src="puttygen-original.png" /></p>
+<p>The original PuTTYgen icon</p>
+<p>The lightning bolt indicating network communication was particularly inappropriate in this tool. It was already fairly tenuous in PSCP, but PuTTYgen doesnât do any network communication <em>at all</em> , so the lightning bolt was completely inaccurate. I really put it in there for visual consistency with the rest of the icons: itâs there to signal âthis is a tool from the same suite as PuTTYâ.</p>
+<p>(Iâm still not <em>very</em> happy with the drawing of the key.)</p>
+<p>This icon is the other way up from the PSCP one: here, Iâve kept the computer in the lower left corner from the main PuTTY icon, and replaced the top right one with a different weird object, whereas in PSCP, I kept the top right computer and replaced the <em>other</em> one with an object. I donât remember having any particular reason for that â perhaps I just didnât even bother to check which way round Iâd drawn the previous icon! But Iâm not too unhappy with it, because it makes the two icons more different from each other, so easier to tell apart.</p>
+<h3 id="configuration-dialog-box">Configuration dialog box<a class="headerlink" href="#configuration-dialog-box" title="Permanent link">&para;</a></h3>
+<p>The next icon we needed wasnât for a separate tool at all: it was for PuTTYâs configuration dialog box.</p>
+<p>The taskbar entry for the config box had the boring âdefaultâ icon, just representing a generic window frame, that Windows uses for any window that doesnât supply a better one. Iâd decided that looked ugly.</p>
+<p>Rather than just reuse the main PuTTY icon unmodified, I drew an icon to specifically represent configuration or modification, by overlaying a large spanner on top:</p>
+<p><img alt="[puttycfg-original.png]" src="puttycfg-original.png" /></p>
+<p><img alt="[puttycfg-original-bw.png]" src="puttycfg-original-bw.png" /></p>
+<p>The PuTTY configuration dialog icon, in colour and in monochrome</p>
+<p>For this icon I went back to including a monochrome version. I canât remember why. Perhaps it was just that I was modifying an existing icon which <em>did</em> have a monochrome version!</p>
+<h2 id="scripted-era">Scripted era<a class="headerlink" href="#scripted-era" title="Permanent link">&para;</a></h2>
+<p>Nothing else happened in this area until 2007.</p>
+<p>That was about when people started to complain that the 32Â ÃÂ 32 pixel icons had started to look nasty. Displays had become bigger, and Windows was defaulting to displaying 48Â ÃÂ 48 icons instead of 32Â ÃÂ 32. So if your application only had a 32Â ÃÂ 32 icon, Windows would stretch it.</p>
+<p>It wouldnât have looked great if a 32Â ÃÂ 32 icon had been magnified by an exact factor of 2 to 64Â ÃÂ 64, copying each input pixel the same number of times. But 48 isnât even a multiple of 32, so instead Windows had to stretch my icons <em>unevenly</em> , which looked even worse.</p>
+<p>Rather than hand-draw another full set of icons, I decided to get more ambitious. So I wrote a piece of code that drew all the components of each icon image in a programmatic way, so that I could run the script to auto-generate a full set of icons for every tool. That eliminated the inconsistency about which icons had tiny versions, and which ones had black and white versions: now <em>all</em> the icons had <em>all</em> versions.</p>
+<p>The hard part of that was the tiny 16Â ÃÂ 16 icons. Iâd only drawn one of those so far, for Pageant. Now I had to try to capture the artistic judgment Iâd used for the âhand-antialiasingâ in that icon, and try to make a piece of software do the same thing for <em>all</em> the graphical components of the icon suite.</p>
+<p>I remember that being pretty hard work, but in the end I managed to make something I was happy with. After that, <em>every</em> icon had 48Â ÃÂ 48, 32Â ÃÂ 32 and 16Â ÃÂ 16 icons.</p>
+<p><img alt="[putty-script-48.png]" src="putty-script-48.png" /></p>
+<p><img alt="[putty-script-32.png]" src="putty-script-32.png" /></p>
+<p><img alt="[putty-script-16.png]" src="putty-script-16.png" /></p>
+<p><img alt="[pscp-script-48.png]" src="pscp-script-48.png" /></p>
+<p><img alt="[pscp-script-32.png]" src="pscp-script-32.png" /></p>
+<p><img alt="[pscp-script-16.png]" src="pscp-script-16.png" /></p>
+<p><img alt="[pageant-script-48.png]" src="pageant-script-48.png" /></p>
+<p><img alt="[pageant-script-32.png]" src="pageant-script-32.png" /></p>
+<p><img alt="[pageant-script-16.png]" src="pageant-script-16.png" /></p>
+<p><img alt="[puttygen-script-48.png]" src="puttygen-script-48.png" /></p>
+<p><img alt="[puttygen-script-32.png]" src="puttygen-script-32.png" /></p>
+<p><img alt="[puttygen-script-16.png]" src="puttygen-script-16.png" /></p>
+<p><img alt="[puttycfg-script-48.png]" src="puttycfg-script-48.png" /></p>
+<p><img alt="[puttycfg-script-32.png]" src="puttycfg-script-32.png" /></p>
+<p><img alt="[puttycfg-script-16.png]" src="puttycfg-script-16.png" /></p>
+<p>A full set of icons generated by the script</p>
+<p>I stopped short of trying to make the program recreate <em>every</em> decision Iâd made in the original drawing. I made quite a few of those decisions in a hurry without much thought, after all. So I just got the script to a point I was happy <em>enough</em> with. And I took the opportunity to improve on a few things: for example, <em>all</em> versions of the Pageant hatband are now antialiased, not just the tiny version.</p>
+<p>But there are other ways that the scripted icons donât <em>exactly</em> match the original hand-drawn versions. The radio buttons below should let you flip back and forth between two example icons in the original and script-generated versions:</p>
+<p>Original<img alt="[pair-originals.png]" src="pair-originals.png" /> Scripted<img alt="[pair-script.png]" src="pair-script.png" /></p>
+<p><img alt="" src="double-icon-spacer-32.png" /></p>
+<p>Use the radio buttons to switch between the original PuTTY and Pageant icons and the 32Â ÃÂ 32 output from the script</p>
+<p>The actual PuTTY icon is a pretty close match â only a small number of pixels changed. But the Pageant icon is quite different: apart from the deliberate change of the antialiased hatband, the computer in the icon isnât even the same <em>size!</em> I canât remember if that was a pure accident (maybe I didnât flip back and forth between the two versions of that icon while I was writing the script), or a deliberate style change.</p>
+<p>(Of course, if Iâd <em>wanted</em> to change the size of the computer, it would have been easier to do it using the script than redrawing by hand. So it would have made sense for it to be a deliberate change, now that the opportunity was available. But I donât remember that it <em>was</em> deliberate.)</p>
+<p>As I said earlier, I made sure the script could generate a full set of black-and-white icons too, just in case. In 2007 I think it was even less likely that anyone would still be running Windows (or anything else) on a B&amp;W display, but one of the nice things about having this stuff done by a script is that you can get it to do a lot of hard work for you just in case. So now I have a full set of black and white icons too, even at the new size of 48 pixels:</p>
+<p><img alt="[putty-script-48bw.png]" src="putty-script-48bw.png" /></p>
+<p><img alt="[pscp-script-48bw.png]" src="pscp-script-48bw.png" /></p>
+<p><img alt="[pageant-script-48bw.png]" src="pageant-script-48bw.png" /></p>
+<p><img alt="[puttygen-script-48bw.png]" src="puttygen-script-48bw.png" /></p>
+<p><img alt="[puttycfg-script-48bw.png]" src="puttycfg-script-48bw.png" /></p>
+<p>All five icons, in black and white, at 48 pixels</p>
+<h3 id="pterm">pterm<a class="headerlink" href="#pterm" title="Permanent link">&para;</a></h3>
+<p>In 2002 I had ported a lot of the PuTTY code to Linux. I wrote a Linux version of the full GUI PuTTY application, and also reused part of the code as an X11 terminal emulator <code>pterm</code> which you could use in place of existing ones like <code>xterm</code>.</p>
+<p>Linux GUI applications can also have icons if they want to: an X11 program can set a property on its window, containing a bitmap to be used as its icon. Window managers vary in <em>what</em> they use this for â they might minimise the whole window to an icon in Windows 3.1 style, or display the icon in a taskbar entry in the style of more modern Windows, or display the icon somewhere in the applicationâs window frame, or anything else they can think of.</p>
+<p>I hadnât done anything about this in 2002, partly because as far as I knew the toolkit library I was using (GTK 1) didnât support setting an icon on the window, and also because it would have been a pain to provide the same icons in multiple bitmap file formats.</p>
+<p>But now that I was generating the icons from a script, it was suddenly much easier to make the script output multiple file formats. Also I found out that GTK 1 <em>did</em> let you set an icon property after all. (In any case, I already knew GTK 2 could do that, and was planning an upgrade to that.) So, for both reasons, it was now practical to provide icons for the X11 versions of the PuTTY tools.</p>
+<p>So I had to draw an icon for <code>pterm</code>, which didnât already have one!</p>
+<p>This time, I really did run out of imagination. Since <code>pterm</code> doesnât do any network communication, I simply drew an icon consisting of <em>just one</em> copy of the same computer logo seen in all the other icons, expanding it to the full size of the icon image. (A little bigger than it was for Pageant, since this time it didnât have to fit under a hat.)</p>
+<p><code>pterm</code> also has a configuration dialog box, so I made a separate icon for that, reusing the same spanner overlay from PuTTY proper.</p>
+<p><img alt="[pterm-script-48.png]" src="pterm-script-48.png" /></p>
+<p><img alt="[ptermcfg-script-48.png]" src="ptermcfg-script-48.png" /></p>
+<p>The icon for <code>pterm</code>, and its configuration dialog</p>
+<p><em>Much</em> later, in 2021, it became possible to write a version of <code>pterm</code> that would run on Windows, and act as an alternative GUI container for an ordinary Windows <code>cmd.exe</code> or Powershell session. This icon became the one for Windows pterm as well, once that happened.</p>
+<h3 id="installer">Installer<a class="headerlink" href="#installer" title="Permanent link">&para;</a></h3>
+<p>The flexible icon-drawing script also let me support true colour icons as an extra output mode, so I wasnât limited to the old 16-colour palette any more.</p>
+<p>That came in handy when I needed an icon for the PuTTY <em>installer</em>. I thought it would be nice to draw a cardboard box as part of that icon, with the flaps open at the top and a lightning bolt coming out of it pointing at a computer, suggesting âPuTTY is zapping out of this box on to your machineâ. Cardboard boxes are brown, and brown wasnât in the 16-colour icon palette â but now we werenât limited to that palette any more, so I could draw a true-colour icon using <em>actual</em> brown!</p>
+<p>But I still wanted to support the 16-colour icons, because I never like to throw away backwards compatibility if I can avoid it. And I noticed that you could make <em>several</em> acceptable shades of brown by taking two different colours in the old Windows 16-colour icon palette, and mixing them 50:50. All my mixes involved the dark red (<code>#800000</code>); I got three different browns, or brown-enough colours, by mixing it with black (<code>#000000</code>), dark yellow (<code>#808000</code>), and full yellow (<code>#ffff00</code>).</p>
+<p>So I made the cardboard box out of those three 50-50 mixes, using them all to show that different parts of the box were at different angles to the light. That way, in the true-colour icon I could use a single colour that was the mean of the two old colours, and in the 16-colour version I halftoned it by alternating pixels of the <em>actual</em> two old colours.</p>
+<p><img alt="[puttyins-script-48tc.png]" src="puttyins-script-48tc.png" /></p>
+<p><img alt="[puttyins-script-48.png]" src="puttyins-script-48.png" /></p>
+<p>The PuTTY installer icon, in true-colour and halftoned versions</p>
+<h2 id="svg-revamp">SVG revamp<a class="headerlink" href="#svg-revamp" title="Permanent link">&para;</a></h2>
+<p>My icon-drawing script works well at the ordinary 32Â ÃÂ 32 and 48Â ÃÂ 48 sizes, and scales <em>down</em> to 16Â ÃÂ 16 reasonably well, but it doesnât work so well when you start scaling <em>up</em>.</p>
+<p>So, if anyone needs <em>really big</em> versions of the icons, generating them by just running the same script with a bigger image size wonât produce very nice output. In one of my failed attempts to port PuTTY to the Mac, I found that MacOS wanted a 128Â ÃÂ 128 icon to use in the dock, and the output of my script at that size was definitely not great.</p>
+<p>Iâve more or less given up on that Mac port now, but I thought that a fully scalable version of all the icons might still be a useful thing to have around. For one thing, it allows using them in contexts other than GUI icons. (Gratuitous merch, anyone? T-shirts? Laptop decals? 🙂)</p>
+<p>So, partly âjust in caseâ but also for fun, Iâve been working on a second icon-drawing script. It mimics the same âthought processesâ of the original script, but it outputs SVG files instead of bitmaps â keeping the artwork still as close as possible to the original style.</p>
+<p>As of now, these are my best efforts at the SVG versions:</p>
+<p><img alt="[putty.svg]" src="putty.svg" /></p>
+<p><img alt="[puttycfg.svg]" src="puttycfg.svg" /></p>
+<p><img alt="[pterm.svg]" src="pterm.svg" /></p>
+<p><img alt="[ptermcfg.svg]" src="ptermcfg.svg" /></p>
+<p><img alt="[pscp.svg]" src="pscp.svg" /></p>
+<p><img alt="[pageant.svg]" src="pageant.svg" /></p>
+<p><img alt="[puttygen.svg]" src="puttygen.svg" /></p>
+<p><img alt="[puttyins.svg]" src="puttyins.svg" /></p>
+<p>All eight icons, in fully scalable SVG</p>
+<p>For the tiny icons, I still think my original script is doing a better rendering job, because SVG has no idea at all how best to do that antialiasing. But for <em>large</em> icons, especially in true colour, I think my recommendation is going to be to base them on these SVGs â just render to a big bitmap.</p>
+<h2 id="thatas-all-folks">Thatâs all, folks!<a class="headerlink" href="#thatas-all-folks" title="Permanent link">&para;</a></h2>
+<p>Thatâs the history and the current state of the PuTTY icon set.</p>
+<p>People sometimes object to the entire 1990s styling, and volunteer to design us a complete set of replacements in a different style. Weâve never liked any of them enough to adopt them. I think thatâs probably <em>because</em> the 1990s styling is part of what makes PuTTY what it is â âreassuringly old-fashionedâ. I donât know if thereâs <em>any</em> major redesign that weâd really be on board with.</p>
+<p>So I expect by now weâre likely to keep these icons, or something basically the same, for the whole lifetime of the project!</p>
 
 
 
@@ -425,7 +580,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 07:16:12 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:03:27 UTC">2026-02-05</span>
   </span>
 
     

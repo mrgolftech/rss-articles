@@ -25,7 +25,7 @@
     
     
       
-        <title>Brute-forcing Langley’s geometry problem with field extensions\n\n来源: https://www.chiark.greenend.org.uk/~sgtatham\n链接: https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/adventitious/\n日期: 2025-07-18T00:00:00+00:00\n\n---\n\nAn application of algebraic extensions of the rationals: cheating (arguably) at elementary geometry puzzles. - Hacker News 精选博客</title>
+        <title>Brute-forcing Langley’s geometry problem with field extensions - Hacker News 精选博客</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#brute-forcing-langleys-geometry-problem-with-field-extensionsnn-httpswwwchiarkgreenendorguksgtathamn-httpswwwchiarkgreenendorguksgtathamquasiblogadventitiousn-2025-07-18t0000000000nn-nnan-application-of-algebraic-extensions-of-the-rationals-cheating-arguably-at-elementary-geometry-puzzles" class="md-skip">
+        <a href="#brute-forcing-langleys-geometry-problem-with-field-extensions" class="md-skip">
           跳转至
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Brute-forcing Langley’s geometry problem with field extensions\n\n来源: https://www.chiark.greenend.org.uk/~sgtatham\n链接: https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/adventitious/\n日期: 2025-07-18T00:00:00+00:00\n\n---\n\nAn application of algebraic extensions of the rationals: cheating (arguably) at elementary geometry puzzles.
+              Brute-forcing Langley’s geometry problem with field extensions
             
           </span>
         </div>
@@ -404,7 +404,374 @@
   
 
 
-<h1 id="brute-forcing-langleys-geometry-problem-with-field-extensionsnn-httpswwwchiarkgreenendorguksgtathamn-httpswwwchiarkgreenendorguksgtathamquasiblogadventitiousn-2025-07-18t0000000000nn-nnan-application-of-algebraic-extensions-of-the-rationals-cheating-arguably-at-elementary-geometry-puzzles">Brute-forcing Langley’s geometry problem with field extensions\n\n<strong>来源:</strong> https://www.chiark.greenend.org.uk/~sgtatham\n<strong>链接:</strong> https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/adventitious/\n<strong>日期:</strong> 2025-07-18T00:00:00+00:00\n\n---\n\nAn application of algebraic extensions of the rationals: cheating (arguably) at elementary geometry puzzles.<a class="headerlink" href="#brute-forcing-langleys-geometry-problem-with-field-extensionsnn-httpswwwchiarkgreenendorguksgtathamn-httpswwwchiarkgreenendorguksgtathamquasiblogadventitiousn-2025-07-18t0000000000nn-nnan-application-of-algebraic-extensions-of-the-rationals-cheating-arguably-at-elementary-geometry-puzzles" title="Permanent link">&para;</a></h1>
+<h1 id="brute-forcing-langleys-geometry-problem-with-field-extensions">Brute-forcing Langley’s geometry problem with field extensions<a class="headerlink" href="#brute-forcing-langleys-geometry-problem-with-field-extensions" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://chiark.greenend.org.uk/~sgtatham
+<strong>链接:</strong> https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/adventitious/
+<strong>日期:</strong> 2025-07-18T00:00:00+00:00</p>
+<hr />
+<h1 id="brute-forcing-langleyas-geometry-problem-with-field-extensions">Brute-forcing Langleyâs geometry problem with field extensions<a class="headerlink" href="#brute-forcing-langleyas-geometry-problem-with-field-extensions" title="Permanent link">&para;</a></h1>
+<p>[Simon Tatham, 2025-07-18]</p>
+<ul>
+<li>Introduction</li>
+<li>Set the problem in the complex plane<ul>
+<li>How to make a triangle with three known angles</li>
+<li>Make three of them and put them side by side</li>
+<li>Divide two numbers to get the angle you want</li>
+<li>Divide by the complex conjugate to normalise to unit length</li>
+<li>Putting it all together</li>
+</ul>
+</li>
+<li>Now do it all by algebra<ul>
+<li>Find the minimal polynomial of <em>t</em></li>
+<li>Addition and multiplication</li>
+<li>Division</li>
+<li>Complex conjugate of a polynomial</li>
+<li>Now do the actual calculation</li>
+</ul>
+</li>
+<li>Afterthoughts<ul>
+<li>What if the answer isnât nice?</li>
+<li>I did twice as much work as I really needed to</li>
+<li>Have I cheated?</li>
+</ul>
+</li>
+<li>Footnotes</li>
+</ul>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p><a href="https://en.wikipedia.org/wiki/Langley%27s_Adventitious_Angles">Langleyâs Adventitious Angles</a> is a notoriously difficult problem in elementary geometry. The challenge is to determine the angle <em>Î¸</em> in this diagram:</p>
+<p><img alt="[start.svg]" src="start.svg" /> Langleyâs geometry problem</p>
+<p>Itâs relatively easy to chase angles around the diagram and get this far:</p>
+<p><img alt="[more.svg]" src="more.svg" /> All the easy bits filled in</p>
+<p>But after this, it suddenly becomes difficult to make any more progress. Weâve filled in an expression for every angle weâve got, and everything seems to make sense: the angles in each triangle and on each straight line add up to 180Â°. But in all the angle sums involving <em>Î¸</em> , the instances of <em>Î¸</em> appear with opposite signs and cancel out. So each of those sums will add up to 180Â° no matter <em>what</em> the value of <em>Î¸</em> is â and so none of them helps us to narrow down to a single answer.</p>
+<p>Once you reach this point, you might be tempted to wonder if there even <em>is</em> a single answer. When a problem <em>doesnât</em> have a unique solution, this is often what it looks like: you eliminate all but one variable, expressing everything else in terms of the remaining variable, and all your constraints seem to stay true regardless of the value of that variable. This is often the signature of a situation in which you can make an arbitrary choice of the variable, leading to a whole space of equally valid solutions.</p>
+<p>But that canât be true here, because the locations of all the points in the plane are completely determined, at least provided you choose an initial location and size for the overall 80Â°â80Â°â20Â° isosceles triangle. Each of the two lines from a base vertex to the opposite edge is at a known angle, so thereâs only one possible place it can intersect the opposite edge. And once every point in the diagram has a unique location, thereâs no way the desired angle can have more than one value.</p>
+<p>So one way you could âsolveâ the problem would be to construct the diagram on paper, using a protractor, as accurately as possible, and then <em>measure</em> the target angle. Another approach would be to do the same thing in a computer, using trigonometry to calculate the <em>x</em> and <em>y</em> coordinates of every point â or to get a tool like GeoGebra to do the heavy lifting.</p>
+<p>If you try that, it turns out that the angle looks like a nice round number of degrees. But you havenât <em>proved</em> that it has that exact value: the âdraw it on paperâ method only gives you an approximate answer, up to the limits of your own ability to draw and measure precisely. And even the computer approach using trigonometry will be limited by floating-point accuracy. So all you can say after doing it this way is that it <em>looks as if</em> the angle is exactly [this many] degrees.</p>
+<p>In fact the problem is sometimes set with a specific rule that says âdonât use trigonometryâ, because there <em>is</em> a solution using elementary geometry, involving a clever choice of extra construction lines to add to the figure. The Wikipedia link above shows the answer (at the time of writing) â but beware that the choice of extra construction lines depends crucially on what the starting angles are. There are variants of this problem in which the two internal lines make different angles with the base of the triangle, and for each of those variants, you might need a <em>different</em> clever insight.</p>
+<p>My aim in this article is to show how you can solve this problem <em>without</em> a clever insight1Perhaps youâre wondering <em>why</em> I might happen to be concerned with this problem and how to solve it without cleverness. Might it be because someone gave me the problem recently and I didnât manage to find the clever answer? No comment.1. The method Iâll show is hard work â hard enough that youâd surely want a computer to do the boring parts for you â but itâs systematic enough that it can handle different variants of the problem by exactly the same method, without needing a different clever construction in each case. And unlike the trigonometry approach, it <em>is</em> able to calculate the answer in an exact manner.</p>
+<h2 id="set-the-problem-in-the-complex-plane">Set the problem in the complex plane<a class="headerlink" href="#set-the-problem-in-the-complex-plane" title="Permanent link">&para;</a></h2>
+<p>Iâll start by describing a method for solving the problem by using complex numbers to represent the locations of all the points.</p>
+<p>In this section, I wonât worry about whether calculations are approximate or exact. You <em>can</em> follow this procedure in an approximate way, using any programming language that has complex numbers as a built-in type; Iâll show an example in Python at the end of the section. Then, in the next section, Iâll show a technique that lets you follow the same procedure in a way that gives an exact answer.</p>
+<h3 id="how-to-make-a-triangle-with-three-known-angles">How to make a triangle with three known angles<a class="headerlink" href="#how-to-make-a-triangle-with-three-known-angles" title="Permanent link">&para;</a></h3>
+<p>Weâre going to need to construct several triangles with particular angles, so our first job is to find a way of doing that easily with complex numbers.</p>
+<p>The simplest way I know of is to make use of the geometric result that the angle at the centre is twice the angle on a chord. That is, given any two points <em>A</em> ,<em>B</em> on the circumference of a circle, the angle <em>AOB</em> (where <em>O</em> is the centre of the circle) is twice <em>ACB</em> , where <em>C</em> is <em>any</em> third point on the circleâs circumference2What if <em>C</em> is on the opposite side of the line from <em>O</em>? In that case, you have to switch to measuring the angle at <em>O</em> on the other side of the line, so that itâs 360Â° minus the angle shown here.2.</p>
+<p><img alt="[chordangle.svg]" src="chordangle.svg" /> Angles on a chord and at the centre</p>
+<p>So, suppose we want to make a triangle with angles <em>Î±</em> ,Â  <em>Î²</em> ,Â  <em>Î³</em>. Imagine drawing the circumcircle of that triangle, so that all three of the vertices are points on the circumference. Then each of the angles of the triangle <em>is</em> an angle on a chord, and therefore, the corresponding angle at the centre is twice that.</p>
+<p><img alt="[triangle-corners.svg]" src="triangle-corners.svg" /></p>
+<p><img alt="[triangle-centre.svg]" src="triangle-centre.svg" /></p>
+<p>Angles at the centre of a triangleâs circumcircle</p>
+<p>But this means weâve reduced the problem to finding three points at the same distance from the centre of a circle, with angles 2 <em>Î±</em> ,Â 2 <em>Î²</em> ,Â 2 <em>Î³</em> at the centre between them. The simplest way to do that in the complex numbers is just to take numbers of unit magnitude, so that theyâre all on the unit circle. Itâs easiest to make one of them 1, say <em>A</em> Â =Â 1, and then choose the other two to be the right distances away from it round the circle, in opposite directions, so youâd have <em>B</em> Â =Â  <em>e</em> 2 <em>Î³i</em> and <em>C</em> Â =Â  <em>e</em> â2 <em>Î²i</em> , for example (with the angles <em>Î²</em> ,Â  <em>Î³</em> written in radians).</p>
+<h3 id="make-three-of-them-and-put-them-side-by-side">Make three of them and put them side by side<a class="headerlink" href="#make-three-of-them-and-put-them-side-by-side" title="Permanent link">&para;</a></h3>
+<p>Now we know how to make triangles, letâs put some of them together to construct the points we need for the actual problem.</p>
+<p>We donât really need the point <em>C</em> , at the very apex of the whole triangle. All we really need is the lower quadrilateral <em>ABED</em> , which is divided into four triangles by lines to the extra point <em>X</em> in the middle. Three of those triangles have all known angles, so we can start by making those, and fitting them together. Then weâll have all the points of the top triangle, whose angles weâre trying to measure.</p>
+<p><img alt="[quadrilateral.svg]" src="quadrilateral.svg" /> The figure we want to construct</p>
+<p>We begin by making the bottom triangle <em>ABX</em>. Letâs choose <em>X</em> to be the complex number 1. Using the idea from the previous section, the angle <em>XBA</em> is 50Â°, so we want the angle <em>XOA</em> at the origin to be twice that. That is, we want <em>A</em> to be a point on the unit circle, 100Â° anticlockwise from 1.</p>
+<p>Here Iâm going to introduce a shorthand for a complex number weâre going to use a lot. All the angles in this problem are multiples of 10Â°, so instead of talking about <em>e</em> to the power of fiddly imaginary numbers in radians, Iâm going to define <em>t</em> to be the complex number that represents a 10Â° rotation anticlockwise. 10Â° is one 36th of a turn, so <em>t</em> Â =Â  <em>e</em> 2 <em>Ïi</em> /36.</p>
+<p>Then any angle thatâs an integer multiple of 10Â° corresponds to the corresponding integer power of <em>t</em>. For example, we want <em>A</em> to be 100Â° around the circle from the starting point <em>X</em> , so we just set <em>A</em> Â =Â  <em>t</em> 10.</p>
+<p>Similarly, <em>B</em> wants to be 120Â° round the circle in the <em>opposite</em> direction from <em>A</em> , because if the angle <em>XOB</em> Â =Â 120Â°, then that will make the angle <em>XAB</em> half that, which is 60Â°, which is the angle we want at <em>A</em>. So we also have <em>B</em> Â =Â  <em>t</em> â12.</p>
+<p>(This arrangement of points wonât put the triangle <em>XAB</em> with the <em>AB</em> edge horizontal, as it is in the diagram above. But we donât care. If the whole diagram is rotated by some arbitrary angle, the angles <em>within</em> the figure donât change, so thereâs no point going to the extra effort to put it any particular way up.)</p>
+<p>OK, thatâs one triangle. Now we need to make a second one â letâs do the triangle <em>XDA</em> next â and then put it in the right place relative to the first one.</p>
+<p>Making the triangle is easy enough if we donât mind it being in the wrong place and the wrong size. We just do the same trick again: letâs invent points <em>x</em> Â =Â 1, <em>d</em> Â =Â  <em>t</em> 4, <em>a</em> Â =Â  <em>t</em> â10. (Then the angles <em>xOd</em> and <em>xOa</em> are 40Â° and 100Â° respectively, which makes the angles <em>xad</em> and <em>xda</em> half those, 20Â° and 50Â°.)</p>
+<p>Now we need to scale and rotate the second triangle <em>xad</em> to fit it alongside the first one. In other words, we need to find a new point <em>D</em> , which goes with our original <em>X</em> and <em>A</em> to form a triangle <em>XAD</em> similar to the <em>xad</em> we just constructed.</p>
+<p>We do this by ensuring that the <em>ratio</em> (<em>d</em> Â âÂ  <em>x</em>)Â /Â (<em>a</em> Â âÂ  <em>x</em>) is equal to the ratio (<em>D</em> Â âÂ  <em>X</em>)Â /Â (<em>A</em> Â âÂ  <em>X</em>). (A ratio of two complex numbers tells you how much you need to scale and rotate one to turn it into the other, which means itâs exactly what you need to know to check that two triangles are similar.)</p>
+<p>So if we know all of <em>X</em> , <em>A</em> , <em>x</em> , <em>a</em> , and <em>d</em> , and we also want (<em>d</em> Â âÂ  <em>x</em>)Â /Â (<em>a</em> Â âÂ  <em>x</em>)Â =Â (<em>D</em> Â âÂ  <em>X</em>)Â /Â (<em>A</em> Â âÂ  <em>X</em>), then we can just solve that equation for <em>D</em> , to get</p>
+<p><em>D</em> = <em>X</em> + (<em>d</em> â <em>x</em>) (<em>A</em> â <em>X</em>) / (<em>a</em> â <em>x</em>)</p>
+<p>Substituting in the values <em>x</em> Â =Â 1, <em>d</em> Â =Â  <em>t</em> 4, <em>a</em> Â =Â  <em>t</em> â10, this gives us</p>
+<p><em>D</em> = <em>X</em> + (<em>t</em> 4 â 1) (<em>A</em> â <em>X</em>) / (<em>t</em> â10 â 1)</p>
+<p>Similarly, we can construct the point <em>E</em> by doing the same thing again: make a triangle inscribed in the unit circle with angles 30Â°, 40Â° and 110Â°, and place it so that two of its vertices coincide with <em>X</em> and <em>B</em>. Omitting the boring bits, this gives us</p>
+<p><em>E</em> = <em>X</em> + (<em>t</em> â6 â 1) (<em>B</em> â <em>X</em>) / (<em>t</em> 8 â 1)</p>
+<h3 id="divide-two-numbers-to-get-the-angle-you-want">Divide two numbers to get the angle you want<a class="headerlink" href="#divide-two-numbers-to-get-the-angle-you-want" title="Permanent link">&para;</a></h3>
+<p>Now we have all the points <em>D</em> ,Â  <em>E</em> ,Â  <em>X</em> involved in the topmost triangle of the diagram. So we can construct a complex number representing the ratio between two sides of that triangle:</p>
+<p><em>z</em> = (<em>X</em> â <em>E</em>) / (<em>D</em> â <em>E</em>)</p>
+<p>The modulus of <em>z</em> is uninteresting to us: it tells us the ratio between the lengths <em>EX</em> and <em>ED</em> , and nobodyâs asking us to find those lengths or their ratio. But the <em>argument</em> of <em>z</em> is exactly the angle we want!</p>
+<h3 id="divide-by-the-complex-conjugate-to-normalise-to-unit-length">Divide by the complex conjugate to normalise to unit length<a class="headerlink" href="#divide-by-the-complex-conjugate-to-normalise-to-unit-length" title="Permanent link">&para;</a></h3>
+<p>At this point, if we were happy to get an approximate solution, we could just stop there, and measure the argument of <em>z</em>. But Iâm working towards an <em>exact</em> solution in the next section, and so I want to do one more thing: I want to modify the number <em>z</em> so that it has unit length. When we get to the end of the exact solution, youâll see why that was useful!</p>
+<p>We can do this by making the complex conjugate of <em>z</em> , which Iâll write <em>z</em> <em>. This has the same modulus as <em>z</em> , but rotates the opposite way around the origin. So if we <em>divide</em> them, to make the quotient <em>q</em> Â =Â  <em>z</em> Â /Â  <em>z</em> </em>, then <em>q</em> is guaranteed to have modulus 1.</p>
+<p>This operation also doubled the argument, because <em>z</em> and 1Â /Â  <em>z</em> * <em>both</em> have the same argument (namely the angle we want). So <em>q</em> is a complex number with unit modulus, and whose argument is exactly <em>twice</em> the angle weâre after.</p>
+<h3 id="putting-it-all-together">Putting it all together<a class="headerlink" href="#putting-it-all-together" title="Permanent link">&para;</a></h3>
+<p>Letâs recap. Here are all the variables we defined, in order, with the later definitions depending on earlier ones:</p>
+<p><em>t</em> Â =Â  <em>e</em> 2 <em>Ïi</em> /36<br />
+<em>X</em> = 1<br />
+<em>A</em> Â =Â  <em>t</em> 10<br />
+<em>B</em> Â =Â  <em>t</em> â12<br />
+<em>D</em> = <em>X</em> + (<em>t</em> 4 â 1) (<em>A</em> â <em>X</em>) / (<em>t</em> â10 â 1)<br />
+<em>E</em> = <em>X</em> + (<em>t</em> â6 â 1) (<em>B</em> â <em>X</em>) / (<em>t</em> 8 â 1)<br />
+<em>z</em> = (<em>X</em> â <em>E</em>) / (<em>D</em> â <em>E</em>)<br />
+<em>q</em> Â =Â  <em>z</em> Â /Â  <em>z</em> *</p>
+<p>If we could calculate all those complex numbers <em>exactly</em> , then weâd find that <em>q</em> was a unit-modulus number whose argument was twice the angle we want.</p>
+<p>Just to demonstrate it works, hereâs a transcription of that calculation directly into Python, without worrying about the rounding errors. So you can at least find out what the answer <em>is</em> :</p>
+<div class="language-text highlight"><pre><span></span><code>import cmath
+import math
+t = cmath.exp(math.pi * 2j / 36)
+X = 1
+A = t**10
+B = t**-12
+D = X + (t**4 - 1) * (A - X) / (t**-10 - 1)
+E = X + (t**-6 - 1) * (B - X) / (t**8 - 1)
+z = (X - E) / (D - E)
+q = z / z.conjugate()
+arg = cmath.phase(q) * 180 / math.pi
+print(f&quot;Argument of q = {arg}Â°&quot;)
+print(f&quot;So Î¸ = {arg/2}Â°&quot;)
+</code></pre></div>
+<p>If you run this in Python, it prints:</p>
+<div class="language-text highlight"><pre><span></span><code>Argument of q = 59.99999999999992Â°
+So Î¸ = 29.99999999999996Â°
+</code></pre></div>
+<p>See what I mean about the solution being approximate? It looks very much as if this ought to be exactly 30Â° but has suffered some rounding errors. So surely the final answer to the problem is that <em>Î¸</em> Â =Â 30Â° exactly. But if we want to impress a mathematician, we have to do better than âwell, it looks right to about 13 decimal placesâ.</p>
+<h2 id="now-do-it-all-by-algebra">Now do it all by algebra<a class="headerlink" href="#now-do-it-all-by-algebra" title="Permanent link">&para;</a></h2>
+<p>Now we need to find a way to do the same calculation, but without any approximation. We canât use floating-point numbers: weâll have to use integers, and rational numbers, which can be represented exactly.</p>
+<p>This is a problem, because the coordinates of all the points in this problem <em>arenât</em> rational numbers. But looking back at the calculation, theyâre all derived from just <em>one</em> complex number with irrational components, which we used as our starting point: the number <em>t</em> Â =Â  <em>e</em> 2 <em>Ïi</em> /36. Everything we did after that looked like pretty simple arithmetic, without any irrational constants.</p>
+<p>So the trick is going to be: carry through the calculation in such a way that we express all our intermediate results as algebraic expressions in terms of <em>t</em>. Then we can arrange that everything <em>else</em> in those expressions is a rational, and we can keep things exact.</p>
+<p>In fact, weâre going to arrange that every intermediate result is a <em>polynomial</em> in <em>t</em> , and moreover, limit the degree of those polynomials.</p>
+<h3 id="find-the-minimal-polynomial-of-t">Find the minimal polynomial of <em>t</em><a class="headerlink" href="#find-the-minimal-polynomial-of-t" title="Permanent link">&para;</a></h3>
+<p>The number <em>t</em> represents a 10Â° rotation about the origin. If you raise it to the power <em>n</em> , it represents a 10 <em>n</em> Â° rotation about the origin. So, in particular, if you raise it to the power 36, it represents a 360Â° rotation, which is the same as no rotation at all. That is: <em>t</em> 36Â =Â 1.</p>
+<p>I said we were going to limit the degree of our polynomials. This is how: now that we know <em>t</em> 36Â =Â 1, it follows that if we have a <em>really big</em> polynomial, involving very large powers of <em>t</em> , we can reduce the larger powers to smaller ones, by replacing <em>t</em> 36 with 1 wherever it appears, and more generally, replacing <em>t</em> 36Â +Â  <em>n</em> with <em>t</em> <em>n</em>. This allows us to ensure that when our calculations start generating polynomials in <em>t</em> , we can keep their degree less than 36.</p>
+<p>But in fact we can do better than that. Another way to say that <em>t</em> 36Â =Â 1 is to say that <em>t</em> is a root of the polynomial <em>t</em> 36Â âÂ 1. But that polynomial factorises:</p>
+<p><em>t</em> 36Â âÂ 1 = (<em>t</em> Â âÂ 1) (<em>t</em> Â +Â 1) (<em>t</em> 2Â +Â 1) (<em>t</em> 2Â âÂ  <em>t</em> Â +Â 1) (<em>t</em> 2Â +Â  <em>t</em> Â +Â 1) (<em>t</em> 4Â âÂ  <em>t</em> 2Â +Â 1) (<em>t</em> 6Â âÂ  <em>t</em> 3Â +Â 1) (<em>t</em> 6Â +Â  <em>t</em> 3Â +Â 1) (<em>t</em> 12Â âÂ  <em>t</em> 6Â +Â 1)</p>
+<p>Any given root of the left-hand side <em>t</em> 36Â âÂ 1 must be a root of <em>one</em> of the factors on the right-hand side. But nothing will be a root of <em>more than one</em> of those factors, or else theyâd split further. So we can find out which factor the <em>t</em> we want is a root of, and then just use that one.</p>
+<p>It turns out that our original <em>t</em> is a root of the final, largest factor: <em>t</em> 12Â âÂ  <em>t</em> 6Â +Â 1. In other words, <em>t</em> has the property that <em>t</em> 12Â =Â  <em>t</em> 6Â âÂ 1.</p>
+<p>So we can keep all our polynomialsâ degrees less than 12, instead of the 36 I suggested earlier. Whenever we generate a new polynomial, we can reduce it by replacing <em>t</em> 12 with <em>t</em> 6Â âÂ 1 wherever it appears, or more generally, replacing <em>t</em> 12Â +Â  <em>n</em> with <em>t</em> 6Â +Â  <em>n</em> Â âÂ  <em>t</em> <em>n</em> , and keep doing that until there arenât any terms bigger than <em>t</em> 11 any more.</p>
+<p>This is called the <em>minimal polynomial</em> of the number <em>t</em> : itâs the smallest-degree polynomial with rational coefficients that <em>t</em> is a root of. Any other polynomial which has <em>t</em> as a root must therefore be a multiple of it. (So if there were a smaller one, then <em>t</em> 12Â âÂ  <em>t</em> 6Â +Â 1 would have to be a multiple of <em>that</em> , and it isnât, because we already factorised it as far as it would go in rationals.)</p>
+<p>This minimality means that we can reliably test our numbers for equality. If we have two polynomials in <em>t</em> , and the complex numbers they represent are <em>exactly equal</em> , then their difference is a polynomial in <em>t</em> which evaluates to zero, i.e. which has <em>t</em> as a root. Therefore it must be a multiple of <em>t</em> 12Â âÂ  <em>t</em> 6Â +Â 1. But if we reduced both polynomials to degree less than 12, then their difference canât be a multiple of <em>t</em> 12Â âÂ  <em>t</em> 6Â +Â 1 unless itâs zero.</p>
+<p>So, as long as we keep our polynomials fully reduced, we can easily tell when two polynomials represent the same complex number, because it only happens if theyâre exactly the same polynomial. This is how weâre going to end up being sure that our answer is exactly right.</p>
+<h3 id="addition-and-multiplication">Addition and multiplication<a class="headerlink" href="#addition-and-multiplication" title="Permanent link">&para;</a></h3>
+<p>All right, so weâre representing our numbers as polynomials in <em>t</em> , reduced mod <em>t</em> 12Â âÂ  <em>t</em> 6Â +Â 1. Now we have to work out how to do arithmetic on numbers in that form.</p>
+<p>Addition is easy. If you have two polynomials in <em>t</em> , then you add them by just adding together corresponding coefficients. No higher-order terms are ever generated, so if the two input polynomials had degree &lt;Â 12, so does the sum. For example:</p>
+<p>(<em>t</em> 11 + 3 <em>t</em> 9 + <em>t</em>) + (<em>t</em> 9 â <em>t</em> + 42) = (<em>t</em> 11 + 4 <em>t</em> 9 + 42)</p>
+<p>Multiplying two polynomials <em>can</em> generate terms of higher degree. But we already know what to do about that: reduce the product polynomial until it has degree &lt;Â 12, by repeatedly reducing a large term using <em>t</em> 12Â +Â  <em>n</em> Â =Â  <em>t</em> 6Â +Â  <em>n</em> Â âÂ  <em>t</em> <em>n</em>. For example:</p>
+<p>(2 <em>t</em> 7 + 3 <em>t</em>) Ã (4 <em>t</em> 8 + 1) = 8 <em>t</em> 15 + 12 <em>t</em> 8 + 2 <em>t</em> 7 + 3 <em>t</em> = (8 <em>t</em> 9 â 8 <em>t</em> 3) + 12 <em>t</em> 8 + 2 <em>t</em> 7 + 3 <em>t</em></p>
+<p>in which the multiplication generated a single oversized term, namely 8 <em>t</em> 15, and then we reduced it by replacing that term with 8 <em>t</em> 9 â 8 <em>t</em> 3. So the final answer has no term larger than <em>t</em> 11.</p>
+<h3 id="division">Division<a class="headerlink" href="#division" title="Permanent link">&para;</a></h3>
+<p>But addition and multiplication arenât enough by themselves. The calculations shown in the previous section also involve division. And if you divide two polynomials, itâs not obvious that you can make the result back into a polynomial at all.</p>
+<p>The first division that comes up in that calculation is an easy one: we set <em>B</em> Â =Â  <em>t</em> â12, i.e. <em>B</em> Â =Â 1Â /Â  <em>t</em> 12. But that one can be eliminated almost trivially: we know <em>t</em> 36Â =Â 1, so <em>t</em> â12Â =Â  <em>t</em> 36â12Â =Â  <em>t</em> 24. And now that <em>is</em> a polynomial again (although its degree is too high, so weâll have to reduce it).</p>
+<p>But the next division, where we make <em>D</em> by dividing something by (<em>t</em> â10 â 1), isnât nearly as easy to handle. We can turn the <em>t</em> â10 into <em>t</em> 26 easily enough, but even so, how do we make something like 1Â /Â (<em>t</em> 26 â 1) back into a polynomial?</p>
+<p>Suppose that we have some value <em>x</em> , expressed as a polynomial in <em>t</em> , and we want to find 1Â /Â  <em>x</em>.</p>
+<p>That value <em>x</em> will have a <em>minimal polynomial</em> , just like <em>t</em> does. Letâs call it <em>P</em> <em>x</em>. By definition, this is the lowest-degree polynomial (with rational coefficients) that has <em>x</em> as a root. (There must be one, because anything you can write as a polynomial in <em>t</em> is an algebraic number, and therefore a root of <em>some</em> polynomial â and then itâs just a matter of finding the smallest one.)</p>
+<p>In general, <em>x</em> isnât the only root of <em>P</em> <em>x</em>. If <em>P</em> <em>x</em> has degree greater than 1, then it will have other roots too, say <em>a</em> , <em>b</em> , â¦, <em>n</em>. If we could find <em>all</em> the roots of <em>P</em> <em>x</em> (including <em>x</em> itself), then we could write the polynomial <em>P</em> <em>x</em> as a product of linear terms, each one having one of the roots of <em>P</em> <em>x</em> (negated) as its constant term. And if you imagine multiplying out that product, then the constant term of the whole thing is therefore the product of all the roots (up to maybe a sign flip). But itâs also equal to the constant term of <em>P</em> <em>x</em> itself, i.e. a rational number.</p>
+<p>But in that case, let <em>w</em> be the product of all the roots of <em>P</em> <em>x</em> <em>apart</em> from <em>x</em> itself. Then <em>wx</em> is a rational. But then <em>w</em> Â /Â  <em>wx</em> is a polynomial divided by a rational, i.e. still a polynomial â and itâs clearly also equal to 1Â /Â  <em>x</em>. So this <em>is</em> a way to write 1Â /Â  <em>x</em> as a polynomial.</p>
+<p>Thatâs all very well, but <em>how</em> do you find the other roots of <em>P</em> <em>x</em>? You <em>could</em> do it by directly calculating <em>P</em> <em>x</em> and then trying to find its roots, but thatâs a huge amount of effort. Thereâs a shortcut.</p>
+<p>All you need is to know the other 11 roots of <em>P</em> <em>t</em> Â =Â  <em>t</em> 12Â âÂ  <em>t</em> 6Â +Â 1, the minimal polynomial of <em>t</em>. Suppose that <em>u</em> is a root of <em>P</em> <em>t</em> , but isnât <em>t</em> itself. Then any equation between polynomials in <em>t</em> (saying that two of them work out to the same thing mod <em>P</em> <em>t</em>) must also be true if you replace every occurrence of <em>t</em> with <em>u</em> , because the only <em>property</em> of <em>t</em> that the equation depends on is that itâs a root of <em>P</em> <em>t</em> , and since <em>u</em> also has that property, the statement must still be true.</p>
+<p>So you can make all the roots3Iâve glossed over a subtlety here: this procedure will always give 12 values in total, including the original <em>x</em> , but <em>some</em> numbers represented as polynomials in <em>t</em> have a minimal polynomial of lower degree than 12. In that situation our 12 values will consist of multiple copies of each root of <em>P</em> <em>x</em> , including multiple copies of <em>x</em> itself. But what we do with them next still works, because the product of all of them is still a rational â itâs just a <em>power</em> of <em>P</em> <em>x</em> âs constant term, instead of the constant term itself.3 of <em>P</em> <em>x</em> by taking the polynomial <em>x</em> , and <em>evaluating</em> it at each root <em>u</em> of <em>P</em> <em>t</em> in turn.</p>
+<p>That is: weâve been thinking of <em>x</em> as a <em>complex number</em> which just happens to be written as a polynomial in <em>t</em>. But we now switch to regarding it as a <em>function</em> given by the same polynomial, which can be given <em>any</em> complex number as input, and returns a weighted sum of powers of its input number. So evaluating the polynomial <em>x</em> at <em>t</em> gives us the value we had to start with â but we can also evaluate the same polynomial at some other number, such as <em>u</em>.</p>
+<p>OK, but in order to evaluate <em>x</em> at all the other roots of <em>P</em> <em>t</em> , we need to <em>know</em> the other roots of <em>P</em> <em>t</em>. What are they?</p>
+<p>Well, <em>P</em> <em>t</em> was a factor of <em>t</em> 36Â âÂ 1. So the roots of <em>P</em> <em>t</em> must all be roots of <em>t</em> 36Â âÂ 1, which means theyâre complex numbers whose 36th power is 1 â and all such numbers are powers of <em>t</em>. And the powers weâre looking for are the ones which have no common factor with 36: the roots of <em>P</em> <em>t</em> are</p>
+<p><em>t</em> , <em>t</em> 5, <em>t</em> 7, <em>t</em> 11, <em>t</em> 13, <em>t</em> 17, <em>t</em> 19, <em>t</em> 23, <em>t</em> 25, <em>t</em> 29, <em>t</em> 31, <em>t</em> 35</p>
+<p>because when we factorised <em>t</em> 36Â âÂ 1, the <em>other</em> factors are the ones that represent numbers which become 1 when raised to a <em>smaller</em> power than 36. The polynomial <em>t</em> 12Â âÂ  <em>t</em> 6Â +Â 1 is the one whose roots are the numbers whose 36th power is 1 <em>and no smaller power is</em>.</p>
+<p>That was a lot of faff, so letâs bring it back down to earth. If you have a value <em>x</em> represented as a polynomial in <em>t</em> , then you can find the reciprocal 1Â /Â  <em>x</em> as a polynomial in <em>t</em> as follows:</p>
+<ul>
+<li>Evaluate <em>x</em> at each of those powers of <em>t</em> (other than <em>t</em> itself) to make <em>x</em>(<em>t</em> 5), <em>x</em>(<em>t</em> 7), ..., <em>x</em>(<em>t</em> 35), each as a polynomial in <em>t</em>.</li>
+<li>Multiply those 11 polynomials together to make a product <em>w</em>.</li>
+<li>Then the product <em>wx</em> , reduced mod <em>t</em> 12Â âÂ  <em>t</em> 6Â +Â 1, will work out to a rational number.</li>
+<li>So <em>w</em> divided by the rational <em>wx</em> is a polynomial in <em>t</em> , and is also equal to 1Â /Â  <em>x</em>.</li>
+</ul>
+<p>Iâve just about got room to show an example. Suppose <em>x</em> Â =Â  <em>t</em> 3Â +Â  <em>2t</em> Â +Â 1. Then <em>x</em>(<em>t</em> 5)Â =Â  <em>t</em> 15Â +Â  <em>2t</em> 5Â +Â 1 (you replace each power of <em>t</em> in the original expression with the corresponding power of <em>t</em> 5). Similarly, <em>x</em>(<em>t</em> 7)Â =Â  <em>t</em> 21Â +Â  <em>2t</em> 7Â +Â 1, and so on until <em>x</em>(<em>t</em> 35)Â =Â  <em>t</em> 105Â +Â  <em>2t</em> 35Â +Â 1.</p>
+<p>Multiplying out the product <em>w</em> of all of those 11 polynomials gives a <em>huge</em> polynomial, with coefficients going up to <em>t</em> 645. But youâd reduce it mod <em>t</em> 12Â âÂ  <em>t</em> 6Â +Â 1 as you went along, to keep the intermediate values small.</p>
+<p>The product <em>w</em> , fully reduced, works out to</p>
+<p>â5692 <em>t</em> 11 + 2500 <em>t</em> 10 â 1129 <em>t</em> 9 + 692 <em>t</em> 8 â 242 <em>t</em> 7 â 255 <em>t</em> 6 + 5484 <em>t</em> 5 â 1748 <em>t</em> 4 + 1800 <em>t</em> 3 â 1988 <em>t</em> 2 â 1852 <em>t</em> + 2176</p>
+<p>Even reduced, that still looks like a horrible mess. But if you multiply that by the original <em>x</em> Â =Â  <em>t</em> 3Â +Â  <em>2t</em> Â +Â 1 and reduce again, then just like magic4In fact, this is a generalised form of the same technique you use to divide by a complex number <em>a</em> Â +Â  <em>bi</em> , by multiplying top and bottom by its complex conjugate <em>a</em> Â âÂ  <em>bi</em> so that the denominator turns into a real number. The principle is identical: <em>a</em> Â +Â  <em>bi</em> is a polynomial in <em>i</em> ; the minimal polynomial of <em>i</em> over â is <em>x</em> 2Â +Â 1, and the only other root of that polynomial is â <em>i</em> ; so we evaluate <em>a</em> Â +Â  <em>bi</em> at that other root to make <em>a</em> Â âÂ  <em>bi</em> , and then the product of that with the original number â reducing <em>i</em> 2 wherever it appears â turns into a polynomial with only a constant term, which itâs easy to divide by. It all looks more complicated when you have 11 other roots rather than just one, but itâs exactly the same trick, just bigger!4, the result comes out to just</p>
+<p>14689</p>
+<p>And therefore, <em>w</em> Â /Â 14689 is a degree-11 polynomial in <em>t</em> , with rational coefficients, which is equal to 1Â /Â  <em>x</em>. It can be done5Another completely different approach to dividing by a polynomial <em>x</em> when working mod <em>P</em> <em>t</em> is to use Euclidâs algorithm, the same as you would for modular arithmetic in integers. Find the greatest common divisor of the polynomials <em>x</em> and <em>P</em> <em>t</em> ; you expect this to be 1, because <em>P</em> <em>t</em> is irreducible. As a by-product the algorithm will produce two more polynomials <em>Î»</em> , <em>Î¼</em> such that <em>Î»x</em> Â +Â  <em>Î¼P</em> <em>t</em> Â =Â 1. Another way of writing that is <em>Î»x</em> Â â¡Â 1 mod <em>P</em> <em>t</em> , so <em>Î»</em> is precisely the inverse we wanted. Iâve chosen to do it this way instead for several reasons. First, because the idea of evaluating <em>x</em> at a different value will be reused in the next section; second, because Euclidâs algorithm requires dividing polynomials (in the more usual sense of delivering a quotient and a remainder), which is a more complicated primitive operation than evaluating them and multiplying them â especially since Iâm going to show example code later. And thirdly, you can make this approach give you a <em>single</em> algebraic formula for calculating the reciprocal of any number mod <em>P</em> <em>t</em> , which is more elegant than the way Euclid takes a variable number of steps depending on the inputs. But you <em>could</em> do it by Euclid if you preferred, and it would still work.5!</p>
+<h3 id="complex-conjugate-of-a-polynomial">Complex conjugate of a polynomial<a class="headerlink" href="#complex-conjugate-of-a-polynomial" title="Permanent link">&para;</a></h3>
+<p>One last awkwardness: in solving this problem, we also wanted to take a complex conjugate, to calculate <em>q</em> Â =Â  <em>z</em> Â /Â  <em>z</em> *. How will we do <em>that</em> when <em>z</em> is one of these polynomials?</p>
+<p>Thatâs not too hard. The complex conjugate of a single power of <em>t</em> is just the same power negated, because powers of <em>t</em> all have modulus 1: (<em>t</em> <em>n</em>)*Â =Â  <em>t</em> â <em>n</em>. So if you have some number <em>x</em> represented as a polynomial in <em>t</em> , you can take its conjugate by evaluating it at <em>t</em> â1. For example, take <em>x</em> Â =Â  <em>t</em> 3Â +Â  <em>2t</em> Â +Â 1 (the same example we just used for division). Then</p>
+<p><em>x</em> * = <em>x</em>(<em>t</em> â1) = <em>t</em> â3Â +Â  <em>2t</em> â1Â +Â 1 = <em>t</em> 33Â +Â  <em>2t</em> 35Â +Â 1</p>
+<p>because, again, <em>t</em> â <em>n</em> is the same thing as <em>t</em> 36Â âÂ  <em>n</em>. Now we just reduce that mod <em>t</em> 12Â âÂ  <em>t</em> 6Â +Â 1 as usual, and thatâs the complex conjugate of <em>x</em>.</p>
+<h3 id="now-do-the-actual-calculation">Now do the actual calculation<a class="headerlink" href="#now-do-the-actual-calculation" title="Permanent link">&para;</a></h3>
+<p>Now we know how to do every arithmetic operation involved in our calculation, on numbers expressed as polynomials in <em>t</em>. Itâs time to actually <em>do</em> the calculation!</p>
+<p>As I said at the start, the amount of sheer polynomial-juggling in this procedure is large enough that you do want a computer to do the work for you. There are plenty of computer algebra systems that already have built-in libraries to work in polynomial quotient fields of this kind: I could show a piece of code in SageMath, for example, that isnât much longer than the earlier approximate version in Python. Or an interactive session in Maxima. Or probably half a dozen other systems of that kind.</p>
+<p>But just to show that you donât <em>need</em> a million lines of Serious Computer Algebra to do a job like this, hereâs an implementation in Python (<a href="exact.py">download the source</a>) that does all the polynomial arithmetic all by itself and still just about fits on a (large) monitor. The actual calculation is shown at the bottom, very like the previous representation except that all the starting values are instances of the <code>Value</code> class, instead of Pythonâs native complex number type:</p>
+<div class="language-text highlight"><pre><span></span><code>import fractions
+
+class Value:
+    &quot;Class representing a polynomial in t, mod t^12 - t^6 + 1&quot;
+
+    def __init__(self, coeffs):
+        # coeffs is an array with coeffs[i] giving the coefficient of t^i.
+        # The input to this constructor can be any length; we&#39;ll reduce it.
+        while len(coeffs) &gt; 12:
+            # Remove the highest-order coefficient
+            coeff = coeffs.pop()
+            n = len(coeffs)
+            # Popping that coefficient subtracted coeff * t^n.
+            # Add coeff * (t^(n-6) - t^(n-12)) to compensate.
+            coeffs[n-6] += coeff
+            coeffs[n-12] -= coeff
+        # Pad with zeroes so that len(self.coeffs) is always exactly 12
+        self.coeffs = coeffs + [0] * (12 - len(coeffs))
+
+    def __add__(self, other):
+        # Add corresponding coefficients
+        return Value([u+v for u,v in zip(self.coeffs, other.coeffs)])
+
+    def scale(self, scalar):
+        # Multiply every coefficient by the scale
+        return Value([scalar*u for u in self.coeffs])
+
+    def __sub__(self, other):
+        # Negate the RHS, then add
+        return self + other.scale(-1)
+
+    def mul_by_t(self):
+        # Multiply by t by shifting all the coefficients upward by one
+        return Value([0] + self.coeffs)
+
+    def __mul__(self, other):
+        total = Value([]) # zero
+        other_times_power_of_t = other # other * t^0
+        for coeff in self.coeffs:
+            # Add coeff * other * t^i to the total
+            total += other_times_power_of_t.scale(coeff)
+            # Multiply by t to make the next (other * t^i)
+            other_times_power_of_t = other_times_power_of_t.mul_by_t()
+        return total
+
+    def evaluate_at(self, x):
+        total = Value([]) # zero
+        power_of_x = Value([1]) # x^0
+        for coeff in self.coeffs:
+            # Add coeff * x^i to the total
+            total += power_of_x.scale(coeff)
+            # Multiply by x to make the next x^i
+            power_of_x *= x
+        return total
+
+    @staticmethod
+    def power_of_t(n):
+        # t^36 = 1, so reduce mod 36, which also makes negative n positive
+        n %= 36
+        # Make the literal polynomial t^n and let the constructor reduce it
+        return Value([0]*n + [1])
+
+    def complex_conjugate(self):
+        # Evaluate at t^-1
+        return self.evaluate_at(self.power_of_t(-1))
+
+    def reciprocal(self):
+        # Evaluate at t^5, t^7, t^11, ..., t^35 and multiply them all together
+        w = Value([1])
+        for index in [5, 7, 11, 13, 17, 19, 23, 25, 29, 31, 35]:
+            w *= self.evaluate_at(self.power_of_t(index))
+        # Check that w * x is a constant (all coeffs after the 0th are zero)
+        wx = self * w
+        assert all(coeff == 0 for coeff in wx.coeffs[1:])
+        # And divide by that constant, using fractions.Fraction for exactness
+        return w.scale(fractions.Fraction(1, wx.coeffs[0]))
+
+    def __truediv__(self, other):
+        return self * other.reciprocal()
+
+    def __str__(self):
+        # Format as a mathematical expression in Python syntax
+        return &quot; + &quot;.join(
+            f&quot;{u}&quot; if i==0 else f&quot;{u}*t&quot; if i==1 else f&quot;{u}*t**{i}&quot;
+            for i, u in enumerate(self.coeffs)
+            if u != 0
+        )
+
+one = Value([1])
+X = one
+A = Value.power_of_t(10)
+B = Value.power_of_t(-12)
+D = X + (Value.power_of_t(4) - one) * (A - X) / (Value.power_of_t(-10) - one)
+E = X + (Value.power_of_t(-6) - one) * (B - X) / (Value.power_of_t(8) - one)
+z = (X - E) / (D - E)
+q = z / z.complex_conjugate()
+
+print(&quot;X =&quot;, X)
+print(&quot;A =&quot;, A)
+print(&quot;B =&quot;, B)
+print(&quot;D =&quot;, D)
+print(&quot;E =&quot;, E)
+print(&quot;z =&quot;, z)
+print(&quot;q =&quot;, q)
+</code></pre></div>
+<p>When this is run, it prints:</p>
+<div class="language-text highlight"><pre><span></span><code>X = 1
+A = 1*t**10
+B = -1*t**6
+D = 1 + 1*t**2 + -1*t**8 + 1*t**10
+E = 1 + 1*t**2 + 1*t**4 + -1*t**6 + -1*t**8
+z = 1 + -1*t**2 + 1*t**6 + 1*t**8 + -1*t**10
+q = 1*t**6
+</code></pre></div>
+<p>The first five lines of this output give the locations of the five points in our geometric diagram, as polynomials in <em>t</em>. To show that this really works and isnât abstract nonsense, hereâs a diagram showing <em>how</em> those points are derived from those polynomials:</p>
+<p><img alt="[polynomials.svg]" src="polynomials.svg" /> The points in our calculation, represented as polynomials</p>
+<p>This diagram happens to be nice and simple, because all the coefficients in those polynomials worked out to Â±1, for some reason. You can confirm for yourself that each arrow looks as if itâs at about the right angle (e.g. the arrow marked 1 points directly to the right, the <em>t</em> 2 arrow is 20Â° anticlockwise from that, and if the â <em>t</em> 6 arrow were reversed then it would be 60Â° anticlockwise from 1). And if you start from the black circle at the origin, you can follow a path of grey arrows to get to each of the points <em>X</em> , <em>A</em> , <em>B</em> , <em>D</em> , <em>E</em> , and if you add up the powers of <em>t</em> written on each arrow, you get the same polynomials shown above.</p>
+<p>I showed those values purely for interest. But the key point is the final value: <em>q</em> Â =Â  <em>t</em> 6.</p>
+<p>Thatâs saying that <em>q</em> is <em>exactly</em> the complex number that represents a 60Â° rotation about the origin. And remember that in the previous section I said that <em>q</em> was <em>twice</em> the angle we were actually after.</p>
+<p>So the final answer is that the angle <em>Î¸</em> , in the original diagram at the start of this article, is <em>exactly</em> 30Â°. No surprises there: thatâs the same value it <em>looked</em> as if it was going to be, after we ran the approximate version earlier. But this time weâre sure of it: the calculations have no approximation error, because we didnât do anything approximate at all.</p>
+<h2 id="afterthoughts">Afterthoughts<a class="headerlink" href="#afterthoughts" title="Permanent link">&para;</a></h2>
+<h3 id="what-if-the-answer-isnat-nice">What if the answer isnât nice?<a class="headerlink" href="#what-if-the-answer-isnat-nice" title="Permanent link">&para;</a></h3>
+<p>I hope itâs now clear why I wanted to do that final step of calculating <em>q</em> Â =Â  <em>z</em> Â /Â  <em>z</em> *. The <em>previous</em> value in the programâs output was</p>
+<p><em>z</em> = 1 â <em>t</em> 2 + <em>t</em> 6 + <em>t</em> 8 â <em>t</em> 10</p>
+<p>This represents a complex number whose argument is the desired angle 30Â°. But you wouldnât know it just by looking at that polynomial! That nice simple argument is combined with a <em>magnitude</em> of something complicated which has to be represented as a sum of lots of powers of <em>t</em> pointing in other random directions, and therefore, you canât <em>see</em> by eye what its argument is. But <em>q</em> , because itâs been reduced back to unit magnitude, is very simple by comparison, and itâs easy to check by eye that the answer is what you expect it to be.</p>
+<p>But one caveat: this entire procedure only works out neatly, with <em>q</em> coming out as a really simple monomial, <em>because</em> the angle in question is a nice round number â a multiple of the same 10Â° unit that all the input angles are.</p>
+<p>Langleyâs problem is called âadventitiousâ because of the nice coincidence that using <em>those</em> particular input angles makes the output angle <em>Î¸</em> a nice exact value. With most other choices of the angles, that wouldnât have worked, and the way youâd find out it hadnât worked would be that the output value of <em>q</em> would look like some disgusting complicated polynomial, with many nonzero terms instead of a single one, probably with fractional coefficients as well. If you saw <em>that</em> output (and hadnât made a mistake setting up the problem), then it would tell you the output wasnât a nice round number, and the only thing to do was to calculate it numerically using trigonometry after all.</p>
+<p>For example, hereâs a variant version of the problem in which the angles donât work out nicely:</p>
+<p><img alt="[nastyversion.svg]" src="nastyversion.svg" /> A version that would make Langley wince</p>
+<p>In this version, Iâve made the overall triangle <em>ABC</em> into a 70Â°â70Â°â40Â° triangle instead of its original 80Â°â80Â°â20Â°, and left the base triangle <em>ABX</em> the same.</p>
+<p>If you run my polynomial-based calculation for <em>this</em> triangle, the answer you get as the final value <em>q</em> looks much nastier, and so do a lot of the intermediate values:</p>
+<div class="language-text highlight"><pre><span></span><code>X = 1
+A = 1*t**10
+B = -1*t**6
+D = 2/3 + 2/3*t**2 + 1/3*t**4 + -1/3*t**6 + -1/3*t**8 + 1/3*t**10
+E = 3*t**2 + -2*t**4 + 2*t**6 + -3*t**8 + 1*t**10
+z = 45/73 + -132/73*t**2 + 66/73*t**4 + 141/73*t**6 + 39/73*t**8 + -129/73*t**10
+q = 6/73 + -3/73*t**2 + 38/73*t**4 + 48/73*t**6 + -24/73*t**8 + 12/73*t**10
+</code></pre></div>
+<p>But the answer isnât <em>wrong!</em> Itâs not presented in a helpful form, but itâs still <em>right</em>. If we did want to calculate the angle <em>Î¸</em> in this version of the problem, then one way would be to go back to the Python code shown above which did the whole job using floating point. But we can take a short cut by using the value of <em>q</em> that the polynomial code has computed, and just converting that back into a complex number using Python. If you do that, you find that it really does have unit magnitude (up to Pythonâs rounding errors), and that its argument is twice the angle <em>Î¸</em> in my modified diagram:</p>
+<div class="language-text highlight"><pre><span></span><code>import cmath
+import math
+t = cmath.exp(math.pi * 2j / 36)
+q = 6/73 + -3/73*t**2 + 38/73*t**4 + 48/73*t**6 + -24/73*t**8 + 12/73*t**10
+print(f&quot;Modulus of q = {abs(q)}&quot;)
+arg = cmath.phase(q) * 180 / math.pi
+print(f&quot;Argument of q = {arg}Â°&quot;)
+print(f&quot;So Î¸ = {arg/2}Â°&quot;)
+
+
+
+Modulus of q = 0.9999999999999998
+Argument of q = 46.727454823246Â°
+So Î¸ = 23.363727411623Â°
+</code></pre></div>
+<p>So this time we <em>had</em> to do some trigonometry at the end to get the angle â because itâs a horrible irrational, and we werenât going to get it out of any amount of nice clean rational-number work. But the method was still <em>accurate</em> â the polynomial representation of that <em>q</em> is exactly correct, without any rounding error. The rounding errors only appear in the very last stage when you convert back into a real angle.</p>
+<h3 id="i-did-twice-as-much-work-as-i-really-needed-to">I did twice as much work as I really needed to<a class="headerlink" href="#i-did-twice-as-much-work-as-i-really-needed-to" title="Permanent link">&para;</a></h3>
+<p>Looking at the intermediate values from the final calculation, you might notice that they all consist entirely of <em>even</em> powers of <em>t</em>. Nothing is ever an odd power. Not even in the disgusting modified version where the angle doesnât work out neatly.</p>
+<p>With hindsight, I should have been able to predict that, because all the angles we ever encounter are doubled! We construct a triangle with angles <em>Î±</em> , <em>Î²</em> , <em>Î³</em> by doubling those angles and then making angles at the origin of 2 <em>Î±</em> , 2 <em>Î²</em> , 2 <em>Î³</em>. And the final trick of multiplying <em>z</em> by its complex conjugate has the effect of doubling the output angle weâre trying to find. So nothing in the input or output of the calculation ever has to work with an angle <em>not</em> doubled.</p>
+<p>Therefore, since all the angles in the problem are multiples of 10Â°, all the angles the calculation ever has to work with are multiples of 20Â°. So I could have saved myself some time by starting from a different complex number, <em>T</em> Â =Â  <em>t</em> 2 representing a 20Â° instead of 10Â° rotation. The minimal polynomial of <em>that</em> is <em>t</em> 6Â âÂ  <em>t</em> 3Â +Â 1 (also one of the factors of <em>t</em> 36Â âÂ 1). So that would have let me limit all the polynomials in the calculation to degree less than 6, instead of less than 12.</p>
+<p>But I didnât think of that until I saw all the intermediate values at the end of the procedure, noticed all the exponents were even, and felt silly!</p>
+<h3 id="have-i-cheated">Have I cheated?<a class="headerlink" href="#have-i-cheated" title="Permanent link">&para;</a></h3>
+<p>I mentioned in the introduction that thereâs often a âno trigonometryâ rule when this problem is set. Have I broken it?</p>
+<p>Certainly Iâve obeyed the <em>letter</em> of the rule: I havenât calculated a sine, cosine or tangent anywhere in this entire derivation6All right, the Python code at the end of the first section <em>did</em> do trigonometry, in the form of complex exponentials and the Python <code>cmath.phase</code> function. So did the modified example where the angle didnât work out nicely. But those arenât part of the proper solution. The full solution to the original problem, delivering the answer of 30Â° exactly using nothing but polynomials, didnât use either of those pieces of floating-point code.6. But whether you think Iâve kept to the <em>spirit</em> of the rule is another matter, and in my opinion, the answer depends on what exactly you think the spirit of the rule <em>is</em>.</p>
+<p><em>Why</em> did someone forbid trigonometric solutions to this problem? I can see two reasonable possibilities.</p>
+<p>One answer is that the trigonometry approach is only approximate: you get an answer to some number of significant figures, but you canât easily prove that itâs <em>exactly</em> the number of degrees it looks like. So you might have forbidden trigonometry because you wanted the answer calculated exactly, not just approximated. In that case, I havenât violated the spirit of the rule: this method <em>does</em> calculate the exact answer.</p>
+<p>But the other answer is that the aim of forbidding trigonometry was to force the puzzle solver to find the <em>clever</em> solution involving extra construction lines. If thatâs what you think the point was, then I <em>have</em> violated the spirit of the rule: the method Iâve shown here is brute-force plodding, designed to avoid needing an insight of any kind. (Or, at least, an insight specific to the individual numbers; the trick for dividing by a polynomial in <em>t</em> certainly is clever, but itâs well known, and you only have to learn it once, and then itâs reusable in any situation of this kind.)</p>
+<p>But hereâs a third thought. One purpose of setting a student a problem in the first place is that they should learn something worthwhile from it. And what you learn from this algebraic method is indeed worthwhile. The whole technique can be reused unchanged in other computational contexts (<a href="../aperiodic-tilings/#exact-coords">hereâs an example!</a>), and also all of the ideas here are important to ârealâ mathematics: this kind of algebraic extension of the field of rational numbers leads directly to Galois theory. If I had a student, and set them this problem, and they chose to learn about field extensions instead of constructing extra triangles in a diagram, I would think theyâd made good use of their time!</p>
+<h2 id="footnotes">Footnotes<a class="headerlink" href="#footnotes" title="Permanent link">&para;</a></h2>
+<p>With any luck, you should be able to read the footnotes of this article in place, by clicking on the superscript footnote number or the corresponding numbered tab on the right side of the page.</p>
+<p>But just in case the CSS didnât do the right thing, hereâs the text of all the footnotes again:</p>
+<ol>
+<li>
+<p>Perhaps youâre wondering <em>why</em> I might happen to be concerned with this problem and how to solve it without cleverness. Might it be because someone gave me the problem recently and I didnât manage to find the clever answer? No comment.</p>
+</li>
+<li>
+<p>What if <em>C</em> is on the opposite side of the line from <em>O</em>? In that case, you have to switch to measuring the angle at <em>O</em> on the other side of the line, so that itâs 360Â° minus the angle shown here.</p>
+</li>
+<li>
+<p>Iâve glossed over a subtlety here: this procedure will always give 12 values in total, including the original <em>x</em> , but <em>some</em> numbers represented as polynomials in <em>t</em> have a minimal polynomial of lower degree than 12. In that situation our 12 values will consist of multiple copies of each root of <em>P</em> <em>x</em> , including multiple copies of <em>x</em> itself. But what we do with them next still works, because the product of all of them is still a rational â itâs just a <em>power</em> of <em>P</em> <em>x</em> âs constant term, instead of the constant term itself.</p>
+</li>
+<li>
+<p>In fact, this is a generalised form of the same technique you use to divide by a complex number <em>a</em> Â +Â  <em>bi</em> , by multiplying top and bottom by its complex conjugate <em>a</em> Â âÂ  <em>bi</em> so that the denominator turns into a real number. The principle is identical: <em>a</em> Â +Â  <em>bi</em> is a polynomial in <em>i</em> ; the minimal polynomial of <em>i</em> over â is <em>x</em> 2Â +Â 1, and the only other root of that polynomial is â <em>i</em> ; so we evaluate <em>a</em> Â +Â  <em>bi</em> at that other root to make <em>a</em> Â âÂ  <em>bi</em> , and then the product of that with the original number â reducing <em>i</em> 2 wherever it appears â turns into a polynomial with only a constant term, which itâs easy to divide by. It all looks more complicated when you have 11 other roots rather than just one, but itâs exactly the same trick, just bigger!</p>
+</li>
+<li>
+<p>Another completely different approach to dividing by a polynomial <em>x</em> when working mod <em>P</em> <em>t</em> is to use Euclidâs algorithm, the same as you would for modular arithmetic in integers. Find the greatest common divisor of the polynomials <em>x</em> and <em>P</em> <em>t</em> ; you expect this to be 1, because <em>P</em> <em>t</em> is irreducible. As a by-product the algorithm will produce two more polynomials <em>Î»</em> , <em>Î¼</em> such that <em>Î»x</em> Â +Â  <em>Î¼P</em> <em>t</em> Â =Â 1. Another way of writing that is <em>Î»x</em> Â â¡Â 1 mod <em>P</em> <em>t</em> , so <em>Î»</em> is precisely the inverse we wanted. Iâve chosen to do it this way instead for several reasons. First, because the idea of evaluating <em>x</em> at a different value will be reused in the next section; second, because Euclidâs algorithm requires dividing polynomials (in the more usual sense of delivering a quotient and a remainder), which is a more complicated primitive operation than evaluating them and multiplying them â especially since Iâm going to show example code later. And thirdly, you can make this approach give you a <em>single</em> algebraic formula for calculating the reciprocal of any number mod <em>P</em> <em>t</em> , which is more elegant than the way Euclid takes a variable number of steps depending on the inputs. But you <em>could</em> do it by Euclid if you preferred, and it would still work.</p>
+</li>
+<li>
+<p>All right, the Python code at the end of the first section <em>did</em> do trigonometry, in the form of complex exponentials and the Python <code>cmath.phase</code> function. So did the modified example where the angle didnât work out nicely. But those arenât part of the proper solution. The full solution to the original problem, delivering the answer of 30Â° exactly using nothing but polynomials, didnât use either of those pieces of floating-point code.</p>
+</li>
+</ol>
 
 
 
@@ -425,7 +792,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 07:16:12 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:03:27 UTC">2026-02-05</span>
   </span>
 
     

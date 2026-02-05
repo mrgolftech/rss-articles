@@ -388,6 +388,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#leaking-the-email-of-any-youtube-user-for-10000_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leaking the email of any YouTube user for $10,000
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Leaking the email of any YouTube user for $10,000">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#escalating-this-to-4-billion-youtube-channels" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -397,8 +409,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#the-missing-puzzle-piece-pixel-recorder" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -408,8 +420,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#a-small-problem-preventing-notification-to-the-target" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -419,8 +431,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#putting-it-all-together" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -430,8 +442,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#timeline" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -439,6 +451,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -472,6 +489,11 @@
 <strong>链接:</strong> https://brutecat.com/articles/leaking-youtube-emails
 <strong>日期:</strong> Wed, 12 Feb 2025 00:00:00 GMT</p>
 <hr />
+<p><a href="/">&lt; Back</a></p>
+<p><a href="/">&lt; Back</a></p>
+<h2 id="leaking-the-email-of-any-youtube-user-for-10000_1">Leaking the email of any YouTube user for $10,000<a class="headerlink" href="#leaking-the-email-of-any-youtube-user-for-10000_1" title="Permanent link">&para;</a></h2>
+<p>2025-02-12</p>
+<p><img alt="Leaking the email of any YouTube user for $10,000" src="/assets/youtube-email-disclosure.png" /></p>
 <p>Some time ago, I was looking for a research target in Google and was digging through the <a href="https://staging-people-pa.sandbox.googleapis.com/$discovery/rest?key=AIzaSyBOh-LSTdP2ddSgqPk6ceLEKTb8viTIvdw">Internal People API (Staging)</a> discovery document until I noticed something interesting:</p>
 <div class="language-text highlight"><pre><span></span><code>   &quot;BlockedTarget&quot;: {
       &quot;id&quot;: &quot;BlockedTarget&quot;,
@@ -491,14 +513,14 @@
 </code></pre></div>
 <p>It seemed the Google-wide block user functionality was based on an obfuscated Gaia ID as well as a display name for that blocked user. The obfuscated Gaia ID is just a Google account identifier.  </p>
 <p>That seemed perfectly fine until I remembered <a href="https://support.google.com/accounts/answer/6388749#zippy=%2Cuse-youtube-to-block-an-account">this support page</a>:  </p>
-<p><img alt="" src="https://brutecat.com/assets/leaking-youtube-emails/use_youtube_to_block.png" /></p>
+<p><img alt="" src="/assets/leaking-youtube-emails/use_youtube_to_block.png" /></p>
 <p>So, if you block someone on YouTube, you can leak their Google account identifier? I tested it out. I went to a random livestream, blocked a user and sure enough, it showed up in <a href="https://myaccount.google.com/blocklist">https://myaccount.google.com/blocklist</a>  </p>
-<p><img alt="" src="https://brutecat.com/assets/leaking-youtube-emails/blocked_user.png" /></p>
+<p><img alt="" src="/assets/leaking-youtube-emails/blocked_user.png" /></p>
 <p>The fallback name was set as their channel name <strong>Mega Prime</strong> and the profile ID was their obfuscated Gaia ID <strong>107183641464576740691</strong>  </p>
 <p>This was super strange to me because YouTube should never leak the underlying Google account of a YouTube channel. In the past, there's been several bugs to <a href="https://sector035.nl/articles/2022-35">resolve these to an email address</a>, so I was confident there was still a Gaia ID to Email in some old obscure Google product.</p>
 <h3 id="escalating-this-to-4-billion-youtube-channels">Escalating this to 4 billion YouTube channels<a class="headerlink" href="#escalating-this-to-4-billion-youtube-channels" title="Permanent link">&para;</a></h3>
 <p>So, we can leak the Gaia ID of any live chat user, but can we escalate this to all channels on YouTube? As it turns out, when you click the 3 dots just to open the context menu, a request is fired:</p>
-<p><img alt="" src="https://brutecat.com/assets/leaking-youtube-emails/context_menu.png" /></p>
+<p><img alt="" src="/assets/leaking-youtube-emails/context_menu.png" /></p>
 <p><strong>Request</strong></p>
 <div class="language-text highlight"><pre><span></span><code>POST /youtubei/v1/live_chat/get_item_context_menu?params=R2lrcUp3b1lWVU5vY3pCd1UyRkZiMDVNVmpSdFpYWkNSa2RoYjB0QkVnc3pObGx1VmpsVFZFSnhZeklhQ2hoVlExTkZMV0ZaVDJJdGRVTm5NRFU1Y1VoU2FYTmZiM2M9&amp;pbj=1&amp;prettyPrint=false HTTP/2
 Host: www.youtube.com
@@ -586,7 +608,7 @@ echo -n &quot;Q2lrcUp3b1lWVU5vY3pCd1UyRkZiMDVNVmpSdFpYWkNSa2RoYjB0QkVnc3pObGx1Vm
 <p>We can leak the Gaia ID of the channel - <strong>103261974221829892167</strong></p>
 <h3 id="the-missing-puzzle-piece-pixel-recorder">The missing puzzle piece: Pixel Recorder<a class="headerlink" href="#the-missing-puzzle-piece-pixel-recorder" title="Permanent link">&para;</a></h3>
 <p>I told my friend <a href="https://schizo.org">nathan</a> about the YouTube Gaia ID leak and we started looking into old forgotten Google products since they probably contained some bug or logic flaw to resolve a Gaia ID to an email. <a href="https://recorder.google.com">Pixel Recorder</a> was one of them. Nathan made a test recording on his Pixel phone and synced it to his Google account so we could access the endpoints on the web at <a href="https://recorder.google.com">https://recorder.google.com</a>:  </p>
-<p><img alt="" src="https://brutecat.com/assets/leaking-youtube-emails/recorder_home_page.png" /></p>
+<p><img alt="" src="/assets/leaking-youtube-emails/recorder_home_page.png" /></p>
 <p>When we tried sharing the recording to a test email, that's when it hit us:</p>
 <p><strong>Request</strong></p>
 <div class="language-text highlight"><pre><span></span><code>POST /$rpc/java.com.google.wireless.android.pixel.recorder.protos.PlaybackService/WriteShareList HTTP/2
@@ -606,7 +628,7 @@ Content-Type: application/json+protobuf; charset=UTF-8
 Server: ESF
 Content-Length: 138
 
-[&quot;28bc3792-9bdb-4aed-9a78-17b0954abc7d&quot;,[[null,2,&quot;vrptest2@gmail.com&quot;]]]
+[&quot;28bc3792-9bdb-4aed-9a78-17b0954abc7d&quot;,[[null,2,&quot;[[email protected]](/cdn-cgi/l/email-protection)&quot;]]]
 </code></pre></div>
 <p>This endpoint was taking in the obfuscated Gaia ID and... <strong>returning the email?</strong>  </p>
 <p>We tested this with the obfuscated Gaia ID <code>107183641464576740691</code> we got from blocking that user on YouTube a while back and <strong>it worked</strong> :</p>
@@ -615,13 +637,13 @@ Content-Type: application/json+protobuf; charset=UTF-8
 Server: ESF
 Content-Length: 138
 
-[&quot;28bc3792-9bdb-4aed-9a78-17b0954abc7d&quot;,[[null,2,&quot;redacted@gmail.com&quot;],[null,2,&quot;vrptest2@gmail.com&quot;]]]
+[&quot;28bc3792-9bdb-4aed-9a78-17b0954abc7d&quot;,[[null,2,&quot;[[email protected]](/cdn-cgi/l/email-protection)&quot;],[null,2,&quot;[[email protected]](/cdn-cgi/l/email-protection)&quot;]]]
 </code></pre></div>
 <h3 id="a-small-problem-preventing-notification-to-the-target">A small problem: preventing notification to the target<a class="headerlink" href="#a-small-problem-preventing-notification-to-the-target" title="Permanent link">&para;</a></h3>
 <p>It seems that whenever we share a recording with a victim, they receive an email that looks like this:  </p>
-<p><img alt="" src="https://brutecat.com/assets/leaking-youtube-emails/recorder_victim.png" /></p>
+<p><img alt="" src="/assets/leaking-youtube-emails/recorder_victim.png" /></p>
 <p>This is <strong>really bad</strong> , and it would lower the impact of the bug quite a lot. On the share pop-up, there didn't seem to be any option to disable notifications.</p>
-<p><img alt="" src="https://brutecat.com/assets/leaking-youtube-emails/share_recording.png" /></p>
+<p><img alt="" src="/assets/leaking-youtube-emails/share_recording.png" /></p>
 <p>I tried leaking the full request proto via my tool <a href="https://github.com/ddd/req2proto">req2proto</a>, but there was nothing about disabling the email notification:</p>
 <div class="language-text highlight"><pre><span></span><code>syntax = &quot;proto3&quot;;
 
@@ -690,9 +712,9 @@ if __name__ == &quot;__main__&quot;:
     main()
 </code></pre></div>
 <p>... and the recording title was now <strong>2.5 million letters long!</strong> There wasn't any server-side limit to the length of a recording name.  </p>
-<p><img alt="" src="https://brutecat.com/assets/leaking-youtube-emails/long_recording_name.png" />  </p>
+<p><img alt="" src="/assets/leaking-youtube-emails/long_recording_name.png" />  </p>
 <p>Trying to share the recording with a different test user... <strong>bingo!</strong> No notification email.  </p>
-<p><img alt="" src="https://brutecat.com/assets/leaking-youtube-emails/no_gmail_notification.png" /></p>
+<p><img alt="" src="/assets/leaking-youtube-emails/no_gmail_notification.png" /></p>
 <h3 id="putting-it-all-together">Putting it all together<a class="headerlink" href="#putting-it-all-together" title="Permanent link">&para;</a></h3>
 <p>We basically have the full attack chain, we just have to put it together.</p>
 <ul>
@@ -715,6 +737,8 @@ if __name__ == &quot;__main__&quot;:
 <li>2025-02-09 - Confirm to vendor that both parts of the exploit have been fixed (T+147 days since disclosure)</li>
 <li>2025-02-12 - Report disclosed</li>
 </ul>
+<hr />
+<p>You can contact me via <a href="https://signal.me/#eu/DK2edygXRPMdt8bnQk0kIz-WNKt40rCDvY-WAi7a4q5ATEQwRxdIGIMSHAJFCgIb"><img alt="Signal messenger" src="data:image/svg+xml,%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Transformed%20by:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2048%2048'%20id='Layer_2'%20data-name='Layer%202'%20xmlns='http://www.w3.org/2000/svg'%20fill='%23ffffff'%20stroke='%23ffffff'%3e%3cg%20id='SVGRepo_bgCarrier'%20stroke-width='0'/%3e%3cg%20id='SVGRepo_tracerCarrier'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cg%20id='SVGRepo_iconCarrier'%3e%3cdefs%3e%3cstyle%3e.cls-1{fill:none;stroke:%23ffffff;stroke-linejoin:round;}%3c/style%3e%3c/defs%3e%3cpath%20stroke-width='2px'%20class='cls-1'%20d='M27.32,45.25A23.08,23.08,0,0,1,24,45.5a22.26,22.26,0,0,1-3.26-.25m14.44-2.88a21,21,0,0,1-6.08,2.51M41.36,36.7a21.63,21.63,0,0,1-4.66,4.65m5.65-6.16,2.54-6.08a21.25,21.25,0,0,1-2.52,6.07m2.88-14.42A23.33,23.33,0,0,1,45.5,24a22.43,22.43,0,0,1-.25,3.28m-42.46,0A22.46,22.46,0,0,1,2.5,24a22.43,22.43,0,0,1,.25-3.28m39.63-7.89a21.7,21.7,0,0,1,2.51,6.08m-41.69,0a21.19,21.19,0,0,1,2.52-6.06h0m31-6.2a21.19,21.19,0,0,1,4.66,4.65m-34.71,0A21.63,21.63,0,0,1,11.3,6.64M29.09,3.1a21.57,21.57,0,0,1,6.07,2.53h0m-22.33,0a21.07,21.07,0,0,1,6.09-2.51m1.84-.37A21.88,21.88,0,0,1,24,2.5a22.29,22.29,0,0,1,3.27.25'/%3e%3cpath%20stroke-width='2px'%20class='cls-1'%20d='M18.87,44.87a20.92,20.92,0,0,1-5-1.95l-2.24.51'/%3e%3cpath%20stroke-width='2px'%20class='cls-1'%20d='M4.61,36.38l.51-2.2a21.7,21.7,0,0,1-2-5'/%3e%3cpath%20stroke-width='2px'%20class='cls-1'%20d='M10,43.85l-4.08,1a2.19,2.19,0,0,1-2.66-1.56,2.27,2.27,0,0,1,0-1.1l1-4.08'/%3e%3cpath%20stroke-width='2px'%20class='cls-1'%20d='M24,6.41a17.59,17.59,0,0,0-14.83,27l-1.65,7.1,7.16-1.64A17.59,17.59,0,1,0,24,6.41Z'/%3e%3c/g%3e%3c/svg%3e" /></a> or <a href="/cdn-cgi/l/email-protection#73011c1c073311010607161012075d101c1e"><img alt="Email" src="data:image/svg+xml,%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Transformed%20by:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20id='SVGRepo_bgCarrier'%20stroke-width='0'/%3e%3cg%20id='SVGRepo_tracerCarrier'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cg%20id='SVGRepo_iconCarrier'%3e%3cpath%20d='M4%207.00005L10.2%2011.65C11.2667%2012.45%2012.7333%2012.45%2013.8%2011.65L20%207'%20stroke='%23ffffff'%20stroke-width='1'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3crect%20x='3'%20y='5'%20width='18'%20height='14'%20rx='2'%20stroke='%23ffffff'%20stroke-width='1'%20stroke-linecap='round'/%3e%3c/g%3e%3c/svg%3e" /></a></p>
 
 
 
@@ -735,7 +759,7 @@ if __name__ == &quot;__main__&quot;:
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 11:14:56 UTC">2026-02-05</span>
   </span>
 
     

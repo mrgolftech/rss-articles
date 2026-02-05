@@ -25,7 +25,7 @@
     
     
       
-        <title>A Fast, Growable Array With Stable Pointers in C\n\n来源: https://danielchasehooper.com\n链接: https://danielchasehooper.com/posts/segment_array/\n日期: Tue, 05 Aug 2025 00:00:00 +0000\n\n---\n\nMy last article about generic data structures in C was written to set the stage for today’s topic: A data structure with constant time indexing, stable pointers, and works well with arena allocators. Its been independently discovered by multiple programmers over the years and so goes by different names. A 2001 paper called it a “levelwise-allocated pile” (bleh). Zig calls it a “Segmented List”. Then there’s C++ with std::deque, which is only superficially similar.\nRead the whole article on\ndanielchasehooper.com → - Hacker News 精选博客</title>
+        <title>A Fast, Growable Array With Stable Pointers in C - Hacker News 精选博客</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#a-fast-growable-array-with-stable-pointers-in-cnn-httpsdanielchasehoopercomn-httpsdanielchasehoopercompostssegment_arrayn-tue-05-aug-2025-000000-0000nn-nnmy-last-article-about-generic-data-structures-in-c-was-written-to-set-the-stage-for-todays-topic-a-data-structure-with-constant-time-indexing-stable-pointers-and-works-well-with-arena-allocators-its-been-independently-discovered-by-multiple-programmers-over-the-years-and-so-goes-by-different-names-a-2001-paper-called-it-a-levelwise-allocated-pile-bleh-zig-calls-it-a-segmented-list-then-theres-c-with-stddeque-which-is-only-superficially-similarnread-the-whole-article-onndanielchasehoopercom" class="md-skip">
+        <a href="#a-fast-growable-array-with-stable-pointers-in-c" class="md-skip">
           跳转至
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              A Fast, Growable Array With Stable Pointers in C\n\n来源: https://danielchasehooper.com\n链接: https://danielchasehooper.com/posts/segment_array/\n日期: Tue, 05 Aug 2025 00:00:00 +0000\n\n---\n\nMy last article about generic data structures in C was written to set the stage for today’s topic: A data structure with constant time indexing, stable pointers, and works well with arena allocators. Its been independently discovered by multiple programmers over the years and so goes by different names. A 2001 paper called it a “levelwise-allocated pile” (bleh). Zig calls it a “Segmented List”. Then there’s C++ with std::deque, which is only superficially similar.\nRead the whole article on\ndanielchasehooper.com →
+              A Fast, Growable Array With Stable Pointers in C
             
           </span>
         </div>
@@ -404,7 +404,175 @@
   
 
 
-<h1 id="a-fast-growable-array-with-stable-pointers-in-cnn-httpsdanielchasehoopercomn-httpsdanielchasehoopercompostssegment_arrayn-tue-05-aug-2025-000000-0000nn-nnmy-last-article-about-generic-data-structures-in-c-was-written-to-set-the-stage-for-todays-topic-a-data-structure-with-constant-time-indexing-stable-pointers-and-works-well-with-arena-allocators-its-been-independently-discovered-by-multiple-programmers-over-the-years-and-so-goes-by-different-names-a-2001-paper-called-it-a-levelwise-allocated-pile-bleh-zig-calls-it-a-segmented-list-then-theres-c-with-stddeque-which-is-only-superficially-similarnread-the-whole-article-onndanielchasehoopercom">A Fast, Growable Array With Stable Pointers in C\n\n<strong>来源:</strong> https://danielchasehooper.com\n<strong>链接:</strong> https://danielchasehooper.com/posts/segment_array/\n<strong>日期:</strong> Tue, 05 Aug 2025 00:00:00 +0000\n\n---\n\nMy last article about generic data structures in C was written to set the stage for today’s topic: A data structure with constant time indexing, stable pointers, and works well with arena allocators. Its been independently discovered by multiple programmers over the years and so goes by different names. A 2001 paper called it a “levelwise-allocated pile” (bleh). Zig calls it a “Segmented List”. Then there’s C++ with std::deque, which is only superficially similar.\nRead the whole article on\ndanielchasehooper.com →<a class="headerlink" href="#a-fast-growable-array-with-stable-pointers-in-cnn-httpsdanielchasehoopercomn-httpsdanielchasehoopercompostssegment_arrayn-tue-05-aug-2025-000000-0000nn-nnmy-last-article-about-generic-data-structures-in-c-was-written-to-set-the-stage-for-todays-topic-a-data-structure-with-constant-time-indexing-stable-pointers-and-works-well-with-arena-allocators-its-been-independently-discovered-by-multiple-programmers-over-the-years-and-so-goes-by-different-names-a-2001-paper-called-it-a-levelwise-allocated-pile-bleh-zig-calls-it-a-segmented-list-then-theres-c-with-stddeque-which-is-only-superficially-similarnread-the-whole-article-onndanielchasehoopercom" title="Permanent link">&para;</a></h1>
+<h1 id="a-fast-growable-array-with-stable-pointers-in-c">A Fast, Growable Array With Stable Pointers in C<a class="headerlink" href="#a-fast-growable-array-with-stable-pointers-in-c" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://danielchasehooper.com
+<strong>链接:</strong> https://danielchasehooper.com/posts/segment_array/
+<strong>日期:</strong> Tue, 05 Aug 2025 00:00:00 +0000</p>
+<hr />
+<p><a href="https://danielchasehooper.com/">Daniel Hooper</a></p>
+<p><a href="https://danielchasehooper.com/">Home</a> ・ <a href="https://danielchasehooper.com/posts">Articles</a> ・ <a href="https://danielchasehooper.com/#projects">Projects</a> ・ <a href="https://danielchasehooper.com/about">About</a> ・ <a href="https://x.com/danielchooper">X.com </a><a href="https://bsky.app/profile/danielchooper.bsky.social">Bluesky </a><a href="https://mastodon.gamedev.place/@danielchooper">Mastodon</a> <a href="https://danielchasehooper.com/feed.xml">RSS</a></p>
+<h1 id="a-fast-growable-array-with-stable-pointers-in-c_1">A Fast, Growable Array With Stable Pointers in C<a class="headerlink" href="#a-fast-growable-array-with-stable-pointers-in-c_1" title="Permanent link">&para;</a></h1>
+<p>August 5, 2025・7 minute read</p>
+<p>My last article about <a href="/posts/typechecked-generic-c-data-structures/">generic data structures in C</a> was written to set the stage for today's topic: A data structure with constant time indexing, stable pointers, and works well with <a href="https://www.rfleury.com/p/untangling-lifetimes-the-arena-allocator">arena allocators</a>. Its been independently discovered by multiple programmers over the years and so goes by different names. A <a href="https://duckduckgo.com/?q=%22Experiences+with+the+design+and+implementation+of+space-efficient+deques%22">2001 paper</a> called it a "levelwise-allocated pile" (bleh). Zig calls it a "<a href="https://github.com/ziglang/zig/blob/e17a050bc695f7d117b89adb1d258813593ca111/lib/std/segmented_list.zig">Segmented List</a>". Then there's C++ with <code>std::deque</code>, which is only superficially similar. I like the name that <a href="https://mastodon.social/@pervognsen">Per Vognsen</a> uses: "<a href="https://gist.github.com/pervognsen/c9d18e8012ce497e7a92d3f86c112337">Segment Array</a>". Code linked at end.</p>
+<p>The idea is straight forward: the structure contains a fixed sized array of pointers to segments. Each segment is twice the size of its predecessor. New segments are allocated as needed. Here's how that looks:</p>
+<p>NULLNULLsegments arraysegment 0segment 1segment 2  </p>
+<p>Unlike standard arrays, pointers to a segment array's items are always valid because items are never moved. Leaving items in place also means it never leaves "holes" of abandoned memory in arena allocators. The layout also allows us to access any index in constant time.</p>
+<h2 id="the-implementation">The Implementation<a class="headerlink" href="#the-implementation" title="Permanent link">&para;</a></h2>
+<p>You could implement a Segment Array just from the description above, but there are a few details worth discussing further. Here's the above diagram as a C struct:</p>
+<div class="language-text highlight"><pre><span></span><code>typedef struct {
+    u32 count;
+    int used_segments;
+    u8 *segments[26];
+} SegmentArrayInternal;
+</code></pre></div>
+<p>The <code>segments</code> array being a fixed size is actually important because it means it's right next to the rest of the struct in memory and likely wont get a cache miss when we index into it. If the segments didn't double in size then we'd need <em>way</em> more of them to store a lot of items, and the segments array would have to be a separate allocation.</p>
+<p>So how did I arrive at 26 segments? The size doubling of segments means only 48 of them can hold <code>2^48 - 1</code> items, more than 256 <em>tebibytes</em> of memory. Most 64 bit computers can only use 48 bits of a pointer, so its not sensible to use more than 48 segments. I reduce the segment count further to 32 because I like to use <code>uint32_t</code> to index the array1. Finally, I get rid of the the 6 smallest segments (with sizes 1, 2, 4, 8, 16, 32) because they aren't worth their overhead. 26 segments can hold 4,294,967,232 items (just under <code>UINT32_MAX</code>).</p>
+<p>You may have noticed I'm using segment sizes that are a power of two. It's not strictly necessary, but it makes the math nice and allows us to use fast bit shift operations for calculating indices:</p>
+<div class="language-text highlight"><pre><span></span><code>#define SMALL_SEGMENTS_TO_SKIP 6
+
+#define log2i(X) ((u32) (8*sizeof(unsigned long long) \
+    - __builtin_clzll((X)) - 1))
+
+u32 capacity_for_segment_count(int segment_count) {
+    return ((1 &lt;&lt; SMALL_SEGMENTS_TO_SKIP) &lt;&lt; segment_count) 
+        - (1 &lt;&lt; SMALL_SEGMENTS_TO_SKIP);
+}
+
+void *_sa_get(SegmentArrayInternal *sa, u32 index, size_t item_size) {
+    int segment = log2i((index &gt;&gt; SMALL_SEGMENTS_TO_SKIP) + 1);
+    u32 slot = index - capacity_for_segment_count(segment);
+    return sa-&gt;segments[segment] + item_size*slot;
+}
+</code></pre></div>
+<p><code>log2i</code> (base 2 logarithm for integers) is implemented with the compiler intrinsic <code>__builtin_clzll</code> (count leading zeros of unsigned long long). It's just an efficient way to calculate which segment a given index falls within.</p>
+<p>Clang optimizes <code>_sa_get</code> to just 10 x86-64 instructions (with <code>-O3</code>):</p>
+<div class="language-text highlight"><pre><span></span><code>_sa_get:
+    mov     eax, esi
+    shr     eax, 5
+    inc     eax
+    bsr     ecx, eax
+    mov     eax, -32
+    shl     eax, cl
+    add     eax, esi
+    add     eax, 32
+    imul    rax, rdx
+    add     rax, qword ptr [rdi + 8*rcx + 8]
+    ret
+</code></pre></div>
+<p>When accessing one item, it will take longer to load the item from memory than for these instructions to calculate its address. That's true of standard arrays too. If you're iterating items in order, you don't need <code>sa_get</code> at all. You can loop over the segments and their items directly. I have a macro to make that easy in segment_array.h.</p>
+<p>Here's the code to allocate a new item. It also creates a new segment if needed:</p>
+<div class="language-text highlight"><pre><span></span><code>void *_sa_alloc(SegmentArrayInternal *sa, size_t item_size) {
+    if (sa-&gt;count &gt;= capacity_for_segment_count(sa-&gt;used_segments)) {
+        size_t slots_in_segment = (1 &lt;&lt; SMALL_SEGMENTS_TO_SKIP) &lt;&lt; sa-&gt;used_segments;
+        size_t segment_size = item_size * slots_in_segment;
+        sa-&gt;segments[sa-&gt;used_segments] = malloc(segment_size);
+        sa-&gt;used_segments++;
+    }
+
+    sa-&gt;count++;
+    return _sa_get(sa, sa-&gt;count-1, item_size);
+}
+</code></pre></div>
+<p>One final implementation note: You can ensure the segment array's capacity is always a power-of-two by making the first two segments the same size. It makes the code less nice, but it's useful when using it as the backing array for a power-of-two-sized hash table2 and you don't want it to waste ~50% of its memory.</p>
+<h2 id="generics">Generics<a class="headerlink" href="#generics" title="Permanent link">&para;</a></h2>
+<p>I use the techniques from my <a href="/posts/typechecked-generic-c-data-structures/">last article</a> to allow the Segment Array to store any type while also being type checked. This macro associates type information with the generic struct:</p>
+<div class="language-text highlight"><pre><span></span><code>#define SegmentArray(type) \
+    union { \
+        SegmentArrayInternal internal; \
+        type *payload; \
+    }
+</code></pre></div>
+<p>And these macros use the payload member to pass the item size to the generic functions:</p>
+<div class="language-text highlight"><pre><span></span><code>#define sa_get(sa, index) \
+    ((typeof((sa)-&gt;payload))_sa_get(&amp;(sa)-&gt;internal, \
+                                    index,  \
+                                    sizeof(*(sa)-&gt;payload)))
+
+#define sa_alloc(sa) \
+    (typeof((sa)-&gt;payload))_sa_alloc(&amp;(sa)-&gt;internal, \
+                                     sizeof(*(sa)-&gt;payload))
+</code></pre></div>
+<p>Feel free to not do this if you don't want to use <code>typeof()</code>, or don't like macros like this. It's not critical to the data structure.</p>
+<h2 id="in-use">In Use<a class="headerlink" href="#in-use" title="Permanent link">&para;</a></h2>
+<p>All together we get this nice API:</p>
+<div class="language-text highlight"><pre><span></span><code>#define SEGMENT_ARRAY_IMPL
+#include &quot;segment_array.h&quot;
+#include &lt;stdio.h&gt;
+
+int main(void) {
+    typedef struct {int a,b; } Entity;
+
+    SegmentArray(Entity) entities = {0};
+    sa_add(&amp;entities, (Entity){ 1,0 });
+    sa_add(&amp;entities, (Entity){ 2,0 });
+
+    // getting one item
+    printf(&quot;entities[0].a = %i\n&quot;, sa_get(&amp;entities, 0)-&gt;a);
+
+    // iterating all items
+    sa_for(&amp;entities) {
+         printf(&quot;entities[%i].a = %i\n&quot;, it_index, it.a);
+    }
+
+    // only needed when not using an arena
+    sa_free(&amp;entities);
+
+    return 0;
+}
+</code></pre></div>
+<h2 id="comparison">Comparison<a class="headerlink" href="#comparison" title="Permanent link">&para;</a></h2>
+<p>There is no data structure that is the best in all situations. The Segment Array is no exception. There are several other options worth considering when storing a list of items:</p>
+<ul>
+<li>Fixed Size Array - An array that doesn't grow. Either calculate how many items you'll need ahead of time, or calculate an upper limit.</li>
+<li>Dynamic Array - standard array that grows by some multiple of its size (usually 1.5), and moves its items.</li>
+<li>Chunked Linked List - a linked list that stores one or more items per link.</li>
+<li>Hybrid Approach - when creating an unknown number of items all at once (such as when parsing a file) you create the items in a chunked linked list. Once you have all items, you copy them into a fixed sized array and free the linked list.</li>
+<li>Virtual Memory Array - Use mmap (macOS, Linux) or VirtualAlloc (Windows) to reserve a huge amount of virtual address space and commit to physical memory as the array grows. This can't be used on platforms without virtual memory like webassembly and embedded systems.</li>
+</ul>
+<p>Now let me compare them on these criteria:</p>
+<ol>
+<li>Growable - can you add more items over time?</li>
+<li>Stable - does it have stable pointers (leave items in place), and not leave holes in arena allocators?</li>
+<li>Random access - can you access a random index in constant time, or do you have to iterate in order?</li>
+<li>Contiguous - Are all items stored in a single range of memory with no gaps? Useful when interfacing with API that accept a pointer and length, like <code>write()</code>.</li>
+</ol>
+<hr />
+<p>| Growable| Stable| Random Access| Contiguous<br />
+---|---|---|---|---<br />
+Fixed Size Array| ❌| ✅| ✅| ✅<br />
+Dynamic Array| ✅| ❌| ✅| ✅<br />
+Chunked Linked List| ✅| ✅| ❌| ❌<br />
+Hybrid Approach| ✅ (at creation)| ✅| ✅ (after creation)| ✅ (after creation)<br />
+Virtual Memory Array| ✅ (up to reservation)| ✅| ✅| ✅<br />
+Segment Array| ✅| ✅| ✅| ❌  </p>
+<hr />
+<p>Average memory efficiency:</p>
+<ul>
+<li>Fixed Size Array: 100%</li>
+<li>Dynamic Array: 83% with a 1.5x growth factor</li>
+<li>Chunked Linked List: nearly 100%. Depends on chunk size and item count.</li>
+<li>Hybrid approach: 100%</li>
+<li>Virtual Memory Array: 100% (give or take one page's worth of memory)</li>
+<li>Segment Array: 75%</li>
+</ul>
+<p>Personally, I most often reach for the fixed sized array, or the hybrid approach. I've found the segment array useful in situations where I'm generating an unknown number of items over time and can't use a Virtual Memory Array - like in the <a href="/posts/syscall-build-snooping/">build profiler</a> I'm working on.</p>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>The segment array is probably most helpful if you already use arena allocators heavily. Otherwise another option may work better.</p>
+<p>It is large-ish at 216 bytes (vs 24 for a dynamic array: pointer + count + capacity), so they work best for big central arrays that store all of the program's Entities, or Samples, or whatever.</p>
+<p>Whether or not you use this interesting data structure, there's a lot to learn in its diminutive 120 lines. My single-header library implementation can be downloaded by joining my newsletter at the bottom of this page. You'll get sent to the download page after confirming your email.</p>
+<hr />
+<ol>
+<li>
+<p>Useful for <a href="https://floooh.github.io/2018/06/17/handles-vs-pointers.html">handles</a> ↩︎</p>
+</li>
+<li>
+<p>Thanks to Andrew Reece for the power-of-two-size technique ↩︎</p>
+</li>
+</ol>
+<p>❖</p>
+<p>Get notified about my next article:</p>
+<p>Join Newsletter</p>
+<p><a href="https://danielchasehooper.com/">More articles by Daniel</a></p>
 
 
 
@@ -425,7 +593,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 11:14:56 UTC">2026-02-05</span>
   </span>
 
     

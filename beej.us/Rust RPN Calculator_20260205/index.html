@@ -25,7 +25,7 @@
     
     
       
-        <title>Rust RPN Calculator\n\n来源: https://beej.us\n链接: http://beej.us/blog/data/rust-rpn-calc/\n日期: Fri, 24 Oct 2025 00:00:00 +0000\n\n---\n\nAnother Rust rabbit hole digging into some RPN calculator code. - Hacker News 精选博客</title>
+        <title>Rust RPN Calculator - Hacker News 精选博客</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rust-rpn-calculatornn-httpsbeejusn-httpbeejusblogdatarust-rpn-calcn-fri-24-oct-2025-000000-0000nn-nnanother-rust-rabbit-hole-digging-into-some-rpn-calculator-code" class="md-skip">
+        <a href="#rust-rpn-calculator" class="md-skip">
           跳转至
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Rust RPN Calculator\n\n来源: https://beej.us\n链接: http://beej.us/blog/data/rust-rpn-calc/\n日期: Fri, 24 Oct 2025 00:00:00 +0000\n\n---\n\nAnother Rust rabbit hole digging into some RPN calculator code.
+              Rust RPN Calculator
             
           </span>
         </div>
@@ -404,7 +404,469 @@
   
 
 
-<h1 id="rust-rpn-calculatornn-httpsbeejusn-httpbeejusblogdatarust-rpn-calcn-fri-24-oct-2025-000000-0000nn-nnanother-rust-rabbit-hole-digging-into-some-rpn-calculator-code">Rust RPN Calculator\n\n<strong>来源:</strong> https://beej.us\n<strong>链接:</strong> http://beej.us/blog/data/rust-rpn-calc/\n<strong>日期:</strong> Fri, 24 Oct 2025 00:00:00 +0000\n\n---\n\nAnother Rust rabbit hole digging into some RPN calculator code.<a class="headerlink" href="#rust-rpn-calculatornn-httpsbeejusn-httpbeejusblogdatarust-rpn-calcn-fri-24-oct-2025-000000-0000nn-nnanother-rust-rabbit-hole-digging-into-some-rpn-calculator-code" title="Permanent link">&para;</a></h1>
+<h1 id="rust-rpn-calculator">Rust RPN Calculator<a class="headerlink" href="#rust-rpn-calculator" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://beej.us
+<strong>链接:</strong> http://beej.us/blog/data/rust-rpn-calc/
+<strong>日期:</strong> Fri, 24 Oct 2025 00:00:00 +0000</p>
+<hr />
+<h1 id="beejs-bit-bucket-a-tech-and-programming-fun"><a href="../..">Beej's Bit Bucket  â¡ Tech and Programming Fun </a><a class="headerlink" href="#beejs-bit-bucket-a-tech-and-programming-fun" title="Permanent link">&para;</a></h1>
+<p>2025-10-24</p>
+<h1 id="implementing-an-rpn-calculator-in-rust">Implementing an RPN Calculator in Rust<a class="headerlink" href="#implementing-an-rpn-calculator-in-rust" title="Permanent link">&para;</a></h1>
+<p><img alt="HP-48G calculator" src="images/hp48g.jpg" /> The classic <a href="https://en.wikipedia.org/wiki/HP_48_series">HP-48G</a> RPN calculator. This is what I used in college back in 1872.</p>
+<p>Welcome back to another edition of <em>Rust Rabbit Holes</em> wherein I attempt to learn a thing or two about Rust by implementing something and poking around. As usual, since I'm far from a Rust expert, I highly value learned feedback if you have it.</p>
+<p>The intention is that you just read this through. It's not focused on how to do any one particular thing. It's just train-of-thought exploration.</p>
+<p>Today we're going to implement a <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation">postfix</a> (AKA <em>Reverse Polish Notation</em> , AKA RPN) calculator.</p>
+<p>This is inextricably tied to the concept of the <a href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)"><em>stack</em> abstract data type</a> so read up on that if you have to. We're gonna push and pop!</p>
+<h2 id="quick-background">Quick Background<a class="headerlink" href="#quick-background" title="Permanent link">&para;</a></h2>
+<p>You're going to be given a list of numbers and operators that look like this:</p>
+<div class="language-text highlight"><pre><span></span><code>4 3 +
+</code></pre></div>
+<p>Reading from left to right, if the item is a number, push it on the stack.</p>
+<p>If the item is an operator (we'll stick with <code>+</code> and <code>-</code>), pop the two previous numbers off the stack, perform the operation on them to get a result, and push the result on the stack.</p>
+<p>So reading the above, we get:</p>
+<div class="language-text highlight"><pre><span></span><code>4: push 4 on the stack
+
+3: push 3 on the stack
+
++: pop 3 off the stack,
+   pop 4 off the stack,
+   add 3 + 4 to get 7,
+   push 7 on the stack
+</code></pre></div>
+<p>When we're done with the input, we do this:</p>
+<div class="language-text highlight"><pre><span></span><code>pop the stack
+print that value out
+</code></pre></div>
+<p>Which in our example would print <code>7</code>. Which, happily, is <code>4+3</code>.</p>
+<p>In regular algebraic notation, we might have an expression that looks like this:</p>
+<p>$$(3+10)-(1+7)$$</p>
+<p>But with RPN we don't have parentheses; you just have to put stuff on the stack in the correct order.</p>
+<p>We definitely want at least this for the above expression:</p>
+<div class="language-text highlight"><pre><span></span><code>3 10 +
+</code></pre></div>
+<p>And when we do that, we'll have <code>[13]</code> on the stack. We can just leave that there for later, though, and do more math.</p>
+<div class="language-text highlight"><pre><span></span><code>3 10 + 1 7 +
+</code></pre></div>
+<p>After that, we'll have <code>[13, 8]</code> on the stack. Which, if you'll notice, are the numbers we want to get the difference between in the original expression. So let's just take the difference:</p>
+<div class="language-text highlight"><pre><span></span><code>3 10 + 1 7 + -
+</code></pre></div>
+<p>Again read it from left to right. If it's a number: push. If it's an operator: pop, pop, do math, push result.</p>
+<div class="language-text highlight"><pre><span></span><code>3:  push 3, stack is [3]
+
+10: push 10, stack is [3, 10]
+
++:  pop 10, stack is [3]
+    pop 3, stack is []
+    add 3 + 10 to get 13
+    push 13, stack is [13]
+
+1:  push 1, stack is [13, 1]
+
+7:  push 7, stack is [13, 1, 7]
+
++:  pop 7, stack is [13, 1]
+    pop 1, stack is [13]
+    add 1 + 7 to get 8
+    push 8, stack is [13, 8]
+
+-:  pop 8, stack is [13]
+    pop 13, stack is []
+    subtract 13 - 8 to get 5
+    push 5, stack is [5]
+</code></pre></div>
+<p>And after that we'll have <code>[5]</code> on the stack. And if that's the last operation, we'll pop the <code>5</code> and print it out for the answer.</p>
+<h2 id="the-first-stab">The First Stab<a class="headerlink" href="#the-first-stab" title="Permanent link">&para;</a></h2>
+<p>This one works. We'll break it down a bit, below, and try to improve it.</p>
+<div class="language-text highlight"><pre><span></span><code>fn main() {
+    let args: Vec&lt;String&gt; = std::env::args().collect();
+    let mut stack: Vec&lt;i64&gt; = Vec::new();
+
+    for a in &amp;args[1..] {
+        match a.parse::&lt;i64&gt;() {
+            Ok(n) =&gt; stack.push(n),
+            Err(_) =&gt; match a.as_str() {
+                &quot;+&quot; =&gt; {
+                    let o2 = stack.pop().unwrap();
+                    let o1 = stack.pop().unwrap();
+                    stack.push(o1 + o2);
+                }
+                &quot;-&quot; =&gt; {
+                    let o2 = stack.pop().unwrap();
+                    let o1 = stack.pop().unwrap();
+                    stack.push(o1 - o2);
+                }
+                _ =&gt; {
+                    println!(&quot;unknown operator {}&quot;, a);
+                    std::process::exit(1);
+                }
+            },
+        }
+    }
+
+    let result = stack.pop().unwrap();
+    println!(&quot;{}&quot;, result);
+}
+</code></pre></div>
+<p>An example run:</p>
+<div class="language-text highlight"><pre><span></span><code>$ cargo run 3 10 + 1 7 + -
+   Compiling rpncalc v0.1.0 (/home/beej/src/rust/rpncalc)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.09s
+     Running `/home/beej/src/rust/rpncalc/target/debug/rpncalc 3 10 + 1 7 + -`
+5
+</code></pre></div>
+<p>And there's my <code>5</code> at the end!</p>
+<p><a href="https://doc.rust-lang.org/clippy/usage.html">Clippy</a> gives its seal of approval. But I'm not completely happy.</p>
+<h2 id="command-line-arguments">Command Line Arguments<a class="headerlink" href="#command-line-arguments" title="Permanent link">&para;</a></h2>
+<p>As we see, the command line arguments accessed with the <a href="https://doc.rust-lang.org/beta/std/env/fn.args.html"><code>std::env::args()</code></a> function.</p>
+<p>This returns an <a href="https://doc.rust-lang.org/beta/std/env/struct.Args.html"><code>Args</code> struct</a> that implements <a href="https://doc.rust-lang.org/beta/std/iter/trait.Iterator.html"><code>Iterator</code></a>, so we can do all kinds of iterator-y stuff with it, including <code>collect()</code>ing it into a vector. Which I've done:</p>
+<div class="language-text highlight"><pre><span></span><code>let args: Vec&lt;String&gt; = std::env::args().collect();
+</code></pre></div>
+<p>What that does is take the <code>Args</code> iterator and turn it into a <code>Vec</code> so I can more easily index it.</p>
+<p>Notably, I don't want the element at index 0 because that's the name of the executable (typically). But I do want the items at indexes 1-to-the-end. And I do that by getting a slice, like so:</p>
+<div class="language-text highlight"><pre><span></span><code>fn main() {
+    let args: Vec&lt;String&gt; = std::env::args().collect();
+
+    for a in &amp;args[1..] {
+</code></pre></div>
+<p>But I'm not super happy with that. I just want to iterate once over the command line arguments, and I'm doing it twice. (Once for the <code>collect()</code> and one for the <code>for</code>-loop.)</p>
+<p>We'll steal something from the <a href="https://beej.us/blog/data/rust-trait-impl/">previous blog entry</a> and manually run through the iterator.</p>
+<p>And we'll discard the command name (the zero-th argument) before we start the loop.</p>
+<p>This also works:</p>
+<div class="language-text highlight"><pre><span></span><code>fn main() {
+    let mut args = std::env::args();
+
+    let _ = args.next();  // strip off the command name
+
+    while let Some(a) = args.next() {
+</code></pre></div>
+<p>And that's only one iteration through the arguments.</p>
+<p>But it's really just longhand for using an <code>for</code>-<code>in</code> loop:</p>
+<div class="language-text highlight"><pre><span></span><code>fn main() {
+    let mut args = std::env::args();
+
+    let _ = args.next();  // strip off the command name
+
+    for a in args {
+</code></pre></div>
+<p>Happier, still!</p>
+<h2 id="calling-the-rabbit-hole-collect">Calling The Rabbit Hole Collect<a class="headerlink" href="#calling-the-rabbit-hole-collect" title="Permanent link">&para;</a></h2>
+<p>Before the above refactor, we were doing this, and recall that <code>args()</code> returns an <code>Args</code> structure that implements <code>Iterator</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>let args: Vec&lt;String&gt; = std::env::args().collect();
+</code></pre></div>
+<p>Question: why do I have to specify the type of the <code>args</code> variable? Why can't Rust figure it out? Let's dig in.</p>
+<p>The <code>collect()</code> method is interesting in that it has no idea what type of thing to collect into. It's a generic method.</p>
+<div class="language-text highlight"><pre><span></span><code>fn collect&lt;B&gt;(self) -&gt; B
+where
+    B: FromIterator&lt;Self::Item&gt;,
+    Self: Sized,
+</code></pre></div>
+<p><code>Self: Sized</code> means the thing being collected, <code>Args</code>, needs to be <a href="https://doc.rust-lang.org/std/marker/trait.Sized.html"><code>Sized</code></a>, meaning that it has a compile-time known size. So here <code>Self</code> refers to <code>Args</code>, the thing on which <code>.collect()</code> is being called. And from what I can tell it's important to be <code>Sized</code> when moving ownership for generating code for which the size needs to be known, e.g. stack space.</p>
+<p>The important bit is <code>B: FromIterator&lt;Self::Item&gt;</code>. This means whatever we're collecting into, <code>B</code>, needs to implement <code>FromIterator&lt;Self::Item&gt;</code>. Hmm!</p>
+<p>Okay, <code>B</code> in this case is <code>Vec&lt;String&gt;</code> because that's the type we used. Does it implement <code>FromIterator&lt;Self::Item&gt;</code>?</p>
+<p>Well, <a href="https://doc.rust-lang.org/std/vec/struct.Vec.html#impl-FromIterator%3CT%3E-for-Vec%3CT%3E"><code>Vec</code> implements <code>FromIterator&lt;T&gt;</code></a> according to the documentation. So that's good. This is the trait that allows it to be collectedâanything implementing this trait is eligible (as long as it's <code>Sized</code>).</p>
+<p>What's <code>Self::Item</code>? We saw <code>Self</code> referred to the <code>Args</code> type. Where is <code>Item</code> and what is it?</p>
+<p>If we look at the source for <a href="https://doc.rust-lang.org/beta/std/iter/trait.Iterator.html"><code>Iterator</code></a>, we see this at the top:</p>
+<div class="language-text highlight"><pre><span></span><code>pub trait Iterator {
+    type Item;         // â There it is!
+
+    // Required method
+    fn next(&amp;mut self) -&gt; Option&lt;Self::Item&gt;;
+</code></pre></div>
+<p>What is this <code>type Item</code> stuff in the trait? Turns out that's an <a href="https://doc.rust-lang.org/book/ch20-02-advanced-traits.html#specifying-placeholder-types-in-trait-definitions-with-associated-types"><em>associated type</em></a>, a way of bundling some additional type information along with an implementation of the trait. For example, I might be making my own iterator that implements <code>Iterator</code> over the type I happen to be using, say <code>u64</code>. In that case, I could do this:</p>
+<div class="language-text highlight"><pre><span></span><code>impl Iterator for MyStruct {
+    type Item = u64;
+
+    //...
+}
+</code></pre></div>
+<p>Now if someone uses a <code>MyStruct</code> as an iterator, the type held within (<code>u64</code>) is automatically bundled along with the iterator. If we didn't have this, we'd have to add it as another generic type. That's a lot less ergonomic, among other things.</p>
+<blockquote>
+<p>More reading:</p>
+<ul>
+<li><a href="https://doc.rust-lang.org/book/ch20-02-advanced-traits.html#specifying-placeholder-types-in-trait-definitions-with-associated-types">The Rust Book, <em>Associated Types</em></a></li>
+<li><a href="https://doc.rust-lang.org/rust-by-example/generics/assoc_items/types.html">Rust by Example, <em>Associated Types</em></a></li>
+<li><a href="https://github.com/rust-lang/rfcs/blob/master/text/0195-associated-items.md">RFC 195, <em>Associated Items</em></a></li>
+<li><a href="https://www.reddit.com/r/rust/comments/14twron/why_do_you_need_associated_types_in_rust_why_not/">Reddit, <em>Why do you need associated types?</em></a>
+</li>
+</ul>
+</blockquote>
+<p>Sure enough, if we <a href="https://doc.rust-lang.org/beta/src/std/env.rs.html#867-889">look at the <code>Args</code> source</a>, we see:</p>
+<div class="language-text highlight"><pre><span></span><code>impl Iterator for Args {
+    type Item = String;
+</code></pre></div>
+<p>There we go.</p>
+<p>So, to answer my question, I have to specify the type as <code>Vec&lt;String&gt;</code> and then Rust can figure out <code>Item</code> from the type we're assigning into. If we left the type off, it would be an error because... Rust doesn't know what the type of <code>Item</code> is?</p>
+<p>No, wait. Rust has that information. <code>args()</code> returns an <code>Args</code>, which implements <code>Iterator</code> with <code>type Item = String</code>. It knows it's getting <code>String</code>s out of it.</p>
+<p>What it doesn't know is that I want this in a <code>Vec</code>! All <code>collect()</code> knows, in this case, is that it's collecting into something that implements <code>FromIterator&lt;String&gt;</code>. That could be a <code>Vec</code> or it could be an <code>Antelope</code>. So we have to say:</p>
+<div class="language-text highlight"><pre><span></span><code>let args: Vec&lt;String&gt; = std::env::args().collect();
+</code></pre></div>
+<p>Actually, since it knows the <code>String</code> part, we can just let the compiler fill that in, too. We only need <code>Vec</code>. Here's how:</p>
+<div class="language-text highlight"><pre><span></span><code>let args: Vec&lt;_&gt; = std::env::args().collect();
+</code></pre></div>
+<p>All that said, we could also do it the other way and tell <code>collect()</code> exactly what type to use. That uses <a href="https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.collect"><em>turbo fish</em></a> notation (<code>::&lt;&gt;</code>):</p>
+<div class="language-text highlight"><pre><span></span><code>let args = std::env::args().collect::&lt;Vec&lt;String&gt;&gt;();
+let args = std::env::args().collect::&lt;Vec&lt;_&gt;&gt;();      // Or this
+</code></pre></div>
+<p>I didn't have to give <code>args</code> a type; the compiler infers it from the right hand side. Let's look at <code>collect()</code> again:</p>
+<div class="language-text highlight"><pre><span></span><code>fn collect&lt;B&gt;(self) -&gt; B
+</code></pre></div>
+<p>What the turbo fish does is it sets type that <code>B</code> is. Earlier, with the type <code>Vec&lt;String&gt;</code> attached to <code>args</code>, the compiler could fill <code>B</code> in itself, inferring it from the type of <code>args</code>. Now, with <code>Vec&lt;String&gt;</code> attached to the <code>collect()</code>, the compiler can infer the type of <code>args</code> in that direction.</p>
+<p>Same thing, different way. Personally I prefer the type attached to the variable for readability, but that's just me.</p>
+<p>We could do both:</p>
+<div class="language-text highlight"><pre><span></span><code>let args: Vec&lt;String&gt; = std::env::args().collect::&lt;Vec&lt;String&gt;&gt;();
+</code></pre></div>
+<p>but that's just redundantly redundant.</p>
+<h2 id="parsing-tokens">Parsing Tokens<a class="headerlink" href="#parsing-tokens" title="Permanent link">&para;</a></h2>
+<p>There are two kinds of tokens in our RPN calculator: numbers and operators. We'll differentiate by trying to parse it as a number, then, if that fails, trying to see if it's a valid token.</p>
+<p>Here's how to parse a string into a type like we did with <code>.parse()</code> in the original code at the top of the page. Keep in mind that <code>a</code> is a <code>String</code>, so <code>.parse&lt;F&gt;()</code> must be a method on <code>String</code>, and it is.</p>
+<div class="language-text highlight"><pre><span></span><code>match a.parse::&lt;i64&gt;() {
+</code></pre></div>
+<p>And there's the turbo fish again. In this case we're not doing an assignment so we can't specify a type on the left, and we're forced to use it. Let's dig a bit into these traits.</p>
+<p>This is what we have for <code>parse()</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>pub fn parse&lt;F&gt;(&amp;self) -&gt; Result&lt;F, &lt;F as FromStr&gt;::Err&gt;
+where
+    F: FromStr,
+</code></pre></div>
+<p>So the type we specify in the turbo fish has to implement <code>FromStr</code>. Does <code>i64</code> do that? <a href="https://doc.rust-lang.org/std/primitive.i64.html#impl-FromStr-for-i64">Yes, it does</a>. Lots of things do.</p>
+<p>This is interesting to me because it means that all the individual types that implement <code>FromStr</code> handle their own parsing. Floats will do their parsing independent of the integers that do theirs.</p>
+<p>This actually makes the <code>parse()</code> code in <code>String</code> dirt-simple:</p>
+<div class="language-text highlight"><pre><span></span><code>pub fn parse&lt;F: FromStr&gt;(&amp;self) -&gt; Result&lt;F, F::Err&gt; {
+    FromStr::from_str(self)
+}
+</code></pre></div>
+<p>That's it. All we need to do is somehow specify what <code>&lt;F&gt;</code> is and the appropriate <code>from_str()</code> method is called.</p>
+<h2 id="using-the-stack-and-errors">Using the Stack and Errors<a class="headerlink" href="#using-the-stack-and-errors" title="Permanent link">&para;</a></h2>
+<p>So we try to parse the number, and if that works, we push it on the stack, otherwise we start checking to see if the argument is an operator. If it is an operator, we pop the operands, do the operation, and push the result on the stack.</p>
+<div class="language-text highlight"><pre><span></span><code>Ok(n) =&gt; stack.push(n),          // parse() succeded
+Err(_) =&gt; match a.as_str() {     // parse() failed
+    &quot;+&quot; =&gt; {
+        let o2 = stack.pop().unwrap();
+        let o1 = stack.pop().unwrap();
+        stack.push(o1 + o2);
+    }
+</code></pre></div>
+<p>We have those pesky <code>unwrap()</code> calls in there. These operate on <code>Option</code>s or <code>Result</code>s and try to get to the <code>Ok()</code> or <code>Some()</code> that's embedded within them. If it's <code>Err()</code> or <code>None</code>, <code>unwrap()</code> will crash the program. It's pretty heavy-handed and crashes are typically not a desirable quality in any given piece of software.</p>
+<p>I can force this to happen by computing <code>1 +</code>. (That'll try to pop two things off the stack, but there's only one, so the second <code>pop()</code> will return <code>None</code> and <code>unwrap()</code> will bomb out at that point.)</p>
+<div class="language-text highlight"><pre><span></span><code>$ cargo run 1 +
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s
+     Running `/home/beej/src/rust/rpncalc/target/debug/rpncalc 1 +`
+
+thread &#39;main&#39; panicked at src/main.rs:14:42:
+called `Option::unwrap()` on a `None` value
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+</code></pre></div>
+<p>So it's not super-robust.</p>
+<p>We could nest more <code>match</code>es, or push these into functions (would certainly be better than nesting). We could also use <code>if let</code>, but this is positively obnoxious:</p>
+<div class="language-text highlight"><pre><span></span><code>let mut o1 = 0i64;
+let mut o2 = 0i64;
+
+if let Some(t) = stack.pop() {
+    o2 = t;
+} else {
+    println!(&quot;missing argument&quot;);
+}
+if let Some(t) = stack.pop() {
+    o1 = t;
+} else {
+    println!(&quot;missing argument&quot;);
+}
+
+stack.push(o1 + o2);
+</code></pre></div>
+<p>We can actually clean that up with a tuple assignment like so:</p>
+<div class="language-text highlight"><pre><span></span><code>if let (Some(o2), Some(o1)) = (stack.pop(), stack.pop()) {
+    stack.push(o1 + o2);
+} else {
+    println!(&quot;missing argument&quot;);
+}
+</code></pre></div>
+<p>Those <code>stack.pop()</code> calls definitely have side-effects, so they'd better be in the right order! Rust guarantees left-to-right evaluation in the tuple, so that should be fine.</p>
+<p>That's cleaner for sure, and we got rid of some of our <code>unwrap()</code>s and put in some rudimentary error handling.</p>
+<p>But can we do better? Maybe it's best to restructure this to flatten it out a bit.</p>
+<p>We could check to see if we got a number, and if we did, push it and continue.</p>
+<p>Otherwise, we could do our match.</p>
+<div class="language-text highlight"><pre><span></span><code>for a in args {
+
+    if let Ok(n) = a.parse::&lt;i64&gt;() {
+        stack.push(n);
+        continue;  // next iteration
+    }
+
+    match a.as_str() {
+        &quot;+&quot; =&gt; {
+            if let (Some(o2), Some(o1)) = (stack.pop(), stack.pop()) {
+                stack.push(o1 + o2);
+            } else {
+                println!(&quot;missing argument&quot;);
+            }
+        }
+</code></pre></div>
+<p>That gets rid of the <code>match</code>-in-<code>match</code> nesting. Nothing particularly Rusty, hereâjust some run-of-the-mill restructuring.</p>
+<p>But I have some repeated code in that <code>match</code>.</p>
+<div class="language-text highlight"><pre><span></span><code>match a.as_str() {
+    &quot;+&quot; =&gt; {
+        if let (Some(o2), Some(o1)) = (stack.pop(), stack.pop()) {
+            stack.push(o1 + o2);
+        } else {
+            println!(&quot;missing argument&quot;);
+        }
+    }
+    &quot;-&quot; =&gt; {
+        if let (Some(o2), Some(o1)) = (stack.pop(), stack.pop()) {
+            stack.push(o1 - o2);
+        } else {
+            println!(&quot;missing argument&quot;);
+        }
+    }
+</code></pre></div>
+<p>And if we add more operators, it's just going to get worse. I want some general code to pop two things, perform some operation, and then push them. One way to do this is with an anonymous function, which is called a <em>closure</em> in Rust and some other languages.</p>
+<p>Here's how this might work:</p>
+<div class="language-text highlight"><pre><span></span><code>match a.as_str() {
+    &quot;+&quot; =&gt; math_op(&amp;mut stack, |x, y| x + y),
+    &quot;-&quot; =&gt; math_op(&amp;mut stack, |x, y| x - y),
+    _ =&gt; {
+        println!(&quot;unknown operator {}&quot;, a);
+        std::process::exit(1);
+    }
+</code></pre></div>
+<p>Oooo... so much cleaner! But what is this?</p>
+<div class="language-text highlight"><pre><span></span><code>math_op(&amp;mut stack, |x, y| x + y)
+</code></pre></div>
+<p><code>math_op()</code> is (will be) a function that takes two arguments. The first is a mutable reference to the stack. The second is a closureâit's a function that accepts two arguments (in parameters <code>x</code> and <code>y</code>) and returns the result of the expression after it. (Nothing magical about the return; <code>x+y</code> is the last line in the closure, so it takes on the return value.)</p>
+<p>All that's left is to code up the <code>math_op()</code> function. Great. We'll use parameter <code>f</code> to represent the closure function.</p>
+<div class="language-text highlight"><pre><span></span><code>fn math_op(stack: &amp;mut Vec, f ...
+</code></pre></div>
+<p>What type is that? Well, we could rabbit hole on this one, but I don't want to get too far off track. Here's my understanding, which is somewhat incomplete.</p>
+<p>Rust has a trait, <code>FnOnce</code>, that represents a function (meant to be called once). Closures implement this trait.</p>
+<p>In this case, we know we know our closure implements this in particular:</p>
+<div class="language-text highlight"><pre><span></span><code>FnOnce(i64, i64) -&gt; i64
+</code></pre></div>
+<p>Our closures take two <code>i64</code>s as arguments and return an <code>i64</code>.</p>
+<p>We might be tempted to:</p>
+<div class="language-text highlight"><pre><span></span><code>fn math_op(stack: &amp;mut Vec, f: FnOnce(i64, i64) -&gt; i64) // NOPE
+</code></pre></div>
+<p>But that won't compile. <code>FnOnce</code> is a <em>trait</em> , not a type. But we can certainly use generics to enforce it!</p>
+<div class="language-text highlight"><pre><span></span><code>fn math_op&lt;A&gt;(stack: &amp;mut Vec, f: A)
+where
+    A: FnOnce(i64, i64) -&gt; i64,
+</code></pre></div>
+<p>Which says the second argument <code>f</code> is of generic type <code>A</code> where <code>A</code> is required to implement <code>FnOnce(i64, i64) -&gt; i64</code>. Which our closures do.</p>
+<p>So the <code>math_op()</code> function will look like this:</p>
+<div class="language-text highlight"><pre><span></span><code>fn math_op&lt;A&gt;(stack: &amp;mut Vec&lt;i64&gt;, f:A)
+where
+    A: FnOnce(i64, i64) -&gt; i64,
+{
+    if let (Some(o2), Some(o1)) = (stack.pop(), stack.pop()) {
+        let result = f(o1, o2);
+        stack.push(result);
+    } else {
+        println!(&quot;missing argument&quot;);
+    }
+}
+</code></pre></div>
+<p>And we can call it like we planned:</p>
+<div class="language-text highlight"><pre><span></span><code>match a.as_str() {
+    &quot;+&quot; =&gt; math_op(&amp;mut stack, |x, y| x + y),
+    &quot;-&quot; =&gt; math_op(&amp;mut stack, |x, y| x - y),
+</code></pre></div>
+<p>Slick!</p>
+<p>One final rabbit hole fun fact for the section is that all functions actually implement <code>FnOnce</code>. So I could have a completely separate function like this:</p>
+<div class="language-text highlight"><pre><span></span><code>fn subtract(x: i64, y: i64) -&gt; i64 {
+    x - y
+}
+</code></pre></div>
+<p>and then use it in my <code>match</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>match a.as_str() {
+    &quot;+&quot; =&gt; math_op(&amp;mut stack, |x, y| x + y),
+    &quot;-&quot; =&gt; math_op(&amp;mut stack, subtract),     // Works!
+</code></pre></div>
+<p>All kinds of fun with function pointers! Woot! This goes down a path to visit on another day.</p>
+<h2 id="get-some-results">Get Some Results<a class="headerlink" href="#get-some-results" title="Permanent link">&para;</a></h2>
+<p>I'm almost happy with that, but really <code>math_op()</code> should be returning some kind of <code>Result</code> instead of printing the error message. But then don't we have to handle that in the caller and mess up all our clean code?</p>
+<p>Yes... But maybe there's a way. Right now it's all in one big main, but we could break out the main code into another function, and <em>that</em> function could just propagate the error back to <code>main()</code> which could handle it. That makes sense in this case since invalid operands should be completely fatal to the run.</p>
+<p>But can we get our hands on that <code>Result</code> and check it another way?</p>
+<p>Coming from other languages, I forget that in Rust <code>match</code> (and other) statements can act as expressions and we can "return" things from them.</p>
+<p>Let's change the <code>math_op()</code> to return a <code>Result</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>fn math_op&lt;A&gt;(stack: &amp;mut Vec&lt;i64&gt;, f: A) -&gt; Result&lt;(), &amp;&#39;static str&gt;
+where
+    A: FnOnce(i64, i64) -&gt; i64,
+{
+    if let (Some(o2), Some(o1)) = (stack.pop(), stack.pop()) {
+        let result = f(o1, o2);
+        stack.push(result);
+        Ok(())
+    } else {
+        Err(&quot;missing argument&quot;)
+    }
+}
+</code></pre></div>
+<p>And now when we use it in the <code>match</code> and then see if the <code>Result</code> holds an <code>Err</code> after that:</p>
+<div class="language-text highlight"><pre><span></span><code>let result = match a.as_str() {
+    &quot;+&quot; =&gt; math_op5(&amp;mut stack, |x, y| x + y),
+    &quot;-&quot; =&gt; math_op5(&amp;mut stack, |x, y| x - y),
+    _ =&gt; Err(&quot;unknown operator&quot;),
+};
+
+if let Err(e) = result {
+    eprintln!(&quot;Error: {} at token {}&quot;, e, a);
+    std::process::exit(1);
+}
+</code></pre></div>
+<p>Now it's a little beefier.</p>
+<h2 id="the-final-code">The Final Code<a class="headerlink" href="#the-final-code" title="Permanent link">&para;</a></h2>
+<p>I'd throw this in the <a href="https://play.rust-lang.org/">Rust Playground</a>, but it apparently doesn't support command line arguments. So here it is.</p>
+<div class="language-text highlight"><pre><span></span><code>fn math_op&lt;A&gt;(stack: &amp;mut Vec&lt;i64&gt;, f: A) -&gt; Result&lt;(), &amp;&#39;static str&gt;
+where
+    A: FnOnce(i64, i64) -&gt; i64,
+{
+    if let (Some(o2), Some(o1)) = (stack.pop(), stack.pop()) {
+        let result = f(o1, o2);
+        stack.push(result);
+        Ok(())
+    } else {
+        Err(&quot;missing argument&quot;)
+    }
+}
+
+fn main() {
+    let mut args = std::env::args();
+    let mut stack: Vec&lt;i64&gt; = Vec::new();
+
+    let _ = args.next();
+
+    for a in args {
+        if let Ok(n) = a.parse::&lt;i64&gt;() {
+            stack.push(n);
+            continue; // next iteration
+        }
+
+        let result = match a.as_str() {
+            &quot;+&quot; =&gt; math_op(&amp;mut stack, |x, y| x + y),
+            &quot;-&quot; =&gt; math_op(&amp;mut stack, |x, y| x - y),
+            _ =&gt; Err(&quot;unknown operator&quot;),
+        };
+
+        if let Err(e) = result {
+            eprintln!(&quot;Error: {} at token {}&quot;, e, a);
+            std::process::exit(1);
+        }
+    }
+
+    if let Some(result) = stack.pop() {
+        println!(&quot;{}&quot;, result);
+    } else {
+        eprintln!(&quot;Error: empty stack&quot;);
+        std::process::exit(2);
+    }
+}
+</code></pre></div>
+<p>Good rabbit holes in this one.</p>
+<h2 id="further-reading">Further Reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
+<p>If you really want to learn more fun things about RPN math, read up on <a href="https://en.wikipedia.org/wiki/Shunting_yard_algorithm">The Shunting Yard algorithm</a> which takes a "regular" algebraic expression in <em>infix</em> notation and converts it to the postfix notation we used in this blog.</p>
+<h2 id="comments">Comments<a class="headerlink" href="#comments" title="Permanent link">&para;</a></h2>
+<p><a href="https://mastodon.sdf.org/@beejjorgensen/115432898842626559">View Comments</a> <a href="https://mastodon.sdf.org/@beejjorgensen/115432898842626559">Reply</a></p>
+<p>Click on "View Comments" to see the comments.</p>
+<p><a href="http://beej.us/blog/"><strong>Blog</strong></a>  â¡  <a href="mailto:beej@beej.us"><strong>beej@beej.us</strong></a>  â¡  <a href="http://beej.us/"><strong>Home page</strong></a></p>
 
 
 
@@ -425,7 +887,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 11:14:56 UTC">2026-02-05</span>
   </span>
 
     

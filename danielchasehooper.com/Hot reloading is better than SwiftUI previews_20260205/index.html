@@ -25,7 +25,7 @@
     
     
       
-        <title>Hot reloading is better than SwiftUI previews\n\n来源: https://danielchasehooper.com\n链接: https://danielchasehooper.com/posts/hot-reloading-swiftui/\n日期: Mon, 13 Oct 2025 00:00:00 +0000\n\n---\n\nDid you know you can change the code of a SwiftUI app while it’s running? And that you can do it without using Xcode? The technique is called ‘hot reloading’ and I’ll show you how to do it by making a Todo app\nRead the whole article on\ndanielchasehooper.com → - Hacker News 精选博客</title>
+        <title>Hot reloading is better than SwiftUI previews - Hacker News 精选博客</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hot-reloading-is-better-than-swiftui-previewsnn-httpsdanielchasehoopercomn-httpsdanielchasehoopercompostshot-reloading-swiftuin-mon-13-oct-2025-000000-0000nn-nndid-you-know-you-can-change-the-code-of-a-swiftui-app-while-its-running-and-that-you-can-do-it-without-using-xcode-the-technique-is-called-hot-reloading-and-ill-show-you-how-to-do-it-by-making-a-todo-appnread-the-whole-article-onndanielchasehoopercom" class="md-skip">
+        <a href="#hot-reloading-is-better-than-swiftui-previews" class="md-skip">
           跳转至
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Hot reloading is better than SwiftUI previews\n\n来源: https://danielchasehooper.com\n链接: https://danielchasehooper.com/posts/hot-reloading-swiftui/\n日期: Mon, 13 Oct 2025 00:00:00 +0000\n\n---\n\nDid you know you can change the code of a SwiftUI app while it’s running? And that you can do it without using Xcode? The technique is called ‘hot reloading’ and I’ll show you how to do it by making a Todo app\nRead the whole article on\ndanielchasehooper.com →
+              Hot reloading is better than SwiftUI previews
             
           </span>
         </div>
@@ -404,7 +404,489 @@
   
 
 
-<h1 id="hot-reloading-is-better-than-swiftui-previewsnn-httpsdanielchasehoopercomn-httpsdanielchasehoopercompostshot-reloading-swiftuin-mon-13-oct-2025-000000-0000nn-nndid-you-know-you-can-change-the-code-of-a-swiftui-app-while-its-running-and-that-you-can-do-it-without-using-xcode-the-technique-is-called-hot-reloading-and-ill-show-you-how-to-do-it-by-making-a-todo-appnread-the-whole-article-onndanielchasehoopercom">Hot reloading is better than SwiftUI previews\n\n<strong>来源:</strong> https://danielchasehooper.com\n<strong>链接:</strong> https://danielchasehooper.com/posts/hot-reloading-swiftui/\n<strong>日期:</strong> Mon, 13 Oct 2025 00:00:00 +0000\n\n---\n\nDid you know you can change the code of a SwiftUI app while it’s running? And that you can do it without using Xcode? The technique is called ‘hot reloading’ and I’ll show you how to do it by making a Todo app\nRead the whole article on\ndanielchasehooper.com →<a class="headerlink" href="#hot-reloading-is-better-than-swiftui-previewsnn-httpsdanielchasehoopercomn-httpsdanielchasehoopercompostshot-reloading-swiftuin-mon-13-oct-2025-000000-0000nn-nndid-you-know-you-can-change-the-code-of-a-swiftui-app-while-its-running-and-that-you-can-do-it-without-using-xcode-the-technique-is-called-hot-reloading-and-ill-show-you-how-to-do-it-by-making-a-todo-appnread-the-whole-article-onndanielchasehoopercom" title="Permanent link">&para;</a></h1>
+<h1 id="hot-reloading-is-better-than-swiftui-previews">Hot reloading is better than SwiftUI previews<a class="headerlink" href="#hot-reloading-is-better-than-swiftui-previews" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://danielchasehooper.com
+<strong>链接:</strong> https://danielchasehooper.com/posts/hot-reloading-swiftui/
+<strong>日期:</strong> Mon, 13 Oct 2025 00:00:00 +0000</p>
+<hr />
+<p><a href="https://danielchasehooper.com/">Daniel Hooper</a></p>
+<p><a href="https://danielchasehooper.com/">Home</a> ・ <a href="https://danielchasehooper.com/posts">Articles</a> ・ <a href="https://danielchasehooper.com/#projects">Projects</a> ・ <a href="https://danielchasehooper.com/about">About</a> ・ <a href="https://x.com/danielchooper">X.com </a><a href="https://bsky.app/profile/danielchooper.bsky.social">Bluesky </a><a href="https://mastodon.gamedev.place/@danielchooper">Mastodon</a> <a href="https://danielchasehooper.com/feed.xml">RSS</a></p>
+<h1 id="hot-reloading-is-better-than-swiftui-previews_1">Hot reloading is better than SwiftUI previews<a class="headerlink" href="#hot-reloading-is-better-than-swiftui-previews_1" title="Permanent link">&para;</a></h1>
+<p>October 13, 2025・14 minute read</p>
+<p>There is a better way than Xcode Previews to quickly iterate on your app. It's called "Hot Reloading". Here you can see it in action: the macOS app on the left is changing dynamically in response to my code changes on the right.</p>
+<p>Your browser does not support the video tag. <img alt="" src="todo.png" /></p>
+<p>That hot reloading experience is better than Xcode Previews because:</p>
+<ul>
+<li>No need to create mock preview data, that's the <em>real</em> app with <em>real</em> data</li>
+<li>Both the UI <em>and</em> the business logic can be updated</li>
+<li>The app doesn't reset to the root screen after each code edit. That means you can edit popups, panels, and deeply nested screens in the context they get shown in.</li>
+<li>Xcode isn't required — that app on the right is Sublime Text</li>
+</ul>
+<p>I'll show you how it's done by making a Todo app</p>
+<h2 id="the-plan">The Plan<a class="headerlink" href="#the-plan" title="Permanent link">&para;</a></h2>
+<p>The key to hot reloading is "dynamic libraries", which allow a running program to load and call new functions without restarting. The plan for using dynamic libraries to hot reload is roughly:</p>
+<ol>
+<li>Compile the app's UI and logic into a library</li>
+<li>Make a host app that uses the library's UI</li>
+<li>When the library changes, reload it in the host app</li>
+<li>Give the new library the old library's state</li>
+</ol>
+<p>I like this approach because it doesn't require any dependencies and is only 120 lines. While it does require a certain project structure, that's simpler and more understandable than patching an unmodified program at runtime1. You can do this in <a href="https://github.com/karl-zylinski/odin-raylib-hot-reload-game-template">other languages</a> and on other operating systems2. I'll walk you through it line by line. If you just want to read the finished code, you can get it at the end of this article.</p>
+<h2 id="the-naive-approach">The Naïve Approach<a class="headerlink" href="#the-naive-approach" title="Permanent link">&para;</a></h2>
+<p>Let's start with step 1 of the plan: build a dynamic library that contains our UI. The library we build here will get loaded by the app we create in step 2. We won't be using Xcode, so create <code>library.swift</code> in a new empty directory and with this code:</p>
+<p>library.swift</p>
+<div class="language-text highlight"><pre><span></span><code>import SwiftUI
+
+public func createView() -&gt; some View {
+  return Text(&quot;Hello World!&quot;)
+}
+</code></pre></div>
+<p>And we can compile that with a <code>build_library.sh</code> shell script:</p>
+<p>build_library.sh</p>
+<div class="language-text highlight"><pre><span></span><code>#!/usr/bin/env bash
+set -euo pipefail
+swiftc -emit-library -o UIPreview.dylib library.swift
+</code></pre></div>
+<p>Make it executable with <code>chmod +x build_library.sh</code>, and give it a run with <code>./build_library.sh</code>. That creates our dynamic library <code>UIPreview.dylib</code>.</p>
+<p>The library can be loaded with <code>dlopen()</code>, which asks dyld (macOS's dynamic linker) to load the library's code into our process's address space. Then to call functions in the library, we look up the function's address by name with <code>dlsym()</code>.</p>
+<p>In Swift that looks like this:</p>
+<p>loader.swift</p>
+<div class="language-text highlight"><pre><span></span><code>import SwiftUI
+guard 
+  let lib = dlopen(&quot;UIPreview.dylib&quot;, 0),
+  let symbol = dlsym(lib, &quot;createView&quot;) 
+else {
+  fatalError(String(cString: dlerror()))
+}
+let createView = unsafeBitCast(symbol, to: (() -&gt; View).self)
+</code></pre></div>
+<p>Let's run it</p>
+<div class="language-text highlight"><pre><span></span><code>$ swift loader.swift 
+Fatal error: dlsym(0x721c7f70, createView): symbol not found
+</code></pre></div>
+<p>Uh oh.</p>
+<p>There is no symbol named "createView" thanks to Swift's <a href="https://en.wikipedia.org/wiki/Name_mangling">name mangling</a>, which renames every function to ensure <a href="https://en.wikipedia.org/wiki/Function_overloading">overloaded functions</a> have unique names3. This is a problem for us because we need the name of the function as it appears in the library in order call it. Let's see what the mangled name is using <code>nm</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>$ nm -g --defined-only UIPreview.dylib
+0000000000000cc0 T _$s9UIPreview10createViewQryF
+0000000000000dd8 S _$s9UIPreview10createViewQryFQOMQ
+</code></pre></div>
+<p>We can use <code>swift demangle</code> to see what that alphabet soup means (the leading underscore is not part of symbol names):</p>
+<div class="language-text highlight"><pre><span></span><code>$ swift demangle &#39;$s9UIPreview10createViewQryF&#39;
+$s9UIPreview10createViewQryF ---&gt; UIPreview.createView() -&gt; some
+
+$ swift demangle &#39;$s9UIPreview10createViewQryFQOMQ&#39;
+$s9UIPreview10createViewQryFQOMQ ---&gt; opaque type descriptor for 
+    opaque return type of UIPreview.createView() -&gt; some
+</code></pre></div>
+<p>Looks like <code>$s9UIPreview10createViewQryF</code> is our function. We can update <code>loader.swift</code> with that name and try again</p>
+<p>loader.swift</p>
+<div class="language-text highlight"><pre><span></span><code>import SwiftUI
+guard 
+  let lib = dlopen(&quot;UIPreview.dylib&quot;, 0),
+  let symbol = dlsym(lib, &quot;$s9UIPreview10createViewQryF&quot;) 
+else {
+  fatalError(String(cString: dlerror()))
+}
+let createView = unsafeBitCast(symbol, to: (() -&gt; View).self)
+</code></pre></div>
+<p>Running that reveals the second problem:</p>
+<div class="language-text highlight"><pre><span></span><code>$ swift loader.swift 
+Fatal error: Can&#39;t unsafeBitCast between types of different sizes
+</code></pre></div>
+<p>What's happening is <code>dlsym()</code> returns an 8 byte pointer to the function, but Swift functions require 16 bytes4 of information to call (an 8 byte function pointer plus 8 bytes of context about captured variables). Rather than reverse engineer the 16 byte Swift function type, I went another route…</p>
+<h2 id="bridging-through-c">Bridging Through C<a class="headerlink" href="#bridging-through-c" title="Permanent link">&para;</a></h2>
+<p>We can avoid both the name mangling and Swift function type by exporting <code>createView</code> as a C function. This is done using Swift's <code>@_cdecl()</code> attribute. We'll keep the exported name the same as the Swift function name.</p>
+<p>library.swift</p>
+<div class="language-text highlight"><pre><span></span><code>@_cdecl(&quot;createView&quot;)
+public func createView() -&gt; some View {
+</code></pre></div>
+<p>Now we have to change the return type because C functions aren't able to return Swift types, and <code>some View</code> is a Swift type. The workaround is to place the SwiftUI View inside a <code>NSHostingView</code>5 and return that:</p>
+<p>library.swift</p>
+<div class="language-text highlight"><pre><span></span><code>@_cdecl(&quot;createView&quot;)
+public func createView() -&gt; NSView {
+  return NSHostingView(rootView: Text(&quot;Hello World!&quot;))
+}
+</code></pre></div>
+<p>That works because <code>NSHostingView</code> is an Objective‑C type, and those <em>can</em> be returned from a C function.</p>
+<p>Now for the interesting stuff: making the App.</p>
+<h2 id="the-app">The App<a class="headerlink" href="#the-app" title="Permanent link">&para;</a></h2>
+<p>Now for Step 2 of the plan: making an app to host our library from step 1. Make <code>app.swift</code> and start with the basics: showing a window and terminating when it closes.</p>
+<p>app.swift</p>
+<div class="language-text highlight"><pre><span></span><code>import SwiftUI
+import AppKit
+
+@main
+struct Main: App {
+  var body: some Scene {
+    Window(&quot;Hot Reloading&quot;, id:&quot;&quot;) {
+      DylibView()
+      .onAppear {
+        NSApplication.shared.setActivationPolicy(.regular)
+        NSApplication.shared.activate(ignoringOtherApps: true)
+      }
+      .onDisappear {
+        NSApplication.shared.terminate(nil)
+      }
+    }
+  }
+}
+</code></pre></div>
+<p>The <code>onAppear</code> code brings the window to foreground on launch. macOS does that automatically for app bundles, but for simplicity we'll compile to a plain executable.</p>
+<p>Now we implement <code>DylibView</code>:</p>
+<p>app.swift</p>
+<div class="language-text highlight"><pre><span></span><code>struct DylibView: NSViewRepresentable {
+  func makeCoordinator() -&gt; DylibViewCoordinator {
+    return DylibViewCoordinator()
+  }
+
+  func makeNSView(context: Context) -&gt; NSView {
+    return context.coordinator.container
+  }
+
+  func updateNSView(_ nsView: NSView, context: Context) {}
+}
+</code></pre></div>
+<p>That uses the <code>NSViewRepresentable</code> protocol to bridge the gap between the NSView from our library and the SwiftUI window of the host app. <code>NSViewRepresentable</code> "undoes" what <code>NSHostingView</code> did in <code>library.swift</code>, completing the SwiftUI → NSView → SwiftUI round trip.</p>
+<p>We don't do anything in <code>updateNSView</code> because our updates will happen outside of SwiftUI's typical update cycle.</p>
+<p>That was mostly boilerplate code, the interesting stuff is in <code>DylibViewCoordinator</code>:</p>
+<p>app.swift</p>
+<div class="language-text highlight"><pre><span></span><code>class DylibViewCoordinator {
+  let dylibName = &quot;UIPreview.dylib&quot;
+  var library:UnsafeMutableRawPointer?
+  var container = NSView()
+
+  init() {
+    update()
+  }
+
+  func update() {
+    guard let newLibrary = openLibrary() else {
+      print(String(cString: dlerror()))
+      return
+    }
+
+    guard let viewSym = dlsym(newLibrary, &quot;createView&quot;)
+    else {
+      print(String(cString: dlerror()))
+      dlclose(newLibrary)
+      return
+    }
+
+    typealias CreateViewFn =
+      (@convention(c) () -&gt; NSView)
+    let createView  = unsafeBitCast(viewSym, 
+                                    to: CreateViewFn.self)
+
+    let dylibView = createView()
+    dylibView.autoresizingMask = [NSView.AutoresizingMask.width, NSView.AutoresizingMask.height]
+    dylibView.frame = container.bounds
+    container.addSubview(dylibView)
+  }
+</code></pre></div>
+<p>As we've seen before, that opens the library, finds the <code>createView</code> symbol, and casts it to a C function type with <code>@convention(c)</code>.</p>
+<p>The <code>dylibView</code> is placed inside <code>container</code>, which is what we handed to SwiftUI in <code>DylibView.makeNSView()</code>. When we implement reloading later on, the container view makes it possible to switch out <code>dylibView</code> right under SwiftUI's nose.</p>
+<p>Here's the code for <code>openLibrary</code>:</p>
+<p>app.swift, in DylibViewCoordinator</p>
+<div class="language-text highlight"><pre><span></span><code>func openLibrary() -&gt; UnsafeMutableRawPointer? {
+  return dlopen(dylibName, RTLD_LOCAL | RTLD_FIRST);
+}
+</code></pre></div>
+<p>For now it's just a wrapper around <code>dlopen</code>. It'll grow when we add hot reloading.</p>
+<p>And finally we get rid of the view and close the library in <code>deinit</code>. We have to close the library after getting rid of the view because the view may be using the library's code.</p>
+<p>app.swift, in DylibViewCoordinator</p>
+<div class="language-text highlight"><pre><span></span><code>  deinit {
+    container.subviews.first?.removeFromSuperview()
+    if library != nil { dlclose(library) }
+  }
+} // end of DylibViewCoordinator
+</code></pre></div>
+<p>let's make <code>run.sh</code> to compile and run the app:</p>
+<p>run.sh</p>
+<div class="language-text highlight"><pre><span></span><code>#!/usr/bin/env bash
+set -euo pipefail
+./build_library.sh
+swiftc -o UIPreview -parse-as-library src/app.swift
+./UIPreview
+</code></pre></div>
+<p>After <code>chmod +x run.sh</code> and running it, you should see this:</p>
+<p><img alt="The host app showing the text 'hello world'" src="/posts/hot-reloading-swiftui/hello.png" /></p>
+<p>Woo! It's not very interesting, but we'll build it out. Let's get reloading working first.</p>
+<h2 id="reloading">Reloading<a class="headerlink" href="#reloading" title="Permanent link">&para;</a></h2>
+<p>So far all we've done is make a normal app but with a lot more steps. It will all be worth it once hot reloading works.</p>
+<p>The first change is to call <code>update()</code> on a timer:</p>
+<p>app.swift</p>
+<div class="language-text highlight"><pre><span></span><code>class DylibViewCoordinator {
+  let dylibName = &quot;UIPreview.dylib&quot;
+  var library:UnsafeMutableRawPointer?
+  var container = NSView()
+  var timer: Timer?
+
+  init() {
+    update()
+    timer = .scheduledTimer(withTimeInterval: 1.0,
+                            repeats: true)
+    { [weak self] _ in
+      self?.update()
+    };
+  }
+</code></pre></div>
+<p>Now that update gets called multiple times, we need to remove the old view before adding the new one. We also need to close the old library:</p>
+<p>app.swift, in update()</p>
+<div class="language-text highlight"><pre><span></span><code>  guard let viewSym = dlsym(newLibrary, &quot;createView&quot;)
+  else {
+    print(String(cString: dlerror()))
+    dlclose(newLibrary)
+    return
+  }
+
+  container.subviews.first?.removeFromSuperview()
+
+  if library != nil { dlclose(library) }
+  library = newLibrary
+
+  typealias CreateViewFn =
+    (@convention(c) () -&gt; NSView)
+  let createView  = unsafeBitCast(viewSym, 
+                                  to: CreateViewFn.self)
+</code></pre></div>
+<p>The timer gets cleaned up in <code>deinit</code>:</p>
+<p>app.swift, in DylibViewCoordinator</p>
+<div class="language-text highlight"><pre><span></span><code>deinit {
+  timer?.invalidate()
+  container.subviews.first?.removeFromSuperview()
+  if library != nil { dlclose(library) }
+}
+</code></pre></div>
+<p>If you ran the app now, it still wouldn't update when the library changes. That's because of this <code>dlopen</code> feature:</p>
+<blockquote>
+<p>A second call to dlopen() with the same path will return the same handle, but the internal reference count for the handle will be incremented.</p>
+<p>— dlopen man page</p>
+</blockquote>
+<p>So even if the <code>UIPreview.dylib</code> file changed, <code>dlopen</code> will see it's the same path as last time, and it won't load the new version. I worked around this by copying the library to a new file before every update.</p>
+<p>We need two more properties in <code>DylibViewCoordinator</code> to support that:</p>
+<p>app.swift</p>
+<div class="language-text highlight"><pre><span></span><code>class DylibViewCoordinator {
+  let dylibName = &quot;UIPreview.dylib&quot;
+  var library:UnsafeMutableRawPointer?
+  var container = NSView()
+  var timer: Timer?
+  var fileNameToggle = false
+  let fm = FileManager.default
+</code></pre></div>
+<p>And we update <code>openLibrary</code> to do the copying:</p>
+<p>app.swift, in DylibViewCoordinator</p>
+<div class="language-text highlight"><pre><span></span><code>func openLibrary() -&gt; UnsafeMutableRawPointer? {
+  let tmpDylibName = &quot;\(fileNameToggle).dylib&quot;
+  try? fm.removeItem(atPath: tmpDylibName)
+  do {
+    try fm.copyItem(atPath: dylibName,
+                    toPath: tmpDylibName)
+  } catch {
+    print(&quot;Error: couldn&#39;t copy dylib&#39;:  \(error)&quot;)
+    return nil
+  }
+  fileNameToggle.toggle()
+
+  return dlopen(tmpDylibName, RTLD_LOCAL | RTLD_FIRST);
+}
+</code></pre></div>
+<p>It alternates between the arbitrary names "true.dylib" and "false.dylib", which is enough to cause <code>dlopen</code> to consider the path "new" and open it.</p>
+<p>Let's test:</p>
+<ol>
+<li>Run <code>./run.sh</code></li>
+<li>Change the <code>Text("Hello World")</code> string in <code>library.swift</code> and <strong>save the file</strong></li>
+<li>In another terminal window, run <code>./build_library.sh</code></li>
+</ol>
+<p>You should see the changes take effect in the app within one second of rebuilding the library!</p>
+<h2 id="conservative-updates">Conservative Updates<a class="headerlink" href="#conservative-updates" title="Permanent link">&para;</a></h2>
+<p>It feels a little wasteful to reload the UI every second even if nothing changed. The "right" way to do this would be to use the <a href="https://developer.apple.com/documentation/coreservices/file_system_events">FSEvents API</a> to monitor the library's file path, but that takes more code than I'm willing to cover in this article. As a compromise, we can check the file modification time and only update if it changes.</p>
+<p>We remember the file's last modification time:</p>
+<p>app.swift, in DylibViewCoordinator</p>
+<div class="language-text highlight"><pre><span></span><code>var timer: Timer?
+var lastModified: Date?
+
+init() {
+</code></pre></div>
+<p>And only proceed through <code>update()</code> if the file modification time changed:</p>
+<p>app.swift, in DylibViewCoordinator.update()</p>
+<div class="language-text highlight"><pre><span></span><code>  func update() {
+    guard
+      let attrs = try? fm.attributesOfItem(atPath: dylibName),
+      let modified = attrs[.modificationDate] as? Date,
+      lastModified != modified
+    else { return }
+    lastModified = modified;
+
+    guard let newLibrary = openLibrary() else {
+</code></pre></div>
+<p>If you restart the app with <code>./run.sh</code>, it should only reload the library when it changes.</p>
+<h2 id="a-full-todo-app">A Full Todo App<a class="headerlink" href="#a-full-todo-app" title="Permanent link">&para;</a></h2>
+<p>Since hot reloading "hello world" is boring, let's write a todo app while using hot reloading. Start the app with <code>./run.sh</code> and leave it running while you write the following code.</p>
+<p>This is the state we'll need in <code>library.swift</code>:</p>
+<p>library.swift</p>
+<div class="language-text highlight"><pre><span></span><code>struct Todo: Identifiable, Equatable {
+  let id = UUID()
+  var title: String
+}
+
+class AppState: ObservableObject {
+  @Published var newItem = &quot;&quot;
+  @Published var todos: [Todo] = [
+    Todo(title: &quot;Read &#39;Computer Systems: A Programmer&#39;s Perspective&#39;&quot;),
+    Todo(title: &quot;Learn C&quot;),
+    Todo(title: &quot;Study algorithms and data structures&quot;),
+  ]
+}
+</code></pre></div>
+<p>If there were a real app, the todo items would be loaded from disk or the network, but we'll just hardcode three items for this example. Hot reloading is especially nice because data is loaded once at startup, and not every time you make a change.</p>
+<p>That state is used by the view:</p>
+<p>library.swift</p>
+<div class="language-text highlight"><pre><span></span><code>struct TodoListView: View {
+  @ObservedObject var state: AppState
+
+  var body: some View {
+    // todo
+  }
+}
+</code></pre></div>
+<p>And we have to update <code>createView</code> to return the <code>TodoListView</code>:</p>
+<p>library.swift</p>
+<div class="language-text highlight"><pre><span></span><code>@_cdecl(&quot;createView&quot;)
+public func createView() -&gt; NSView {
+  return NSHostingView(rootView: TodoListView(state: AppState()))
+}
+</code></pre></div>
+<p>Now there is enough code in place that we can hot reload as we build out the <code>body</code> of <code>TodoListView</code>. You may want to set up your editor to make reloading easier — I configured mine so the cmd + b shortcut both saves the current file and runs <code>./build_library.sh</code></p>
+<p>library.swift, in TodoListView</p>
+<div class="language-text highlight"><pre><span></span><code>var body: some View {
+  List {
+    ForEach(state.todos) { todo in
+      Text(todo.title).padding()
+    }
+    .onDelete { indexSet in
+      state.todos.remove(atOffsets: indexSet)
+    }
+    .onMove { from, to in
+      state.todos.move(fromOffsets: from, toOffset: to)
+    }
+
+    HStack {
+      TextField(&quot;New todo&quot;, text: $state.newItem)
+      Button(&quot;Add&quot;) {
+        if !state.newItem.isEmpty {
+          state.todos.append(Todo(title: state.newItem))
+          state.newItem = &quot;&quot;
+        }
+      }
+    }
+    .padding()
+  }
+}
+</code></pre></div>
+<p>I like typing that in bit by bit and running <code>./build_library.sh</code> so I can experience the magic of hot reloading.</p>
+<p>You should end up with this: <img alt="The host app showing the text 'hello world'" src="/posts/hot-reloading-swiftui/todo.png" /></p>
+<h1 id="preserving-state">Preserving State<a class="headerlink" href="#preserving-state" title="Permanent link">&para;</a></h1>
+<p>Try adding a todo item in the running app and triggering a hot reload. The item will disappear! Every time the library is reloaded, <code>createView</code> creates whole a new app state.</p>
+<p>We can fix that by remembering the state between reloads. I did this by adding two functions to our library: <code>createState</code>, which initializes the state and returns it to the host app for safe keeping, and <code>createStatefulView</code>, which initialize the UI using the saved state.</p>
+<p>library.swift</p>
+<div class="language-text highlight"><pre><span></span><code>@_cdecl(&quot;createState&quot;)
+public func createState() -&gt; UnsafeMutableRawPointer? {
+    return Unmanaged.passRetained(AppState()).toOpaque()
+}
+
+@_cdecl(&quot;createStatefulView&quot;)
+public func createStatefulView(state_ptr: UnsafeMutableRawPointer) -&gt; NSView {
+  let state = Unmanaged&lt;AppState&gt;.fromOpaque(state_ptr).takeUnretainedValue()
+  return NSHostingView(rootView: TodoListView(state: state))
+}
+</code></pre></div>
+<p>And then we need to change <code>DylibViewCoordinator.update()</code> to use these new functions. Here's the <code>update()</code> function with changes highlighted:</p>
+<p>app.swift, in DylibViewCoordinator.update()</p>
+<div class="language-text highlight"><pre><span></span><code>func update() {
+
+  guard let newLibrary = openLibrary() else { return }
+
+  guard 
+    let createViewSym = dlsym(newLibrary, &quot;createStatefulView&quot;),
+    let createStateSym = dlsym(newLibrary, &quot;createState&quot;)
+  else {
+    print(String(cString: dlerror()))
+    dlclose(newLibrary)
+    return
+  }
+
+  container.subviews.first?.removeFromSuperview()
+
+  if let old = library {
+    dlclose(old)
+  }
+
+  if state == nil {
+    typealias CreateStateFn = 
+    @convention(c) () -&gt; UnsafeMutableRawPointer?
+    let createState = unsafeBitCast(createStateSym, to: CreateStateFn)
+    state = createState()
+  }
+
+  library = newLibrary
+
+  typealias CreateViewFn = 
+    @convention(c) (UnsafeMutableRawPointer) -&gt; NSView
+  let createView  = unsafeBitCast(createViewSym, to: CreateViewFn)
+  let dylibView = createView(state!)
+  dylibView.autoresizingMask = [NSView.AutoresizingMask.width, NSView.AutoresizingMask.height]
+  dylibView.frame = container.bounds
+  container.addSubview(dylibView)
+}
+</code></pre></div>
+<p><code>update()</code> now creates a new state if we don't have one already. On every reload the state is passed to the new <code>createView</code> function.</p>
+<p>You can now run the app, make changes to the todo list, trigger a hot reload, and have the app update — all without clearing the todo list changes.</p>
+<h2 id="state-format-consistency">State Format Consistency<a class="headerlink" href="#state-format-consistency" title="Permanent link">&para;</a></h2>
+<p>If you change the in-memory representation of <code>AppState</code>, such as by adding or removing a property, the app will probably crash. It happens because the new library code expects to work with the new <code>AppState</code>, but the app gives it an instance of an old <code>AppState</code>.</p>
+<p>There's 2 ways you could deal with this:</p>
+<ol>
+<li>Accept that if you change the memory layout you'll have to restart the app</li>
+<li>Add a <code>version</code> property to the state that you increment whenever you edit the state. The library can check it and create a new state if it's handed an old version. That will reset the app, but it's better than crashing or having to manually restart it.</li>
+</ol>
+<h2 id="hot-reloading-xcode-projects">Hot Reloading Xcode Projects<a class="headerlink" href="#hot-reloading-xcode-projects" title="Permanent link">&para;</a></h2>
+<p>It is possible to use these techniques in an Xcode project. I didn't cover that because I wanted to focus on the underlying techniques. The gist is:</p>
+<ol>
+<li>Create a new App target that builds <code>app.swift</code> from this page.</li>
+<li>Create a new Library target consisting of your UI and logic files</li>
+<li>Add the <code>createState</code> and <code>createStatefulView</code> functions from this page's <code>library.swift</code> to your library target. Update them to use your app's state and root View.</li>
+<li>Look in the Xcode products folder to get the path to the compiled library, and set <code>dylibName</code> in <code>app.swift</code> to that path.</li>
+<li>In Xcode, run the scheme for the app target from step #1.</li>
+<li>Switch to the library scheme and build whenever you want to hot reload.</li>
+</ol>
+<h2 id="sample-code">Sample code<a class="headerlink" href="#sample-code" title="Permanent link">&para;</a></h2>
+<p>Get the code by joining my mailing list and confirming your email. Unsubscribe from future articles at any time.</p>
+<p>Join Mailing List</p>
+<h2 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<p>I'm making a build visualizer to help speed up slow builds. <a href="/posts/syscall-build-snooping">Read more</a></p>
+<p>I wrote about <a href="/posts/why-swift-is-slow/">Why Swift's Type Checker Is So Slow</a></p>
+<p>Use hot reloading for graphics programming in "<a href="http://localhost:1313/posts/code-animated-rick/">Learn Shader Programming with Rick and Morty</a>"</p>
+<hr />
+<ol>
+<li>
+<p><a href="https://github.com/johnno1962/HotSwiftUI">HotSwiftUI</a> uses a combination of <a href="https://www.emergetools.com/blog/posts/DyldInterposing">dyld interposition</a>, <a href="https://www.nutrient.io/blog/swizzling-in-swift/">method swizzling</a>, and memory scanning/patching to do hot reloading in a generic way. It may not require splitting your project into a library and host, but the setup process is involved. It requires installing a 3rd party app, adding a dependency, modifying all SwiftUI code, and modifying build settings. ↩︎</p>
+</li>
+<li>
+<p>For information about hot reloading on windows, see handmade hero days <a href="https://guide.handmadehero.org/code/">21 through 23</a>. ↩︎</p>
+</li>
+<li>
+<p>Name mangling isn't unique to Swift. C++ is one example of another language that does it. ↩︎</p>
+</li>
+<li>
+<p>You can see that Swift function pointers are 16 bytes with this bit of Swift: <code>typealias FnPtr = () -&gt; Void; print("size \( MemoryLayout&lt;FnPtr&gt;.size)")</code> ↩︎</p>
+</li>
+<li>
+<p>Returning a <code>NSHostingView</code> also sidesteps the issue of having the <code>some View</code> type at the interface between two compilation units. <code>some View</code> is just a convenience feature that is like saying "There is a specific type here that conforms to the View protocol, but I don't feel like writing the full type out, figure it out at compile time and use it in all the places that refer to this function.". The host app couldn't use a function pointer that returns <code>some View</code> because it doesn't have access at compile time to the dynamic library's implementation in order to figure out the concrete type. ↩︎</p>
+</li>
+</ol>
+<p>❖</p>
+<p>Get notified about my next article:</p>
+<p>Join Newsletter</p>
+<p><a href="https://danielchasehooper.com/">More articles by Daniel</a></p>
 
 
 
@@ -425,7 +907,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 11:14:56 UTC">2026-02-05</span>
   </span>
 
     

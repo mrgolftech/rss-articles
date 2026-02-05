@@ -25,7 +25,7 @@
     
     
       
-        <title>Using Virtual Environments in Python\n\n来源: https://beej.us\n链接: http://beej.us/blog/data/python-venv/\n日期: Sat, 11 Oct 2025 00:00:00 +0000\n\n---\n\nA short how-to with just the basics to get going. - Hacker News 精选博客</title>
+        <title>Using Virtual Environments in Python - Hacker News 精选博客</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#using-virtual-environments-in-pythonnn-httpsbeejusn-httpbeejusblogdatapython-venvn-sat-11-oct-2025-000000-0000nn-nna-short-how-to-with-just-the-basics-to-get-going" class="md-skip">
+        <a href="#using-virtual-environments-in-python" class="md-skip">
           跳转至
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Using Virtual Environments in Python\n\n来源: https://beej.us\n链接: http://beej.us/blog/data/python-venv/\n日期: Sat, 11 Oct 2025 00:00:00 +0000\n\n---\n\nA short how-to with just the basics to get going.
+              Using Virtual Environments in Python
             
           </span>
         </div>
@@ -404,7 +404,115 @@
   
 
 
-<h1 id="using-virtual-environments-in-pythonnn-httpsbeejusn-httpbeejusblogdatapython-venvn-sat-11-oct-2025-000000-0000nn-nna-short-how-to-with-just-the-basics-to-get-going">Using Virtual Environments in Python\n\n<strong>来源:</strong> https://beej.us\n<strong>链接:</strong> http://beej.us/blog/data/python-venv/\n<strong>日期:</strong> Sat, 11 Oct 2025 00:00:00 +0000\n\n---\n\nA short how-to with just the basics to get going.<a class="headerlink" href="#using-virtual-environments-in-pythonnn-httpsbeejusn-httpbeejusblogdatapython-venvn-sat-11-oct-2025-000000-0000nn-nna-short-how-to-with-just-the-basics-to-get-going" title="Permanent link">&para;</a></h1>
+<h1 id="using-virtual-environments-in-python">Using Virtual Environments in Python<a class="headerlink" href="#using-virtual-environments-in-python" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://beej.us
+<strong>链接:</strong> http://beej.us/blog/data/python-venv/
+<strong>日期:</strong> Sat, 11 Oct 2025 00:00:00 +0000</p>
+<hr />
+<h1 id="beejs-bit-bucket-a-tech-and-programming-fun"><a href="../..">Beej's Bit Bucket  â¡ Tech and Programming Fun </a><a class="headerlink" href="#beejs-bit-bucket-a-tech-and-programming-fun" title="Permanent link">&para;</a></h1>
+<p>2025-10-11, 2025-10-12</p>
+<h1 id="using-virtual-environments-in-python_1">Using Virtual Environments in Python<a class="headerlink" href="#using-virtual-environments-in-python_1" title="Permanent link">&para;</a></h1>
+<p><img alt="Virtualized Python Logo" src="images/virtpython.jpg" /> You wouldn't believe how long it took me to make this image in the <a href="https://www.gimp.org/">GIMP</a>.</p>
+<p>Hi! This is an anti-slop blog that just presents some simple information without ads and a tremendous backstory about how my grandfather used Python back in the day or whatever. (He used <a href="https://en.wikipedia.org/wiki/Fortran">FORTRAN</a> and <a href="https://en.wikipedia.org/wiki/Punched_card">punch cards</a>, for the record, but already I digress.)</p>
+<p>And here I'm using the Zsh shell, but a generally-compatible one like Bourne or Bash will work. Check out the <a href="https://docs.python.org/3/library/venv.html">official instructions</a> for other shells or tons more detail on this topic.</p>
+<p>Let's go!</p>
+<h2 id="what-is-a-virtual-environment">What is a Virtual Environment?<a class="headerlink" href="#what-is-a-virtual-environment" title="Permanent link">&para;</a></h2>
+<p>It's a place you can install Python programs and libraries that are isolated from the rest of the system. So you can <code>pip install</code> things and not mess anything up elsewhere. A common use case is that you want to run someone's Python program and install its related packages but don't want to pollute your system with all these unmanaged tools and dependencies.</p>
+<p>On <a href="https://archlinux.org/">Arch Linux</a> (BTW) and others, this is the recommended way to install Python packages when they're not part of the official package manager.</p>
+<p>There are four steps:</p>
+<ol>
+<li>Create the virtual environment (one-off step per environment).</li>
+<li>Activate it before use.</li>
+<li>Do things in it.</li>
+<li>Deactivate it when done.</li>
+</ol>
+<p>You only have to create each environment once. After that it's a matter of activating it when you need it and deactivating it when you're done.</p>
+<p>And you can have as many virtual environments as you want scattered around in various directories.</p>
+<h2 id="creating-the-virtual-environment">Creating the Virtual Environment<a class="headerlink" href="#creating-the-virtual-environment" title="Permanent link">&para;</a></h2>
+<p>The virtual environment will live in a directory. You specify the directory when creating it. Here I create one in a directory called <code>fooenv</code> out of my current directory:</p>
+<div class="language-text highlight"><pre><span></span><code>python -m venv fooenv
+</code></pre></div>
+<p>Or you can use a full path or whatever.</p>
+<h2 id="activating-it">Activating It<a class="headerlink" href="#activating-it" title="Permanent link">&para;</a></h2>
+<p>Switch into the directory and then source the shell script <code>bin/activate</code>.</p>
+<div class="language-text highlight"><pre><span></span><code>cd fooenv
+. bin/activate      # or &quot;source bin/activate&quot; if you prefer
+</code></pre></div>
+<p>The shell prompt will change to have a prefix with the name of the virtual environment in it; this is an in-your-face reminder that you're "inside" the virtual environment.</p>
+<blockquote>
+<p><img alt="Information Sidebar" src="../../common/images/goat50.png" /> All the <code>activate</code> script effectively does (besides change your prompt and a couple other things) is set your <code>PATH</code> so that when you run <code>python</code> or <code>pip</code> it uses the one in the environment's <code>bin/</code> directory instead of your system version. Run <code>which python</code> and see!</p>
+</blockquote>
+<h2 id="do-things-in-it">Do Things In It<a class="headerlink" href="#do-things-in-it" title="Permanent link">&para;</a></h2>
+<p>Now you can run <code>pip install</code> and install things that are only in this virtual environment. And when you run <code>python</code> you can see them.</p>
+<p>Have fun!</p>
+<h2 id="deactivate-it">Deactivate It<a class="headerlink" href="#deactivate-it" title="Permanent link">&para;</a></h2>
+<p>When you're done having fun, you can get back to the real world by running this:</p>
+<div class="language-text highlight"><pre><span></span><code>deactivate
+</code></pre></div>
+<p>It's a secret function that the <code>bin/activate</code> script created. This gets you back to the non-virtual environment where everything is real and wholesome again. Run <code>which python</code> and see!</p>
+<p>(You can also just exit the shell. That effectively deactivates it.)</p>
+<h2 id="deleting-it">Deleting It<a class="headerlink" href="#deleting-it" title="Permanent link">&para;</a></h2>
+<p>If you're done with the virtual environment and want to get rid of it, just carefully delete the directory that holds it. It will be as if it <em>never existed [spooky ghost noises]</em>.</p>
+<h2 id="bonus-running-from-a-shell-script">Bonus: Running from a Shell Script<a class="headerlink" href="#bonus-running-from-a-shell-script" title="Permanent link">&para;</a></h2>
+<p>What if you have a shell script and you want to call something in that virtual environment? Well, you just have to do the same steps.</p>
+<ol>
+<li>Create the environment somewhere that's relatively permanent. Maybe in a <code>~/.local/venvs/</code> directory where you keep them all.</li>
+<li>In your script, run <code>bin/activate</code> in that directory.</li>
+<li>In your script, do fun things.</li>
+<li>In your script, just exit when done. Or run <code>deactivate</code> then exit, either way.</li>
+</ol>
+<p>Here's an example script that prints out the path to <code>python</code> in the virtual environment:</p>
+<div class="language-text highlight"><pre><span></span><code># foo.sh
+. /home/beej/fooenv/bin/activate  # Change to your path
+which python
+deactivate
+</code></pre></div>
+<p>When I run that I get:</p>
+<div class="language-text highlight"><pre><span></span><code>$ sh foo.sh
+  /home/beej/fooenv/bin/python
+</code></pre></div>
+<p><a href="https://tremors.fandom.com/wiki/Perfection,_Nevada">Perfection</a>!</p>
+<h2 id="bonus-ii-running-python-scripts-directly">Bonus II: Running Python Scripts Directly<a class="headerlink" href="#bonus-ii-running-python-scripts-directly" title="Permanent link">&para;</a></h2>
+<p>HT to <a href="https://mastodon.sdf.org/@irgndsondepp@gts.da-miez.de/115360361989917317">IrgndSonShreck</a> for this one:</p>
+<p>If you specify the path to <code>python</code> in the virtual environment, <em>even if it's not activated</em> , you'll run it inside the virtual environment.</p>
+<p>So if I have a Python program and I need it to run in the environment, I can do this:</p>
+<div class="language-text highlight"><pre><span></span><code>/home/beej/fooenv/bin/python foo.py
+</code></pre></div>
+<p>No need to <code>activate</code>.</p>
+<blockquote>
+<p><img alt="Information Sidebar" src="../../common/images/goat50.png" /> I dug around a bit to see how Python <em>knows</em> that you've run it from the virtual environment in this way, since <code>VENV/bin/python</code> is just a symlink to the system Python. Apparently there's not a standard way to do this. <a href="https://stackoverflow.com/questions/606041/how-do-i-get-the-path-of-a-process-in-unix-linux">Linux has you look at the <code>/proc/PID/exe</code> symlink</a> to determine the path to the executable, and other systems have other methods.</p>
+<p>In any case, Python figures out where it's being run from and then tries to figure out if it's a virtual environment somehow. I suspect, but have not verified, this involves it looking for the <code>pyvenv.cfg</code> file that was created when the environment was made.</p>
+</blockquote>
+<p>There's also nothing stopping you from putting the full path to the venv Python in a shebang in your script:</p>
+<div class="language-text highlight"><pre><span></span><code>#!/home/beej/fooenv/bin/python
+import sys
+print(sys.prefix)
+</code></pre></div>
+<p>When run, this will always use the virtual environment. So for me, it outputs:</p>
+<div class="language-text highlight"><pre><span></span><code>/home/beej/fooenv
+</code></pre></div>
+<p>But that's all pretty fragile and ugly. Though there's not any consensus I can find, people either do that or wrap the thing up in a shell script, it seems.</p>
+<p>And one more related thing. If you want to shebang Python code that will run in the real environment if you're in it and also run in the virtual environment if you're in that, use this (which you should be generally using anyway):</p>
+<div class="language-text highlight"><pre><span></span><code>#!/usr/bin/env python
+import sys
+print(sys.prefix)
+</code></pre></div>
+<p>Here's an example of me running that outside and inside the virtual environment:</p>
+<div class="language-text highlight"><pre><span></span><code>$ ./foo.py
+  /usr
+$ . fooenv/bin/activate
+(fooenv) $ ./foo.py
+  /home/beej/fooenv
+</code></pre></div>
+<p>So that Python code will just run in whatever environment you're in at the time.</p>
+<h2 id="bonus-iii-using-a-third-party-tool">Bonus III: Using a Third-Party Tool<a class="headerlink" href="#bonus-iii-using-a-third-party-tool" title="Permanent link">&para;</a></h2>
+<p>HT to <a href="https://mastodon.sdf.org/@JetSetIlly@mastodon.gamedev.place/115360124199348595">Stephen Illingworth</a> for this one. He suggests a tool called <a href="https://github.com/astral-sh/uv"><code>uv</code></a> to streamline this entire process and make your life easier.</p>
+<p>The <a href="https://github.com/astral-sh/uv?tab=readme-ov-file#highlights">README</a> has a pretty impressive list of highlights.</p>
+<p>I've not tried it, but it definitely looks worth checking out. And I'm sure there are many others.</p>
+<h2 id="comments">Comments<a class="headerlink" href="#comments" title="Permanent link">&para;</a></h2>
+<p><a href="https://mastodon.sdf.org/@beejjorgensen/115359964086061768">View Comments</a> <a href="https://mastodon.sdf.org/@beejjorgensen/115359964086061768">Reply</a></p>
+<p>Click on "View Comments" to see the comments.</p>
+<p><a href="http://beej.us/blog/"><strong>Blog</strong></a>  â¡  <a href="mailto:beej@beej.us"><strong>beej@beej.us</strong></a>  â¡  <a href="http://beej.us/"><strong>Home page</strong></a></p>
 
 
 
@@ -425,7 +533,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 11:14:56 UTC">2026-02-05</span>
   </span>
 
     

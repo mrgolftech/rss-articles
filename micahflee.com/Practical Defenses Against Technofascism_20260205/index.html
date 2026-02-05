@@ -1,0 +1,846 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/micahflee.com/Practical%20Defenses%20Against%20Technofascism_20260205/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Practical Defenses Against Technofascism - Hacker News 精选博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practical-defenses-against-technofascism" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Hacker News 精选博客" class="md-header__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker News 精选博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Practical Defenses Against Technofascism
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker News 精选博客" class="md-nav__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hacker News 精选博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/micahflee.com/Practical Defenses Against Technofascism_20260205.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="practical-defenses-against-technofascism">Practical Defenses Against Technofascism<a class="headerlink" href="#practical-defenses-against-technofascism" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://micahflee.com
+<strong>链接:</strong> https://micahflee.com/practical-defenses-against-technofascism/
+<strong>日期:</strong> Sun, 26 Oct 2025 03:57:00 GMT</p>
+<hr />
+<p><a href="https://micahflee.com"> <img alt="micahflee" src="https://micahflee.com/content/images/2025/02/programming-1.png" /> </a></p>
+<ul>
+<li><a href="https://micahflee.com/">Blog</a></li>
+<li><a href="https://micahflee.com/about/">About</a></li>
+<li><a href="https://micahflee.com/contact/">Contact</a></li>
+<li><a href="https://lockdown.systems/">Lockdown Systems</a></li>
+<li><a href="https://cyd.social/">Cyd</a></li>
+<li><a href="https://hacksandleaks.com/">Hacks &amp; Leaks</a></li>
+</ul>
+<p>Sign in Subscribe</p>
+<h1 id="practical-defenses-against-technofascism_1">Practical Defenses Against Technofascism<a class="headerlink" href="#practical-defenses-against-technofascism_1" title="Permanent link">&para;</a></h1>
+<p><img alt="Practical Defenses Against Technofascism" src="/content/images/size/w1200/2025/10/slide-000.png" /></p>
+<p>I gave the Saturday morning keynote at BSidesPDX! I spoke honestly and frankly about the terrifying reality that Americans are facing under Trump's fascist regime, alongside practical advice for communities to defend themselves.</p>
+<p>Watch my talk below. Of if you prefer reading articles over watching video, I've added a copy of my whole talk below the video, mildly edited, and with added links to my sources.</p>
+<h2 id="sign-up-for-micahflee">Sign up for micahflee<a class="headerlink" href="#sign-up-for-micahflee" title="Permanent link">&para;</a></h2>
+<p>Hi, I'm Micah. I help journalists, researchers, and activists stay safe and productive.</p>
+<p>Subscribe</p>
+<p>Email sent! Check your inbox to complete your signup. </p>
+<p>No spam. Unsubscribe anytime.</p>
+<p>Good morning, BSides Portland! I’ve worked in journalism for over a decade, but this is the first time I’ve traveled to an <strong>active war zone</strong>!</p>
+<p>It’s hard to believe that we’re not even one year into Trump’s fascist takeover of the government. The onslaught of horrifying news is happening too fast to keep track of. But what’s clear to me is that the Trump administration, and ICE in particular, is tooling up for technological repression that Americans have <em>never</em> been subject to before.</p>
+<p>Today I’ll go over the disturbing signs of the coming Age of Technofascism, along with practical ways to defend yourself and your communities against it.</p>
+<p>I’m Micah Lee. I’m an independent security researcher, a journalist, and a software engineer. I spent the last decade and a half reporting on classified documents, helping journalists protect their sources, building open-source privacy tools, and teaching people how to analyze leaked datasets. These days, I work closely with journalists, researchers, and activists, doing what I can to keep them safe and productive.</p>
+<p>The views I’m expressing in this talk are entirely my own, and not the views of any of the organizations that I work with.</p>
+<h1 id="technofascism">Technofascism<a class="headerlink" href="#technofascism" title="Permanent link">&para;</a></h1>
+<p>Since Trump’s inauguration, the US has slid into <strong>technofascism</strong>.</p>
+<p>Fascism is a slippery ideology that’s difficult to define. Sometimes it borrows from conservatives, or from liberals, or even from Leftists. But in the end, none of those beliefs are genuine. It’s all about accumulating <em>unlimited power</em> for an in-group, at the expense of <em>everyone else</em>.</p>
+<p>💡</p>
+<p><strong><em>*fascism</em></strong>* (noun)<br />
+Imperialism turned inward.</p>
+<p>One common definition of fascism is “imperialism turned inward.”</p>
+<p>Here's a bit of recent US imperialism history, since September 11, 2001:</p>
+<ul>
+<li>We launched <strong>wars of aggression</strong> , based on lies, in Afghanistan and Iraq.</li>
+<li>We ran a <strong>covert torture program</strong> , and <strong>imprisoned and tortured innocent people for decades</strong> at Guantanamo Bay.</li>
+<li>We built a <strong>global surveillance system</strong> and spied on <em>entire populations</em> , all without probable cause.</li>
+<li>We ran a massive <strong>drone assassination program</strong> , bombing wedding across the Middle East and Africa in countries we weren't at war with, in the name of American freedom.</li>
+<li>Right now, we’re <strong>funding and arming Israel while it commits genocide in Gaza</strong>.</li>
+</ul>
+<p>Huge swaths of the world are subjected to intense state repression, violence, surveillance, and censorship. In many places, this repression is explicitly supported by the US government and by US companies.</p>
+<p>The thing that makes the Trump era different is <em>fascism</em>. Under Trump, this complete disregard for human rights is now pointed <em>inward</em> , at the “enemies within,” as Trump calls Americans he doesn’t like.</p>
+<p>What we’ve been seeing on the streets of the US, with ICE kidnappings and military invasions of cities, is the normal American disregard for human rights, but this time turned inward, <em>targeted against us</em>.</p>
+<p>💡</p>
+<p><strong><em>*technofascism</em></strong>* (noun)<br />
+A form of fascism that uses modern technologies to attain its ends.</p>
+<p>And the American tech industry is totally on board with it.</p>
+<ul>
+<li>Elon Musk, the richest and <strong>most divorced</strong> person in the world, donated hundreds of millions of dollars to make sure Trump got elected. He then bought Twitter and turned it into X, a cesspool of propaganda, disinformation, and hate.</li>
+<li>Mark Zuckerberg got a haircut, went on Joe Rogan, and shut down Meta’s <em>diversity</em> program.</li>
+<li>Jeff Bezos, owner of Amazon and the Washington Post, <em>personally</em> intervened to prevent the Post from endorsing Kamala Harris, and he restructured its opinion page to make it <em>friendly to fascism</em>.</li>
+<li>Tim Cook <em>personally donated one million dollars</em> to Trump’s inauguration committee.</li>
+</ul>
+<p>You know how right now, while the government is shut down and food stamps for millions of Americans are set to expire one week from now, Trump is tearing down the East Wing of the White House to build himself a privately funded ballroom? Some of the companies who are funding Trump’s ballroom include: Amazon, Apple, Coinbase, Google, Meta, and Microsoft.</p>
+<p>This talk <em>mostly</em> isn’t about reactionary tech billionaires and their complicit companies. Instead, it’s about attacks that we should be prepared for during this Age of Technofascism, and ways we can defend against them.</p>
+<p>In this talk, I’m going to try to give some specific, actionable advise about three three topics: mercenary spyware, device searches, and app censorship.</p>
+<p>But don’t think of this as a checklist that all you have to do is finish and then you’re good. Ultimately, what we all need to do, is build an intentional and forgiving <strong>security culture</strong>. These are things to talk over with your friends, colleagues, and family members as shared practices. </p>
+<p>Fascists are targeting <em>everyone</em> outside their in-group. If we want to keep our communities safe, our defenses need to be <strong>collective</strong> , not individual.</p>
+<p>I also want to warn you that this talk is pretty intense. So, just to lighten the mood a bit, I’m going to wear some frog eyes.</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/vlcsnap-2025-10-25-17h23m14s422.png" />This is when I put on the frog eyes, though I accidentally called them "frog ears"</p>
+<p>I’m not going to sugarcoat the awful reality of our current situation. But, at least I’ll be somewhat dressed up like a frog while I’m giving you all anxiety.</p>
+<h1 id="mercenary-spyware">Mercenary Spyware<a class="headerlink" href="#mercenary-spyware" title="Permanent link">&para;</a></h1>
+<p>It used to be that government spy agencies, like the NSA, developed the most sophisticated hacking tools in the world in-house. But over the last decade or so, this has shifted to the private sector.</p>
+<p>Now, private companies make the world’s most sophisticated hacking tools. And they sell them basically as <em>subscription services</em> to government agencies and police departments around the world, many of which would <em>never</em> have been able to build these capabilities in-house themselves.</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/slide-009.png" />Forbidden Stories: <a href="https://forbiddenstories.org/about-the-pegasus-project/">About the Pegasus Project</a></p>
+<p>Americans have been largely shielded from this type of attack.</p>
+<ul>
+<li>NSO Group’s Pegasus spyware is typically configured to not be able to target US phone numbers (though, they could easily disable this setting if they decide to target US phone numbers).</li>
+<li>Mercenary spyware firms are on US sanctions lists.</li>
+<li>And in 2023, Biden published an executive order prohibiting mercenary spyware use by the US government without first going through a review process.</li>
+</ul>
+<p>Those days <em>are over</em>. Mercenary spyware is officially <em>welcome</em> in America.</p>
+<p>Last year, during the Biden administration, ICE tried to sign a contract with Paragon Solutions, another sketchy Israeli firm that makes spyware called Graphite. But the Biden administration blocked this contract from going through.</p>
+<p>But a few months ago, the “stop-work” order was dismissed, and <a href="https://jackpoulson.substack.com/p/exclusive-ice-has-reactivated-its">ICE’s contract with Paragon officially began</a>. According to <a href="https://jackpoulson.substack.com/p/exclusive-ice-has-reactivated-its">this reporting</a> by Jack Poulson, the US company REDLattice acquired Paragon Solutions. Now that Paragon is American-owned, ICE is allowed to use the Graphite spyware.</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/slide-012.png" />From Paragon Solution's website</p>
+<p>Paragon bills Graphite as the “ethical alternative” to Pegasus. The difference between Graphite and Pegasus is that Pegasus takes over the entire phone. It does location tracking, listens through the microphone, steals all the data it can get, and so on. But Graphite is narrowly targeted at just spying on encrypted messaging apps like Signal, WhatsApp, and iMessage.</p>
+<p>But <em>obviously</em> governments abuse it to violate human rights too.</p>
+<p>Here’s a <a href="https://citizenlab.ca/2025/03/a-first-look-at-paragons-proliferating-spyware-operations/">recent report from The Citizen Lab</a>, published in June, where they caught Graphite being used against prominent journalists in Europe. In this case, Graphite relied on a zero-click vulnerability in iOS that exploited a bug in iMessage.</p>
+<p>And here’s <a href="https://citizenlab.ca/2025/06/first-forensic-confirmation-of-paragons-ios-mercenary-spyware-finds-journalists-targeted/">an earlier Citizen Lab report</a>, published in March. In this one, they helped discover and fix a zero-click exploit for WhatsApp that targeted dozens of people in Italy, including journalists and the founder of the Italian organization that <em>rescues migrants</em> from the Mediterranean Sea.</p>
+<p>404 Media has <a href="https://www.404media.co/were-suing-ice-for-its-2-million-spyware-contract/">launched a Freedom of Information Act lawsuit against ICE</a>, demanding documents related to its contract with Paragon. In this post, the journalists mention Paragon’s stance that it’s an “ethical alternative” in the spyware industry. It says, quote:</p>
+<blockquote>
+<p>Selling to ICE, an agency that has flaunted due process, accountability, and transparency, may complicate that stance for Paragon. ICE has arrested people who were <a href="https://www.cbsnews.com/news/immigrants-at-ice-check-ins-detained-and-held-in-basement-of-federal-building-in-los-angeles/?ref=404media.co"><em>following the steps necessary for legal immigration</em></a>; waited outside courtrooms to immediately detain people after <a href="https://www.npr.org/2025/06/12/nx-s1-5409403/trump-immigration-courts-arrests?ref=404media.co"><em>their immigration cases were dismissed</em></a> to rush them out of the country; <a href="https://bsky.app/profile/reichlinmelnick.bsky.social/post/3lrg2u5linc2s?ref=404media.co"><em>“de-documented” people who had valid work permits</em></a> in order to deport them; and continues to pick up people around the country while masking their faces and declining to provide their names.</p>
+</blockquote>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/slide-017.png" />CNN: <a href="https://www.cnn.com/2025/10/03/us/chicago-apartment-ice-raid">37 people arrested and American kids separated from parents after ICE raid at Chicago apartments</a></p>
+<p>There’s nothing ethical about <em>anything</em> that ICE does. There’s <em>no way</em> that ICE will use Graphite in a way that <em>isn't</em> abusing human rights.</p>
+<p>But, hey, at least the Trump administration isn’t using Pegasus, right?</p>
+<p>Earlier this month, <a href="https://techcrunch.com/2025/10/10/spyware-maker-nso-group-confirms-acquisition-by-us-investors/">news broke</a> that American investors appear to have purchased NSO Group. Right now, NSO Group is still on the US sanctions list. Biden’s executive order making it harder for the government to use mercenary spyware is still in effect. There’s a trail of dozens of US officials that were hacked with Pegasus, which normally wouldn’t be a good sign for NSO Group.</p>
+<p>But in the Age of Technofascism, I really don’t see those old rules lasting much longer. I wouldn’t be surprised at all if we started to find Pegasus infections on the phones of immigrant defense activists. Or advocates for trans health care. Or even people just trying to get an abortion.</p>
+<p>Also, just to add to the absurdity of this, the main investor is Robert Simonds, a Hollywood producer of B-movie films. If you haven’t heard of Robert Simonds before, perhaps you’ve heard of this 1996 Adam Sandler film…</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/Screenshot-2025-10-25-at-5.40.57---PM.png" />Photo of Simonds by Alex Berliner, <a href="https://commons.wikimedia.org/w/index.php?curid=32173349">CC BY-SA 3.0</a></p>
+<p>Robert Simonds produced Happy Gilmore, along with a bunch of other Adam Sandler films. His entire experience is in the entertainment industry, not in tech or cybersecurity. He also has a bunch of business dealing with Chinese companies.</p>
+<p><a href="https://www.calcalistech.com/ctechnews/article/1gny8rqwd">According to</a> the Israeli tech site Calcalist, for some reason he’s been on the board of NSO group’s parent company for a few years. And in 2023, he tried, and failed, to purchase NSO Group. It appears that he just tried again and was successful.</p>
+<p>Also in this article, it mentions that in 2018, Sophie Watts, the president of his production company STX Entertainment, complained of harassment, and called him “obsessive.”</p>
+<p>Quite likely, <em>this guy</em> is the new owner of the most notorious mercenary spyware firm in the world. And quite likely, he’s going to be selling Pegasus to fascist law enforcement agencies under Trump.</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/slide-024.png" />Reuters: <a href="https://www.reuters.com/investigates/special-report/usa-spying-raven/">Inside the UAE’s secret hacking team of American mercenaries Ex-NSA operatives reveal how they helped spy on targets for the Arab monarchy — dissidents, rival leaders and journalists</a></p>
+<p>But even if the current rules against Pegasus stick, there are plenty of American technofascists who don’t have any qualms with violating human rights.</p>
+<p>Remember how I said that the most sophisticated hacking tools used to be developed in-house by agencies like the NSA? This was a big story back in 2019, when <a href="https://www.reuters.com/investigates/special-report/usa-spying-raven/">Reuters exposed</a> that over a dozen former NSA operatives went to work for the United Arab Emirates <em>royal family</em> , helping them spy on dissidents, journalists, and activists.</p>
+<p>It’s a <em>bad sign</em> that the US government is embracing mercenary spyware from sketchy Israeli firms. And that US companies are buying up those firms, presumably to make it easier to sell to the government.</p>
+<p>But I honestly think there’s enough home-grown and talented American technofascists to support a domestic spyware industry anyway, even <em>without</em> the Israeli technology.</p>
+<p>Last month, Bruce Schneier <a href="https://www.schneier.com/blog/archives/2025/09/digital-threat-modeling-under-authoritarianism.html">blogged about</a> Digital Threat Modeling Under Authoritarianism. It’s worth a read. He wrote:</p>
+<blockquote>
+<p>Imagine there is a government official assigned to your neighborhood, or your block, or your apartment building. It’s worth that person’s time to scrutinize everybody’s social media posts, email, and chat logs.</p>
+</blockquote>
+<p>In it, he described the “shifting risks of decentralization,” which is something I hadn’t considered before.</p>
+<p>Spyware is <em>targeted</em> surveillance, not <em>mass</em> surveillance, which means that it doesn’t scale easily. If all you had to worry about is staying off the radar of high-level fascists like JD Vance and Kash Patel, then most people probably don’t need to worry too much about it for themselves</p>
+<p>But if repression is <em>decentralized</em> , with every state and city having its own <em>local fascists</em> in charge of picking targets they don’t like, then <em>everyone</em> needs to fear it. It’s too early to know how mercenary spyware will be abused by the Trump administration, but it’s prudent for <em>everyone</em> to get prepared <em>now</em>.</p>
+<h1 id="defenses-against-mercenary-spyware">Defenses Against Mercenary Spyware<a class="headerlink" href="#defenses-against-mercenary-spyware" title="Permanent link">&para;</a></h1>
+<p>This is bad, but it’s not hopeless. There’s a <em>lot</em> that we can do to defend ourselves against mercenary spyware.</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/slide-027.png" /></p>
+<p>Zero-click exploits – which can hack your device without any interaction from you – can feel like magic, and like it’s hopeless to even try to defend against them. But it’s <em>not</em> magic.</p>
+<p>Exploits are only possible because of <em>bugs</em>. And these bugs are routinely fixed in <em>software updates</em>. Zero-day exploits cost attackers millions of dollars to purchase, which means it’s <em>very expensive</em> to hack a fully updated phone or laptop. Exploits for bugs that are already patched, though, are <em>basically free</em>.</p>
+<p>Never put off installing updates.</p>
+<p>You should not only always install updates, but you should also get <em>everyone you know</em> to always install updates too.</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/slide-028.png" /></p>
+<p>Apple added <a href="https://micahflee.com/unfortunately-the-iceblock-app-is-activism-theater/">Lockdown Mode</a> to iOS in 2022. If you enable it, it prevents your phone from using certain features that are frequently exploited. Basically, it reduces your <em>attack surface</em>.</p>
+<p>For example, it blocks fonts in Safari, which might make some websites look worse and the icons might be missing, but it cuts off an <em>entire attack vector</em>. I’ve been using Lockdown Mode in iOS since it came out and it’s actually quite usable.</p>
+<p>In the Age of Technofascism, you should not only turn on Lockdown Mode, but get <em>everyone you know who uses an iPhone or a Mac</em> to do the same. To my knowledge, no researchers have found a successful infection of a device while Lockdown Mode was turned on.</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/slide-029.png" /></p>
+<p>You, and <em>everyone you know who uses an iPhone</em> , should also enable <a href="https://micahflee.com/in-war-torn-portland-watch-me-speak-at-bsidespdx/">Advanced Data Protection</a> in your iCloud account. Without it, iCloud is basically a government backdoor into your phone. If your phone gets backed up to iCloud, including your messages, photos, and all the data in all your apps, Apple can give this data to the police, the FBI, ICE, or whoever else asks.</p>
+<p>If you use Advanced Data Protection, most of this data is encrypted with a key that only <em>you</em> control. The recovery key is a long sequence of random characters, so everyone who enables it either needs to keep this key written on a piece of paper, or store it in a password manager. If you’re helping people in your community enabled Advanced Data Protection for iCloud, it might be a good idea to also make sure they get set up with a password manager.</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/slide-030.png" /></p>
+<p>Earlier this year, Google launched <a href="https://support.google.com/android/answer/16339980?hl=en">Android Advanced Protection</a>, which works in similar ways. If you use Android, <em>enable this</em> , and you’ll be far less vulnerable to mercenary spyware.</p>
+<p>I don’t have much love for Apple. As I’ll talk about soon, they recently categorized ICE officers as a “targeted group” in order to comply with Trump’s censorship demands. But I <em>am</em> excited about <a href="https://security.apple.com/blog/memory-integrity-enforcement/">Memory Integrity Enforcement</a>, which is built into the hardware of the new iPhone 17.</p>
+<p>Basically, if you’re using the new hardware, every time software allocates a block of memory, this memory is tagged with a secret. If the software ever tries accessing that memory again without the correct tag, the request is blocked, and the process is killed.</p>
+<p>This should effectively <em>eliminate entire classes</em> of memory corruption bugs, including buffer overflows, use-after free, and out-of-bound bugs.</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/slide-032.png" />Apple: <a href="https://security.apple.com/blog/memory-integrity-enforcement/">Memory Integrity Enforcement: A complete vision for memory safety in Apple devices</a></p>
+<p>This diagram shows an analysis of <em>real exploit chains</em> – these were the exploits included in actual mercenary spyware – and how each class of bug would perform against an iPhone with Memory Integrity Enforcement. It would prevent <em>all</em> of them from fully hacking the device.</p>
+<p>So, if you can afford it, this is one of the few reasons I’d recommend considering buying a new iPhone. Of course, if you do get a new iPhone, you should <em>also</em> enable Lockdown Mode on it, and enabled iCloud Advanced Data Protection.</p>
+<h1 id="device-searches">Device Searches<a class="headerlink" href="#device-searches" title="Permanent link">&para;</a></h1>
+<p>Mercenary spyware relies on exploits to hack your devices <em>remotely</em>. But there’s a whole different set of <em>local</em> attacks against devices too. Device searches have been a risk for as long as people have carried around computers with personal data. But in the Age of Technofascism, we should prepare for device searches <em>way</em> more frequently.</p>
+<p>Cellebrite – another Israeli surveillance company – is the most notorious firm that does device searches. They make products that are currently already used by law enforcement across the US, but they’re aiming for a <em>much</em> bigger slice of the market. Last year, Cellebrite <a href="https://cellebrite.com/en/cellebrite-advances-plans-to-transform-and-elevate-its-strategic-relationship-with-the-u-s-federal-government/">announced</a> that it formed a US-based subsidiary specifically for selling to the federal government.</p>
+<p>Cellebrite makes hardware and software used to break into locked phones and extract all the data from them. It works by exploiting vulnerabilities in lock screens, by brute forcing passcodes, including using exploits to bypass rate limits, and by rooting devices to get access to all the data in them.</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/slide-035.png" />Signal: <a href="https://signal.org/blog/cellebrite-vulnerabilities/">Exploiting vulnerabilities in Cellebrite UFED and Physical Analyzer from an app's perspective</a></p>
+<p>This photo is from a 2021 post on the Signal blog by Moxie Marlinspike. He said, “By a truly unbelievable coincidence, I was recently out for a walk when I saw a small package fall off a truck ahead of me.” It turns out, it was Cellebrite equipment. Specifically, just the software used to extract data from phones, and a bunch of cables, but not the actual hardware that hacks into phones.</p>
+<p>Moxie also wrote about some security vulnerabilities he discovered in it. He discovered that, “it’s possible to execute arbitrary code on a Cellebrite machine simply by including a specially formatted but otherwise innocuous file in any app on a device that is subsequently plugged into Cellebrite and scanned.”</p>
+<p>Like other Israeli surveillance firms, Cellebrite has a history of being abused to violate human rights:</p>
+<ul>
+<li>In 2020, police in the African country Botswana used Cellebrite to break into the phones of detained journalists, <a href="https://cpj.org/2021/05/equipped-us-israeli-firms-botswana-police/">according to</a> Committee to Protect Journalists.</li>
+<li>In 2021 during the protests in Hong Kong, Chinese police used Cellebrite to hack the phones of pro-democracy protesters, <a href="https://theintercept.com/2021/08/26/cellebrite-china-cellphone-hack/">according to</a> reporting in The Intercept.</li>
+<li>In 2022, Russia used Cellebrite to hack the phones of anti-Putin opposition activists, <a href="https://www.haaretz.com/israel-news/security-aviation/2022-10-21/ty-article/.premium/russia-still-using-israeli-tech-to-hack-detainees-cellphones/00000183-eb6c-d15c-a5eb-ff6cf86e0000">according to</a> reporting in Haaretz.</li>
+</ul>
+<p>Last month, ICE entered <a href="https://reason.com/2025/09/29/ice-doesnt-want-you-to-know-why-they-bought-a-phone-cracking-system/">a new $11 million contract</a> with Cellebrite. But ICE already has a long history of working with them. In 2017, they first spent $2.2 million on a Cellebrite contract, immediately after Trump’s travel ban. In 2019, they spent somewhere between $30 and $35 million on another contract. And now, they’re starting a <em>new</em> $11 million contract.</p>
+<p>It’s fair to assume that ICE is using Cellebrite to hack the phones, and steal all the data, from <em>every single person</em> they arrest, regardless of immigration status.</p>
+<p>When your device is searched, authorities <em>stealing your data</em> is only one of the risks that you face. Another is that they might <em>install spyware</em> , and hope that you keep using it. Here’s <a href="https://techcrunch.com/2024/12/05/russian-programmer-says-fsb-agents-planted-spyware-on-his-android-phone/">an article</a> from last year about a pro-Ukraine activist in Russia named Kirill Parubets.</p>
+<p>Armed FSB agents violently raided his house. From the article:</p>
+<blockquote>
+<p>On April 18, 2024, six FSB agents armed with machine guns burst into Parubets and his wife’s apartment in Moscow at around 6:30 in the morning. “They threw us to the floor, they dragged my wife into a small room, I was lying in the hallway. They didn’t let us get dressed,” according to his recollection of the events, which Parubets wrote in a document he shared with TechCrunch. </p>
+</blockquote>
+<p>One of them picked up his Android phone and said, “What’s your fucking password?” And Parubets told them. From the article:</p>
+<blockquote>
+<p>“What’s your f—king password?” one of the agents asked Parubets when they picked up his Android phone, according to his recollection of the events. Intimidated, Parubets said he gave away its password. </p>
+</blockquote>
+<p>They threatened to keep him in prison unless he agreed to spy on Ukrainians for the Russians, so he agreed, even though he says he didn’t plan on actually doing it. When they released him, they gave him back his phone and it had spyware on it.</p>
+<p>According to <a href="https://citizenlab.ca/2024/12/device-confiscated-by-russian-authorities-returned-with-monokle-type-spyware-installed/">an analysis of Parubets’s Android phone</a> by The Citizen Lab and the legal assistance group First Department, the spyware they found “allows the operator to track a target device’s location, record phone calls, keystrokes, and read messages from encrypted messaging apps, among other capabilities.”</p>
+<p>And the report also point out:</p>
+<blockquote>
+<p>Any person whose device was confiscated and later returned by [a security service] should assume that the device can no longer be trusted without detailed, expert analysis.</p>
+</blockquote>
+<p>In the Age of Technofascism, this applies when your device is seized by DHS, ICE, CPB, the FBI, and in many situations probably local police too.</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/slide-044.png" /></p>
+<p>Sometimes it’s legal for authorities to search your device, and sometimes it’s illegal. But all of that is pretty abstract when it’s clear that the Trump administration doesn’t care about breaking the law, and gets away with it all the time.</p>
+<p>Whenever you cross a border or go to a protest, you should be prepared for the fact that authorities <em>might</em> try to search your devices.</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/slide-045.png" /></p>
+<p>It’s still important to <strong>know your rights</strong> , even if fascist authorities are likely to violate them. You should consult actual lawyers for legal advice, but here are just some quick tips:</p>
+<ul>
+<li>You have the right to remain silent, so <strong>don't talk to the police</strong> except to assert your rights.</li>
+<li>Police are kind of like vampires, they can only legally enter your home if you invite them in. So if police or federal agents show up at your house or your business, <strong>do not invite them in</strong>. If they say they have a warrant, it needs to be a valid warrant, signed by a real judge. ICE tries to use their own fake warrants, and those aren’t legally binding.</li>
+<li>If they try to search you, tell them you <strong>do not consent</strong>.</li>
+<li>If they want you to unlock your phone or computer, <strong>don't comply</strong> , and <strong>don't share your passwords</strong>. There’s a good chance that this will result in them stealing your devices, but at least they’ll be encrypted.</li>
+</ul>
+<p><strong>Before I go into the defenses against device searches, I want to take a minute to plug the</strong><a href="https://www.accessnow.org/help/"><strong>Access Now Digital Security Helpline</strong></a><strong>.</strong></p>
+<p>Researchers at places like The Citizen Lab, Access Now, and Amnesty International have done an <em>amazing</em> job exposing spyware firms and their flagrant abuse of human rights. Detecting spyware is hard, and none of this research is possible without the cooperation of the victims of spyware.</p>
+<p>If you think your device has been hacked by the Trump administration, or <em>if there is anyone in your community who might have been hacked</em> , please reach out to the Access Now Helpline for help. If anyone you know has had their phone seized by federal agents, and then later given back to them, they should <em>definitely not trust that phone</em> , and contact the Access Now Helpline.</p>
+<h1 id="defenses-against-device-searches">Defenses Against Device Searches<a class="headerlink" href="#defenses-against-device-searches" title="Permanent link">&para;</a></h1>
+<p>While I can’t give you legal advice, I <em>can</em> give you technical advice on defenses against device searches. These mostly all revolve around disk encryption.</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/slide-048.png" /></p>
+<p>If someone gains access to your phone or computer and you aren’t using disk encryption, <em>nothing</em> stops them from accessing all your data. But even with disk encryption, your data is only as secure as how you’re able to unlock your device, as well as your lock screen settings.</p>
+<p>For example, let’s say you have an iPhone and a strong passcode, but you unlock your phone with your face. This means that when you get arrested at a protest, the cop can <em>also</em> unlock your phone with your face, and then access all the data in your phone.</p>
+<p>Because of tools like Cellebrite, your phone’s passcode is also really important. It’s orders of magnitude harder to hack into a phone with 10-digit passcode than with a 6-digit passcode.</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/slide-049.png" /></p>
+<p>You should also harden your devices. If these defenses against device searches look familiar, it’s because they’re <em>also</em> defenses again mercenary spyware.</p>
+<p>Cellebrite, and similar tools that attack computers, rely on vulnerabilities to help them bypass your lock screen or brute force your password without rate limiting. Install updates. When you’re using the latest version of your OS, there are fewer vulnerabilities in your lock screen that can be exploited.</p>
+<p>And again, enable Lockdown Mode in iOS and macOS. And enable Advanced Protection in Android.</p>
+<p>When your device is seized, but in a locked state, you also should be careful about what information is on your lock screen. They can access that data without even needing to hack your device. Make sure that sensitive notifications – like the content of your Signal messages – don’t get displayed on your lock screen. This applies to both computers and phones.</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/slide-050.png" />The Windows 95 shut down screen</p>
+<p>If you have disk encryption, the very best thing you can do to keep your device secure is to <strong>completely power off your device</strong> when you’re not using it. A powered off device, before you’ve entered any password to unlock the encryption, is much harder to hack into than one that’s powered on but locked.</p>
+<p>So, when you’re going through a security checkpoint at the airport, completely power of your phone and your computer <em>first</em>.</p>
+<p>When you’re at a protest, if it looks like you might get arrested imminently, power off your phone before you get detained. You can always power it back on when you’re safe.</p>
+<p>And finally, turn off all of your computers <em>every night</em> when you’re not using them. Police most often raid people’s homes in the middle of the night or the very early morning. Powering off your computers every night means that if you get raided, your devices will be harder to hack into, giving your disk encryption a fighting chance.</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/slide-054.png" /></p>
+<p>People often talk about anonymous burner phones. Except in very specific situations, truly anonymous burner phones aren’t that useful. Using a <a href="https://activistchecklist.org/secondary/"><em>secondary phone</em></a> that you don’t even try to keep anonymous, on the other hand, is easy to maintain, and it has some major benefits. If you get detained at an airport, or you get arrested at a protest, the authorities either already know who you are, or they’re about to, so anonymity isn’t important here.</p>
+<p>When you set up a secondary device, use a separate Google or Apple account, so it can't access the data in your main account. Make a separate Signal account, and just add the contacts and groups you'll need. If authorities hack into your secondary device, there won’t be much data to extract. It won’t have your messaging apps, your contacts, your browser history, your photos, your documents, or anything else like that.</p>
+<p>Since secondary devices are just for temporary use – to take on an international trip, or to bring to a protest – you should factory reset them between uses. This should protect you in case they install spyware on your device and give it back to you. Although, ideally you should contact the Access Now Helpline to let researchers to get a sample of that spyware first.</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/slide-055.png" /></p>
+<p>Even on your main devices, <em>minimize</em> the data that you retain. <strong>They can't steal your data if you don't have anything to steal.</strong></p>
+<p>We’ll all be better off if we start treating most online communication as ephemeral and delete it after we’ve read it. If you want to retain anything, take a screenshot, but delete everything else.</p>
+<p>If you go into the Signal app, you can go to Settings, Privacy, Disappearing Messages, and set Signal to use disappearing messages by default for every chat. And while you’re at it, get everyone you know to stop sending you messages in iMessage, WhatsApp, Instagram DMs, or anything else, and switch to Signal.</p>
+<p>You should minimize other data too, not just in messaging apps. Basically, think about what data you have on your phones and computers, and regularly take steps to reduce your risk if those devices are ever searched.</p>
+<h1 id="cell-site-simulators">Cell-Site Simulators<a class="headerlink" href="#cell-site-simulators" title="Permanent link">&para;</a></h1>
+<p>This isn’t about mercenary spyware or device searches, but I wanted to slip this into my talk too. We’ve known for years that ICE, and local police departments across the US, use <em>cell-site simulaors</em>. Here’s <a href="https://techcrunch.com/2025/10/07/ice-bought-vehicles-equipped-with-fake-cell-towers-to-spy-on-phones/">recent reporting</a> from earlier this month about yet another ICE contract for these street level surveillance devices.</p>
+<p>If you’re not familiar with cell-site simulators, which are also called IMSI catchers or Stingrays, they’re devices that pretend to be legitimate cell phone towers, tricking all nearby phones into connecting directly to them rather than real towers. We know that these are in use across the US, but there’s a real challenging in detecting them.</p>
+<p><a href="https://efforg.github.io/rayhunter/">Rayhunter</a> is open-source custom firmware for cheap mobile hotspots that can detect cell-site simulators. It’s developed by Cooper Quintin and others at EFF. You need to plug in a SIM card, but you don't need to pay for phone service, so it’s a cheap one-time cost. It’s incredibly easy to flash the Rayhunter firmware onto these. If you’re interested in trying to detect cell-site simulators, check out the Rayhunter project.</p>
+<h1 id="theres-not-an-app-for-that">There's NOT an App for That<a class="headerlink" href="#theres-not-an-app-for-that" title="Permanent link">&para;</a></h1>
+<p>A different way that technofascism is expressing itself is app censorship. Apple and Google, the companies that control exactly what software anyone is allowed to install on their phones, are actively collaborating with the Trump administration by censoring their App Stores without even a fight.</p>
+<p>A few weeks ago, at the request of the Trump administration, Apple <a href="https://www.404media.co/iceblock-owner-after-apple-removes-app-we-are-determined-to-fight-this/">kicked</a> the ICEBlock app out of the App Store. This was an iPhone app that allowed users to anonymously report ICE sightings within a 5 mile radius and get notifications when others reported ICE sightings near them.</p>
+<p>The developer, Joshua Aaron, points out that:</p>
+<blockquote>
+<p>ICEBlock is no different from crowd sourcing speed traps, which every notable mapping application, including Apple's own Maps app, implements as part of its core services.</p>
+</blockquote>
+<p>To justify its decision, Apple has decided to treat ICE officers as a “targeted group,” and to treat apps that help inform the public about abuses by ICE agents – whose job is <em>racial profiling</em> and <em>violence against people based on their national and ethnic origin</em> – as the same as <em>discriminating</em> against people for their religion, race, sexual orientation, gender, or national or ethnic origin.</p>
+<p>To be clear, the government didn’t send a court order to Apple demanding that they do this. The Justice Department asked Apple, and Apple simply agreed without a fight.</p>
+<p>Here’s a quick video of Attorney General Pam Bondi <strong>lying to the Senate</strong> about ICEBlock:</p>
+<p>0:00</p>
+<p>/0:41</p>
+<p>1×</p>
+<p>October 7, 2025: Attorney General Pam Bondi lies to the Senate Judiciary Committee about ICEBlock (<a href="https://www.youtube.com/watch?v=E1JroBFodGk">YouTube link</a>)</p>
+<p>First, ICEBlock did <em>not</em> post “where ICE officers live.” They just posted ICE <em>sightings</em> , which then automatically got deleted after a few hours. Also, ICEBlock was never available for Android.</p>
+<p>But don’t worry, <strong>Google <em>also</em> voluntarily </strong><a href="https://www.404media.co/google-calls-ice-agents-a-vulnerable-group-removes-ice-spotting-app-red-dot/"><strong>chose to collaborate</strong></a><strong>with the fascists</strong> at the request of the Trump administration. And in fact, they used pretty much the same justification. Both Apple and Google removed the <a href="https://www.red-dot.app/">Red Dot app</a> from their app stores.</p>
+<p>Red Dot is an app that’s similar to ICEBlock, in that it lets people report ICE sightings and get alerts when they’re nearby. Since it’s been banned by both Apple and Google, it’s now <em>only</em> available for Android as an APK that you can sideload.</p>
+<p>Google <em>claims</em> that the Justice Department didn’t ask them to ban Red Dot, but I find that kind of hard to believe considering Pam Bondi keeps giving interviews saying that she asked Google to ban these apps.</p>
+<p>But even more disturbingly, Google’s justification for banning Red Dot is that working at ICE makes you part of a vulnerable group that is “associated with systemic discrimination or marginalization.” <strong>This is just offensive.</strong></p>
+<p>And even worse, Apple <a href="https://www.404media.co/apple-banned-an-app-that-simply-archived-videos-of-ice-abuses/">banned an app called Eyes Up</a> from the App Store. Unlike ICEBlock and Red Dot, Eyes Up doesn’t do any real-time tracking or alerting of ICE sightings. It simply archives verified videos of ICE abuse, and puts them on a map to <em>preserve evidence of their crimes</em>.</p>
+<p>Also unlike ICEBlock or Red Dot, Eyes Up is a <em>web application</em>. So it’s still online and active at <a href="https://eyesupapp.com/"><strong>eyesupapp.com</strong></a>. Here’s a screenshot of Eyes Up, zoomed into part of Portland.</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/eyes-up-screenshot.png" /></p>
+<p>Apple is <strong>voluntarily helping the fascists censor videos of violence</strong> from DHS officers like this one:</p>
+<p>0:00</p>
+<p>/0:59</p>
+<p>1×</p>
+<p>See the original video at <a href="https://eyesupapp.com/video/0bcb359b-849c-44e0-b233-4626a0be3acd">Eyes Up</a>.</p>
+<p>It’s not just Apple and Google though. Last week, Facebook <a href="https://www.nytimes.com/2025/10/15/technology/meta-removes-ice-facebook-page.html">deleted a group</a> called “ICE Sighting-Chicagoland” with <em>over 80,000 members in it</em> , at the request of Attorney General Pam Bondi. Just like Apple and Google’s excuses, Meta claimed that this Facebook group was violating policies “against coordinated harm.”</p>
+<p>On a <a href="https://www.wnycstudios.org/podcasts/otm/articles/big-tech-is-silencing-the-ice-watchers-plus-why-a-scholar-of-antifa-fled-the-country">recent episode</a> of the podcast On the Media, the 404 Media reporter Joseph Cox spoke about this Facebook group:</p>
+<blockquote>
+<p>I have seen a limited archive of that Facebook page. It’s difficult to access now, of course, because it has been taken offline. But the section that I scrolled through, I did not see any evidence of ICE officials being doxed, or specifically targeted. It was more just reporting, ‘Hey, there are ICE officials at this location,’ very much in the same sort of way that apps like ICEBlock were doing.</p>
+</blockquote>
+<p>Here's a recording from the podcast:</p>
+<p><img alt="audio-thumbnail" src="" /></p>
+<p>Excerpt from On the Media episode: Big Tech is Silencing the ICE Watchers. Plus, Why a Scholar of Antifa Fled the Country.</p>
+<p>0:00</p>
+<p>/40.019592</p>
+<p>1×</p>
+<p><strong>So in other words, in the Age of Technofascism, American tech companies are collaborators.</strong></p>
+<p>Before going to solutions, I want to share one final story from earlier this week. <a href="https://www.forbes.com/sites/the-wiretap/2025/10/21/ice-spies-on-whatsapp/">This article</a> describes a search warrant that ICE sent to Meta, demanding real-time metadata about who a WhatsApp user was communicating with.</p>
+<p>WhatsApp messages are end-to-end encrypted, but Meta freely gives law enforcement all of the metadata. If you’re using WhatsApp for any sort of antifascist activism, <em>stop and switch to Signal</em>. Signal has features like Sealed Sender that prevent them from even accessing the metadata themselves, and so they can’t be forced to hand it over to ICE.</p>
+<p>From the article:</p>
+<blockquote>
+<p>The warrant reviewed by <em>Forbes</em> , filed towards the end of last week, now allows the government to force unlock that suspect’s phone by applying the defendant’s fingerprints to the device, or holding up the phone to their face, depending on what, if any, biometric access features they’re using.</p>
+</blockquote>
+<p>This warrant also specifically allows the government to unlock the suspects phone using their biometrics. So again, <em>don't use biometrics</em> for unlocking your phone or your computer.</p>
+<h1 id="the-open-web-is-our-best-hope">The Open Web is Our Best Hope<a class="headerlink" href="#the-open-web-is-our-best-hope" title="Permanent link">&para;</a></h1>
+<p>Of these four instances of censorship, ICEBlock, Red Dot, Eyes Up, and the “ICE Sighting-Chicagoland” Facebook group, Eyes Up is the only one that’s still online. And the reason is because it’s a <em>website</em>.</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/slide-074.png" /></p>
+<p>What this censorship tells me is that companies like Apple, Google, and Meta cannot be trusted or relied on.</p>
+<p>If you want to make an app that the Trump administration won’t like, unfortunately, you should make it with censorship in mind. Just like Eyes Up, make it a website that works without a native app, so when Apple and Google turn on your, your tool can still be useful.</p>
+<p>The internet is a global network. There are domain name registrars and hosting providers all over the world, including many that won’t cooperate with the US government.</p>
+<p>There isn’t much internet censorship in the US, yet. But if that changes, thanks to activists in places like China, Iran, and Russia, we have decades of experience circumventing online censorship. We can use the same techniques here if we need to.</p>
+<h1 id="community">Community<a class="headerlink" href="#community" title="Permanent link">&para;</a></h1>
+<p>Finally, we should all step back from our computers, put down our phones, and devote real energy into strengthening our communities.</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/slide-076.png" /></p>
+<p>Things are <em>really bad</em> right now, and it’s easy to feel isolated and alone. Whenever possible, talk with people <em>in person</em> instead of in group chats or video calls.</p>
+<p>People are facing harassment from Trump-supporting fascists. Their loved ones are getting disappeared by the secret police. The state is making example out of people for trying to get gender affirming or reproductive health care, or for protesting genocide.</p>
+<p>When they come after you, your friends, or your neighbors, the <em>worst</em> thing you can do is to keep staring at your phone. We need real community ties with people who have our backs. And we need to have solidarity with <em>everyone else</em> they’re going after.</p>
+<p><img alt="" src="https://micahflee.com/content/images/2025/10/slide-077.png" /></p>
+<p>People living under repressive regimes have learned throughout history is the importance of <strong>security culture</strong>. A security culture is a set of customs and measures shared by a community to keep everyone safe.</p>
+<p>As shit gets more real, keeping your community safe is everyone's responsibility.</p>
+<p>Don’t panic if you haven’t done all of the things I proposed in this talk. Don’t judge others who haven’t done them either. It takes time to incorporate these practices into our communities as a security culture, but we’ll all be better off if we commit to it.</p>
+<p>The fascists are probably going to start hacking our phones.</p>
+<p>They’re going to plug them into Cellebrite to try to see see exactly who we’re talking to and what we’re saying.</p>
+<p>They might try to plant spyware on them and hope we keep using them.</p>
+<p>They’re going to pressure tech platforms to prevent us from organizing – they already are.</p>
+<p>And they’re going to use data from companies like Google and Meta to decide which of us to target.</p>
+<p>It’s not enough to just lock down your own devices. <strong>If we want to stay safe and productive in the Age of Technofascism, we all need to work together.</strong></p>
+<hr />
+<p><em>If you found this interesting,  </em><a href="https://micahflee.com/#/portal/signup"><em>subscribe</em></a> _  to get these posts emailed directly to your inbox. If you want to support my work, considering becoming a paid supporter._</p>
+<p><a href="/author/micah/"> <img alt="Micah Lee" src="https://www.gravatar.com/avatar/73aa6b8ef40730e5cbcce3137400120e?s=250&amp;r=x&amp;d=mp" /> </a></p>
+<p><a href="/author/micah/">Micah Lee</a></p>
+<p>25 Oct 2025</p>
+<h2 id="_1"><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><a href="/in-war-torn-portland-watch-me-speak-at-bsidespdx/">← Previous</a></p>
+<p><a href="/i-spoke-about-iceblock-and-trumps-app-censorship-on-the-kill-switch-podcast/">Next →</a></p>
+<ul>
+<li>Subscribe</li>
+</ul>
+<p>Posts are licensed under CC BY-NC 4.0 </p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 11:14:56 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

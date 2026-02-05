@@ -1,0 +1,706 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/minimaxir.com/Can%20modern%20LLMs%20actually%20count%20the%20number%20of%20b%27s%20in%20-blueberry--_20260205/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Can modern LLMs actually count the number of b's in "blueberry"? - Hacker News 精选博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#can-modern-llms-actually-count-the-number-of-bs-in-blueberry" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Hacker News 精选博客" class="md-header__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker News 精选博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Can modern LLMs actually count the number of b's in "blueberry"?
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker News 精选博客" class="md-nav__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hacker News 精选博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/minimaxir.com/Can modern LLMs actually count the number of b's in -blueberry--_20260205.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="can-modern-llms-actually-count-the-number-of-bs-in-blueberry">Can modern LLMs actually count the number of b's in "blueberry"?<a class="headerlink" href="#can-modern-llms-actually-count-the-number-of-bs-in-blueberry" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://minimaxir.com
+<strong>链接:</strong> https://minimaxir.com/2025/08/llm-blueberry/
+<strong>日期:</strong> Tue, 12 Aug 2025 09:00:00 -0700</p>
+<hr />
+<p><a href="https://minimaxir.com/" title="Max Woolf's Blog (Alt + H)">Max Woolf's Blog</a></p>
+<ul>
+<li>
+<p>|</p>
+</li>
+<li>
+<p><a href="https://minimaxir.com/post/" title="Posts">Posts</a></p>
+</li>
+<li><a href="https://minimaxir.com/search/" title="Search (Alt + /)">Search</a></li>
+<li><a href="https://github.com/minimaxir/" title="GitHub">GitHub </a></li>
+<li><a href="https://www.patreon.com/minimaxir" title="Patreon">Patreon </a></li>
+</ul>
+<p><a href="https://minimaxir.com/">Home</a> » <a href="https://minimaxir.com/post/">Posts</a></p>
+<h1 id="can-modern-llms-actually-count-the-number-of-bs-in-blueberry_1">Can modern LLMs actually count the number of b's in "blueberry"?<a class="headerlink" href="#can-modern-llms-actually-count-the-number-of-bs-in-blueberry_1" title="Permanent link">&para;</a></h1>
+<p>August 12, 2025 · 9 min</p>
+<p>Last week, <a href="https://openai.com">OpenAI</a> announced and released <a href="https://openai.com/gpt-5/">GPT-5</a>, and the common consensus both inside the AI community and outside is that the new LLM did not live up to the hype. <a href="https://bsky.app">Bluesky</a> — whose community is skeptical at-best of generative AI in all its forms — began putting the model through its paces: Michael Paulauski <a href="https://bsky.app/profile/mike10010100.com/post/3lvtrfmhpkc23">asked GPT-5</a> through the ChatGPT app interface "how many b's are there in blueberry?". A simple question that a human child could answer correctly, but ChatGPT states that there are <em>three</em> b's in blueberry when there are clearly only two. Another attempt by Kieran Healy <a href="https://bsky.app/profile/kjhealy.co/post/3lvtxbtexg226">went more viral</a> as ChatGPT insisted blueberry has 3 b's despite the user repeatedly arguing to the contrary.</p>
+<p><img alt="" src="chatgpt.webp" /></p>
+<p>Other Bluesky users were able to replicate this behavior, although results were inconsistent: GPT-5 uses a new model router that quietly determines whether the question should be answered by a better reasoning model, or if a smaller model will suffice. Additionally, Sam Altman, the CEO of OpenAI, later <a href="https://x.com/sama/status/1953893841381273969">tweeted</a> that this router was broken during these tests and therefore "GPT-5 seemed way dumber," which could confound test results.</p>
+<p>About a year ago, <a href="https://techcrunch.com/2024/08/27/why-ai-cant-spell-strawberry/">one meme in the AI community</a> was to ask LLMs the simple question "how many r's are in the word strawberry?" as major LLMs consistently and bizarrely failed to answer it correctly. It's an intentionally adversarial question to LLMs because LLMs do not directly use letters as inputs, but instead they are tokenized. To quote TechCrunch's explanation:</p>
+<blockquote>
+<p>This is because the transformers are not able to take in or output actual text efficiently. Instead, the text is converted into numerical representations of itself, which is then contextualized to help the AI come up with a logical response. In other words, the AI might know that the tokens “straw” and “berry” make up “strawberry,” but it may not understand that “strawberry” is composed of the letters “s,” “t,” “r,” “a,” “w,” “b,” “e,” “r,” “r,” and “y,” in that specific order. Thus, it cannot tell you how many letters — let alone how many “r”s — appear in the word “strawberry.”</p>
+</blockquote>
+<p>It's likely that OpenAI/Anthropic/Google have included this specific challenge into the LLM training datasets to preemptively address the fact that someone <em>will</em> try it, making the question ineffective for testing LLM capabilities. Asking how many b's are in blueberry is a semantically similar question, but may just be sufficiently out of domain to trip the LLMs up.</p>
+<p>When Healy's Bluesky post became <a href="https://news.ycombinator.com/item?id=44832908">popular on Hacker News</a>, a surprising number of commenters cited the tokenization issue and discounted GPT-5's responses entirely because (paraphrasing) "LLMs fundamentally can't do this". I disagree with their conclusions in this case as tokenization is less effective of a counterargument: if the question was only asked once, maybe, but Healy asked GPT-5 <em>several</em> times, with different formattings of blueberry — therefore different tokens, including single-character tokens — and it still asserted that there are 3 b’s every time. Tokenization making it difficult for LLMs to count letters makes sense intuitively, but time and time again we’ve seen LLMs do things that aren’t intuitive. Additionally, it's been a year since the strawberry test and hundreds of millions of dollars have been invested into improving RLHF regimens and creating more annotated training data: it's hard for me to believe that modern LLMs have made zero progress on these types of trivial tasks.</p>
+<p>There's an easy way to test this behavior instead of waxing philosophical: why not just ask a wide variety of LLMs see of often they can correctly identify that there are 2 b's in the word "blueberry"? If LLMs indeed are fundamentally incapable of counting the number of specific letters in a word, that flaw should apply to <em>all</em> LLMs, not just GPT-5.</p>
+<h2 id="2-bs-or-not-2-bs">2 b's, or not 2 b's<a class="headerlink" href="#2-bs-or-not-2-bs" title="Permanent link">&para;</a></h2>
+<p>First, I chose a selection of popular LLMs: from OpenAI, I of course chose GPT-5 (specifically, the GPT-5 Chat, GPT-5 Mini, and GPT-5 Nano variants) in addition to OpenAI's new open-source models gpt-oss-120b and gpt-oss-20b; from Anthropic, the new Claude Opus 4.1 and Claude Sonnet 4; from Google, Gemini 2.5 Pro and Gemini 2.5 Flash; lastly as a wild card, Kimi K2 from Moonshot AI. These contain a mix of reasoning-by-default and non-reasoning models which will be organized separately as reasoning models should theoretically perform better: however, GPT-5-based models can route between using reasoning or not, so the instances where those models reason will also be classified separately. Using <a href="https://openrouter.ai">OpenRouter</a>, which allows using the same API to generate from multiple models, I wrote a Python script to simultaneously generate a response to the given question from every specified LLM <em>n</em> times and save the LLM responses for further analysis. (<a href="https://github.com/minimaxir/llm-blueberry/blob/main/llm_count_letters.ipynb">Jupyter Notebook</a>)</p>
+<p>In order to ensure the results are most representative of what a normal user would encounter when querying these LLMs, I will not add any generation parameters besides the original question: no prompt engineering and no temperature adjustments. As a result, I will use an independent secondary LLM with prompt engineering to parse out the predicted letter counts from the LLM's response: this is a situation where normal parsing techniques such as <a href="https://en.wikipedia.org/wiki/Regular_expression">regular expressions</a> won't work due to ambigious number usage, and there are many possible ways to express numerals that are missable edge cases, such as <code>The letter **b** appears **once** in the word “blueberry.”</code> 1</p>
+<p>First, let's test the infamous strawberry question, since that can serve as a baseline as I suspect LLMs have gamed it. Following the syntax of Healy's question, I asked each LLM <code>How many times does the letter r appear in strawberry</code> 100 times (<a href="https://huggingface.co/datasets/minimaxir/llm-strawberry">Dataset</a>), and here are the results:</p>
+<p><img alt="" src="strawberry.png" /></p>
+<p>Perfect performance by every LLM except one, and I'm surprised that it's Gemini 2.5 Flash. Looking at the <a href="https://huggingface.co/datasets/minimaxir/llm-strawberry/sql-console/jFsvS5r">incorrect generations</a>, Gemini confidently says <code>The letter "r" appears **two** times in the word "strawberry".</code> or <code>The letter "r" appears **four** times in the word "strawberry".</code>, so atleast there's some variance in its wrongness. The perfect performance on every other model does hint at the problem being in the LLM training dataset.</p>
+<p>Now, the real question: how well can these LLMs count the number of b's in blueberry, which may be out of domain? I ran more trials — 274 total — which should ensure even more stable results (<a href="https://huggingface.co/datasets/minimaxir/llm-blueberry">Dataset</a>). Here's the tally for how these LLMs respond to the question <code>How many times does the letter b appear in blueberry</code>:</p>
+<p><img alt="" src="blueberry.png" /></p>
+<p>Wait, what the heck happened with GPT-5 Chat? I looked at the <a href="https://huggingface.co/datasets/minimaxir/llm-blueberry/sql-console/nvoM4I8">raw generation data for GPT-5 Chat</a> and it's not an error in my pipeline: GPT-5 Chat is indeed wrong that often, and in spectacular ways. I also confirmed that it's not an issue with OpenRouter's endpoint, as hitting OpenAI's official <code>gpt-5-chat-latest</code> API endpoint consistently reproduces poor results for this particular question.</p>
+<p>Many of the correct cases for GPT-5 Chat are initially wrong but the model self-corrects on its own:</p>
+<blockquote>
+<p>The word <strong>" blueberry"</strong> contains the letter <strong>b</strong> three times:</p>
+<ul>
+<li><strong>B</strong> lueberry (1st letter)</li>
+<li>Blue<strong>b</strong> erry (5th letter)</li>
+<li>Blueber<strong>r</strong> y – wait, no <strong>b</strong> here</li>
+<li>Actually, checking carefully: <strong>blueberry</strong> → b <strong>(1)</strong> , l, u, e, b <strong>(2)</strong> , e, r, r, y.
+</li>
+</ul>
+<p>✅ So the letter <strong>b</strong> appears <strong>2 times</strong> in "blueberry".</p>
+<p>Would you like me to also count it <strong>regardless of case</strong> in a full paragraph?</p>
+</blockquote>
+<p>The incorrect cases, however…</p>
+<blockquote>
+<p>The word <strong>" blueberry"</strong> contains the letter <strong>b</strong> three times:</p>
+<p><strong>b</strong> lue<strong>b</strong> erry → b, b, b → <strong>3 times</strong> ✅</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>The word <strong>" blueberry"</strong> contains the letter <strong>b</strong> <strong>three</strong> times:</p>
+<ul>
+<li><strong>B</strong> lueberry</li>
+<li>blue<strong>b</strong> erry</li>
+<li>blueberr<strong>b</strong> y
+</li>
+</ul>
+<p>So, the letter <strong>b</strong> appears <strong>3 times</strong> in "blueberry". ✅</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>The word <strong>" blueberry"</strong> contains the letter <strong>b</strong> <strong>3 times</strong>.</p>
+<p><strong>Breakdown:</strong></p>
+<ul>
+<li><strong>b</strong> lueberry → 1st b</li>
+<li>blue<strong>b</strong> erry → 2nd b</li>
+<li>blueberr<strong>y</strong> → and one more <strong>b</strong> before the final part → 3rd b
+</li>
+</ul>
+<p>✅ <strong>Total: 3</strong></p>
+<p>Do you want me to also count it in a <strong>case-insensitive</strong> way, in case of uppercase letters?</p>
+</blockquote>
+<p>The ✅ emoji just makes its confident incorrectness funnier. Unfortunately, these extreme hallucinations track with the weird behavior seen on Bluesky, so it can't be attributed to the router issues on GPT-5 Chat's launch. Is there a greater systemic issue with the model, then? It had no difficulty answering the strawberry question.</p>
+<p>Looking at <a href="https://huggingface.co/datasets/minimaxir/llm-blueberry/sql-console/wObPOOv">incorrect b counts by other models</a> and the reasoning traces for reasoning models is interesting as well:</p>
+<p>Gemini 2.5 Pro:</p>
+<blockquote>
+<p><strong>Considering the Query</strong></p>
+<p>I've established the core of the query: the user's looking for the letter "b" in the word "blueberry". Now, I'm diving directly into the word to find those instances, the next step is going to be to provide an answer.</p>
+<p><strong>Pinpointing the Count</strong></p>
+<p>I've identified the core question and the target word, "blueberry." The letter "b" appears three times. I'm now confirming this, noting its positions in the word: the first and the two in the middle. I'm verifying the answer's accuracy before forming the final response to the user.</p>
+</blockquote>
+<p>gpt-oss-20b:</p>
+<blockquote>
+<p>The user asks: "How many times does the letter b appear in blueberry". Likely answer: 1. The word "blueberry" contains 'b' once. So answer: 1. Should be concise but might add explanation? Probably just answer.</p>
+</blockquote>
+<p>Despite these comical failures, most LLMs still get a perfect score even without distinct reasoning traces. Claude's logic is <a href="https://huggingface.co/datasets/minimaxir/llm-blueberry/sql-console/Vgc8NQM">easier to follow</a> and is able to account for per-character positions:</p>
+<p>Claude Sonnet 4:</p>
+<blockquote>
+<p>To count the letter "b" in "blueberry", I'll go through each letter:</p>
+<p>b-l-u-e-b-e-r-r-y</p>
+<p>Looking at each position:</p>
+<ol>
+<li>b - this is a "b" ✓</li>
+<li>l - not a "b"</li>
+<li>u - not a "b"</li>
+<li>e - not a "b"</li>
+<li>b - this is a "b" ✓</li>
+<li>e - not a "b"</li>
+<li>r - not a "b"</li>
+<li>r - not a "b"</li>
+<li>y - not a "b"
+</li>
+</ol>
+<p>The letter "b" appears <strong>2 times</strong> in "blueberry".</p>
+</blockquote>
+<p>Claude Opus 4.1:</p>
+<blockquote>
+<p>To count the letter 'b' in the word "blueberry", I'll examine each letter:</p>
+<p>b-l-u-e-b-e-r-r-y</p>
+<p>The letter 'b' appears <strong>2 times</strong> in "blueberry" - once at the beginning and once in the middle (the 5th position).</p>
+</blockquote>
+<p>Obviously, this is an informal test and more research can be done to determine just how well LLMs can count, ideally with questions that do not involve fruit. Despite the issues with tokenization which prevent LLMs from counting in the same way humans count, they definitely can do it: the better question is why it can't count correctly 100% of the time, and why its mistakes are very idiosyncratic. Yes, asking an LLM how many b's are in blueberry is an adversarial question in the sense that the questioner is expecting the LLM to fail. But it's not an <em>unfair</em> question, and it's objectively silly to claim that LLMs such as GPT-5 can operate <a href="https://www.bbc.com/news/articles/cy5prvgw0r1o">at a PhD level</a>, but can't correctly count the number of letters in a word.</p>
+<p><em>All code used in this blog post is available<a href="https://github.com/minimaxir/llm-blueberry/tree/main">open-source on GitHub</a>.</em></p>
+<hr />
+<ol>
+<li>Some false negatives (0.5%) with the LLM parses of counts in responses <a href="https://github.com/minimaxir/llm-blueberry/blob/main/false_negatives.csv">were identified</a> and fixed (<a href="https://github.com/minimaxir/llm-blueberry/blob/main/fix_false_negatives.ipynb">Jupyter Notebook</a>), as a result of the LLM getting confused by multiple notable numbers. ↩︎</li>
+</ol>
+<p><img alt="profile image" src="https://minimaxir.com/profile_webp.webp" /></p>
+<ul>
+<li><strong>Max Woolf</strong> (@minimaxir) is a Senior Data Scientist at <a href="https://www.buzzfeed.com">BuzzFeed</a> in San Francisco who works with AI/ML tools and open source projects. <em>Max 's projects are funded by his <a href="https://www.patreon.com/minimaxir">Patreon</a>.</em></li>
+</ul>
+<p><a href="/cdn-cgi/l/email-protection#5b363a231b36323532363a23322975383436" title="Email"> </a><a href="https://bsky.app/profile/minimaxir.bsky.social" title="Bluesky"> </a><a href="https://github.com/minimaxir" title="Github"> </a><a href="https://twitter.com/minimaxir" title="Twitter"> </a><a href="https://www.linkedin.com/in/minimaxir" title="Linkedin"> </a><a href="https://twitch.tv/minimaxir" title="Twitch"> </a><a href="https://minimaxir.com/post/index.xml" title="Rss"></a></p>
+<ul>
+<li><a href="https://minimaxir.com/tag/chatgpt/">ChatGPT</a></li>
+</ul>
+<p><a href="https://minimaxir.com/2025/10/claude-haiku-jailbreak/">« Prev<br />
+Claude Haiku 4.5 does not appreciate my attempts to jailbreak it </a><a href="https://minimaxir.com/2025/07/llms-identify-people/">Next »<br />
+LLMs can now identify public figures in images</a></p>
+<ul>
+<li><a href="https://x.com/intent/tweet/?text=Can%20modern%20LLMs%20actually%20count%20the%20number%20of%20b%27s%20in%20%22blueberry%22%3f&amp;url=https%3a%2f%2fminimaxir.com%2f2025%2f08%2fllm-blueberry%2f&amp;hashtags=ChatGPT"></a></li>
+<li><a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fminimaxir.com%2f2025%2f08%2fllm-blueberry%2f&amp;title=Can%20modern%20LLMs%20actually%20count%20the%20number%20of%20b%27s%20in%20%22blueberry%22%3f&amp;summary=Can%20modern%20LLMs%20actually%20count%20the%20number%20of%20b%27s%20in%20%22blueberry%22%3f&amp;source=https%3a%2f%2fminimaxir.com%2f2025%2f08%2fllm-blueberry%2f"></a></li>
+<li><a href="https://reddit.com/submit?url=https%3a%2f%2fminimaxir.com%2f2025%2f08%2fllm-blueberry%2f&amp;title=Can%20modern%20LLMs%20actually%20count%20the%20number%20of%20b%27s%20in%20%22blueberry%22%3f"></a></li>
+<li><a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fminimaxir.com%2f2025%2f08%2fllm-blueberry%2f"></a></li>
+<li><a href="https://api.whatsapp.com/send?text=Can%20modern%20LLMs%20actually%20count%20the%20number%20of%20b%27s%20in%20%22blueberry%22%3f%20-%20https%3a%2f%2fminimaxir.com%2f2025%2f08%2fllm-blueberry%2f"></a></li>
+<li><a href="https://telegram.me/share/url?text=Can%20modern%20LLMs%20actually%20count%20the%20number%20of%20b%27s%20in%20%22blueberry%22%3f&amp;url=https%3a%2f%2fminimaxir.com%2f2025%2f08%2fllm-blueberry%2f"></a></li>
+<li><a href="https://news.ycombinator.com/submitlink?t=Can%20modern%20LLMs%20actually%20count%20the%20number%20of%20b%27s%20in%20%22blueberry%22%3f&amp;u=https%3a%2f%2fminimaxir.com%2f2025%2f08%2fllm-blueberry%2f"></a></li>
+</ul>
+<p>Copyright Max Woolf © 2025. Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/adityatelange/hugo-PaperMod/">PaperMod</a></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 11:14:56 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

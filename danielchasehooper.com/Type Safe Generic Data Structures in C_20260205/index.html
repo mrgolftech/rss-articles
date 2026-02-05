@@ -25,7 +25,7 @@
     
     
       
-        <title>Type Safe Generic Data Structures in C\n\n来源: https://danielchasehooper.com\n链接: https://danielchasehooper.com/posts/typechecked-generic-c-data-structures/\n日期: Wed, 25 Jun 2025 00:00:00 +0000\n\n---\n\nSee my follow-up article: “A Fast, Growable Array With Stable Pointers in C” - Hacker News 精选博客</title>
+        <title>Type Safe Generic Data Structures in C - Hacker News 精选博客</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#type-safe-generic-data-structures-in-cnn-httpsdanielchasehoopercomn-httpsdanielchasehoopercompoststypechecked-generic-c-data-structuresn-wed-25-jun-2025-000000-0000nn-nnsee-my-follow-up-article-a-fast-growable-array-with-stable-pointers-in-c" class="md-skip">
+        <a href="#type-safe-generic-data-structures-in-c" class="md-skip">
           跳转至
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Type Safe Generic Data Structures in C\n\n来源: https://danielchasehooper.com\n链接: https://danielchasehooper.com/posts/typechecked-generic-c-data-structures/\n日期: Wed, 25 Jun 2025 00:00:00 +0000\n\n---\n\nSee my follow-up article: “A Fast, Growable Array With Stable Pointers in C”
+              Type Safe Generic Data Structures in C
             
           </span>
         </div>
@@ -404,8 +404,275 @@
   
 
 
-<h1 id="type-safe-generic-data-structures-in-cnn-httpsdanielchasehoopercomn-httpsdanielchasehoopercompoststypechecked-generic-c-data-structuresn-wed-25-jun-2025-000000-0000nn-nnsee-my-follow-up-article-a-fast-growable-array-with-stable-pointers-in-c">Type Safe Generic Data Structures in C\n\n<strong>来源:</strong> https://danielchasehooper.com\n<strong>链接:</strong> https://danielchasehooper.com/posts/typechecked-generic-c-data-structures/\n<strong>日期:</strong> Wed, 25 Jun 2025 00:00:00 +0000\n\n---\n\nSee my follow-up article: “A Fast, Growable Array With Stable Pointers in C”<a class="headerlink" href="#type-safe-generic-data-structures-in-cnn-httpsdanielchasehoopercomn-httpsdanielchasehoopercompoststypechecked-generic-c-data-structuresn-wed-25-jun-2025-000000-0000nn-nnsee-my-follow-up-article-a-fast-growable-array-with-stable-pointers-in-c" title="Permanent link">&para;</a></h1>
-<p>I write type safe generic data structures in C using a technique that I haven’t seen elsewhere1. It uses unions to associate type information with a generic data structure, but we’ll get to that. My approach works for any type of data structure: maps, arrays, binary trees… but for this article I illustrate the ideas by implementing a basic linked list.\nRead the whole article on\ndanielchasehooper.com →</p>
+<h1 id="type-safe-generic-data-structures-in-c">Type Safe Generic Data Structures in C<a class="headerlink" href="#type-safe-generic-data-structures-in-c" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://danielchasehooper.com
+<strong>链接:</strong> https://danielchasehooper.com/posts/typechecked-generic-c-data-structures/
+<strong>日期:</strong> Wed, 25 Jun 2025 00:00:00 +0000</p>
+<hr />
+<p><a href="https://danielchasehooper.com/">Daniel Hooper</a></p>
+<p><a href="https://danielchasehooper.com/">Home</a> ・ <a href="https://danielchasehooper.com/posts">Articles</a> ・ <a href="https://danielchasehooper.com/#projects">Projects</a> ・ <a href="https://danielchasehooper.com/about">About</a> ・ <a href="https://x.com/danielchooper">X.com </a><a href="https://bsky.app/profile/danielchooper.bsky.social">Bluesky </a><a href="https://mastodon.gamedev.place/@danielchooper">Mastodon</a> <a href="https://danielchasehooper.com/feed.xml">RSS</a></p>
+<h1 id="type-safe-generic-data-structures-in-c_1">Type Safe Generic Data Structures in C<a class="headerlink" href="#type-safe-generic-data-structures-in-c_1" title="Permanent link">&para;</a></h1>
+<p>June 25, 2025・8 minute read</p>
+<p>See my follow-up article: "<a href="/posts/segment_array/">A Fast, Growable Array With Stable Pointers in C</a>"</p>
+<p>I write type safe generic data structures in C using a technique that I haven't seen elsewhere1. It uses unions to associate type information with a generic data structure, but we'll get to that. My approach works for any type of data structure: maps, arrays, binary trees… but for this article I illustrate the ideas by implementing a basic linked list. Since many people aren't aware you can do C generics <em>at all</em> , I figured I'd start simple and build up to this:</p>
+<div class="language-text highlight"><pre><span></span><code>typedef struct {
+    int value;
+} Foo;
+
+List(int) int_list = {0};
+list_prepend(&amp;int_list, 3);
+
+List(Foo) foo_list = {0};
+list_prepend(&amp;foo_list, (Foo){ 5 });
+list_prepend(&amp;foo_list, (Foo){ 3 });
+
+// this won&#39;t compile, which is good!
+// list_prepend(&amp;foo_list, 7);
+
+list_for(item, &amp;foo_list) {
+    // `item` is of type `Foo *`
+    printf(&quot;%i\n&quot;, item-&gt;value);
+}
+</code></pre></div>
+<h3 id="generics-level-0-generic-headers">Generics level 0: Generic Headers<a class="headerlink" href="#generics-level-0-generic-headers" title="Permanent link">&para;</a></h3>
+<p>I hesitate to even mention this, because I do not like it2, but its worth comparing to the technique at the end of this article. It works like this: you write your data structure in a header, using macros for your types, and then <code>#include</code> the header multiple times; once for each type the data structure will be used with.</p>
+<p>Click to see the Code</p>
+<p><code>list.h</code></p>
+<div class="language-text highlight"><pre><span></span><code>#ifndef T
+#error &quot;T must be defined before including this header&quot;
+#endif
+
+#define _CONCAT(a, b) a##b
+#define CONCAT(a, b) _CONCAT(a, b)
+
+#define NODE_TYPE CONCAT(T, ListNode)
+#define PREPEND_FUNC CONCAT(T, _list_prepend)
+
+typedef struct NODE_TYPE NODE_TYPE;
+struct NODE_TYPE {
+    NODE_TYPE *next;
+    T data;
+};
+
+void PREPEND_FUNC(NODE_TYPE **head, T data) {
+    NODE_TYPE *node = malloc(sizeof(*node));
+    node-&gt;data = data;
+    node-&gt;next = *head;
+    *head = node;
+}
+
+#undef T
+#undef _CONCAT
+#undef CONCAT
+#undef NODE_TYPE
+#undef PREPEND_FUNC
+</code></pre></div>
+<p><code>main.c</code></p>
+<div class="language-text highlight"><pre><span></span><code>typedef struct {
+    int a;
+} Foo;
+
+typedef struct {
+    char *str;
+    double num;
+} Bar;
+
+#define T Foo
+#include &quot;list.h&quot;
+
+#define T Bar
+#include &quot;list.h&quot;
+
+FooListNode *foo_head = NULL;
+Foo_list_prepend(&amp;foo_head, (Foo){1})
+
+BarListNode *bar_head = NULL;
+Bar_list_prepend(&amp;bar_head, (Bar){&quot;hello&quot;, 5.4})
+</code></pre></div>
+<p>While it <em>is</em> generic and type safe, it has downsides:</p>
+<ul>
+<li>makes it hard to find where types and functions are defined (because they're constructed by macros)</li>
+<li>code completion may not handle them well</li>
+<li>bloats your binary size and build times with copies of the same functions</li>
+<li>requires using type-prefixed functions: <code>Foo_list_prepend() and int_list_prepend()</code> vs just <code>list_prepend()</code></li>
+</ul>
+<h3 id="generics-level-1-void">Generics level 1: <code>void *</code><a class="headerlink" href="#generics-level-1-void" title="Permanent link">&para;</a></h3>
+<p>Another way to make a data structure generic is to use <code>void *</code>. It's not type safe but we'll get to that.</p>
+<div class="language-text highlight"><pre><span></span><code>typedef struct ListNode ListNode;
+struct ListNode {
+    ListNode *next;
+    void *data;
+};
+
+void list_prepend(ListNode **head, void *data) {
+    ListNode *node = malloc(sizeof(*node));
+    node-&gt;data = data;
+    node-&gt;next = *head;
+    *head = node;
+}
+</code></pre></div>
+<p>Note: <code>malloc</code> is used for familiarity, but I highly recommend Arenas instead. You can <a href="https://www.youtube.com/watch?v=TZ5a3gCCZYo">watch</a> or <a href="https://www.rfleury.com/p/untangling-lifetimes-the-arena-allocator">read</a> about them.</p>
+<p>Having <code>ListNode</code> and its <code>data</code> as separate allocations isn't ideal from a memory and performance perspective. It requires 2 allocations per node when one would do, the <code>data</code> pointer uses memory unnecessarily, and you will likely get two cache misses per node when traversing the list: once getting the next node, and once getting its data. We can fix these issues with…</p>
+<h3 id="generics-level-2-inline-storage">Generics level 2: Inline storage<a class="headerlink" href="#generics-level-2-inline-storage" title="Permanent link">&para;</a></h3>
+<p>Instead of storing a pointer to the node's data, we can use a <a href="https://en.wikipedia.org/wiki/Flexible_array_member">Flexible Array Member</a> to store the data inside the node. To do so, we make a single allocation large enough for both the node and the type it stores3:</p>
+<div class="language-text highlight"><pre><span></span><code>typedef struct ListNode ListNode;
+struct ListNode {
+    ListNode *next;
+    char data[]; // glossing over some padding/alignment details here
+};
+
+void list_prepend(ListNode **head, 
+                 void *data, 
+                 size_t data_size) 
+{
+    ListNode *node = malloc(sizeof(*node) + data_size);
+    memcpy(node-&gt;data, data, data_size);
+    node-&gt;next = *head;
+    *head = node;
+}
+
+void main() {
+    ListNode *foo_list = NULL;
+    Foo foo = {5};
+    list_prepend(&amp;foo_list, &amp;foo, sizeof(foo));
+}
+</code></pre></div>
+<p>Now <code>next</code> and the actual contents of <code>data</code> are beside each other in memory, solving the issues of the <code>void *</code> approach. Unfortunately we now have to pass the size, but we'll fix that in the next section</p>
+<p>If you wanted to avoid the <code>memcpy</code>, and initialize the node's memory directly, you could do so with a <code>list_alloc_front</code> function:</p>
+<div class="language-text highlight"><pre><span></span><code>void *list_alloc_front(ListNode **head, size_t data_size)  {
+    ListNode *node = malloc(sizeof(*node) + data_size);
+    node-&gt;next = *head;
+    *head = node;
+    return node-&gt;data;
+}
+
+Foo *new_foo = list_alloc_front(&amp;foo_list, sizeof(*new_foo));
+new_foo-&gt;value = 5;
+</code></pre></div>
+<h3 id="generics-level-3-type-checking">Generics level 3: Type Checking<a class="headerlink" href="#generics-level-3-type-checking" title="Permanent link">&para;</a></h3>
+<p>The part you've all been waiting for: how to get the compiler to error when we try to add the wrong type to a list. The way I found to do this is to use a union with a <code>payload</code> member that has a parameterized type:</p>
+<div class="language-text highlight"><pre><span></span><code>#define List(type) union { \
+    ListNode *head; \
+    type *payload; \
+}
+
+List(Foo) foo_list = {0};
+List(int) int_list = {0};
+</code></pre></div>
+<p>How does that help us? Well, we can use the ternary operator to enforce that the <code>item</code> parameter is the same type as the list's <code>payload</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>// Note: leading underscore add to the 
+// function name since only the macro should call it
+void _list_prepend(ListNode **head, 
+                 void *data, 
+                 size_t data_size);
+
+#define list_prepend(list, item) \
+    _list_prepend(&amp;((list)-&gt;head), \
+                  (1 ? (item) : (list)-&gt;payload), \
+                  sizeof(*(list)-&gt;payload))
+
+List(Foo) *foo_list = NULL;
+Bar bar = {5, 6};
+list_prepend(&amp;foo_list, &amp;bar); // error!
+</code></pre></div>
+<p>The macro also handles passing the item size for us! This is the error Clang produces when adding the wrong type to the list:</p>
+<div class="language-text highlight"><pre><span></span><code>error: pointer type mismatch (&#39;Foo *&#39; and &#39;Bar *&#39;) [-Werror,-Wpointer-type-mismatch]
+   38 |     list_prepend(&amp;foo_list, &amp;bar);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+note: expanded from macro &#39;list_prepend&#39;
+   15 |     _list_prepend(&amp;((list)-&gt;head), (1 ? (item) : (list)-&gt;payload), sizeof(*(list)-&gt;payload))
+      |
+</code></pre></div>
+<p>Macros get a bad rep, but I think this is fairly understandable. Some things to note: <code>payload</code> is never used at runtime, it exists just for type information at compile time. Using a union makes <code>payload</code> not consume any memory.</p>
+<p>If you're writing a generic function that needs to return a pointer to contained data, you can use <code>__typeof__()</code> to cast the return type from <code>void *</code> to the data structure's <code>payload</code> type. <code>__typeof__()</code> is supported in all three big C compilers (clang, gcc, <strong>and</strong> msvc since version 19.39).</p>
+<div class="language-text highlight"><pre><span></span><code>#define list_alloc_front(list) \
+    (__typeof__((list)-&gt;payload))_list_alloc_front(&amp;(list)-&gt;head, sizeof(*(list)-&gt;payload))
+
+void *_list_alloc_front(ListNode **head) {...}
+</code></pre></div>
+<p>If for some reason you don't like using the ternary operator to ensure two types are the same, a previous version of this article used a different technique:Read the old technique</p>
+<p>We can use <code>__typeof__(foo_list.payload)</code> to get the type the list contains. We'll write a <code>list_prepend</code> macro, which will call <code>_list_prepend</code> with a cast function type so that the <code>void *</code> parameter is the list's <code>payload</code> type</p>
+<div class="language-text highlight"><pre><span></span><code>// Note: I added a leading underscore to the 
+// function name since only the macro should call it
+void _list_prepend(ListNode **head, 
+                 void *data, 
+                 size_t data_size);
+
+#define list_prepend(list, item) \
+    /* cast function type */ \
+    ((void (*)(ListNode **, \
+               __typeof__((list)-&gt;payload), \
+               size_t))_list_prepend)  \
+               /* call function */ \
+               (&amp;((list)-&gt;head), item, sizeof(*(list)-&gt;payload))
+
+List(Foo) *foo_list = NULL;
+Bar bar = {5};
+list_prepend(&amp;foo_list, &amp;bar); // error!
+</code></pre></div>
+<p>Calling a typecast function pointer is technically undefined behavior, but in practice it's fine when compiled by modern compilers targeting modern platforms.</p>
+<h2 id="typeof-on-old-compilers"><code>typeof</code> on old compilers<a class="headerlink" href="#typeof-on-old-compilers" title="Permanent link">&para;</a></h2>
+<p><code>__typeof__()</code> was an optional extension until C23, which made it part of the C standard. While Clang and gcc have supported it for a <em>long</em> time, some compilers haven't (like msvc versions prior to 19.39). To make this technique work on those compilers, you can use the terenary operator instead of typeof</p>
+<div class="language-text highlight"><pre><span></span><code>#define List(type) struct { \
+    ListNode *head; \
+    type *payload; \
+}
+
+#define list_prepend(list, item) \
+    _list_prepend(&amp;((list)-&gt;head), (1 ? (item) : (list)-&gt;payload), sizeof(*(list)-&gt;payload))
+</code></pre></div>
+<p>It's possible to do type safe returns as well, by assigning through <code>payload</code>, but I'll leave the details as an exercise for the reader. #</p>
+<h2 id="passing-a-parameter">Passing a Parameter<a class="headerlink" href="#passing-a-parameter" title="Permanent link">&para;</a></h2>
+<p>One annoying thing about C compilers4 is that they do not consider these two variables to have the same type:</p>
+<div class="language-text highlight"><pre><span></span><code>List(Foo) a;
+List(Foo) b = a; // error
+
+void my_function(List(Foo) list);
+my_function(a); // error: incompatible type
+</code></pre></div>
+<p>Even though the variables have identical type definitions, the compiler still errors because they are <em>two distinct definitions</em>. A <code>typedef</code> avoids the issue:</p>
+<div class="language-text highlight"><pre><span></span><code>typedef List(Foo) ListFoo; // this makes it all work
+
+ListFoo a;
+ListFoo b = a; // ok
+
+void my_function(ListFoo list);
+my_function(a); // ok
+
+List(Foo) local_foo_list; // still works
+</code></pre></div>
+<h3 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h3>
+<p>You can use this for any type of data structure, even ones with multiple associated types, like a hash map:</p>
+<div class="language-text highlight"><pre><span></span><code>typedef struct {
+    ...
+} MapInternal;
+
+#define Map(key_type, value_type) union { \
+    MapInternal map; \
+    key_type *key; \
+    value_type *value; \
+}
+</code></pre></div>
+<p>The example source code, which includes the <code>list_for</code> macro, can be downloaded by joining my newsletter at the bottom of this page.</p>
+<hr />
+<ol>
+<li>
+<p><a href="https://github.com/nothings/stb/blob/master/stb_ds.h">stb_ds.h</a> is an example of a type-safe generic data structure, but the techniques it uses aren't as general as what I present here - it only works because the array and map are implemented using a c array. The compiler catches some type errors upon assignment to that c array, not at the point that values are passed as parameters to generic functions. i.e. <code>struct {int a; int b;} baz; STBDS_ADDRESSOF(baz, 5)</code> compiles successfully, when you really want a type error. ↩︎</p>
+</li>
+<li>
+<p>If you want to write a generic function that requires type-specific code gen (like generating <code>add_int</code> and <code>add_double</code> from the same source), this option has more merit. You can get creative with c features in other ways to get type-specific behavior, like for hashing functions, for example. ↩︎</p>
+</li>
+<li>
+<p>I'm glossing over some information about alignment, padding, and size calculations that come into play with the <code>data</code> member, but that's a whole other topic that you should read up on elsewhere if you're unfamiliar. ↩︎</p>
+</li>
+<li>
+<p>Structurally identical types with the same tag name will be considered the same type in GCC 15 and Clang in late 2025 thanks to a <a href="https://www.open-std.org/jtc1/sc22/wg14/www/docs/n3037.pdf">rule change</a> ↩︎</p>
+</li>
+</ol>
+<p>❖</p>
+<p>Get notified about my next article:</p>
+<p>Join Newsletter</p>
+<p><a href="https://danielchasehooper.com/">More articles by Daniel</a></p>
 
 
 
@@ -426,7 +693,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 11:14:56 UTC">2026-02-05</span>
   </span>
 
     

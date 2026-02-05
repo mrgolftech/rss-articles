@@ -381,169 +381,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#the-issues-with-the-existing-parser-implementation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The issues with the existing parser implementation
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="The issues with the existing parser implementation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#parsing-strategy-yacc-vs-hand-written-recursive-descent" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Parsing strategy: YACC vs. hand-written recursive descent
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-other-issue-with-dependencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The other issue with dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#growing-complexity-of-parsing-a-messy-language" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Growing complexity of parsing a messy language
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-mental-roadblock" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The mental roadblock
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-would-this-even-work-tests" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why would this even work? Tests
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-initial-port" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The initial port
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#a-quick-note-on-reviews-and-branches" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        A quick note on reviews and branches
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-long-tail-of-goofs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The long tail of goofs
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-end-result" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The end result
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#followup-static-typing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Followup - static typing
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conclusions
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Conclusions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#does-code-quality-even-matter" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Does code quality even matter?
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -572,7 +409,15 @@
 <strong>链接:</strong> https://eli.thegreenplace.net/2026/rewriting-pycparser-with-the-help-of-an-llm/
 <strong>日期:</strong> 2026-02-04T19:35:00-08:00</p>
 <hr />
-<p><a href="https://github.com/eliben/pycparser">pycparser</a> is my most widely used open source project (with ~20M daily downloads from PyPI <a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-1">[1]</a>). It's a pure-Python parser for the C programming language, producing ASTs inspired by <a href="https://docs.python.org/3/library/ast.html">Python's own</a>. Until very recently, it's been using <a href="https://www.dabeaz.com/ply/ply.html">PLY: Python Lex-Yacc</a> for the core parsing.</p>
+<p>Toggle navigation <a href="https://eli.thegreenplace.net/"> <img alt="" src="https://eli.thegreenplace.net/images/logosmall.png" /> Eli Bendersky's website </a></p>
+<ul>
+<li><a href="https://eli.thegreenplace.net/pages/about"> __ About </a></li>
+<li><a href="https://eli.thegreenplace.net/pages/projects"> __ Projects </a></li>
+<li><a href="https://eli.thegreenplace.net/archives/all"> __ Archives </a></li>
+</ul>
+<h1 id="rewriting-pycparser-with-the-help-of-an-llm_1"><a href="https://eli.thegreenplace.net/2026/rewriting-pycparser-with-the-help-of-an-llm/" title="Permalink to Rewriting pycparser with the help of an LLM"> Rewriting pycparser with the help of an LLM </a><a class="headerlink" href="#rewriting-pycparser-with-the-help-of-an-llm_1" title="Permanent link">&para;</a></h1>
+<p>__ February 04, 2026 at 19:35 Tags <a href="https://eli.thegreenplace.net/tag/python">Python</a> , <a href="https://eli.thegreenplace.net/tag/machine-learning">Machine Learning</a> , <a href="https://eli.thegreenplace.net/tag/compilation">Compilation</a> , <a href="https://eli.thegreenplace.net/tag/recursive-descent-parsing">Recursive descent parsing</a></p>
+<p><a href="https://github.com/eliben/pycparser">pycparser</a> is my most widely used open source project (with ~20M daily downloads from PyPI [1]). It's a pure-Python parser for the C programming language, producing ASTs inspired by <a href="https://docs.python.org/3/library/ast.html">Python's own</a>. Until very recently, it's been using <a href="https://www.dabeaz.com/ply/ply.html">PLY: Python Lex-Yacc</a> for the core parsing.</p>
 <p>In this post, I'll describe how I collaborated with an LLM coding agent (Codex) to help me rewrite pycparser to use a hand-written recursive-descent parser and remove the dependency on PLY. This has been an interesting experience and the post contains lots of information and is therefore quite long; if you're just interested in the final result, check out the latest code of pycparser - the <code>main</code> branch already has the new implementation.</p>
 <p><img alt="meme picture saying &quot;can't come to bed because my AI agent produced something slightly wrong&quot;" src="https://eli.thegreenplace.net/images/2026/cantcometobed.png" /></p>
 <h2 id="the-issues-with-the-existing-parser-implementation">The issues with the existing parser implementation<a class="headerlink" href="#the-issues-with-the-existing-parser-implementation" title="Permanent link">&para;</a></h2>
@@ -590,10 +435,10 @@
 <h3 id="growing-complexity-of-parsing-a-messy-language">Growing complexity of parsing a messy language<a class="headerlink" href="#growing-complexity-of-parsing-a-messy-language" title="Permanent link">&para;</a></h3>
 <p>The original K&amp;R2 grammar for C99 had - famously - a single shift-reduce conflict having to do with dangling <code>else</code>s belonging to the most recent <code>if</code> statement. And indeed, other than the famous <a href="https://en.wikipedia.org/wiki/Lexer_hack">lexer hack</a> used to deal with <a href="https://eli.thegreenplace.net/2011/05/02/the-context-sensitivity-of-cs-grammar-revisited">C's type name / ID ambiguity</a>, pycparser only had this single shift-reduce conflict.</p>
 <p>But things got more complicated. Over the years, features were added that weren't strictly in the standard but were supported by all the industrial compilers. The more advanced C11 and C23 standards weren't beholden to the promises of conflict-free YACC parsing (since almost no industrial-strength compilers use YACC at this point), so all caution went out of the window.</p>
-<p>The latest (PLY-based) release of pycparser has many reduce-reduce conflicts <a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-2">[2]</a>; these are a severe maintenance hazard because it means the parsing rules essentially have to be tie-broken by order of appearance in the code. This is very brittle; pycparser has only managed to maintain its stability and quality through its comprehensive test suite. Over time, it became harder and harder to extend, because YACC parsing rules have all kinds of spooky-action-at-a-distance effects. The straw that broke the camel's back was <a href="https://github.com/eliben/pycparser/pull/590">this PR</a> which again proposed to increase the number of reduce-reduce conflicts <a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-3">[3]</a>.</p>
+<p>The latest (PLY-based) release of pycparser has many reduce-reduce conflicts [2]; these are a severe maintenance hazard because it means the parsing rules essentially have to be tie-broken by order of appearance in the code. This is very brittle; pycparser has only managed to maintain its stability and quality through its comprehensive test suite. Over time, it became harder and harder to extend, because YACC parsing rules have all kinds of spooky-action-at-a-distance effects. The straw that broke the camel's back was <a href="https://github.com/eliben/pycparser/pull/590">this PR</a> which again proposed to increase the number of reduce-reduce conflicts [3].</p>
 <p>This - again - prompted me to think "what if I just dump YACC and switch to a hand-written recursive descent parser", and here we are.</p>
 <h2 id="the-mental-roadblock">The mental roadblock<a class="headerlink" href="#the-mental-roadblock" title="Permanent link">&para;</a></h2>
-<p>None of the challenges described above are new; I've been pondering them for many years now, and yet biting the bullet and rewriting the parser didn't feel like something I'd like to get into. By my private estimates it'd take at least a week of deep heads-down work to port the gritty 2000 lines of YACC grammar rules to a recursive descent parser <a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-4">[4]</a>. Moreover, it wouldn't be a particularly <em>fun</em> project either - I didn't feel like I'd learn much new and my interests have shifted away from this project. In short, the <a href="https://en.wikipedia.org/wiki/Potential_well">Potential well</a> was just too deep.</p>
+<p>None of the challenges described above are new; I've been pondering them for many years now, and yet biting the bullet and rewriting the parser didn't feel like something I'd like to get into. By my private estimates it'd take at least a week of deep heads-down work to port the gritty 2000 lines of YACC grammar rules to a recursive descent parser [4]. Moreover, it wouldn't be a particularly <em>fun</em> project either - I didn't feel like I'd learn much new and my interests have shifted away from this project. In short, the <a href="https://en.wikipedia.org/wiki/Potential_well">Potential well</a> was just too deep.</p>
 <h2 id="why-would-this-even-work-tests">Why would this even work? Tests<a class="headerlink" href="#why-would-this-even-work-tests" title="Permanent link">&para;</a></h2>
 <p>I've definitely noticed the improvement in capabilities of LLM coding agents in the past few months, and many reputable people online rave about using them for increasingly larger projects. That said, would an LLM agent really be able to accomplish such a complex project on its own? This isn't just a toy, it's thousands of lines of dense parsing code.</p>
 <p>What gave me hope is the concept of <a href="https://simonwillison.net/2025/Dec/31/the-year-in-llms/#the-year-of-conformance-suites">conformance suites mentioned by Simon Willison</a>. Agents seem to do well when there's a very clear and rigid goal function - such as a large, high-coverage conformance test suite.</p>
@@ -605,14 +450,14 @@
 extensive test suite; can you first verify you successfully run all the tests?
 (with python3 -m unittest discover, from the root dir)
 </code></pre></div>
-<p>Codex figured it out (I gave it the exact command, after all!); my next prompt was the real thing <a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-5">[5]</a>:</p>
+<p>Codex figured it out (I gave it the exact command, after all!); my next prompt was the real thing [5]:</p>
 <div class="language-text highlight"><pre><span></span><code>pycparser uses the PLY library for its lexer and parser, and its own AST
 package for the ASTs created by the parser. I want to explore replacing the
 Parser component (leaving the Lexer alone for now) with a hand written
 recursive descent parser that will pass all the same tests. Can you try that?
 </code></pre></div>
 <p>Here Codex went to work and churned <em>for over an hour</em>. Having never observed an agent work for nearly this long, I kind of assumed it went off the rails and will fail sooner or later. So I was rather surprised and skeptical when it eventually came back with:</p>
-<div class="language-text highlight"><pre><span></span><code>Replaced the PLY parse path with a handwritten recursive‑descent parser while
+<div class="language-text highlight"><pre><span></span><code>Replaced the PLY parse path with a handwritten recursiveâdescent parser while
 keeping the existing lexer and AST helpers intact; CParser now points to the
 new RD implementation, with the old PLY version preserved as PLYCParser in
 pycparser/c_parser.py. The RD parser includes a token stream, declarator/type
@@ -655,13 +500,13 @@ match the previous AST output and coordinate behavior.
 <table>
 <thead>
 <tr>
-<th><a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-reference-1">[1]</a></th>
+<th>[1]</th>
 <th>pycparser has a fair number of <a href="https://deps.dev/pypi/pycparser/3.0.0/dependents">direct dependents</a>, but the majority of downloads comes through <a href="https://github.com/python-cffi/cffi">CFFI</a>, which itself is a major building block for much of the Python ecosystem.</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-reference-2">[2]</a></td>
+<td>[2]</td>
 <td>The table-building report says 177, but that's certainly an over-dramatization because it's common for a single conflict to manifest in several ways.</td>
 </tr>
 <tr>
@@ -669,7 +514,7 @@ match the previous AST output and coordinate behavior.
 <td>---</td>
 </tr>
 <tr>
-<td><a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-reference-3">[3]</a></td>
+<td>[3]</td>
 <td>It didn't help the PR's case that it was almost certainly vibe coded.</td>
 </tr>
 <tr>
@@ -677,7 +522,7 @@ match the previous AST output and coordinate behavior.
 <td>---</td>
 </tr>
 <tr>
-<td><a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-reference-4">[4]</a></td>
+<td>[4]</td>
 <td>There was also the lexer to consider, but this seemed like a much simpler job. My impression is that in the early days of computing, <code>lex</code> gained prominence because of strong regexp support which wasn't very common yet. These days, with excellent regexp libraries existing for pretty much every language, the added value of <code>lex</code> over a <a href="https://eli.thegreenplace.net/2013/06/25/regex-based-lexical-analysis-in-python-and-javascript">custom regexp-based lexer</a> isn't very high. That said, it wouldn't make much sense to embark on a journey to rewrite <em>just</em> the lexer; the dependency on PLY would still remain, and besides, PLY's lexer and parser are designed to work well together. So it wouldn't help me much without tackling the parser beast.</td>
 </tr>
 <tr>
@@ -685,7 +530,7 @@ match the previous AST output and coordinate behavior.
 <td>---</td>
 </tr>
 <tr>
-<td><a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-reference-5">[5]</a></td>
+<td>[5]</td>
 <td>I've decided to ask it to the port the parser first, leaving the lexer alone. This was to split the work into reasonable chunks. Besides, I figured that the parser is the hard job anyway - if it succeeds in that, the lexer should be easy. That assumption turned out to be correct.</td>
 </tr>
 <tr>
@@ -694,6 +539,11 @@ match the previous AST output and coordinate behavior.
 </tr>
 </tbody>
 </table>
+<hr />
+<p>For comments, please send me <a href="mailto:eliben@gmail.com">__an email</a>. </p>
+<hr />
+<p>(C) 2003-2025 Eli Bendersky </p>
+<p>__Back to top</p>
 
 
 
@@ -714,7 +564,7 @@ match the previous AST output and coordinate behavior.
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 11:14:56 UTC">2026-02-05</span>
   </span>
 
     

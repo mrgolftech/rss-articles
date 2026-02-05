@@ -405,10 +405,24 @@
 
 
 <h1 id="debugging-beagleboard-usb-boot-with-a-sniffer-fixing-omap_loader-on-modern-pcs">Debugging BeagleBoard USB boot with a sniffer: fixing omap_loader on modern PCs<a class="headerlink" href="#debugging-beagleboard-usb-boot-with-a-sniffer-fixing-omap_loader-on-modern-pcs" title="Permanent link">&para;</a></h1>
-<p><strong>来源:</strong> https://www.downtowndougbrown.com
+<p><strong>来源:</strong> https://downtowndougbrown.com
 <strong>链接:</strong> https://www.downtowndougbrown.com/2025/11/debugging-beagleboard-usb-boot-with-a-sniffer-fixing-omap_loader-on-modern-pcs/
 <strong>日期:</strong> Sat, 08 Nov 2025 20:27:32 +0000</p>
 <hr />
+<h1 id="downtown-doug-brown"><a href="https://www.downtowndougbrown.com">Downtown Doug Brown</a><a class="headerlink" href="#downtown-doug-brown" title="Permanent link">&para;</a></h1>
+<h2 id="thoughts-from-a-combined-applelinuxwindows-geek">Thoughts from a combined Apple/Linux/Windows geek.<a class="headerlink" href="#thoughts-from-a-combined-applelinuxwindows-geek" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.downtowndougbrown.com">Home</a></li>
+<li><a href="https://www.downtowndougbrown.com/about/">About</a></li>
+<li><a href="https://www.downtowndougbrown.com/programmable-mac-rom-simms/">Mac ROM SIMMs</a></li>
+<li><a href="https://www.downtowndougbrown.com/software/">Software</a></li>
+<li><a href="https://www.downtowndougbrown.com/microcontroller-lessons/">Microcontroller lessons</a></li>
+<li><a href="https://www.downtowndougbrown.com/contact/">Contact</a></li>
+</ul>
+<p>Nov</p>
+<p>08</p>
+<h2 id="debugging-beagleboard-usb-boot-with-a-sniffer-fixing-omap_loader-on-modern-pcs_1"><a href="https://www.downtowndougbrown.com/2025/11/debugging-beagleboard-usb-boot-with-a-sniffer-fixing-omap_loader-on-modern-pcs/" title="Permanent Link to Debugging BeagleBoard USB boot with a sniffer: fixing omap_loader on modern PCs">Debugging BeagleBoard USB boot with a sniffer: fixing omap_loader on modern PCs</a><a class="headerlink" href="#debugging-beagleboard-usb-boot-with-a-sniffer-fixing-omap_loader-on-modern-pcs_1" title="Permanent link">&para;</a></h2>
+<p>Doug Brown <a href="https://www.downtowndougbrown.com/category/bug-fixes/">Bug fixes</a>, <a href="https://www.downtowndougbrown.com/category/linux/">Linux</a> 2025-11-08</p>
 <p>This post is about the original <a href="https://www.beagleboard.org/boards/beagleboard">OMAP3530 BeagleBoard</a> from 2008. Yes, the one so old that it doesn't even show up in <a href="https://www.beagleboard.org/boards">the board list on BeagleBoard.org</a> anymore. The Beagle<strong>Board</strong> , not the BeagleBone. During my Chumby 8 kernel escapades, at one point <a href="https://www.downtowndougbrown.com/2024/07/upgrading-my-chumby-8-kernel-part-12-uart-woes/">I ran into a UART bug that affected multiple drivers</a>, including the omap-serial driver. This led me to buy a BeagleBoard so I could verify the omap-serial bug on hardware.</p>
 <p><a href="https://www.downtowndougbrown.com/wp-content/uploads/2024/07/beagleboard.jpg"><img alt="" src="https://www.downtowndougbrown.com/wp-content/uploads/2024/07/beagleboard.jpg" /></a></p>
 <p>After I figured out the bug with the UART driver, I realized that the OMAP3530 has support for booting from USB, so I decided to go off on a random tangent to get USB boot working. There was no problem I was trying to solve or anything like that. I just thought it would be a fun experiment (am I a masochist?). Little did I know, I would be getting myself into some tricky USB packet analysis.</p>
@@ -573,6 +587,174 @@ Hit any key to stop autoboot:  2
 </ul>
 <p>I <a href="https://github.com/grant-h/omap_loader/pull/7">opened up a PR to submit these fixes (except for the udev thing) upstream to omap_loader in 2024</a>. Why am I writing about this now? Well, remember when I mentioned Nest earlier? <a href="https://support.google.com/googlenest/answer/16233096?hl=en">Google ended support for older Nest thermostats last month</a>, which <a href="https://github.com/grant-h/omap_loader/pull/7#issuecomment-3479819869">renewed some interest in merging my reliability improvements</a> so that people can flash custom firmware to their Nest thermostats. Those old Nest devices also use OMAP processors.</p>
 <p>What it boils down to is: all this tinkering I did last year with pointlessly booting old BeagleBoards over USB accidentally ended up being useful. It helped out some <a href="https://github.com/codykociemba/NoLongerEvil-Thermostat">Nest thermostat revival projects</a> that have been <a href="https://github.com/cuckoo-nest/cuckoo_loader">popping up in the last month</a>. So I thought now might be a fun time to talk about my tiny involvement with that. Yay! It's always fun when a random side project unexpectedly helps other people.</p>
+<p>Address: <a href="https://www.downtowndougbrown.com/2025/11/debugging-beagleboard-usb-boot-with-a-sniffer-fixing-omap_loader-on-modern-pcs/">https://www.downtowndougbrown.com/2025/11/debugging-beagleboard-usb-boot-with-a-sniffer-fixing-omap_loader-on-modern-pcs/</a></p>
+<p>« <a href="https://www.downtowndougbrown.com/2025/08/an-update-about-the-hidden-performa-550-recovery-partition/">An update about the hidden Performa 550 recovery partition</a></p>
+<p><a href="https://www.downtowndougbrown.com/2025/12/finding-a-broken-trace-on-my-old-mac-with-the-help-of-its-rom-diagnostics/">Finding a broken trace on my old Mac with the help of its ROM diagnostics</a> »</p>
+<p><a href="https://www.downtowndougbrown.com/2025/11/debugging-beagleboard-usb-boot-with-a-sniffer-fixing-omap_loader-on-modern-pcs/trackback/" title="Trackback URI">Trackback</a></p>
+<h3 id="1-comment">1 comment<a class="headerlink" href="#1-comment" title="Permanent link">&para;</a></h3>
+<ol>
+<li><a href="http://www.downtowndougbrown.com/">Doug Brown</a> @ 2025-11-09 10:09</li>
+</ol>
+<p><img alt="" src="https://secure.gravatar.com/avatar/68e1f4f59c61beabc7de171b1eabd8b6ff438074c76d1b76e63eef87d418e1d8?s=32&amp;d=mm&amp;r=g" /></p>
+<p>I just tested on my old Core i7 920 that has a PCI Express uPD720201-based USB 3.0 card, and it also works fine without any patches, on both the internal USB 2.0 ports as well as the USB 3.0 card.</p>
+<p>The traffic is much slower in general, even on the USB 3.0 card. It doesn't try to cram the communication together during the first phase. When it starts the IN/NAK polling as X-Loader is starting up, it only polls about 3 times per frame, which is significantly less often than my newer machines. It does encounter 6 unanswered IN packets, but doesn't give up. It seems like the USB traffic in general on this machine is less chatty than my other modern computers.</p>
+<p>So it's not universally an xHCI problem; I think maybe newer USB 3.0 host controllers are way faster than older ones. Or maybe the computer's speed plays into it too.</p>
+<h3 id="add-your-comment-now">Add your comment now<a class="headerlink" href="#add-your-comment-now" title="Permanent link">&para;</a></h3>
+<p>Name (required)</p>
+<p>Email (Will NOT be published) (required)</p>
+<p>URL</p>
+<p>Δ</p>
+<ul>
+<li>
+<h2 id="subscribe">Subscribe<a class="headerlink" href="#subscribe" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://bsky.app/profile/downtowndougbrown.com" title="Follow downtowndougbrown.com on Bluesky"><img alt="Bluesky" src="https://www.downtowndougbrown.com/wp-content/plugins/subscribe-connect-follow-widget/images/32px/bsky.png" /></a></li>
+<li><a href="https://twitter.com/dt_db" title="Follow dt_db on Twitter"><img alt="Twitter" src="https://www.downtowndougbrown.com/wp-content/plugins/subscribe-connect-follow-widget/images/32px/twitter.png" /></a></li>
+<li><a href="https://www.youtube.com/user/doogulass" title="doogulass - YouTube"><img alt="YouTube" src="https://www.downtowndougbrown.com/wp-content/plugins/subscribe-connect-follow-widget/images/32px/youtube.png" /></a></li>
+<li><a href="https://github.com/dougg3" title="dougg3 on GitHub"><img alt="GitHub" src="https://www.downtowndougbrown.com/wp-content/plugins/subscribe-connect-follow-widget/images/32px/github.png" /></a></li>
+<li><a href="https://www.linkedin.com/in/doug-brown-60100519" title="LinkedIn"><img alt="LinkedIn" src="https://www.downtowndougbrown.com/wp-content/plugins/subscribe-connect-follow-widget/images/32px/linkedin.png" /></a></li>
+<li>
+<h2 id="recent-posts">Recent Posts<a class="headerlink" href="#recent-posts" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<p><a href="https://www.downtowndougbrown.com/2025/12/finding-a-broken-trace-on-my-old-mac-with-the-help-of-its-rom-diagnostics/">Finding a broken trace on my old Mac with the help of its ROM diagnostics</a></p>
+</li>
+<li><a href="https://www.downtowndougbrown.com/2025/11/debugging-beagleboard-usb-boot-with-a-sniffer-fixing-omap_loader-on-modern-pcs/">Debugging BeagleBoard USB boot with a sniffer: fixing omap_loader on modern PCs</a></li>
+<li><a href="https://www.downtowndougbrown.com/2025/08/an-update-about-the-hidden-performa-550-recovery-partition/">An update about the hidden Performa 550 recovery partition</a></li>
+<li><a href="https://www.downtowndougbrown.com/2025/06/finding-a-27-year-old-easter-egg-in-the-power-mac-g3-rom/">Finding a 27-year-old easter egg in the Power Mac G3 ROM</a></li>
+<li><a href="https://www.downtowndougbrown.com/2025/06/modifying-an-hdmi-dummy-plugs-edid-using-a-raspberry-pi/">Modifying an HDMI dummy plug's EDID using a Raspberry Pi</a></li>
+<li><a href="https://www.downtowndougbrown.com/2025/05/please-dont-ship-heavy-fragile-vintage-computers-they-will-be-destroyed/">Please don't ship heavy, fragile vintage computers. They will be destroyed.</a></li>
+<li><a href="https://www.downtowndougbrown.com/2025/05/how-i-fixed-the-infamous-basilisk-ii-windows-black-screen-bug-in-2013/">How I fixed the infamous Basilisk II Windows "Black Screen" bug in 2013</a></li>
+<li><a href="https://www.downtowndougbrown.com/2025/03/apples-long-lost-hidden-recovery-partition-from-1994-has-been-found/">Apple's long-lost hidden recovery partition from 1994 has been found</a></li>
+<li>
+<h2 id="categories">Categories<a class="headerlink" href="#categories" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<p><a href="https://www.downtowndougbrown.com/category/bug-fixes/">Bug fixes</a> (7) </p>
+</li>
+<li><a href="https://www.downtowndougbrown.com/category/chumby-8-kernel/">Chumby 8 kernel</a> (13) </li>
+<li><a href="https://www.downtowndougbrown.com/category/classic-mac/">Classic Mac</a> (16) </li>
+<li><a href="https://www.downtowndougbrown.com/category/computer-repair/">Computer repair</a> (11) </li>
+<li><a href="https://www.downtowndougbrown.com/category/electronics-repair/">Electronics repair</a> (8) </li>
+<li><a href="https://www.downtowndougbrown.com/category/ios/">iOS</a> (3) </li>
+<li><a href="https://www.downtowndougbrown.com/category/linux/">Linux</a> (45) </li>
+<li><a href="https://www.downtowndougbrown.com/category/mac-rom-hacking/">Mac ROM hacking</a> (11) </li>
+<li><a href="https://www.downtowndougbrown.com/category/microcontroller-programming/">Microcontroller lessons</a> (11) </li>
+<li><a href="https://www.downtowndougbrown.com/category/microcontrollers/">Microcontrollers</a> (4) </li>
+<li><a href="https://www.downtowndougbrown.com/category/product-reviews/">Product reviews</a> (5) </li>
+<li><a href="https://www.downtowndougbrown.com/category/python/">Python</a> (1) </li>
+<li><a href="https://www.downtowndougbrown.com/category/qt/">Qt</a> (5) </li>
+<li><a href="https://www.downtowndougbrown.com/category/reverse-engineering/">Reverse engineering</a> (4) </li>
+<li><a href="https://www.downtowndougbrown.com/category/uncategorized/">Uncategorized</a> (20) </li>
+<li><a href="https://www.downtowndougbrown.com/category/windows/">Windows</a> (8) </li>
+<li>
+<h2 id="archives">Archives<a class="headerlink" href="#archives" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<p><a href="https://www.downtowndougbrown.com/2025/12/">December 2025</a> (1)</p>
+</li>
+<li><a href="https://www.downtowndougbrown.com/2025/11/">November 2025</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2025/08/">August 2025</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2025/06/">June 2025</a> (2)</li>
+<li><a href="https://www.downtowndougbrown.com/2025/05/">May 2025</a> (2)</li>
+<li><a href="https://www.downtowndougbrown.com/2025/03/">March 2025</a> (2)</li>
+<li><a href="https://www.downtowndougbrown.com/2025/01/">January 2025</a> (2)</li>
+<li><a href="https://www.downtowndougbrown.com/2024/12/">December 2024</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2024/11/">November 2024</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2024/10/">October 2024</a> (2)</li>
+<li><a href="https://www.downtowndougbrown.com/2024/09/">September 2024</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2024/08/">August 2024</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2024/07/">July 2024</a> (3)</li>
+<li><a href="https://www.downtowndougbrown.com/2024/06/">June 2024</a> (4)</li>
+<li><a href="https://www.downtowndougbrown.com/2024/05/">May 2024</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2024/04/">April 2024</a> (2)</li>
+<li><a href="https://www.downtowndougbrown.com/2023/12/">December 2023</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2023/11/">November 2023</a> (2)</li>
+<li><a href="https://www.downtowndougbrown.com/2023/09/">September 2023</a> (3)</li>
+<li><a href="https://www.downtowndougbrown.com/2023/08/">August 2023</a> (3)</li>
+<li><a href="https://www.downtowndougbrown.com/2023/06/">June 2023</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2023/05/">May 2023</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2023/04/">April 2023</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2023/03/">March 2023</a> (2)</li>
+<li><a href="https://www.downtowndougbrown.com/2023/01/">January 2023</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2022/12/">December 2022</a> (3)</li>
+<li><a href="https://www.downtowndougbrown.com/2022/08/">August 2022</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2022/05/">May 2022</a> (2)</li>
+<li><a href="https://www.downtowndougbrown.com/2022/03/">March 2022</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2021/12/">December 2021</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2021/06/">June 2021</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2021/04/">April 2021</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2021/01/">January 2021</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2020/09/">September 2020</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2020/08/">August 2020</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2020/07/">July 2020</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2020/05/">May 2020</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2019/06/">June 2019</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2019/04/">April 2019</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2018/12/">December 2018</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2018/08/">August 2018</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2018/05/">May 2018</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2018/04/">April 2018</a> (3)</li>
+<li><a href="https://www.downtowndougbrown.com/2018/02/">February 2018</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2017/10/">October 2017</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2017/07/">July 2017</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2017/05/">May 2017</a> (3)</li>
+<li><a href="https://www.downtowndougbrown.com/2017/03/">March 2017</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2016/10/">October 2016</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2015/06/">June 2015</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2015/03/">March 2015</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2014/11/">November 2014</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2014/08/">August 2014</a> (3)</li>
+<li><a href="https://www.downtowndougbrown.com/2014/07/">July 2014</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2014/04/">April 2014</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2014/03/">March 2014</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2014/02/">February 2014</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2013/11/">November 2013</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2013/08/">August 2013</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2013/06/">June 2013</a> (3)</li>
+<li><a href="https://www.downtowndougbrown.com/2013/04/">April 2013</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2013/03/">March 2013</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2013/01/">January 2013</a> (2)</li>
+<li><a href="https://www.downtowndougbrown.com/2012/12/">December 2012</a> (2)</li>
+<li><a href="https://www.downtowndougbrown.com/2012/08/">August 2012</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2012/07/">July 2012</a> (2)</li>
+<li><a href="https://www.downtowndougbrown.com/2012/06/">June 2012</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2012/05/">May 2012</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2012/02/">February 2012</a> (3)</li>
+<li><a href="https://www.downtowndougbrown.com/2012/01/">January 2012</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2011/11/">November 2011</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2011/10/">October 2011</a> (2)</li>
+<li><a href="https://www.downtowndougbrown.com/2011/08/">August 2011</a> (3)</li>
+<li><a href="https://www.downtowndougbrown.com/2011/05/">May 2011</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2011/04/">April 2011</a> (1)</li>
+<li><a href="https://www.downtowndougbrown.com/2011/03/">March 2011</a> (2)</li>
+<li><a href="https://www.downtowndougbrown.com/2010/11/">November 2010</a> (2)</li>
+<li><a href="https://www.downtowndougbrown.com/2010/10/">October 2010</a> (3)</li>
+<li><a href="https://www.downtowndougbrown.com/2010/07/">July 2010</a> (5)</li>
+<li>
+<h2 id="recent-comments">Recent Comments<a class="headerlink" href="#recent-comments" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<p>Eli on <a href="https://www.downtowndougbrown.com/2024/06/fixing-a-knockoff-altera-usb-blaster-that-never-worked/#comment-573432">Fixing a knockoff Altera USB Blaster that never worked</a></p>
+</li>
+<li>h4rm0n1c on <a href="https://www.downtowndougbrown.com/2024/11/the-capacitor-that-apple-soldered-incorrectly-at-the-factory/#comment-573343">The capacitor that Apple soldered incorrectly at the factory</a></li>
+<li>James on <a href="https://www.downtowndougbrown.com/2018/08/connecting-an-rca-viking-pro-10-1-tablet-to-your-computer-through-usb/#comment-572876">Connecting an RCA Viking Pro 10.1″ tablet to your computer through USB</a></li>
+<li><a href="http://www.downtowndougbrown.com/">Doug Brown</a> on <a href="https://www.downtowndougbrown.com/2013/06/parallel-port-tester/#comment-572493">Parallel Port Tester</a></li>
+<li>Mark Hooper on <a href="https://www.downtowndougbrown.com/2013/06/parallel-port-tester/#comment-572489">Parallel Port Tester</a></li>
+<li><a href="https://rbelmont.mameworld.info/?p=1697">Arbee's WIP Emporium » Dropping the ball on 2025, my MAME year-in-review</a> on <a href="https://www.downtowndougbrown.com/2025/01/the-invalid-68030-instruction-that-accidentally-allowed-the-mac-classic-ii-to-successfully-boot-up/#comment-571920">The invalid 68030 instruction that accidentally allowed the Mac Classic II to successfully boot up</a></li>
+<li><a href="https://warpdesign.fr">warpdesign</a> on <a href="https://www.downtowndougbrown.com/2025/01/the-invalid-68030-instruction-that-accidentally-allowed-the-mac-classic-ii-to-successfully-boot-up/#comment-571793">The invalid 68030 instruction that accidentally allowed the Mac Classic II to successfully boot up</a></li>
+<li>Erik on <a href="https://www.downtowndougbrown.com/2024/06/fixing-a-knockoff-altera-usb-blaster-that-never-worked/#comment-571075">Fixing a knockoff Altera USB Blaster that never worked</a></li>
+<li>Hieu on <a href="https://www.downtowndougbrown.com/2024/06/fixing-a-knockoff-altera-usb-blaster-that-never-worked/#comment-570437">Fixing a knockoff Altera USB Blaster that never worked</a></li>
+<li>Roger Wolff on <a href="https://www.downtowndougbrown.com/2024/06/fixing-a-knockoff-altera-usb-blaster-that-never-worked/#comment-570140">Fixing a knockoff Altera USB Blaster that never worked</a></li>
+<li>
+<h2 id="spam-blocked">Spam Blocked<a class="headerlink" href="#spam-blocked" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://akismet.com?utm_source=akismet_plugin&amp;utm_campaign=plugin_static_link&amp;utm_medium=in_plugin&amp;utm_content=widget_stats"> <strong>316,338 spam</strong> blocked by <strong>Akismet</strong> </a></p>
+<p><a href="https://www.downtowndougbrown.com" title="Downtown Doug Brown">Downtown Doug Brown</a> * <a href="http://imotta.cn/" title="Coogee Theme">coogee theme</a> * 2008 * <a href="/privacy-policy/">Privacy Policy</a></p>
+<p><a href="https://www.downtowndougbrown.com/feed/" title="Subscribe Downtown Doug Brown">RSS Feed</a> * <a href="http://wordpress.org/" title="Powered by WordPress 6.9.1">WordPress</a> * TOP</p>
 
 
 
@@ -593,7 +775,7 @@ Hit any key to stop autoboot:  2
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 11:14:56 UTC">2026-02-05</span>
   </span>
 
     

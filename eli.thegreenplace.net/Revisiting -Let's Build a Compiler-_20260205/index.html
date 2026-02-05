@@ -381,58 +381,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#a-sample" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        A sample
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#insights-what-makes-this-tutorial-so-special" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Insights - what makes this tutorial so special?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-else-does-it-teach-us" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What else does it teach us?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conclusion
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -461,6 +409,14 @@
 <strong>链接:</strong> https://eli.thegreenplace.net/2025/revisiting-lets-build-a-compiler/
 <strong>日期:</strong> 2025-12-09T20:40:00-08:00</p>
 <hr />
+<p>Toggle navigation <a href="https://eli.thegreenplace.net/"> <img alt="" src="https://eli.thegreenplace.net/images/logosmall.png" /> Eli Bendersky's website </a></p>
+<ul>
+<li><a href="https://eli.thegreenplace.net/pages/about"> __ About </a></li>
+<li><a href="https://eli.thegreenplace.net/pages/projects"> __ Projects </a></li>
+<li><a href="https://eli.thegreenplace.net/archives/all"> __ Archives </a></li>
+</ul>
+<h1 id="revisiting-lets-build-a-compiler_1"><a href="https://eli.thegreenplace.net/2025/revisiting-lets-build-a-compiler/" title="Permalink to Revisiting"> Revisiting "Let's Build a Compiler" </a><a class="headerlink" href="#revisiting-lets-build-a-compiler_1" title="Permanent link">&para;</a></h1>
+<p>__ December 09, 2025 at 20:40 Tags <a href="https://eli.thegreenplace.net/tag/compilation">Compilation</a> , <a href="https://eli.thegreenplace.net/tag/webassembly">WebAssembly</a> , <a href="https://eli.thegreenplace.net/tag/python">Python</a> , <a href="https://eli.thegreenplace.net/tag/recursive-descent-parsing">Recursive descent parsing</a></p>
 <p>There's an old compiler-building tutorial that has become part of the field's lore: the <a href="https://compilers.iecc.com/crenshaw/">Let's Build a Compiler</a> series by Jack Crenshaw (published between 1988 and 1995).</p>
 <p>I <a href="https://eli.thegreenplace.net/2003/07/29/great-compilers-tutorial">ran into it in 2003</a> and was very impressed, but it's now 2025 and this tutorial is still being mentioned quite often <a href="https://hn.algolia.com/?dateRange=pastYear&amp;page=0&amp;prefix=true&amp;query=crenshaw&amp;sort=byDate&amp;type=all">in Hacker News threads</a>. Why is that? Why does a tutorial from 35 years ago, built in Pascal and emitting Motorola 68000 assembly - technologies that are virtually unknown for the new generation of programmers - hold sway over compiler enthusiasts? I've decided to find out.</p>
 <p>The tutorial is <a href="https://compilers.iecc.com/crenshaw/">easily available and readable online</a>, but just re-reading it seemed insufficient. So I've decided on meticulously translating the compilers built in it to Python and emit a more modern target - WebAssembly. It was an enjoyable process and I want to share the outcome and some insights gained along the way.</p>
@@ -548,30 +504,30 @@
 )
 </code></pre></div>
 <p>You'll notice that there is some trickiness in the emitted code w.r.t. handling the by-reference parameter (my <a href="https://eli.thegreenplace.net/2025/notes-on-the-wasm-basic-c-abi/">previous post</a> deals with this issue in more detail). In general, though, the emitted code is inefficient - there is close to 0 optimization applied.</p>
-<p>Also, if you're very diligent you'll notice something odd about the global variable <code>X</code> - it seems to be implicitly returned by the generated <code>main</code> function. This is just a testing facility that makes my compiler easy to test. All the compilers are extensively tested - usually by running the generated WASM code <a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-1">[1]</a> and verifying expected results.</p>
+<p>Also, if you're very diligent you'll notice something odd about the global variable <code>X</code> - it seems to be implicitly returned by the generated <code>main</code> function. This is just a testing facility that makes my compiler easy to test. All the compilers are extensively tested - usually by running the generated WASM code [1] and verifying expected results.</p>
 <h2 id="insights-what-makes-this-tutorial-so-special">Insights - what makes this tutorial so special?<a class="headerlink" href="#insights-what-makes-this-tutorial-so-special" title="Permanent link">&para;</a></h2>
 <p>While reading the original tutorial again, I had on opportunity to reminisce on what makes it so effective. Other than the very fluent and conversational writing style of Jack Crenshaw, I think it's a combination of two key factors:</p>
 <ol>
-<li>The tutorial builds a recursive-descent parser step by step, rather than giving a long preface on automata and table-based parser generators. When I first encountered it (in 2003), it was taken for granted that if you want to write a parser then lex + yacc are the way to go <a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-2">[2]</a>. Following the development of a simple and clean hand-written parser was a revelation that wholly changed my approach to the subject; subsequently, hand-written recursive-descent parsers have been my go-to approach <a href="https://eli.thegreenplace.net/tag/recursive-descent-parsing">for almost 20 years now</a>.</li>
+<li>The tutorial builds a recursive-descent parser step by step, rather than giving a long preface on automata and table-based parser generators. When I first encountered it (in 2003), it was taken for granted that if you want to write a parser then lex + yacc are the way to go [2]. Following the development of a simple and clean hand-written parser was a revelation that wholly changed my approach to the subject; subsequently, hand-written recursive-descent parsers have been my go-to approach <a href="https://eli.thegreenplace.net/tag/recursive-descent-parsing">for almost 20 years now</a>.</li>
 <li>Rather than getting stuck in front-end minutiae, the tutorial goes straight to generating working assembly code, from very early on. This was also a breath of fresh air for engineers who grew up with more traditional courses where you spend 90% of the time on parsing, type checking and other semantic analysis and often run entirely out of steam by the time code generation is taught.</li>
 </ol>
 <p>To be honest, I don't think either of these are a big problem with modern resources, but back in the day the tutorial clearly hit the right nerve with many people.</p>
 <h2 id="what-else-does-it-teach-us">What else does it teach us?<a class="headerlink" href="#what-else-does-it-teach-us" title="Permanent link">&para;</a></h2>
 <p>Jack Crenshaw's tutorial takes the <a href="https://en.wikipedia.org/wiki/Syntax-directed_translation">syntax-directed translation</a> approach, where code is emitted <em>while parsing</em> , without having to divide the compiler into explicit phases with IRs. As I said above, this is a fantastic approach for getting started, but in the latter parts of the tutorial it starts showing its limitations. Especially once we get to types, it becomes painfully obvious that it would be very nice if we knew the types of expressions <em>before</em> we generate code for them.</p>
-<p>I don't know if this is implicated in Jack Crenshaw's abandoning the tutorial at some point after part 14, but it may very well be. He keeps writing how the emitted code is clearly sub-optimal <a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-3">[3]</a> and can be improved, but IMHO it's just not that easy to improve using the syntax-directed translation strategy. With perfect hindsight vision, I would probably use Part 14 (types) as a turning point - emitting some kind of AST from the parser and then doing simple type checking and analysis on that AST prior to generating code from it.</p>
+<p>I don't know if this is implicated in Jack Crenshaw's abandoning the tutorial at some point after part 14, but it may very well be. He keeps writing how the emitted code is clearly sub-optimal [3] and can be improved, but IMHO it's just not that easy to improve using the syntax-directed translation strategy. With perfect hindsight vision, I would probably use Part 14 (types) as a turning point - emitting some kind of AST from the parser and then doing simple type checking and analysis on that AST prior to generating code from it.</p>
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
 <p>All in all, the original tutorial remains a wonderfully readable introduction to building compilers. This post and the <a href="https://github.com/eliben/letsbuildacompiler">GitHub repository</a> it describes are a modest contribution that aims to improve the experience of folks reading the original tutorial today and not willing to use obsolete technologies. As always, let me know if you run into any issues or have questions!</p>
 <hr />
 <table>
 <thead>
 <tr>
-<th><a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-reference-1">[1]</a></th>
+<th>[1]</th>
 <th>This is done using the <a href="https://pypi.org/project/wasmtime/">Python bindings to wasmtime</a>.</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-reference-2">[2]</a></td>
+<td>[2]</td>
 <td>By the way, gcc switched from YACC to hand-written recursive-descent parsing in the 2004-2006 timeframe, and Clang has been implemented with a recursive-descent parser from the start (2007).</td>
 </tr>
 <tr>
@@ -579,7 +535,7 @@
 <td>---</td>
 </tr>
 <tr>
-<td><a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-reference-3">[3]</a></td>
+<td>[3]</td>
 <td>Concretely: when we compile <code>subexpr1 + subexpr2</code> and the two sides have different types, it would be mighty nice to know that <em>before</em> we actually generate the code for both sub-expressions. But the syntax-directed translation approach just doesn't work that way. To be clear: it's easy to generate <em>working</em> code; it's just not easy to generate optimal code without some sort of type analysis that's done before code is actually generated.</td>
 </tr>
 <tr>
@@ -588,6 +544,11 @@
 </tr>
 </tbody>
 </table>
+<hr />
+<p>For comments, please send me <a href="mailto:eliben@gmail.com">__an email</a>. </p>
+<hr />
+<p>(C) 2003-2025 Eli Bendersky </p>
+<p>__Back to top</p>
 
 
 
@@ -608,7 +569,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 11:14:56 UTC">2026-02-05</span>
   </span>
 
     

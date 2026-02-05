@@ -25,7 +25,7 @@
     
     
       
-        <title>Testing Opus 4.5 For C Programming\n\n来源: https://danielchasehooper.com\n链接: https://danielchasehooper.com/posts/code-agents/\n日期: Wed, 07 Jan 2026 00:00:00 +0000\n\n---\n\nA grumpy C programmer sees what all the fuss is about\nRead the whole article on\ndanielchasehooper.com → - Hacker News 精选博客</title>
+        <title>Testing Opus 4.5 For C Programming - Hacker News 精选博客</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#testing-opus-45-for-c-programmingnn-httpsdanielchasehoopercomn-httpsdanielchasehoopercompostscode-agentsn-wed-07-jan-2026-000000-0000nn-nna-grumpy-c-programmer-sees-what-all-the-fuss-is-aboutnread-the-whole-article-onndanielchasehoopercom" class="md-skip">
+        <a href="#testing-opus-45-for-c-programming" class="md-skip">
           跳转至
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Testing Opus 4.5 For C Programming\n\n来源: https://danielchasehooper.com\n链接: https://danielchasehooper.com/posts/code-agents/\n日期: Wed, 07 Jan 2026 00:00:00 +0000\n\n---\n\nA grumpy C programmer sees what all the fuss is about\nRead the whole article on\ndanielchasehooper.com →
+              Testing Opus 4.5 For C Programming
             
           </span>
         </div>
@@ -404,7 +404,80 @@
   
 
 
-<h1 id="testing-opus-45-for-c-programmingnn-httpsdanielchasehoopercomn-httpsdanielchasehoopercompostscode-agentsn-wed-07-jan-2026-000000-0000nn-nna-grumpy-c-programmer-sees-what-all-the-fuss-is-aboutnread-the-whole-article-onndanielchasehoopercom">Testing Opus 4.5 For C Programming\n\n<strong>来源:</strong> https://danielchasehooper.com\n<strong>链接:</strong> https://danielchasehooper.com/posts/code-agents/\n<strong>日期:</strong> Wed, 07 Jan 2026 00:00:00 +0000\n\n---\n\nA grumpy C programmer sees what all the fuss is about\nRead the whole article on\ndanielchasehooper.com →<a class="headerlink" href="#testing-opus-45-for-c-programmingnn-httpsdanielchasehoopercomn-httpsdanielchasehoopercompostscode-agentsn-wed-07-jan-2026-000000-0000nn-nna-grumpy-c-programmer-sees-what-all-the-fuss-is-aboutnread-the-whole-article-onndanielchasehoopercom" title="Permanent link">&para;</a></h1>
+<h1 id="testing-opus-45-for-c-programming">Testing Opus 4.5 For C Programming<a class="headerlink" href="#testing-opus-45-for-c-programming" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://danielchasehooper.com
+<strong>链接:</strong> https://danielchasehooper.com/posts/code-agents/
+<strong>日期:</strong> Wed, 07 Jan 2026 00:00:00 +0000</p>
+<hr />
+<p><a href="https://danielchasehooper.com/">Daniel Hooper</a></p>
+<p><a href="https://danielchasehooper.com/">Home</a> ・ <a href="https://danielchasehooper.com/posts">Articles</a> ・ <a href="https://danielchasehooper.com/#projects">Projects</a> ・ <a href="https://danielchasehooper.com/about">About</a> ・ <a href="https://x.com/danielchooper">X.com </a><a href="https://bsky.app/profile/danielchooper.bsky.social">Bluesky </a><a href="https://mastodon.gamedev.place/@danielchooper">Mastodon</a> <a href="https://danielchasehooper.com/feed.xml">RSS</a></p>
+<h1 id="testing-opus-45-for-c-programming_1">Testing Opus 4.5 For C Programming<a class="headerlink" href="#testing-opus-45-for-c-programming_1" title="Permanent link">&para;</a></h1>
+<p>January 7, 2026・6 minute read</p>
+<p>I've been programming in C for 25 years and have net yet found AI useful for programming. I blew off the hype as "inexperienced glue coders". I'm not a luddite though, I use LLMs as a Google replacement; I even tried AI autocomplete in Cursor. Breaking my flow to read every autocomplete suggestion was annoying. However a new generation of "AI Code Agents" (Opus 4.5, and <code>gpt-5.2-codex high</code>) recently debuted that seemed worth a test.</p>
+<p>In addition to the model improvements, code agents have 3 advantages over other AI-for-code approaches:</p>
+<ol>
+<li>They can read your entire codebase, unlike pasting code in chat</li>
+<li>They have shell access, meaning they can compile code, modify files, and use any command deemed necessary (Within the sandbox and limits you specify), unlike ai autocomplete</li>
+<li>They do their work independently while you work on something else, unlike chat or autocomplete</li>
+</ol>
+<p>So I <a href="https://code.claude.com/docs/en/quickstart">installed Claude Code</a>, switched to Opus 4.5, and started an experiment…</p>
+<h2 id="the-test">The Test<a class="headerlink" href="#the-test" title="Permanent link">&para;</a></h2>
+<p>I used the Claude Code command line tool without any customization besides a Claude-generated <code>CLAUDE.md</code>. No secret prompt engineering voodoo. For each task I would:</p>
+<ol>
+<li>Write the prompt I would give an agent, <em>but not start it</em></li>
+<li>Do the task by myself, measuring how long it took. I wrote the prompt before this step so that the understanding I gain from doing the work doesn't inadvertently improve the prompt and skew the experiment.</li>
+<li>Start the agent on the prompt in a separate copy of the project that doesn't contain my changes from the last step.</li>
+<li>Measure the time it takes me to review its work and edit up to satisfactory quality. I don't care how long the agent churns because that can happen in parallel while I do other work. I only care how much of my time this workflow consumes.</li>
+<li>Compare the times</li>
+</ol>
+<p>What I found was that even after reviewing and editing the agent's code to my standards, AI assistance was usually a net time savings vs doing it by myself. One task involved writing a utf16 string type, writing utf16&lt;-&gt;utf8 conversions, auditing all existing uses of strings, and reorganizing other affected types. That took me 4 hours. With AI assistance: 30 minutes. Straightforward but tedious, the ideal scenario for AI.</p>
+<p>Outside the experiment, I felt like even when agent did a bad job, reading its changes acted as a shortcut to load the problem into my brain so I could do the work myself.</p>
+<p>Regardless of how you feel about AI, I recommend trying this experiment for yourself.</p>
+<h2 id="lessons-learned">Lessons Learned<a class="headerlink" href="#lessons-learned" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Despite this generation of agents already being better than novice programmers, they're definitely still worse than great programmers. Mistakes range from organizing code poorly, to writing a brutally slow O(n²) algorithm when O(n) was not only possible, but simpler.</li>
+</ol>
+<p>That said, it doesn't need to be perfect to be useful. It's best when treated like an intern or a lawyer's paralegal: you do big brain planning and give <em>specific</em> instructions, it does tedium in background, you review, tweak, commit.</p>
+<ol>
+<li>
+<p>Even though it doesn't write the best code when given free reign, it handles feedback well. I told it to rewrite the O(n²) algorithm to run in linear time, and it did. You need to already be a good programmer to know how the code could be improved. I will tolerate one round of feedback before cutting my losses and making the changes myself. Corrections were required less as I improved at giving direction and learned what tasks it could handle.</p>
+</li>
+<li>
+<p>It's useful for analysis. The time consuming part of many bugs is not writing the fix, but figuring out what went wrong. For example, I had one bug where adding 150,000+ items to a set was freezing the app for seconds at a time. The average number of probes per insert was enormous (set implemented with open addressing), so I thought it might be a cheap xor hash causing collisions. I tried other hash algorithms but they didn't help. On a whim I sent off Claude to look into it in parallel with me. It agreed with me: the xor hash function had a degenerate failure case with this data, but more importantly it noticed a recent change to the set allowed it to fill 100% before resizing, causing it to collapse into linear search of 150,000 items. I wrote the tiny fix myself and the freeze disappeared.</p>
+</li>
+<li>
+<p>Helped get over procrastination. Asking an agent to do a task I've been putting off made starting much easier. Best case: it completed the task. Worst case: it got me over the mental hump. I experienced this when I needed to create a linux sysroot for cross compilation. It found and downloaded the headers and static libraries.</p>
+</li>
+<li>
+<p>Running one or more agents in the background while I do other work feels like a superpower. This arrangement allows me to focus on doing what I do best while still achieving more per day. You can try this locally by making a copy of your project folder for each agent instance and having each one push to its own branch. Alternatively, you can use the web versions of these agents where they work in a Linux VM connected to your Github repo. One benefit of this approach is it never needs to ask for your permission to run a shell command.</p>
+</li>
+</ol>
+<h2 id="dear-fellow-curmudgeons">Dear Fellow Curmudgeons<a class="headerlink" href="#dear-fellow-curmudgeons" title="Permanent link">&para;</a></h2>
+<p>I'd like to address sentiments that surfaced when I shared my experience with others:</p>
+<blockquote>
+<p>"If the AI writes the code then I won't understand my codebase."</p>
+</blockquote>
+<p>First off, You should review everything it does.</p>
+<p>Secondly, You dictate how you use it, so instead of prompts like "implement this whole feature, k thanks bye", do things like "replace the user array lookup with a hashmap and update all use sites". Don't use AI to replace your brain, use it to replace your keyboard.</p>
+<p>I personally do not ask it to do any work that I don't know how to do myself. For unfamiliar territory, I use it like a research assistant: "what are my options?" "what are the trade-offs?" "link me to the research paper that introduced that approach"</p>
+<blockquote>
+<p>"But I <em>like</em> programming, I don't want to be an AI manager"</p>
+</blockquote>
+<p>Typing the code into the editor is the least interesting part of programming. AI assistance frees you to focus on the interesting parts: data and logic design, feature planning, optimization. You don't need to give up technical control like the vibecode kooks do. You probably like programming because you like making things, AI can help you make more.</p>
+<blockquote>
+<p>"If it's so productive where are all the AI-coded products?"</p>
+</blockquote>
+<p>Not everyone wants to advertise "MADE BY AI", but there is already <a href="https://mitchellh.com/writing/non-trivial-vibing">stuff out there</a> written with AI. "More products" is not the only way to realize productivity gains. It might be that a smaller team with AI is able to achieve the same amount as a large team without AI. Or more features can be developed within a fixed release cadence. Overall, this is a weak counter to claimed productivity gains.</p>
+<h2 id="in-summary">In summary<a class="headerlink" href="#in-summary" title="Permanent link">&para;</a></h2>
+<p>Current models are powerful but lack discernment, their greatest strength and greatest weakness is the same: they do what you tell them. They understand C, algorithms, and your existing code well enough that they can be useful if instructed clearly. While not perfect, I think code agents will be a part of my toolbox now.</p>
+<h3 id="read-more">Read More<a class="headerlink" href="#read-more" title="Permanent link">&para;</a></h3>
+<p>The examples in this article come from working on my <a href="/posts/syscall-build-snooping">build visualizer</a></p>
+<p>I wrote about how to write <a href="/posts/typechecked-generic-c-data-structures/">generic data structures in C</a></p>
+<p>My most popular article is "<a href="/posts/code-animated-rick/">Learn Shader Programming with Rick and Morty</a>"</p>
+<p>❖</p>
+<p>Get notified about my next article:</p>
+<p>Join Newsletter</p>
+<p><a href="https://danielchasehooper.com/">More articles by Daniel</a></p>
 
 
 
@@ -425,7 +498,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 11:14:56 UTC">2026-02-05</span>
   </span>
 
     

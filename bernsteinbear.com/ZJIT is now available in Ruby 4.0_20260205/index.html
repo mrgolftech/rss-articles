@@ -25,7 +25,7 @@
     
     
       
-        <title>ZJIT is now available in Ruby 4.0\n\n来源: https://bernsteinbear.com\n链接: https://bernsteinbear.com/blog/launch-zjit/?utm_source=rss\n日期: Wed, 24 Dec 2025 00:00:00 +0000\n\n---\n\nOriginally published on\nRails At Scale\n.\nZJIT is a new just-in-time (JIT) Ruby compiler built into the reference Ruby - Hacker News 精选博客</title>
+        <title>ZJIT is now available in Ruby 4.0 - Hacker News 精选博客</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#zjit-is-now-available-in-ruby-40nn-httpsbernsteinbearcomn-httpsbernsteinbearcombloglaunch-zjitutm_sourcerssn-wed-24-dec-2025-000000-0000nn-nnoriginally-published-onnrails-at-scalennzjit-is-a-new-just-in-time-jit-ruby-compiler-built-into-the-reference-ruby" class="md-skip">
+        <a href="#zjit-is-now-available-in-ruby-40" class="md-skip">
           跳转至
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ZJIT is now available in Ruby 4.0\n\n来源: https://bernsteinbear.com\n链接: https://bernsteinbear.com/blog/launch-zjit/?utm_source=rss\n日期: Wed, 24 Dec 2025 00:00:00 +0000\n\n---\n\nOriginally published on\nRails At Scale\n.\nZJIT is a new just-in-time (JIT) Ruby compiler built into the reference Ruby
+              ZJIT is now available in Ruby 4.0
             
           </span>
         </div>
@@ -404,105 +404,178 @@
   
 
 
-<h1 id="zjit-is-now-available-in-ruby-40nn-httpsbernsteinbearcomn-httpsbernsteinbearcombloglaunch-zjitutm_sourcerssn-wed-24-dec-2025-000000-0000nn-nnoriginally-published-onnrails-at-scalennzjit-is-a-new-just-in-time-jit-ruby-compiler-built-into-the-reference-ruby">ZJIT is now available in Ruby 4.0\n\n<strong>来源:</strong> https://bernsteinbear.com\n<strong>链接:</strong> https://bernsteinbear.com/blog/launch-zjit/?utm_source=rss\n<strong>日期:</strong> Wed, 24 Dec 2025 00:00:00 +0000\n\n---\n\nOriginally published on\nRails At Scale\n.\nZJIT is a new just-in-time (JIT) Ruby compiler built into the reference Ruby<a class="headerlink" href="#zjit-is-now-available-in-ruby-40nn-httpsbernsteinbearcomn-httpsbernsteinbearcombloglaunch-zjitutm_sourcerssn-wed-24-dec-2025-000000-0000nn-nnoriginally-published-onnrails-at-scalennzjit-is-a-new-just-in-time-jit-ruby-compiler-built-into-the-reference-ruby" title="Permanent link">&para;</a></h1>
-<p>implementation,\nYARV\n, by the same compiler group that brought you YJIT.
-We (Aaron Patterson, Aiden Fox Ivey, Alan Wu, Jacob Denbeaux, Kevin Menard, Max
-Bernstein, Maxime Chevalier-Boisvert, Randy Stauner, Stan Lo, and Takashi
-Kokubun) have been working on ZJIT since the beginning of this year.\nIn case you missed the last post, we’re building a new compiler for Ruby
-because we want to both raise the performance ceiling (bigger compilation unit
-size and SSA IR) and encourage more outside contribution (by becoming a more
-traditional method compiler).\nIt’s been a long time since we gave an official update on ZJIT. Things are
-going well. We’re excited to share our progress with you. We’ve done a lot\nsince May\n.\nIn brief\nZJIT is compiled by default—but not enabled by default—in Ruby 4.0. Enable
-it by passing the\n--zjit\nflag or the\nRUBY_ZJIT_ENABLE\nenvironment variable
-or calling\nRubyVM::ZJIT.enable\nafter starting your application.\nIt’s faster than the interpreter, but not yet as fast as YJIT.\nYet.\nBut we
-have a plan, and we have some more specific numbers below. The TL;DR is we have
-a great new foundation and now need to pull out all the Ruby-specific stops to
-match YJIT.\nWe encourage you to experiment with ZJIT, but maybe hold off on deploying it in
-production for now. This is a very new compiler. You should expect crashes and
-wild performance degradations (or, perhaps, improvements). Please test locally,
-try to run CI, etc, and let us know what you run into on\nthe Ruby issue
-tracker\n(or, if you don’t want to make a Ruby Bugs account, we would
-also take reports\non GitHub\n).\nState of the compiler\nTo underscore how much has happened since the\nannouncement of being merged
-into CRuby\n, we present to you a series of comparisons:\nSide-exits\nBack in May, we could not side-exit from JIT code into the interpreter. This
-meant that the code we were running had to continue to have the same
-preconditions (expected types, no method redefinitions, etc) or the JIT would
-safely abort.\nNow,\nwe can side-exit and use this feature liberally.\nFor example, we gracefully handle the phase transition from integer to string;
-a guard instruction fails and transfers control to the interpreter.\ndef\nadd\nx\n,\ny\nx\n+\ny\nend\nadd\n3\n,\n4\nadd\n3\n,\n4\nadd\n3\n,\n4\nadd\n"three"\n,\n"four"\nThis enables running a lot more code!\nMore code\nBack in May, we could only run a handful of small benchmarks.\nNow,\nwe can
-run all sorts of code, including passing the full Ruby test suite, the test
-suite and shadow traffic of a large application at Shopify, and the test suite
-of GitHub.com! Also a bank, apparently.\nBack in May, we did not optimize much; we only really optimized operations
-on fixnums (small integers) and method sends to the\nmain\nobject.\nNow,\nwe optimize a lot more: all sorts of method sends, instance variable reads
-and writes, attribute accessor/reader/writer use, struct reads and writes,
-object allocations, certain string operations, optional parameters, and more.\nFor example, we can\nconstant-fold\nnumeric operations. Because we also have a
-(small, limited) inliner borrowed from YJIT, we can constant-fold the entirety
-of\nadd\ndown to\n3\n—and still handle redefinitions of\none\n,\ntwo\n,\nInteger#+\n, …\ndef\none\n1\nend\ndef\ntwo\n2\nend\ndef\nadd\none\n+\ntwo\nend\nRegister spilling\nBack in May, we could not compile many large functions due to limitations of
-our backend that we borrowed from YJIT.\nNow,\nwe can compile absolutely
-enormous functions just fine. And quickly, too. Though we have not been
-focusing specifically on compiler performance, we compile even large methods in
-under a millisecond.\nC methods\nBack in May, we could not even optimize calls to built-in C methods.\nNow,\nwe have a feature similar to JavaScriptCore’s DOMJIT, which allows us to emit
-inline HIR versions of certain well-known C methods. This allows the optimizer
-to reason about these methods and their effects (more on this in a future post)
-much more… er, effectively.\nFor example,\nInteger#succ\n, which is defined as adding\n1\nto an integer, is a
-C method. It’s used in\nInteger#times\nto drive the\nwhile\nloop. Instead of
-emitting a call to it, our C method “inliner” can emit our existing\nFixnumAdd\ninstruction and take advantage of the rest of the type inference and
-constant-folding.\nfn\ninline_integer_succ\n(\nfun\n:\n&amp;\nmut\nhir\n::\nFunction\n,\nblock\n:\nhir\n::\nBlockId\n,\nrecv\n:\nhir\n::\nInsnId\n,\nargs\n:\n&amp;\n[\nhir\n::\nInsnId\n],\nstate\n:\nhir\n::\nInsnId\n)\n-&gt;\nOption\n&lt;\nhir\n::\nInsnId\n&gt;\n{\nif\n!\nargs\n.is_empty\n()\n{\nreturn\nNone\n;\n}\nif\nfun\n.likely_a\n(\nrecv\n,\ntypes\n::\nFixnum\n,\nstate\n)\n{\nlet\nleft\n=\nfun\n.coerce_to\n(\nblock\n,\nrecv\n,\ntypes\n::\nFixnum\n,\nstate\n);\nlet\nright\n=\nfun\n.push_insn\n(\nblock\n,\nhir\n::\nInsn\n::\nConst\n{\nval\n:\nhir\n::\nConst\n::\nValue\n(\nVALUE\n::\nfixnum_from_usize\n(\n1\n))\n});\nlet\nresult\n=\nfun\n.push_insn\n(\nblock\n,\nhir\n::\nInsn\n::\nFixnumAdd\n{\nleft\n,\nright\n,\nstate\n});\nreturn\nSome\n(\nresult\n);\n}\nNone\n}\nFewer C calls\nBack in May, the machine code ZJIT generated called a lot of C functions from
-the CRuby runtime to implement our HIR instructions in LIR. We have pared this
-down significantly and now “open code” the implementations in LIR.\nFor example,\nGuardNotFrozen\nused to call out to\nrb_obj_frozen_p\n. Now, it
-requires that its input is a heap-allocated object and can instead do a load, a
-test, and a conditional jump.\nfn\ngen_guard_not_frozen\n(\njit\n:\n&amp;\nJITState\n,\nasm\n:\n&amp;\nmut\nAssembler\n,\nrecv\n:\nOpnd\n,\nstate\n:\n&amp;\nFrameState\n)\n-&gt;\nOpnd\n{\nlet\nrecv\n=\nasm\n.load\n(\nrecv\n);\n// It's a heap object, so check the frozen flag\nlet\nflags\n=\nasm\n.load\n(\nOpnd\n::\nmem\n(\n64\n,\nrecv\n,\nRUBY_OFFSET_RBASIC_FLAGS\n));\nasm\n.test\n(\nflags\n,\n(\nRUBY_FL_FREEZE\nas\nu64\n)\n.into\n());\n// Side-exit if frozen\nasm\n.jnz\n(\nside_exit\n(\njit\n,\nstate\n,\nGuardNotFrozen\n));\nrecv\n}\nMore teammates\nBack in May, we had four people working full-time on the compiler.\nNow,\nwe
-have more internally at Shopify—and also more from the community! We have
-had several interested people reach out, learn about ZJIT, and successfully
-land complex changes. For this reason, we have opened up\na chat
-room\nto discuss and improve ZJIT.\nA cool graph visualization tool\nYou\nhave to\ncheck out our intern Aiden’s\nintegration of Iongraph into
-ZJIT\n. Now we
-have clickable, zoomable, scrollable graphs of all our functions and all our
-optimization passes. It’s great!\nTry zooming (Ctrl-scroll), clicking the different optimization passes on the
-left, clicking the instruction IDs in each basic block (definitions and uses),
-and seeing how the IR for the below Ruby code changes over time.\nclass\nPoint\nattr_accessor\n:x\n,\n:y\ndef\ninitialize\nx\n,\ny\n@x\n=\nx\n@y\n=\ny\nend\nend\nP\n=\nPoint\n.\nnew\n(\n3\n,\n4\n).\nfreeze\ndef\ntest\n=\nP\n.\nx\n+\nP\n.\ny\nMore\n…and so, so many garbage collection fixes.\nThere’s still a lot to do, though.\nTo do\nWe’re going to optimize\ninvokeblock\n(\nyield\n) and\ninvokesuper\n(\nsuper\n)
-instructions, each of which behaves similarly, but not identically, to a
-normal\nsend\ninstruction. These are pretty common.\nWe’re going to optimize\nsetinstancevariable\nin the case where we have to
-transition the object’s shape. This will help normal\n@a = b\nsituations. It
-will also help\n@a ||= b\n, but I think we can even do better with the latter
-using some kind of value numbering.\nWe only optimize monomorphic calls right now—cases where a method send only
-sees one class of receiver while being profiled. We’re going to optimize
-polymorphic sends, too. Right now we’re laying the groundwork (a new register
-allocator; see below) to make this much easier. It’s not as much of an
-immediate focus, though, because most (high 80s, low 90s percent) of sends are
-monomorphic.\nWe’re in the middle of re-writing the register allocator after reading the
-entire history of linear scan papers and several implementations. That will
-unlock performance improvements and also allow us to make the IRs easier to
-use.\nWe don’t handle phase changes particularly well yet; if your method call
-patterns change significantly after your code has been compiled, we will
-frequently side-exit into the interpreter. Instead, we would like to use these
-side-exits as additional profile information and re-compile the function.\nRight now we have a lot of traffic to the VM frame. JIT frame pushes are
-reasonably fast, but with every effectful operation, we have to flush our local
-variable state and stack state to the VM frame. The instances in which code
-might want to read this reified frame state are rare: frame unwinding due to
-exceptions,\nBinding#local_variable_get\n, etc. In the future, we will instead
-defer writing this state until it needs to be read.\nWe only have a limited inliner that inlines constants,\nself\n, and parameters.
-In the fullness of time, we will add a general-purpose method inlining
-facility. This will allow us to reduce the amount of polymorphic sends, do some
-branch folding, and reduce the amount of method sends.\nWe only support optimizing positional parameters, required keyword parameters,
-and optional parameters right now but we will work on optimizing optional
-keyword arguments as well. Most of this work is in marshaling the complex
-Ruby calling convention into one coherent form that the JIT can understand.\nPerformance\nWe have public performance numbers for a selection of macro- and
-micro-benchmarks on\nrubybench\n. Here is a screenshot of what those
-per-benchmark graphs look like. The Y axis is speedup multiplier vs the
-interpreter and the X axis is time. Higher is better:\nA line chart of ZJIT performance on railsbench—represented as a
-  speedup multiplier when compared to the interpreter—improving over
-  time, passing interpreter performance, catching up to YJIT.\nYou can see that we are improving performance on nearly all benchmarks over
-time. Some of this comes from from optimizing in a similar way as YJIT does
-today (e.g. specializing ivar reads and writes), and some of it is optimizing
-in a way that takes advantage of ZJIT’s high-level IR (e.g. constant folding,
-branch folding, more precise type inference).\nWe are using both raw time numbers and also our internal performance counters
-(e.g. number of calls to C functions from generated code) to drive
-optimization.\nTry it out\nWhile Ruby now ships with ZJIT compiled into the binary by default, it is not\nenabled\nby default at run-time. Due to performance and stability, YJIT is
-still the default compiler choice in Ruby 4.0.\nIf you want to run your test suite with ZJIT to see what happens, you
-absolutely can. Enable it by passing the\n--zjit\nflag or the\nRUBY_ZJIT_ENABLE\nenvironment variable or calling\nRubyVM::ZJIT.enable\nafter
-starting your application.\nOn YJIT\nWe devoted a lot of our resources this year to developing ZJIT. While we did
-not spend much time on YJIT (outside of a great\nallocation speed
-up\n), YJIT isn’t going anywhere soon.\nThank you\nThis compiler was made possible by contributions to your\nPBS station\nopen
-source project from programmers like you. Thank you!\nAaron Patterson\nAbrar Habib\nAiden Fox Ivey\nAlan Wu\nAlex Rocha\nAndré Luiz Tiago Soares\nBenoit Daloze\nCharlotte Wen\nDaniel Colson\nDonghee Na\nEileen Uchitelle\nÉtienne Barrié\nGodfrey Chan\nGoshanraj Govindaraj\nHiroshi SHIBATA\nHoa Nguyen\nJacob Denbeaux\nJean Boussier\nJeremy Evans\nJohn Hawthorn\nKen Jin\nKevin Menard\nMax Bernstein\nMax Leopold\nMaxime Chevalier-Boisvert\nNobuyoshi Nakada\nPeter Zhu\nRandy Stauner\nSatoshi Tagomori\nShannon Skipper\nStan Lo\nTakashi Kokubun\nTavian Barnes\nTobias Lütke\n(via a lightly touched up\ngit log --pretty="%an" zjit | sort -u\n)</p>
+<h1 id="zjit-is-now-available-in-ruby-40">ZJIT is now available in Ruby 4.0<a class="headerlink" href="#zjit-is-now-available-in-ruby-40" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://bernsteinbear.com
+<strong>链接:</strong> https://bernsteinbear.com/blog/launch-zjit/?utm_source=rss
+<strong>日期:</strong> Wed, 24 Dec 2025 00:00:00 +0000</p>
+<hr />
+<p><a href="/">home</a> <a href="/blog/">blog</a> <a href="/microblog/">microblog</a> <a href="/favorites/">favorites</a> <a href="/pl-resources/">pl resources</a> <a href="/bread/">bread</a> <a href="/recipes/">recipes</a> <a href="/feed.xml">rss</a></p>
+<h1 id="zjit-is-now-available-in-ruby-40_1">ZJIT is now available in Ruby 4.0<a class="headerlink" href="#zjit-is-now-available-in-ruby-40_1" title="Permanent link">&para;</a></h1>
+<p><em>December 24, 2025</em></p>
+<p><em>Originally published on<a href="https://railsatscale.com/2025-12-24-launch-zjit/">Rails At Scale</a>.</em></p>
+<p>ZJIT is a new just-in-time (JIT) Ruby compiler built into the reference Ruby implementation, <a href="https://en.wikipedia.org/wiki/YARV">YARV</a>, by the same compiler group that brought you YJIT. We (Aaron Patterson, Aiden Fox Ivey, Alan Wu, Jacob Denbeaux, Kevin Menard, Max Bernstein, Maxime Chevalier-Boisvert, Randy Stauner, Stan Lo, and Takashi Kokubun) have been working on ZJIT since the beginning of this year.</p>
+<p>In case you missed the last post, we’re building a new compiler for Ruby because we want to both raise the performance ceiling (bigger compilation unit size and SSA IR) and encourage more outside contribution (by becoming a more traditional method compiler).</p>
+<p>It’s been a long time since we gave an official update on ZJIT. Things are going well. We’re excited to share our progress with you. We’ve done a lot <a href="/blog/merge-zjit/">since May</a>.</p>
+<h2 id="in-brief">In brief<a class="headerlink" href="#in-brief" title="Permanent link">&para;</a></h2>
+<p>ZJIT is compiled by default—but not enabled by default—in Ruby 4.0. Enable it by passing the <code>--zjit</code> flag or the <code>RUBY_ZJIT_ENABLE</code> environment variable or calling <code>RubyVM::ZJIT.enable</code> after starting your application.</p>
+<p>It’s faster than the interpreter, but not yet as fast as YJIT. <strong>Yet.</strong> But we have a plan, and we have some more specific numbers below. The TL;DR is we have a great new foundation and now need to pull out all the Ruby-specific stops to match YJIT.</p>
+<p>We encourage you to experiment with ZJIT, but maybe hold off on deploying it in production for now. This is a very new compiler. You should expect crashes and wild performance degradations (or, perhaps, improvements). Please test locally, try to run CI, etc, and let us know what you run into on <a href="https://bugs.ruby-lang.org/projects/ruby-master/issues?set_filter=1&amp;tracker_id=1">the Ruby issue tracker</a> (or, if you don’t want to make a Ruby Bugs account, we would also take reports <a href="https://github.com/Shopify/ruby/issues">on GitHub</a>).</p>
+<h2 id="state-of-the-compiler">State of the compiler<a class="headerlink" href="#state-of-the-compiler" title="Permanent link">&para;</a></h2>
+<p>To underscore how much has happened since the <a href="/blog/merge-zjit/">announcement of being merged into CRuby</a>, we present to you a series of comparisons:</p>
+<h3 id="side-exits">Side-exits<a class="headerlink" href="#side-exits" title="Permanent link">&para;</a></h3>
+<p>Back in May, we could not side-exit from JIT code into the interpreter. This meant that the code we were running had to continue to have the same preconditions (expected types, no method redefinitions, etc) or the JIT would safely abort. <strong>Now,</strong> we can side-exit and use this feature liberally.</p>
+<blockquote>
+<p>For example, we gracefully handle the phase transition from integer to string; a guard instruction fails and transfers control to the interpreter.</p>
+<div class="language-text highlight"><pre><span></span><code>def add x, y
+  x + y
+end
+
+add 3, 4
+add 3, 4
+add 3, 4
+add &quot;three&quot;, &quot;four&quot;
+</code></pre></div>
+</blockquote>
+<p>This enables running a lot more code!</p>
+<h3 id="more-code">More code<a class="headerlink" href="#more-code" title="Permanent link">&para;</a></h3>
+<p>Back in May, we could only run a handful of small benchmarks. <strong>Now,</strong> we can run all sorts of code, including passing the full Ruby test suite, the test suite and shadow traffic of a large application at Shopify, and the test suite of GitHub.com! Also a bank, apparently.</p>
+<p>Back in May, we did not optimize much; we only really optimized operations on fixnums (small integers) and method sends to the <code>main</code> object. <strong>Now,</strong> we optimize a lot more: all sorts of method sends, instance variable reads and writes, attribute accessor/reader/writer use, struct reads and writes, object allocations, certain string operations, optional parameters, and more.</p>
+<blockquote>
+<p>For example, we can <a href="https://en.wikipedia.org/wiki/Constant_folding">constant-fold</a> numeric operations. Because we also have a (small, limited) inliner borrowed from YJIT, we can constant-fold the entirety of <code>add</code> down to <code>3</code>—and still handle redefinitions of <code>one</code>, <code>two</code>, <code>Integer#+</code>, …</p>
+<div class="language-text highlight"><pre><span></span><code>def one
+  1
+end
+
+def two
+  2
+end
+
+def add
+  one + two
+end
+</code></pre></div>
+</blockquote>
+<h3 id="register-spilling">Register spilling<a class="headerlink" href="#register-spilling" title="Permanent link">&para;</a></h3>
+<p>Back in May, we could not compile many large functions due to limitations of our backend that we borrowed from YJIT. <strong>Now,</strong> we can compile absolutely enormous functions just fine. And quickly, too. Though we have not been focusing specifically on compiler performance, we compile even large methods in under a millisecond.</p>
+<h3 id="c-methods">C methods<a class="headerlink" href="#c-methods" title="Permanent link">&para;</a></h3>
+<p>Back in May, we could not even optimize calls to built-in C methods. <strong>Now,</strong> we have a feature similar to JavaScriptCore’s DOMJIT, which allows us to emit inline HIR versions of certain well-known C methods. This allows the optimizer to reason about these methods and their effects (more on this in a future post) much more… er, effectively.</p>
+<blockquote>
+<p>For example, <code>Integer#succ</code>, which is defined as adding <code>1</code> to an integer, is a C method. It’s used in <code>Integer#times</code> to drive the <code>while</code> loop. Instead of emitting a call to it, our C method “inliner” can emit our existing <code>FixnumAdd</code> instruction and take advantage of the rest of the type inference and constant-folding.</p>
+<div class="language-text highlight"><pre><span></span><code>fn inline_integer_succ(fun: &amp;mut hir::Function,
+                       block: hir::BlockId,
+                       recv: hir::InsnId,
+                       args: &amp;[hir::InsnId],
+                       state: hir::InsnId) -&gt; Option&lt;hir::InsnId&gt; {
+    if !args.is_empty() { return None; }
+    if fun.likely_a(recv, types::Fixnum, state) {
+        let left = fun.coerce_to(block, recv, types::Fixnum, state);
+        let right = fun.push_insn(block, hir::Insn::Const { val: hir::Const::Value(VALUE::fixnum_from_usize(1)) });
+        let result = fun.push_insn(block, hir::Insn::FixnumAdd { left, right, state });
+        return Some(result);
+    }
+    None
+}
+</code></pre></div>
+</blockquote>
+<h3 id="fewer-c-calls">Fewer C calls<a class="headerlink" href="#fewer-c-calls" title="Permanent link">&para;</a></h3>
+<p>Back in May, the machine code ZJIT generated called a lot of C functions from the CRuby runtime to implement our HIR instructions in LIR. We have pared this down significantly and now “open code” the implementations in LIR.</p>
+<blockquote>
+<p>For example, <code>GuardNotFrozen</code> used to call out to <code>rb_obj_frozen_p</code>. Now, it requires that its input is a heap-allocated object and can instead do a load, a test, and a conditional jump.</p>
+<div class="language-text highlight"><pre><span></span><code>fn gen_guard_not_frozen(jit: &amp;JITState,
+                        asm: &amp;mut Assembler,
+                        recv: Opnd,
+                        state: &amp;FrameState) -&gt; Opnd {
+    let recv = asm.load(recv);
+    // It&#39;s a heap object, so check the frozen flag
+    let flags = asm.load(Opnd::mem(64, recv, RUBY_OFFSET_RBASIC_FLAGS));
+    asm.test(flags, (RUBY_FL_FREEZE as u64).into());
+    // Side-exit if frozen
+    asm.jnz(side_exit(jit, state, GuardNotFrozen));
+    recv
+}
+</code></pre></div>
+</blockquote>
+<h3 id="more-teammates">More teammates<a class="headerlink" href="#more-teammates" title="Permanent link">&para;</a></h3>
+<p>Back in May, we had four people working full-time on the compiler. <strong>Now,</strong> we have more internally at Shopify—and also more from the community! We have had several interested people reach out, learn about ZJIT, and successfully land complex changes. For this reason, we have opened up <a href="https://zjit.zulipchat.com">a chat room</a> to discuss and improve ZJIT.</p>
+<h3 id="a-cool-graph-visualization-tool">A cool graph visualization tool<a class="headerlink" href="#a-cool-graph-visualization-tool" title="Permanent link">&para;</a></h3>
+<p>You <em>have to</em> check out our intern Aiden’s <a href="https://railsatscale.com/2025-11-19-adding-iongraph-support/">integration of Iongraph into ZJIT</a>. Now we have clickable, zoomable, scrollable graphs of all our functions and all our optimization passes. It’s great!</p>
+<p>Try zooming (Ctrl-scroll), clicking the different optimization passes on the left, clicking the instruction IDs in each basic block (definitions and uses), and seeing how the IR for the below Ruby code changes over time.</p>
+<div class="language-text highlight"><pre><span></span><code>class Point
+  attr_accessor :x, :y
+  def initialize x, y
+    @x = x
+    @y = y
+  end
+end
+
+P = Point.new(3, 4).freeze
+
+def test = P.x + P.y
+</code></pre></div>
+<h3 id="more">More<a class="headerlink" href="#more" title="Permanent link">&para;</a></h3>
+<p>…and so, so many garbage collection fixes.</p>
+<p>There’s still a lot to do, though.</p>
+<h2 id="to-do">To do<a class="headerlink" href="#to-do" title="Permanent link">&para;</a></h2>
+<p>We’re going to optimize <code>invokeblock</code> (<code>yield</code>) and <code>invokesuper</code> (<code>super</code>) instructions, each of which behaves similarly, but not identically, to a normal <code>send</code> instruction. These are pretty common.</p>
+<p>We’re going to optimize <code>setinstancevariable</code> in the case where we have to transition the object’s shape. This will help normal <code>@a = b</code> situations. It will also help <code>@a ||= b</code>, but I think we can even do better with the latter using some kind of value numbering.</p>
+<p>We only optimize monomorphic calls right now—cases where a method send only sees one class of receiver while being profiled. We’re going to optimize polymorphic sends, too. Right now we’re laying the groundwork (a new register allocator; see below) to make this much easier. It’s not as much of an immediate focus, though, because most (high 80s, low 90s percent) of sends are monomorphic. </p>
+<p>We’re in the middle of re-writing the register allocator after reading the entire history of linear scan papers and several implementations. That will unlock performance improvements and also allow us to make the IRs easier to use.</p>
+<p>We don’t handle phase changes particularly well yet; if your method call patterns change significantly after your code has been compiled, we will frequently side-exit into the interpreter. Instead, we would like to use these side-exits as additional profile information and re-compile the function.</p>
+<p>Right now we have a lot of traffic to the VM frame. JIT frame pushes are reasonably fast, but with every effectful operation, we have to flush our local variable state and stack state to the VM frame. The instances in which code might want to read this reified frame state are rare: frame unwinding due to exceptions, <code>Binding#local_variable_get</code>, etc. In the future, we will instead defer writing this state until it needs to be read.</p>
+<p>We only have a limited inliner that inlines constants, <code>self</code>, and parameters. In the fullness of time, we will add a general-purpose method inlining facility. This will allow us to reduce the amount of polymorphic sends, do some branch folding, and reduce the amount of method sends.</p>
+<p>We only support optimizing positional parameters, required keyword parameters, and optional parameters right now but we will work on optimizing optional keyword arguments as well. Most of this work is in marshaling the complex Ruby calling convention into one coherent form that the JIT can understand.</p>
+<h2 id="performance">Performance<a class="headerlink" href="#performance" title="Permanent link">&para;</a></h2>
+<p>We have public performance numbers for a selection of macro- and micro-benchmarks on <a href="https://rubybench.github.io/">rubybench</a>. Here is a screenshot of what those per-benchmark graphs look like. The Y axis is speedup multiplier vs the interpreter and the X axis is time. Higher is better:</p>
+<p><img alt="" src="/assets/img/zjit-benchmark.png" /> A line chart of ZJIT performance on railsbench--represented as a speedup multiplier when compared to the interpreter--improving over time, passing interpreter performance, catching up to YJIT.</p>
+<p>You can see that we are improving performance on nearly all benchmarks over time. Some of this comes from from optimizing in a similar way as YJIT does today (e.g. specializing ivar reads and writes), and some of it is optimizing in a way that takes advantage of ZJIT’s high-level IR (e.g. constant folding, branch folding, more precise type inference).</p>
+<p>We are using both raw time numbers and also our internal performance counters (e.g. number of calls to C functions from generated code) to drive optimization.</p>
+<h2 id="try-it-out">Try it out<a class="headerlink" href="#try-it-out" title="Permanent link">&para;</a></h2>
+<p>While Ruby now ships with ZJIT compiled into the binary by default, it is not <em>enabled</em> by default at run-time. Due to performance and stability, YJIT is still the default compiler choice in Ruby 4.0.</p>
+<p>If you want to run your test suite with ZJIT to see what happens, you absolutely can. Enable it by passing the <code>--zjit</code> flag or the <code>RUBY_ZJIT_ENABLE</code> environment variable or calling <code>RubyVM::ZJIT.enable</code> after starting your application.</p>
+<h2 id="on-yjit">On YJIT<a class="headerlink" href="#on-yjit" title="Permanent link">&para;</a></h2>
+<p>We devoted a lot of our resources this year to developing ZJIT. While we did not spend much time on YJIT (outside of a great <a href="https://railsatscale.com/2025-05-21-fast-allocations-in-ruby-3-5/">allocation speed up</a>), YJIT isn’t going anywhere soon.</p>
+<h2 id="thank-you">Thank you<a class="headerlink" href="#thank-you" title="Permanent link">&para;</a></h2>
+<p>This compiler was made possible by contributions to your ~~PBS station~~ open source project from programmers like you. Thank you!</p>
+<ul>
+<li>Aaron Patterson</li>
+<li>Abrar Habib</li>
+<li>Aiden Fox Ivey</li>
+<li>Alan Wu</li>
+<li>Alex Rocha</li>
+<li>André Luiz Tiago Soares</li>
+<li>Benoit Daloze</li>
+<li>Charlotte Wen</li>
+<li>Daniel Colson</li>
+<li>Donghee Na</li>
+<li>Eileen Uchitelle</li>
+<li>Étienne Barrié</li>
+<li>Godfrey Chan</li>
+<li>Goshanraj Govindaraj</li>
+<li>Hiroshi SHIBATA</li>
+<li>Hoa Nguyen</li>
+<li>Jacob Denbeaux</li>
+<li>Jean Boussier</li>
+<li>Jeremy Evans</li>
+<li>John Hawthorn</li>
+<li>Ken Jin</li>
+<li>Kevin Menard</li>
+<li>Max Bernstein</li>
+<li>Max Leopold</li>
+<li>Maxime Chevalier-Boisvert</li>
+<li>Nobuyoshi Nakada</li>
+<li>Peter Zhu</li>
+<li>Randy Stauner</li>
+<li>Satoshi Tagomori</li>
+<li>Shannon Skipper</li>
+<li>Stan Lo</li>
+<li>Takashi Kokubun</li>
+<li>Tavian Barnes</li>
+<li>Tobias Lütke</li>
+</ul>
+<p>(via a lightly touched up <code>git log --pretty="%an" zjit | sort -u</code>)</p>
+<hr />
+<p>This blog is <a href="https://github.com/tekknolagi/tekknolagi.github.com">open source</a>. See an error? Go ahead and <a href="https://github.com/tekknolagi/tekknolagi.github.com/edit/main/_posts/2025-12-24-launch-zjit.md" title="Help improve _posts/2025-12-24-launch-zjit.md">propose a change</a>. <br />
+<img alt="" src="/assets/img/banner.png" /> <a href="https://notbyai.fyi/"><img alt="" src="/assets/img/notbyai.svg" /></a> <a href="https://www.recurse.com/scout/click?t=e8845120d0b98bbc3341fa6fa69539bb"> </a></p>
 
 
 
@@ -523,7 +596,7 @@ source project from programmers like you. Thank you!\nAaron Patterson\nAbrar Hab
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 11:14:56 UTC">2026-02-05</span>
   </span>
 
     

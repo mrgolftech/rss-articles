@@ -25,7 +25,7 @@
     
     
       
-        <title>J-Link RTT for the Masses\n\n来源: https://bogdanthegeek.github.io\n链接: https://bogdanthegeek.github.io/blog/insights/jlink-rtt-for-the-masses/\n日期: Sun, 01 Jun 2025 14:47:43 +0100\n\n---\n\nTLDR; You can use semihosting on any ARM CPU to send and receive data in a few lines of code. - Hacker News 精选博客</title>
+        <title>J-Link RTT for the Masses - Hacker News 精选博客</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#j-link-rtt-for-the-massesnn-httpsbogdanthegeekgithubion-httpsbogdanthegeekgithubiobloginsightsjlink-rtt-for-the-massesn-sun-01-jun-2025-144743-0100nn-nntldr-you-can-use-semihosting-on-any-arm-cpu-to-send-and-receive-data-in-a-few-lines-of-code" class="md-skip">
+        <a href="#j-link-rtt-for-the-masses" class="md-skip">
           跳转至
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              J-Link RTT for the Masses\n\n来源: https://bogdanthegeek.github.io\n链接: https://bogdanthegeek.github.io/blog/insights/jlink-rtt-for-the-masses/\n日期: Sun, 01 Jun 2025 14:47:43 +0100\n\n---\n\nTLDR; You can use semihosting on any ARM CPU to send and receive data in a few lines of code.
+              J-Link RTT for the Masses
             
           </span>
         </div>
@@ -404,9 +404,109 @@
   
 
 
-<h1 id="j-link-rtt-for-the-massesnn-httpsbogdanthegeekgithubion-httpsbogdanthegeekgithubiobloginsightsjlink-rtt-for-the-massesn-sun-01-jun-2025-144743-0100nn-nntldr-you-can-use-semihosting-on-any-arm-cpu-to-send-and-receive-data-in-a-few-lines-of-code">J-Link RTT for the Masses\n\n<strong>来源:</strong> https://bogdanthegeek.github.io\n<strong>链接:</strong> https://bogdanthegeek.github.io/blog/insights/jlink-rtt-for-the-masses/\n<strong>日期:</strong> Sun, 01 Jun 2025 14:47:43 +0100\n\n---\n\nTLDR; You can use semihosting on any ARM CPU to send and receive data in a few lines of code.<a class="headerlink" href="#j-link-rtt-for-the-massesnn-httpsbogdanthegeekgithubion-httpsbogdanthegeekgithubiobloginsightsjlink-rtt-for-the-massesn-sun-01-jun-2025-144743-0100nn-nntldr-you-can-use-semihosting-on-any-arm-cpu-to-send-and-receive-data-in-a-few-lines-of-code" title="Permanent link">&para;</a></h1>
-<p>Click here to see an example implementation on a 10p “disposable” microcontroller.
-Context There are many ways to debug embedded projects. For high speed stuff, you might toggle a pin at the beginning and end of a subroutine. On a more advanced project, you might have structured logging to a file-system.</p>
+<h1 id="j-link-rtt-for-the-masses">J-Link RTT for the Masses<a class="headerlink" href="#j-link-rtt-for-the-masses" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://bogdanthegeek.github.io
+<strong>链接:</strong> https://bogdanthegeek.github.io/blog/insights/jlink-rtt-for-the-masses/
+<strong>日期:</strong> Sun, 01 Jun 2025 14:47:43 +0100</p>
+<hr />
+<p><a href="https://bogdanthegeek.github.io/blog/">BogdanTheGeek's Blog</a></p>
+<ul>
+<li>Menu ▾</li>
+<li>
+<ul>
+<li><a href="/blog/about">About</a></li>
+<li><a href="/blog/insights">Insights</a></li>
+<li><a href="/blog/projects">Projects</a></li>
+<li><a href="/blog/thoughts">Thoughts</a></li>
+</ul>
+</li>
+<li>
+<p><a href="/blog/about">About</a></p>
+</li>
+<li><a href="/blog/insights">Insights</a></li>
+<li><a href="/blog/projects">Projects</a></li>
+<li><a href="/blog/thoughts">Thoughts</a></li>
+</ul>
+<h1 id="j-link-rtt-for-the-masses_1"><a href="https://bogdanthegeek.github.io/blog/insights/jlink-rtt-for-the-masses/">J-Link RTT for the Masses</a><a class="headerlink" href="#j-link-rtt-for-the-masses_1" title="Permanent link">&para;</a></h1>
+<p>2025-06-01Bogdan Ionescu6 min read (1175 words)<a href="https://github.com/BogdanTheGeek/blog/tree/main/content/insights/jlink-rtt-for-the-masses.md" title="Source for this page">source</a> <a href="https://github.com/BogdanTheGeek/blog/issues/new?template=corrections.md&amp;title=[Correction]: J-Link%20RTT%20for%20the%20Masses" title="Submit Correction">report issue</a></p>
+<h1 id="programming-arm-tools-electronics"><a href="https://bogdanthegeek.github.io/blog/tags/programming/">programming</a>  #<a href="https://bogdanthegeek.github.io/blog/tags/arm/">arm</a>  #<a href="https://bogdanthegeek.github.io/blog/tags/tools/">tools</a>  #<a href="https://bogdanthegeek.github.io/blog/tags/electronics/">electronics</a>  <img alt="J-Link RTT for the Masses" src="https://bogdanthegeek.github.io/blog/images/monty-python-peasants.jpg" /><a class="headerlink" href="#programming-arm-tools-electronics" title="Permanent link">&para;</a></h1>
+<h1 id="tldr">TLDR;<a class="headerlink" href="#tldr" title="Permanent link">&para;</a></h1>
+<p>You can use semihosting on any ARM CPU to send and receive data in a few lines of code.</p>
+<p>Click <a href="https://github.com/BogdanTheGeek/minimal-py32/tree/main/src">here</a> to see an example implementation on a 10p "disposable" microcontroller.</p>
+<h1 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h1>
+<p>There are many ways to debug embedded projects. For high speed stuff, you might toggle a pin at the beginning and end of a subroutine. On a more advanced project, you might have structured logging to a file-system. In 99% of cases however, most people resort to either firing up a debugger or logging to a console (aka. <code>printf</code> debugging).</p>
+<p>The first thing I do whenever I start working with a new microcontroller platform is get some sort of logs working. In the past, I tended to setup a UART peripheral and overload <code>stdio.h::write</code>1.</p>
+<p>Here is an example of what that looks like</p>
+<div class="language-text highlight"><pre><span></span><code>int _write(int fd, const char *buf, int size)
+{
+    (void)fd;
+    UART_Transmit(buf, size);
+    return size;
+}
+</code></pre></div>
+<p>Fancier implementation may use a ring buffer, or have multiple destinations, but this is how it usually looks.</p>
+<h2 id="great-so-whats-the-problem">Great, so what's the problem?<a class="headerlink" href="#great-so-whats-the-problem" title="Permanent link">&para;</a></h2>
+<p>Well, for one, I don't want to waste a pin on my microcontroller. It's also quite annoying to have to dig for a USB-UART adaptor. There's also the issue of sending data to the microcontroller, It's quite nice to be able to paste some commands into the terminal to control the device while it's running. This would not only necessitate another precious GPIO, but also a lot of faffing about with ring buffers, DMA, or interrupts. All just to do what <a href="https://www.sbprojects.net/projects/apple1/wozmon.php">wozmon</a> could do in 254 bytes of 6502 machine code. Finally, I might need that UART for something else.</p>
+<h2 id="swo-i-hear-you-shouting">SWO!!! I hear you shouting!<a class="headerlink" href="#swo-i-hear-you-shouting" title="Permanent link">&para;</a></h2>
+<p>NO! All ARM chips have a dedicated debugger pin to output data. It's basically just UART (although it can also do manchester encoding), but most of the same drawbacks apply; it requires a GPIO pin and a debug probe that supports it. I just don't bother.</p>
+<h1 id="just-throw-money-at-the-problem">Just throw money at the problem<a class="headerlink" href="#just-throw-money-at-the-problem" title="Permanent link">&para;</a></h1>
+<p>I have used SEGGER's J-Link probes for years. Though they are very good, they are also very expensive and have quite strange terms of use. However, they have one <em>killer feature</em>.</p>
+<h2 id="rtt-my-sweet-prince">RTT, my sweet prince<a class="headerlink" href="#rtt-my-sweet-prince" title="Permanent link">&para;</a></h2>
+<p><a href="https://www.segger.com/products/debug-probes/j-link/technology/about-real-time-transfer/">Real Time Transfer</a> is one of those things that I didn't know I needed it until I saw it, and now I could never live without it. The selling point is that you just include their library, and you get non-blocking bidirectional communication with your microcontroller over the SWD lines (SWDIO and SWCLK) at an incredible bandwidth.</p>
+<p>The way this works is actually pretty cool, so I will take a moment to explain how it works before I show my alternative. All ARM Cortex CPUs allow the debugger probe to read the contents of any address that the CPU can access without halting it. Take a second to appreciate how cool that is. When you add the RTT library to your code, it creates a couple of ring buffers in memory with a header that can be easily found like <code>0xF0CACC1A</code> or <code>0x1234ABCD</code>. What the J-Link Viewer software does, is scan the contents of RAM for that header, then it can just read from and write to the ring buffer structure.</p>
+<p>This is such a powerful technique. Tools like <a href="https://visualgdb.com/">VisualGDB</a> and <a href="https://www.iar.com/embedded-development-tools/iar-embedded-workbench">IAR</a> do the same thing to plot the contents of variables at runtime.</p>
+<p>Ok, time to spoil the fun. Even though I have praised RTT, there are a few issues, and they are big enough to make it not want to use it.</p>
+<p>First, it only works with J-Link probes ($$$). Second, it has a noticeable memory footprint. Not bad, but we can do better. Lastly, it doesn't have a permissive licence. I cannot use RTT with any other debugger, even if I reimplement it from scratch.</p>
+<h2 id="are-you-done-yapping">Are you done yapping?<a class="headerlink" href="#are-you-done-yapping" title="Permanent link">&para;</a></h2>
+<p>Almost. If you made it so far, have a 🍪, you deserve it.</p>
+<p>I have no idea why ARM has not come up with a standard way of logging with the same technique. Maybe they want SEGGER to not go out of business (I don't want that either, they are good engineers).</p>
+<p>They have however came up with an alternative solution, not as good, but at least it's widely supported.</p>
+<h1 id="semihosting-to-the-rescue">Semihosting to the rescue<a class="headerlink" href="#semihosting-to-the-rescue" title="Permanent link">&para;</a></h1>
+<p><a href="https://developer.arm.com/documentation/101470/1900/Controlling-Target-Execution/Using-semihosting-to-access-resources-on-the-host-computer?lang=en">Semihosting</a> is a very fancy name, for a very simple concept. What if we could do syscalls, but the debug probe was the kernel.</p>
+<p>Semihosting is a very powerful mechanism, not quite as powerful as direct memory access, but it still holds it own. It boils down to putting your "syscall" arguments in some registers and calling <code>asm("bkpt 0xAB")</code>.</p>
+<p>This is it:</p>
+<div class="language-text highlight"><pre><span></span><code>int SEMIHOST_SysCall(int reason, void *arg)
+{
+    int value;
+    __asm volatile(
+        &quot;mov r0, %[rsn] \n&quot; // place semihost operation code into R0
+        &quot;mov r1, %[arg] \n&quot; // R1 points to the argument array
+        &quot;bkpt 0xAB      \n&quot; // call debugger
+        &quot;mov %[val], r0 \n&quot; // debugger has stored result code in R0
+
+        : [val] &quot;=r&quot;(value)                 // outputs
+        : [rsn] &quot;r&quot;(reason), [arg] &quot;r&quot;(arg) // inputs
+        : &quot;r0&quot;, &quot;r1&quot;, &quot;r2&quot;, &quot;memory&quot;);
+    return value; // return result code, stored in R0
+}
+</code></pre></div>
+<p>It supports ~~too~~ many syscalls, from reading files from the host, to getting UTC time. For our application however, we only care about 2 <code>SYS_WRITE</code> and <code>SYS_READC</code>.</p>
+<p>Here is how we use them:</p>
+<div class="language-text highlight"><pre><span></span><code>int getchar(void)
+{
+    return SEMIHOST_SysCall(SYS_READC, NULL);
+}
+
+int _write(int fd, const char *buf, int size)
+{
+    if (fd == SEMIHOST_STDOUT || fd == SEMIHOST_STDERR)
+    {
+        int32_t args[3] = {fd, (int32_t)buf, size};
+        return SEMIHOST_SysCall(SYS_WRITE, &amp;args[0]);
+    }
+    return 0; // Unsupported file descriptor
+}
+</code></pre></div>
+<p>To see the output, just enable semihosting on your debug probe. For <code>pyocd</code>, just pass the <code>-S</code> flag. For <code>openocd</code>, add <code>monitor arm semihosting enable</code> to the run commands.</p>
+<p>There is one more thing that we need do. If we don't have a debugger connected, the breakpoint instruction is going to throw an exception. We need to modify our hard fault handler to ignore the exception. I'm not going to bore you with how you have to do it, but it will require a bit of assembly. <a href="https://github.com/BogdanTheGeek/minimal-py32/blob/529c0b3962d8cad490d942f291cb6f0fa50734cf/src/semihost.c#L49">Here</a> is how I implemented it, based on Erich Styger's <a href="https://mcuoneclipse.com/2023/03/09/using-semihosting-the-direct-way/">example</a>. Erich also goes into some performance metrics.</p>
+<h2 id="nothing-is-ever-free">Nothing is ever free<a class="headerlink" href="#nothing-is-ever-free" title="Permanent link">&para;</a></h2>
+<p>The only negative with this approach is that we do have to interrupt the CPU to signal to the debugger that we have some data to be read, and wait for it to read it. This only happens when the MCU decides, so I don't consider it to be any worse than something like blocking UART.</p>
+<p>Even though semihosting is wildly supported by most debug probes, not all GUI debuggers seem to handle it so gracefully. The Cortex-debug VSCode extension doesn't seem to like it at the time of writing. I don't personally use it, and you can just disable semihosting with a compilation flag, so this is not a deal breaker to me.</p>
+<hr />
+<ol>
+<li>If your SDK provider doesn't tag <code>write</code> with <code>__attribute__(weak)</code>, stop using them, they don't deserve your business. You can work around it using <code>-Wl,--wrap=write</code> linker flag. ↩︎</li>
+</ol>
+<p>© 2025 Bogdan Ionescu</p>
 
 
 
@@ -427,7 +527,7 @@ Context There are many ways to debug embedded projects. For high speed stuff, yo
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 11:14:56 UTC">2026-02-05</span>
   </span>
 
     

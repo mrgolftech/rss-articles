@@ -25,7 +25,7 @@
     
     
       
-        <title>MicroAlloc\n\n来源: https://bogdanthegeek.github.io\n链接: https://bogdanthegeek.github.io/blog/projects/microalloc/\n日期: Sun, 21 Sep 2025 16:13:00 +0100\n\n---\n\nTLDR; You can find the project repository here. - Hacker News 精选博客</title>
+        <title>MicroAlloc - Hacker News 精选博客</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#microallocnn-httpsbogdanthegeekgithubion-httpsbogdanthegeekgithubioblogprojectsmicroallocn-sun-21-sep-2025-161300-0100nn-nntldr-you-can-find-the-project-repository-here" class="md-skip">
+        <a href="#microalloc" class="md-skip">
           跳转至
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              MicroAlloc\n\n来源: https://bogdanthegeek.github.io\n链接: https://bogdanthegeek.github.io/blog/projects/microalloc/\n日期: Sun, 21 Sep 2025 16:13:00 +0100\n\n---\n\nTLDR; You can find the project repository here.
+              MicroAlloc
             
           </span>
         </div>
@@ -404,10 +404,85 @@
   
 
 
-<h1 id="microallocnn-httpsbogdanthegeekgithubion-httpsbogdanthegeekgithubioblogprojectsmicroallocn-sun-21-sep-2025-161300-0100nn-nntldr-you-can-find-the-project-repository-here">MicroAlloc\n\n<strong>来源:</strong> https://bogdanthegeek.github.io\n<strong>链接:</strong> https://bogdanthegeek.github.io/blog/projects/microalloc/\n<strong>日期:</strong> Sun, 21 Sep 2025 16:13:00 +0100\n\n---\n\nTLDR; You can find the project repository here.<a class="headerlink" href="#microallocnn-httpsbogdanthegeekgithubion-httpsbogdanthegeekgithubioblogprojectsmicroallocn-sun-21-sep-2025-161300-0100nn-nntldr-you-can-find-the-project-repository-here" title="Permanent link">&para;</a></h1>
-<p>What? How? Why? A few Christmases ago, I was browsing the source code for the esp-idf heap allocator1 and thought:
-This is quite interesting, I should write my own allocator
-After a bit of looking around, I discovered that general purpose heap allocators are one of those problems that has no perfect solution (which is the kind of problem I really enjoy). It’s all about trade-offs.</p>
+<h1 id="microalloc">MicroAlloc<a class="headerlink" href="#microalloc" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://bogdanthegeek.github.io
+<strong>链接:</strong> https://bogdanthegeek.github.io/blog/projects/microalloc/
+<strong>日期:</strong> Sun, 21 Sep 2025 16:13:00 +0100</p>
+<hr />
+<p><a href="https://bogdanthegeek.github.io/blog/">BogdanTheGeek's Blog</a></p>
+<ul>
+<li>Menu ▾</li>
+<li>
+<ul>
+<li><a href="/blog/about">About</a></li>
+<li><a href="/blog/insights">Insights</a></li>
+<li><a href="/blog/projects">Projects</a></li>
+<li><a href="/blog/thoughts">Thoughts</a></li>
+</ul>
+</li>
+<li>
+<p><a href="/blog/about">About</a></p>
+</li>
+<li><a href="/blog/insights">Insights</a></li>
+<li><a href="/blog/projects">Projects</a></li>
+<li><a href="/blog/thoughts">Thoughts</a></li>
+</ul>
+<h1 id="microalloc_1"><a href="https://bogdanthegeek.github.io/blog/projects/microalloc/">MicroAlloc</a><a class="headerlink" href="#microalloc_1" title="Permanent link">&para;</a></h1>
+<p>2025-09-21Bogdan Ionescu5 min read (871 words)<a href="https://github.com/BogdanTheGeek/blog/tree/main/content/projects/microalloc.md" title="Source for this page">source</a> <a href="https://github.com/BogdanTheGeek/blog/issues/new?template=corrections.md&amp;title=[Correction]: MicroAlloc" title="Submit Correction">report issue</a></p>
+<h1 id="programming"><a href="https://bogdanthegeek.github.io/blog/tags/programming/">programming</a>  <img alt="MicroAlloc" src="https://bogdanthegeek.github.io/blog/images/heap.png" /><a class="headerlink" href="#programming" title="Permanent link">&para;</a></h1>
+<h1 id="tldr">TLDR;<a class="headerlink" href="#tldr" title="Permanent link">&para;</a></h1>
+<p>You can find the project repository <a href="https://github.com/BogdanTheGeek/microalloc">here</a>.</p>
+<h1 id="what-how-why">What? How? Why?<a class="headerlink" href="#what-how-why" title="Permanent link">&para;</a></h1>
+<p>A few Christmases ago, I was browsing the source code for the esp-idf <a href="https://github.com/espressif/esp-idf/blob/release/v4.1/components/heap/multi_heap.c">heap allocator</a>1 and thought:</p>
+<blockquote>
+<p>This is quite interesting, I should write my own allocator</p>
+</blockquote>
+<p>After a bit of looking around, I discovered that general purpose heap allocators are one of those problems that has no perfect solution (which is the kind of problem I really enjoy). It's all about trade-offs. You can optimise for speed (which seems very much like the wrong thing to optimise for), allocation overhead, memory fragmentation, or all of them at the same time.</p>
+<p>It took me a few hours to get a working first-fit free list allocator. Just an allocator, no <code>free()</code> which is actually where the complexity really lives, but we'll get to that. With my itched scratched I committed all my work on a local git repo and returned to my roasted turkey and pickled cabbages (we have a very multi-cultural Christmas).</p>
+<p>Few months ago, I got interested once again in memory allocators after finding a great paper talking about <a href="https://trepo.tuni.fi/bitstream/handle/10024/140229/AuvinenEetu.pdf?sequence=2">Embedded Dynamic Memory Allocator Optimisation</a>.</p>
+<p>After reading the paper end to end, I realised that as far as I could tell, very few people have tried pushing the limit when it came to minimising allocation overhead. With my renewed interest, I sat down and finished implementing <code>free()</code>, so that I could start playing with optimisations.</p>
+<h1 id="public-service-announcement">Public Service Announcement<a class="headerlink" href="#public-service-announcement" title="Permanent link">&para;</a></h1>
+<p>Before going any further, please allow me to share some industry secrets. Every self-respecting embedded engineer avoids dynamic allocations like the plague, myself included. There are much simpler, faster, and safer ways to deal with data of flexible sizes.</p>
+<p>Statically allocating all your memory up front is by far the safest (as long as you leave enough room for your stack to grow), so you should always start with that.</p>
+<p>If you need to allocate some large buffers depending on some configuration at startup, it's perfectly safe to allocate it dynamically and never free it.</p>
+<p>For anything else, use a scratch buffer, block allocator (a.k.a. object pool), or arena allocator.</p>
+<p>I don't think you should <em>never</em> use a dynamic allocator, but it should be a last resort, especially for embedded applications.</p>
+<p>Now, with that out of the way, lets get back to our horses.</p>
+<h1 id="the-meat-and-potatoes">The Meat and Potatoes<a class="headerlink" href="#the-meat-and-potatoes" title="Permanent link">&para;</a></h1>
+<p>A first-fit free list allocator is quite a simple thing. Each block of memory has some metadata associated with it:</p>
+<div class="language-text highlight"><pre><span></span><code>typedef struct
+{
+    ua_base_t metadata; // LSB is used to indicate if the block is free
+    union
+    {
+        unsigned char data[1]; // The actual data
+        ua_base_t next_free;   // Pointer to the next free block
+    };
+} ua_block_t;
+</code></pre></div>
+<p>We keep track of these blocks as a linked list:</p>
+<div class="language-text highlight"><pre><span></span><code>typedef struct
+{
+    ua_block_t *last_block;
+    ua_block_t *first_free_block;
+} ua_heap_t;
+</code></pre></div>
+<p>We can actually do a little trick and allocate the <code>ua_heap_t</code> structure at the beginning of our <code>heap</code>. We then create a single large free block with the remaining memory.</p>
+<p>When we want to allocate some memory, we traverse the list of free blocks until we find one that fits. If its bigger than we need, we can split it. Crucially, we then return to the user the address of <code>block.data</code> instead of the address of the block. When we need to free, we can just look "above" the pointer provided by the user to find the metadata. We can use the metadata to store a pointer to the next block in the linked list.</p>
+<p>After a block is freed, we can use the space inside the block to store a second linked list that points us to the next free block. This means that our effective overhead is just the size of the metadata.</p>
+<p>Here is where we try to do something novel. Pretty much every other similar allocator uses a full <code>word</code> to store the pointers in the metadata field. What if you don't need more than 64kiB of heap? If we actually store an offset into the heap instead of an absolute pointer, we can get away with only 2 bytes of overhead per allocation.</p>
+<h1 id="garbage-collection">Garbage collection<a class="headerlink" href="#garbage-collection" title="Permanent link">&para;</a></h1>
+<p>While implementing <code>free()</code>, I realised that I had to have a way of joining adjacent free blocks, otherwise I could run out of large blocks. To keep overhead low, I didn't want to use a two way linked list, so it's quite slow to find a previous free block, but what if we could defer this merge?</p>
+<p>I added a compile time flag to disable "merge on free" and allow the user to call <code>micro_alloc_defrag()</code> whenever they need to tidy up things. Depending on the application, manual merging may produce a more fragmented heap, but it does improve performance significantly.</p>
+<h1 id="closing-thoughts">Closing thoughts<a class="headerlink" href="#closing-thoughts" title="Permanent link">&para;</a></h1>
+<p>Dynamic allocation is not magic, and writing your own allocator is a surprisingly rewarding exercise. It took me a while to iron out most of the bugs, though some probably still remain. For a bit of extra fun, here's how the heap looks after some "stress testing":</p>
+<p><img alt="heap" src="/blog/images/heap.png" /></p>
+<p>Green blocks are free, blue ones are allocated and red is all the metadata. All the code used to generate it is in the repo linked above.</p>
+<hr />
+<ol>
+<li>The latest version of the idf ditched the old allocator for <a href="https://github.com/mattconte/tlsf">tlsf</a> ↩︎</li>
+</ol>
+<p>© 2025 Bogdan Ionescu</p>
 
 
 
@@ -428,7 +503,7 @@ After a bit of looking around, I discovered that general purpose heap allocators
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 11:14:56 UTC">2026-02-05</span>
   </span>
 
     

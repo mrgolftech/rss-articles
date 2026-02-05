@@ -388,6 +388,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#leaking-the-phone-number-of-any-google-user_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leaking the phone number of any Google user
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Leaking the phone number of any Google user">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#a-deeper-look-into-the-endpoints" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -397,8 +409,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#can-we-even-brute-this" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -408,8 +420,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#what-about-ipv6" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -419,8 +431,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#using-the-botguard-token-from-the-js-form" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -430,8 +442,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#a-few-things-to-sort-out" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -480,8 +492,8 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#putting-it-all-together" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -491,8 +503,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#time-required-to-brute-the-number" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -502,8 +514,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#timeline" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -511,6 +523,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -544,6 +561,11 @@
 <strong>链接:</strong> https://brutecat.com/articles/leaking-google-phones
 <strong>日期:</strong> Mon, 09 Jun 2025 00:00:00 GMT</p>
 <hr />
+<p><a href="/">&lt; Back</a></p>
+<p><a href="/">&lt; Back</a></p>
+<h2 id="leaking-the-phone-number-of-any-google-user_1">Leaking the phone number of any Google user<a class="headerlink" href="#leaking-the-phone-number-of-any-google-user_1" title="Permanent link">&para;</a></h2>
+<p>2025-06-09</p>
+<p><img alt="Leaking the phone number of any Google user" src="/assets/google-phone-disclosure.gif" /></p>
 <p>A few months ago, I disabled javascript on my browser while testing if there were any Google services left that still worked without JS in the modern web. Interestingly enough, the username recovery form still worked!</p>
 <p>This surprised me, as I used to think these account recovery forms <a href="https://news.ycombinator.com/item?id=18349887">required javascript since 2018</a> as they relied on botguard solutions generated from heavily obfuscated proof-of-work javascript code for anti-abuse.</p>
 <h3 id="a-deeper-look-into-the-endpoints">A deeper look into the endpoints<a class="headerlink" href="#a-deeper-look-into-the-endpoints" title="Permanent link">&para;</a></h3>
@@ -644,7 +666,7 @@ pub fn create_client(subnet: &amp;str, user_agent: &amp;str) -&gt; Client {
 <p>Eventually, I had a PoC running, but I was still getting the captcha? It seemed that for whatever reason, datacenter IP addresses using the JS disabled form were always presented with a captcha, damn!</p>
 <h3 id="using-the-botguard-token-from-the-js-form">Using the BotGuard token from the JS form<a class="headerlink" href="#using-the-botguard-token-from-the-js-form" title="Permanent link">&para;</a></h3>
 <p>I was looking through the 2 requests again, seeing if there was anything I could find to get around this, and <code>bgresponse=js_disabled</code> caught my eye. I remembered that on the <a href="https://accounts.google.com/signin/v2/usernamerecovery">JS-enabled account recovery form</a>, the botguard token was passed via the <strong>bgRequest</strong> parameter.</p>
-<p><img alt="" src="https://brutecat.com/assets/leaking-google-phones/bgtoken.png" /></p>
+<p><img alt="" src="/assets/leaking-google-phones/bgtoken.png" /></p>
 <p>What if I replace <code>js_disabled</code> with the botguard token from the JS-enabled form request? I tested it out, and <strong>it worked??</strong>. The botguard token seemed to have no request limit on the No-JS form, but who are all these random people?</p>
 <div class="language-text highlight"><pre><span></span><code>$ ./target/release/gpb --prefix +316 --suffix 03 --digits 6 -f Henry -l Chancellor -w 3000
 Starting with 3000 threads...
@@ -676,10 +698,10 @@ Finished.
 <p>We have a basic PoC working, but there's still some issues we have to address.</p>
 <ul>
 <li>
-<p><a href="https://brutecat.com/rss.xml#how-do-we-know-which-country-code-a-victim-39-s-phone-is-">How do we know which country code a victim's phone is?</a></p>
+<p>How do we know which country code a victim's phone is?</p>
 </li>
 <li>
-<p><a href="https://brutecat.com/rss.xml#how-do-we-get-the-victim-39-s-google-account-display-name-">How do we get the victim's Google account display name?</a></p>
+<p>How do we get the victim's Google account display name?</p>
 </li>
 </ul>
 <h4 id="how-do-we-know-which-country-code-a-victims-phone-is">How do we know which country code a victim's phone is?<a class="headerlink" href="#how-do-we-know-which-country-code-a-victims-phone-is" title="Permanent link">&para;</a></h4>
@@ -772,6 +794,8 @@ Issue qualified as an abuse-related methodology with high impact. </li>
 <li>2025-06-06 - Vendor confirms that the No-JS username recovery form has been fully deprecated</li>
 <li>2025-06-09 - Report disclosed</li>
 </ul>
+<hr />
+<p>You can contact me via <a href="https://signal.me/#eu/DK2edygXRPMdt8bnQk0kIz-WNKt40rCDvY-WAi7a4q5ATEQwRxdIGIMSHAJFCgIb"><img alt="Signal messenger" src="data:image/svg+xml,%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Transformed%20by:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2048%2048'%20id='Layer_2'%20data-name='Layer%202'%20xmlns='http://www.w3.org/2000/svg'%20fill='%23ffffff'%20stroke='%23ffffff'%3e%3cg%20id='SVGRepo_bgCarrier'%20stroke-width='0'/%3e%3cg%20id='SVGRepo_tracerCarrier'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cg%20id='SVGRepo_iconCarrier'%3e%3cdefs%3e%3cstyle%3e.cls-1{fill:none;stroke:%23ffffff;stroke-linejoin:round;}%3c/style%3e%3c/defs%3e%3cpath%20stroke-width='2px'%20class='cls-1'%20d='M27.32,45.25A23.08,23.08,0,0,1,24,45.5a22.26,22.26,0,0,1-3.26-.25m14.44-2.88a21,21,0,0,1-6.08,2.51M41.36,36.7a21.63,21.63,0,0,1-4.66,4.65m5.65-6.16,2.54-6.08a21.25,21.25,0,0,1-2.52,6.07m2.88-14.42A23.33,23.33,0,0,1,45.5,24a22.43,22.43,0,0,1-.25,3.28m-42.46,0A22.46,22.46,0,0,1,2.5,24a22.43,22.43,0,0,1,.25-3.28m39.63-7.89a21.7,21.7,0,0,1,2.51,6.08m-41.69,0a21.19,21.19,0,0,1,2.52-6.06h0m31-6.2a21.19,21.19,0,0,1,4.66,4.65m-34.71,0A21.63,21.63,0,0,1,11.3,6.64M29.09,3.1a21.57,21.57,0,0,1,6.07,2.53h0m-22.33,0a21.07,21.07,0,0,1,6.09-2.51m1.84-.37A21.88,21.88,0,0,1,24,2.5a22.29,22.29,0,0,1,3.27.25'/%3e%3cpath%20stroke-width='2px'%20class='cls-1'%20d='M18.87,44.87a20.92,20.92,0,0,1-5-1.95l-2.24.51'/%3e%3cpath%20stroke-width='2px'%20class='cls-1'%20d='M4.61,36.38l.51-2.2a21.7,21.7,0,0,1-2-5'/%3e%3cpath%20stroke-width='2px'%20class='cls-1'%20d='M10,43.85l-4.08,1a2.19,2.19,0,0,1-2.66-1.56,2.27,2.27,0,0,1,0-1.1l1-4.08'/%3e%3cpath%20stroke-width='2px'%20class='cls-1'%20d='M24,6.41a17.59,17.59,0,0,0-14.83,27l-1.65,7.1,7.16-1.64A17.59,17.59,0,1,0,24,6.41Z'/%3e%3c/g%3e%3c/svg%3e" /></a> or <a href="/cdn-cgi/l/email-protection#aad8c5c5deeac8d8dfdecfc9cbde84c9c5c7"><img alt="Email" src="data:image/svg+xml,%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Transformed%20by:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20id='SVGRepo_bgCarrier'%20stroke-width='0'/%3e%3cg%20id='SVGRepo_tracerCarrier'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cg%20id='SVGRepo_iconCarrier'%3e%3cpath%20d='M4%207.00005L10.2%2011.65C11.2667%2012.45%2012.7333%2012.45%2013.8%2011.65L20%207'%20stroke='%23ffffff'%20stroke-width='1'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3crect%20x='3'%20y='5'%20width='18'%20height='14'%20rx='2'%20stroke='%23ffffff'%20stroke-width='1'%20stroke-linecap='round'/%3e%3c/g%3e%3c/svg%3e" /></a></p>
 
 
 
@@ -792,7 +816,7 @@ Issue qualified as an abuse-related methodology with high impact. </li>
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 11:14:56 UTC">2026-02-05</span>
   </span>
 
     

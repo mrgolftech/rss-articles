@@ -381,36 +381,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#highlights" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Highlights
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conclusion
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -439,17 +409,25 @@
 <strong>链接:</strong> https://eli.thegreenplace.net/2026/compiling-scheme-to-webassembly/
 <strong>日期:</strong> 2026-01-17T14:37:00-08:00</p>
 <hr />
+<p>Toggle navigation <a href="https://eli.thegreenplace.net/"> <img alt="" src="https://eli.thegreenplace.net/images/logosmall.png" /> Eli Bendersky's website </a></p>
+<ul>
+<li><a href="https://eli.thegreenplace.net/pages/about"> __ About </a></li>
+<li><a href="https://eli.thegreenplace.net/pages/projects"> __ Projects </a></li>
+<li><a href="https://eli.thegreenplace.net/archives/all"> __ Archives </a></li>
+</ul>
+<h1 id="compiling-scheme-to-webassembly_1"><a href="https://eli.thegreenplace.net/2026/compiling-scheme-to-webassembly/" title="Permalink to Compiling Scheme to WebAssembly"> Compiling Scheme to WebAssembly </a><a class="headerlink" href="#compiling-scheme-to-webassembly_1" title="Permanent link">&para;</a></h1>
+<p>__ January 17, 2026 at 14:37 Tags <a href="https://eli.thegreenplace.net/tag/lisp">Lisp</a> , <a href="https://eli.thegreenplace.net/tag/python">Python</a> , <a href="https://eli.thegreenplace.net/tag/webassembly">WebAssembly</a></p>
 <p>One of my oldest open-source projects - <a href="https://github.com/eliben/bobscheme">Bob</a> - has <a href="https://eli.thegreenplace.net/2010/11/06/bob-a-scheme-interpreter-compiler-and-vm-in-python">celebrated 15 a couple of months ago</a>. Bob is a suite of implementations of the Scheme programming language in Python, including an interpreter, a compiler and a VM. Back then I was doing some hacking on CPython internals and was very curious about how CPython-like bytecode VMs work; Bob was an experiment to find out, by implementing one from scratch for R5RS Scheme.</p>
 <p>Several months later I <a href="https://eli.thegreenplace.net/2011/04/09/a-c-vm-added-to-bob">added a C++ VM to Bob</a>, as an exercise to learn how such VMs are implemented in a low-level language without all the runtime support Python provides; most importantly, without the built-in GC. The C++ VM in Bob implements its own mark-and-sweep GC.</p>
 <p>After many quiet years (with just a sprinkling of cosmetic changes, porting to GitHub, updates to Python 3, etc), I felt the itch to work on Bob again just before the holidays. Specifically, I decided to add another compiler to the suite - this one from Scheme directly to WebAssembly.</p>
 <p>The goals of this effort were two-fold:</p>
 <ol>
 <li>Experiment with lowering a real, high-level language like Scheme to WebAssembly. Experiments like the recent <a href="https://eli.thegreenplace.net/2025/revisiting-lets-build-a-compiler/">Let's Build a Compiler</a> compile toy languages that are at the C level (no runtime). Scheme has built-in data structures, lexical closures, garbage collection, etc. It's much more challenging.</li>
-<li>Get some hands-on experience with the WASM GC extension <a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-1">[1]</a>. I have several samples of using WASM GC in the <a href="https://github.com/eliben/wasm-wat-samples">wasm-wat-samples repository</a>, but I really wanted to try it for something "real".</li>
+<li>Get some hands-on experience with the WASM GC extension [1]. I have several samples of using WASM GC in the <a href="https://github.com/eliben/wasm-wat-samples">wasm-wat-samples repository</a>, but I really wanted to try it for something "real".</li>
 </ol>
 <p>Well, it's done now; here's an updated schematic of the Bob project:</p>
 <p><img alt="Bob project diagram with all the components it includes" src="https://eli.thegreenplace.net/images/2026/bob_toplevel.png" /></p>
-<p>The new part is the rightmost vertical path. A <a href="https://github.com/eliben/bobscheme/blob/main/bob/wasmcompiler.py">WasmCompiler</a> class lowers parsed Scheme expressions all the way down to WebAssembly text, which can then be compiled to a binary and executed using standard WASM tools <a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-2">[2]</a>.</p>
+<p>The new part is the rightmost vertical path. A <a href="https://github.com/eliben/bobscheme/blob/main/bob/wasmcompiler.py">WasmCompiler</a> class lowers parsed Scheme expressions all the way down to WebAssembly text, which can then be compiled to a binary and executed using standard WASM tools [2].</p>
 <h2 id="highlights">Highlights<a class="headerlink" href="#highlights" title="Permanent link">&para;</a></h2>
 <p>The most interesting aspect of this project was working with WASM GC to represent Scheme objects. As long as we properly box/wrap all values in <code>ref</code>s, the underlying WASM execution environment will take care of the memory management.</p>
 <p>For Bob, here's how some key Scheme objects are represented:</p>
@@ -469,7 +447,7 @@
 <p>Consider this trivial Scheme snippet:</p>
 <div class="language-text highlight"><pre><span></span><code>(write &#39;(10 20 foo bar))
 </code></pre></div>
-<p>The compiler emits the symbols "foo" and "bar" into linear memory as follows <a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-3">[3]</a>:</p>
+<p>The compiler emits the symbols "foo" and "bar" into linear memory as follows [3]:</p>
 <div class="language-text highlight"><pre><span></span><code>(data (i32.const 2048) &quot;foo&quot;)
 (data (i32.const 2051) &quot;bar&quot;)
 </code></pre></div>
@@ -497,18 +475,18 @@
 )
 </code></pre></div>
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
-<p>This was a really fun project, and I learned quite a bit about realistic code emission to WASM. Feel free to check out the source code of <a href="https://github.com/eliben/bobscheme/blob/main/bob/wasmcompiler.py">WasmCompiler</a> - it's very well documented. While it's a bit over 1000 LOC in total <a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-4">[4]</a>, more than half of that is actually WASM text snippets that implement the builtin types and functions needed by a basic Scheme implementation.</p>
+<p>This was a really fun project, and I learned quite a bit about realistic code emission to WASM. Feel free to check out the source code of <a href="https://github.com/eliben/bobscheme/blob/main/bob/wasmcompiler.py">WasmCompiler</a> - it's very well documented. While it's a bit over 1000 LOC in total [4], more than half of that is actually WASM text snippets that implement the builtin types and functions needed by a basic Scheme implementation.</p>
 <hr />
 <table>
 <thead>
 <tr>
-<th><a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-reference-1">[1]</a></th>
+<th>[1]</th>
 <th>The GC proposal <a href="https://github.com/WebAssembly/gc">is documented here</a>. It was officially added to the WASM spec in Oct 2023.</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-reference-2">[2]</a></td>
+<td>[2]</td>
 <td>In Bob this is currently done with <code>bytecodealliance/wasm-tools</code> for the text-to-binary conversion and Node.js for the execution environment, but this can change in the future. I actually wanted to use Python bindings to wasmtime, but these don't appear to support WASM GC yet.</td>
 </tr>
 <tr>
@@ -516,7 +494,7 @@
 <td>---</td>
 </tr>
 <tr>
-<td><a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-reference-3">[3]</a></td>
+<td>[3]</td>
 <td>2048 is just an arbitrary offset the compiler uses as the beginning of the section for symbols in memory. We could also use the multiple memories feature of WASM and dedicate a separate linear memory just for symbols.</td>
 </tr>
 <tr>
@@ -524,7 +502,7 @@
 <td>---</td>
 </tr>
 <tr>
-<td><a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-reference-4">[4]</a></td>
+<td>[4]</td>
 <td>To be clear, this is just the WASM compiler class; it uses the <code>Expr</code> representation of Scheme that is created by Bob's parser (and lexer); the code of these other components is shared among all Bob implementations and isn't counted here.</td>
 </tr>
 <tr>
@@ -533,6 +511,11 @@
 </tr>
 </tbody>
 </table>
+<hr />
+<p>For comments, please send me <a href="mailto:eliben@gmail.com">__an email</a>. </p>
+<hr />
+<p>(C) 2003-2025 Eli Bendersky </p>
+<p>__Back to top</p>
 
 
 
@@ -553,7 +536,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 11:14:56 UTC">2026-02-05</span>
   </span>
 
     

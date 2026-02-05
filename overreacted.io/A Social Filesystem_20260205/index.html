@@ -1,0 +1,1270 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/overreacted.io/A%20Social%20Filesystem_20260205/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>A Social Filesystem - Hacker News 精选博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#a-social-filesystem" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Hacker News 精选博客" class="md-header__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker News 精选博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              A Social Filesystem
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker News 精选博客" class="md-nav__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hacker News 精选博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/overreacted.io/A Social Filesystem_20260205.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="a-social-filesystem">A Social Filesystem<a class="headerlink" href="#a-social-filesystem" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://overreacted.io
+<strong>链接:</strong> https://overreacted.io/a-social-filesystem/
+<strong>日期:</strong> Sun, 18 Jan 2026 00:00:00 GMT</p>
+<hr />
+<p><a href="/">overreacted</a>by <a href="https://danabra.mov"><img alt="Dan Abramov" src="/avi.jpg" /></a></p>
+<h1 id="a-social-filesystem_1">A Social Filesystem<a class="headerlink" href="#a-social-filesystem_1" title="Permanent link">&para;</a></h1>
+<p>January 18, 2026</p>
+<p><a href="https://ko-fi.com/gaearon">Pay what you like</a></p>
+<p>Remember files?</p>
+<p>.doc.doc.doc.doc.jpg.jpg.svg</p>
+<p>You write a document, hit save, and the file is on your computer. It’s yours. You can inspect it, you can send it to a friend, and you can open it with other apps.</p>
+<p>Files come from the paradigm of <em>personal computing</em>.</p>
+<p>This post, however, isn’t about personal computing. What I want to talk about is <em>social computing</em> —apps like Instagram, Reddit, Tumblr, GitHub, and TikTok.</p>
+<p>What do files have to do with social computing?</p>
+<p>Historically, not a lot—<strong>until recently.</strong></p>
+<p>aliceownsownsbob.doc.doc.doc.doc.doc.docpostpost.jpg.jpg.jpg.jpg.jpg.jpg.jpg.jpgfollowfollowvotevote</p>
+<p>But first, a shoutout to files.</p>
+<hr />
+<h2 id="why-files-are-awesome">#Why Files Are Awesome<a class="headerlink" href="#why-files-are-awesome" title="Permanent link">&para;</a></h2>
+<p>Files, as originally invented, were not meant to live <em>inside</em> the apps.</p>
+<p>Since files represent <em>your</em> creations, they should live somewhere that <em>you</em> control. Apps create and read your files on your behalf, but files don’t belong <em>to</em> the apps.</p>
+<p>.doc.doc.doc.doc.jpg.jpg.svgC:\Users\alicealiceowns</p>
+<p>Files belong to you—the person using those apps.</p>
+<p>Apps (and their developers) may not own your files, but they do need to be able to <em>read and write</em> them. To do that reliably, apps need your files to be structured. This is why app developers, as part of creating apps, may invent and evolve <em>file formats</em>.</p>
+<p>A file format is like a language. An app might “speak” several formats. A single format can be understood by many apps. <strong>Apps and formats are many-to-many. File formats let different apps work together without knowing about each other.</strong></p>
+<p>Consider this <code>.svg</code>:</p>
+<p>.jpg.jpg.svgC:\Users\alice</p>
+<p>SVG is an open specification. This means that different developers agree on how to read and write SVG. I created this SVG file in <a href="https://excalidraw.com/">Excalidraw</a>, but I could have used Adobe Illustrator or Inkscape instead. Your browser already knew how to display this SVG. It didn’t need to hit any Excalidraw APIs or to ask permissions from Excalidraw to display this SVG. It doesn’t matter which app has created this SVG.</p>
+<p><em>The file format is the API.</em></p>
+<p>Of course, not all file formats are open or documented.</p>
+<p>Some file formats are application-specific or even proprietary like <code>.doc</code>. And yet, although <code>.doc</code> was undocumented, it didn’t stop motivated developers from reverse-engineering it and creating more software that reads and writes <code>.doc</code>:</p>
+<p>.doc.doc.doc.docC:\Users\alice</p>
+<p>Another win for the files paradigm.</p>
+<p>The files paradigm captures a real-world intuition about tools: what we make <em>with</em> a tool does not belong <em>to</em> the tool. A manuscript doesn’t stay inside the typewriter, a photo doesn’t stay inside the camera, and a song doesn’t stay in the microphone.</p>
+<p><strong>Our memories, our thoughts, our designs <em>should</em> outlive the software we used to create them. An app-agnostic storage (the filesystem) enforces this separation.</strong></p>
+<p>A file has many lives.</p>
+<p>You may create a file in one app, but someone else can read it using another app. You may switch the apps you use, or use them together. You may convert a file from one format to another. As long as two apps correctly “speak” the same file format, they can work in tandem even if their developers hate each others’ guts.</p>
+<p>And if the app sucks?</p>
+<p>Someone could always create “the next app” for the files you already have:</p>
+<p>.doc.doc.doc.doc.jpg.jpg.svgC:\Users\alice</p>
+<p>Apps may come and go, but <a href="https://stephango.com/file-over-app">files stay</a>—at least, as long as our apps think in files.</p>
+<hr />
+<h2 id="the-everything-folder">#The Everything Folder<a class="headerlink" href="#the-everything-folder" title="Permanent link">&para;</a></h2>
+<p>When you think of social apps—Instagram, Reddit, Tumblr, GitHub, TikTok—you probably don’t think about files. Files are for <em>personal</em> computing only, right?</p>
+<p>A Tumblr post isn’t a file.</p>
+<p>An Instagram follow isn’t a file.</p>
+<p>A Hacker News upvote isn’t a file.</p>
+<p>But what if they <em>behaved</em> as files—at least, in all the important ways? Suppose you had a folder that contained all of the things ever <code>POST</code>ed by your online persona:</p>
+<p>aliceowns.doc.doc.docpost.jpg.jpg.jpg.jpgfollowvote</p>
+<p>It would include everything you’ve created across different social apps—your posts, likes, scrobbles, recipes, etc. Maybe we can call it your “everything folder”.</p>
+<p>Of course, closed apps like Instagram aren’t built this way. But imagine they were. <strong>In that world, a “Tumblr post” or an “Instagram follow” are social file formats:</strong></p>
+<ul>
+<li>You posting on Tumblr would create a <em>“Tumblr post”</em> file in your folder.</li>
+<li>You following on Instagram would put an <em>“Instagram follow”</em> file into your folder.</li>
+<li>You upvoting on Hacker News would add an <em>“HN upvote”</em> file to your folder.</li>
+</ul>
+<p>Note this folder is not some kind of an archive. It’s where your data actually lives:</p>
+<p>aliceowns.doc.doc.docpost.jpg.jpg.jpg.jpgfollowvote</p>
+<p><strong>Files are the source of truth—the apps would reflect whatever’s in your folder.</strong></p>
+<p>Any writes to your folder would be synced to the interested apps. For example, deleting an <em>“Instagram follow”</em> file would work just as well as unfollowing through the app. Crossposting to three Tumblr communities could be done by creating three <em>“Tumblr post”</em> files. Under the hood, each app manages files in your folder.</p>
+<p>In this paradigm, apps are <em>reactive</em> to files. Every app’s database mostly becomes derived data—an app-specific cached materialized view of everybody’s folders.</p>
+<hr />
+<h2 id="a-social-filesystem_2">#A Social Filesystem<a class="headerlink" href="#a-social-filesystem_2" title="Permanent link">&para;</a></h2>
+<p>This might sound very hypothetical, but it’s not. What I’ve described so far is the premise behind the <a href="https://atproto.com/">AT protocol</a>. It works in production at scale. <a href="https://bsky.app/">Bluesky</a>, <a href="https://leaflet.pub/">Leaflet</a>, <a href="https://tangled.org/">Tangled</a>, <a href="https://semble.so/">Semble</a>, and <a href="https://wisp.place/">Wisp</a> are some of the new open social apps built this way.</p>
+<p>It doesn’t <em>feel</em> different to use those apps. But by lifting user data out of the apps, we force the same separation as we’ve had in personal computing: <strong>apps don’t trap what you make with them.</strong> Someone can always make a new app for old data:</p>
+<p>aliceowns.doc.doc.docpost.jpg.jpg.jpg.jpgfollowvote</p>
+<p>Like before, app developers evolve their file formats. However, they can’t gatekeep who reads and writes files in those formats. Which apps to use is up to you.</p>
+<p>Together, everyone’s folders form something like a distributed <em>social filesystem</em> :</p>
+<p>aliceownsownsbob.doc.doc.doc.doc.doc.docpostpost.jpg.jpg.jpg.jpg.jpg.jpg.jpg.jpgfollowfollowvotevote</p>
+<p>I’ve previously written about the AT protocol in <a href="/open-social/">Open Social</a>, looking at its model from a web-centric perspective. But I think that looking at it from the filesystem perspective is just as intriguing, so I invite you to take a tour of how it works.</p>
+<p>A personal filesystem starts with a file.</p>
+<p>What does a social filesystem start with?</p>
+<hr />
+<h3 id="a-record">#A Record<a class="headerlink" href="#a-record" title="Permanent link">&para;</a></h3>
+<p>Here is a typical social media post:</p>
+<p>wint@drilno6:25 PM · Sep 15, 200881956K125K</p>
+<p>How would you represent it as a file?</p>
+<p>It’s natural to consider JSON as a format. After all, that’s what you’d return if you were building an API. So let’s fully describe this post as a piece of JSON:</p>
+<div class="language-text highlight"><pre><span></span><code>{
+  author: {
+    avatar: &#39;https://example.com/dril.jpg&#39;,
+    displayName: &#39;wint&#39;,
+    handle: &#39;dril&#39;
+  },
+  text: &#39;no&#39;,
+  createdAt: &#39;2008-09-15T17:25:00.000Z&#39;,
+  replyCount: 819,
+  repostCount: 56137,
+  likeCount: 125381
+}
+</code></pre></div>
+<p>However, if we want to store this post <em>as a file</em> , it doesn’t make sense to embed the author information there. After all, if the author later changes their display name or avatar, we wouldn’t want to go through their every post and change them there.</p>
+<p>So let’s assume their avatar and name live somewhere else—perhaps, in another file. We could leave <code>author: 'dril'</code> in the JSON but this is unnecessary too. Since this file lives inside the creator’s folder—it’s <em>their</em> post, after all—we can always figure out the author based on <em>whose</em> folder we’re currently looking at.</p>
+<p>Let’s remove the <code>author</code> field completely:</p>
+<div class="language-text highlight"><pre><span></span><code>{
+  text: &#39;no&#39;,
+  createdAt: &#39;2008-09-15T17:25:00.000Z&#39;,
+  replyCount: 819,
+  repostCount: 56137,
+  likeCount: 125381
+}
+</code></pre></div>
+<p>This seems like a good way to describe this post:</p>
+<p>wint@drilno6:25 PM · Sep 15, 200881956K125K</p>
+<p>But wait, no, this is still wrong.</p>
+<p>You see, <code>replyCount</code>, <code>repostCount</code>, and <code>likeCount</code> are not really something that the post’s author has <em>created</em>. These values are derived from the data created by other people— <em>their</em> replies, <em>their</em> reposts, <em>their</em> likes. The app that displays this post will have to keep track of those somehow, but they aren’t <em>this</em> user’s data.</p>
+<p>So really, we’re left with just this:</p>
+<div class="language-text highlight"><pre><span></span><code>{
+  text: &#39;no&#39;,
+  createdAt: &#39;2008-09-15T17:25:00.000Z&#39;
+}
+</code></pre></div>
+<p>That’s our post as a file!</p>
+<p>wint@drilno6:25 PM · Sep 15, 200881956K125K{ text: 'no', createdAt: '2008-09-15T17:25:00.000Z'}</p>
+<p>Notice how it took some trimming to identify which parts of the data <em>actually belong in this file</em>. This is something that you have to be intentional about when creating apps with the AT protocol. My mental model for this is to think about the <code>POST</code> request. When the user created this thing, <em>what data did they send?</em> That’s likely close to what we’ll want to store. That’s the stuff the user has just created.</p>
+<p>Our social filesystem will be structured more rigidly than a traditional filesystem. For example, it will <em>only</em> consist of JSON files. To make this more explicit, we’ll start introducing our new terminology. We’ll call this kind of file a <em>record</em>.</p>
+<hr />
+<h3 id="record-keys">#Record Keys<a class="headerlink" href="#record-keys" title="Permanent link">&para;</a></h3>
+<p>Now we need to give our record a name. There are no natural names for posts. Could we use sequential numbers? Our names need only be unique within a folder:</p>
+<div class="language-text highlight"><pre><span></span><code>posts/
+├── 1.json
+├── 2.json
+└── 3.json
+</code></pre></div>
+<p>One downside is that we’d have to keep track of the latest one so there’s a risk of collisions when creating many files from different devices at the same time.</p>
+<p>Instead, let’s use timestamps with some per-clock randomness mixed in:</p>
+<div class="language-text highlight"><pre><span></span><code>posts/
+├── 1221499500000000-c5.json
+├── 1221499500000000-k3.json   # clock id helps avoid global collisions
+└── 1221499500000001-k3.json   # artificial +1 avoids local collisions
+</code></pre></div>
+<p>This is nicer because these can be generated locally and will almost never collide.</p>
+<p>We’ll use these names in URLs so let’s encode them more compactly. We’ll <a href="https://atproto.com/specs/tid">pick our encoding carefully</a> so that sorting alphabetically goes in the chronological order:</p>
+<div class="language-text highlight"><pre><span></span><code>posts/
+├── 34qye3wows2c5.json
+├── 34qye3wows2k3.json
+└── 34qye3wows3k3.json
+</code></pre></div>
+<p>Now <code>ls -r</code> gives us a reverse chronological timeline of posts! That’s neat. Also, since we’re sticking with JSON as our lingua franca, we don’t need file extensions.</p>
+<div class="language-text highlight"><pre><span></span><code>posts/
+├── 34qye3wows2c5
+├── 34qye3wows2k3
+└── 34qye3wows3k3
+</code></pre></div>
+<p>Not all records accumulate over time. For example, you can write many posts, but you only have one copy of profile information—your avatar and display name. For “singleton” records, it makes sense to use a predefined name, like <code>me</code> or <code>self</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>posts/
+├── 34qye3wows2c5
+├── 34qye3wows2k3
+└── 34qye3wows3k3
+
+profiles/
+└── self
+</code></pre></div>
+<p>By the way, let’s save this profile record to <code>profiles/self</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>{
+  avatar: &#39;https://example.com/dril.jpg&quot;,
+  displayName: &#39;wint&#39;
+}
+</code></pre></div>
+<p>Note how, taken together, <code>posts/34qye3wows2c5</code> and <code>profiles/self</code> let us reconstruct more of the UI we started with, although some parts are still missing:</p>
+<p>wint@drilno6:25 PM · Sep 15, 200881956K125Kposts/├── 34qye3wows2c5├── 34qye3wows2k3└── 34qye3wows3k3 profiles/└── self</p>
+<p>Before we fill them in, though, we need to make our system sturdier.</p>
+<hr />
+<h3 id="lexicons">#Lexicons<a class="headerlink" href="#lexicons" title="Permanent link">&para;</a></h3>
+<p>This was the shape of our post record:</p>
+<div class="language-text highlight"><pre><span></span><code>{
+  text: &#39;no&#39;,
+  createdAt: &#39;2008-09-15T17:25:00.000Z&#39;
+}
+</code></pre></div>
+<p>And this was the shape of our profile record:</p>
+<div class="language-text highlight"><pre><span></span><code>{
+  avatar: &#39;https://example.com/dril.jpg&quot;,
+  displayName: &#39;wint&#39;
+}
+</code></pre></div>
+<p>Since these are stored as files, it’s important for the format not to drift.</p>
+<p>Let’s write some type definitions:</p>
+<div class="language-text highlight"><pre><span></span><code>type Post = {
+  text: string,
+  createdAt: string
+};
+
+type Profile = {
+  avatar?: string,
+  displayName?: string
+};
+</code></pre></div>
+<p>TypeScript seems convenient for this but it isn’t sufficient. For example, we can’t express constraints like “the <code>text</code> string should have at most 300 Unicode graphemes”, or “the <code>createdAt</code> string should be formatted as datetime”.</p>
+<p>We need a richer way to define social file formats.</p>
+<p>We might shop around for existing options (<a href="https://www.pfrazee.com/blog/why-not-rdf">RDF? JSON Schema?</a>) but if nothing quite fits, we might as well design our own schema language explicitly geared towards the needs of our social filesystem. This is what our <code>Post</code> looks like:</p>
+<div class="language-text highlight"><pre><span></span><code>{
+  // ...
+  &quot;defs&quot;: {
+    &quot;main&quot;: {
+      &quot;type&quot;: &quot;record&quot;,
+      &quot;key&quot;: &quot;tid&quot;,
+      &quot;record&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;required&quot;: [&quot;text&quot;, &quot;createdAt&quot;],
+        &quot;properties&quot;: {
+          &quot;text&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;maxGraphemes&quot;: 300 },
+          &quot;createdAt&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;datetime&quot; }
+        }
+      }
+    }
+  }
+}
+</code></pre></div>
+<p>We’ll call this the Post <em>lexicon</em> because it’s like a language our app wants to speak.</p>
+<p>My first reaction was also “ouch” but it helped to think that conceptually it’s this:</p>
+<div class="language-text highlight"><pre><span></span><code>type Post = {
+  @maxGraphemes(300) text: string,
+  createdAt: datetime
+};
+</code></pre></div>
+<p>I used to yearn for a <a href="https://mlf.lol/">better</a> <a href="https://typelex.org/">syntax</a> but I’ve actually come around to hesitantly appreciate the JSON. It being trivial to parse makes it super easy to build tooling around it (more on that in the end). And of course, we can <a href="https://www.npmjs.com/package/@atproto/lex">make</a> <a href="https://tangled.org/nonbinary.computer/jacquard">bindings</a> turning these into type definitions and validation code for any programming language.</p>
+<hr />
+<h3 id="collections">#Collections<a class="headerlink" href="#collections" title="Permanent link">&para;</a></h3>
+<p>Our social filesystem looks like this so far:</p>
+<div class="language-text highlight"><pre><span></span><code>posts/
+├── 34qye3wows2c5
+├── 34qye3wows2k3
+└── 34qye3wows3k3
+
+profiles/
+└── self
+</code></pre></div>
+<p>The <code>posts/</code> folder has records that satisfy the Post lexicon, and the <code>profiles/</code> folder contains records (a single record, really) that satisfy the Profile lexicon.</p>
+<p>This can be made to work well for a single app. But here’s a problem. What if there’s another app with its own notion of “posts” and “profiles”?</p>
+<p>Recall, each user has an “everything folder” with data from every app:</p>
+<p>aliceowns.doc.doc.docpost.jpg.jpg.jpg.jpgfollowvote</p>
+<p>Different apps will likely disagree on what the format of a “post” is! For example, a microblog post might have a 300 character limit, but a proper blog post might not.</p>
+<p>Can we get the apps to agree with each other?</p>
+<p>We could try to put every app developer in the same room until they all agree on a perfect lexicon for a post. That would be an interesting use of everyone’s time.</p>
+<p>For some use cases, like <a href="https://standard.site/">cross-site syndication</a>, a standard-ish jointly governed lexicon makes sense. For other cases, you really want the app to be in charge. It’s actually <em>good</em> that different products can disagree about what a post is! Different products, different vibes. We’d want to support that, not to fight it.</p>
+<p>Really, we’ve been asking the wrong question. We don’t need every app developer to agree on what a <code>post</code> is; we just need to <em>let</em> anyone “define” their own <code>post</code>.</p>
+<p>We could try namespacing types of records by the app name:</p>
+<div class="language-text highlight"><pre><span></span><code>twitter/
+├── posts/
+│   ├── 34qye3wows2c5
+│   ├── 34qye3wows2k3
+│   └── 34qye3wows3k3
+└── profiles/
+    └── self
+
+tumblr/
+├── posts/
+│   ├── 34qye3wows4c5
+│   └── 34qye3wows5k3
+└── profiles/
+    └── self
+</code></pre></div>
+<p>But then, app names can also clash. Luckily, we already have a way to avoid conflicts—domain names. A domain name is unique and implies ownership.</p>
+<p>Why don’t we take some inspiration from Java?</p>
+<div class="language-text highlight"><pre><span></span><code>com.twitter.post/
+├── 34qye3wows2c5
+├── 34qye3wows2k3
+└── 34qye3wows3k3
+
+com.twitter.profile/
+└── self
+
+com.tumblr.post/
+├── 34qye3wows4c5
+└── 34qye3wows5k3
+
+com.tumblr.profile/
+└── self
+</code></pre></div>
+<p>This gives us <em>collections.</em></p>
+<p>A collection is a folder with records of a certain lexicon type. Twitter’s lexicon for posts might differ from Tumblr’s, and that’s fine—they’re in separate collections. The collection is always named like <code>&lt;whoever.designs.the.lexicon&gt;.&lt;name&gt;</code>.</p>
+<p>For example, you could imagine these collection names:</p>
+<ul>
+<li><code>com.instagram.follow</code> for Instagram follows</li>
+<li><code>fm.last.scrobble</code> for Last.fm scrobbles</li>
+<li><code>io.letterboxd.review</code> for Letterboxd reviews</li>
+</ul>
+<p>You could also imagine these slightly whackier collection names:</p>
+<ul>
+<li><code>com.ycombinator.news.vote</code> (subdomains are ok)</li>
+<li><code>co.wint.shitpost</code> (personal domains work too)</li>
+<li><code>org.schema.recipe</code> (a shared standard someday?)</li>
+<li><code>fm.last.scrobble_v2</code> (breaking changes = new lexicon, just like file formats)</li>
+</ul>
+<p>It’s like having a dedicated folder for every file extension.</p>
+<p>To see some real lexicon names, check out <a href="https://ufos.microcosm.blue/">UFOs</a> and <a href="https://lexicon.garden/">Lexicon Garden</a>.</p>
+<hr />
+<h3 id="there-is-no-lexicon-police">#There Is No Lexicon Police<a class="headerlink" href="#there-is-no-lexicon-police" title="Permanent link">&para;</a></h3>
+<p>If you’re an application author, you might be thinking:</p>
+<p>Who enforces that the records match their lexicons? If any app can (with the user’s explicit consent) write into any other app’s collection, how do we not end up with a lot of invalid data? What if some other app puts junk into “my” collection?</p>
+<p>The answer is that records could be junk, but it still works out anyway.</p>
+<p>It helps to draw a parallel to file extensions. Nothing stops someone from renaming <code>cat.jpg</code> to <code>cat.pdf</code>. A PDF reader would just refuse to open it.</p>
+<p>Lexicon validation works the same way. The <code>com.tumblr</code> in <code>com.tumblr.post</code> signals who <em>designed</em> the lexicon, but the records themselves could have been created by <em>any app at all.</em> This is why <strong>apps always treat records as untrusted input</strong> , similar to <code>POST</code> request bodies. When you generate type definitions from a lexicon, you also get a function that will do the validation for you. If some record passes the check, great—you get a typed object. If not, fine, ignore that record.</p>
+<p>So, validate on read, just like files.</p>
+<p>Some care is required when evolving lexicons. From the moment some lexicon is used in the wild, you should never change which records it would consider valid. For example, you can add new optional fields, but you can’t change <em>whether</em> some field is optional. This ensures that the new code can still read old records <em>and</em> that the old code will be able to read any new records. There’s a <a href="https://github.com/bluesky-social/goat">linter</a> to check for this. (For breaking changes, make a new lexicon, as you would do with a file format.)</p>
+<p>Although this is not required, you can publish your lexicons for documentation and distribution. It’s like publishing type definitions. There’s no separate registry for those; you just put them into a <code>com.atproto.lexicon.schema</code> collection of some account, and then prove the lexicon’s domain is owned by you. For example, if I wanted to publish an <code>io.overreacted.comment</code> lexicon, I could place it here:</p>
+<div class="language-text highlight"><pre><span></span><code>app.bsky.feed.post/
+├── 3mclfkzg4uc2k
+├── 3mcleqsh7cc2k
+└── 3mclejvlp5c2k
+
+com.atproto.lexicon.schema
+└── io.overreacted.comment
+</code></pre></div>
+<p>Then I’d need to do some <a href="https://lexicon.garden/help/adding-lexicons">DNS setup</a> to prove <code>overreacted.io</code> is mine. This would make my lexicon show up in <a href="https://pdsls.dev/">pdsls</a>, <a href="https://lexicon.garden/">Lexicon Garden</a>, and other tools.</p>
+<hr />
+<h3 id="links">#Links<a class="headerlink" href="#links" title="Permanent link">&para;</a></h3>
+<p>Let’s circle back to our post.</p>
+<p>wint@drilno6:25 PM · Sep 15, 200881956K125K</p>
+<p>We’ve already decided that the profile should live in the <code>com.twitter.profile</code> collection, and the post itself should live in the <code>com.twitter.post</code> collection:</p>
+<p>wint@drilno6:25 PM · Sep 15, 200881956K125Kcom.twitter.post/├── 34qye3wows2c5├── 34qye3wows2k3└── 34qye3wows3k3 com.twitter.profile/└── self</p>
+<p>But what about the likes?</p>
+<p>Actually, what <em>is</em> a like?</p>
+<p>A like is something that the user <em>creates</em> , so it makes sense for each like to be a record. A like record doesn’t convey any data other than which post is being liked:</p>
+<div class="language-text highlight"><pre><span></span><code>type Post = {
+  text: string,
+  createdAt: string
+};
+
+// ...
+
+type Like = {
+  subject: Post
+};
+</code></pre></div>
+<p>So, a Like is a record that refers to its Post.</p>
+<p>But how do we express this in JSON?</p>
+<div class="language-text highlight"><pre><span></span><code>{
+  subject: &quot;???&quot;
+}
+</code></pre></div>
+<p>How do we refer from one JSON file to another JSON file?</p>
+<p>We could try to refer to the Post record by its path in our “everything folder”:</p>
+<div class="language-text highlight"><pre><span></span><code>{
+  subject: &quot;com.twitter.post/34qye3wows2c5&quot;
+}
+</code></pre></div>
+<p>But this only uniquely identifies it <em>within a single user’s</em> “everything folder”. Recall that each user has their own, completely isolated folders with all of their stuff:</p>
+<p>aliceownsownsbob.doc.doc.doc.doc.doc.docpostpost.jpg.jpg.jpg.jpg.jpg.jpg.jpg.jpgfollowfollowvotevote</p>
+<p>We need to find some way to refer to the <em>users themselves:</em></p>
+<div class="language-text highlight"><pre><span></span><code>{
+  subject: &quot;???????????????????????????????/com.twitter.post/34qye3wows2c5&quot;
+}
+</code></pre></div>
+<p>How do we do it?</p>
+<hr />
+<h3 id="identity">#Identity<a class="headerlink" href="#identity" title="Permanent link">&para;</a></h3>
+<p>This is a difficult problem.</p>
+<p>So far, we’ve been building up a kind of a filesystem for social apps. But the “social” part requires linking <em>between</em> users. We need a reliable way to refer to some user. The challenge is that we’re building a <em>distributed</em> filesystem where the “everything folders” of different users may be hosted on different computers, by different companies, communities or organizations, or be self-hosted.</p>
+<p>What’s more, we don’t want anyone to be <em>locked into</em> their current hosting. The user should be able to change who hosts their “everything folder” at any point, and without breaking any existing links to their files. <strong>The main tension is that we want to preserve users’ ability to change their hosting, but we don’t want that to break any links.</strong> Additionally, we want to make sure that, although the system is distributed, we’re confident that each piece of data has not been tampered with.</p>
+<p>For now, you can forget all about records, collections, and folders. We’ll focus on a single problem: links. More concretely, we need a design for permanent links that allow swappable hosting. If we don’t make this work, everything else falls apart.</p>
+<h4 id="attempt-1-host-as-identity">#Attempt 1: Host as Identity<a class="headerlink" href="#attempt-1-host-as-identity" title="Permanent link">&para;</a></h4>
+<p>Suppose dril’s content is hosted by <code>some-cool-free-hosting.com</code>. The most intuitive way to link to his content is to use a normal HTTP link to his hosting:</p>
+<div class="language-text highlight"><pre><span></span><code>{
+  subject: &quot;https://some-cool-free-hosting.com/com.twitter.post/34qye3wows2c5&quot;
+}
+</code></pre></div>
+<p>This works, but then if dril wants to change his hosting, he’d break every link. So this is not a solution—it’s the exact <em>problem</em> that we’re trying to solve. We want the links to point at “wherever dril’s stuff will be”, not “where dril’s stuff is right now”.</p>
+<p>We need some kind of an indirection.</p>
+<h4 id="attempt-2-handle-as-identity">#Attempt 2: Handle as Identity<a class="headerlink" href="#attempt-2-handle-as-identity" title="Permanent link">&para;</a></h4>
+<p>We could give dril some persistent identifier like <code>@dril</code> and use that in links:</p>
+<div class="language-text highlight"><pre><span></span><code>{
+  subject: &quot;@dril/com.twitter.post/34qye3wows2c5&quot;
+}
+</code></pre></div>
+<p>We could then run a registry that stores a JSON document like this for each user:</p>
+<div class="language-text highlight"><pre><span></span><code>{
+  // ...
+  &quot;service&quot;: [{
+    // ...
+    &quot;serviceEndpoint&quot;: &quot;https://some-cool-free-hosting.com&quot;
+  }]
+}
+</code></pre></div>
+<p>The idea is that this document tells us how to find <code>@dril</code>’s actual hosting.</p>
+<p>We’d also need to provide some way for dril to update this document.</p>
+<p>Some version of this could work but it seems unfortunate to invent our own global namespace when one already exists on the internet. Let’s try a twist on this idea.</p>
+<h4 id="attempt-3-domain-as-identity">#Attempt 3: Domain as Identity<a class="headerlink" href="#attempt-3-domain-as-identity" title="Permanent link">&para;</a></h4>
+<p>There’s already a global namespace anyone can participate in: DNS. If dril owns <code>wint.co</code>, maybe we could let him use <em>that domain</em> as his persistent identity:</p>
+<div class="language-text highlight"><pre><span></span><code>{
+  subject: &quot;@wint.co/com.twitter.post/34qye3wows2c5&quot;
+}
+</code></pre></div>
+<p>This doesn’t mean that the actual content is hosted at <code>wint.co</code>; it just means that <code>wint.co</code> hosts the JSON document that says where the content currently is. For example, maybe the convention is to serve that document as <code>/document.json</code>. Again, the document points us at the hosting. Obviously, dril can update his doc.</p>
+<p>This is somewhat elegant but in practice the tradeoff isn’t great. Losing domains is pretty common, and most people wouldn’t want that to brick their accounts.</p>
+<h4 id="attempt-4-hash-as-identity">#Attempt 4: Hash as Identity<a class="headerlink" href="#attempt-4-hash-as-identity" title="Permanent link">&para;</a></h4>
+<p>The last two attempts share a flaw: they tie you to the same handle forever.</p>
+<p>Whether it’s a handle like <code>@dril</code> or a domain handle like <code>@wint.co</code>, we want people to be able to change their handles at any time without breaking links.</p>
+<p>Sounds familiar? We also want the same for hosting. So let’s keep the “domain handles” idea but store the current handle in JSON alongside the current hosting:</p>
+<div class="language-text highlight"><pre><span></span><code>{
+  // ...
+  &quot;alsoKnownAs&quot;: [&quot;@wint.co&quot;],
+  // ...
+  &quot;service&quot;: [{
+    // ...
+    &quot;serviceEndpoint&quot;: &quot;https://some-cool-free-hosting.com&quot;
+  }]
+}
+</code></pre></div>
+<p>This JSON is turning into sort of a calling card for your identity. “Call me <code>@wint.co</code>, my stuff is at <code>https://some-cool-free-hosting.com</code>.”</p>
+<p>Now we need somewhere to host this document, and some way for you to edit it.</p>
+<p>Let’s revisit the “centralized registry” from approach #2. One problem with it was using handles as permanent identifiers. Also, centralized is bad, but why is it bad? It’s bad for many reasons, but usually it’s the risk of abuse of power or a single point of failure. Maybe we can, if not remove, then reduce some of those risks. For example, it would be nice if could make the registry’s output self-verifiable.</p>
+<p>Let’s see if we can use mathematics to help with this.</p>
+<p>When you create an account, we’ll generate a private and a public key. We then create a piece of JSON with your initial handle, hosting, and public key. We sign this “create account” operation with your private key. Then we hash the signed operation. That gives us a string of gibberish like <code>6wpkkitfdkgthatfvspcfmjo</code>.</p>
+<p>The registry will store your operation under that hash. <strong>That hash becomes the permanent identifier for your account.</strong> We’ll use it in links to refer to you:</p>
+<div class="language-text highlight"><pre><span></span><code>{
+  subject: &quot;6wpkkitfdkgthatfvspcfmjo/com.twitter.post/34qye3wows2c5&quot;
+}
+</code></pre></div>
+<p>To resolve a link like this, we ask the registry for the document belonging to <code>6wpkkitfdkgthatfvspcfmjo</code>. It returns current your hosting, handle, and public key. Then we fetch <code>com.twitter.post/34qye3wows2c5</code> from your hosting.</p>
+<p>Okay, but how do you update your handle or your hosting in this registry?</p>
+<p>To update, you create a new operation with a <code>prev</code> field set to the hash of your previous operation. You sign it and send it to the registry. The registry validates the signature, appends the operation to your log, and updates the document.</p>
+<p>To prove that it doesn’t forge the served documents, the registry exposes an endpoint that lists past operations for an identifier. To verify an operation, you check that its signature is valid and that its <code>prev</code> field matches the hash of the operation before it. This lets you verify the entire chain of updates down to the first operation. The hash of the first operation <em>is</em> the identifier, so you can verify that too. At that point, you know that every change was signed with the user’s key.</p>
+<p>(More on the trust model <a href="https://web.plc.directory/spec/v0.1/did-plc">in the PLC specification</a>.)</p>
+<p>With this approach, the registry is still centralized but it can’t forge anyone’s documents without the risk of that being detected. To further reduce the need to trust the registry, we make its entire operation log auditable. The registry would hold no private data and be entirely open source. Ideally, it would <a href="https://docs.bsky.app/blog/plc-directory-org">eventually be spun it out</a> into an independent legal entity so that long-term it can be like ICANN.</p>
+<p>Since most people wouldn’t want to do key management, it’s assumed the hosting would hold the keys on behalf of the user. The registry includes a way to register an overriding rotational key, which is helpful in case the hosting itself goes rogue. (I wish for a way to set this up with a good UX; most people don’t have this on.)</p>
+<p>Finally, since the handle is now determined by the document held in the registry, we’ll need to add some way for a domain to signal that it <em>agrees</em> with being some identifier’s handle. This could be done via DNS, HTTPS, or a mix of both.</p>
+<p>Phew! This is <a href="https://updates.microcosm.blue/3lz7nwvh4zc2u">not perfect</a> but it gets us surprisingly far.</p>
+<h4 id="attempt-5-did-as-identity">#Attempt 5: DID as Identity<a class="headerlink" href="#attempt-5-did-as-identity" title="Permanent link">&para;</a></h4>
+<p>From the end user perspective, attempt #4 (hash as identity) is the most friendly. It doesn’t use domains for identity (only as handles), so losing a domain is fine.</p>
+<p>However, some find relying on a third-party registry, no matter how transparent, untenable. So it would be nice to support approach #3 (domain as identity) too.</p>
+<p>We’ll use a flexible identifier standard called DID (decentralized identifier) which is essentially a way to namespace multiple unrelated identification methods:</p>
+<ul>
+<li><code>did:web:wint.co</code> and such — domain-based (attempt #3)</li>
+<li><code>did:plc:6wpkkitfdkgthatfvspcfmjo</code> and such — registry-based (attempt #4)</li>
+<li>This also leaves us a room to add other methods in the future, like <code>did:bla:...</code></li>
+</ul>
+<p>This makes our Like record look like this:</p>
+<div class="language-text highlight"><pre><span></span><code>{
+  subject: &quot;at://did:plc:6wpkkitfdkgthatfvspcfmjo/com.twitter.post/34qye3wows2c5&quot;
+}
+</code></pre></div>
+<p>This is going to be its final form. We write <code>at://</code> here to remind ourselves that this isn’t an HTTP link, and that you need to follow the resolution procedure (get the document, get the hosting, then get the record) to actually get the result.</p>
+<p><strong>Now you can forget everything we just discussed and remember four things:</strong></p>
+<ol>
+<li>A DID is a string identifier that represents an account.</li>
+<li>An account’s DID never changes.</li>
+<li>Every DID points at a document with the current hosting, handle, and public key.</li>
+<li>A handle needs to be verified in the other direction (the domain must agree).</li>
+</ol>
+<p>The mental model is that there’s a function like this:</p>
+<div class="language-text highlight"><pre><span></span><code>async function resolveDID(did) {
+  // ...
+  return { hosting, handle, publicKey };
+}
+</code></pre></div>
+<p>You give it a DID, and it returns where to find their stuff, their bidirectionally verified current handle, and their public key. You’ll want a <code>'use cache'</code> on it.</p>
+<p><a href="https://tangled.org/danabra.mov/sidetrail/blob/main/data/queries.ts#L131">(No, seriously.)</a></p>
+<p>Let’s now finish our social filesystem.</p>
+<hr />
+<h3 id="at-uri">#<code>at://</code> URI<a class="headerlink" href="#at-uri" title="Permanent link">&para;</a></h3>
+<p>With a DID, we can finally construct a path that identifies every particular record:</p>
+<div class="language-text highlight"><pre><span></span><code>at://did:plc:6wpkkitfdkgthatfvspcfmjo/com.twitter.post/34qye3wows2c5
+     └─────────── who ──────────────┘ └─ collection ─┘ └── record ─┘
+</code></pre></div>
+<p><strong>An<code>at://</code> URI is a link to a record that survives hosting and handle changes.</strong></p>
+<p>The mental model here is that you can always resolve it to a record:</p>
+<div class="language-text highlight"><pre><span></span><code>async function fetchRecord(atURI) {
+  const { did, collection, rkey } = parseATUri(atURI);
+  const { hosting } = await resolveDID(did);
+  const params = `repo=${did}&amp;collection=${collection}&amp;rkey=${rkey}`;
+  return fetch(`${hosting}/xrpc/com.atproto.repo.getRecord?${params}`);
+}
+</code></pre></div>
+<p>If the hosting is down, it would temporarily not resolve, but if the user puts it up anywhere and points their DID there, it will start resolving again. The user can also delete the record, which would remove it from the user’s “everything folder”.</p>
+<p>Another way to think about <code>at://</code> URI is that it is as a unique identifier of every record in our filesystem, so it can serve as a key in a database or a cache.</p>
+<hr />
+<h3 id="hyperlinks-for-json">#Hyperlinks for JSON<a class="headerlink" href="#hyperlinks-for-json" title="Permanent link">&para;</a></h3>
+<p>With links, we can finally represent relationships between records.</p>
+<p>Let’s look at dril’s post again:</p>
+<p>wint@drilno6:25 PM · Sep 15, 200881956K125K</p>
+<p>Where do the 125 thousand likes come from?</p>
+<p>These are just 125 thousand <code>com.twitter.like</code> records in different people’s “everything folders” that each <em>link</em> to dril’s <code>com.twitter.post</code> record:</p>
+<p>wint@drilno6:25 PM · Sep 15, 200881956K125Kdid:plc:fpruhuo22xkm5o7ttr2ktxdo/└── com.twitter.like/ ├── 3lbvlcpei2c25 └── ...did:plc:5c6cw3veuqruljoy5ahzerfx/└── com.twitter.like/ ├── 3lbwmdk7f3k2a └── ...did:plc:ad4m72ykh2evfdqen3qowxmg/└── com.twitter.like/ ├── 3lbxnep4g4m2b └── ...</p>
+<p>Where do the 56K reposts come from? Similarly, this means that there are 56K <code>com.twitter.repost</code> records across our social filesystem linking to this post:</p>
+<p>wint@drilno6:25 PM · Sep 15, 200881956K125Kdid:plc:ewvi7nxzyoun6zhxrhs64oiz/└── com.twitter.repost/ ├── 3lc7vqm2k6p3d └── ...did:web:did12.whey.party/└── com.twitter.repost/ ├── 3lc8wrn3l7q4e └── ...did:plc:oisofpd7lj26yvgiivf3lxsi/└── com.twitter.repost/ ├── 3lc9xso4m8r5f └── ...</p>
+<p>What about the replies?</p>
+<p>A reply is just a post that has a parent post. In TypeScript, we’d write it like this:</p>
+<div class="language-text highlight"><pre><span></span><code>type Post = {
+  text: string,
+  createdAt: string
+  parent?: Post
+};
+</code></pre></div>
+<p>In lexicon, we’d write it like this:</p>
+<div class="language-text highlight"><pre><span></span><code>  // ...
+  &quot;text&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;maxGraphemes&quot;: 300 },
+  &quot;createdAt&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;datetime&quot; },
+  &quot;parent&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;at-uri&quot; }
+  // ...
+</code></pre></div>
+<p>This says: the <code>parent</code> field is an <code>at://</code> link to another record.</p>
+<p>Every reply to dril’s post will have dril’s post as their <code>parent</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>{
+  &quot;text&quot;: &quot;yes&quot;,
+  &quot;createdAt&quot;: &quot;2008-09-15T18:02:00.000Z&quot;,
+  &quot;parent&quot;: &quot;at://did:plc:6wpkkitfdkgthatfvspcfmjo/com.twitter.post/34qye3wows2c5&quot;
+}
+</code></pre></div>
+<p>So, to get the reply count, we just need to count every such post:</p>
+<p>wint@drilno6:25 PM · Sep 15, 200881956K125Kdid:plc:ewvi7nxzyoun6zhxrhs64oiz/└── com.twitter.post/ ├── 3ld2kpm5n9t6g └── ...did:plc:ragtjsm2j2vknwkz3zp4oxrd/└── com.twitter.post/ ├── 3ld3lqn6o0u7h └── ...did:plc:oisofpd7lj26yvgiivf3lxsi/└── com.twitter.post/ ├── 3ld4mro7p1v8i └── ...</p>
+<p>We’ve now explained how every piece of the original UI can be derived from files:</p>
+<ul>
+<li>The display name and avi come from dril’s <code>com.twitter.profile/self</code>.</li>
+<li>The tweet text and date come from dril’s <code>com.twitter.post/34qye3wows2c5</code>.</li>
+<li>The like count is aggregated from everyone’s <code>com.twitter.like</code>s.</li>
+<li>The repost count is aggregated from everyone’s <code>com.twitter.repost</code>s.</li>
+<li>The reply count is aggregated from everyone’s <code>com.twitter.post</code>s.</li>
+</ul>
+<p>The last finishing touch is the handle. Unfortunately, <code>@dril</code> can no longer work as a handle since we’ve chosen to use domains as handles. As a consolation, dril would be able to use <code>@wint.co</code> across every future social app if he would like to.</p>
+<p>dril@wint.cono6:25 PM · Sep 15, 200881956K125K</p>
+<hr />
+<h3 id="a-repository">#A Repository<a class="headerlink" href="#a-repository" title="Permanent link">&para;</a></h3>
+<p>It’s time to give our “everything folder” a proper name. We’ll call it a <em>repository</em>. A repository is identified by a DID. It contains collections, which contain records:</p>
+<div class="language-text highlight"><pre><span></span><code>did:plc:fpruhuo22xkm5o7ttr2ktxdo/
+├── com.twitter.like/
+│   └── ...
+├── com.twitter.post/
+│   └── ...
+├── fm.last.scrobble/
+│   ├── 3ld5nsp8q2w9j
+│   ├── 3ld5ntq9r3x0k
+│   └── ...
+└── com.ycombinator.news.vote/
+    ├── 3ld6our0s4y1l
+    └── ...
+</code></pre></div>
+<p>Each repository is a user’s little piece of the social filesystem. A repository can be hosted anywhere—a free provider, a paid service, or your own server. You can move your repository as many times as you’d like without breaking links.</p>
+<p>One challenge with building a social filesystem in practice is that apps need to be able to compute derived data (e.g. like counts) with no extra overhead. Of course, it would be completely impractical to look for every <code>com.twitter.like</code> record in every repo referencing a specific post when trying to serve the UI for that post.</p>
+<p>This is why, in addition to treating a repository as a filesystem—you can <em>list</em> and <em>read</em> stuff—you can treat it as a stream, <em>subscribing</em> to it by a WebSocket. This lets anyone build a local app-specific cache with just the derived data that app needs. Over the stream, you receive each commit as an event, along with the tree delta.</p>
+<p>For example, a Hacker News backend could listen to creates/updates/deletes of <code>com.ycombinator.news.*</code> records in every known repository and save those records locally for fast querying. It could also track derived data like <code>vote_count</code>.</p>
+<p>Subscribing to every known repository from every app is inconvenient. It is nicer to use dedicated services called <em>relays</em> which retransmit all events. However, this raises the issue of trust: how do you know whether someone else’s relay is lying?</p>
+<p>To solve this, let’s make the repository data self-certifying. We can structure the repository as a <a href="https://en.wikipedia.org/wiki/Merkle_tree">hash tree</a>. Each write is a signed <em>commit</em> containing the new root hash. This makes it possible to verify records as they come in against their original authors’ public keys. As long as you subscribe to a relay that retransmits its proofs, you can check every proof to know the records are authentic.</p>
+<p>Verifying authenticity of records does not require storing their content, which means that relays can act as simple retransmitters and <a href="https://whtwnd.com/bnewbold.net/3lo7a2a4qxg2l">are affordable to run</a>.</p>
+<hr />
+<h2 id="up-in-the-atmosphere">#Up in the Atmosphere<a class="headerlink" href="#up-in-the-atmosphere" title="Permanent link">&para;</a></h2>
+<p>Open <a href="https://pdsls.dev">pdsls</a>.</p>
+<p>If you want to explore the Atmosphere (<code>at://</code>-mosphere, get it?), pdsls is the best starting point. Given a DID or a handle, it shows a list of collections and their records. It’s really like an old school file manager, except for the social stuff.</p>
+<p>Go to <a href="https://pdsls.dev/at://danabra.mov"><code>at://danabra.mov</code></a> if you want some random place to start. Notice that you understand 80% of what’s going on there—Collections, Identity, Records, etc.</p>
+<p>Feel free to branch out. Records link to other records. There is no app-specific aggregation there so it feels a little “ungrounded” (e.g. there is no thread view like in Bluesky) but there are some interesting navigational features like Backlinks.</p>
+<p>Watch me walk around the Atmosphere for a bit:</p>
+<p>(Yeah, what <em>was</em> that lexicon?! I didn’t expect to run into this while recording.)</p>
+<hr />
+<p>My favorite demo is this.</p>
+<p>Watch me create a Bluesky post by creating a record via pdsls:</p>
+<p>The app “reacts” to the change. Files are the source of truth!</p>
+<p>To make the filesystem metaphor more visceral, I can mount my (or anyone else’s) repository as a FUSE drive with <a href="https://tangled.org/oppi.li/pdsfs/"><code>pdsfs</code></a>. Now every change shows up there as well:</p>
+<p>What are files good for? For one, agents really like files. Here I’m asking Claude to find what my friends have recently made <em>across different apps</em> in the Atmosphere:</p>
+<p>No API calls, no MCP servers. This may not be the most efficient way to analyze social data, but if you squint, you might see a glimpse of a post-app future. Apps curate data into experiences, but <a href="https://tynanistyping.offprint.app/a/3mcsvjjceei23-publishing-on-the-atmosphere">the web we create</a> floats above every app.</p>
+<hr />
+<p>There’s nothing specific to Bluesky here.</p>
+<p>Data always flows down in the Atmosphere—from our repos to apps.</p>
+<p>A month ago, I’ve made a little app called <a href="https://sidetrail.app/">Sidetrail</a> (<a href="https://tangled.org/danabra.mov/sidetrail">it’s open source</a>) to practice full-stack development. It lets you create step-by-step walkthroughs and “walk” those. Here you can see I’m deleting an <code>app.sidetrail.walk</code> record in pdsls, and the corresponding walk disappears from my Sidetrail “walking” tab:</p>
+<p>I know exactly <em>why</em> it works, it’s not supposed to <em>surprise</em> me, but it does! My repo really <em>is</em> the source of truth. My data lives in the Atmosphere, and apps “react” to it.</p>
+<p>It’s weird!!!</p>
+<p>Here is the code of <a href="https://tangled.org/danabra.mov/sidetrail/blob/main/ingester/src/handler.ts">my ingester</a>:</p>
+<div class="language-text highlight"><pre><span></span><code>export async function handleEvent(db: IngesterDb, evt: JetstreamEvent): Promise&lt;void&gt; {
+  if (evt.kind === &quot;account&quot;) {
+    await handleAccountEvent(db, evt.account);
+    return;
+  }
+
+  if (evt.kind === &quot;identity&quot;) return;
+  if (evt.kind !== &quot;commit&quot;) return;
+
+  const { commit } = evt;
+  const { collection, rkey } = commit;
+  if (!COLLECTIONS.includes(collection)) return;
+
+  const [accountStatus] = await db
+    .select({ active: accounts.active })
+    .from(accounts)
+    .where(eq(accounts.did, evt.did))
+    .limit(1);
+
+  if (accountStatus &amp;&amp; !accountStatus.active) {
+    return;
+  }
+
+  const uri = `at://${evt.did}/${collection}/${rkey}`;
+
+  if (commit.operation === &quot;delete&quot;) {
+    switch (collection) {
+      case &quot;app.sidetrail.trail&quot;:
+        await deleteTrail(db, uri);
+        break;
+      case &quot;app.sidetrail.walk&quot;:
+        await deleteWalk(db, uri);
+        break;
+      case &quot;app.sidetrail.completion&quot;:
+        await deleteCompletion(db, uri);
+        break;
+    }
+    return;
+  }
+
+  const record = commit.record as Record&lt;string, unknown&gt;;
+  await ensureAccount(db, evt.did);
+
+  switch (collection) {
+    case &quot;app.sidetrail.trail&quot;:
+      await upsertTrail(
+        db,
+        uri,
+        commit.cid,
+        evt.did,
+        rkey,
+        record,
+        (record.createdAt as string) || new Date().toISOString(),
+      );
+      break;
+
+    case &quot;app.sidetrail.walk&quot;: {
+      const trailRef = record.trail as { uri: string } | undefined;
+      const trailUri = trailRef?.uri || &quot;&quot;;
+      await upsertWalk(
+        db,
+        uri,
+        commit.cid,
+        evt.did,
+        rkey,
+        trailUri,
+        record,
+        (record.createdAt as string) || new Date().toISOString(),
+      );
+      break;
+    }
+
+    case &quot;app.sidetrail.completion&quot;: {
+      const trailRef = record.trail as { uri: string } | undefined;
+      const trailUri = trailRef?.uri || &quot;&quot;;
+      await upsertCompletion(
+        db,
+        uri,
+        commit.cid,
+        evt.did,
+        rkey,
+        trailUri,
+        record,
+        (record.createdAt as string) || new Date().toISOString(),
+      );
+      break;
+    }
+  }
+}
+</code></pre></div>
+<p>This syncs everyone’s repo changes to my database so I have a snapshot that’s easy to query. I’m sure I could write this more clearly, but conceptually, it’s like <em>I’m re-rendering my database</em>. It’s like I called a <code>setState</code> “above” the internet, and now the new props flow down from files into apps, and my DB reacts to them.</p>
+<p>I could delete those tables in production, and then use <a href="https://docs.bsky.app/blog/introducing-tap">Tap</a> to backfill my database <em>from scratch</em>. I’m just caching a slice of the global data. And everyone building AT apps also needs to cache some slices. Maybe different slices, but they overlap. So <a href="https://constellation.microcosm.blue/">pooling resources</a> becomes more useful. More of our tooling can be shared too.</p>
+<hr />
+<p>Here’s another example that I really like.</p>
+<p>This is a <a href="https://teal-viewer.finfet.at/">teal.fm Relay demo</a> made by <a href="https://tangled.org/chadtmiller.com"><code>@chadmiller.com</code></a>. It shows the list of everyone’s recently played tracks, as well as some of the overall playing stats:</p>
+<p>Now, you can see it says “678,850 scrobbles” at the top of the screen. You might think people have been scrobbling their plays to the teal.fm API for a while.</p>
+<p>Well, not really.</p>
+<p>The teal.fm API doesn’t actually exist. It’s not a thing. Moreover, the teal.fm product doesn’t actually exist either. I mean, I <em>think</em> it’s in development (this is a hobby project!), but at the time of writing, <a href="https://teal.fm/">https://teal.fm/</a> is only a landing page.</p>
+<p>But this doesn’t matter!</p>
+<p>All you need to start scrobbling is to put records of the <code>fm.teal.alpha.feed.play</code> lexicon into your repo.</p>
+<p>Let’s see if anyone is doing this right now:</p>
+<p>waiting to connect</p>
+<p>The lexicon isn’t published as a record (yet?) but it’s <a href="https://github.com/teal-fm/teal/blob/25d6d8d1d9a2bb2735c74fb4bab5d35f808d120e/lexicons/fm.teal.alpha/feed/play.json">easy to find on GitHub</a>. So anyone can build a scrobbler that writes these. I’m using one of those scrobblers.</p>
+<p>Here’s my scrobble showing up:</p>
+<p><em>(It’s a bit slow but~~I think~~ <a href="https://bsky.app/profile/finfet.sh/post/3mcparo5gis2u">the delay is</a> on the Spotify/scrobbler integration side.)</em></p>
+<p>To be clear, the person who made this demo doesn’t work on teal.fm either. It’s not an “official” demo or anything, and it’s also not using the “teal.fm database” or “teal.fm API” or anything like it. It just indexes <code>fm.teal.alpha.feed.play</code>s.</p>
+<p>The demo’s data layer is using the new <a href="https://tangled.org/chadtmiller.com/lex-gql"><code>lex-gql</code></a> package, which is another of <a href="https://tangled.org/chadtmiller.com"><code>@chadtmiller.com</code></a>’s experiments. You give it some lexicons, and it lets you run GraphQL on your backfilled snapshot of the relevant parts of the social filesystem.</p>
+<p>If you have the world’s JSON, why not run <a href="https://tangled.org/chadtmiller.com/lex-gql/blob/main/examples/relay/src/TrackItem.tsx">joins over products?</a></p>
+<div class="language-text highlight"><pre><span></span><code>fragment TrackItem_play on FmTealAlphaFeedPlay {
+  trackName
+  playedTime
+  artists {
+    artistName
+  }
+  releaseName
+  releaseMbId
+  actorHandle
+  musicServiceBaseDomain
+  appBskyActorProfileByDid {
+    displayName
+    avatar {
+      url(preset: &quot;avatar&quot;)
+    }
+  }
+}
+</code></pre></div>
+<p>fm.teal.alpha.feed.playapp.bsky.actor.profile×</p>
+<p>Every app can blend cross-product information like this. For example, here is an AT app called <a href="https://blento.app/">Blento</a> that lets you <em>display your teal.fm plays</em> on your homepage:</p>
+<p><img alt="" src="/a-social-filesystem/./2.jpg" /></p>
+<p>(Again, it doesn’t talk to teal.fm—which doesn’t exist yet!—it just reads your files.)</p>
+<p>Blento is an AT replacement for <a href="https://bento.me/home/bento-sunset">Bento, which is shutting down</a>. If Blento itself ever shuts down, any motivated developer can <em>put it back up</em> with the existing content.</p>
+<hr />
+<p>There’s one last example that I wanted to share.</p>
+<p>For months, I’ve been complaining about the Bluesky’s default Discover feed which, frankly, doesn’t work all that great for me. Then I heard people saying good things about <a href="https://bsky.app/profile/spacecowboy17.bsky.social/feed/for-you"><code>@spacecowboy17.bsky.social</code>’s For You</a> algorithm.</p>
+<p>I’ve been giving it a try, and I really like it!</p>
+<p>I ended up switching to it completely. It reminds me of the Twitter algo in 2017—the swings are a bit hard but it finds the stuff I wouldn’t want to miss. It’s also much more responsive to “Show Less”. Its <a href="https://bsky.app/profile/spacecowboy17.bsky.social/post/3mbhenfjar22s">core principle</a> seems pretty simple.</p>
+<p>How does a custom feed like this work? Well, a Bluesky feed is <a href="https://github.com/bluesky-social/feed-generator?tab=readme-ov-file#some-details">just an endpoint</a> that returns a list of <code>at://</code> URIs. That’s the contract. You know how this works.</p>
+<div class="language-text highlight"><pre><span></span><code>[
+  { post: &#39;at://did:example:1234/app.bsky.feed.post/1&#39; },
+  { post: &#39;at://did:example:1234/app.bsky.feed.post/2&#39; },
+  { post: &#39;at://did:example:1234/app.bsky.feed.post/3&#39; }
+]
+</code></pre></div>
+<p>Could there be feeds of things other than posts? Sure.</p>
+<p>Funnily enough, <code>@spacecowboy17.bsky.social</code> used to run For You <a href="https://bsky.app/profile/spacecowboy17.bsky.social/post/3mb2r5qei322a">from a home computer</a>. He posts a lot of interesting stuff, like <a href="https://bsky.app/profile/spacecowboy17.bsky.social/post/3mb6gwib42s24">A/B tests</a> of feed changes. Also, here’s a <a href="https://linklonk.com/bluesky?user=danabra.mov&amp;half_life_hours=6&amp;smoothing=0.3&amp;popularity_penalty=0.2&amp;divisor_power=1&amp;coliked_item_time_shift_hours=0&amp;item=">For You debugger for my account</a>. “Switch perspectives” is cool.</p>
+<p>There was a tweet a few weeks ago clowning on Bluesky for being so bad at algorithms that users have to install a third-party feed to get a good experience.</p>
+<p>I agree <a href="https://bsky.app/profile/dame.is/post/3mavm5k7u2h2d">with <code>@dame.is</code></a> that this shows something important: Bluesky is a place where that <em>can happen.</em> Why? In the Atmosphere, third party is first party. We’re all building projections of the same data. It’s a <em>feature</em> that someone can do it better.</p>
+<p>An everything app tries to do everything.</p>
+<p>An everything ecosystem lets everything get done.</p>
+<p><a href="https://ko-fi.com/gaearon">Pay what you like</a><a href="/hire-me-in-japan/">Hire me</a></p>
+<hr />
+<p><a href="https://bsky.app/profile/danabra.mov/post/3mcoktonamk2m">Discuss on Bluesky</a> · <a href="https://tangled.org/@danabra.mov/overreacted/blob/main/public/a-social-filesystem/index.md?code=true">Fork on Tangled</a></p>
+<p><a href="/">overreacted</a></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 11:14:56 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -381,69 +381,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#do-we-really-need-nm-threading" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Do we Really Need N:M threading?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#zero-cost-abstractions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Zero-Cost Abstractions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-arcmutex-in-the-room" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The Arc&lt;Mutex&gt; in the room
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#critiquing-async-rust" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Critiquing Async Rust
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#inverting-expectations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Inverting Expectations
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -472,25 +409,45 @@
 <strong>链接:</strong> https://hugotunius.se/2024/03/08/on-async-rust.html
 <strong>日期:</strong> 2024-03-08T00:00:00+00:00</p>
 <hr />
-<p>I started using Rust in 2017, before the stabilisation of async/await. When it was stabilised I managed to avoid it for a few more years before it was time to grapple with it. It’s fair to say that async Rust is one of the hairiest parts of the language, not because the async model is poorly designed, but because of the inherent complexity of it in combination with Rust’s goals. There have been many blog post written about async and its perceived shortcomings, as well as excellent explainers and history lessons, mostly from <a href="https://without.boats/"><code>withoutboats</code></a>.</p>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/feed.xml">Feed</a></li>
+<li><a href="https://github.com/k0nserv/hugotunius.se">Source</a></li>
+</ul>
+<p>08 Mar 2024</p>
+<h1 id="on-async-rust_1">On Async Rust<a class="headerlink" href="#on-async-rust_1" title="Permanent link">&para;</a></h1>
+<p>I started using Rust in 2017, before the stabilisation of async/await. When it was stabilised I managed to avoid it for a few more years before it was time to grapple with it. Itâs fair to say that async Rust is one of the hairiest parts of the language, not because the async model is poorly designed, but because of the inherent complexity of it in combination with Rustâs goals. There have been many blog post written about async and its perceived shortcomings, as well as excellent explainers and history lessons, mostly from <a href="https://without.boats/"><code>withoutboats</code></a>.</p>
 <p>In this post I want to reflect on my experience and journey with async and my thoughts on some of the criticisms levied against async. Starting with: do we really need <code>N:M</code> threading anyway?</p>
-<h2 id="do-we-really-need-nm-threading"><a href="https://hugotunius.se/2024/03/08/on-async-rust.html#do-we-really-need-nm-threading"><img alt="" src="https://hugotunius.se/assets/icons/link.svg?1761515323" /></a>Do we Really Need N:M threading?<a class="headerlink" href="#do-we-really-need-nm-threading" title="Permanent link">&para;</a></h2>
-<p>A favourite maxim of mine is: “Computers are fast actually”. My point being that, as an industry, we have lost touch of quite how much modern computers are capable of. Thus, I’m naturally favourable to the idea that N:M threading is oftentimes overkill and most applications would be well-served by just using OS threads and blocking syscalls. After all the C10k(and more) problem is trivially solvable with just OS threads. Many applications could avoid the complexity of async Rust and still be plenty performant with regular threads.</p>
-<p>However, it doesn’t really matter what I think, or even if it’s true that most applications don’t need N:M threading, because developers, for better or worse, <strong>want</strong> N:M threading . Therefore, for Rust to be competitive with Go, C++, et al. it must offer it. Rust has a very unique set of constraints that makes solving this problem challenging, one of which is zero-cost abstractions.</p>
-<h2 id="zero-cost-abstractions"><a href="https://hugotunius.se/2024/03/08/on-async-rust.html#zero-cost-abstractions"><img alt="" src="https://hugotunius.se/assets/icons/link.svg?1761515323" /></a>Zero-Cost Abstractions<a class="headerlink" href="#zero-cost-abstractions" title="Permanent link">&para;</a></h2>
-<p>Rust’s goal of providing zero-cost abstractions, i.e. abstractions that are no worse than writing the optimal lower level code yourself, often comes up in discussions around async Rust and is sometimes misunderstood. For example, the idea that async Rust is a big ecosystem with many crates and building all of those crates as part of your application is a violation of the zero-cost abstractions principle. It isn’t, zero-cost is about runtime performance.</p>
-<p>The zero-cost goal helps guide us when discussing alternative async models. For example, Go is lauded for its lack of function-colouring and its sometimes suggested Rust should copy its approach. This is a no-go(😅) because Go’s approach is decidedly <strong>not</strong> zero-cost and requires a heavy runtime. Rust did actually feature green threads, which are similar to coroutines, in an earlier version of the language, but these were <a href="https://github.com/rust-lang/rfcs/blob/master/text/0230-remove-runtime.md">removed</a> precisely because of the runtime requirement.</p>
-<h2 id="the-arcmutex-in-the-room"><a href="https://hugotunius.se/2024/03/08/on-async-rust.html#the-arcmutex-in-the-room"><img alt="" src="https://hugotunius.se/assets/icons/link.svg?1761515323" /></a>The <code>Arc&lt;Mutex&gt;</code> in the room<a class="headerlink" href="#the-arcmutex-in-the-room" title="Permanent link">&para;</a></h2>
-<p>Another common point of contention is the tendency for async Rust to require a lot, and I do mean <strong>a lot</strong> , of types like <code>Arc</code> and <code>Mutex</code>, often in combination. I experienced this myself when starting out with async Rust, it’s easy to solve local state synchronisation problems with these constructs without properly thinking about the wider design of your application. The result is a mess that soon comes back to bite you. However, discussing this in the context of async Rust and as an “async problem” is unfair, it’s really a concurrency problem and it will manifest in applications that achieve concurrency with OS threads too. Fundamentally, if you want to have shared state, whether between tasks or threads, you have to contend with the synchronisation problem. One of my big lessons in learning async Rust is to not blindly follow compilers errors to “solve” shared state, instead take a step back and properly considered if the state should be shared at all.</p>
-<p>This problem is similar to the notorious borrow checker problems Rust is infamous for. When I started learning Rust I often ran into borrow checker problems because I wasn’t thinking thoroughly about ownership, only about my desire to borrow data. <code>Arc&lt;Mutex&gt;</code> and friends sometimes betray a similar lack of consideration for ownership.</p>
-<h2 id="critiquing-async-rust"><a href="https://hugotunius.se/2024/03/08/on-async-rust.html#critiquing-async-rust"><img alt="" src="https://hugotunius.se/assets/icons/link.svg?1761515323" /></a>Critiquing Async Rust<a class="headerlink" href="#critiquing-async-rust" title="Permanent link">&para;</a></h2>
-<p>All of the above form the context to be considered when critiquing async rust. Simply stating that Rust should abandon zero-cost abstractions is easy, while providing constructive feedback that takes this goal into consideration is not. The same is true about the suggestion that Rust should not have an async programming model at all. Within these bounds, constructive criticism of Rust’s async model is great, only by examining what’s not working well can lessons be learned for the future and the language improved. All this said, there are definitely problems with async Rust.</p>
-<p>When you go looking for crates to perform anything remotely related to IO e.g. making HTTP requests, interfacing with databases, implementing web servers, you’ll find that there is an abundance of async crates, but rarely any that are sync. Even when sync crates exist they are often implemented in terms of the async version, meaning you’ll have to pull in a large number of transitive dependencies from the async ecosystem into your ostensibly sync program. This is an extension of the function colouring problem, it’s <strong>crate colouring</strong>. The choice of IO model pollutes both a crate’s API and it’s dependency hierarchy. In the rare instances when only a sync crate exists the opposite problem occurs for sync programs, yes there’s <code>block_on</code> and friends, but this is band-aid at best.</p>
-<p>Even within the async ecosystem there’s a problem, the dominance of Tokio. Tokio is a great piece of software and has become the de facto default executor. However, “default” implies the possibility of choosing a different executor, which in reality is not possible. The third party crate ecosystem isn’t just dominated by async crates, but by crates that only work with Tokio. Use a different executor? Tough luck. You’ll need to switch to Tokio or redundantly implement the crates you need for yourself. Not only do we have a crate colouring problem, but there are also more than <a href="https://without.boats/blog/let-futures-be-futures/#the-function-non-coloring-problem">3 colours</a> because <code>async-tokio</code> and <code>async-async-std</code> are distinct colours.</p>
-<p><a href="https://blog.rust-lang.org/2023/12/21/async-fn-rpit-in-traits.html">Async traits are slowly being stabilised</a>, but this is just one place where the language and standard library lacks proper support for async. Drop still cannot be async and neither can closures. Async is a second-class citizen within Rust because the tools that are usually available to us, are off limits in async. There is interesting work happening to address this, namely <a href="https://www.youtube.com/watch?v=MTnIexTt9Dk">extensions to Rust’s effect system</a>.</p>
-<h2 id="inverting-expectations"><a href="https://hugotunius.se/2024/03/08/on-async-rust.html#inverting-expectations"><img alt="" src="https://hugotunius.se/assets/icons/link.svg?1761515323" /></a>Inverting Expectations<a class="headerlink" href="#inverting-expectations" title="Permanent link">&para;</a></h2>
+<h2 id="do-we-really-need-nm-threading"><img alt="" src="/assets/icons/link.svg?1761515323" />Do we Really Need N:M threading?<a class="headerlink" href="#do-we-really-need-nm-threading" title="Permanent link">&para;</a></h2>
+<p>A favourite maxim of mine is: âComputers are fast actuallyâ. My point being that, as an industry, we have lost touch of quite how much modern computers are capable of. Thus, Iâm naturally favourable to the idea that N:M threading is oftentimes overkill and most applications would be well-served by just using OS threads and blocking syscalls. After all the C10k(and more) problem is trivially solvable with just OS threads. Many applications could avoid the complexity of async Rust and still be plenty performant with regular threads.</p>
+<p>However, it doesnât really matter what I think, or even if itâs true that most applications donât need N:M threading, because developers, for better or worse, <strong>want</strong> N:M threading . Therefore, for Rust to be competitive with Go, C++, et al. it must offer it. Rust has a very unique set of constraints that makes solving this problem challenging, one of which is zero-cost abstractions.</p>
+<h2 id="zero-cost-abstractions"><img alt="" src="/assets/icons/link.svg?1761515323" />Zero-Cost Abstractions<a class="headerlink" href="#zero-cost-abstractions" title="Permanent link">&para;</a></h2>
+<p>Rustâs goal of providing zero-cost abstractions, i.e. abstractions that are no worse than writing the optimal lower level code yourself, often comes up in discussions around async Rust and is sometimes misunderstood. For example, the idea that async Rust is a big ecosystem with many crates and building all of those crates as part of your application is a violation of the zero-cost abstractions principle. It isnât, zero-cost is about runtime performance.</p>
+<p>The zero-cost goal helps guide us when discussing alternative async models. For example, Go is lauded for its lack of function-colouring and its sometimes suggested Rust should copy its approach. This is a no-go(ð ) because Goâs approach is decidedly <strong>not</strong> zero-cost and requires a heavy runtime. Rust did actually feature green threads, which are similar to coroutines, in an earlier version of the language, but these were <a href="https://github.com/rust-lang/rfcs/blob/master/text/0230-remove-runtime.md">removed</a> precisely because of the runtime requirement.</p>
+<h2 id="the-arcmutex-in-the-room"><img alt="" src="/assets/icons/link.svg?1761515323" />The <code>Arc&lt;Mutex&gt;</code> in the room<a class="headerlink" href="#the-arcmutex-in-the-room" title="Permanent link">&para;</a></h2>
+<p>Another common point of contention is the tendency for async Rust to require a lot, and I do mean <strong>a lot</strong> , of types like <code>Arc</code> and <code>Mutex</code>, often in combination. I experienced this myself when starting out with async Rust, itâs easy to solve local state synchronisation problems with these constructs without properly thinking about the wider design of your application. The result is a mess that soon comes back to bite you. However, discussing this in the context of async Rust and as an âasync problemâ is unfair, itâs really a concurrency problem and it will manifest in applications that achieve concurrency with OS threads too. Fundamentally, if you want to have shared state, whether between tasks or threads, you have to contend with the synchronisation problem. One of my big lessons in learning async Rust is to not blindly follow compilers errors to âsolveâ shared state, instead take a step back and properly considered if the state should be shared at all.</p>
+<p>This problem is similar to the notorious borrow checker problems Rust is infamous for. When I started learning Rust I often ran into borrow checker problems because I wasnât thinking thoroughly about ownership, only about my desire to borrow data. <code>Arc&lt;Mutex&gt;</code> and friends sometimes betray a similar lack of consideration for ownership.</p>
+<h2 id="critiquing-async-rust"><img alt="" src="/assets/icons/link.svg?1761515323" />Critiquing Async Rust<a class="headerlink" href="#critiquing-async-rust" title="Permanent link">&para;</a></h2>
+<p>All of the above form the context to be considered when critiquing async rust. Simply stating that Rust should abandon zero-cost abstractions is easy, while providing constructive feedback that takes this goal into consideration is not. The same is true about the suggestion that Rust should not have an async programming model at all. Within these bounds, constructive criticism of Rustâs async model is great, only by examining whatâs not working well can lessons be learned for the future and the language improved. All this said, there are definitely problems with async Rust.</p>
+<p>When you go looking for crates to perform anything remotely related to IO e.g. making HTTP requests, interfacing with databases, implementing web servers, youâll find that there is an abundance of async crates, but rarely any that are sync. Even when sync crates exist they are often implemented in terms of the async version, meaning youâll have to pull in a large number of transitive dependencies from the async ecosystem into your ostensibly sync program. This is an extension of the function colouring problem, itâs <strong>crate colouring</strong>. The choice of IO model pollutes both a crateâs API and itâs dependency hierarchy. In the rare instances when only a sync crate exists the opposite problem occurs for sync programs, yes thereâs <code>block_on</code> and friends, but this is band-aid at best.</p>
+<p>Even within the async ecosystem thereâs a problem, the dominance of Tokio. Tokio is a great piece of software and has become the de facto default executor. However, âdefaultâ implies the possibility of choosing a different executor, which in reality is not possible. The third party crate ecosystem isnât just dominated by async crates, but by crates that only work with Tokio. Use a different executor? Tough luck. Youâll need to switch to Tokio or redundantly implement the crates you need for yourself. Not only do we have a crate colouring problem, but there are also more than <a href="https://without.boats/blog/let-futures-be-futures/#the-function-non-coloring-problem">3 colours</a> because <code>async-tokio</code> and <code>async-async-std</code> are distinct colours.</p>
+<p><a href="https://blog.rust-lang.org/2023/12/21/async-fn-rpit-in-traits.html">Async traits are slowly being stabilised</a>, but this is just one place where the language and standard library lacks proper support for async. Drop still cannot be async and neither can closures. Async is a second-class citizen within Rust because the tools that are usually available to us, are off limits in async. There is interesting work happening to address this, namely <a href="https://www.youtube.com/watch?v=MTnIexTt9Dk">extensions to Rustâs effect system</a>.</p>
+<h2 id="inverting-expectations"><img alt="" src="/assets/icons/link.svg?1761515323" />Inverting Expectations<a class="headerlink" href="#inverting-expectations" title="Permanent link">&para;</a></h2>
 <p>The problems of function and crate colouring are intimately tied to how code is structured. When IO is internal to a piece of code, abstracting over its asyncness, or lack thereof, becomes complicated due to colouring. The colouring is infectious, if some code abstracts over the colours red and green, then that code needs to become a chameleon, changing its colour based on the internal colour of the IO. At the moment this chameleon behaviour is not achievable in Rust, although the effects extensions would allow it. Abstracting over the asyncness of IO is complicated, what if we instead were to avoid it with inversion of control.</p>
-<p>The <a href="https://sans-io.readthedocs.io/">sans-IO pattern</a> sidesteps the colouring problem by moving the IO out. Instead of abstracting over IO we implement the core logic and expect the caller to handle IO. Concretely this means that a set of crates implementing a HTTP client would be split into a <code>http-client-proto</code> crate and several user facing crates <code>http-client-sync</code>, <code>http-client-tokio</code>, <code>http-client-async-std</code>. Borrowing from <code>withoutboat</code>’s colour definitions, <code>http-client-proto</code> would be a blue crate, it does no IO and never blocks the calling thread, it implements the protocol level HTTP concerns such as request parsing, response generation etc. <code>http-client-sync</code> would be a green crate and <code>http-client-tokio</code> would be a red crate. As I hinted to before, a different async executor, at least in the absence of the aforementioned abstractions, is a different colour too so <code>http-client-async-std</code> would be an orange crate. This pattern has several benefits, it enables code sharing between differing IO models without bloating dependency trees or relying on the likes of <code>block_on</code>. A user that finds the crates <code>foo-proto</code> and <code>foo-tokio</code> can leverage <code>foo-proto</code> to contribute <code>foo-sync</code>, requiring less duplication. If every crate that deals with IO followed this pattern the problem of crate colouring would be greatly alleviated and significant portions of code could be shared between sync and async implementations.</p>
+<p>The <a href="https://sans-io.readthedocs.io/">sans-IO pattern</a> sidesteps the colouring problem by moving the IO out. Instead of abstracting over IO we implement the core logic and expect the caller to handle IO. Concretely this means that a set of crates implementing a HTTP client would be split into a <code>http-client-proto</code> crate and several user facing crates <code>http-client-sync</code>, <code>http-client-tokio</code>, <code>http-client-async-std</code>. Borrowing from <code>withoutboat</code>âs colour definitions, <code>http-client-proto</code> would be a blue crate, it does no IO and never blocks the calling thread, it implements the protocol level HTTP concerns such as request parsing, response generation etc. <code>http-client-sync</code> would be a green crate and <code>http-client-tokio</code> would be a red crate. As I hinted to before, a different async executor, at least in the absence of the aforementioned abstractions, is a different colour too so <code>http-client-async-std</code> would be an orange crate. This pattern has several benefits, it enables code sharing between differing IO models without bloating dependency trees or relying on the likes of <code>block_on</code>. A user that finds the crates <code>foo-proto</code> and <code>foo-tokio</code> can leverage <code>foo-proto</code> to contribute <code>foo-sync</code>, requiring less duplication. If every crate that deals with IO followed this pattern the problem of crate colouring would be greatly alleviated and significant portions of code could be shared between sync and async implementations.</p>
+<h2 id="related-posts">Related posts<a class="headerlink" href="#related-posts" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<h3 id="the-compiler-pain-index"><a href="/2020/10/18/the-compiler-pain-index.html">The Compiler Pain Index</a><a class="headerlink" href="#the-compiler-pain-index" title="Permanent link">&para;</a></h3>
+</li>
+<li>
+<h3 id="stop-using-only-github-releases"><a href="/2024/01/20/stop-using-github-releases.html">Stop Using (only) GitHub Releases</a><a class="headerlink" href="#stop-using-only-github-releases" title="Permanent link">&para;</a></h3>
+</li>
+<li>
+<h3 id="5-awesome-rust-projects"><a href="/2017/10/22/5-awesome-rust-projects.html">5 Awesome Rust projects</a><a class="headerlink" href="#5-awesome-rust-projects" title="Permanent link">&para;</a></h3>
+</li>
+</ul>
+<p>Copyright 2013 - 2025 Hugo Tunius</p>
 
 
 
@@ -511,7 +468,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 11:14:56 UTC">2026-02-05</span>
   </span>
 
     

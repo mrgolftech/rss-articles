@@ -1,0 +1,662 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/joanwestenberg.com/The%20Discourse%20is%20a%20Distributed%20Denial-of-Service%20Attack_20260205/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>The Discourse is a Distributed Denial-of-Service Attack - Hacker News 精选博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-discourse-is-a-distributed-denial-of-service-attack" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Hacker News 精选博客" class="md-header__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker News 精选博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              The Discourse is a Distributed Denial-of-Service Attack
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker News 精选博客" class="md-nav__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hacker News 精选博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/joanwestenberg.com/The Discourse is a Distributed Denial-of-Service Attack_20260205.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="the-discourse-is-a-distributed-denial-of-service-attack">The Discourse is a Distributed Denial-of-Service Attack<a class="headerlink" href="#the-discourse-is-a-distributed-denial-of-service-attack" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://joanwestenberg.com
+<strong>链接:</strong> https://www.joanwestenberg.com/the-discourse-is-a-distributed-denial-of-service-attack/
+<strong>日期:</strong> Sat, 17 Jan 2026 23:28:29 GMT</p>
+<hr />
+<p><a href="https://www.joanwestenberg.com"> <img alt="Westenberg." src="https://www.joanwestenberg.com/content/images/2025/11/Westenberg-Brand-Icon--Transparent-Background--3.png" /> </a></p>
+<ul>
+<li><a href="https://www.joanwestenberg.com/">Home</a></li>
+<li><a href="https://www.joanwestenberg.com/about/">About</a></li>
+<li><a href="https://www.joanwestenberg.com/#/portal/account/plans">Upgrade</a></li>
+<li><a href="https://www.joanwestenberg.com/rss/">RSS</a></li>
+<li><a href="https://westenberg.gumroad.com">Products / Tools</a></li>
+<li><a href="https://www.joanwestenberg.com/tag/book-notes/">Book Notes</a></li>
+<li><a href="https://www.youtube.com/@jawestenberg">YouTube</a></li>
+<li><a href="https://westenberg.gumroad.com/l/ylekeo">Permissionless</a></li>
+</ul>
+<p>Sign in Subscribe</p>
+<p>17 Jan 2026  16 min read </p>
+<h1 id="the-discourse-is-a-distributed-denial-of-service-attack_1">The Discourse is a Distributed Denial-of-Service Attack<a class="headerlink" href="#the-discourse-is-a-distributed-denial-of-service-attack_1" title="Permanent link">&para;</a></h1>
+<p><img alt="The Discourse is a Distributed Denial-of-Service Attack" src="https://images.unsplash.com/photo-1602475063211-3d98d60e3b1f?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fG5vaXNlfGVufDB8fHx8MTc2ODY5MjMzNHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=960" /></p>
+<p>Photo by <a href="https://unsplash.com/@ekarchmit?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Ernest Karchmit</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Unsplash</a></p>
+<p>In September 2016, the security journalist Brian Krebs had his website knocked offline by a botnet called Mirai. Hundreds of thousands of compromised devices, mostly cheap webcams and DVRs manufactured with default passwords that nobody ever changed, all simultaneously requesting his homepage. No single request was malicious. Each packet was perfectly legitimate traffic. But the sheer volume of simultaneous demands overwhelmed his servers until they simply gave up. It collapsed under the weight of too many people wanting something from it at once.</p>
+<p>We are all Brian Krebs now, and the botnet is the discourse itself.</p>
+<p>A Distributed Denial-of-Service attack works by exhausting resources. It doesn't need to be clever. It just needs to be overwhelming. The target's defenses are simply overrun. The server can't distinguish between legitimate requests and attack traffic because, in a sense, all the traffic is legitimate. The attack succeeds when the system has spent so much energy processing requests that it can no longer serve its actual function.</p>
+<p>You're trying to think carefully about a genuinely difficult problem. Maybe you want to understand the actual tradeoffs in housing policy, or AI, or figure out what you believe about consciousness // immigration // Fallout Season 2 // Iran. This takes time. It takes holding multiple ideas in your head simultaneously while following chains of reasoning and sitting with uncertainty long enough to let clarity...well, for lack of a better word, emerge.</p>
+<p>William James, writing in 1890, called this "the effort of attention." He noted that sustaining it was one of the hardest things a mind could do. The effort of attention could only be maintained for a few seconds at a time before the mind wandered off to do something else. Sustained concentration was really a series of these efforts, renewed again and again, each time pulling the mind back to the object of focus.</p>
+<p>Now imagine trying to do this while someone shouts a new outrage at you every four minutes.</p>
+<h1 id="the-architecture-of-exhaustion">The Architecture of Exhaustion<a class="headerlink" href="#the-architecture-of-exhaustion" title="Permanent link">&para;</a></h1>
+<p>The discourse operates on exactly this principle. Most of the topics that dominate our collective attention on any given day are genuinely important to... someone. And many of them are important to almost everyone. The problem is structural. The total volume of things-you-should-have-an-opinion-about has exceeded our cognitive bandwidth so thoroughly that having careful opinions about anything has become damned-near impossible. Your attention is a finite resource being strip-mined by an infinite army of takes.</p>
+<p>"The discourse is bad" is itself a discourse-position, and I'm aware of the irony of adding another take to the pile of steaming shit. But my argument isn't that people should stop having opinions, or that controversies aren't worth discussing, or that we should all log off and touch grass (none of us will). My argument is that the current structure of public conversation has the same effect on human cognition that a botnet has on a web server. It's simply exhausting you. And an exhausted mind defaults to heuristics and tribal allegiances, aka whatever position allows it to conserve the most cognitive energy.</p>
+<p>T.S. Eliot wrote about being "distracted from distraction by distraction," and he was describing the London of 1935. I wonder what he'd make of our current situation. The distractions have learned to replicate themselves and fight each other for dominance of your prefrontal cortex...</p>
+<p>The old media ecosystem had gatekeepers, and those gatekeepers were often stupid or corrupt, but at least the stupidity and corruption were bounded. There were only so many column inches in the New York Times, only so many minutes of evening news. A finite supply of attention-worthy items existed, and someone had to decide which ones made the cut. That selection process was biased and imperfect, but it performed an important function: it told you, implicitly, that you didn't have to have an opinion about everything. Most things that happened in the world weren't important enough to make it into your awareness at all. Local political disputes in New South Wales? Nobody in Washington DC gave a shit, and vice-versa. This was as close to optimal as we've ever got.</p>
+<p>But the gatekeeping function has now been distributed across millions of individual users, each of whom can boost any piece of content into viral prominence if it happens to resonate with the right combination of tribal anxieties and engagement incentives. The feed is infinite, and every slot in the feed is optimized to make you feel something strongly enough that you'll engage with it. Outrage works, and so does fear. Disgust works, and righteousness really fucking works. Nuance and careful reasoning don't work at all, because by the time you've finished a thought that begins with "Well, it's complicated..." someone else has already posted a much simpler take that makes people feel validated, and the algorithm has moved on.</p>
+<h1 id="what-cognitive-ddos-looks-like">What Cognitive DDoS Looks Like<a class="headerlink" href="#what-cognitive-ddos-looks-like" title="Permanent link">&para;</a></h1>
+<p>In a technical DDoS attack, the goal isn't to steal data or corrupt systems. The goal is to exhaust resources. To prevent the target from doing anything useful by forcing it to spend all its energy processing garbage. The attack succeeds when the server is so busy responding to fake requests that it can't handle real ones. Crucially, the attack doesn't need to compromise the server's judgment or trick it into making bad decisions. It just needs to make sure the server never has time to make good ones.</p>
+<p>What would it look like if this were happening to the collective human capacity for sustained thought?</p>
+<p>It might look like a society that can generate infinite commentary but rarely produces wisdom. It might look like millions of people who can instantly articulate a position on any topic but who struggle to change their minds when confronted with new evidence. It might look like a discourse that has strong opinions about everything and deep understanding of almost nothing. It might look like a world where the most engaged and informed citizens are, paradoxically, the least capable of careful reasoning, because they've spent so much cognitive energy responding to controversies that they have none left for contemplation.</p>
+<p>I think that's more or less where we've wound up.</p>
+<h1 id="from-passive-to-participatory">From Passive to Participatory<a class="headerlink" href="#from-passive-to-participatory" title="Permanent link">&para;</a></h1>
+<p>Neil Postman argued in 1985 that television was creating a culture where everything became entertainment, including serious matters that deserved more somber treatment. His book <em>Amusing Ourselves to Death</em> made the case that we'd been so worried about Orwell's dystopia, the boot stamping on a human face forever, that we'd missed Huxley's sneaking up on us from the other direction. We would be destroyed by what we loved, not by what we feared. The problem wasn't that Big Brother was watching us; it was that we couldn't stop watching Big Brother.</p>
+<p>But television, at least, was passive. You sat there and it washed over you. You could zone out, let your mind wander, process what you'd seen during the commercial breaks. The discourse is participatory. It demands engagement. Every controversy comes with an implied social pressure to have a take, to signal your tribal allegiance, to demonstrate that you understand what's happening and have correctly identified the good guys and the bad guys. Silence is interpreted as complicity, or at least as suspicious. "I haven't thought about this enough to have an opinion" is not an acceptable response when everyone else is already fighting.</p>
+<p>And because the controversies are endless, because there's always another one queueing up behind the current while you're still processing the last three, the effect is a constant low-grade cognitive emergency. Your brain never gets to switch out of reactive mode and into reflective mode. You're always responding to the latest thing, putting out fires, engaging with the controversy of the day. Daniel Kahneman's distinction between System 1 (fast, automatic, intuitive) and System 2 (slow, deliberate, analytical) thinking is useful here: the discourse is structured in such a way that System 2 never gets its turn. By the time you've marshaled the cognitive resources to think carefully about something, the conversation has moved on and you're already three outrages behind.</p>
+<p>In <em>Middlemarch</em> George Eliot writes about how we'd go mad if we could hear the "roar which lies on the other side of silence," the constant suffering of all the people and creatures in the world happening simultaneously. She meant it as an argument for why we shouldn't feel guilty about our bounded sympathies, and why it was okay that we couldn't care about everything at once. But we've built a machine that lets us hear that roar, or at least a curated selection of it, delivered directly to our phones at all hours. And while we haven't gone mad exactly, we've developed something like a collective attention disorder.</p>
+<p>Someone usually objects at this point that I'm showing my privilege.</p>
+<p>The things people argue about on Twitter aren't frivolous! Violence is real! Climate change is happening! Democratic institutions are under threat! ICE is out of control! The President // insert popular figure here is a Nazi! Sports are under attack! Immigration is a crisis! The economy is going to shit! And how dare I suggest that people should care less about these things?</p>
+<p>The knee-jerk objections misunderstand my point completely. I'm not saying the topics are unimportant. I'm saying the structure of the discourse prevents us from thinking well about even the most important topics. If anything, the importance of the issues makes the DDoS attack worse, because people have strong emotional investment in their positions, which generates more engagement, which generates more outrage cycles, which leaves less time for anyone to actually sit down and think through what we should do about any of it.</p>
+<h1 id="skirmishes-all-the-way-down">Skirmishes All the Way Down<a class="headerlink" href="#skirmishes-all-the-way-down" title="Permanent link">&para;</a></h1>
+<p>What's the right carbon price? How should the burden of decarbonization be distributed between developed and developing countries? What role should nuclear power play? How do we balance climate concerns against other development goals?</p>
+<p>These are hard questions.</p>
+<p>What does the discourse give us instead? Endless fights about whether climate change is real (it is), whether specific weather events prove or disprove it (they mostly don't, it's complicated), whether teenagers skipping school to protest is admirable or annoying, whether it's okay to fly on airplanes if you care about climate, whether this or that celebrity is a hypocrite for having a large house, and so on, and so on, forever. The discourse takes the most important problem of our time and converts it into an infinite series of tribal skirmishes, each of which generates heat and engagement while bringing us no closer to answering any of the actual hard questions.</p>
+<p>The discourse doesn't help us think about things. It helps us perform thinking about things, which is a different activity entirely.</p>
+<p>There is a critical distinction between having a position and understanding a subject. Having a position involves knowing which side you're on and being able to articulate a view. Understanding a subject involves knowing why the question is hard, what the best arguments on various sides are, where the genuine uncertainties lie, and what evidence would change your mind. You can have a position on something without understanding it, and you can understand something without having a confident position on it.</p>
+<p>The discourse is great at generating positions. It's terrible at generating understanding. In fact, it actively undermines understanding. Understanding involves sitting with difficulty and ambiguity, while the discourse rewards confidence and clarity. Understanding involves admitting what you don't know, while the discourse punishes uncertainty as weakness. Understanding involves engaging with the best version of opposing views, while the discourse treats opposition as either stupidity or malice.</p>
+<p>There's a reason Socrates went around asking questions rather than giving speeches. The Socratic method works by forcing people to confront the gaps in their own reasoning, to follow their beliefs to their logical conclusions and notice when those conclusions are absurd or contradictory. It's slow and frustrating, usually ending with everyone realizing they understand less than they thought they did.</p>
+<p>Can you imagine a Socratic dialogue with 50,000 likes?</p>
+<h1 id="the-confidence-doom-spiral">The Confidence Doom Spiral<a class="headerlink" href="#the-confidence-doom-spiral" title="Permanent link">&para;</a></h1>
+<p>The philosopher Bertrand Russell remarked that the fundamental cause of trouble in the world is that the stupid are cocksure while the intelligent are full of doubt. I think the discourse has broken this relationship. It's not that intelligent people have become stupid. It's that the incentive structure of public conversation rewards cocksureness regardless of actual intelligence. Smart people who admit uncertainty get steamrolled by confident idiots, so they learn to sound more confident than they feel, which degrades the quality of public discourse, which makes everyone stupider, which makes cocksureness even more adaptive. The result is a doom spiral.</p>
+<p>There's a cybersecurity concept called defense in depth: the idea that you should have multiple layers of security, so that if one fails, others will catch the problem. Good epistemic institutions worked the same way. You had journalists who checked facts, editors who pushed back on weak arguments, academic peer review that caught errors, and a reading public that had time to actually read long articles and form considered opinions. Each layer could fail, and often did, but the failures were usually independent of each other, so the system as a whole was reasonably robust.</p>
+<p>The discourse has collapsed all these layers into a single surface, a real-time arena where everyone reacts to everything simultaneously. There's no fact-checking layer between the event and the take, and there's no editorial layer between the take and the audience. Everything happens at once, in public, under the pressure of engagement metrics that reward speed and emotional intensity. The defense in depth is gone. We've replaced a layered epistemic system with a single point of failure, and then we've aimed a botnet at it.</p>
+<h1 id="an-ecology-of-virality">An Ecology of Virality<a class="headerlink" href="#an-ecology-of-virality" title="Permanent link">&para;</a></h1>
+<p>Yes, social media is a major factor in all of this, and yes, the incentive structures of platforms are part of the problem. But I want to resist the framing that makes this purely a technology story. The discourse predates social media. The dynamics I'm describing were visible in the blogosphere of the mid-2000s, in the talk radio ecosystem of the 1990s, in the cable news wars that started with CNN and accelerated with Fox. Social media has amplified and accelerated these dynamics, but it didn't create them. The underlying cause is something deeper and it's about how humans interact when controversy becomes abundant and attention becomes scarce.</p>
+<p>When two species compete for the same resource, eventually one drives the other to extinction. The evolutionary pressure favors whichever species is better at acquiring the contested resource. When many ideas compete for limited attention, the ideas that are best at capturing attention win, and those that aren't good at it die out. This creates selection pressure toward attention-grabbing content, which tends to be extreme, emotional, simple, tribal, and visceral. The ideas that survive aren't the most true or useful. They're the most viral.</p>
+<p>And virality, it turns out, has almost nothing to do with truth or usefulness.</p>
+<p>False stories are 70% more likely to be retweeted than true ones, and they reach their first 1,500 retweets six times faster. When researchers controlled for the influence of bots they found that humans, not automated accounts, were primarily responsible for spreading false information.</p>
+<p>We do this shit to ourselves. We are our own botnet.</p>
+<p>Why would humans preferentially spread false information?</p>
+<p>False information is more novel and surprising, so it generates more engagement. False information is often designed (or evolves through memetic selection) to be emotionally compelling in ways that true information isn't. The truth is boring, complicated, inconvenient for everyone's narrative, and resistant to simplification. Lies can be exciting and simple, perfectly calibrated to make your side look good and the other side look bad.</p>
+<p>False information spreads faster because it's easier to process. It fits neatly into existing mental categories. It confirms what we already believe. It doesn't force us to update our models of the world or sit with uncomfortable ambiguity. True information violates our expectations and takes cognitive work to integrate. When attention is scarce and cognitive bandwidth is being DDoS'd constantly, we don't have the resources to do that work. So we default to whatever is easiest, which is usually wrong.</p>
+<h1 id="the-impossible-position-of-expertise">The Impossible Position of Expertise<a class="headerlink" href="#the-impossible-position-of-expertise" title="Permanent link">&para;</a></h1>
+<p>One of the main functions of experts in a healthy epistemic ecosystem is to compress information. A good scientist knows a lot of facts about X, but more importantly they know which facts matter, how different pieces of evidence fit together, and where the genuine debates are versus where there's solid consensus. When you ask an expert a question, you're essentially borrowing their cognitive labor. They've already done the hard work of understanding the subject, so you don't have to.</p>
+<p>But the discourse hates expertise. Or rather, it puts experts in an impossible position. To engage with the discourse, an expert has to compress their nuanced understanding into takes that can compete with the confident nonsense being spouted by random accounts with anime avatars. This compression loses most of what makes expertise valuable in the first place. The expert ends up sounding just as confident and simplistic as everyone else, because that's the only way to be heard. Meanwhile, the expert's nuance and uncertainty get interpreted as weakness or evasion. Why won't they just give us a straight answer? Probably because they're captured by some special interest, or because they're part of the establishment cover-up, or because they're just not very good at their job.</p>
+<p>This creates a vicious cycle. Experts withdraw from public discourse because it's frustrating and unrewarding, which leaves the field to confident non-experts and degrades the quality of public understanding, which makes it even harder for experts to engage productively when they do try to participate. The result is an environment that's actively hostile to expertise while claiming to value science and evidence.</p>
+<h1 id="consciousness-as-disease">Consciousness as Disease<a class="headerlink" href="#consciousness-as-disease" title="Permanent link">&para;</a></h1>
+<p>In Dostoevsky's <em>Notes from Underground</em> the narrator talks about how consciousness is a disease. The more aware you are of everything, the more paralyzed you become. You can see all sides of every question and understand all the complications, and as a result, you can't actually do anything. Meanwhile, the stupid people of action, the "men of iron," barrel forward confidently, untroubled by doubt, and end up running the world.</p>
+<p>The people who are most capable of nuanced understanding are the same people who are most likely to be paralyzed by it. They see all the complications and worry about unintended consequences. And while they're doing all that, the confident idiots have already won the argument by sheer force of certainty. The discourse selects for confidence, not competence.</p>
+<p>Repeated behaviors become habits and habits become character. If you spend years in an environment that rewards quick reactions, that punishes nuance and rewards certainty, that treats every disagreement as a battle and every interlocutor as an enemy, you will become the sort of person who thinks quickly rather than carefully, who speaks confidently rather than honestly. The discourse doesn't just waste your time while you're in it. It permanently rewires you.</p>
+<p>I've watched this happen to people I know. Intelligent, curious, open-minded people who got deeply involved in online discourse and gradually, imperceptibly, became incapable of the exploratory thinking they used to do. Their opinions calcified. Their curiosity curdled into suspicion. They stopped asking questions and started scoring points. They'd defend positions they'd never actually thought through because those positions had become part of their identity, markers of tribal belonging that couldn't be questioned without threatening their sense of self.</p>
+<p>The discourse doesn't merely DDoS your attention. Over time, it DDoS's your character.</p>
+<h1 id="the-halting-problem-of-public-conversation">The Halting Problem of Public Conversation<a class="headerlink" href="#the-halting-problem-of-public-conversation" title="Permanent link">&para;</a></h1>
+<p>Let me try another analogy. In computer science, there's a concept called the halting problem: the impossibility of writing a program that can determine, for any arbitrary program and input, whether that program will eventually halt or run forever. Alan Turing proved in 1936 that no such algorithm can exist. The halting problem is undecidable.</p>
+<p>The discourse has something like a collective halting problem. Every controversy generates commentary, and that commentary generates meta-commentary. Where does it stop? When is a topic resolved? When can we move on? There's no algorithm for this. The discourse doesn't halt. It just continues until something newer and shinier captures our attention, at which point the old controversy doesn't get resolved so much as abandoned. The underlying issues remain, waiting to resurface the next time something triggers them.</p>
+<p>This is why the same arguments keep happening over and over. We never actually resolve anything. We just get exhausted and move on to the next thing, and when the topic comes back around, we're exactly where we started, having learned nothing in the interim. The discourse isn't a process that converges on truth over time. It's a holding pattern. We circle endlessly without ever landing.</p>
+<p>The discourse is a coordination failure. Even if I personally stop engaging with the outrage cycle, the cycle continues without me, and I become less able to participate in public life as a result. The social pressure to have positions on things doesn't disappear just because I've decided I'd rather understand things instead. My friends still want to know what I think about the latest controversy. My colleagues, the folks in the writers chats and Discord servers etc still expect me to be current on what's happening. Opting out of the discourse is possible, but it has social costs, and it doesn't do anything to change the dynamics for everyone else.</p>
+<p>The incentive structures are too strong, the coordination problems too hard, the technological affordances too stacked in favor of engagement over understanding. We're stuck with a system that turns every important question into an attention competition and every attention competition into a tribal battle and every tribal battle into a cognitive emergency. The servers are overloaded. The requests keep coming.</p>
+<h1 id="the-loss-of-aura">The Loss of Aura<a class="headerlink" href="#the-loss-of-aura" title="Permanent link">&para;</a></h1>
+<p>Orwell feared those who would ban books. Huxley feared that there would be no reason to ban a book, for there would be no one who wanted to read one. But the discourse suggests a third possibility: a world with infinite books, infinite takes, infinite content of every kind, delivered at such volume and velocity that reading any of it becomes impossible.</p>
+<p>Walter Benjamin wrote in 1936 about how mechanical reproduction was changing our relationship to art. A painting in a museum had an "aura," a sense of presence and authenticity that came from being in the presence of the original. Mass reproduction destroyed that aura. Benjamin thought this was mostly a good thing, democratizing access to culture. But he worried about what would be lost when nothing felt special anymore, when everything was just a copy of a copy with no original left to anchor it.</p>
+<p>Every thought, every argument, every position now exists in thousands of variations, all slightly different, all competing for attention, all copying and remixing each other. There's no original anymore, no authoritative version, no canonical text. Just an endless proliferation of takes, each one slightly tweaked for maximum engagement. The aura is gone. Every idea feels like a retweet of something you've already seen, because it probably is.</p>
+<p>The world doesn't pause while we figure out how to have functional public discourse again. Things happen, and they happen in the direction that the confident and powerful push them, because the rest of us are too busy processing the latest outrage to mount a coherent response.</p>
+<h1 id="what-remains">What Remains<a class="headerlink" href="#what-remains" title="Permanent link">&para;</a></h1>
+<p>Every attempt to discuss the problem becomes another piece of content, another take, another entry in the engagement competition that makes the problem worse. I'm aware that this essay is doing exactly that. I'm aware that you, reading this, are spending cognitive resources on yet another analysis of the discourse when you could be spending those resources on something more important. I'm sorry. I'm not sure what else to do.</p>
+<p>What I do know is that the feeling of being overwhelmed, of never being able to keep up, of having strong opinions about everything and confident understanding of nothing, is not a personal failing. It's a predictable response to an impossible situation. Your brain is being DDoS'd, and the fact that you're struggling to think clearly under that onslaught is evidence that your brain is working normally. The servers aren't broken. They're overloaded. And until we figure out how to reduce the load or increase the bandwidth, the best any of us can do is recognize what's happening and try, when possible, to step away from the flood long enough to do some actual thinking.</p>
+<p>Find some topic you care about. Just one. Resist the temptation to have takes on everything else. Let the discourse rage without you while you spend weeks or months actually understanding something. Read books about it, not takes. Talk to experts, not pundits. Follow the evidence where it leads, even when it's uncomfortable. Change your mind when you find you were wrong. And when you finally have something to say, something you've actually earned through careful thought rather than absorbed from the tribal zeitgeist, say it clearly and then step back.</p>
+<p>This won't fix the collective problem. But it will fix something in you. And if enough people do it, we'll discover that we can still think after all, that the capacity for sustained attention hasn't been destroyed, just buried under a mountain of requests we never should have tried to answer. We'll learn to tell the difference between having a take and understanding something, and we'll start to value the latter again. Somewhere underneath all that noise, the servers are still there, waiting for the traffic to clear so they can finally do their job.</p>
+<p><a href="/how-to-debug-your-life/"> </a></p>
+<h3 id="published-by">Published by:<a class="headerlink" href="#published-by" title="Permanent link">&para;</a></h3>
+<p><a href="/author/jawestenberg/" title="JA Westenberg"> <img alt="JA Westenberg" src="https://www.gravatar.com/avatar/902ccba5d8f9d967af4c9ed56f94a893?s=250&amp;r=x&amp;d=mp" /> </a></p>
+<p><a href="/claude-code-wont-fix-your-life/"> </a></p>
+<p>Westenberg. © 2026 </p>
+<ul>
+<li>Sign up</li>
+</ul>
+<p><a href="https://ghost.org/">Powered by Ghost</a></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 11:14:56 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

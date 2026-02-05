@@ -381,108 +381,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#mdbook-preprocessors" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        mdBook preprocessors
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sample-plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sample plugin
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fundamental-plugin-concepts-in-this-case-study" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fundamental plugin concepts in this case study
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Fundamental plugin concepts in this case study">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#discovery" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Discovery
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#registration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Registration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hooks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hooks
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exposing-an-application-api-to-plugins" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exposing an application API to plugins
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#renderers-backends" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Renderers / backends
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -511,6 +409,14 @@
 <strong>链接:</strong> https://eli.thegreenplace.net/2025/plugins-case-study-mdbook-preprocessors/
 <strong>日期:</strong> 2025-12-17T18:11:00-08:00</p>
 <hr />
+<p>Toggle navigation <a href="https://eli.thegreenplace.net/"> <img alt="" src="https://eli.thegreenplace.net/images/logosmall.png" /> Eli Bendersky's website </a></p>
+<ul>
+<li><a href="https://eli.thegreenplace.net/pages/about"> __ About </a></li>
+<li><a href="https://eli.thegreenplace.net/pages/projects"> __ Projects </a></li>
+<li><a href="https://eli.thegreenplace.net/archives/all"> __ Archives </a></li>
+</ul>
+<h1 id="plugins-case-study-mdbook-preprocessors_1"><a href="https://eli.thegreenplace.net/2025/plugins-case-study-mdbook-preprocessors/" title="Permalink to Plugins case study: mdBook preprocessors"> Plugins case study: mdBook preprocessors </a><a class="headerlink" href="#plugins-case-study-mdbook-preprocessors_1" title="Permanent link">&para;</a></h1>
+<p>__ December 17, 2025 at 18:11 Tags <a href="https://eli.thegreenplace.net/tag/plugins">Plugins</a> , <a href="https://eli.thegreenplace.net/tag/python">Python</a> , <a href="https://eli.thegreenplace.net/tag/rust">Rust</a></p>
 <p><a href="https://rust-lang.github.io/mdBook/index.html">mdBook</a> is a tool for easily creating books out of Markdown files. It's very popular in the Rust ecosystem, where it's used (among other things) to publish <a href="https://doc.rust-lang.org/book/">the official Rust book</a>.</p>
 <p>mdBook has a simple yet effective plugin mechanism that can be used to modify the book output in arbitrary ways, using any programming language or tool. This post describes the mechanism and how it aligns with the <a href="https://eli.thegreenplace.net/2012/08/07/fundamental-concepts-of-plugin-infrastructures">fundamental concepts of plugin infrastructures</a>.</p>
 <h2 id="mdbook-preprocessors">mdBook preprocessors<a class="headerlink" href="#mdbook-preprocessors" title="Permanent link">&para;</a></h2>
@@ -545,6 +451,11 @@ command = &quot;python3 ../preprocessor-python-narcissist/narcissist.py&quot;
 <p>Actually, <code>mdBook</code> has <em>another</em> plugin mechanism, but it's very similar conceptually to preprocessors. A <em>renderer</em> (also called a <em>backend</em> in some of <code>mdBook</code>'s own doc pages) takes the same input as a preprocessor, but is free to do whatever it wants with it. The default renderer emits the HTML for the book; <a href="https://github.com/rust-lang/mdBook/wiki/Third-party-plugins#backends">other renderers</a> can do other things.</p>
 <p>The idea is that the book can go through multiple preprocessors, but at the end a <em>single</em> renderer.</p>
 <p>The data a renderer receives is exactly the same as a preprocessor - JSON encoded book contents. Due to this similarity, there's no real point getting deeper into renderers in this post.</p>
+<hr />
+<p>For comments, please send me <a href="mailto:eliben@gmail.com">__an email</a>. </p>
+<hr />
+<p>(C) 2003-2025 Eli Bendersky </p>
+<p>__Back to top</p>
 
 
 
@@ -565,7 +476,7 @@ command = &quot;python3 ../preprocessor-python-narcissist/narcissist.py&quot;
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 11:14:56 UTC">2026-02-05</span>
   </span>
 
     

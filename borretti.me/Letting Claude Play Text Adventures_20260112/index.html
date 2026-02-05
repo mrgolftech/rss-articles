@@ -1,0 +1,1262 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/borretti.me/Letting%20Claude%20Play%20Text%20Adventures_20260112/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Letting Claude Play Text Adventures - RSS Articles</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#letting-claude-play-text-adventures" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="RSS Articles" class="md-header__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RSS Articles
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Letting Claude Play Text Adventures
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RSS Articles" class="md-nav__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RSS Articles
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/borretti.me/Letting Claude Play Text Adventures_20260112.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="letting-claude-play-text-adventures">Letting Claude Play Text Adventures<a class="headerlink" href="#letting-claude-play-text-adventures" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> <a href="https://borretti.me/feed">borretti.me</a>
+<strong>发布时间:</strong> Mon, 12 Jan 2026 00:00:00 +0000
+<strong>链接:</strong> https://borretti.me/article/letting-claude-play-text-adventures</p>
+<hr />
+<p>{'type': 'text/html', 'language': None, 'base': '', 'value': '
+The other day I went to an
+AI hackathon
+organized by my friends\n
+Lucia
+and
+Malin
+. The theme was
+mech interp
+, but I hardly\nknow PyTorch so I planned to do something at the API layer rather than the model\nlayer.
+\n\n
+Something I think about a lot is
+cognitive architectures
+(like\n
+Soar
+and
+ACT-R
+). This is like a continuation of
+GOFAI
+\nresearch, inspired by cognitive science. And like GOFAI it’s never yielded\nanything useful. But I often think: can we scaffold LLMs with cog arch-inspired\nharnesses to overcome their limitations?
+\n\n
+LLM agents like
+Claude Code
+are basically “accidental” cognitive\narchitectures: they are designed and built my practitioners rather than\ntheorists, but they have commonalities, they all need a way to manage memory,\ntool use, a task agenda etc. Maybe building an agent on a more “principled”\nfoundation, one informed by cognitive science, yields a higher-performing\narchitecture.
+\n\n
+So I sat around a while thinking how to adapt Soar’s architecture to an LLM\nagent. And I sketched something out, but then I thought: how can I prove this\nperforms better than baseline? I need an eval, a task.
+\n\n
+Math problems? Too one-shottable. A chatbot? Too interactive, I want something\nhands-off and long-horizon. A coding agent? That’s too freeform and requires too\nmuch tool use. And then I thought:
+text adventures
+! You have a stylized,\nhierarchically-structured world accessible entirely tthrough text, long-term\ngoals, puzzles, physical exploration and discovery of the environment. Even the\ndata model of text adventures resembles
+frame-based
+knowledge\nrepresentation systems. And there’s a
+vast collection
+of games available\nonline.
+\n\n
+Anchorhead
+, which I played years ago, is a Lovecraft-inspired text\nadventure by Michael S. Gentry. It takes on the order of hundrds of turns to win\nacross multiple in-game days. And the game world is huge and very open. In other\nwords: a perfect long-horizon task.
+\n\n
+So I started hacking. The
+frotz
+interpreter runs on the command line and has a\n“dumb” interface called
+dfrotz
+, which takes the ncurses fluff out, and gives\nyou a very stripped command-line experience. It looks like this:
+\n\n
+\n
+\n
+$ dfrotz games/anchor.z8\n...\n Outside the Real Estate Office                      day one\n\nANCHORHEAD\nAn interactive gothic by Michael S. Gentry\n\n(Type HELP or ABOUT for some useful information.)\n\nRelease 5 / Serial number 990206 / Inform v6.15 Library 6/7\n\nOutside the Real Estate Office\nA grim little cul-de-sac, tucked away in a corner of the claustrophobic tangle\nof narrow, twisting avenues that largely constitute the older portion of\nAnchorhead. Like most of the streets in this city, it is ancient, shadowy, and\nleads essentially nowhere. The lane ends here at the real estate agent\'s office,\nwhich lies to the east, and winds its way back toward the center of town to the\nwest. A narrow, garbage-choked alley opens to the southeast.\n\n&gt;go southeast\n Alley                                               day one\n\nAlley\nThis narrow aperture between two buildings is nearly blocked with piles of\nrotting cardboard boxes and overstuffed garbage cans. Ugly, half-crumbling brick\nwalls to either side totter oppressively over you. The alley ends here at a\ntall, wooden fence.\n\nHigh up on the wall of the northern building there is a narrow, transom-style\nwindow.\n
+\n
+\n
+\n\n
+It is easy to write a little Python wrapper to drive the interpreter through\n
+stdin
+and
+stdout
+:
+\n\n
+\n
+\n
+class
+Interpreter
+:
+\n
+"""Manages the dfrotz Z-machine interpreter process."""
+\n\n
+p
+:
+Popen
+\n\n
+def
+<strong>init</strong>
+(
+self
+):
+\n
+log
+(
+"Starting dfrotz."
+)
+\n
+p
+:
+Popen
+=
+Popen
+(
+\n
+[
+"dfrotz"
+,
+"-m"
+,
+GAME
+],
+\n
+stdin
+=
+PIPE
+,
+\n
+stdout
+=
+PIPE
+,
+\n
+stderr
+=
+PIPE
+,
+\n
+)
+\n
+log
+(
+f
+"Started dfrotz with PID=
+{
+p
+.
+pid
+}
+."
+)
+\n</p>
+<h1 id="set-stdoutstderr-to-non-blocking-moden">Set stdout/stderr to non-blocking mode.\n<a class="headerlink" href="#set-stdoutstderr-to-non-blocking-moden" title="Permanent link">&para;</a></h1>
+<p>for
+stream
+in</p>
+<p>assert
+stream
+is
+not
+None
+\n
+fd
+=
+stream
+.
+fileno
+()
+\n
+flags
+=
+fcntl
+.
+fcntl
+(
+fd
+,
+fcntl
+.
+F_GETFL
+)
+\n
+fcntl
+.
+fcntl
+(
+fd
+,
+fcntl
+.
+F_SETFL
+,
+flags
+|
+os
+.
+O_NONBLOCK
+)
+\n
+self
+.
+p
+=
+p
+\n\n
+def
+read
+(
+self
+)
+-&gt;
+str
+:
+\n
+assert
+self
+.
+p
+.
+stdout
+is
+not
+None
+\n
+b
+:
+bytes
+|
+None
+=
+self
+.
+p
+.
+stdout
+.
+read
+()
+\n
+if
+b
+is
+not
+None
+:
+\n
+t
+:
+str
+=
+b
+.
+decode
+(
+"utf-8"
+)
+\n
+return
+t
+\n
+else
+:
+\n
+return
+""
+\n\n
+def
+write
+(
+self
+,
+t
+:
+str
+)
+-&gt;
+None
+:
+\n
+assert
+self
+.
+p
+.
+stdin
+is
+not
+None
+\n
+self
+.
+p
+.
+stdin
+.
+write
+(
+t
+.
+encode
+(
+"utf-8"
+))
+\n
+self
+.
+p
+.
+stdin
+.
+flush
+()
+\n</p>
+<h1 id="give-the-interpreter-time-to-respond-not-idealn">Give the interpreter time to respond. Not ideal!\n<a class="headerlink" href="#give-the-interpreter-time-to-respond-not-idealn" title="Permanent link">&para;</a></h1>
+<p>time
+.
+sleep
+(
+0.1
+)
+\n
+\n
+\n
+\n\n
+Now we can play the game from Python: send commands, get game output. Now we\nneed the dual of this: a player.
+\n\n
+\n
+\n
+class
+Player
+(
+ABC
+):
+\n
+"""\n    Interface for game-playing agents.\n    """
+\n\n
+@
+abstractmethod
+\n
+def
+cycle
+(
+self
+,
+text
+:
+str
+)
+-&gt;
+str
+:
+\n
+"""\n        Send the game\'s output to the agent, and return the next command to execute.\n        """
+\n
+pass
+\n
+\n
+\n
+\n\n
+The Trivial Harness
+\n\n
+The trivial harness is basically nothing at all: treat the LLM/game interaction\nlike a chat history. The LLM reads the game output from the interpreter, writes\nsome reasoning tokens, and writes a command that is sent via
+stdin
+to the\ninterpreter.
+\n\n
+\n
+\n
+SYSTEM_PROMPT
+:
+str
+=
+"""\nHello Claude. Your task is to play an adventure game. I\'ve hooked up\nyour output to the dfrotz (dumb frotz) interpreter.\n\nThe structure of your output is fairly freeform. The first line that\nstarts with <code>&gt;</code> (and only the first line!) is interpreted as a game\ncommand, everything else is uninterpreted commentary, e.g. you may\nwrite:\n\n    We should go north to explore the church.\n\n    &gt;go north\n\n    Maybe we can use the silver key there.\n\nIf you write multiple <code>&gt;</code> lines in one response, all but the first\nwill be ignored.\n\nHave fun! 😊\n"""
+\n\n\n
+class
+SimplePlayer
+(
+Player
+):
+\n
+"""\n    The simplest game-playing agent: keep the entire game histoyr in-context.\n    """
+\n\n
+client
+:
+Anthropic
+\n
+history
+:
+list
+[
+tuple
+[
+EntryType
+,
+str
+]]
+\n\n
+def
+<strong>init</strong>
+(
+self
+):
+\n
+self
+.
+client
+=
+Anthropic
+()
+\n
+self
+.
+history
+=
+[]
+\n\n
+def
+cycle
+(
+self
+,
+text
+:
+str
+)
+-&gt;
+str
+:
+\n
+self
+.
+history
+.
+append
+((
+EntryType
+.
+GAME
+,
+text
+))
+\n
+system
+=
+trim
+(
+SYSTEM_PROMPT
+)
+\n
+messages
+:
+list
+[
+MessageParam
+]
+=
+[]
+\n
+for
+entry_type
+,
+entry_text
+in
+self
+.
+history
+:
+\n
+role
+:
+str
+\n
+match
+entry_type
+:
+\n
+case
+EntryType
+.
+GAME
+:
+\n
+role
+=
+"user"
+\n
+case
+EntryType
+.
+COMMAND
+:
+\n
+role
+=
+"assistant"
+\n
+messages
+.
+append
+(
+\n
+{
+\n
+"role"
+:
+role
+,
+\n
+"content"
+:
+entry_text
+,
+\n
+}
+\n
+)
+\n
+message
+:
+Message
+=
+self
+.
+client
+.
+messages
+.
+create
+(
+\n
+max_tokens
+=
+512
+,
+\n
+model
+=
+MODEL
+,
+\n
+system
+=
+system
+,
+\n
+messages
+=
+messages
+,
+\n
+)
+\n
+log
+(
+f
+"Tokens:
+{
+message
+.
+usage
+.
+input_tokens
+}
+"
+)
+\n
+response
+:
+str
+=
+message
+.
+content
+[
+0
+].
+text
+\n
+log_claude
+(
+response
+)
+\n
+lines
+:
+list
+[
+str
+]
+=
+[
+line
+for
+line
+in
+response
+.
+split
+(
+"
+\n
+"
+)
+if
+line
+]
+\n
+cmd
+:
+str
+=
+[
+line
+for
+line
+in
+lines
+if
+line
+.
+startswith
+(
+"&gt;"
+)][
+0
+][
+1
+:]
+\n
+self
+.
+history
+.
+append
+((
+EntryType
+.
+COMMAND
+,
+response
+))
+\n
+return
+cmd
+\n
+\n
+\n
+\n\n
+And this works well enough. Haiku 4.5 would mostly wander around the game map,\nbut Sonnet 4.5 and Opus 4.5 manage to solve the game’s first puzzle—breaking\ninto the real estate office, and finding the keys to the mansion—readily\nenough. It takes about ~200 turns for Claude to get to the second in-game day.
+\n\n
+The way I thought this would fail is: attention gets smeared across the long\ncontext, the model gets confused about the geometry of the world, its goal and\ntask state, and starts confabulating, going in circles, etc.
+\n\n
+As usual, I was outsmarting myself. The reason this fails is you run out of\ncredits. By the time you get to day two, each turn costs tens of thousands of\ninput tokens. No good! We need a way to save money.
+\n\n
+Memory
+\n\n
+Ok, let’s try something that’s easier on my Claude credits. We’ll show Claude\nthe most recent five turns (this is the perceptual working memory), and give it\na simple semantic memory: a list of strings that it can append entries to, and\nremove entries from using tool use.
+\n\n
+This keeps the token usage down:
+\n\n
+\n\n
+The problem is the narrow time horizon. With the trivial harness, Claude can\nbreak into the real estate office in ~10 turns, and does so right at the start\nof the game. With this new harness, Claude wanders about the town, taking\ncopious notes, before returning to the real estate office, and it spends ~40\nturns fumbling around with the garbage cans before managing to break into the\nreal estate office.
+\n\n
+The next step, after getting the keys to the house, is to meet your husband\nMichael at the University and head home. Claude with the trivial harness takes\nabout ~100 turns to find the house, with some tangential wandering about the\ntown, and reaches day two around turn 150.
+\n\n
+Claude, with the memory harness, took ~250 turns just to get the keys to the\nhouse. And then it spends hundreds of turns just wandering in circles around the\ntown, accumulating redundant memories, and hits the turn limit before even\nfinding the house.
+\n\n
+Aside: Small Worlds
+\n\n
+Anchorhead
+is a long, broad game, and from the very beginning you can forget\nthe plot and wander about most of the town. It takes a long time to see if a run\nwith an agent goes anywhere. So I thought: I need something smaller.
+\n\n
+Unsurprisingly, Claude can make its own games. The
+Inform 7
+package for\nNixOS was broken (though
+Mikael
+has
+fixed this
+recently) so I had\nto use
+Inform 6
+. I started with a trivial escape-the-room type game, which\nwas less than 100 lines of
+.inf
+code and any Claude could beat it less than 10\nturns. Then I asked for a larger, multi-room heist game.
+\n\n
+This one was more fun. It’s short enough that Claude can win with just the\ntrivial harness. I tried a different harness, where Claude has access to only\nthe last five turns of the game’s history, and a read-write memory\nscratchpad. And this one was interesting.
+\n\n
+First, because Claude only ever adds to its own memory, it never deletes\nmemories. I thought it would do more to trim and edit its scratchpad.
+\n\n
+Second, because Claude become fixated on this red-herring room: a garden with a\nwell. It kept going in circles, trying to tie a rope to the well and climb\ndown. Because of the limited game history, it only realized it was stuck when it\nsaw that the most recent ~20 entries it wrote to its memories related to various\nattempts to go down the well. Then I watched Claude walk away from the garden\nand solve the final puzzle, and hit the turn limit just two turns short of\nwinning.
+\n\n
+Tangent: I wonder if models are better at playing games created by other\ninstances of the same model, by noticing tiny correlations in the text to infer\nwhat puzzles and obstacles they would have written.
+\n\n
+In the end I abandoned the “small worlds” approach because the games are too\nstylized, linear, and uninteresting.
+Anchorhead
+is more unwieldy, but more\nnatural.
+\n\n
+Future Work
+\n\n
+I have a bunch of ideas I want to test, to better learn how harness\nimplementations affect performance. But I’m short on time, so I’m cutting it\nhere and listing these as todos:
+\n\n
+\n
+Domain-Specific Memories:
+Claude’s notes are all jumbled with information\non tasks, locations, etc. It might be better to have separate memories: a todo\nlist, a memory of locations and their connections, etc. This is close to the\nSoar approach.
+\n
+Automatic Geography:
+related to the above, the harness can inspect the\ngame output and build up a graph of rooms and their connections, and format it\nin the context. This saves Claude having to note those things manually using a\ntool.
+\n
+Manual Geography:
+the automatic geography approach has a few\ndrawbacks. Without integration into the Z-machine interpreter, it requires\nsome work to implement (parsing the currente location from the
+dfrotz
+\noutput, keeping track of the command history to find standard travel commands\ne.g.
+go south
+) but isn’t 100% deterministic, so that mazes and dynamic rooms\n(e.g. elevators) will confuse the system. So, instead of doing it manually, we\ncould give Claude a tool like
+link(room, direction, other_room)
+.
+\n
+Episodic Memory:
+this feels like cheating, but, at the end of a run, you\ncan show Claude the session transcript and ask it to summarize: what it\naccomplished and how, where it failed and why. Including a short walkthrough\nfor how to get to the “last successful state”. This allows future runs to save\ntime in getting up to speed.
+\n
+\n\n
+Code
+\n\n
+The repository is
+here
+.
+'}</p>
+<hr />
+<p><em>抓取时间: 2026-02-05 12:56:50</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 05:01:47 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

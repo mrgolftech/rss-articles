@@ -1,0 +1,708 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/simonwillison.net/Distributing%20Go%20binaries%20like%20sqlite-scanner%20through%20PyPI%20using%20go-to-wheel_20260205/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Distributing Go binaries like sqlite-scanner through PyPI using go-to-wheel - Hacker News 精选博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#distributing-go-binaries-like-sqlite-scanner-through-pypi-using-go-to-wheel" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Hacker News 精选博客" class="md-header__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker News 精选博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Distributing Go binaries like sqlite-scanner through PyPI using go-to-wheel
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker News 精选博客" class="md-nav__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hacker News 精选博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/simonwillison.net/Distributing Go binaries like sqlite-scanner through PyPI using go-to-wheel_20260205.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="distributing-go-binaries-like-sqlite-scanner-through-pypi-using-go-to-wheel">Distributing Go binaries like sqlite-scanner through PyPI using go-to-wheel<a class="headerlink" href="#distributing-go-binaries-like-sqlite-scanner-through-pypi-using-go-to-wheel" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://simonwillison.net
+<strong>链接:</strong> https://simonwillison.net/2026/Feb/4/distributing-go-binaries/#atom-everything
+<strong>日期:</strong> 2026-02-04T14:59:47+00:00</p>
+<hr />
+<h1 id="simon-willisons-weblog"><a href="/">Simon Willison’s Weblog</a><a class="headerlink" href="#simon-willisons-weblog" title="Permanent link">&para;</a></h1>
+<p><a href="/about/#subscribe">Subscribe</a></p>
+<h2 id="distributing-go-binaries-like-sqlite-scanner-through-pypi-using-go-to-wheel_1">Distributing Go binaries like sqlite-scanner through PyPI using go-to-wheel<a class="headerlink" href="#distributing-go-binaries-like-sqlite-scanner-through-pypi-using-go-to-wheel_1" title="Permanent link">&para;</a></h2>
+<p>4th February 2026</p>
+<p>I’ve been exploring Go for building small, fast and self-contained binary applications recently. I’m enjoying how there’s generally one obvious way to do things and the resulting code is boring and readable—and something that LLMs are very competent at writing. The one catch is distribution, but it turns out publishing Go binaries to PyPI means any Go binary can be just a <code>uvx package-name</code> call away.</p>
+<h4 id="sqlite-scanner">sqlite-scanner<a class="headerlink" href="#sqlite-scanner" title="Permanent link">&para;</a></h4>
+<p><a href="https://github.com/simonw/sqlite-scanner">sqlite-scanner</a> is my new Go CLI tool for scanning a filesystem for SQLite database files.</p>
+<p>It works by checking if the first 16 bytes of the file exactly match the SQLite magic number sequence <code>SQLite format 3\x00</code>. It can search one or more folders recursively, spinning up concurrent goroutines to accelerate the scan. It streams out results as it finds them in plain text, JSON or newline-delimited JSON. It can optionally display the file sizes as well.</p>
+<p>To try it out you can download a release from the <a href="https://github.com/simonw/sqlite-scanner/releases">GitHub releases</a>—and then <a href="https://support.apple.com/en-us/102445">jump through macOS hoops</a> to execute an “unsafe” binary. Or you can clone the repo and compile it with Go. Or... you can run the binary like this:</p>
+<div class="language-text highlight"><pre><span></span><code>uvx sqlite-scanner
+</code></pre></div>
+<p>By default this will search your current directory for SQLite databases. You can pass one or more directories as arguments:</p>
+<div class="language-text highlight"><pre><span></span><code>uvx sqlite-scanner ~ /tmp
+</code></pre></div>
+<p>Add <code>--json</code> for JSON output, <code>--size</code> to include file sizes or <code>--jsonl</code> for newline-delimited JSON. Here’s a demo:</p>
+<div class="language-text highlight"><pre><span></span><code>uvx sqlite-scanner ~ --jsonl --size
+</code></pre></div>
+<p><img alt="running that command produces a sequence of JSON objects, each with a path and a size key" src="https://static.simonwillison.net/static/2025/sqlite-scanner-demo.gif" /></p>
+<p>If you haven’t been uv-pilled yet you can instead install <code>sqlite-scanner</code> using <code>pip install sqlite-scanner</code> and then run <code>sqlite-scanner</code>.</p>
+<p>To get a permanent copy with <code>uv</code> use <code>uv tool install sqlite-scanner</code>.</p>
+<h4 id="how-the-python-package-works">How the Python package works<a class="headerlink" href="#how-the-python-package-works" title="Permanent link">&para;</a></h4>
+<p>The reason this is worth doing is that <code>pip</code>, <code>uv</code> and <a href="https://pypi.org/">PyPI</a> will work together to identify the correct compiled binary for your operating system and architecture.</p>
+<p>This is driven by file names. If you visit <a href="https://pypi.org/project/sqlite-scanner/#files">the PyPI downloads for sqlite-scanner</a> you’ll see the following files:</p>
+<ul>
+<li><code>sqlite_scanner-0.1.1-py3-none-win_arm64.whl</code></li>
+<li><code>sqlite_scanner-0.1.1-py3-none-win_amd64.whl</code></li>
+<li><code>sqlite_scanner-0.1.1-py3-none-musllinux_1_2_x86_64.whl</code></li>
+<li><code>sqlite_scanner-0.1.1-py3-none-musllinux_1_2_aarch64.whl</code></li>
+<li><code>sqlite_scanner-0.1.1-py3-none-manylinux_2_17_x86_64.whl</code></li>
+<li><code>sqlite_scanner-0.1.1-py3-none-manylinux_2_17_aarch64.whl</code></li>
+<li><code>sqlite_scanner-0.1.1-py3-none-macosx_11_0_arm64.whl</code></li>
+<li><code>sqlite_scanner-0.1.1-py3-none-macosx_10_9_x86_64.whl</code></li>
+</ul>
+<p>When I run <code>pip install sqlite-scanner</code> or <code>uvx sqlite-scanner</code> on my Apple Silicon Mac laptop Python’s packaging magic ensures I get that <code>macosx_11_0_arm64.whl</code> variant.</p>
+<p>Here’s <a href="https://tools.simonwillison.net/zip-wheel-explorer?url=https%3A%2F%2Ffiles.pythonhosted.org%2Fpackages%2F88%2Fb1%2F17a716635d2733fec53ba0a8267f85bd6b6cf882c6b29301bc711fba212c%2Fsqlite_scanner-0.1.1-py3-none-macosx_11_0_arm64.whl#sqlite_scanner/__init__.py">what’s in the wheel</a>, which is a zip file with a <code>.whl</code> extension.</p>
+<p>In addition to the <code>bin/sqlite-scanner</code> the most important file is <code>sqlite_scanner/__init__.py</code> which includes the following:</p>
+<div class="language-text highlight"><pre><span></span><code>def get_binary_path():
+    &quot;&quot;&quot;Return the path to the bundled binary.&quot;&quot;&quot;
+    binary = os.path.join(os.path.dirname(__file__), &quot;bin&quot;, &quot;sqlite-scanner&quot;)
+
+    # Ensure binary is executable on Unix
+    if sys.platform != &quot;win32&quot;:
+        current_mode = os.stat(binary).st_mode
+        if not (current_mode &amp; stat.S_IXUSR):
+            os.chmod(binary, current_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+
+    return binary
+
+
+def main():
+    &quot;&quot;&quot;Execute the bundled binary.&quot;&quot;&quot;
+    binary = get_binary_path()
+
+    if sys.platform == &quot;win32&quot;:
+        # On Windows, use subprocess to properly handle signals
+        sys.exit(subprocess.call([binary] + sys.argv[1:]))
+    else:
+        # On Unix, exec replaces the process
+        os.execvp(binary, [binary] + sys.argv[1:])
+</code></pre></div>
+<p>That <code>main()</code> method—also called from <code>sqlite_scanner/__main__.py</code>—locates the binary and executes it when the Python package itself is executed, using the <code>sqlite-scanner = sqlite_scanner:main</code> entry point defined in the wheel.</p>
+<h4 id="which-means-we-can-use-it-as-a-dependency">Which means we can use it as a dependency<a class="headerlink" href="#which-means-we-can-use-it-as-a-dependency" title="Permanent link">&para;</a></h4>
+<p>Using PyPI as a distribution platform for Go binaries feels a tiny bit abusive, albeit <a href="https://simonwillison.net/2022/May/23/bundling-binary-tools-in-python-wheels/">there is plenty of precedent</a>.</p>
+<p>I’ll justify it by pointing out that this means <strong>we can use Go binaries as dependencies</strong> for other Python packages now.</p>
+<p>That’s genuinely useful! It means that any functionality which is available in a cross-platform Go binary can now be subsumed into a Python package. Python is really good at running subprocesses so this opens up a whole world of useful tricks that we can bake into our Python tools.</p>
+<p>To demonstrate this, I built <a href="https://github.com/simonw/datasette-scan">datasette-scan</a>—a new Datasette plugin which depends on <code>sqlite-scanner</code> and then uses that Go binary to scan a folder for SQLite databases and attach them to a Datasette instance.</p>
+<p>Here’s how to use that (without even installing anything first, thanks <code>uv</code>) to explore any SQLite databases in your Downloads folder:</p>
+<div class="language-text highlight"><pre><span></span><code>uv run --with datasette-scan datasette scan ~/Downloads
+</code></pre></div>
+<p>If you peek at the code you’ll see it <a href="https://github.com/simonw/datasette-scan/blob/1a2b6d1e6b04c8cd05f5676ff7daa877efd99f08/pyproject.toml#L14">depends on sqlite-scanner</a> in <code>pyproject.toml</code> and calls it using <code>subprocess.run()</code> against <code>sqlite_scanner.get_binary_path()</code> in its own <a href="https://github.com/simonw/datasette-scan/blob/1a2b6d1e6b04c8cd05f5676ff7daa877efd99f08/datasette_scan/__init__.py#L38-L58">scan_directories() function</a>.</p>
+<p>I’ve been exploring this pattern for other, non-Go binaries recently—here’s <a href="https://github.com/simonw/tools/blob/main/python/livestream-gif.py">a recent script</a> that depends on <a href="https://pypi.org/project/static-ffmpeg/">static-ffmpeg</a> to ensure that <code>ffmpeg</code> is available for the script to use.</p>
+<h4 id="building-python-wheels-from-go-packages-with-go-to-wheel">Building Python wheels from Go packages with go-to-wheel<a class="headerlink" href="#building-python-wheels-from-go-packages-with-go-to-wheel" title="Permanent link">&para;</a></h4>
+<p>After trying this pattern myself a couple of times I realized it would be useful to have a tool to automate the process.</p>
+<p>I first <a href="https://claude.ai/share/2d9ced56-b3e8-4651-83cc-860b9b419187">brainstormed with Claude</a> to check that there was no existing tool to do this. It pointed me to <a href="https://www.maturin.rs/bindings.html#bin">maturin bin</a> which helps distribute Rust projects using Python wheels, and <a href="https://github.com/Bing-su/pip-binary-factory">pip-binary-factory</a> which bundles all sorts of other projects, but did not identify anything that addressed the exact problem I was looking to solve.</p>
+<p>So I <a href="https://gisthost.github.io/?41f04e4eb823b1ceb888d9a28c2280dd/index.html">had Claude Code for web build the first version</a>, then refined the code locally on my laptop with the help of more Claude Code and a little bit of OpenAI Codex too, just to mix things up.</p>
+<p>The full documentation is in the <a href="https://github.com/simonw/go-to-wheel">simonw/go-to-wheel</a> repository. I’ve published that tool to PyPI so now you can run it using:</p>
+<div class="language-text highlight"><pre><span></span><code>uvx go-to-wheel --help
+</code></pre></div>
+<p>The <code>sqlite-scanner</code> package you can <a href="https://pypi.org/project/sqlite-scanner/">see on PyPI</a> was built using <code>go-to-wheel</code> like this:</p>
+<div class="language-text highlight"><pre><span></span><code>uvx go-to-wheel ~/dev/sqlite-scanner \
+  --set-version-var main.version \
+  --version 0.1.1 \
+  --readme README.md \
+  --author &#39;Simon Willison&#39; \
+  --url https://github.com/simonw/sqlite-scanner \
+  --description &#39;Scan directories for SQLite databases&#39;
+</code></pre></div>
+<p>This created a set of wheels in the <code>dist/</code> folder. I tested one of them like this:</p>
+<div class="language-text highlight"><pre><span></span><code>uv run --with dist/sqlite_scanner-0.1.1-py3-none-macosx_11_0_arm64.whl \
+  sqlite-scanner --version
+</code></pre></div>
+<p>When that spat out the correct version number I was confident everything had worked as planned, so I pushed the whole set of wheels to PyPI using <code>twine upload</code> like this:</p>
+<div class="language-text highlight"><pre><span></span><code>uvx twine upload dist/*
+</code></pre></div>
+<p>I had to paste in a PyPI API token I had saved previously and that was all it took.</p>
+<h4 id="i-expect-to-use-this-pattern-a-lot">I expect to use this pattern a lot<a class="headerlink" href="#i-expect-to-use-this-pattern-a-lot" title="Permanent link">&para;</a></h4>
+<p><code>sqlite-scanner</code> is very clearly meant as a proof-of-concept for this wider pattern—Python is very much capable of recursively crawling a directory structure looking for files that start with a specific byte prefix on its own!</p>
+<p>That said, I think there’s a <em>lot</em> to be said for this pattern. Go is a great complement to Python—it’s fast, compiles to small self-contained binaries, has excellent concurrency support and a rich ecosystem of libraries.</p>
+<p>Go is similar to Python in that it has a strong standard library. Go is particularly good for HTTP tooling—I’ve built several HTTP proxies in the past using Go’s excellent <code>net/http/httputil.ReverseProxy</code> handler.</p>
+<p>I’ve also been experimenting with <a href="https://github.com/wazero/wazero">wazero</a>, Go’s robust and mature zero dependency WebAssembly runtime as part of my ongoing quest for the ideal sandbox for running untrusted code. <a href="https://github.com/simonw/research/tree/main/wasm-repl-cli">Here’s my latest experiment</a> with that library.</p>
+<p>Being able to seamlessly integrate Go binaries into Python projects without the end user having to think about Go at all—they <code>pip install</code> and everything Just Works—feels like a valuable addition to my toolbox.</p>
+<p>Posted <a href="/2026/Feb/4/">4th February 2026</a> at 2:59 pm * Follow me on <a href="https://fedi.simonwillison.net/@simon">Mastodon</a>, <a href="https://bsky.app/profile/simonwillison.net">Bluesky</a>, <a href="https://twitter.com/simonw">Twitter</a> or <a href="https://simonwillison.net/about/#subscribe">subscribe to my newsletter</a></p>
+<h2 id="more-recent-articles">More recent articles<a class="headerlink" href="#more-recent-articles" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="/2026/Jan/30/moltbook/">Moltbook is the most interesting place on the internet right now</a> - 30th January 2026</li>
+<li><a href="/2026/Jan/28/dynamic-features-static-site/">Adding dynamic features to an aggressively cached website</a> - 28th January 2026</li>
+</ul>
+<p>This is <strong>Distributing Go binaries like sqlite-scanner through PyPI using go-to-wheel</strong> by Simon Willison, posted on <a href="/2026/Feb/4/">4th February 2026</a>.</p>
+<p><a href="/tags/go/"> go 48 </a> <a href="/tags/packaging/"> packaging 44 </a> <a href="/tags/projects/"> projects 517 </a> <a href="/tags/pypi/"> pypi 42 </a> <a href="/tags/python/"> python 1225 </a> <a href="/tags/sqlite/"> sqlite 312 </a> <a href="/tags/datasette/"> datasette 454 </a> <a href="/tags/ai-assisted-programming/"> ai-assisted-programming 317 </a> <a href="/tags/uv/"> uv 88 </a></p>
+<p><strong>Previous:</strong> <a href="/2026/Jan/30/moltbook/">Moltbook is the most interesting place on the internet right now</a></p>
+<h3 id="monthly-briefing">Monthly briefing<a class="headerlink" href="#monthly-briefing" title="Permanent link">&para;</a></h3>
+<p>Sponsor me for <strong>$10/month</strong> and get a curated email digest of the month's most important LLM developments. </p>
+<p>Pay me to send you less! </p>
+<p><a href="https://github.com/sponsors/simonw/"> Sponsor &amp; subscribe </a></p>
+<ul>
+<li><a href="/about/#about-site">Colophon</a></li>
+<li>(C)</li>
+<li><a href="/2002/">2002</a></li>
+<li><a href="/2003/">2003</a></li>
+<li><a href="/2004/">2004</a></li>
+<li><a href="/2005/">2005</a></li>
+<li><a href="/2006/">2006</a></li>
+<li><a href="/2007/">2007</a></li>
+<li><a href="/2008/">2008</a></li>
+<li><a href="/2009/">2009</a></li>
+<li><a href="/2010/">2010</a></li>
+<li><a href="/2011/">2011</a></li>
+<li><a href="/2012/">2012</a></li>
+<li><a href="/2013/">2013</a></li>
+<li><a href="/2014/">2014</a></li>
+<li><a href="/2015/">2015</a></li>
+<li><a href="/2016/">2016</a></li>
+<li><a href="/2017/">2017</a></li>
+<li><a href="/2018/">2018</a></li>
+<li><a href="/2019/">2019</a></li>
+<li><a href="/2020/">2020</a></li>
+<li><a href="/2021/">2021</a></li>
+<li><a href="/2022/">2022</a></li>
+<li><a href="/2023/">2023</a></li>
+<li><a href="/2024/">2024</a></li>
+<li><a href="/2025/">2025</a></li>
+<li><a href="/2026/">2026</a></li>
+<li></li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

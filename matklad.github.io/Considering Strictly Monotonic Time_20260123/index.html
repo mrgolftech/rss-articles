@@ -409,9 +409,10 @@
 <strong>链接:</strong> https://matklad.github.io/2026/01/23/strictly-monotonic-time.html
 <strong>日期:</strong> 2026-01-23T00:00:00+00:00</p>
 <hr />
+<p><a href="/">matklad</a><a href="/about.html">About</a><a href="/links.html">Links</a><a href="/blogroll.html">Blogroll</a></p>
 <h1 id="considering-strictly-monotonic-time_1">Considering Strictly Monotonic Time<a class="headerlink" href="#considering-strictly-monotonic-time_1" title="Permanent link">&para;</a></h1>
 <p>Jan 23, 2026</p>
-<p>Monotonic time is a frequently used, load bearing abstraction. Monotonicity is often enforced using the following code:</p>
+<p>Monotonic time is a frequently used, load bearing abstraction. Monotonicity is often enforced using the following code: </p>
 <div class="language-text highlight"><pre><span></span><code>fn now(clock: *Clock) Instant {
     const t_raw = os_time_monotonic();
 
@@ -424,13 +425,14 @@
 }
 </code></pre></div>
 <p>That is, ask the OS about the current monotonic time, but don’t trust the result too much and clamp it using an in-process guard. Under normal scenarios, you can trust the OS promise of monotonicity, but, empirically, there’s a long tail of different scenarios where the promise isn’t upheld: <a href="https://github.com/rust-lang/rust/pull/56988">https://github.com/rust-lang/rust/pull/56988</a></p>
-<p>Today I realized that, if you are doing the above, you might as well force the time to be <em>strictly</em> monotonic:</p>
+<p>Today I realized that, if you are doing the above, you might as well force the time to be <em>strictly</em> monotonic: </p>
 <div class="language-text highlight"><pre><span></span><code>const t = @max(t_raw, clock.guard + 1ns);
 assert(t &gt; clock.guard);
 </code></pre></div>
-<p>The benefit of strict monotonicity is that you can tighten asserts, <code>assert(past &lt;= present)</code> can become <code>assert(past &lt; present)</code> and that <em>additionally</em> catches the bug where you pass in <em>exactly</em> the same instance. In other words, the <code>&lt;=</code> version explicitly allows either query-ing the time again, or using the old value directly.</p>
-<p>Conversely, with strictly monotonic time, you know that if you see two numerically identical time instances, they must have been ultimately derived from the exact same call to <code>now()</code>. Time becomes fundamentally less ambiguous.</p>
-<p>The constraint here is that the resolution of the time value (<em>not</em> the clock resolution) needs to be high enough, to make sure that repeated <code>+1</code> don’t move you into the future, but nanosecond precision seems fine for that.</p>
+<p>The benefit of strict monotonicity is that you can tighten asserts, <code>assert(past &lt;= present)</code> can become <code>assert(past &lt; present)</code> and that <em>additionally</em> catches the bug where you pass in <em>exactly</em> the same instance. In other words, the <code>&lt;=</code> version explicitly allows either query-ing the time again, or using the old value directly. </p>
+<p>Conversely, with strictly monotonic time, you know that if you see two numerically identical time instances, they must have been ultimately derived from the exact same call to <code>now()</code>. Time becomes fundamentally less ambiguous. </p>
+<p>The constraint here is that the resolution of the time value (<em>not</em> the clock resolution) needs to be high enough, to make sure that repeated <code>+1</code> don’t move you into the future, but nanosecond precision seems fine for that. </p>
+<p><a href="https://github.com/matklad/matklad.github.io/edit/master/content/posts/2026-01-23-strictly-monotonic-time.dj">Fix typo</a><a href="/feed.xml">Subscribe</a><a href="mailto:aleksey.kladov+blog@gmail.com">Get in touch</a><a href="https://github.com/matklad">matklad</a></p>
 
 
 
@@ -451,7 +453,7 @@ assert(t &gt; clock.guard);
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:06:05 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
   </span>
 
     

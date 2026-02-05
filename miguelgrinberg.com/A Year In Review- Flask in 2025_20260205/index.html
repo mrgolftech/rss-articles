@@ -1,0 +1,1029 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/miguelgrinberg.com/A%20Year%20In%20Review-%20Flask%20in%202025_20260205/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>A Year In Review: Flask in 2025 - Hacker News 精选博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#a-year-in-review-flask-in-2025" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Hacker News 精选博客" class="md-header__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker News 精选博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              A Year In Review: Flask in 2025
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker News 精选博客" class="md-nav__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hacker News 精选博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/miguelgrinberg.com/A Year In Review- Flask in 2025_20260205.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="a-year-in-review-flask-in-2025">A Year In Review: Flask in 2025<a class="headerlink" href="#a-year-in-review-flask-in-2025" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://miguelgrinberg.com
+<strong>链接:</strong> https://blog.miguelgrinberg.com/post/a-year-in-review-flask-in-2025
+<strong>日期:</strong> Thu, 01 Jan 2026 12:00:26 GMT</p>
+<hr />
+<p><a href="/index">miguelgrinberg.com</a></p>
+<ul>
+<li><a href="/index">Home</a></li>
+<li><a href="/post/my-courses-and-books">My Courses and Books</a></li>
+<li><a href="/post/hire-me">Consulting</a></li>
+<li><a href="/post/about-me">About Me</a></li>
+<li>
+<ul>
+<li><a href="javascript:updateTheme('light'); setThemeUI();">   Light Mode </a></li>
+<li><a href="javascript:updateTheme('dark'); setThemeUI();">   Dark Mode </a></li>
+<hr />
+<li>
+<p><a href="javascript:updateTheme('auto'); setThemeUI();">   System Default </a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="http://github.com/miguelgrinberg"><img alt="GitHub" src="/static/social/github.png" /></a> <a href="http://www.linkedin.com/in/miguelgrinberg"><img alt="LinkedIn" src="/static/social/linkedin.png" /></a> <a href="https://bsky.app/profile/miguelgrinberg.com"><img alt="Bluesky" src="/static/social/bluesky.png" /></a> <a href="https://mstdn.social/@miguelgrinberg"><img alt="Mastodon" src="/static/social/mastodon.png" /></a> <a href="https://twitter.com/miguelgrinberg"><img alt="Twitter" src="/static/social/twitter.png" /></a> <a href="https://youtube.com/miguelgrinberg"><img alt="YouTube" src="/static/social/youtube.png" /></a> <a href="https://www.buymeacoffee.com/miguelgrinberg"><img alt="Buy Me a Coffee" src="/static/social/buymeacoffee.png" /></a> <a href="https://patreon.com/miguelgrinberg"><img alt="Patreon" src="/static/social/patreon.png" /></a> <a href="/feed"><img alt="RSS Feed" src="/static/social/rss.png" /></a></p>
+</li>
+</ul>
+<h1 id="a-year-in-review-flask-in-2025_1"><a href="/post/a-year-in-review-flask-in-2025">A Year In Review: Flask in 2025</a><a class="headerlink" href="#a-year-in-review-flask-in-2025_1" title="Permanent link">&para;</a></h1>
+<h2 id="posted-by-on-2026-01-01t120026z-under">Posted by  on 2026-01-01T12:00:26Z under<a class="headerlink" href="#posted-by-on-2026-01-01t120026z-under" title="Permanent link">&para;</a></h2>
+<p>Like I did <a href="https://blog.miguelgrinberg.com/post/a-year-in-review-flask-in-2024">last year</a>, I reserved some time during my holiday break to prepare an independent report of the Flask ecosystem in 2025.</p>
+<p><img alt="Flask logo" src="/static/images/flask-logo.png" /></p>
+<h2 id="project-activity">Project activity<a class="headerlink" href="#project-activity" title="Permanent link">&para;</a></h2>
+<p>Before I start showing you numbers, I feel it is necessary to clarify that I have not used large language models (LLMs) or other generative AI tools to help me create the reports you will see in this article. Consequently, the chance I'm showing you hallucinated data is zero. The chance of me having made a mistake is not zero, however, so please do check my work and if you find any errors let me know so that I can correct them!</p>
+<p>Okay, let's get to it. The Flask project released twice during all of 2025, and both releases were patch releases to the 3.1.0 release that came out in November 2024. In short, not much has happened in Flask during 2025.</p>
+<p>To put this into perspective, here is a table that shows the releases since 2018, the year in which version 1.0.0 came out:</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Major.Minor</th>
+<th>Patch release count</th>
+<th>Total releases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2018</td>
+<td>1.0</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>1.1</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>2020</td>
+<td></td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>2.0</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>2.1, 2.2</td>
+<td>6</td>
+<td>8</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>2.3, 3.0</td>
+<td>6</td>
+<td>8</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>3.1</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>2025</td>
+<td></td>
+<td>2</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>But of course, the releases do not tell the complete story. I also like to look at GitHub activity to see how things are going with the project. Below is a table that shows the number of pull requests that were merged per year, also since 2018:</p>
+<table>
+<thead>
+<tr>
+<th>Merged PRs</th>
+<th>Flask</th>
+<th>Werkzeug</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2018</td>
+<td><a href="https://github.com/pallets/flask/pulls?q=is%3Apr+is%3Aclosed+merged%3A2018-01-01..2018-12-31">111</a></td>
+<td><a href="https://github.com/pallets/werkzeug/pulls?q=is%3Apr+is%3Aclosed+merged%3A2018-01-01..2018-12-31">93</a></td>
+<td>204</td>
+</tr>
+<tr>
+<td>2019</td>
+<td><a href="https://github.com/pallets/flask/pulls?q=is%3Apr+is%3Aclosed+merged%3A2019-01-01..2019-12-31">142</a></td>
+<td><a href="https://github.com/pallets/werkzeug/pulls?q=is%3Apr+is%3Aclosed+merged%3A2019-01-01..2019-12-31">103</a></td>
+<td>245</td>
+</tr>
+<tr>
+<td>2020</td>
+<td><a href="https://github.com/pallets/flask/pulls?q=is%3Apr+is%3Aclosed+merged%3A2020-01-01..2020-12-31">120</a></td>
+<td><a href="https://github.com/pallets/werkzeug/pulls?q=is%3Apr+is%3Aclosed+merged%3A2020-01-01..2020-12-31">162</a></td>
+<td>282</td>
+</tr>
+<tr>
+<td>2021</td>
+<td><a href="https://github.com/pallets/flask/pulls?q=is%3Apr+is%3Aclosed+merged%3A2021-01-01..2021-12-31">178</a></td>
+<td><a href="https://github.com/pallets/werkzeug/pulls?q=is%3Apr+is%3Aclosed+merged%3A2021-01-01..2021-12-31">175</a></td>
+<td>353</td>
+</tr>
+<tr>
+<td>2022</td>
+<td><a href="https://github.com/pallets/flask/pulls?q=is%3Apr+is%3Aclosed+merged%3A2022-01-01..2022-12-31">134</a></td>
+<td><a href="https://github.com/pallets/werkzeug/pulls?q=is%3Apr+is%3Aclosed+merged%3A2022-01-01..2022-12-31">92</a></td>
+<td>226</td>
+</tr>
+<tr>
+<td>2023</td>
+<td><a href="https://github.com/pallets/flask/pulls?q=is%3Apr+is%3Aclosed+merged%3A2023-01-01..2023-12-31">111</a></td>
+<td><a href="https://github.com/pallets/werkzeug/pulls?q=is%3Apr+is%3Aclosed+merged%3A2023-01-01..2023-12-31">133</a></td>
+<td>244</td>
+</tr>
+<tr>
+<td>2024</td>
+<td><a href="https://github.com/pallets/flask/pulls?q=is%3Apr+is%3Aclosed+merged%3A2024-01-01..2024-12-31">58</a></td>
+<td><a href="https://github.com/pallets/werkzeug/pulls?q=is%3Apr+is%3Aclosed+merged%3A2024-01-01..2024-12-31">73</a></td>
+<td>131</td>
+</tr>
+<tr>
+<td>2025</td>
+<td><a href="https://github.com/pallets/flask/pulls?q=is%3Apr+is%3Aclosed+merged%3A2025-01-01..2025-12-31">26</a></td>
+<td><a href="https://github.com/pallets/werkzeug/pulls?q=is%3Apr+is%3Aclosed+merged%3A2025-01-01..2025-12-31">17</a></td>
+<td>43</td>
+</tr>
+</tbody>
+</table>
+<p>It is likely that there are a small number of commits that are not counted in this table because they were made directly and not through a pull request, but from a quick review of the commit log it does not appear this is something that the Flask maintainers do very often. So I feel this is an accurate representation of the project activity that confirms the decreasing trend that I also noted in my review of last year.</p>
+<p>This time I thought it would be a good idea to also look at pull requests that were closed without merging. </p>
+<table>
+<thead>
+<tr>
+<th>Unmerged PRs</th>
+<th>Flask</th>
+<th>Werkzeug</th>
+<th>Total</th>
+<th>%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2018</td>
+<td><a href="https://github.com/pallets/flask/pulls?q=is%3Apr+is%3Aunmerged+closed%3A2018-01-01..2018-12-31">64</a></td>
+<td><a href="https://github.com/pallets/werkzeug/pulls?q=is%3Apr+is%3Aunmerged+closed%3A2018-01-01..2018-12-31">52</a></td>
+<td>116</td>
+<td>36%</td>
+</tr>
+<tr>
+<td>2019</td>
+<td><a href="https://github.com/pallets/flask/pulls?q=is%3Apr+is%3Aunmerged+closed%3A2019-01-01..2019-12-31">68</a></td>
+<td><a href="https://github.com/pallets/werkzeug/pulls?q=is%3Apr+is%3Aunmerged+closed%3A2019-01-01..2019-12-31">19</a></td>
+<td>87</td>
+<td>26%</td>
+</tr>
+<tr>
+<td>2020</td>
+<td><a href="https://github.com/pallets/flask/pulls?q=is%3Apr+is%3Aunmerged+closed%3A2020-01-01..2020-12-31">76</a></td>
+<td><a href="https://github.com/pallets/werkzeug/pulls?q=is%3Apr+is%3Aunmerged+closed%3A2020-01-01..2020-12-31">35</a></td>
+<td>111</td>
+<td>28%</td>
+</tr>
+<tr>
+<td>2021</td>
+<td><a href="https://github.com/pallets/flask/pulls?q=is%3Apr+is%3Aunmerged+closed%3A2021-01-01..2021-12-31">109</a></td>
+<td><a href="https://github.com/pallets/werkzeug/pulls?q=is%3Apr+is%3Aunmerged+closed%3A2021-01-01..2021-12-31">50</a></td>
+<td>159</td>
+<td>31%</td>
+</tr>
+<tr>
+<td>2022</td>
+<td><a href="https://github.com/pallets/flask/pulls?q=is%3Apr+is%3Aunmerged+closed%3A2022-01-01..2022-12-31">90</a></td>
+<td><a href="https://github.com/pallets/werkzeug/pulls?q=is%3Apr+is%3Aunmerged+closed%3A2022-01-01..2022-12-31">36</a></td>
+<td>126</td>
+<td>36%</td>
+</tr>
+<tr>
+<td>2023</td>
+<td><a href="https://github.com/pallets/flask/pulls?q=is%3Apr+is%3Aunmerged+closed%3A2023-01-01..2023-12-31">81</a></td>
+<td><a href="https://github.com/pallets/werkzeug/pulls?q=is%3Apr+is%3Aunmerged+closed%3A2023-01-01..2023-12-31">34</a></td>
+<td>115</td>
+<td>32%</td>
+</tr>
+<tr>
+<td>2024</td>
+<td><a href="https://github.com/pallets/flask/pulls?q=is%3Apr+is%3Aunmerged+closed%3A2024-01-01..2024-12-31">53</a></td>
+<td><a href="https://github.com/pallets/werkzeug/pulls?q=is%3Apr+is%3Aunmerged+closed%3A2024-01-01..2024-12-31">24</a></td>
+<td>77</td>
+<td>37%</td>
+</tr>
+<tr>
+<td>2025</td>
+<td><a href="https://github.com/pallets/flask/pulls?q=is%3Apr+is%3Aunmerged+closed%3A2025-01-01..2025-12-31">99</a></td>
+<td><a href="https://github.com/pallets/werkzeug/pulls?q=is%3Apr+is%3Aunmerged+closed%3A2025-01-01..2025-12-31">14</a></td>
+<td>113</td>
+<td>72%</td>
+</tr>
+</tbody>
+</table>
+<p>And this is quite interesting. Historically, the percentage of all pull requests that ended up closed without merging was hovering around 30%, but in 2025 it jumped to 72%. I guess one possible explanation to this large increase could be that the Flask maintainers consider that the project is now fairly complete, so they are less interested in accepting contributions from the community.</p>
+<p>Another explanation is that in 2025 many developers started using generative AI tools to create pull requests. This is a new trend that I noticed on my own projects as well. These pull requests are almost always bad, and the contributors that submit them do not have the interest nor the knowledge to improve them. One example that supports this theory is this simple <a href="https://github.com/pallets/flask/issues/5825">documentation issue</a>. There is currently an <a href="https://github.com/pallets/flask/pull/5827">open pull request</a> for it that is awaiting review from the maintainers, but I counted 7 closed PRs from people who submitted their own versions of this fix, most of them dated after the currently in-progress one, and all failing to properly address the reported issue.</p>
+<h2 id="whats-new-in-flask">What's new in Flask<a class="headerlink" href="#whats-new-in-flask" title="Permanent link">&para;</a></h2>
+<p>This was an extremely slow year for Flask, so there is nothing really new and exciting to report. There is a fix for an issue that prevented the <code>stream_with_context</code> from working in asynchronous routes. Aside from this, there were a handful of Python typing fixes and a change in the order in which rotated secret keys are tried. The changes that went into Werkzeug during 2025 were also minor and equally uninteresting.</p>
+<p>I reviewed the list of 43 pull requests that were merged during 2025 for the Flask and Werkzeug projects, to see if I could find anything worth reporting that is not reflected in the change logs or that maybe hasn't been released yet. And I did find a couple of nuggets.</p>
+<p>In the <a href="https://blog.miguelgrinberg.com/post/a-year-in-review-flask-in-2024">2024 review</a>, I reported that there was a plan to merge the application and request contexts into a single context. This change has already been made, and will be included in the 3.2.0 release, which does not have a date yet. Overall, my opinion of this change can be summarized in three letters: "meh". It is a large internal change that simplifies and restructures the context handling logic, but for Flask users this does not appear to bring any substantial benefits. At least I fail to see them if they exist.</p>
+<p>There are good news and bad news about this change. The good news is that there are only very minor externally facing behavior changes planned for the upcoming 3.2 release. The functionality of the request context was moved to the app context, but in 3.2 there will still be a request context, although it will be deprecated. You may see some deprecation warnings from your own code or from Flask extensions that access the request context directly, but aside from that everything will hopefully continue to work as before.</p>
+<p>The bad news is that the request context will be removed completely when 4.0 is released, so at that point I expect some applications will stop working and will need code changes or dependency updates before they can be upgraded to the latest version of Flask. What's unclear to me is when will 4.0 be released, what will be in it besides this, and how much time and how many more minor releases there will be between 3.2 and 4.0. At the current pace of development it is really hard to find justification for a new major release anyway, so maybe this isn't going to be a problem for a while. We'll have to see how the Flask maintainers handle this transition.</p>
+<p>Another interesting change that isn't mentioned in the change log is that since the 3.1.1 release Flask and Werkzeug have switched to the <a href="https://docs.astral.sh/uv/">uv</a> package manager for its continuous integration and release jobs on GitHub Actions.</p>
+<h2 id="what-about-quart">What about Quart?<a class="headerlink" href="#what-about-quart" title="Permanent link">&para;</a></h2>
+<p>As I'm sure most of you know, <a href="https://quart.palletsprojects.com/en/latest/">Quart</a> is an async-native port of Flask, created by Phil Jones and also maintained by the Flask core developers, a group that includes Phil as well.</p>
+<p>Sadly, Quart did not have any releases in 2025. The last release is 0.20.0, which came out in December 2024.</p>
+<p>Looking at the <a href="https://github.com/pallets/quart">Quart repository</a> on GitHub, there have been only 14 commits in all of 2025, and they were all for minor things such as adding a new logo, improving type hints or fixing documentation typos. </p>
+<h2 id="flask-extensions">Flask extensions<a class="headerlink" href="#flask-extensions" title="Permanent link">&para;</a></h2>
+<p>This time around I thought it would be good to take a quick look at the most frequently used extensions for Flask and see how active they have been.</p>
+<table>
+<thead>
+<tr>
+<th>Extension</th>
+<th>Last release</th>
+<th>Last commit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/maxcountryman/flask-login">Flask-Login</a></td>
+<td>October 2023</td>
+<td>August 2025</td>
+</tr>
+<tr>
+<td><a href="https://github.com/pallets-eco/flask-security">Flask-Security</a></td>
+<td>November 2025</td>
+<td>December 2025</td>
+</tr>
+<tr>
+<td><a href="https://github.com/miguelgrinberg/Flask-HTTPAuth">Flask-HTTPAuth</a> (*)</td>
+<td>August 2023</td>
+<td>December 2025</td>
+</tr>
+<tr>
+<td><a href="https://github.com/pallets-eco/flask-sqlalchemy">Flask-SQLAlchemy</a></td>
+<td>September 2023</td>
+<td>June 2025</td>
+</tr>
+<tr>
+<td><a href="https://github.com/miguelgrinberg/Flask-Migrate">Flask-Migrate</a> (*)</td>
+<td>January 2025</td>
+<td>December 2025</td>
+</tr>
+<tr>
+<td><a href="https://github.com/pallets-eco/flask-session">Flask-Session</a></td>
+<td>March 2024</td>
+<td>April 2024</td>
+</tr>
+<tr>
+<td><a href="https://github.com/pallets-eco/flask-wtf">Flask-WTF</a></td>
+<td>October 2024</td>
+<td>December 2025</td>
+</tr>
+<tr>
+<td><a href="https://github.com/pallets-eco/flask-mail">Flask-Mail</a></td>
+<td>May 2024</td>
+<td>June 2025</td>
+</tr>
+<tr>
+<td><a href="https://github.com/pallets-eco/flask-admin">Flask-Admin</a></td>
+<td>November 2025</td>
+<td>December 2025</td>
+</tr>
+<tr>
+<td><a href="https://github.com/python-babel/flask-babel">Flask-Babel</a></td>
+<td>October 2023</td>
+<td>June 2024</td>
+</tr>
+<tr>
+<td><a href="https://github.com/corydolphin/flask-cors">Flask-CORS</a></td>
+<td>December 2025</td>
+<td>December 2025</td>
+</tr>
+<tr>
+<td><a href="https://github.com/miguelgrinberg/Flask-SocketIO">Flask-SocketIO</a> (*)</td>
+<td>December 2025</td>
+<td>December 2025</td>
+</tr>
+<tr>
+<td><a href="https://github.com/miguelgrinberg/Flask-Moment">Flask-Moment</a> (*)</td>
+<td>January 2025</td>
+<td>December 2025</td>
+</tr>
+</tbody>
+</table>
+<p>I came up with this list from memory, so please don't be offended if I missed some of your favorite extensions. Also, inclusion in this list doesn't mean I'm making an endorsement. In fact, some of these extensions I do not like and never use in my projects. I do, however, fully endorse the ones that are marked with (*), as these are maintained by myself.</p>
+<p>Something that is important to mention is that several of these extensions are currently maintained by the <a href="https://github.com/pallets-eco">pallets-eco</a> organization, a group of volunteers dedicated to keeping extensions updated after their original creators or maintainers move on to other things.</p>
+<h2 id="flask-vs-other-web-frameworks">Flask vs. other web frameworks<a class="headerlink" href="#flask-vs-other-web-frameworks" title="Permanent link">&para;</a></h2>
+<p>Let's see how Flask stands against competing Python web frameworks.</p>
+<p>First we can compare download counts. For this I'm using the <a href="https://console.cloud.google.com/bigquery?p=bigquery-public-data&amp;d=pypi&amp;page=dataset">PyPI BigQuery dataset</a>, which has download counts for all PyPI packages.</p>
+<table>
+<thead>
+<tr>
+<th>Downloads</th>
+<th>Flask</th>
+<th>Django</th>
+<th>FastAPI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2023</td>
+<td>1001M (73%)</td>
+<td>135M (10%)</td>
+<td>228M (17%)</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>1160M (58%)</td>
+<td>225M (11%)</td>
+<td>612M (31%)</td>
+</tr>
+<tr>
+<td>2025</td>
+<td>1577M (46%)</td>
+<td>313M (9%)</td>
+<td>1523M (45%)</td>
+</tr>
+</tbody>
+</table>
+<p>From this table you can see that the three leading frameworks all gained downloads, but FastAPI did it at an incredible pace. In practical terms, Flask and FastAPI are now tied at the top.</p>
+<p>But of course, the download numbers for Django are suspiciously low. I noticed this last year, and couldn't find an explanation, so if you have any theories let me know. Below you can see the queries that I used to get the 2025 download counts, in case you want to debug them and investigate this difference in downloads:</p>
+<div class="language-text highlight"><pre><span></span><code>SELECT COUNT(*) FROM `bigquery-public-data.pypi.file_downloads` WHERE TIMESTAMP_TRUNC(timestamp, DAY) BETWEEN TIMESTAMP(&quot;2025-01-01&quot;) AND TIMESTAMP(&quot;2026-01-01&quot;) AND file.project = &quot;flask&quot;
+SELECT COUNT(*) FROM `bigquery-public-data.pypi.file_downloads` WHERE TIMESTAMP_TRUNC(timestamp, DAY) BETWEEN TIMESTAMP(&quot;2025-01-01&quot;) AND TIMESTAMP(&quot;2026-01-01&quot;) AND file.project = &quot;django&quot;
+SELECT COUNT(*) FROM `bigquery-public-data.pypi.file_downloads` WHERE TIMESTAMP_TRUNC(timestamp, DAY) BETWEEN TIMESTAMP(&quot;2025-01-01&quot;) AND TIMESTAMP(&quot;2026-01-01&quot;) AND file.project = &quot;fastapi&quot;
+</code></pre></div>
+<p>We can also have a look at the last <a href="https://lp.jetbrains.com/python-developers-survey-2024">Python developer survey</a>, which was conducted in Q4 of 2024, but is the last one available at the time I'm writing this in December 2025. Here is how the top three web frameworks split among developers in the last two surveys:</p>
+<table>
+<thead>
+<tr>
+<th>Survey</th>
+<th>Flask</th>
+<th>Django</th>
+<th>FastAPI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2023</td>
+<td>33%</td>
+<td>33%</td>
+<td>29%</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>34%</td>
+<td>35%</td>
+<td>38%</td>
+</tr>
+</tbody>
+</table>
+<p>Here we can see once again that FastAPI is unstoppable at the moment. And before this is asked in the comments, the answer is no, I'm not currently planning a FastAPI Mega-Tutorial. But I never say never...</p>
+<p>And with this, I conclude this review of the Flask project in 2025. I hope you find this analysis useful. Happy 2026, and I hope you'll be back in one year for another Flask review!</p>
+<h2 id="buy-me-a-coffee">Buy me a coffee?<a class="headerlink" href="#buy-me-a-coffee" title="Permanent link">&para;</a></h2>
+<p>Thank you for visiting my blog! If you enjoyed this article, please consider supporting my work and keeping me caffeinated with a small one-time donation through <a href="https://www.buymeacoffee.com/miguelgrinberg">Buy me a coffee</a>. Thanks!</p>
+<p><a href="https://www.buymeacoffee.com/miguelgrinberg"><img alt="Buy Me A Coffee" src="/static/buymeacoffee-yellow.png" /></a></p>
+<h2 id="share-this-post">Share this post<a class="headerlink" href="#share-this-post" title="Permanent link">&para;</a></h2>
+<p><a href="https://news.ycombinator.com/submitlink?u=https%3A//blog.miguelgrinberg.com/post/a-year-in-review-flask-in-2025&amp;t=A%20Year%20In%20Review%3A%20Flask%20in%202025"> Hacker News </a> <a href="https://reddit.com/submit/?url=https%3A//blog.miguelgrinberg.com/post/a-year-in-review-flask-in-2025&amp;resubmit=true&amp;title=A Year In Review: Flask in 2025"> Reddit </a> <a href="https://twitter.com/intent/tweet/?text=A%20Year%20In%20Review%3A%20Flask%20in%202025&amp;url=https%3A//blog.miguelgrinberg.com/post/a-year-in-review-flask-in-2025"> Twitter </a> <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A//blog.miguelgrinberg.com/post/a-year-in-review-flask-in-2025&amp;title=A%20Year%20In%20Review%3A%20Flask%20in%202025&amp;summary=A%20Year%20In%20Review%3A%20Flask%20in%202025&amp;source=https%3A//blog.miguelgrinberg.com/post/a-year-in-review-flask-in-2025"> LinkedIn </a> <a href="https://facebook.com/sharer/sharer.php?u=https%3A//blog.miguelgrinberg.com/post/a-year-in-review-flask-in-2025"> Facebook </a> <a href="mailto:?subject=A%20Year%20In%20Review%3A%20Flask%20in%202025&amp;body=https%3A//blog.miguelgrinberg.com/post/a-year-in-review-flask-in-2025"> E-Mail </a></p>
+<p><a href="/post/a-year-in-review-flask-in-2025#comments">4 comments</a></p>
+<ul>
+<li><img alt="" src="https://gravatar.com/avatar/89af003084a57fba080580a721ae071d?s=60&amp;d=identicon" /></li>
+</ul>
+<h1 id="1-bhavesh-kakwani-said-2026-01-01t201124z">1 Bhavesh Kakwani said 2026-01-01T20:11:24Z<a class="headerlink" href="#1-bhavesh-kakwani-said-2026-01-01t201124z" title="Permanent link">&para;</a></h1>
+<p>It could be the Django downloads are low because it’s rarely the framework of choice in beginner tutorials. For e.g. the Harvard CS50 online course is based on Flask. Project starter templates on beginner friendly services like Replit are also based on Flask. So I’m wondering if we have a super large number of students using Flask, thus contributing to the number of downloads. I don’t have a theory for FastAPI though</p>
+<ul>
+<li><img alt="" src="https://gravatar.com/avatar/26ccd6073f401813f7e915babd80a49d?s=60&amp;d=identicon" /></li>
+</ul>
+<h1 id="2-eric-mesa-said-2026-01-02t212935z">2 Eric Mesa said 2026-01-02T21:29:35Z<a class="headerlink" href="#2-eric-mesa-said-2026-01-02t212935z" title="Permanent link">&para;</a></h1>
+<p>Thanks for putting this together. I have also had some of my personal projects achieve a "done" state, so I can understand Flask not having much more added to it in 2025. The only "bad" thing is that sometimes a lack of updates in Github can be seen as a bad thing. On the other hand, I've read/heard a lot about a move towards AI coding leading to a recommendation of older frameworks. This may advantage Flask over FastAPI or anything else that comes in the future. </p>
+<p>If I could wave a magic wand in the world of Python frameworks, I would have flask/quart merge "already" OR flask deprecated in favor of quart. I think the async story is only getting more and more important as time goes on and having a non-async web framework will eventually hurt Flask. Then again, maybe I'm wrong. I am not using Flask professionally and maybe in the real world it's less of an issue than it seems to be from tech blogs and tech podcasts.</p>
+<ul>
+<li><img alt="" src="https://gravatar.com/avatar/729e26a2a2c7ff24a71958d4aa4e5f35?s=60&amp;d=identicon" /></li>
+</ul>
+<h1 id="3-miguel-grinberg-said-2026-01-02t234549z">3 Miguel Grinberg said 2026-01-02T23:45:49Z<a class="headerlink" href="#3-miguel-grinberg-said-2026-01-02t234549z" title="Permanent link">&para;</a></h1>
+<p>@Eric: If merging Flask and Quart were easy, it would have happened already. The fact is that there are technical problems that make this really hard, bordering on impossible. And Flask not having good asyncio support is less of a problem than people make it to be, in my opinion.</p>
+<ul>
+<li><img alt="" src="https://gravatar.com/avatar/97baa9284d0e84dc97fe5796e9e8a6e1?s=60&amp;d=identicon" /></li>
+</ul>
+<h1 id="4-adam-bhogal-said-2026-01-09t184812z">4 Adam Bhogal said 2026-01-09T18:48:12Z<a class="headerlink" href="#4-adam-bhogal-said-2026-01-09t184812z" title="Permanent link">&para;</a></h1>
+<p>Good to see SQL Alchemy in fourth place in the extensions list. Although the official website is useful, the language and explanation can be quite daunting. I personally find your books very helpful in this regard and believe your resources are possibly contributing to debunking and simplifying the mapping of python objects to a database. Pre-Covid it was also a straight choice between Flask or Django fro Python web development. Don't know much about FastAPI but it certainly seems to have broken through in a big way.</p>
+<ul>
+<li><a href="/post/a-year-in-review-flask-in-2025/page/1#comments">««</a></li>
+<li><a href="/post/a-year-in-review-flask-in-2025/page/0#comments">«</a></li>
+<li><a href="/post/a-year-in-review-flask-in-2025/page/0#comments">»</a></li>
+<li><a href="/post/a-year-in-review-flask-in-2025/page/0#comments">»»</a></li>
+</ul>
+<h3 id="leave-a-comment">Leave a Comment<a class="headerlink" href="#leave-a-comment" title="Permanent link">&para;</a></h3>
+<p>Name</p>
+<p>Email</p>
+<p>Comment</p>
+<p>Captcha</p>
+<p>The Flask Mega-Tutorial</p>
+<h5 id="new-2024-edition"><a href="/post/announcing-the-flask-mega-tutorial-2024-edition">New 2024 Edition! </a><a class="headerlink" href="#new-2024-edition" title="Permanent link">&para;</a></h5>
+<p><a href="https://amzn.to/3MQffrm"> <img alt="The New Flask Mega-Tutorial" src="/static/mega-tutorial-2024-small.png" /> </a></p>
+<p>If you would you like to support my work on my <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">Flask Mega-Tutorial series</a> on this blog and as a reward have access to the complete tutorial nicely structured as a book and/or a set of videos, you can now order it from my <a href="https://courses.miguelgrinberg.com/p/flask-mega-tutorial">Courses</a> site or from <a href="https://amzn.to/3MQffrm">Amazon</a>.</p>
+<p><a href="https://amzn.to/3MQffrm">Click here to get the Book!</a><br />
+<a href="https://courses.miguelgrinberg.com/p/flask-mega-tutorial">Click here to get the Video Course!</a></p>
+<p>About Miguel</p>
+<p><img alt="" src="/static/miguel.jpg" /></p>
+<p>Welcome to my blog!</p>
+<p>I'm a software engineer and technical writer, currently living in Drogheda, Ireland.</p>
+<p>You can also find me on <a href="https://github.com/miguelgrinberg">Github</a>, <a href="http://www.linkedin.com/in/miguelgrinberg">LinkedIn</a>, <a href="https://bsky.app/profile/miguelgrinberg.com">Bluesky</a>, <a href="https://mstdn.social/@miguelgrinberg">Mastodon</a>, <a href="https://twitter.com/miguelgrinberg">Twitter</a>, <a href="https://youtube.com/miguelgrinberg">YouTube</a>,  <a href="https://www.buymeacoffee.com/miguelgrinberg">Buy Me a Coffee</a>, and <a href="https://patreon.com/miguelgrinberg">Patreon</a>.</p>
+<p>Thank you for visiting!</p>
+<p>Categories</p>
+<p><a href="/category/AI/feed"><img alt="AI RSS Feed" src="/static/rss-small.png" /></a> <em>3</em></p>
+<p><a href="/category/Arduino/feed"><img alt="Arduino RSS Feed" src="/static/rss-small.png" /></a> <em>7</em></p>
+<p><a href="/category/Authentication/feed"><img alt="Authentication RSS Feed" src="/static/rss-small.png" /></a> <em>10</em></p>
+<p><a href="/category/Blog/feed"><img alt="Blog RSS Feed" src="/static/rss-small.png" /></a> <em>1</em></p>
+<p><a href="/category/C++/feed"><img alt="C++ RSS Feed" src="/static/rss-small.png" /></a> <em>5</em></p>
+<p><a href="/category/CSS/feed"><img alt="CSS RSS Feed" src="/static/rss-small.png" /></a> <em>1</em></p>
+<p><a href="/category/Cloud/feed"><img alt="Cloud RSS Feed" src="/static/rss-small.png" /></a> <em>11</em></p>
+<p><a href="/category/Database/feed"><img alt="Database RSS Feed" src="/static/rss-small.png" /></a> <em>23</em></p>
+<p><a href="/category/Docker/feed"><img alt="Docker RSS Feed" src="/static/rss-small.png" /></a> <em>5</em></p>
+<p><a href="/category/Filmmaking/feed"><img alt="Filmmaking RSS Feed" src="/static/rss-small.png" /></a> <em>6</em></p>
+<p><a href="/category/Flask/feed"><img alt="Flask RSS Feed" src="/static/rss-small.png" /></a> <em>130</em></p>
+<p><a href="/category/Games/feed"><img alt="Games RSS Feed" src="/static/rss-small.png" /></a> <em>1</em></p>
+<p><a href="/category/IoT/feed"><img alt="IoT RSS Feed" src="/static/rss-small.png" /></a> <em>8</em></p>
+<p><a href="/category/JavaScript/feed"><img alt="JavaScript RSS Feed" src="/static/rss-small.png" /></a> <em>37</em></p>
+<p><a href="/category/MicroPython/feed"><img alt="MicroPython RSS Feed" src="/static/rss-small.png" /></a> <em>10</em></p>
+<p><a href="/category/Microdot/feed"><img alt="Microdot RSS Feed" src="/static/rss-small.png" /></a> <em>1</em></p>
+<p><a href="/category/Microservices/feed"><img alt="Microservices RSS Feed" src="/static/rss-small.png" /></a> <em>2</em></p>
+<p><a href="/category/Movie Reviews/feed"><img alt="Movie Reviews RSS Feed" src="/static/rss-small.png" /></a> <em>5</em></p>
+<p><a href="/category/Personal/feed"><img alt="Personal RSS Feed" src="/static/rss-small.png" /></a> <em>3</em></p>
+<p><a href="/category/Photography/feed"><img alt="Photography RSS Feed" src="/static/rss-small.png" /></a> <em>7</em></p>
+<p><a href="/category/Product Reviews/feed"><img alt="Product Reviews RSS Feed" src="/static/rss-small.png" /></a> <em>2</em></p>
+<p><a href="/category/Programming/feed"><img alt="Programming RSS Feed" src="/static/rss-small.png" /></a> <em>197</em></p>
+<p><a href="/category/Project Management/feed"><img alt="Project Management RSS Feed" src="/static/rss-small.png" /></a> <em>1</em></p>
+<p><a href="/category/Python/feed"><img alt="Python RSS Feed" src="/static/rss-small.png" /></a> <em>175</em></p>
+<p><a href="/category/REST/feed"><img alt="REST RSS Feed" src="/static/rss-small.png" /></a> <em>7</em></p>
+<p><a href="/category/Raspberry Pi/feed"><img alt="Raspberry Pi RSS Feed" src="/static/rss-small.png" /></a> <em>8</em></p>
+<p><a href="/category/React/feed"><img alt="React RSS Feed" src="/static/rss-small.png" /></a> <em>19</em></p>
+<p><a href="/category/Reviews/feed"><img alt="Reviews RSS Feed" src="/static/rss-small.png" /></a> <em>1</em></p>
+<p><a href="/category/Robotics/feed"><img alt="Robotics RSS Feed" src="/static/rss-small.png" /></a> <em>6</em></p>
+<p><a href="/category/Security/feed"><img alt="Security RSS Feed" src="/static/rss-small.png" /></a> <em>13</em></p>
+<p><a href="/category/Video/feed"><img alt="Video RSS Feed" src="/static/rss-small.png" /></a> <em>22</em></p>
+<p><a href="/category/WebSocket/feed"><img alt="WebSocket RSS Feed" src="/static/rss-small.png" /></a> <em>2</em></p>
+<p><a href="/category/Webcast/feed"><img alt="Webcast RSS Feed" src="/static/rss-small.png" /></a> <em>3</em></p>
+<p><a href="/category/Windows/feed"><img alt="Windows RSS Feed" src="/static/rss-small.png" /></a> <em>1</em></p>
+<p>(C) 2012- by Miguel Grinberg. All rights reserved. <a href="mailto:webmaster _at_ miguelgrinberg _dot_ com">Questions?</a></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

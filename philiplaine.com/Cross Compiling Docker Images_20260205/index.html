@@ -25,7 +25,7 @@
     
     
       
-        <title>Cross Compiling Docker Images\n\n来源: https://philiplaine.com\n链接: https://philiplaine.com/posts/cross-compiling-docker-images/\n日期: Fri, 20 Sep 2019 20:00:00 +0200\n\n---\n\nIt has been an issue for a long time to run Docker images on multiple architectures. I remember the first time I got the idea to install Docker on my Raspberry Pi and I realized quickly that what I was trying to do would not work. The issue of course was that I was trying to use an AMD64 compiled Docker image on a ARM 32 bit CPU. Anyone who works with any lower level languages would call me an idiot for realizing this sooner than later. I would agree with them. Docker just seems to work like magic, running on most machines without any issue, like running Linux containers on Windows. One thing that has not been easy though is building Docker images on one type of CPU and running them on another. - Hacker News 精选博客</title>
+        <title>Cross Compiling Docker Images - Hacker News 精选博客</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cross-compiling-docker-imagesnn-httpsphiliplainecomn-httpsphiliplainecompostscross-compiling-docker-imagesn-fri-20-sep-2019-200000-0200nn-nnit-has-been-an-issue-for-a-long-time-to-run-docker-images-on-multiple-architectures-i-remember-the-first-time-i-got-the-idea-to-install-docker-on-my-raspberry-pi-and-i-realized-quickly-that-what-i-was-trying-to-do-would-not-work-the-issue-of-course-was-that-i-was-trying-to-use-an-amd64-compiled-docker-image-on-a-arm-32-bit-cpu-anyone-who-works-with-any-lower-level-languages-would-call-me-an-idiot-for-realizing-this-sooner-than-later-i-would-agree-with-them-docker-just-seems-to-work-like-magic-running-on-most-machines-without-any-issue-like-running-linux-containers-on-windows-one-thing-that-has-not-been-easy-though-is-building-docker-images-on-one-type-of-cpu-and-running-them-on-another" class="md-skip">
+        <a href="#cross-compiling-docker-images" class="md-skip">
           跳转至
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Cross Compiling Docker Images\n\n来源: https://philiplaine.com\n链接: https://philiplaine.com/posts/cross-compiling-docker-images/\n日期: Fri, 20 Sep 2019 20:00:00 +0200\n\n---\n\nIt has been an issue for a long time to run Docker images on multiple architectures. I remember the first time I got the idea to install Docker on my Raspberry Pi and I realized quickly that what I was trying to do would not work. The issue of course was that I was trying to use an AMD64 compiled Docker image on a ARM 32 bit CPU. Anyone who works with any lower level languages would call me an idiot for realizing this sooner than later. I would agree with them. Docker just seems to work like magic, running on most machines without any issue, like running Linux containers on Windows. One thing that has not been easy though is building Docker images on one type of CPU and running them on another.
+              Cross Compiling Docker Images
             
           </span>
         </div>
@@ -404,7 +404,55 @@
   
 
 
-<h1 id="cross-compiling-docker-imagesnn-httpsphiliplainecomn-httpsphiliplainecompostscross-compiling-docker-imagesn-fri-20-sep-2019-200000-0200nn-nnit-has-been-an-issue-for-a-long-time-to-run-docker-images-on-multiple-architectures-i-remember-the-first-time-i-got-the-idea-to-install-docker-on-my-raspberry-pi-and-i-realized-quickly-that-what-i-was-trying-to-do-would-not-work-the-issue-of-course-was-that-i-was-trying-to-use-an-amd64-compiled-docker-image-on-a-arm-32-bit-cpu-anyone-who-works-with-any-lower-level-languages-would-call-me-an-idiot-for-realizing-this-sooner-than-later-i-would-agree-with-them-docker-just-seems-to-work-like-magic-running-on-most-machines-without-any-issue-like-running-linux-containers-on-windows-one-thing-that-has-not-been-easy-though-is-building-docker-images-on-one-type-of-cpu-and-running-them-on-another">Cross Compiling Docker Images\n\n<strong>来源:</strong> https://philiplaine.com\n<strong>链接:</strong> https://philiplaine.com/posts/cross-compiling-docker-images/\n<strong>日期:</strong> Fri, 20 Sep 2019 20:00:00 +0200\n\n---\n\nIt has been an issue for a long time to run Docker images on multiple architectures. I remember the first time I got the idea to install Docker on my Raspberry Pi and I realized quickly that what I was trying to do would not work. The issue of course was that I was trying to use an AMD64 compiled Docker image on a ARM 32 bit CPU. Anyone who works with any lower level languages would call me an idiot for realizing this sooner than later. I would agree with them. Docker just seems to work like magic, running on most machines without any issue, like running Linux containers on Windows. One thing that has not been easy though is building Docker images on one type of CPU and running them on another.<a class="headerlink" href="#cross-compiling-docker-imagesnn-httpsphiliplainecomn-httpsphiliplainecompostscross-compiling-docker-imagesn-fri-20-sep-2019-200000-0200nn-nnit-has-been-an-issue-for-a-long-time-to-run-docker-images-on-multiple-architectures-i-remember-the-first-time-i-got-the-idea-to-install-docker-on-my-raspberry-pi-and-i-realized-quickly-that-what-i-was-trying-to-do-would-not-work-the-issue-of-course-was-that-i-was-trying-to-use-an-amd64-compiled-docker-image-on-a-arm-32-bit-cpu-anyone-who-works-with-any-lower-level-languages-would-call-me-an-idiot-for-realizing-this-sooner-than-later-i-would-agree-with-them-docker-just-seems-to-work-like-magic-running-on-most-machines-without-any-issue-like-running-linux-containers-on-windows-one-thing-that-has-not-been-easy-though-is-building-docker-images-on-one-type-of-cpu-and-running-them-on-another" title="Permanent link">&para;</a></h1>
+<h1 id="cross-compiling-docker-images">Cross Compiling Docker Images<a class="headerlink" href="#cross-compiling-docker-images" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://philiplaine.com
+<strong>链接:</strong> https://philiplaine.com/posts/cross-compiling-docker-images/
+<strong>日期:</strong> Fri, 20 Sep 2019 20:00:00 +0200</p>
+<hr />
+<p><a href="https://philiplaine.com/">Philip Laine</a></p>
+<p><img alt="Author Image" src="https://philiplaine.com/images/philip.png" /></p>
+<p>random thoughts about software development</p>
+<p>Philip Laine</p>
+<ul>
+<li><a href="/posts/">Posts</a></li>
+<li><a href="/portfolio/">Portfolio</a></li>
+</ul>
+<p><a href="https://github.com/phillebaba"> </a><a href="https://linkedin.com/in/phillebaba"> </a><a href="mailto:philip.laine@gmail.com"></a></p>
+<h1 id="cross-compiling-docker-images_1">Cross Compiling Docker Images<a class="headerlink" href="#cross-compiling-docker-images_1" title="Permanent link">&para;</a></h1>
+<p>__Sep 20, 2019<br />
+ __4 min read</p>
+<p>It has been an issue for a long time to run Docker images on multiple architectures. I remember the first time I got the idea to install Docker on my Raspberry Pi and I realized quickly that what I was trying to do would not work. The issue of course was that I was trying to use an AMD64 compiled Docker image on a ARM 32 bit CPU. Anyone who works with any lower level languages would call me an idiot for realizing this sooner than later. I would agree with them. Docker just seems to work like magic, running on most machines without any issue, like running Linux containers on Windows. One thing that has not been easy though is building Docker images on one type of CPU and running them on another.</p>
+<p>Some of you might ask the question why even bother? Its a fair question as most consumer desktops and cloud VM instances run on AMD64 based processors. My first answer would be why not? We live in a world where a lot of languages have excellent support for cross compiling for different architectures, like <a href="https://github.com/mitchellh/gox">go</a> and <a href="https://github.com/rust-embedded/cross">rust</a>. While the other are platform agnostic (for the most part) like python and javascript. So the barrier of entry to the multi architecture docker image seems to be very low right now. On a more serious note we are seeing a shift in the computing world that could take us away from the single dominating architecture with some competition in the form of <a href="https://appleinsider.com/articles/19/04/08/steve-jobs-predicted-the-macs-move-from-intel-to-arm-processors">Apple</a> and <a href="https://aws.amazon.com/blogs/aws/new-ec2-instances-a1-powered-by-arm-based-aws-graviton-processors/">AWS</a>. I can't predict if this will actually happen or even succeed, but what I can say is that it will be interesting.</p>
+<h1 id="you-dont-have-to-convince-me-anymore-how-do-i-get-started">You don't have to convince me anymore! How do I get started?<a class="headerlink" href="#you-dont-have-to-convince-me-anymore-how-do-i-get-started" title="Permanent link">&para;</a></h1>
+<p>The simplest answer is making sure you have downloaded <a href="https://docs.docker.com/engine/release-notes/#19030">Docker CE 19.03</a> or later. This is because it includes <a href="https://github.com/docker/buildx">buildx</a> as part of the experimental CLI. Buildx is as "Docker CLI plugin for extended build capabilities with BuildKit" according to its own README. What it allows you to do is to easily build Docker images for multiple architectures/platforms at the same time, but this only gets you half way there as you will not be able to build ARM Docker images on your AMD64 machine. The easies way to solve this is with QEMU emulation to allow execution of multiple architectures on the same node.</p>
+<h1 id="give-me-the-commands-already">Give me the commands already!<a class="headerlink" href="#give-me-the-commands-already" title="Permanent link">&para;</a></h1>
+<p>So if you want to build a ARM Docker image on your AMD64 machine, all you need to do is to enable QEMU emulation, create a builder instance, and build the image. Say you have the following main.go and Dockefile that you want to build for ARM on a AMD64 machine.</p>
+<p><strong>main.go</strong></p>
+<div class="language-text highlight"><pre><span></span><code> package main
+import &quot;fmt&quot;
+func main() {
+    fmt.Println(&quot;hello world&quot;)
+}
+</code></pre></div>
+<p><strong>Dockerfile</strong></p>
+<div class="language-text highlight"><pre><span></span><code> FROM golang:latest
+WORKDIR /app
+COPY main.go .
+RUN go build -o main .
+CMD [&quot;./main&quot;]
+</code></pre></div>
+<p>Then you need to run the following commands.</p>
+<div class="language-text highlight"><pre><span></span><code>docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+docker buildx create --use --name cross --platform &quot;linux/arm&quot;
+docker buildx build --platform linux/arm -t demo --load .
+</code></pre></div>
+<p>This will build a ARM Docker image and load it into your local Docker daemon. Say you have a CI pipeline and you want to build and push docker images for multiple architectures with minimal configuration. Well then you can push directly to your registry given that you are authenticated.</p>
+<div class="language-text highlight"><pre><span></span><code>docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+docker buildx create --use --name cross --platform &quot;linux/arm64,linux/arm,linux/amd64&quot;
+docker buildx build --platform &quot;linux/arm64,linux/arm,linux/amd64&quot; -t demo --push .
+</code></pre></div>
+<p>This will build and push a Docker image for ARM64, ARM, and AMD64. It will also push a manifest to the registry so that when you pull an image to your ARM node the correct image will be fetched. Note that 3 independent images will be pushed to the registry, but the experience should be seamless across machines with different architectures. If you want to read more about how Docker manifests <a href="https://stackoverflow.com/a/47023753/1322872">here is a good StackOverflow answer</a> to get you started, otherwise have fun building multi arch Docker images!</p>
+<p><a href="/posts/ubiquiti-and-vpn-clients/">__ Ubiquiti And VPN Clients </a><a href="/posts/getting-forked-by-microsoft/">Getting Forked by Microsoft __</a></p>
 
 
 
@@ -425,7 +473,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:06:05 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
   </span>
 
     

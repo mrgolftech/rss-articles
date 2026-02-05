@@ -381,36 +381,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#now-we-really-have-a-problem" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Now, we really have a problem.
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tips-for-writing-a-pre-push-hook" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tips for writing a pre-push hook
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -439,6 +409,10 @@
 <strong>链接:</strong> https://jyn.dev/pre-commit-hooks-are-fundamentally-broken/
 <strong>日期:</strong> 2025-12-26T00:00:00+00:00</p>
 <hr />
+<p><a href="/">the website of jyn</a> menu</p>
+<p><a href="/talks/">talks</a> <a href="/about/">about</a> <a href="/computer-of-the-future">the computer of the next 200 years</a></p>
+<h1 id="pre-commit-hooks-are-fundamentally-broken_1">pre-commit hooks are fundamentally broken<a class="headerlink" href="#pre-commit-hooks-are-fundamentally-broken_1" title="Permanent link">&para;</a></h1>
+<p>2025-12-26  • <a href="https://jyn.dev/tags/git/">git</a> • <a href="https://jyn.dev/tags/workflows/">workflows</a> • <a href="https://jyn.dev/tags/devtools/">devtools</a></p>
 <p>Let's start a new Rust project.</p>
 <div class="language-text highlight"><pre><span></span><code>$ mkdir best-fizzbuzz-ever
 $ cd best-fizzbuzz-ever
@@ -497,7 +471,7 @@ fn main() { for i in 0.. {
     println (&quot;fizzbuzz&quot;);
 }}
 </code></pre></div>
-<p>Maybe we can make the script smarter? Let's checkout all the files in the index into a temporary directory and run our pre-commit hook there. <a href="https://jyn.dev/pre-commit-hooks-are-fundamentally-broken/#fn-4">1</a></p>
+<p>Maybe we can make the script smarter? Let's checkout all the files in the index into a temporary directory and run our pre-commit hook there. 1</p>
 <div class="language-text highlight"><pre><span></span><code>$ cat &lt;&lt; &#39;EOF&#39; &gt; pre-commit
 #!/bin/sh
 set -eu
@@ -589,27 +563,27 @@ $ git commit --message &quot;Add print.rs&quot;
 reword 3d1bbf7 Add print.rs
 # Rebase f2925bc..3d1bbf7 onto f2925bc (1 command)
 </code></pre></div>
-<h2 id="now-we-really-have-a-problem">Now, we <em>really</em> have a problem.<a href="https://jyn.dev/pre-commit-hooks-are-fundamentally-broken/#now-we-really-have-a-problem"></a><a class="headerlink" href="#now-we-really-have-a-problem" title="Permanent link">&para;</a></h2>
+<h2 id="now-we-really-have-a-problem">Now, we <em>really</em> have a problem.<a class="headerlink" href="#now-we-really-have-a-problem" title="Permanent link">&para;</a></h2>
 <div class="language-text highlight"><pre><span></span><code>Error: file `/tmp/best-fizzbuzz-ever-pre-commit.p3az/*.rs` does not exist
 Could not apply 3d1bbf7... Add print.rs
 </code></pre></div>
 <p>Two things went wrong here:</p>
 <ol>
 <li>Our pre-commit hook can't handle commits that don't have any Rust files.</li>
-<li>Our pre-commit hook <em>ran on a branch we were rebasing</em>. <a href="https://jyn.dev/pre-commit-hooks-are-fundamentally-broken/#fn-2">2</a></li>
+<li>Our pre-commit hook <em>ran on a branch we were rebasing</em>. 2</li>
 </ol>
 <p>Fixing the first thing doesn't really help us, because we don't control other people's branches. They might have used <code>git commit --no-verify</code>. They might not even have a pre-commit hook installed. They might have had a branch that passed the hook when they originally wrote it, but not after a rebase (e.g. if your hook is <code>cargo check</code> or something like that). They might have had a branch that used an old version of the hook that didn't have as many checks as a later version.</p>
 <p>Our only real choice here is to pass <code>--no-verify</code> to <code>git rebase</code> every time we run it, and to <code>git commit</code> for every commit in the rebase we modify, and possibly even to every <code>git merge</code> we run outside of a rebase.</p>
 <p>This is because pre-commit hooks are a <em>fundamentally broken idea</em>. Code does not exist in isolation. Commits that are local to a developer machine do not ever go through CI. Commits don't even necessarily mean that that the code is ready to publish—pre-commit hooks don't run on <code>git stash</code> for a reason! I don't use <code>git stash</code>, I use <code>git commit</code> so that my stashes are tied to a branch, and hooks completely break this workflow.</p>
 <p>More than that, pre-commit hooks are <em>preventing you from saving your work</em>. There should be a <em>really, really good reason</em> to prevent you from saving your work, and IMO "doesn't pass the test suite" is not that. I have similar feelings about format-on-save hooks.</p>
 <p>There are a <a href="https://blog.plover.com/prog/git/hook-disaster.html">bunch</a> of <a href="https://dev.to/afl_ext/are-pre-commit-git-hooks-a-good-idea-i-dont-think-so-38j6">other</a> <a href="https://github.com/rust-lang/rust/issues/77620">footguns</a> with pre-commit hooks. This doesn't even count the fact that nearly all pre-commit hooks are implemented in a broken way and just blindly run on the worktree, and are slow or unreliable or both. Don't get me started on pre-commit hooks that try to add things to the commit you're about to make, or projects that try to automatically install a hook when you run the test suite.</p>
-<p>The <a href="https://pre-commit.com/"><code>pre-commit</code></a> framework (or its cousin, <a href="https://github.com/lint-staged/lint-staged">lint-staged</a>) does <em>not</em> fix this. It fixes the issues about running on the index by stashing your changes with <a href="https://git-scm.com/docs/git-stash#Documentation/git-stash.txt---keep-index"><code>--keep-index</code></a>, which works but modifies your git state. It doesn't fix the issues about running during a rebase, nor does it prevent hooks from trying to add things to the current commit. <a href="https://jyn.dev/pre-commit-hooks-are-fundamentally-broken/#fn-lint-staged">3</a></p>
+<p>The <a href="https://pre-commit.com/"><code>pre-commit</code></a> framework (or its cousin, <a href="https://github.com/lint-staged/lint-staged">lint-staged</a>) does <em>not</em> fix this. It fixes the issues about running on the index by stashing your changes with <a href="https://git-scm.com/docs/git-stash#Documentation/git-stash.txt---keep-index"><code>--keep-index</code></a>, which works but modifies your git state. It doesn't fix the issues about running during a rebase, nor does it prevent hooks from trying to add things to the current commit. 3</p>
 <p>"Just don't write bad hooks" doesn't work if I'm working on someone else's project where I don't control the hook.</p>
-<p>Please just don't use <code>pre-commit</code> hooks. Use <code>pre-push</code> instead. <a href="https://jyn.dev/pre-commit-hooks-are-fundamentally-broken/#fn-1">4</a> <code>pre-push</code> hooks nearly avoid all of these issues.</p>
+<p>Please just don't use <code>pre-commit</code> hooks. Use <code>pre-push</code> instead. 4 <code>pre-push</code> hooks nearly avoid all of these issues.</p>
 <p>The only use case where I think pre-commit hooks are a good idea is for things that must <em>never</em> committed, that are worth interrupting a complicated rebase to prevent; namely: credentials. Once credentials are committed they're quite difficult to get out, and even harder to be sure you haven't missed them.</p>
-<h2 id="tips-for-writing-a-pre-push-hook">Tips for writing a <code>pre-push</code> hook<a href="https://jyn.dev/pre-commit-hooks-are-fundamentally-broken/#tips-for-writing-a-pre-push-hook"></a><a class="headerlink" href="#tips-for-writing-a-pre-push-hook" title="Permanent link">&para;</a></h2>
+<h2 id="tips-for-writing-a-pre-push-hook">Tips for writing a <code>pre-push</code> hook<a class="headerlink" href="#tips-for-writing-a-pre-push-hook" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Run on the index, not the working tree, as described above. <a href="https://jyn.dev/pre-commit-hooks-are-fundamentally-broken/#fn-3">5</a></li>
+<li>Run on the index, not the working tree, as described above. 5</li>
 <li>Only add checks that are fast and reliable. Checks that touch the network should never go in a hook. Checks that are slow and require an up-to-date build cache should never go in a hook. Checks that require credentials or a running local service should never go in a hook.</li>
 <li>Be as quiet as possible. This hook is running buried inside a bunch of other commands, often without the developer knowing that the hook is going to run. Don't hide other important output behind a wall of progress messages.</li>
 <li>Don't set the hook up automatically. Whatever tool you use that promises to make this reliable is wrong. There is not a way to do this reliably, and the number of times it's broken on me is more than I can count. Please just add docs for how to set it up manually, prominantly featured in your CONTRIBUTING docs. (You do have contributing docs, right?)</li>
@@ -618,21 +592,34 @@ Could not apply 3d1bbf7... Add print.rs
 <p>And don't write <code>pre-commit</code> hooks!</p>
 <ol>
 <li>
-<p>This is really quite slow on large enough repos, but there's not any real alternative. <code>git stash --keep-index</code> messes with git index state and also with your stashes. The only VCS that exposes a FUSE filesystem of its commits is <a href="https://github.com/facebook/sapling/blob/main/eden/fs/docs/Overview.md">Sapling</a>, which is poorly supported outside Facebook. The best you can do is give up on looking at the whole working copy and only write hooks that read a single file at a time. <a href="https://jyn.dev/pre-commit-hooks-are-fundamentally-broken/#fr-4-1">↩</a></p>
+<p>This is really quite slow on large enough repos, but there's not any real alternative. <code>git stash --keep-index</code> messes with git index state and also with your stashes. The only VCS that exposes a FUSE filesystem of its commits is <a href="https://github.com/facebook/sapling/blob/main/eden/fs/docs/Overview.md">Sapling</a>, which is poorly supported outside Facebook. The best you can do is give up on looking at the whole working copy and only write hooks that read a single file at a time. ↩</p>
 </li>
 <li>
-<p>By default this doesn't happen when running bare <code>rebase</code>, but the second you add <code>--interactive</code>, nearly anything you do runs a hook. Hooks will also run when you attempt to resolve merge conflicts. <a href="https://jyn.dev/pre-commit-hooks-are-fundamentally-broken/#fr-2-1">↩</a></p>
+<p>By default this doesn't happen when running bare <code>rebase</code>, but the second you add <code>--interactive</code>, nearly anything you do runs a hook. Hooks will also run when you attempt to resolve merge conflicts. ↩</p>
 </li>
 <li>
-<p><code>lint-staged</code> does actually have a <code>--fail-on-changes</code> flag which aborts the commit, but that still modifies the working tree, and it's not on by default. <a href="https://jyn.dev/pre-commit-hooks-are-fundamentally-broken/#fr-lint-staged-1">↩</a></p>
+<p><code>lint-staged</code> does actually have a <code>--fail-on-changes</code> flag which aborts the commit, but that still modifies the working tree, and it's not on by default. ↩</p>
 </li>
 <li>
-<p>For more info about the difference, and a full list of possible hooks, see <a href="https://git-scm.com/docs/githooks"><code>man 5 githooks</code></a>. <a href="https://jyn.dev/pre-commit-hooks-are-fundamentally-broken/#fr-1-1">↩</a></p>
+<p>For more info about the difference, and a full list of possible hooks, see <a href="https://git-scm.com/docs/githooks"><code>man 5 githooks</code></a>. ↩</p>
 </li>
 <li>
-<p>Notice that I don't say "only run on changed files". That's because it's <a href="https://lore.kernel.org/git/CAHnEOG2o784dk+OpkGt-1qjRJb34=sFMJvh-JRJ3v+GNBxFywQ@mail.gmail.com/">not actually possible to reliably determine which branch the current commit is based on</a>, the best you can do is pick a random branch that looks likely. <a href="https://jyn.dev/pre-commit-hooks-are-fundamentally-broken/#fr-3-1">↩</a></p>
+<p>Notice that I don't say "only run on changed files". That's because it's <a href="https://lore.kernel.org/git/CAHnEOG2o784dk+OpkGt-1qjRJb34=sFMJvh-JRJ3v+GNBxFywQ@mail.gmail.com/">not actually possible to reliably determine which branch the current commit is based on</a>, the best you can do is pick a random branch that looks likely. ↩</p>
 </li>
 </ol>
+<hr />
+<p>Discuss on <a href="https://hn.algolia.com/?query=jyn.dev/pre-commit-hooks-are-fundamentally-broken/&amp;type=story">Hacker News</a>, <a href="https://lobste.rs/stories/url/latest?url=https://jyn.dev/pre-commit-hooks-are-fundamentally-broken/">Lobste.rs</a>, <a href="https://tech.lgbt/@jyn/115787459350131224">Mastodon</a>, or <a href="https://bsky.app/profile/jyn.dev/post/3mavyvzwiqs2k">Bluesky</a></p>
+<h2 id="the-website-of-jyn"><a href="https://jyn.dev">the website of jyn</a><a class="headerlink" href="#the-website-of-jyn" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="/cdn-cgi/l/email-protection#6406080b03240e1d0a4a000112">[email protected]</a></li>
+<li><a href="https://jyn.dev/assets/Resume.pdf">Resume</a> </li>
+</ul>
+<p><a href="/atom.xml"><img alt="" src="/assets/rss.png" /> Subscribe via RSS</a></p>
+<ul>
+<li><a href="https://github.com/jyn514">github logo jyn514</a></li>
+<li><a href="https://www.linkedin.com/in/jynelson514"> LinkedIn logo image/svg+xml LinkedIn logo jynelson514 </a></li>
+</ul>
+<p>use pre-push hooks instead</p>
 
 
 
@@ -653,7 +640,7 @@ Could not apply 3d1bbf7... Add print.rs
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:06:05 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
   </span>
 
     

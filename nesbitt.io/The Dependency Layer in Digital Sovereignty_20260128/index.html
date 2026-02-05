@@ -405,458 +405,281 @@
 
 
 <h1 id="the-dependency-layer-in-digital-sovereignty">The Dependency Layer in Digital Sovereignty<a class="headerlink" href="#the-dependency-layer-in-digital-sovereignty" title="Permanent link">&para;</a></h1>
-<p><strong>来源:</strong> <a href="https://nesbitt.io/feed">nesbitt.io</a>
-<strong>发布时间:</strong> 2026-01-28T10:00:00+00:00
-<strong>链接:</strong> https://nesbitt.io/2026/01/28/the-dependency-layer-in-digital-sovereignty.html</p>
+<p><strong>来源:</strong> https://nesbitt.io
+<strong>链接:</strong> https://nesbitt.io/2026/01/28/the-dependency-layer-in-digital-sovereignty.html
+<strong>日期:</strong> 2026-01-28T10:00:00+00:00</p>
 <hr />
-<p>{'type': 'text/html', 'language': None, 'base': 'https://nesbitt.io/2026/01/28/the-dependency-layer-in-digital-sovereignty.html', 'value': '
-David Eaves recently argued that
-the path to tech sovereignty runs through commodification
-, not duplication. Europe shouldn’t try to build its own AWS. Instead, governments should use procurement power to enforce interoperability standards. The S3 API became a de facto standard that lets you move between providers, reducing switching costs. If governments required that kind of compatibility as a condition for contracts, smaller providers could compete. Sovereignty through standards rather than state-owned infrastructure.
-\n\n
-The same logic applies to
-the software supply chain
-, though that layer gets less attention in sovereignty discussions than cloud and storage.
-\n\n
-Most git forges are US-based:
-\n\n
-\n
-\n
-\n
-Forge
-\n
-Owner
-\n
-Country
-\n
-\n
-\n
-\n
-\n
-GitHub
-\n
-Microsoft
-\n
-US
-\n
-\n
-\n
-GitLab
-\n
-GitLab Inc
-\n
-US
-\n
-\n
-\n
-Gitea
-\n
-Gitea Ltd
-\n
-US
-\n
-\n
-\n
-HuggingFace
-\n
-Hugging Face Inc
-\n
-US
-\n
-\n
-\n
-\n\n
-Codeberg runs
-Forgejo
-, which doesn’t have dependency graph features yet, so it’s outside the scope here.
-\n\n
-The dependency intelligence layer built on top of these forges is almost entirely US-based:
-\n\n
-\n
-\n
-\n
-Service
-\n
-Owner
-\n
-Country
-\n
-\n
-\n
-\n
-\n
-Snyk
-\n
-Snyk Ltd
-\n
-US
-\n
-\n
-\n
-Socket
-\n
-Socket Inc
-\n
-US
-\n
-\n
-\n
-Sonatype
-\n
-Sonatype Inc
-\n
-US
-\n
-\n
-\n
-Veracode
-\n
-Veracode Inc
-\n
-US
-\n
-\n
-\n
-Black Duck
-\n
-Synopsys
-\n
-US
-\n
-\n
-\n
-Dependabot
-\n
-Microsoft
-\n
-US
-\n
-\n
-\n
-Renovate
-\n
-Mend.io
-\n
-US
-\n
-\n
-\n
-deps.dev
-\n
-Google
-\n
-US
-\n
-\n
-\n
-GitHub Dependency Graph
-\n
-Microsoft
-\n
-US
-\n
-\n
-\n
-GitHub Advisory Database
-\n
-Microsoft
-\n
-US
-\n
-\n
-\n
-NVD
-\n
-NIST
-\n
-US
-\n
-\n
-\n
-Sigstore
-\n
-Google/OpenSSF
-\n
-US
-\n
-\n
-\n
-JFrog Artifactory
-\n
-JFrog
-\n
-US
-\n
-\n
-\n
-GitHub Packages
-\n
-Microsoft
-\n
-US
-\n
-\n
-\n
-AWS CodeArtifact
-\n
-Amazon
-\n
-US
-\n
-\n
-\n
-Azure Artifacts
-\n
-Microsoft
-\n
-US
-\n
-\n
-\n
-Google Artifact Registry
-\n
-Google
-\n
-US
-\n
-\n
-\n
-Docker Hub
-\n
-Docker Inc
-\n
-US
-\n
-\n
-\n
-Amazon ECR
-\n
-Amazon
-\n
-US
-\n
-\n
-\n
-Quay
-\n
-Red Hat/IBM
-\n
-US
-\n
-\n
-\n
-\n\n
-The
-package registries
-follow a similar pattern, with a few European exceptions:
-\n\n
-\n
-\n
-\n
-Registry
-\n
-Owner
-\n
-Country
-\n
-\n
-\n
-\n
-\n
-npm
-\n
-Microsoft
-\n
-US
-\n
-\n
-\n
-PyPI
-\n
-Python Software Foundation
-\n
-US
-\n
-\n
-\n
-RubyGems
-\n
-Ruby Central
-\n
-US
-\n
-\n
-\n
-Maven Central
-\n
-Sonatype
-\n
-US
-\n
-\n
-\n
-NuGet
-\n
-Microsoft
-\n
-US
-\n
-\n
-\n
-Crates.io
-\n
-Rust Foundation
-\n
-US
-\n
-\n
-\n
-Go module proxy
-\n
-Google
-\n
-US
-\n
-\n
-\n
-Docker Hub
-\n
-Docker Inc
-\n
-US
-\n
-\n
-\n
-Conda/Anaconda
-\n
-Anaconda Inc
-\n
-US
-\n
-\n
-\n
-CocoaPods
-\n
-CocoaPods
-\n
-US
-\n
-\n
-\n
-Pub.dev
-\n
-Google
-\n
-US
-\n
-\n
-\n
-CPAN
-\n
-Perl Foundation
-\n
-US
-\n
-\n
-\n
-Homebrew
-\n
-Homebrew
-\n
-US
-\n
-\n
-\n
-Hex.pm
-\n
-Six Colors AB
-\n
-Sweden
-\n
-\n
-\n
-Packagist
-\n
-Private Packagist
-\n
-Netherlands
-\n
-\n
-\n
-CRAN
-\n
-R Foundation
-\n
-Austria
-\n
-\n
-\n
-Clojars
-\n
-Clojars
-\n
-Germany
-\n
-\n
-\n
-\n\n
-The security and metadata tooling built on top of these registries tends to be US-based regardless of where the registry itself is hosted.
-\n\n
-A European company running Forgejo for code hosting still typically uses US services for dependency updates, vulnerability scanning, license compliance, and SBOM generation. Self-hosting the forge doesn’t change the intelligence layer.
-\n\n
-Ploum made a related point:
-Europe doesn’t need a European Google
-. The European contribution to software has been infrastructure that serves as collective commons: the web, Linux, Git, VLC, OpenStreetMap. “We don’t want a European Google Maps! We want our institutions at all levels to contribute to OpenStreetMap.” The same framing applies to dependency tooling. Rather than building European alternatives to each US service, invest in open infrastructure that anyone can use.
-\n\n
-Dries Buytaert
-extended this to procurement
-: governments buy from system integrators who package and resell open source, but that money doesn’t reach the maintainers who build it. If procurement scoring rewarded upstream contributions, money would flow differently. Open source is “the only software you can run without permission” and therefore useful for sovereignty, but it needs funding to work.
-\n\n
-Where standards exist and where they don’t
-\n\n
-Eaves’s commodification argument depends on standards to reduce switching costs. In
-the package management landscape
-, some de facto standards have emerged. Git is nearly universal for source hosting. Semver is the dominant versioning scheme, even if ecosystems interpret it differently.
-Lockfile formats
-vary by ecosystem, but they’ve become standards in practice: every dependency scanning company builds the same set of parsers to extract dependency information from all of them. Syft, bibliothecary, gemnasium, osv-scalibr, and others all parse the same formats. I made a
-dataset covering manifest and lockfile examples
-across ecosystems, and a similar
-collection of OpenAPI schemas
-for registry APIs. These are what made git-pkgs come together quickly.
-\n\n
-Beyond those de facto standards, some areas have formal specifications. PURL provides a standardized way to reference packages across ecosystems. OSV and OpenVEX let advisory data flow between systems. CycloneDX and SPDX handle SBOMs. SLSA, in-toto, and TUF cover provenance. OCI standardizes container images.
-\n\n
-Other areas don’t, which keeps switching costs high. Dependency graph APIs vary by platform, vulnerability scanning integration is proprietary per forge, Dependabot and Renovate each have their own config format, and package metadata APIs differ across registries.
-\n\n
-Most standards work in this space focuses on compliance artifacts: SBOMs for the Cyber Resilience Act, attestations for procurement requirements. Less attention goes to the underlying tools developers actually use. The dependency graph that feeds the SBOM generator, the metadata lookup that powers vulnerability scanning, the notification when a new version ships.
-\n\n
-The gap between these columns is where standardization would reduce switching costs. A common dependency graph API would matter more than a European deps.dev. Standardizing how dependency updates get proposed would matter more than a European Dependabot.
-A protocol for package management
-could let different implementations compete on the same interfaces.
-\n\n
-GitHub and GitLab bundle dependency features into their platforms: dependency graphs, vulnerability alerts, automated updates. A self-hosted Forgejo or Gitea instance doesn’t have equivalent tooling. But if those features were built on open standards and open data sources, switching forges wouldn’t mean losing supply chain visibility. The dependency intelligence could come from any provider that implements the same interfaces, rather than being locked to the forge vendor.
-\n\n
-Some gaps need new standards rather than adoption of existing ones. There’s no good specification for package version history across registries. Codemeta describes a package at a point in time, not its release history.
-PkgFed
-proposes using ActivityPub to federate release announcements, similar to how ForgeFed handles forge events.
-\n\n
-What governments and funders could do
-\n\n
-The strategy is to
-unbundle the parts of a package manager
-and standardize them individually. Registry APIs, dependency graphs, vulnerability feeds, update notifications. Each piece can be commodified without replacing entire systems.
-\n\n
-Treat dependency intelligence as infrastructure worth funding directly. The Sovereign Tech Fund model applies: direct funding to open source projects that serve as foundations. Ecosyste.ms, VulnerableCode, OSV, PURL implementations, CycloneDX/SPDX tooling, Forgejo’s dependency features all fit this category.
-\n\n
-Procurement requirements could include open supply chain tooling. If an agency requires SBOMs, they could also require that generation doesn’t depend on proprietary services. If they require vulnerability scanning, the scanner could consume open advisory databases. Germany’s ZenDiS and openCode.de initiatives are relevant here. Connecting them with existing open solutions would be more efficient than starting fresh.
-\n\n
-Supporting Forgejo with work on dependency features would help too. The goal would be feature parity with GitHub and GitLab so self-hosted forges work with the same security tooling.
-\n\n
-Package management is a wicked problem
-, but the dependency intelligence layer is more tractable. Standards exist (PURL, OSV, CycloneDX) and open implementations exist (ecosyste.ms, VulnerableCode), so the gap is investment rather than invention.
-'}</p>
-<hr />
-<p><em>抓取时间: 2026-02-05 12:56:44</em></p>
+<p><a href="/"></a> <a href="/">Andrew Nesbitt</a></p>
+<ul>
+<li><a href="/consulting/"></a>  <a href="https://mastodon.social/@andrewnez"></a>  <a href="https://github.com/andrew"></a>  <a href="/feed.xml"></a></li>
+<li></li>
+</ul>
+<h1 id="the-dependency-layer-in-digital-sovereignty_1">The Dependency Layer in Digital Sovereignty<a class="headerlink" href="#the-dependency-layer-in-digital-sovereignty_1" title="Permanent link">&para;</a></h1>
+<p><a href="/search#package-managers">package-managers</a><a href="/search#idea">idea</a></p>
+<p>Jan 28, 2026 </p>
+<p>David Eaves recently argued that <a href="https://www.techpolicy.press/the-path-to-a-sovereign-tech-stack-is-via-a-commodified-tech-stack/">the path to tech sovereignty runs through commodification</a>, not duplication. Europe shouldn’t try to build its own AWS. Instead, governments should use procurement power to enforce interoperability standards. The S3 API became a de facto standard that lets you move between providers, reducing switching costs. If governments required that kind of compatibility as a condition for contracts, smaller providers could compete. Sovereignty through standards rather than state-owned infrastructure.</p>
+<p>The same logic applies to <a href="/2026/01/03/the-package-management-landscape.html">the software supply chain</a>, though that layer gets less attention in sovereignty discussions than cloud and storage.</p>
+<p>Most git forges are US-based:</p>
+<table>
+<thead>
+<tr>
+<th>Forge</th>
+<th>Owner</th>
+<th>Country</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GitHub</td>
+<td>Microsoft</td>
+<td>US</td>
+</tr>
+<tr>
+<td>GitLab</td>
+<td>GitLab Inc</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Gitea</td>
+<td>Gitea Ltd</td>
+<td>US</td>
+</tr>
+<tr>
+<td>HuggingFace</td>
+<td>Hugging Face Inc</td>
+<td>US</td>
+</tr>
+</tbody>
+</table>
+<p>Codeberg runs <a href="https://codeberg.org/forgejo/forgejo">Forgejo</a>, which doesn’t have dependency graph features yet, so it’s outside the scope here.</p>
+<p>The dependency intelligence layer built on top of these forges is almost entirely US-based:</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Owner</th>
+<th>Country</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Snyk</td>
+<td>Snyk Ltd</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Socket</td>
+<td>Socket Inc</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Sonatype</td>
+<td>Sonatype Inc</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Veracode</td>
+<td>Veracode Inc</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Black Duck</td>
+<td>Synopsys</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Dependabot</td>
+<td>Microsoft</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Renovate</td>
+<td>Mend.io</td>
+<td>US</td>
+</tr>
+<tr>
+<td>deps.dev</td>
+<td>Google</td>
+<td>US</td>
+</tr>
+<tr>
+<td>GitHub Dependency Graph</td>
+<td>Microsoft</td>
+<td>US</td>
+</tr>
+<tr>
+<td>GitHub Advisory Database</td>
+<td>Microsoft</td>
+<td>US</td>
+</tr>
+<tr>
+<td>NVD</td>
+<td>NIST</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Sigstore</td>
+<td>Google/OpenSSF</td>
+<td>US</td>
+</tr>
+<tr>
+<td>JFrog Artifactory</td>
+<td>JFrog</td>
+<td>US</td>
+</tr>
+<tr>
+<td>GitHub Packages</td>
+<td>Microsoft</td>
+<td>US</td>
+</tr>
+<tr>
+<td>AWS CodeArtifact</td>
+<td>Amazon</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Azure Artifacts</td>
+<td>Microsoft</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Google Artifact Registry</td>
+<td>Google</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Docker Hub</td>
+<td>Docker Inc</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Amazon ECR</td>
+<td>Amazon</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Quay</td>
+<td>Red Hat/IBM</td>
+<td>US</td>
+</tr>
+</tbody>
+</table>
+<p>The <a href="/2025/12/29/categorizing-package-registries.html">package registries</a> follow a similar pattern, with a few European exceptions:</p>
+<table>
+<thead>
+<tr>
+<th>Registry</th>
+<th>Owner</th>
+<th>Country</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>npm</td>
+<td>Microsoft</td>
+<td>US</td>
+</tr>
+<tr>
+<td>PyPI</td>
+<td>Python Software Foundation</td>
+<td>US</td>
+</tr>
+<tr>
+<td>RubyGems</td>
+<td>Ruby Central</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Maven Central</td>
+<td>Sonatype</td>
+<td>US</td>
+</tr>
+<tr>
+<td>NuGet</td>
+<td>Microsoft</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Crates.io</td>
+<td>Rust Foundation</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Go module proxy</td>
+<td>Google</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Docker Hub</td>
+<td>Docker Inc</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Conda/Anaconda</td>
+<td>Anaconda Inc</td>
+<td>US</td>
+</tr>
+<tr>
+<td>CocoaPods</td>
+<td>CocoaPods</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Pub.dev</td>
+<td>Google</td>
+<td>US</td>
+</tr>
+<tr>
+<td>CPAN</td>
+<td>Perl Foundation</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Homebrew</td>
+<td>Homebrew</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Hex.pm</td>
+<td>Six Colors AB</td>
+<td>Sweden</td>
+</tr>
+<tr>
+<td>Packagist</td>
+<td>Private Packagist</td>
+<td>Netherlands</td>
+</tr>
+<tr>
+<td>CRAN</td>
+<td>R Foundation</td>
+<td>Austria</td>
+</tr>
+<tr>
+<td>Clojars</td>
+<td>Clojars</td>
+<td>Germany</td>
+</tr>
+</tbody>
+</table>
+<p>The security and metadata tooling built on top of these registries tends to be US-based regardless of where the registry itself is hosted.</p>
+<p>A European company running Forgejo for code hosting still typically uses US services for dependency updates, vulnerability scanning, license compliance, and SBOM generation. Self-hosting the forge doesn’t change the intelligence layer.</p>
+<p>Ploum made a related point: <a href="https://ploum.net/2026-01-22-why-no-european-google.html">Europe doesn’t need a European Google</a>. The European contribution to software has been infrastructure that serves as collective commons: the web, Linux, Git, VLC, OpenStreetMap. “We don’t want a European Google Maps! We want our institutions at all levels to contribute to OpenStreetMap.” The same framing applies to dependency tooling. Rather than building European alternatives to each US service, invest in open infrastructure that anyone can use.</p>
+<p>Dries Buytaert <a href="https://dri.es/funding-open-source-for-digital-sovereignty">extended this to procurement</a>: governments buy from system integrators who package and resell open source, but that money doesn’t reach the maintainers who build it. If procurement scoring rewarded upstream contributions, money would flow differently. Open source is “the only software you can run without permission” and therefore useful for sovereignty, but it needs funding to work.</p>
+<h3 id="where-standards-exist-and-where-they-dont">Where standards exist and where they don’t<a class="headerlink" href="#where-standards-exist-and-where-they-dont" title="Permanent link">&para;</a></h3>
+<p>Eaves’s commodification argument depends on standards to reduce switching costs. In <a href="/2026/01/03/the-package-management-landscape.html">the package management landscape</a>, some de facto standards have emerged. Git is nearly universal for source hosting. Semver is the dominant versioning scheme, even if ecosystems interpret it differently. <a href="/2026/01/17/lockfile-format-design-and-tradeoffs.html">Lockfile formats</a> vary by ecosystem, but they’ve become standards in practice: every dependency scanning company builds the same set of parsers to extract dependency information from all of them. Syft, bibliothecary, gemnasium, osv-scalibr, and others all parse the same formats. I made a <a href="https://github.com/ecosyste-ms/package-manager-manifest-examples">dataset covering manifest and lockfile examples</a> across ecosystems, and a similar <a href="https://github.com/ecosyste-ms/package-manager-openapi-schemas">collection of OpenAPI schemas</a> for registry APIs. These are what made git-pkgs come together quickly.</p>
+<p>Beyond those de facto standards, some areas have formal specifications. PURL provides a standardized way to reference packages across ecosystems. OSV and OpenVEX let advisory data flow between systems. CycloneDX and SPDX handle SBOMs. SLSA, in-toto, and TUF cover provenance. OCI standardizes container images.</p>
+<p>Other areas don’t, which keeps switching costs high. Dependency graph APIs vary by platform, vulnerability scanning integration is proprietary per forge, Dependabot and Renovate each have their own config format, and package metadata APIs differ across registries.</p>
+<p>Most standards work in this space focuses on compliance artifacts: SBOMs for the Cyber Resilience Act, attestations for procurement requirements. Less attention goes to the underlying tools developers actually use. The dependency graph that feeds the SBOM generator, the metadata lookup that powers vulnerability scanning, the notification when a new version ships.</p>
+<p>The gap between these columns is where standardization would reduce switching costs. A common dependency graph API would matter more than a European deps.dev. Standardizing how dependency updates get proposed would matter more than a European Dependabot. <a href="/2026/01/22/a-protocol-for-package-management.html">A protocol for package management</a> could let different implementations compete on the same interfaces.</p>
+<p>GitHub and GitLab bundle dependency features into their platforms: dependency graphs, vulnerability alerts, automated updates. A self-hosted Forgejo or Gitea instance doesn’t have equivalent tooling. But if those features were built on open standards and open data sources, switching forges wouldn’t mean losing supply chain visibility. The dependency intelligence could come from any provider that implements the same interfaces, rather than being locked to the forge vendor.</p>
+<p>Some gaps need new standards rather than adoption of existing ones. There’s no good specification for package version history across registries. Codemeta describes a package at a point in time, not its release history. <a href="/2026/01/25/pkgfed-activitypub-for-package-releases.html">PkgFed</a> proposes using ActivityPub to federate release announcements, similar to how ForgeFed handles forge events.</p>
+<h3 id="what-governments-and-funders-could-do">What governments and funders could do<a class="headerlink" href="#what-governments-and-funders-could-do" title="Permanent link">&para;</a></h3>
+<p>The strategy is to <a href="/2025/12/02/what-is-a-package-manager.html">unbundle the parts of a package manager</a> and standardize them individually. Registry APIs, dependency graphs, vulnerability feeds, update notifications. Each piece can be commodified without replacing entire systems.</p>
+<p>Treat dependency intelligence as infrastructure worth funding directly. The Sovereign Tech Fund model applies: direct funding to open source projects that serve as foundations. Ecosyste.ms, VulnerableCode, OSV, PURL implementations, CycloneDX/SPDX tooling, Forgejo’s dependency features all fit this category.</p>
+<p>Procurement requirements could include open supply chain tooling. If an agency requires SBOMs, they could also require that generation doesn’t depend on proprietary services. If they require vulnerability scanning, the scanner could consume open advisory databases. Germany’s ZenDiS and openCode.de initiatives are relevant here. Connecting them with existing open solutions would be more efficient than starting fresh.</p>
+<p>Supporting Forgejo with work on dependency features would help too. The goal would be feature parity with GitHub and GitLab so self-hosted forges work with the same security tooling.</p>
+<p><a href="/2026/01/23/package-management-is-a-wicked-problem.html">Package management is a wicked problem</a>, but the dependency intelligence layer is more tractable. Standards exist (PURL, OSV, CycloneDX) and open implementations exist (ecosyste.ms, VulnerableCode), so the gap is investment rather than invention.</p>
+<p><a href="/2026/01/28/the-dependency-layer-in-digital-sovereignty.html"></a> <a href="https://mastodon.social/@andrewnez">Mastodon</a> · <a href="https://github.com/andrew">GitHub</a> · <a href="/feed.xml">RSS</a> · <a href="/stats">Stats</a> · <a href="/search">Search</a> · <a href="/about">About</a> <a href="https://github.com/andrew/nesbitt.io/blob/master/_posts/2026-01-28-the-dependency-layer-in-digital-sovereignty.md">View source</a></p>
 
 
 
@@ -877,7 +700,7 @@ Package management is a wicked problem
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:06:05 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
   </span>
 
     

@@ -1,0 +1,1083 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/righto.com/Solving%20the%20NYTimes%20Pips%20puzzle%20with%20a%20constraint%20solver_20260205/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Solving the NYTimes Pips puzzle with a constraint solver - Hacker News 精选博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#solving-the-nytimes-pips-puzzle-with-a-constraint-solver" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Hacker News 精选博客" class="md-header__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker News 精选博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Solving the NYTimes Pips puzzle with a constraint solver
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker News 精选博客" class="md-nav__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hacker News 精选博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/righto.com/Solving the NYTimes Pips puzzle with a constraint solver_20260205.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="solving-the-nytimes-pips-puzzle-with-a-constraint-solver">Solving the NYTimes Pips puzzle with a constraint solver<a class="headerlink" href="#solving-the-nytimes-pips-puzzle-with-a-constraint-solver" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://righto.com
+<strong>链接:</strong> http://www.righto.com/2025/10/solve-nyt-pips-with-constraints.html
+<strong>日期:</strong> 2025-10-18T08:41:00.000-07:00</p>
+<hr />
+<h1 id="ken-shirriffs-blog"><a href="http://www.righto.com/"> Ken Shirriff's blog </a><a class="headerlink" href="#ken-shirriffs-blog" title="Permanent link">&para;</a></h1>
+<p>Computer history, restoring vintage computers, IC reverse engineering, and whatever</p>
+<h3 id="solving-the-nytimes-pips-puzzle-with-a-constraint-solver_1">Solving the NYTimes Pips puzzle with a constraint solver<a class="headerlink" href="#solving-the-nytimes-pips-puzzle-with-a-constraint-solver_1" title="Permanent link">&para;</a></h3>
+<p>The New York Times recently introduced a new daily puzzle called <a href="https://www.nytimes.com/games/pips">Pips</a>. You place a set of dominoes on a grid, satisfying various conditions. For instance, in the puzzle below, the pips (dots) in the purple squares must sum to 8, there must be fewer than 5 pips in the red square, and the pips in the three green squares must be equal. (It doesn't take much thought to solve this "easy" puzzle, but the "medium" and "hard" puzzles are more challenging.)</p>
+<p><a href="https://static.righto.com/images/pips/pips-10-5-easy.jpg"><img alt="The New York Times Pips puzzle from Oct 5, 2025 (easy). Hint: What value must go in the three green squares?" src="https://static.righto.com/images/pips/pips-10-5-easy-w300.jpg" /></a></p>
+<p>The New York Times Pips puzzle from Oct 5, 2025 (easy). Hint: What value must go in the three green squares?</p>
+<p>I was wondering about how to solve these puzzles with a computer. Recently, I saw an article on <a href="https://news.ycombinator.com/item?id=45222695">Hacker News</a>--"<a href="https://buttondown.com/hillelwayne/archive/many-hard-leetcode-problems-are-easy-constraint/">Many hard LeetCode problems are easy constraint problems</a>"--that described the benefits and flexibility of a system called a constraint solver. A constraint solver takes a set of constraints and finds solutions that satisfy the constraints: exactly what Pips requires.</p>
+<p>I figured that solving Pips with a constraint solver would be a good way to learn more about these solvers, but I had several questions. Did constraint solvers require incomprehensible mathematics? How hard was it to express a problem? Would the solver quickly solve the problem, or would it get caught in an exponential search?</p>
+<p>It turns out that using a constraint solver was straightforward; it took me under two hours from knowing nothing about constraint solvers to solving the problem. The solver found solutions in milliseconds (for the most part). However, there were a few bumps along the way. In this blog post, I'll discuss my experience with the <a href="https://www.minizinc.org/">MiniZinc</a>1 constraint modeling system and show how it can solve Pips.</p>
+<h2 id="approaching-the-problem">Approaching the problem<a class="headerlink" href="#approaching-the-problem" title="Permanent link">&para;</a></h2>
+<p>Writing a program for a constraint solver is very different from writing a regular program. Instead of telling the computer <em>how</em> to solve the problem, you tell it <em>what</em> you want: the conditions that must be satisfied. The solver then "magically" finds solutions that satisfy the problem.</p>
+<p>To solve the problem, I created an array called <code>pips</code> that holds the number of domino pips at each position in the grid. Then, the three constraints for the above problem can be expressed as follows. You can see how the constraints directly express the conditions in the puzzle.</p>
+<div class="language-text highlight"><pre><span></span><code>constraint pips[1,1] + pips[2,1] == 8;
+constraint pips[2,3] &lt; 5;
+constraint all_equal([pips[3,1], pips[3,2], pips[3,3]]);
+</code></pre></div>
+<p>Next, I needed to specify where dominoes could be placed for the puzzle. To do this, I defined an array called <code>grid</code> that indicated the allowable positions: 1 indicates a valid position and 0 indicates an invalid position. (If you compare with the puzzle at the top of the article, you can see that the grid below matches its shape.)</p>
+<div class="language-text highlight"><pre><span></span><code>grid = [|
+1,1,0|
+1,1,1|
+1,1,1|];
+</code></pre></div>
+<p>I also defined the set of dominoes for the problem above, specifying the number of spots in each half:</p>
+<div class="language-text highlight"><pre><span></span><code>spots = [|5,1| 1,4| 4,2| 1,3|];
+</code></pre></div>
+<p>So far, the constraints directly match the problem. However, I needed to write some more code to specify how these pieces interact. But before I describe that code, I'll show a solution. I wasn't sure what to expect: would the constraint solver give me a solution or would it spin forever? It turned out to find the unique solution in 109 milliseconds, printing out the solution arrays. The <code>pips</code> array shows the number of pips in each position, while the <code>dominogrid</code> array shows which domino (1 through 4) is in each position.</p>
+<div class="language-text highlight"><pre><span></span><code>pips = 
+[| 4, 2, 0
+ | 4, 5, 3
+ | 1, 1, 1
+ |];
+dominogrid = 
+[| 3, 3, 0
+ | 2, 1, 4
+ | 2, 1, 4
+ |];
+</code></pre></div>
+<p>The text-based solution above is a bit ugly. But it is easy to create graphical output. MiniZinc provides a JavaScript API, so you can easily display solutions on a web page. I wrote a few lines of JavaScript to draw the solution, as shown below. (I just display the numbers since I was too lazy to draw the dots.) Solving this puzzle is not too impressive--it's an "easy" puzzle after all--but I'll show below that the solver can also handle considerably more difficult puzzles.</p>
+<p><a href="https://static.righto.com/images/pips/solution-10-5-easy.jpg"><img alt="Graphical display of the solution." src="https://static.righto.com/images/pips/solution-10-5-easy-w300.jpg" /></a></p>
+<p>Graphical display of the solution.</p>
+<h3 id="details-of-the-code">Details of the code<a class="headerlink" href="#details-of-the-code" title="Permanent link">&para;</a></h3>
+<p>While the above code specifies a particular puzzle, a bit more code is required to define how dominoes and the grid interact. This code may appear strange because it is implemented as constraints, rather than the procedural operations in a normal program.</p>
+<p>My main design decision was how to specify the locations of dominoes. I considered assigning a grid position and orientation to each domino, but it seemed inconvenient to deal with multiple orientations. Instead, I decided to position each half of the domino independently, with an <code>x</code> and <code>y</code> coordinate in the grid.2 I added a constraint that the two halves of each domino had to be in neighboring cells, that is, either the X or Y coordinates had to differ by 1.</p>
+<div class="language-text highlight"><pre><span></span><code>constraint forall(i in DOMINO) (abs(x[i, 1] - x[i, 2]) + abs(y[i, 1] - y[i, 2]) == 1);
+</code></pre></div>
+<p>It took a bit of thought to fill in the <code>pips</code> array with the number of spots on each domino. In a normal programming language, one would loop over the dominoes and store the values into <code>pips</code>. However, here it is done with a constraint so the solver makes sure the values are assigned. Specifically, for each half-domino, the <code>pips</code> array entry at the domino's x/y coordinate must equal the corresponding <code>spots</code> on the domino:</p>
+<div class="language-text highlight"><pre><span></span><code>constraint forall(i in DOMINO, j in HALF) (pips[y[i,j], x[i, j]] == spots[i, j]);
+</code></pre></div>
+<p>I decided to add another array to keep track of which domino is in which position. This array is useful to see the domino locations in the output, but it also keeps dominoes from overlapping. I used a constraint to put each domino's number (1, 2, 3, etc.) into the occupied position of <code>dominogrid</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>constraint forall(i in DOMINO, j in HALF) (dominogrid[y[i,j], x[i, j]] == i);
+</code></pre></div>
+<p>Next, how do we make sure that dominoes only go into positions allowed by <code>grid</code>? I used a constraint that a square in <code>dominogrid</code> must be empty or the corresponding <code>grid</code> must allow a domino.3 This uses the "or" condition, which is expressed as <code>\/</code>, an unusual stylistic choice. (Likewise, "and" is expressed as <code>/\</code>. These correspond to the logical symbols ∨ and ∧.)</p>
+<div class="language-text highlight"><pre><span></span><code>constraint forall(i in 1..H, j in 1..W) (dominogrid[i, j] == 0 \/ grid[i, j] != 0);
+</code></pre></div>
+<p>Honestly, I was worried that I had too many arrays and the solver would end up in a rathole ensuring that the arrays were consistent. But I figured I'd try this brute-force approach and see if it worked. It turns out that it worked for the most part, so I didn't need to do anything more clever.</p>
+<p>Finally, the program requires a few lines to define some constants and variables. The constants below define the number of dominoes and the size of the grid for a particular problem:</p>
+<div class="language-text highlight"><pre><span></span><code>int: NDOMINO = 4; % Number of dominoes in the puzzle
+int: W = 3; % Width of the grid in this puzzle
+int: H = 3; % Height of the grid in this puzzle
+</code></pre></div>
+<p>Next, datatypes are defined to specify the allowable values. This is very important for the solver; it is a "finite domain" solver, so limiting the size of the domains reduces the size of the problem. For this problem, the values are integers in a particular range, called a <code>set</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>set of int: DOMINO = 1..NDOMINO; % Dominoes are numbered 1 to NDOMINO
+set of int: HALF = 1..2; % The domino half is 1 or 2
+set of int: xcoord = 1..W; % Coordinate into the grid
+set of int: ycoord = 1..H;
+</code></pre></div>
+<p>At last, I define the sizes and types of the various arrays that I use. One very important syntax is <code>var</code>, which indicates variables that the solver must determine. Note that the first two arrays, <code>grid</code> and <code>spots</code> do not have <code>var</code> since they are constant, initialized to specify the problem.</p>
+<div class="language-text highlight"><pre><span></span><code>array[1..H,1..W] of 0..1: grid; % The grid defining where dominoes can go
+array[DOMINO, HALF] of int: spots; % The number of spots on each half of each domino
+array[DOMINO, HALF] of var xcoord: x; % X coordinate of each domino half
+array[DOMINO, HALF] of var ycoord: y; % Y coordinate of each domino half
+array[1..H,1..W] of var 0..6: pips; % The number of pips (0 to 6) at each location.
+array[1..H,1..W] of var 0..NDOMINO: dominogrid; % The domino sequence number at each location
+</code></pre></div>
+<p>You can find all the code on <a href="https://github.com/shirriff/pips">GitHub</a>. One weird thing is that because the code is not procedural, the lines can be in any order. You can use arrays or constants before you use them. You can even move <code>include</code> statements to the end of the file if you want!</p>
+<h2 id="complications">Complications<a class="headerlink" href="#complications" title="Permanent link">&para;</a></h2>
+<p>Overall, the solver was much easier to use than I expected. However, there were a few complications.</p>
+<p>By changing a setting, the solver can find multiple solutions instead of stopping after the first. However, when I tried this, the solver generated thousands of meaningless solutions. A closer look showed that the problem was that the solver was putting arbitrary numbers into the "empty" cells, creating valid but pointlessly different solutions. It turns out that I didn't explicitly forbid this, so the sneaky constraint solver went ahead and generated tons of solutions that I didn't want. Adding another constraint fixed the problem. The moral is that even if you think your constraints are clear, solvers are very good at finding unwanted solutions that technically satisfy the constraints. 4</p>
+<p>A second problem is that if you do something wrong, the solver simply says that the problem is unsatisfiable. Maybe there's a clever way of debugging, but I ended up removing constraints until the problem can be satisfied, and then see what I did wrong with that constraint. (For instance, I got the array indices backward at one point, making the problem insoluble.)</p>
+<p>The most concerning issue is the unpredictability of the solver: maybe it will take milliseconds or maybe it will take hours. For instance, the Oct 5 hard Pips puzzle (below) caused the solver to take minutes for no apparent reason. However, the MiniZinc IDE supports different solver backends. I switched from the default <a href="https://www.gecode.dev/publications.html">Gecode</a> solver to <a href="https://github.com/chuffed/chuffed">Chuffed</a>, and it immediately found numerous solutions, 384 to be precise. (Sometimes the Pips puzzles sometimes have multiple solutions, which players find <a href="https://www.reddit.com/r/nytpips/comments/1nyfk5u/sunday_oct_5_2025_pips_49_thread/">controversial</a>.) I suspect that the multiple solutions messed up the Gecode solver somehow, perhaps because it couldn't narrow down a "good" branch in the search tree. For a benchmark of the different solvers, see the footnote.5</p>
+<p><a href="https://static.righto.com/images/pips/solutions-10-5-hard.jpg"><img alt="Two of the 384 solutions to the NYT Pips puzzle from Oct 5, 2025 (hard difficulty)." src="https://static.righto.com/images/pips/solutions-10-5-hard-w600.jpg" /></a></p>
+<p>Two of the 384 solutions to the NYT Pips puzzle from Oct 5, 2025 (hard difficulty).</p>
+<h2 id="how-does-a-constraint-solver-work">How does a constraint solver work?<a class="headerlink" href="#how-does-a-constraint-solver-work" title="Permanent link">&para;</a></h2>
+<p>If you were writing a program to solve Pips from scratch, you'd probably have a loop to try assigning dominoes to positions. The problem is that the problem grows exponentially. If you have 16 dominoes, there are 16 choices for the first domino, 15 choices for the second, and so forth, so about 16! combinations in total, and that's ignoring orientations. You can think of this as a search tree: at the first step, you have 16 branches. For the next step, each branch has 15 sub-branches. Each sub-branch has 14 sub-sub-branches, and so forth.</p>
+<p>An easy optimization is to check the constraints after each domino is added. For instance, as soon as the "less than 5" constraint is violated, you can <a href="https://en.wikipedia.org/wiki/Backtracking">backtrack</a> and skip that entire section of the tree. In this way, only a subset of the tree needs to be searched; the number of branches will be large, but hopefully manageable.</p>
+<p>A constraint solver works similarly, but in a more abstract way. The constraint solver assigns values to the variables, backtracking when a conflict is detected. Since the underlying problem is typically NP-complete, the solver uses heuristics to attempt to improve performance. For instance, variables can be assigned in different orders. The solver attempts to generate conflicts as soon as possible so large pieces of the search tree can be pruned sooner rather than later. (In the domino case, this corresponds to placing dominoes in places with the tightest constraints, rather than scattering them around the puzzle in "easy" spots.)</p>
+<p>Another technique is constraint propagation. The idea is that you can derive new constraints and catch conflicts earlier. For instance, suppose you have a problem with the constraints "a equals c" and "b equals c". If you assign "a=1" and "b=2", you won't find a conflict until later, when you try to find a value for "c". But with constraint propagation, you can derive a new constraint "a equals b", and the problem will turn up immediately. (Solvers handle more complicated constraint propagation, such as inequalities.) The tradeoff is that generating new constraints takes time and makes the problem larger, so constraint propagation can make the solver slower. Thus, heuristics are used to decide when to apply constraint propagation.</p>
+<p>Researchers are actively developing new algorithms, heuristics, and optimizations6 such as backtracking more aggressively (called "backjumping"), keeping track of failing variable assignments (called "nogoods"), and leveraging Boolean SAT (satisfiability) solvers. Solvers compete in <a href="https://www.minizinc.org/challenge/">annual challenges</a> to test these techniques against each other. The nice thing about a constraint solver is that you don't need to know anything about these techniques; they are applied automatically.</p>
+<h2 id="conclusions">Conclusions<a class="headerlink" href="#conclusions" title="Permanent link">&para;</a></h2>
+<p>I hope this has convinced you that constraint solvers are interesting, not too scary, and can solve real problems with little effort. Even as a beginner, I was able to get started with MiniZinc quickly. (I read half the <a href="https://docs.minizinc.dev/en/stable/modelling.html">tutorial</a> and then jumped into programming.)</p>
+<p>One reason to look at constraint solvers is that they are a completely different programming paradigm. Using a constraint solver is like programming on a higher level, not worrying about how the problem gets solved or what algorithm gets used. Moreover, analyzing a problem in terms of constraints is a different way of thinking about algorithms. Some of the time it's frustrating when you can't use familiar constructs such as loops and assignments, but it expands your horizons.</p>
+<p>Finally, writing code to solve Pips is more fun than solving the problems by hand, at least in my opinion, so give it a try!</p>
+<p>For more, follow me on Bluesky (<a href="https://bsky.app/profile/righto.com">@righto.com</a>), Mastodon (<a href="https://oldbytes.space/@kenshirriff">@[email protected]</a>), <a href="http://www.righto.com/feeds/posts/default">RSS</a>, or subscribe <a href="https://righto.kit.com/20bf534dff">here</a>.</p>
+<p><a href="https://static.righto.com/images/pips/solution-9-21-hard.jpg"><img alt="Solution to the Pips puzzle, September 21, 2005 (hard). This puzzle has regions that must all be equal (=) and regions that must all be different (≠). Conveniently, MiniZinc has all_equal and alldifferent constraint functions." src="https://static.righto.com/images/pips/solution-9-21-hard-w330.jpg" /></a></p>
+<p>Solution to the Pips puzzle, September 21, 2005 (hard). This puzzle has regions that must all be equal (=) and regions that must all be different (≠). Conveniently, MiniZinc has <code>all_equal</code> and <code>alldifferent</code> constraint functions.</p>
+<h2 id="notes-and-references">Notes and references<a class="headerlink" href="#notes-and-references" title="Permanent link">&para;</a></h2>
+<ol>
+<li>I started by downloading the <a href="https://www.minizinc.org/">MiniZinc IDE</a> and reading the <a href="https://docs.minizinc.dev/en/stable/part_2_tutorial.html">MiniZinc tutorial</a>. The MiniZinc IDE is straightforward, with an editor window at the top and an output window at the bottom. Clicking the "Run" button causes it to generate a solution.</li>
+</ol>
+<p><a href="https://static.righto.com/images/pips/ide.jpg"><img alt="Screenshot of the MiniZinc IDE. Click for a larger view." src="https://static.righto.com/images/pips/ide-w600.jpg" /></a></p>
+<p>Screenshot of the MiniZinc IDE. Click for a larger view.</p>
+<p>↩</p>
+<ol>
+<li>
+<p>It might be cleaner to combine the X and Y coordinates into a single <code>Point</code> type, using a MiniZinc <a href="https://docs.minizinc.dev/en/stable/tuple_and_record_types.html">record type</a>. ↩</p>
+</li>
+<li>
+<p>I later decided that it made more sense to enforce that <code>dominogrid</code> is empty if and only if <code>grid</code> is 0 at that point, although it doesn't affect the solution. This constraint uses the "if and only if" operator <code>&lt;-&gt;</code>.</p>
+<div class="language-text highlight"><pre><span></span><code> constraint forall(i in 1..H, j in 1..W) (dominogrid[i, j] == 0 &lt;-&gt; grid[i, j] == 0);
+</code></pre></div>
+</li>
+</ol>
+<p>↩</p>
+<ol>
+<li>To prevent the solver from putting arbitrary numbers in the unused positions of <code>pips</code>, I added a constraint to force these values to be zero:<div class="language-text highlight"><pre><span></span><code> constraint forall(i in 1..H, j in 1..W) (grid[i, j] == 0 -&gt; pips[i, j] == 0);
+</code></pre></div>
+</li>
+</ol>
+<p>Generating multiple solutions had a second issue, which I expected: A symmetric domino can be placed in two redundant ways. For instance, a double-six domino can be flipped to produce a solution that is technically different but looks the same. I fixed this by adding constraints for each symmetric domino to allow only one of the two redundant positions. The constraint below forces a preferred orientation for symmetric dominoes.</p>
+<div class="language-text highlight"><pre><span></span><code>     constraint forall(i in DOMINO) (spots[i,1] != spots[i,2] \/ x[i,1] &gt; x[i,2] \/ (x[i,1] == x[i,2] /\ y[i,1] &gt; y[i,2]));
+</code></pre></div>
+<p>To enable multiple solutions in MiniZinc, the setting is under Show Configuration Editor &gt; User Defined Behavior &gt; Satisfaction Problems or the <code>--all</code> flag from the command line. ↩</p>
+<ol>
+<li>MiniZinc has five solvers that can solve this sort of integer problem: <a href="https://github.com/chuffed/chuffed">Chuffed</a>, <a href="https://developers.google.com/optimization/cp/cp_solver">OR Tools CP-SAT</a>, <a href="https://github.com/Gecode/gecode">Gecode</a>, <a href="https://highs.dev/">HiGHS</a>, and <a href="https://github.com/coin-or/Cbc">Coin-OR BC</a>. I measured the performance of the five solvers against 20 different Pips puzzles. Most of the solvers found solutions in under a second, most of the time, but there is a lot of variation.</li>
+</ol>
+<p><a href="https://static.righto.com/images/pips/benchmarks.jpg"><img alt="Timings for different solvers on 20 Pip puzzles." src="https://static.righto.com/images/pips/benchmarks-w600.jpg" /></a></p>
+<p>Timings for different solvers on 20 Pip puzzles.</p>
+<p>Overall, Chuffed had the best performance on the puzzles that I tested, taking well under a second. Google's OR-Tools won all the categories in the <a href="https://www.minizinc.org/challenge/2025/results/">2025 MiniZinc challenge</a>, but it was considerably slower than Chuffed for my Pips programs. The default Gecode solver performed very well most of the time, but it did terribly on a few problems, taking over 15 minutes. HiGHs was slower in general, taking a few minutes on the hardest problems, but it didn't fail as badly as Gecode. (Curiously, Gecode and HiGHS sometimes found different problems to be difficult.) Finally, Coin-OR BC was uniformly bad; at best it took a few seconds, but one puzzle took almost two hours and others weren't solved before I gave up after two hours. (I left Coin-OR BC off the graph because it messed up the scale.)</p>
+<p>Don't treat these results too seriously because different solvers are optimized for different purposes. (In particular, Coin-OR BC is designed for linear problems.) But the results demonstrate the unpredictability of solvers: maybe you get a solution in a second and maybe you get a solution in hours. ↩</p>
+<ol>
+<li>If you want to read more about solvers, <a href="https://zoo.cs.yale.edu/classes/cs470/lectures/s2019/07-CSP.pdf">Constraint Satisfaction Problems</a> is an overview presentation. The Gecode algorithms are described in a nice technical report: <a href="https://www.researchgate.net/publication/311953428_Constraint_Programming_Algorithms_used_in_Gecode">Constraint Programming Algorithms used in Gecode</a>. Chuffed is more complicated: "Chuffed is a state of the art lazy clause solver designed from the ground up with lazy clause generation in mind. Lazy clause generation is a hybrid approach to constraint solving that combines features of finite domain propagation and Boolean satisfiability." The Chuffed paper <a href="https://people.eng.unimelb.edu.au/pstuckey/papers/cp09-lc.pdf">Lazy clause generation reengineered</a> and <a href="https://school.a4cp.org/summer2011/slides/Gent/Peter%20Stuckey%20-%20Lazy%20Clause%20Generation.pdf">slides</a> are more of a challenge.  ↩</li>
+</ol>
+<p><a href="https://www.blogger.com/email-post/6264947694886887540/983202427505631074" title="Email Post"> <img alt="" src="http://img1.blogblog.com/img/icon18_email.gif" /> </a> <a href="https://www.blogger.com/post-edit.g?blogID=6264947694886887540&amp;postID=983202427505631074&amp;from=pencil" title="Edit Post"> <img alt="" src="https://resources.blogblog.com/img/icon18_edit_allbkg.gif" /> </a></p>
+<p><a href="https://www.blogger.com/share-post.g?blogID=6264947694886887540&amp;postID=983202427505631074&amp;target=email" title="Email This">Email This</a><a href="https://www.blogger.com/share-post.g?blogID=6264947694886887540&amp;postID=983202427505631074&amp;target=blog" title="BlogThis!">BlogThis!</a><a href="https://www.blogger.com/share-post.g?blogID=6264947694886887540&amp;postID=983202427505631074&amp;target=twitter" title="Share to X">Share to X</a><a href="https://www.blogger.com/share-post.g?blogID=6264947694886887540&amp;postID=983202427505631074&amp;target=facebook" title="Share to Facebook">Share to Facebook</a><a href="https://www.blogger.com/share-post.g?blogID=6264947694886887540&amp;postID=983202427505631074&amp;target=pinterest" title="Share to Pinterest">Share to Pinterest</a></p>
+<p>Labels: <a href="http://www.righto.com/search/label/math">math</a>, <a href="http://www.righto.com/search/label/random">random</a></p>
+<h4 id="6-comments">6 comments:<a class="headerlink" href="#6-comments" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="//resources.blogblog.com/img/blank.gif" /></p>
+<p>Anonymous said... </p>
+<p>SWI-Prolog CLP(fd) </p>
+<div class="language-text highlight"><pre><span></span><code> [ October 18, 2025 at 10:53 AM ](http://www.righto.com/2025/10/solve-nyt-pips-with-constraints.html?showComment=1760810024635#c6926595031117924665 &quot;comment permalink&quot;) [ ![](https://resources.blogblog.com/img/icon_delete13.gif) ](https://www.blogger.com/comment/delete/6264947694886887540/6926595031117924665 &quot;Delete Comment&quot;)
+</code></pre></div>
+<p><img alt="" src="//resources.blogblog.com/img/blank.gif" /></p>
+<p>Anonymous said... </p>
+<p>When writing VHDL code for FPGA's, I encounter such constraint solvers: I write "assert" statements that describe properties that the block must satisfy. Then the constraint solver will try to find a sequence of inputs that violate any one of these assert statements. The tricky part - as you say - is getting used to thinking in terms of properties. For instance, one way to describe the function of a FIFO is that if A is seen before B on the output, then A must also come before B on the input. But coming up with these assertions is a brain twister. </p>
+<div class="language-text highlight"><pre><span></span><code> [ October 18, 2025 at 12:04 PM ](http://www.righto.com/2025/10/solve-nyt-pips-with-constraints.html?showComment=1760814279107#c9055925801377381734 &quot;comment permalink&quot;) [ ![](https://resources.blogblog.com/img/icon_delete13.gif) ](https://www.blogger.com/comment/delete/6264947694886887540/9055925801377381734 &quot;Delete Comment&quot;)
+</code></pre></div>
+<p><img alt="" src="//resources.blogblog.com/img/blank.gif" /></p>
+<p>Anonymous said... </p>
+<p>I have not used any of the declarative programming languages like Prolog II, but would those be similarly effective for problems like these? I thought that Ada was a constraint-based language, but apparently not. It looks like the first comment above is referring to CLP(R) ? which is a superset of Prolog. </p>
+<div class="language-text highlight"><pre><span></span><code> [ October 18, 2025 at 2:40 PM ](http://www.righto.com/2025/10/solve-nyt-pips-with-constraints.html?showComment=1760823638229#c7673337898659853395 &quot;comment permalink&quot;) [ ![](https://resources.blogblog.com/img/icon_delete13.gif) ](https://www.blogger.com/comment/delete/6264947694886887540/7673337898659853395 &quot;Delete Comment&quot;)
+</code></pre></div>
+<p><img alt="" src="//resources.blogblog.com/img/blank.gif" /></p>
+<p>FD said... </p>
+<blockquote>
+<p>This uses the "or" condition, which is expressed as \/, an unusual<br />
+stylistic choice. (Likewise, "and" is expressed as /\. These<br />
+correspond to the logical symbols ∨ and ∧.)  </p>
+</blockquote>
+<p>MiniZinc input is unicode, so you can use ∧ and ∨ directly<br />
+(https://docs.minizinc.dev/en/stable/spec.html#bin-ops-unicode).  </p>
+<blockquote>
+<p>A second problem is that if you do something wrong, the solver<br />
+simply says that the problem is unsatisfiable. Maybe there's a<br />
+clever way of debugging, but I ended up removing constraints until<br />
+the problem can be satisfied, and then see what I did wrong with<br />
+that constraint.  </p>
+</blockquote>
+<p>This is a know problem with CP and the debuging technique you used is<br />
+the common one.  </p>
+<blockquote>
+<p>I suspect that the multiple solutions messed up the Gecode solver<br />
+somehow, perhaps because it couldn't narrow down a "good" branch in<br />
+the search tree.  </p>
+</blockquote>
+<p>Depending on the type of the solver, different constraints lead to<br />
+differing levels of propagation, and are therefore more/less<br />
+successful in avoiding search. Adding redundant constraints expressed<br />
+differently, but implying the same thing, can sometimes give you a<br />
+CP-program which is fast using multiple solvers.  </p>
+<p>MiniZinc IDE has a CP-profiler<br />
+(https://docs.minizinc.dev/en/stable/cpprofiler.html) which lets you<br />
+look at the search tree as the search progresses. Some solvers, such<br />
+as Gecode, allow you to influence the search strategy. Unfortunately<br />
+Gecode is no longer actively developed, as Christian Schulte, the main<br />
+developer, died in 2020 (https://www.a4cp.org/-24). If he were alive,<br />
+he would not have allowed Chuffed to beat Gecode for very<br />
+long. Although good friends, there was always a healthy competition<br />
+between Schulte and Stuckey (one of the developers of Chuffed).  </p>
+<p>BTW Christian Schulte is the father of the modern way of implementing<br />
+CP by dividing up the implementation into three distinct areas:<br />
+maintaining the state of the constraint variables, propagation and<br />
+search. His Phd-thesis<br />
+(https://link.springer.com/book/10.1007/3-540-45945-6) is well worth a<br />
+read.  </p>
+<div class="language-text highlight"><pre><span></span><code> [ October 19, 2025 at 10:47 AM ](http://www.righto.com/2025/10/solve-nyt-pips-with-constraints.html?showComment=1760896077312#c2681913168269467202 &quot;comment permalink&quot;) [ ![](https://resources.blogblog.com/img/icon_delete13.gif) ](https://www.blogger.com/comment/delete/6264947694886887540/2681913168269467202 &quot;Delete Comment&quot;)
+</code></pre></div>
+<p><img alt="" src="//resources.blogblog.com/img/blank.gif" /></p>
+<p>Anonymous said... </p>
+<p>My first thought was they've re-invented Prolog, a language I hate with a passion (my brain and it do not agree). I'd be curious to see a Prolog implementation of the same problem. </p>
+<div class="language-text highlight"><pre><span></span><code> [ October 20, 2025 at 11:19 PM ](http://www.righto.com/2025/10/solve-nyt-pips-with-constraints.html?showComment=1761027559077#c6319629252239960056 &quot;comment permalink&quot;) [ ![](https://resources.blogblog.com/img/icon_delete13.gif) ](https://www.blogger.com/comment/delete/6264947694886887540/6319629252239960056 &quot;Delete Comment&quot;)
+</code></pre></div>
+<p><a href="https://www.blogger.com/profile/17085707453187179626"><img alt="" src="//www.blogger.com/img/blogger_logo_round_35.png" /> </a></p>
+<p><a href="https://www.blogger.com/profile/17085707453187179626">Tigrou</a> said... </p>
+<p>I really recommend taking a look at "SAT/SMT by Example by Dennis Yurichev" ebook. It contains lot of puzzles/problems and the SAT/SMT equivalent solution. You can find it easily on Google. The official link from smt.st domain is broken but it can be downloaded from wayback machine. </p>
+<div class="language-text highlight"><pre><span></span><code> [ November 22, 2025 at 2:39 PM ](http://www.righto.com/2025/10/solve-nyt-pips-with-constraints.html?showComment=1763851141741#c4793901570867130927 &quot;comment permalink&quot;) [ ![](https://resources.blogblog.com/img/icon_delete13.gif) ](https://www.blogger.com/comment/delete/6264947694886887540/4793901570867130927 &quot;Delete Comment&quot;)
+</code></pre></div>
+<p><a href="https://www.blogger.com/comment/fullpage/post/6264947694886887540/983202427505631074">Post a Comment</a></p>
+<p><a href="http://www.righto.com/2025/11/unusual-386-standard-cell-circuits.html" title="Newer Post">Newer Post</a> <a href="http://www.righto.com/2025/09/marilou-schultz-navajo-555-weaving.html" title="Older Post">Older Post</a> <a href="http://www.righto.com/">Home</a></p>
+<p><a href="https://righto.kit.com/20bf534dff">Subscribe</a></p>
+<p><a href="https://www.righto.com/p/index.html">Contact info and site index</a></p>
+<h2 id="popular-posts">Popular Posts<a class="headerlink" href="#popular-posts" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="http://www.righto.com/2009/08/multi-protocol-infrared-remote-library.html"> <img alt="" src="https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_t5PKnrEF1fLjjQMJ1zf8UxFcfPawLITDCr0WNUtFW6MIIxrS6IudrPt1-W7zVHnA97AzVE41-UiFToXaEconRtOoduXW2eW9B_4T1sILyCoow=w72-h72-p-k-no-nu" /> </a></li>
+</ul>
+<p><a href="http://www.righto.com/2009/08/multi-protocol-infrared-remote-library.html">A Multi-Protocol Infrared Remote Library for the Arduino</a></p>
+<ul>
+<li><a href="http://www.righto.com/2026/01/notes-on-intel-8086-processors.html"> <img alt="" src="https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_uo1KLY6cKndrrJWcDDoa8dUlh97njRoAGoW0SVgwep70n5OXUeDIaSS1Qzh-Qh6pQhQ0p_otQB65DdtrcUVegfBkJIDgreT5mMxPHIo6yOeFyQCYRK_NRt5rU2ZNH2NMxbWTERYGc1-Q=w72-h72-p-k-no-nu" /> </a></li>
+</ul>
+<p><a href="http://www.righto.com/2026/01/notes-on-intel-8086-processors.html">Notes on the Intel 8086 processor's arithmetic-logic unit</a></p>
+<ul>
+<li><a href="http://www.righto.com/2012/10/a-dozen-usb-chargers-in-lab-apple-is.html"> <img alt="" src="https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_swxZd70ysen4R8ivBelCJa1S8moZ5n7WMk_qBGA4jR1pupa6VI56DieiiUZGpPY4vTItTIhdMeSTt02mygnDrDfVR4QTqjqOj-t-ThDwbV8eL2hNbqPsGCEUWLGgY=w72-h72-p-k-no-nu" /> </a></li>
+</ul>
+<p><a href="http://www.righto.com/2012/10/a-dozen-usb-chargers-in-lab-apple-is.html">A dozen USB chargers in the lab: Apple is very good, but not quite the best</a></p>
+<ul>
+<li><a href="http://www.righto.com/2012/05/apple-iphone-charger-teardown-quality.html"> <img alt="" src="https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_sB0xWSaLLTAiCdpvmN7Z9HQDS7BusrQOVxWxE37kvzblCiG5IXfRJBj0EAjjwBwpk59HCY62x7mpxzSocjG67K0s30uTQlrYEdio05YGGw_2l04AOy6OH3DQd_k516DtlMBZTI7ifk-IUeSZBenxOz2sA=w72-h72-p-k-no-nu" /> </a></li>
+</ul>
+<p><a href="http://www.righto.com/2012/05/apple-iphone-charger-teardown-quality.html">Apple iPhone charger teardown: quality in a tiny expensive package</a></p>
+<ul>
+<li><a href="http://www.righto.com/2025/12/8087-microcode-conditions.html"> <img alt="" src="https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_tLuRlv1pr3Y55WTXqO7O9Tnq-QNYV8Ko-fXIEdYB2qPZTLavUO7cg0KxVUs1Dj9hUcUN8aWa7QSYoU6rSHlJlwT-7IPQ2C7YBvpQh28u8-9t-P12mrRwKs3f-16k1DwZD7QRWBK2CS8BOkLjik=w72-h72-p-k-no-nu" /> </a></li>
+</ul>
+<p><a href="http://www.righto.com/2025/12/8087-microcode-conditions.html">Conditions in the Intel 8087 floating-point chip's microcode</a></p>
+<ul>
+<li><a href="http://www.righto.com/2013/06/teardown-and-exploration-of-magsafe.html"> <img alt="" src="https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_s7w0iYcjt66-9B3Al0qouosfmjkXxf7nCfReUKuHNzeMQBK_KAQnQiBzuoiwxdRY6p4_4CaPoIq5kzIzGUBzpgWF0w0leatGGNausbFxR4E9yDJb1l7XzPPMbIwx_wb9amMDC1Zp30G_i9Z04=w72-h72-p-k-no-nu" /> </a></li>
+</ul>
+<p><a href="http://www.righto.com/2013/06/teardown-and-exploration-of-magsafe.html">Teardown and exploration of Apple's Magsafe connector</a></p>
+<ul>
+<li><a href="http://www.righto.com/2014/09/mining-bitcoin-with-pencil-and-paper.html"> <img alt="" src="https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_sE7Ptz5al8KfBlCHim3ytsezk6nSOTMcZbvGBt6R9ZKDCjGKvCikjxVMNmxBH64gC38x4PNrPnVZYZFcdMHepMEkOTfs02h3YUb-mEA-rUEL7q1iLSH7WWWC9A7Jj0nqis=w72-h72-p-k-no-nu" /> </a></li>
+</ul>
+<p><a href="http://www.righto.com/2014/09/mining-bitcoin-with-pencil-and-paper.html">Mining Bitcoin with pencil and paper: 0.67 hashes per day</a></p>
+<ul>
+<li><a href="http://www.righto.com/2009/09/arduino-universal-remote-record-and.html"> <img alt="" src="https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_v8XWCKRvmI7Jmjtj7XPniyJLaC55pZAQdwebJIZ4q2MTfWdPF_AmhhaVy8YjISGQL2ZmXhZIZzeETT7dlTJxyFRTs7G44zo1-6JG2HN10B=w72-h72-p-k-no-nu" /> </a></li>
+</ul>
+<p><a href="http://www.righto.com/2009/09/arduino-universal-remote-record-and.html">An Arduino universal remote: record and playback IR signals</a></p>
+<h2 id="search-this-blog">Search This Blog<a class="headerlink" href="#search-this-blog" title="Permanent link">&para;</a></h2>
+<p>| <br />
+---|---  </p>
+<h2 id="labels">Labels<a class="headerlink" href="#labels" title="Permanent link">&para;</a></h2>
+<p><a href="http://www.righto.com/search/label/386">386</a> <a href="http://www.righto.com/search/label/6502">6502</a> <a href="http://www.righto.com/search/label/8008">8008</a> <a href="http://www.righto.com/search/label/8085">8085</a> <a href="http://www.righto.com/search/label/8086">8086</a> <a href="http://www.righto.com/search/label/8087">8087</a> <a href="http://www.righto.com/search/label/8088">8088</a> <a href="http://www.righto.com/search/label/aerospace">aerospace</a> <a href="http://www.righto.com/search/label/alto">alto</a> <a href="http://www.righto.com/search/label/analog">analog</a> <a href="http://www.righto.com/search/label/Apollo">Apollo</a> <a href="http://www.righto.com/search/label/apple">apple</a> <a href="http://www.righto.com/search/label/arc">arc</a> <a href="http://www.righto.com/search/label/arduino">arduino</a> <a href="http://www.righto.com/search/label/arm">arm</a> <a href="http://www.righto.com/search/label/beaglebone">beaglebone</a> <a href="http://www.righto.com/search/label/bitcoin">bitcoin</a> <a href="http://www.righto.com/search/label/c%23">c#</a> <a href="http://www.righto.com/search/label/cadc">cadc</a> <a href="http://www.righto.com/search/label/calculator">calculator</a> <a href="http://www.righto.com/search/label/chips">chips</a> <a href="http://www.righto.com/search/label/css">css</a> <a href="http://www.righto.com/search/label/datapoint">datapoint</a> <a href="http://www.righto.com/search/label/dx7">dx7</a> <a href="http://www.righto.com/search/label/electronics">electronics</a> <a href="http://www.righto.com/search/label/f%23">f#</a> <a href="http://www.righto.com/search/label/fairchild">fairchild</a> <a href="http://www.righto.com/search/label/fpga">fpga</a> <a href="http://www.righto.com/search/label/fractals">fractals</a> <a href="http://www.righto.com/search/label/genome">genome</a> <a href="http://www.righto.com/search/label/globus">globus</a> <a href="http://www.righto.com/search/label/haskell">haskell</a> <a href="http://www.righto.com/search/label/HP">HP</a> <a href="http://www.righto.com/search/label/html5">html5</a> <a href="http://www.righto.com/search/label/ibm">ibm</a> <a href="http://www.righto.com/search/label/ibm1401">ibm1401</a> <a href="http://www.righto.com/search/label/ibm360">ibm360</a> <a href="http://www.righto.com/search/label/intel">intel</a> <a href="http://www.righto.com/search/label/ipv6">ipv6</a> <a href="http://www.righto.com/search/label/ir">ir</a> <a href="http://www.righto.com/search/label/java">java</a> <a href="http://www.righto.com/search/label/javascript">javascript</a> <a href="http://www.righto.com/search/label/math">math</a> <a href="http://www.righto.com/search/label/microcode">microcode</a> <a href="http://www.righto.com/search/label/oscilloscope">oscilloscope</a> <a href="http://www.righto.com/search/label/Pentium">Pentium</a> <a href="http://www.righto.com/search/label/photo">photo</a> <a href="http://www.righto.com/search/label/power%20supply">power supply</a> <a href="http://www.righto.com/search/label/random">random</a> <a href="http://www.righto.com/search/label/reverse-engineering">reverse-engineering</a> <a href="http://www.righto.com/search/label/sheevaplug">sheevaplug</a> <a href="http://www.righto.com/search/label/snark">snark</a> <a href="http://www.righto.com/search/label/space">space</a> <a href="http://www.righto.com/search/label/spanish">spanish</a> <a href="http://www.righto.com/search/label/synth">synth</a> <a href="http://www.righto.com/search/label/teardown">teardown</a> <a href="http://www.righto.com/search/label/theory">theory</a> <a href="http://www.righto.com/search/label/unicode">unicode</a> <a href="http://www.righto.com/search/label/Z-80">Z-80</a></p>
+<h2 id="blog-archive">Blog Archive<a class="headerlink" href="#blog-archive" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2026/"> 2026 </a> (1)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2026/01/"> January </a> (1)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ▼ </a> <a href="http://www.righto.com/2025/"> 2025 </a> (22)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/12/"> December </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/11/"> November </a> (1)</li>
+<li><a href="javascript:void(0)"> ▼ </a> <a href="http://www.righto.com/2025/10/"> October </a> (1)</li>
+<li><a href="http://www.righto.com/2025/10/solve-nyt-pips-with-constraints.html">Solving the NYTimes Pips puzzle with a constraint ...</a></li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/09/"> September </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/08/"> August </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/07/"> July </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/06/"> June </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/05/"> May </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/04/"> April </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/03/"> March </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/02/"> February </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/01/"> January </a> (4)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/"> 2024 </a> (21)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/12/"> December </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/11/"> November </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/10/"> October </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/09/"> September </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/08/"> August </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/07/"> July </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/06/"> June </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/05/"> May </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/04/"> April </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/03/"> March </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/02/"> February </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/01/"> January </a> (3)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/"> 2023 </a> (35)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/12/"> December </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/11/"> November </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/10/"> October </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/09/"> September </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/08/"> August </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/07/"> July </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/05/"> May </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/04/"> April </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/03/"> March </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/02/"> February </a> (5)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/01/"> January </a> (8)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2022/"> 2022 </a> (18)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2022/11/"> November </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2022/08/"> August </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2022/07/"> July </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2022/06/"> June </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2022/05/"> May </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2022/04/"> April </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2022/03/"> March </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2022/02/"> February </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2022/01/"> January </a> (2)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/"> 2021 </a> (26)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/12/"> December </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/11/"> November </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/09/"> September </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/08/"> August </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/07/"> July </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/06/"> June </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/05/"> May </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/04/"> April </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/03/"> March </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/02/"> February </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/01/"> January </a> (3)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/"> 2020 </a> (33)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/12/"> December </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/11/"> November </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/10/"> October </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/09/"> September </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/08/"> August </a> (5)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/07/"> July </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/06/"> June </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/05/"> May </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/04/"> April </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/03/"> March </a> (5)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/01/"> January </a> (1)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2019/"> 2019 </a> (18)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2019/11/"> November </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2019/10/"> October </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2019/09/"> September </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2019/08/"> August </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2019/07/"> July </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2019/04/"> April </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2019/02/"> February </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2019/01/"> January </a> (2)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2018/"> 2018 </a> (17)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2018/12/"> December </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2018/09/"> September </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2018/08/"> August </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2018/06/"> June </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2018/05/"> May </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2018/04/"> April </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2018/03/"> March </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2018/02/"> February </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2018/01/"> January </a> (4)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/"> 2017 </a> (21)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/12/"> December </a> (5)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/11/"> November </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/10/"> October </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/08/"> August </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/07/"> July </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/06/"> June </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/04/"> April </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/03/"> March </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/02/"> February </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/01/"> January </a> (1)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/"> 2016 </a> (34)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/12/"> December </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/10/"> October </a> (5)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/09/"> September </a> (8)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/08/"> August </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/07/"> July </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/06/"> June </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/05/"> May </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/04/"> April </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/03/"> March </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/02/"> February </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/01/"> January </a> (3)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2015/"> 2015 </a> (12)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2015/12/"> December </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2015/11/"> November </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2015/10/"> October </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2015/08/"> August </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2015/05/"> May </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2015/03/"> March </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2015/02/"> February </a> (1)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2014/"> 2014 </a> (13)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2014/12/"> December </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2014/10/"> October </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2014/09/"> September </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2014/05/"> May </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2014/03/"> March </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2014/02/"> February </a> (5)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2013/"> 2013 </a> (24)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2013/11/"> November </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2013/09/"> September </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2013/08/"> August </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2013/07/"> July </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2013/06/"> June </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2013/04/"> April </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2013/03/"> March </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2013/02/"> February </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2013/01/"> January </a> (3)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2012/"> 2012 </a> (10)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2012/12/"> December </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2012/11/"> November </a> (5)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2012/10/"> October </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2012/05/"> May </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2012/03/"> March </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2012/02/"> February </a> (1)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2011/"> 2011 </a> (11)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2011/12/"> December </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2011/07/"> July </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2011/05/"> May </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2011/04/"> April </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2011/03/"> March </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2011/02/"> February </a> (3)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2010/"> 2010 </a> (22)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2010/12/"> December </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2010/11/"> November </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2010/10/"> October </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2010/08/"> August </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2010/06/"> June </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2010/05/"> May </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2010/04/"> April </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2010/03/"> March </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2010/01/"> January </a> (2)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/"> 2009 </a> (22)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/12/"> December </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/11/"> November </a> (5)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/09/"> September </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/08/"> August </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/07/"> July </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/06/"> June </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/04/"> April </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/03/"> March </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/02/"> February </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/01/"> January </a> (1)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2008/"> 2008 </a> (27)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2008/07/"> July </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2008/06/"> June </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2008/05/"> May </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2008/04/"> April </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2008/03/"> March </a> (10)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2008/02/"> February </a> (6)</li>
+</ul>
+</li>
+</ul>
+<h2 id="dont-miss-a-post">Don't miss a post!<a class="headerlink" href="#dont-miss-a-post" title="Permanent link">&para;</a></h2>
+<p>Subscribe to get updates by email.</p>
+<p>Subscribe</p>
+<p>​</p>
+<p><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic">Built with Kit</a></p>
+<p>| <br />
+---|---  </p>
+<p>Powered by <a href="https://www.blogger.com">Blogger</a>. </p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

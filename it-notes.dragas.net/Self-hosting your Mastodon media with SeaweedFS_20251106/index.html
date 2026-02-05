@@ -409,7 +409,192 @@
 <strong>链接:</strong> https://it-notes.dragas.net/2025/11/06/self-hosting-your-mastodon-media-with-seaweedfs/
 <strong>日期:</strong> Thu, 06 Nov 2025 11:30:02 +0000</p>
 <hr />
-<p>A practical guide to boosting Mastodon performance by self-hosting your media with SeaweedFS. Configure a fast, S3-compatible storage backend to efficiently handle your instance's files and take full control of your data.</p>
+<p>Skip to main content [Access Key: S]</p>
+<p><strong>Notice:</strong> This site works best with JavaScript enabled, but all content is accessible without it. Skip to main content</p>
+<p><a href="https://it-notes.dragas.net">IT Notes</a>Open navigation menu</p>
+<ul>
+<li><a href="https://it-notes.dragas.net" title="Return to homepage">Home</a></li>
+<li><a href="https://it-notes.dragas.net/archives/" title="Browse post archives by date">Archives</a></li>
+<li><a href="https://it-notes.dragas.net/categories/" title="Browse posts by category">Categories</a></li>
+<li><a href="https://it-notes.dragas.net/tags/" title="Browse posts by tag">Tags</a></li>
+<li><a href="https://it-notes.dragas.net/series/" title="Series">Series</a></li>
+<li><a href="https://it-notes.dragas.net/under-the-hood/" title="Under The Hood">Under The Hood</a></li>
+<li><a href="https://it-notes.dragas.net/professional-services/" title="Professional Services">Professional Services</a></li>
+<li><a href="https://it-notes.dragas.net/about-me/" title="About">About</a></li>
+</ul>
+<p>Search articles and pages Enter keywords to search articles and pages Submit search</p>
+<p><img alt="Self-hosting your Mastodon media with SeaweedFS - Featured image" src="https://images.unsplash.com/photo-1611926653458-09294b3142bf?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MnwxMTc3M3wwfDF8c2VhcmNofDR8fHNvY2lhbCUyMG5ldHdvcmt8ZW58MHx8fHwxNjY5MTI0MzQ5&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" /></p>
+<h1 id="self-hosting-your-mastodon-media-with-seaweedfs_1">Self-hosting your Mastodon media with SeaweedFS<a class="headerlink" href="#self-hosting-your-mastodon-media-with-seaweedfs_1" title="Permanent link">&para;</a></h1>
+<p>FreeBSD</p>
+<p>9 min read</p>
+<p>06/11/2025 11:30:02 </p>
+<p>by Stefano Marinelli</p>
+<p>Categories: <a href="https://it-notes.dragas.net/categories/freebsd/"> freebsd</a>, <a href="https://it-notes.dragas.net/categories/container/"> container</a>, <a href="https://it-notes.dragas.net/categories/hosting/"> hosting</a>, <a href="https://it-notes.dragas.net/categories/jail/"> jail</a>, <a href="https://it-notes.dragas.net/categories/networking/"> networking</a>, <a href="https://it-notes.dragas.net/categories/server/"> server</a>, <a href="https://it-notes.dragas.net/categories/tutorial/"> tutorial</a>, <a href="https://it-notes.dragas.net/categories/web/"> web</a>, <a href="https://it-notes.dragas.net/categories/fediverse/"> fediverse</a>, <a href="https://it-notes.dragas.net/categories/mastodon/"> mastodon</a>, <a href="https://it-notes.dragas.net/categories/ownyourdata/"> ownyourdata</a>, <a href="https://it-notes.dragas.net/categories/seaweedfs/"> seaweedfs</a></p>
+<p>Tags: <a href="https://it-notes.dragas.net/tags/freebsd/">freebsd</a>, <a href="https://it-notes.dragas.net/tags/container/">container</a>, <a href="https://it-notes.dragas.net/tags/hosting/">hosting</a>, <a href="https://it-notes.dragas.net/tags/jail/">jail</a>, <a href="https://it-notes.dragas.net/tags/networking/">networking</a>, <a href="https://it-notes.dragas.net/tags/server/">server</a>, <a href="https://it-notes.dragas.net/tags/tutorial/">tutorial</a>, <a href="https://it-notes.dragas.net/tags/web/">web</a>, <a href="https://it-notes.dragas.net/tags/fediverse/">fediverse</a>, <a href="https://it-notes.dragas.net/tags/mastodon/">mastodon</a>, <a href="https://it-notes.dragas.net/tags/ownyourdata/">ownyourdata</a>, <a href="https://it-notes.dragas.net/tags/seaweedfs/">seaweedfs</a></p>
+<p><a href="https://joinmastodon.org/">Mastodon</a> 4.5.0 is here, and with it come some interesting changes that, in my opinion, might encourage more people to consider it for self-hosting their Fediverse community.</p>
+<p>While it may not be as lightweight and simple as other solutions (like <a href="https://codeberg.org/grunfink/snac2">snac</a> or <a href="https://gotosocial.org/">GoToSocial</a> or many others), I believe it remains one of the best platforms for managing a medium-sized Fediverse community, thanks in part to the direct feedback that many admins have provided to the developers.</p>
+<p>I have previously written about how to <a href="https://it-notes.dragas.net/2022/11/23/installing-mastodon-on-a-freebsd-jail/">install Mastodon in a FreeBSD jail</a> and how to <a href="https://it-notes.dragas.net/2024/10/09/2024-modifying-limits-in-mastodon-4-3/">modify its character and poll limits</a>.</p>
+<p>One of the most critical initial decisions (which can be changed later, but with extra work) is where to store your media files. Mastodon downloads and re-processes all media it encounters from other instances for three main reasons:</p>
+<ul>
+<li><strong>Local Caching:</strong> Your users connect to your media server, reducing the load on the original instance.</li>
+<li><strong>Security:</strong> Re-processing media helps to remove any potential "impurities" before they reach the user's device.</li>
+<li><strong>Privacy:</strong> It prevents disclosing your users' IP addresses to other instances. A user will only connect to their own instance to fetch all data, including remote content.</li>
+</ul>
+<p>At least initially, media files will be the largest part of your instance's storage footprint. It is therefore essential to plan where to store them and to add a regular cleanup script; otherwise, their growth will be exponential.</p>
+<p>Mastodon supports uploading media to external S3-compatible solutions, and many admins use the usual commercial providers, paying for data uploads and transfers.</p>
+<p>I am a firm believer in "Own Your Data", so I have always used my own self-hosted S3 servers. I initially started with Minio, but over time, I realized that, by design, it doesn't perform well with a multitude of small files (performance degrades). After running some tests, I decided to switch to <a href="https://github.com/seaweedfs/seaweedfs">SeaweedFS</a>.</p>
+<p>SeaweedFS "is a fast distributed storage system for blobs, objects, files, and data lake, for billions of files! Blob store has O(1) disk seek..." - this, combined with the fact that it is a mature and proven piece of software, was enough for me to give it a try. The result? Excellent. The I/O and CPU load on my media server dropped drastically, making SeaweedFS an incredibly suitable solution. Furthermore, some of its features (like the ability to run a <a href="https://github.com/seaweedfs/seaweedfs/wiki/Filer-Active-Active-cross-cluster-continuous-synchronization">filer.sync</a>) allow for efficient and fast replication to other storage, another host, or... anything else.</p>
+<p>SeaweedFS works perfectly with Mastodon, and I will explain the steps to get it into production.</p>
+<p>I will install SeaweedFS in a dedicated jail and use a dedicated subdomain. This ensures that the media server can be moved to another host at any time without reconfiguring everything or changing domains. SeaweedFS has its own FreeBSD package, installable via <code>pkg</code>, or can be downloaded directly from the project's website.</p>
+<p>In either case, I will describe a "test" setup - which can also be used in production without issues. However, I highly recommend diving deeper into the tool, as it is incredibly powerful and flexible and can solve many more problems than one might imagine.</p>
+<h3 id="setting-up-the-seaweedfs-jail">Setting up the SeaweedFS Jail<a class="headerlink" href="#setting-up-the-seaweedfs-jail" title="Permanent link">&para;</a></h3>
+<p>First, let's create a dedicated jail with BastilleBSD:</p>
+<div class="language-text highlight"><pre><span></span><code>bastille create media 14.3-RELEASE 10.0.0.66 bastille0
+</code></pre></div>
+<p>Now, let's enter the jail and install SeaweedFS (and tmux, which can be useful):</p>
+<div class="language-text highlight"><pre><span></span><code>bastille console media
+pkg install -y tmux seaweedfs
+</code></pre></div>
+<p>I suggest launching SeaweedFS in a tmux session so you can monitor its output. Later, you should configure an automatic startup method, such as using the included rc.d file or any other method you prefer.</p>
+<p>Create a directory for the data and start SeaweedFS as the "seaweedfs" user:</p>
+<div class="language-text highlight"><pre><span></span><code>mkdir -p /seaweedfs/data
+chown -R seaweedfs /seaweedfs
+su -m seaweedfs
+cd /seaweedfs/
+/usr/local/bin/weed server -dir /seaweedfs/data -s3
+</code></pre></div>
+<p>At this point, SeaweedFS will start and create everything it needs to function, including the S3 server.</p>
+<h3 id="configuring-buckets-and-users">Configuring Buckets and Users<a class="headerlink" href="#configuring-buckets-and-users" title="Permanent link">&para;</a></h3>
+<p>Now, let's open the weed shell to create the necessary bucket and users:</p>
+<div class="language-text highlight"><pre><span></span><code>weed shell
+s3.bucket.create -name mastomedia
+</code></pre></div>
+<p>Still in the weed shell, create a user for Mastodon and grant read permissions for unauthenticated users (which is necessary to serve media to the world):</p>
+<div class="language-text highlight"><pre><span></span><code>s3.configure -access_key=mastomedia -secret_key=CHANGEME -buckets=mastomedia -user=mastodon -actions=Read,Write,List,Tagging,Admin -apply
+s3.configure -buckets=mastomedia -user=anonymous -actions=Read -apply
+s3.configure -buckets=mastomedia -actions=Read -apply
+</code></pre></div>
+<blockquote>
+<p><strong>Security Tip:</strong> For the <code>-secret_key</code>, avoid using a simple password. You can generate a strong, random key directly from your shell with a command like <code>openssl rand -base64 32</code>.</p>
+</blockquote>
+<p>Done. SeaweedFS is now ready to receive (and serve) media. The next step is to set up a reverse proxy to serve everything over HTTPS. My preferred approach is to configure the system as if it were external, even if the services are in adjacent jails. This might use slightly more resources, but the time and trouble it saves in the future are well worth it.</p>
+<h3 id="nginx-reverse-proxy-configuration">Nginx Reverse Proxy Configuration<a class="headerlink" href="#nginx-reverse-proxy-configuration" title="Permanent link">&para;</a></h3>
+<p>The reverse proxy can be configured something like this:</p>
+<div class="language-text highlight"><pre><span></span><code>[...]
+
+server {
+   server_name  media.mastodon.example.com;
+
+   ignore_invalid_headers off;
+   client_max_body_size 0; # Allow large file uploads without Nginx limits
+
+   location / {
+      proxy_set_header Host $http_host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+
+      proxy_connect_timeout 300;
+      proxy_http_version 1.1;
+      proxy_set_header Connection &quot;&quot;;
+      chunked_transfer_encoding off;
+
+      expires 1y;
+      add_header Cache-Control public;
+
+      add_header X-Cache-Status $upstream_cache_status;
+      add_header X-Content-Type-Options nosniff;
+
+      proxy_pass http://10.0.0.66:8333;
+   }
+
+# ... other server configurations like SSL ...
+
+}
+</code></pre></div>
+<h3 id="mastodon-configuration">Mastodon Configuration<a class="headerlink" href="#mastodon-configuration" title="Permanent link">&para;</a></h3>
+<p>Now let's configure Mastodon. If you are running the setup wizard for the first time, here is a summary of the options:</p>
+<div class="language-text highlight"><pre><span></span><code>[...]
+Do you want to store uploaded files on the cloud? yes
+Provider Minio
+Minio endpoint URL: https://media.mastodon.example.com
+Minio bucket name: mastomedia
+Minio access key: mastomedia
+Minio secret key: CHANGEME
+Do you want to access the uploaded files from your own domain? Yes
+Domain for uploaded files: media.mastodon.example.com
+</code></pre></div>
+<p>If Mastodon is already active, or once the setup is complete, the options in your .env.prod file should be modified to be consistent with what SeaweedFS expects:</p>
+<div class="language-text highlight"><pre><span></span><code>S3_ENABLED=true
+S3_PROTOCOL=https
+S3_REGION=us-east-1
+S3_ENDPOINT=https://media.mastodon.example.com
+S3_HOSTNAME=media.mastodon.example.com
+S3_BUCKET=mastomedia
+AWS_ACCESS_KEY_ID=mastomedia
+AWS_SECRET_ACCESS_KEY=CHANGEME
+S3_FORCE_SINGLE_REQUEST=true
+# remove the S3_ALIAS_HOST if it is set
+</code></pre></div>
+<p><strong>IMPORTANT NOTE:</strong> If both services are in jails on the same host (i.e., SeaweedFS is on the same host as Mastodon), you should ensure that the Mastodon jail can reach the SeaweedFS jail through the reverse proxy and not via the external IP. To do this, add the following line to the /etc/hosts file of the <strong>Mastodon jail</strong> :</p>
+<div class="language-text highlight"><pre><span></span><code>10.0.0.1        media.mastodon.example.com
+</code></pre></div>
+<p>In this example, the reverse proxy is at 10.0.0.1. If you are not using a separate reverse proxy but are exposing Nginx directly from the jail (as described in my Mastodon installation article), use the IP of the Mastodon jail itself instead (e.g., 10.0.0.42).</p>
+<p>With this setup, Mastodon will be able to upload media to the SeaweedFS server and generate the correct links for other instances, public visitors, and users of your own instance.</p>
+<p>Have fun with SeaweedFS!</p>
+<h3 id="tags">Tags:<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h3>
+<p><a href="https://it-notes.dragas.net/tags/freebsd/">freebsd</a> <a href="https://it-notes.dragas.net/tags/container/">container</a> <a href="https://it-notes.dragas.net/tags/hosting/">hosting</a> <a href="https://it-notes.dragas.net/tags/jail/">jail</a> <a href="https://it-notes.dragas.net/tags/networking/">networking</a> <a href="https://it-notes.dragas.net/tags/server/">server</a> <a href="https://it-notes.dragas.net/tags/tutorial/">tutorial</a> <a href="https://it-notes.dragas.net/tags/web/">web</a> <a href="https://it-notes.dragas.net/tags/fediverse/">fediverse</a> <a href="https://it-notes.dragas.net/tags/mastodon/">mastodon</a> <a href="https://it-notes.dragas.net/tags/ownyourdata/">ownyourdata</a> <a href="https://it-notes.dragas.net/tags/seaweedfs/">seaweedfs</a></p>
+<p><a href="https://it-notes.dragas.net/2025/11/19/static-web-hosting-intel-n150-freebsd-smartos-netbsd-openbsd-linux/">&lt;- Next PostStatic Web Hosting on the Intel N150: FreeBSD, SmartOS, NetBSD, OpenBSD and Linux Compared </a><a href="https://it-notes.dragas.net/2025/10/08/the-email-they-shouldnt-have-read/">Previous Post -&gt;The Email They Shouldn't Have Read</a></p>
+<h3 id="you-may-also-like">You may also like<a class="headerlink" href="#you-may-also-like" title="Permanent link">&para;</a></h3>
+<h2 id="installing-mastodon-inside-a-freebsd-jail-a-comprehensive-guide"><a href="https://it-notes.dragas.net/2022/11/23/installing-mastodon-on-a-freebsd-jail/">Installing Mastodon inside a FreeBSD jail: A Comprehensive Guide</a><a class="headerlink" href="#installing-mastodon-inside-a-freebsd-jail-a-comprehensive-guide" title="Permanent link">&para;</a></h2>
+<p>23/11/2022 07:52:02  by Stefano Marinelli</p>
+<p>A comprehensive guide to installing Mastodon on a FreeBSD jail using BastilleBSD</p>
+<p><a href="https://it-notes.dragas.net/2022/11/23/installing-mastodon-on-a-freebsd-jail/">Read More</a></p>
+<h2 id="new-article-on-bsd-cafe-journal-wordpress-on-freebsd-with-bastillebsd"><a href="https://it-notes.dragas.net/2025/07/21/new-article-wordpress-on-freebsd-bastillebsd-on-bsd-cafe-journal/">New Article on BSD Cafe Journal: WordPress on FreeBSD with BastilleBSD</a><a class="headerlink" href="#new-article-on-bsd-cafe-journal-wordpress-on-freebsd-with-bastillebsd" title="Permanent link">&para;</a></h2>
+<p>21/07/2025 09:30:00  by Stefano Marinelli</p>
+<p>A new article on running WordPress on FreeBSD with BastilleBSD has been published on the BSD Cafe Journal, plus a small update on future technical content.</p>
+<p><a href="https://it-notes.dragas.net/2025/07/21/new-article-wordpress-on-freebsd-bastillebsd-on-bsd-cafe-journal/">Read More</a></p>
+<h2 id="how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-3-proxmox-to-freebsd"><a href="https://it-notes.dragas.net/2023/03/14/how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-3/">How we are migrating (many of) our servers from Linux to FreeBSD - Part 3 - Proxmox to FreeBSD</a><a class="headerlink" href="#how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-3-proxmox-to-freebsd" title="Permanent link">&para;</a></h2>
+<p>14/03/2023 13:00:00  by Stefano Marinelli</p>
+<p>Part 3 of our migration series details the complex process of moving servers from Proxmox to FreeBSD, including overcoming challenges with old hardware, problematic LXC containers, and fine-tuning virtual machines for optimal performance on bhyve.</p>
+<p><a href="https://it-notes.dragas.net/2023/03/14/how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-3/">Read More</a></p>
+<h3 id="about">About<a class="headerlink" href="#about" title="Permanent link">&para;</a></h3>
+<p>Scattered IT Notes - by Stefano Marinelli</p>
+<p><a href="https://2025.eurobsdcon.org/"><img alt="EuroBSDCon 2025" src="https://it-notes.dragas.net/banner_zagreb.png" /></a></p>
+<p>EuroBSDCon 2025 - Zagreb, Croatia; September 25-28, 2025.</p>
+<h3 id="categories">Categories<a class="headerlink" href="#categories" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://it-notes.dragas.net/categories/server/">server</a></li>
+<li><a href="https://it-notes.dragas.net/categories/freebsd/">freebsd</a></li>
+<li><a href="https://it-notes.dragas.net/categories/hosting/">hosting</a></li>
+<li><a href="https://it-notes.dragas.net/categories/ownyourdata/">ownyourdata</a></li>
+<li><a href="https://it-notes.dragas.net/categories/tutorial/">tutorial</a></li>
+<li><a href="https://it-notes.dragas.net/categories/linux/">linux</a></li>
+<li><a href="https://it-notes.dragas.net/categories/data/">data</a></li>
+<li><a href="https://it-notes.dragas.net/categories/networking/">networking</a></li>
+<li><a href="https://it-notes.dragas.net/categories/zfs/">zfs</a></li>
+<li><a href="https://it-notes.dragas.net/categories/jail/">jail</a></li>
+<li><a href="https://it-notes.dragas.net/categories/container/">container</a></li>
+<li><a href="https://it-notes.dragas.net/categories/filesystems/">filesystems</a></li>
+<li><a href="https://it-notes.dragas.net/categories/series/">series</a></li>
+<li><a href="https://it-notes.dragas.net/categories/web/">web</a></li>
+<li><a href="https://it-notes.dragas.net/categories/backup/">backup</a></li>
+<li><a href="https://it-notes.dragas.net/categories/">View All Categories</a></li>
+</ul>
+<h3 id="links">Links<a class="headerlink" href="#links" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://it-notes.dragas.net">Home</a></li>
+<li><a href="https://it-notes.dragas.net/archives/">Archives</a></li>
+<li><a href="https://it-notes.dragas.net/tags/">Tags</a></li>
+<li><a href="https://it-notes.dragas.net/categories/">Categories</a></li>
+<li><a href="https://it-notes.dragas.net/series/">Series</a></li>
+<li><a href="https://it-notes.dragas.net/under-the-hood/">Under The Hood</a></li>
+<li><a href="https://it-notes.dragas.net/professional-services/">Professional Services</a></li>
+<li><a href="https://it-notes.dragas.net/about-me/">About</a></li>
+<li><a href="https://it-notes.dragas.net/feed.xml">RSS</a></li>
+</ul>
+<p>(C) 2026 IT Notes. All rights reserved. </p>
+<p>Generated with <a href="https://itnblog.dragas.net">ITNBlog</a> on 29/01/2026 09:12:41 UTC </p>
 
 
 
@@ -430,7 +615,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:06:05 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
   </span>
 
     

@@ -1,0 +1,826 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/miguelgrinberg.com/Date%20Arithmetic%20in%20Bash_20260205/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Date Arithmetic in Bash - Hacker News 精选博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#date-arithmetic-in-bash" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Hacker News 精选博客" class="md-header__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker News 精选博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Date Arithmetic in Bash
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker News 精选博客" class="md-nav__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hacker News 精选博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/miguelgrinberg.com/Date Arithmetic in Bash_20260205.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="date-arithmetic-in-bash">Date Arithmetic in Bash<a class="headerlink" href="#date-arithmetic-in-bash" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://miguelgrinberg.com
+<strong>链接:</strong> https://blog.miguelgrinberg.com/post/date-arithmetic-in-bash
+<strong>日期:</strong> Wed, 04 Feb 2026 11:09:06 GMT</p>
+<hr />
+<p><a href="/index">miguelgrinberg.com</a></p>
+<ul>
+<li><a href="/index">Home</a></li>
+<li><a href="/post/my-courses-and-books">My Courses and Books</a></li>
+<li><a href="/post/hire-me">Consulting</a></li>
+<li><a href="/post/about-me">About Me</a></li>
+<li>
+<ul>
+<li><a href="javascript:updateTheme('light'); setThemeUI();">   Light Mode </a></li>
+<li><a href="javascript:updateTheme('dark'); setThemeUI();">   Dark Mode </a></li>
+<hr />
+<li>
+<p><a href="javascript:updateTheme('auto'); setThemeUI();">   System Default </a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="http://github.com/miguelgrinberg"><img alt="GitHub" src="/static/social/github.png" /></a> <a href="http://www.linkedin.com/in/miguelgrinberg"><img alt="LinkedIn" src="/static/social/linkedin.png" /></a> <a href="https://bsky.app/profile/miguelgrinberg.com"><img alt="Bluesky" src="/static/social/bluesky.png" /></a> <a href="https://mstdn.social/@miguelgrinberg"><img alt="Mastodon" src="/static/social/mastodon.png" /></a> <a href="https://twitter.com/miguelgrinberg"><img alt="Twitter" src="/static/social/twitter.png" /></a> <a href="https://youtube.com/miguelgrinberg"><img alt="YouTube" src="/static/social/youtube.png" /></a> <a href="https://www.buymeacoffee.com/miguelgrinberg"><img alt="Buy Me a Coffee" src="/static/social/buymeacoffee.png" /></a> <a href="https://patreon.com/miguelgrinberg"><img alt="Patreon" src="/static/social/patreon.png" /></a> <a href="/feed"><img alt="RSS Feed" src="/static/social/rss.png" /></a></p>
+</li>
+</ul>
+<h1 id="date-arithmetic-in-bash_1"><a href="/post/date-arithmetic-in-bash">Date Arithmetic in Bash</a><a class="headerlink" href="#date-arithmetic-in-bash_1" title="Permanent link">&para;</a></h1>
+<h2 id="posted-by-on-2026-02-04t110906z-under">Posted by  on 2026-02-04T11:09:06Z under<a class="headerlink" href="#posted-by-on-2026-02-04t110906z-under" title="Permanent link">&para;</a></h2>
+<p>Date and time management libraries in many programming languages are famously bad. <a href="https://dev.arie.bovenberg.net/blog/python-datetime-pitfalls/">Python's datetime module</a> comes to mind as one of the best (worst?) examples, and so does <a href="https://fjolt.com/article/javascript-date-is-weird/">JavaScript's Date class</a>. It feels like these libraries could not have been made worse on purpose, or so I thought until today, when I needed to implement some date calculations in a backup rotation script written in bash.</p>
+<p>So, if you wanted to learn how to perform date and time arithmetic in your bash scripts, you've come to the right place. Just don't blame me for the nightmares.</p>
+<h2 id="why-bash">Why bash?<a class="headerlink" href="#why-bash" title="Permanent link">&para;</a></h2>
+<p>This is a valid question. Why bother doing this in bash when you can drop into Python or Node? In my particular case, I needed to expand a backup rotation script that I run in an old <a href="https://en.wikipedia.org/wiki/Network-attached_storage">NAS</a> that I have here in my home. This device has been very reliable, but in terms of scripting options it is fairly limited, only offering SSH access, bash and a core set of UNIX commands. I could probably figure out how to cross-compile Python for it, but calculating dates directly in my existing bash script seemed like a more direct option, and a more interesting challenge as well.</p>
+<h2 id="how-to-work-with-numbers-in-bash">How to work with numbers in bash<a class="headerlink" href="#how-to-work-with-numbers-in-bash" title="Permanent link">&para;</a></h2>
+<p>Did you know that bash supports numbers? I didn't for many years, so assuming this may also be news to some of you, let's review how that works first.</p>
+<h3 id="evaluating-numerical-expressions">Evaluating numerical expressions<a class="headerlink" href="#evaluating-numerical-expressions" title="Permanent link">&para;</a></h3>
+<p>There are actually several ways to evaluate expressions in bash. The one I'm going to demonstrate here is my favorite, called <a href="https://www.gnu.org/software/bash/manual/html_node/Arithmetic-Expansion.html">arithmetic expansion</a>. If you put any expression between <code>$((</code> and <code>))</code>, then bash will treat it as numbers and will evaluate it:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt; echo $((2+3))
+5
+</code></pre></div>
+<p>You can use <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code> (modulus) and <code>**</code> (exponentiation) as operators, and if you are interested in more, you can see <a href="https://www.gnu.org/software/bash/manual/html_node/Shell-Arithmetic.html">the complete list</a> in the documentation.</p>
+<p>An important limitation in bash is that only integers can be used. If you can use zsh instead of bash, then you can also work with decimal numbers.</p>
+<h3 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h3>
+<p>You can include variables inside the expressions:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt; A=10
+&gt; B=$(($A * 100))
+&gt; echo $B
+1000
+</code></pre></div>
+<p>Here you can see that bash does not treat numbers stored in variables in any special way. Conversions between string and numbers are done implicitly when needed. This can actually produce confusing results, as the next example demonstrates:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt; A=2+2
+&gt; echo $(($A * 10))
+22
+</code></pre></div>
+<p>In this example you probably expected the result would be 40, but the value of <code>$A</code> is replaced literally in the expression, so bash sees <code>2+2 * 10</code>, which evaluates to 22 when using standard operator precedence rules. To do this correctly, you have to remember to evaluate all intermediate expressions with <code>$(( ... ))</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt; A=$((2+2))
+&gt; echo $(($A * 10))
+40
+</code></pre></div>
+<h3 id="looping-over-sequences-of-numbers">Looping over sequences of numbers<a class="headerlink" href="#looping-over-sequences-of-numbers" title="Permanent link">&para;</a></h3>
+<p>Another very useful thing you can do is looping over a range of numbers. For this I like to use the <code>seq</code> command, which is technically not internal to bash, but it should be available in all UNIX distributions:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt; for INDEX in $(seq 1 10); do echo $INDEX; done
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</code></pre></div>
+<p>As you probably figured out already, the <code>seq</code> command takes the start and end numbers, and generates all the numbers in between, including those two. Another form of <code>seq</code> uses three arguments, where the middle one is interpreted as the increment. The next example shows a loop that counts from 1 to 10 by 3:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt; for INDEX in $(seq 1 3 10); do echo $INDEX; done
+1
+4
+7
+10
+</code></pre></div>
+<p>I hope these examples give you an idea that working with numbers in bash is not only possible, but quite reasonable. Refer to the bash documentation and your friendly search engine if you want to learn other math tricks.</p>
+<h2 id="the-date-command">The date command<a class="headerlink" href="#the-date-command" title="Permanent link">&para;</a></h2>
+<p>Similarly to <code>seq</code>, UNIX systems include a utility called <code>date</code> to work with dates and times. Note that you may have seen this command used to change the computer's clock. This is just one of its functions. In this article I'm not going to change the clock, I'm only going to use <code>date</code> to format dates and do math with them.</p>
+<p>Something important I should warn you about is that there are two versions of the <code>date</code> command. If you use a Linux distribution, then you have <a href="https://www.man7.org/linux/man-pages/man1/date.1.html">GNU date</a>. But if you use a BSD-derived operating system, including macOS, then you have <a href="https://man.freebsd.org/cgi/man.cgi?date">BSD date</a>. These two commands have some similarities, but in terms of date math they are incompatible with each other. This article uses the GNU flavor that is common on Linux. If you have the BSD date, you can install the <a href="https://www.gnu.org/software/coreutils/coreutils.html">coreutils</a> package (<code>brew install coreutils</code> on your Mac), and then you can access GNU date with the name <code>gdate</code>.</p>
+<h3 id="printing-dates">Printing dates<a class="headerlink" href="#printing-dates" title="Permanent link">&para;</a></h3>
+<p>In its simplest form, the <code>date</code> command can be used to show the current time:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt; date
+Tue 03 Feb 2026 07:50:27 PM GMT
+</code></pre></div>
+<p>The default format in which the date is printed is not very useful if you want to use the date in a script. To change the format, you can add an argument beginning with <code>+</code>, followed by a template that describes the format you want the date to be printed in. Below is a simple example:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt; date +%Y-%m-%d
+2026-02-03
+</code></pre></div>
+<p>When working inside scripts, it is likely you will need to store the date in a variable:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt; TODAY=$(date +%Y-%m-%d)
+</code></pre></div>
+<p>It is also possible to include the time. In the following example I use a template that produces the <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO8601</a> format in the UTC timezone:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt; NOWUTC=$(date --utc +%Y-%m-%dT%H:%M:%SZ)
+&gt; echo $NOWUTC
+2026-02-03T19:59:18Z
+</code></pre></div>
+<p>If you prefer to work in your local timezone, you can remove the <code>--utc</code> option and change the <code>Z</code> at the end to your timezone.</p>
+<p>The <code>%Y</code>, <code>%m</code>, <code>%d</code>, <code>%H</code>, <code>%M</code> and <code>%S</code> are the most commonly used placeholders, but there are many more. Review the <a href="https://www.man7.org/linux/man-pages/man1/date.1.html">man page for date</a> to learn about them.</p>
+<h3 id="choosing-what-date-to-print">Choosing what date to print<a class="headerlink" href="#choosing-what-date-to-print" title="Permanent link">&para;</a></h3>
+<p>So far all the examples printed the current date and time, which can be useful, although many times you'll want to work with other dates. You can give the <code>date</code> command a date to use instead of the current one with the <code>-d</code> option. In the next example I pass the <code>$NOWUTC</code> variable that I created above to see it printed in the default format:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt; date -d $NOWUTC
+Tue 03 Feb 2026 07:59:18 PM GMT
+</code></pre></div>
+<p>And of course, you can combine the <code>-d</code> option with the <code>+</code> custom formats to print a custom date using a custom format. The next example prints the day of the week of the date stored in the <code>$NOWUTC</code> variable:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt; date -d $NOWUTC +%A
+Tuesday
+</code></pre></div>
+<p>While the <code>%A</code> placeholder is useful to get the day of the week for printing it, when scripting it is more useful to get a numeric value, which you can get with <code>%w</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt; date -d $NOWUTC +%w
+2
+</code></pre></div>
+<p>The value of <code>%w</code> goes from 0 to 6, with 0 meaning Sunday. I'll show you an example when this can be useful in a little bit.</p>
+<h3 id="moving-through-the-calendar">Moving through the calendar<a class="headerlink" href="#moving-through-the-calendar" title="Permanent link">&para;</a></h3>
+<p>In the previous section I only showed you the most basic possibilities with the <code>-d</code> option. But this option can also be used to navigate from one date to another in relative terms. The next examples show how to print some dates relative to today: </p>
+<div class="language-text highlight"><pre><span></span><code>&gt; date -d &quot;-1 day&quot; +%Y-%m-%d
+2026-02-02
+&gt; date -d &quot;-2 weeks&quot; +%Y-%m-%d
+2026-01-20
+&gt; date -d &quot;-3 months&quot; +%Y-%m-%d
+2025-11-03
+</code></pre></div>
+<p>You can also go forward using a positive distance with a <code>+</code> sign. And you can also use a custom starting date:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt; date -d &quot;2025-01-01 +1 day&quot; +%Y-%m-%d
+2025-01-02
+&gt; date -d &quot;2025-01-01 +2 weeks&quot; +%Y-%m-%d
+2025-01-15
+&gt; date -d &quot;2025-01-01 +3 months&quot; +%Y-%m-%d
+2025-04-01
+</code></pre></div>
+<p>You can combine several adjustments. Here is how you can calculate a week from tomorrow:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt; date -d &quot;+1 day +1 week&quot; +%Y-%m-%d
+2026-02-11
+</code></pre></div>
+<p>And this also works with time units. The next example prints the ISO8601 formatted time of 2 days, three hours and 27 minutes ago:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt; date --utc -d &quot;-2 days -3 hours -27 minutes&quot; +%Y-%m-%dT%H:%M:%SZ
+2026-02-01T19:05:46Z
+</code></pre></div>
+<p>Finally, you can store the results of these calculations instead of printing them:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt; YESTERDAY=$(date -d &quot;-1 day&quot; +%Y-%m-%d)
+&gt; echo $YESTERDAY
+2026-02-02
+</code></pre></div>
+<h3 id="advanced-tricks">Advanced tricks<a class="headerlink" href="#advanced-tricks" title="Permanent link">&para;</a></h3>
+<p>Hopefully you can now picture how you would go about calculating dates in bash, but so far we haven't connected the regular numerical features with the date manipulation options, and this is what brings the most interesting possibilities.</p>
+<p>Let's say you need to repeat some task over the last 7 days. You can do this with a loop as follows:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt; for INDEX in $(seq -6 0); do
+      DATE=$(date -d &quot;-$INDEX days&quot; +%Y-%m-%d);
+      echo do something with $DATE
+  done
+do something with 2026-01-28
+do something with 2026-01-29
+do something with 2026-01-30
+do something with 2026-01-31
+do something with 2026-02-01
+do something with 2026-02-02
+do something with 2026-02-03
+</code></pre></div>
+<p>In this example you can see that you can also substitute parts of the date manipulation options passed to the <code>-d</code> option with variables, for complete flexibility.</p>
+<p>Another common need is to calculate a time difference. The next example is a bash function that calculates the number of days, hours, minutes and seconds between two timestamps:</p>
+<div class="language-text highlight"><pre><span></span><code>time_between() {
+    START_SECS=$(date -d $1 +%s)
+    END_SECS=$(date -d $2 +%s)
+    DIFF_SECS=$(($END_SECS - $START_SECS))
+    SECS=$(($DIFF_SECS % 60))
+    MINS=$(($DIFF_SECS / 60 % 60))
+    HOURS=$((DIFF_SECS / 3600 % 24))
+    DAYS=$((DIFF_SECS / 86400))
+    echo ${DAYS}d ${HOURS}h ${MINS}m ${SECS}s
+}
+</code></pre></div>
+<p>Here are two example calls to this function:</p>
+<div class="language-text highlight"><pre><span></span><code># time between 20:30 and 23:00
+&gt; time_between &quot;2026-01-01T20:30:00Z&quot; &quot;2026-01-01T23:00:00Z&quot;
+0d 2h 30m 0s
+
+# time between the Apolo 11 lunar landing and my current time
+&gt; time_between &quot;1969-07-20T20:17:00Z&quot; $(date --utc +%Y-%m-%dT%H:%M:%SZ)
+20652d 2h 55m 49s
+</code></pre></div>
+<p>Pretty cool, don't you think? Note how for the second example I'm using <code>date</code> to generate the second argument to the <code>time_between</code> function, which in turn feeds it back into <code>date</code> in the <code>-d</code> option.</p>
+<p>As I mentioned at the start of the article, this whole ordeal started when I needed to implement date arithmetic in a backup rotation script that I use. One of the features I wanted to add is the ability to preserve one backup per week for a given number of weeks starting from a given date. This ended up being very tricky, because I needed to know when a week started and ended, so that I could then search for the last backup made during that week to save.</p>
+<p>To find the start of a week, I used the <code>%w</code> placeholder I mentioned earlier, but again in a sort of recursive way, where the output of the <code>date</code> command is fed into a second invocation of <code>date</code>. The following example shows how to get the date of the Sunday of the current week:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt; WEEKDAY=$(date +%w)
+&gt; SUNDAY=$(date -d &quot;-$WEEKDAY days&quot; +%Y-%m-%d)
+&gt; echo $SUNDAY
+2026-02-01
+</code></pre></div>
+<p>How does this work? I first get the day of the week number, which is an integer between 0 and 6. Then I subtract that number of days from the current date. If I'm on a Sunday, then I would be subtracting 0 days, so I'm still on Sunday. If I'm on a Tuesday, then <code>$WEEKDAY</code> would be 2, so subtracting 2 days from the current date also gives me the Sunday that started the week.</p>
+<p>Because I like to live on the edge, I ended up implementing this algorithm all in a single line, avoiding the need to have a <code>$WEEKDAY</code> auxiliary variable:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt; SUNDAY=$(date -d &quot;-$(date +%w) days&quot; +%Y-%m-%d)
+&gt; echo $SUNDAY
+2026-02-01
+</code></pre></div>
+<p>Knowing the date of the start of the current week, I can create a loop that goes backwards a specified number of weeks:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt; NUM_WEEKS=3
+&gt; SUNDAY=$(date -d &quot;-$(date +%w) days&quot; +%Y-%m-%d)
+&gt; for INDEX in $(seq 0 -1 -$(($NUM_WEEKS - 1))); do
+    START=$(date -d &quot;$SUNDAY -$INDEX weeks&quot; +%Y-%m-%d)
+    echo week from $START
+  done
+week from 2026-02-01
+week from 2026-01-25
+week from 2026-01-18
+</code></pre></div>
+<p>This example incorporates pretty much all the techniques that I presented above, so I hope after reading it carefully you will understand it. I used this as a start to build my weekly backup scanning logic, but my actual solution ended up being much uglier than this because I had to add an inner loop to go from <code>$START +6 days</code> to <code>$START</code> searching for the backups I had for that week in descending order, so that I could save the most recent one (the first that I would find) and delete the rest.</p>
+<p>I expect in a few months or years when I come up with another improvement idea for my backup rotation script I will find this article very useful as a reminder of what I did. If it also gives you some ideas for your own scripting projects, then great! If you make something cool with these concepts, please drop me a note below in the comments.</p>
+<h2 id="buy-me-a-coffee">Buy me a coffee?<a class="headerlink" href="#buy-me-a-coffee" title="Permanent link">&para;</a></h2>
+<p>Thank you for visiting my blog! If you enjoyed this article, please consider supporting my work and keeping me caffeinated with a small one-time donation through <a href="https://www.buymeacoffee.com/miguelgrinberg">Buy me a coffee</a>. Thanks!</p>
+<p><a href="https://www.buymeacoffee.com/miguelgrinberg"><img alt="Buy Me A Coffee" src="/static/buymeacoffee-yellow.png" /></a></p>
+<h2 id="share-this-post">Share this post<a class="headerlink" href="#share-this-post" title="Permanent link">&para;</a></h2>
+<p><a href="https://news.ycombinator.com/submitlink?u=https%3A//blog.miguelgrinberg.com/post/date-arithmetic-in-bash&amp;t=Date%20Arithmetic%20in%20Bash"> Hacker News </a> <a href="https://reddit.com/submit/?url=https%3A//blog.miguelgrinberg.com/post/date-arithmetic-in-bash&amp;resubmit=true&amp;title=Date Arithmetic in Bash"> Reddit </a> <a href="https://twitter.com/intent/tweet/?text=Date%20Arithmetic%20in%20Bash&amp;url=https%3A//blog.miguelgrinberg.com/post/date-arithmetic-in-bash"> Twitter </a> <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A//blog.miguelgrinberg.com/post/date-arithmetic-in-bash&amp;title=Date%20Arithmetic%20in%20Bash&amp;summary=Date%20Arithmetic%20in%20Bash&amp;source=https%3A//blog.miguelgrinberg.com/post/date-arithmetic-in-bash"> LinkedIn </a> <a href="https://facebook.com/sharer/sharer.php?u=https%3A//blog.miguelgrinberg.com/post/date-arithmetic-in-bash"> Facebook </a> <a href="mailto:?subject=Date%20Arithmetic%20in%20Bash&amp;body=https%3A//blog.miguelgrinberg.com/post/date-arithmetic-in-bash"> E-Mail </a></p>
+<p><a href="/post/date-arithmetic-in-bash#comments">No comments yet</a></p>
+<h3 id="leave-a-comment">Leave a Comment<a class="headerlink" href="#leave-a-comment" title="Permanent link">&para;</a></h3>
+<p>Name</p>
+<p>Email</p>
+<p>Comment</p>
+<p>Captcha</p>
+<p>The React Mega-Tutorial</p>
+<p><a href="https://amzn.to/3LK7Skg"> <img alt="" src="/static/react-book-small.png" /> </a></p>
+<p>If you would you like to support my <a href="https://blog.miguelgrinberg.com/post/introducing-the-react-mega-tutorial">React Mega-Tutorial series</a> on this blog and as a reward have access to the complete tutorial in book and/or video formats, you can now order it from my <a href="https://courses.miguelgrinberg.com/p/react-mega-tutorial">Courses</a> site or from <a href="https://amzn.to/3LK7Skg">Amazon</a>.</p>
+<p><a href="https://amzn.to/3LK7Skg">Click here to get the Book!</a><br />
+<a href="https://courses.miguelgrinberg.com/p/react-mega-tutorial">Click here to get the Video Course!</a></p>
+<p>About Miguel</p>
+<p><img alt="" src="/static/miguel.jpg" /></p>
+<p>Welcome to my blog!</p>
+<p>I'm a software engineer and technical writer, currently living in Drogheda, Ireland.</p>
+<p>You can also find me on <a href="https://github.com/miguelgrinberg">Github</a>, <a href="http://www.linkedin.com/in/miguelgrinberg">LinkedIn</a>, <a href="https://bsky.app/profile/miguelgrinberg.com">Bluesky</a>, <a href="https://mstdn.social/@miguelgrinberg">Mastodon</a>, <a href="https://twitter.com/miguelgrinberg">Twitter</a>, <a href="https://youtube.com/miguelgrinberg">YouTube</a>,  <a href="https://www.buymeacoffee.com/miguelgrinberg">Buy Me a Coffee</a>, and <a href="https://patreon.com/miguelgrinberg">Patreon</a>.</p>
+<p>Thank you for visiting!</p>
+<p>Categories</p>
+<p><a href="/category/AI/feed"><img alt="AI RSS Feed" src="/static/rss-small.png" /></a> <em>3</em></p>
+<p><a href="/category/Arduino/feed"><img alt="Arduino RSS Feed" src="/static/rss-small.png" /></a> <em>7</em></p>
+<p><a href="/category/Authentication/feed"><img alt="Authentication RSS Feed" src="/static/rss-small.png" /></a> <em>10</em></p>
+<p><a href="/category/Blog/feed"><img alt="Blog RSS Feed" src="/static/rss-small.png" /></a> <em>1</em></p>
+<p><a href="/category/C++/feed"><img alt="C++ RSS Feed" src="/static/rss-small.png" /></a> <em>5</em></p>
+<p><a href="/category/CSS/feed"><img alt="CSS RSS Feed" src="/static/rss-small.png" /></a> <em>1</em></p>
+<p><a href="/category/Cloud/feed"><img alt="Cloud RSS Feed" src="/static/rss-small.png" /></a> <em>11</em></p>
+<p><a href="/category/Database/feed"><img alt="Database RSS Feed" src="/static/rss-small.png" /></a> <em>23</em></p>
+<p><a href="/category/Docker/feed"><img alt="Docker RSS Feed" src="/static/rss-small.png" /></a> <em>5</em></p>
+<p><a href="/category/Filmmaking/feed"><img alt="Filmmaking RSS Feed" src="/static/rss-small.png" /></a> <em>6</em></p>
+<p><a href="/category/Flask/feed"><img alt="Flask RSS Feed" src="/static/rss-small.png" /></a> <em>130</em></p>
+<p><a href="/category/Games/feed"><img alt="Games RSS Feed" src="/static/rss-small.png" /></a> <em>1</em></p>
+<p><a href="/category/IoT/feed"><img alt="IoT RSS Feed" src="/static/rss-small.png" /></a> <em>8</em></p>
+<p><a href="/category/JavaScript/feed"><img alt="JavaScript RSS Feed" src="/static/rss-small.png" /></a> <em>37</em></p>
+<p><a href="/category/MicroPython/feed"><img alt="MicroPython RSS Feed" src="/static/rss-small.png" /></a> <em>10</em></p>
+<p><a href="/category/Microdot/feed"><img alt="Microdot RSS Feed" src="/static/rss-small.png" /></a> <em>1</em></p>
+<p><a href="/category/Microservices/feed"><img alt="Microservices RSS Feed" src="/static/rss-small.png" /></a> <em>2</em></p>
+<p><a href="/category/Movie Reviews/feed"><img alt="Movie Reviews RSS Feed" src="/static/rss-small.png" /></a> <em>5</em></p>
+<p><a href="/category/Personal/feed"><img alt="Personal RSS Feed" src="/static/rss-small.png" /></a> <em>3</em></p>
+<p><a href="/category/Photography/feed"><img alt="Photography RSS Feed" src="/static/rss-small.png" /></a> <em>7</em></p>
+<p><a href="/category/Product Reviews/feed"><img alt="Product Reviews RSS Feed" src="/static/rss-small.png" /></a> <em>2</em></p>
+<p><a href="/category/Programming/feed"><img alt="Programming RSS Feed" src="/static/rss-small.png" /></a> <em>197</em></p>
+<p><a href="/category/Project Management/feed"><img alt="Project Management RSS Feed" src="/static/rss-small.png" /></a> <em>1</em></p>
+<p><a href="/category/Python/feed"><img alt="Python RSS Feed" src="/static/rss-small.png" /></a> <em>175</em></p>
+<p><a href="/category/REST/feed"><img alt="REST RSS Feed" src="/static/rss-small.png" /></a> <em>7</em></p>
+<p><a href="/category/Raspberry Pi/feed"><img alt="Raspberry Pi RSS Feed" src="/static/rss-small.png" /></a> <em>8</em></p>
+<p><a href="/category/React/feed"><img alt="React RSS Feed" src="/static/rss-small.png" /></a> <em>19</em></p>
+<p><a href="/category/Reviews/feed"><img alt="Reviews RSS Feed" src="/static/rss-small.png" /></a> <em>1</em></p>
+<p><a href="/category/Robotics/feed"><img alt="Robotics RSS Feed" src="/static/rss-small.png" /></a> <em>6</em></p>
+<p><a href="/category/Security/feed"><img alt="Security RSS Feed" src="/static/rss-small.png" /></a> <em>13</em></p>
+<p><a href="/category/Video/feed"><img alt="Video RSS Feed" src="/static/rss-small.png" /></a> <em>22</em></p>
+<p><a href="/category/WebSocket/feed"><img alt="WebSocket RSS Feed" src="/static/rss-small.png" /></a> <em>2</em></p>
+<p><a href="/category/Webcast/feed"><img alt="Webcast RSS Feed" src="/static/rss-small.png" /></a> <em>3</em></p>
+<p><a href="/category/Windows/feed"><img alt="Windows RSS Feed" src="/static/rss-small.png" /></a> <em>1</em></p>
+<p>(C) 2012- by Miguel Grinberg. All rights reserved. <a href="mailto:webmaster _at_ miguelgrinberg _dot_ com">Questions?</a></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

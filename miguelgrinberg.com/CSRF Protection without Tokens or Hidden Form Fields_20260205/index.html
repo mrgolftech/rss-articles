@@ -1,0 +1,739 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/miguelgrinberg.com/CSRF%20Protection%20without%20Tokens%20or%20Hidden%20Form%20Fields_20260205/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>CSRF Protection without Tokens or Hidden Form Fields - Hacker News 精选博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#csrf-protection-without-tokens-or-hidden-form-fields" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Hacker News 精选博客" class="md-header__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker News 精选博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CSRF Protection without Tokens or Hidden Form Fields
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker News 精选博客" class="md-nav__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hacker News 精选博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/miguelgrinberg.com/CSRF Protection without Tokens or Hidden Form Fields_20260205.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="csrf-protection-without-tokens-or-hidden-form-fields">CSRF Protection without Tokens or Hidden Form Fields<a class="headerlink" href="#csrf-protection-without-tokens-or-hidden-form-fields" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://miguelgrinberg.com
+<strong>链接:</strong> https://blog.miguelgrinberg.com/post/csrf-protection-without-tokens-or-hidden-form-fields
+<strong>日期:</strong> Sun, 21 Dec 2025 15:54:28 GMT</p>
+<hr />
+<p><a href="/index">miguelgrinberg.com</a></p>
+<ul>
+<li><a href="/index">Home</a></li>
+<li><a href="/post/my-courses-and-books">My Courses and Books</a></li>
+<li><a href="/post/hire-me">Consulting</a></li>
+<li><a href="/post/about-me">About Me</a></li>
+<li>
+<ul>
+<li><a href="javascript:updateTheme('light'); setThemeUI();">   Light Mode </a></li>
+<li><a href="javascript:updateTheme('dark'); setThemeUI();">   Dark Mode </a></li>
+<hr />
+<li>
+<p><a href="javascript:updateTheme('auto'); setThemeUI();">   System Default </a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="http://github.com/miguelgrinberg"><img alt="GitHub" src="/static/social/github.png" /></a> <a href="http://www.linkedin.com/in/miguelgrinberg"><img alt="LinkedIn" src="/static/social/linkedin.png" /></a> <a href="https://bsky.app/profile/miguelgrinberg.com"><img alt="Bluesky" src="/static/social/bluesky.png" /></a> <a href="https://mstdn.social/@miguelgrinberg"><img alt="Mastodon" src="/static/social/mastodon.png" /></a> <a href="https://twitter.com/miguelgrinberg"><img alt="Twitter" src="/static/social/twitter.png" /></a> <a href="https://youtube.com/miguelgrinberg"><img alt="YouTube" src="/static/social/youtube.png" /></a> <a href="https://www.buymeacoffee.com/miguelgrinberg"><img alt="Buy Me a Coffee" src="/static/social/buymeacoffee.png" /></a> <a href="https://patreon.com/miguelgrinberg"><img alt="Patreon" src="/static/social/patreon.png" /></a> <a href="/feed"><img alt="RSS Feed" src="/static/social/rss.png" /></a></p>
+</li>
+</ul>
+<h1 id="csrf-protection-without-tokens-or-hidden-form-fields_1"><a href="/post/csrf-protection-without-tokens-or-hidden-form-fields">CSRF Protection without Tokens or Hidden Form Fields</a><a class="headerlink" href="#csrf-protection-without-tokens-or-hidden-form-fields_1" title="Permanent link">&para;</a></h1>
+<h2 id="posted-by-on-2025-12-21t155428z-under">Posted by  on 2025-12-21T15:54:28Z under<a class="headerlink" href="#posted-by-on-2025-12-21t155428z-under" title="Permanent link">&para;</a></h2>
+<p>A couple of months ago, I received a <a href="https://github.com/miguelgrinberg/microdot/issues/321">request</a> from a random Internet user to add <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">CSRF</a> protection to my little web framework <a href="https://github.com/miguelgrinberg/microdot">Microdot</a>, and I thought it was a fantastic idea.</p>
+<p>When I set off to do this work in early November I expected I was going to have to deal with anti-CSRF tokens, double-submit cookies and hidden form fields, pretty much the traditional elements that we have used to build a defense against CSRF for years. And I did start along this tedious route. But then I bumped into a new way some people are dealing with CSRF attacks that is way simpler, which I describe below.</p>
+<h2 id="implementing-a-security-feature">Implementing a security feature<a class="headerlink" href="#implementing-a-security-feature" title="Permanent link">&para;</a></h2>
+<p>An often shared piece of advice is that you should never implement security features yourself. Instead, you should look for well established solutions built by people who think about security day in and day out.</p>
+<p>Unfortunately, as the lead (and only) maintainer of Microdot, I do not have an ecosystem of existing solutions available to me. Even though I gladly accept external contributions, most of the framework has been built by myself out of nothing. So in this case, like many other times before, I felt I had no choice but to go against the standard advice and write CSRF protection code by myself, because if I didn't do it then the feature would not be built.</p>
+<p>What is the first step when you need to build a security feature? Check out what <a href="https://owasp.org/">OWASP</a> has to say about the matter.</p>
+<p>So, in early November, I opened OWASP's <a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html">CSRF Prevention Cheat Sheet</a> page to see what was new and interesting in the world of CSRF protection. And I found that nothing of significance had changed.</p>
+<p>According to OWASP, the best CSRF protection you could get (at the time I checked) was still built around the idea of using anti-CSRF tokens. So I set off to implement this for Microdot.</p>
+<h2 id="a-disturbance-in-the-csrf-force">A disturbance in the (CSRF) force<a class="headerlink" href="#a-disturbance-in-the-csrf-force" title="Permanent link">&para;</a></h2>
+<p>I was happily making progress on my CSRF implementation, and then in early December, another random Internet user dropped <a href="https://github.com/pallets/flask/issues/5863">an issue</a> on the Flask repository, proposing that Flask adds support for "modern" CSRF protection. Modern? How could there be a new way to protect against CSRF that isn't mentioned by OWASP?</p>
+<p>This led me down a rabbit hole of blog posts and discussions spanning the Go and Ruby communities, plus a <a href="https://github.com/OWASP/CheatSheetSeries/issues/1803">long discussion</a> about this method on the OWASP GitHub repository itself, resulting in a <a href="https://github.com/OWASP/CheatSheetSeries/pull/1875">pull request</a> that added a <a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html#fetch-metadata-headers">mention</a> of this method to the CSRF Cheat Sheet, only a couple of weeks after I went to this page looking for guidance for my own implementation.</p>
+<h2 id="modern-csrf-protection">Modern CSRF Protection<a class="headerlink" href="#modern-csrf-protection" title="Permanent link">&para;</a></h2>
+<p>The so called "modern" method to protect against CSRF attacks is based on the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Site">Sec-Fetch-Site</a> header, which all modern desktop and mobile browsers include in the requests they send to servers. According to Mozilla, all browsers released since March 2023 have support for this header.</p>
+<p>The <code>Sec-Fetch-Site</code> header can have one of four values:</p>
+<ul>
+<li><code>same-origin</code>, when the request comes from the same origin as the target server</li>
+<li><code>same-site</code>, when the request comes from the same site, but not exactly the same origin (e.g. a different subdomain) as the target server</li>
+<li><code>cross-site</code>, when the request comes from an origin that does not match the target server</li>
+<li><code>none</code>, when the request is originated by the user</li>
+</ul>
+<p>The value of this header cannot be set via JavaScript, so the server can assume that a) if this header is present, then the client is a web browser, and b) the value of the header can be trusted. So basically, the server can reject requests that come with this header set to <code>cross-site</code>, and in essence that is all you need to do to protect against CSRF!</p>
+<p>After seeing this, I paused my work on the token-based CSRF implementation and spent a few hours to implement this modern approach. As always, the devil is in the details, so let's see what else I needed to do to build a complete solution.</p>
+<p>First of all, in some cases subdomains sharing the same registered domain may operate independently, and as such, it is not out of the question that one subdomain may attempt to attack another through CSRF. Depending on the level of trust an application has for other subdomains, a server may want to block requests that come with the <code>Sec-Fetch-Site</code> header set to <code>same-site</code>. In Microdot, I have added an argument <code>allow_subdomains</code> to cover this case. I decided to err on the side of security, so the default is <code>False</code>, meaning that requests from subdomains are also blocked.</p>
+<p>The other big problem is that not everyone is using a recent browser that implements this header. Looking at the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Site#browser_compatibility">browser compatibility</a> for the <code>Sec-Fetch-Site</code> header, you can see that most browsers implemented this feature long ago, between 2019 and 2021, with one notable exception: Safari. Apple added this header to its browser in 2023, so it is reasonable to assume that there are still users out there running older browsers that do not support it.</p>
+<p>One option is to reject all requests that do not have the <code>Sec-Fetch-Site</code> header. This keeps everyone secure, but of course, there's going to be some unhappy users of old devices that will not be able to use your application. Plus, this would also reject HTTP clients that are not browsers. If this is not a problem for your use case, then great, but it isn't a good solution overall.</p>
+<p>From what I gathered from looking at other implementations of this method, an accepted solution is to use the <code>Origin</code> header as fallback when <code>Sec-Fetch-Site</code> is not implemented, since this header has been around for <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Origin#browser_compatibility">much longer</a>. The last of the major browsers to add it were Firefox desktop in 2019 and Edge and Firefox mobile in 2020. Like <code>Sec-Fetch-Site</code>, the <code>Origin</code> header is also a restricted header that is set by the browser, so it can also be used to determine from where a request is coming from.</p>
+<p>The problem with using the <code>Origin</code> header is that it isn't always easy to know what is the correct origin that applies to a web application. The standard option is to compare the value of the <code>Origin</code> header against the value of the <code>Host</code> header, but <code>Host</code> only includes the hostname and port, while <code>Origin</code> also includes the scheme. Also, the <code>Host</code> header is overwritten as it passes through reverse proxies. So comparing these two headers is actually not easy.</p>
+<p>Another, more direct option is to ask the user to configure the expected origin name explicitly. To keep things simple, in Microdot I opted for the explicit configuration, for which I linked to the existing Cross-Origin Request Sharing (CORS) support. The CORS feature already maintains a list of allowed origins, so my CSRF logic automatically trusts these. I decided to not complicate myself adding support for <code>Host</code> header checks at this time, but maybe I'll add this in the future.</p>
+<p>Filippo Valsorda, a security developer active in the Go ecosystem (and author of the popular <a href="https://github.com/FiloSottile/mkcert">mkcert</a> tool) wrote a <a href="https://words.filippo.io/csrf/">blog post</a> about this method that you may want to check out if you want to learn more details about it. He seems to be the first to propose this method and has implemented it for the Go standard library.</p>
+<p>Also if you are interested, feel free to review my implementation of CSRF protection in Microdot. Have a look at the <a href="https://microdot.readthedocs.io/en/latest/extensions/csrf.html">documentation</a>, the <a href="https://github.com/miguelgrinberg/microdot/blob/main/src/microdot/csrf.py">code</a> and an <a href="https://github.com/miguelgrinberg/microdot/tree/main/examples/csrf">example</a>, and let me know if you have any improvements or fixes to suggest.</p>
+<h2 id="lets-revisit-owasp">Let's revisit OWASP<a class="headerlink" href="#lets-revisit-owasp" title="Permanent link">&para;</a></h2>
+<p><em>Note: this section is now out of date. As of December 24th 2025 the OWASP CSRF Cheat Sheet page lists the Fetch Metadata method as a complete solution that can be used as an alternative to token-based approaches.</em></p>
+<p>As I mentioned above, the CSRF Prevention Cheat Sheet page from OWASP was updated in early December to include the use of the <code>Sec-Fetch-Site</code> header in the list of prevention methods. But this method is currently listed as a <a href="https://en.wikipedia.org/wiki/Defence_in_depth">defense in depth</a> mechanism, and not a complete solution, which I thought was odd.</p>
+<p>I referenced the <a href="https://github.com/OWASP/CheatSheetSeries/issues/1803">discussion</a> in the OWASP GitHub repository that resulted in the recent changes made to the Cheat Sheet page. Several participants in that discussion have suggested that this method should be upgraded to a complete alternative to the standard token-based approaches. The OWASP maintainer was initially skeptical, but towards the end of the thread they have agreed. The <a href="https://github.com/OWASP/CheatSheetSeries/pull/1875">pull request</a> that closed the discussion added this solution as an alternative to the token-based approaches, but then a later change made significant updates, including the downgrade to defense in depth. My hope is that this is just a misunderstanding, and that the OWASP folks will restore the content as it was agreed by all the parties involved.</p>
+<p>In any case, I consider that in Microdot, going from no CSRF support at all to this is a great step forward that is also consistent with the minimalist ethos of the project. I will be keeping an eye on the OWASP CSRF Cheat Sheet page to see what is their final word on this new protection method, and if they end up keeping it as defense in depth, I still have a mostly complete implementation of double-submit anti-CSRF tokens that I can bring into my project.</p>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>What I like the most about working in open source is that all the work happens in the open, so it is a permanent record that can be searched and reviewed. My CSRF protection journey started as a somewhat tedious exercise in the use of cryptography and cookies, but then thanks to an unexpected lead it turned into a fun and exciting learning opportunity for me.</p>
+<h2 id="buy-me-a-coffee">Buy me a coffee?<a class="headerlink" href="#buy-me-a-coffee" title="Permanent link">&para;</a></h2>
+<p>Thank you for visiting my blog! If you enjoyed this article, please consider supporting my work and keeping me caffeinated with a small one-time donation through <a href="https://www.buymeacoffee.com/miguelgrinberg">Buy me a coffee</a>. Thanks!</p>
+<p><a href="https://www.buymeacoffee.com/miguelgrinberg"><img alt="Buy Me A Coffee" src="/static/buymeacoffee-yellow.png" /></a></p>
+<h2 id="share-this-post">Share this post<a class="headerlink" href="#share-this-post" title="Permanent link">&para;</a></h2>
+<p><a href="https://news.ycombinator.com/submitlink?u=https%3A//blog.miguelgrinberg.com/post/csrf-protection-without-tokens-or-hidden-form-fields&amp;t=CSRF%20Protection%20without%20Tokens%20or%20Hidden%20Form%20Fields"> Hacker News </a> <a href="https://reddit.com/submit/?url=https%3A//blog.miguelgrinberg.com/post/csrf-protection-without-tokens-or-hidden-form-fields&amp;resubmit=true&amp;title=CSRF Protection without Tokens or Hidden Form Fields"> Reddit </a> <a href="https://twitter.com/intent/tweet/?text=CSRF%20Protection%20without%20Tokens%20or%20Hidden%20Form%20Fields&amp;url=https%3A//blog.miguelgrinberg.com/post/csrf-protection-without-tokens-or-hidden-form-fields"> Twitter </a> <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A//blog.miguelgrinberg.com/post/csrf-protection-without-tokens-or-hidden-form-fields&amp;title=CSRF%20Protection%20without%20Tokens%20or%20Hidden%20Form%20Fields&amp;summary=CSRF%20Protection%20without%20Tokens%20or%20Hidden%20Form%20Fields&amp;source=https%3A//blog.miguelgrinberg.com/post/csrf-protection-without-tokens-or-hidden-form-fields"> LinkedIn </a> <a href="https://facebook.com/sharer/sharer.php?u=https%3A//blog.miguelgrinberg.com/post/csrf-protection-without-tokens-or-hidden-form-fields"> Facebook </a> <a href="mailto:?subject=CSRF%20Protection%20without%20Tokens%20or%20Hidden%20Form%20Fields&amp;body=https%3A//blog.miguelgrinberg.com/post/csrf-protection-without-tokens-or-hidden-form-fields"> E-Mail </a></p>
+<p><a href="/post/csrf-protection-without-tokens-or-hidden-form-fields#comments">10 comments</a></p>
+<ul>
+<li><img alt="" src="https://gravatar.com/avatar/52e856d4944bdff26afc59f123c48adf?s=60&amp;d=identicon" /></li>
+</ul>
+<h1 id="1-bot-said-2025-12-25t022806z">1 Bot said 2025-12-25T02:28:06Z<a class="headerlink" href="#1-bot-said-2025-12-25t022806z" title="Permanent link">&para;</a></h1>
+<p>While the Go standard library needs to cover all the edge cases (who uses http nowadays?). For any normal use case, you can just use sameSite=Lax and check the Referer value.</p>
+<ul>
+<li><img alt="" src="https://gravatar.com/avatar/729e26a2a2c7ff24a71958d4aa4e5f35?s=60&amp;d=identicon" /></li>
+</ul>
+<h1 id="2-miguel-grinberg-said-2025-12-25t084142z">2 Miguel Grinberg said 2025-12-25T08:41:42Z<a class="headerlink" href="#2-miguel-grinberg-said-2025-12-25t084142z" title="Permanent link">&para;</a></h1>
+<p>@Bot: The OWASP folks consider the SameSite cookie a defense in depth mechanism, not full protection. Read what they have to say <a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html#samesite-cookie-attribute">here</a>.</p>
+<ul>
+<li><img alt="" src="https://gravatar.com/avatar/b482000b6e3554ee69d69fddea82cf4e?s=60&amp;d=identicon" /></li>
+</ul>
+<h1 id="3-albert-peschar-said-2025-12-25t110831z">3 Albert Peschar said 2025-12-25T11:08:31Z<a class="headerlink" href="#3-albert-peschar-said-2025-12-25t110831z" title="Permanent link">&para;</a></h1>
+<p>One potential vulnerability that a token embedded in a hidden form field protects against, is where an attacker is able to inject HTML into a page on the same origin. A form tag pointing to the endpoint would let the attacker trick the user into submitting an attacker-controlled payload. This is the case even with a restrictive CSP preventing XSS.</p>
+<p>If you use a token to protect against CSRF, an attacker would be unable to generate a form that could be successfully submitted.</p>
+<ul>
+<li><img alt="" src="https://gravatar.com/avatar/92ac5b788c2deba6f814b149001ace53?s=60&amp;d=identicon" /></li>
+</ul>
+<h1 id="4-lmao-said-2025-12-25t124850z">4 lmao said 2025-12-25T12:48:50Z<a class="headerlink" href="#4-lmao-said-2025-12-25t124850z" title="Permanent link">&para;</a></h1>
+<p>let's hope some browser or a bad addon "accidentally" doesn't enforce this, lmfao</p>
+<p>What happened to never trust user/(browser) supplied values?</p>
+<ul>
+<li><img alt="" src="https://gravatar.com/avatar/729e26a2a2c7ff24a71958d4aa4e5f35?s=60&amp;d=identicon" /></li>
+</ul>
+<h1 id="5-miguel-grinberg-said-2025-12-25t163754z">5 Miguel Grinberg said 2025-12-25T16:37:54Z<a class="headerlink" href="#5-miguel-grinberg-said-2025-12-25t163754z" title="Permanent link">&para;</a></h1>
+<p>@Albert: If you are vulnerable to XSS then you don't have much hope, even when you use CSRF tokens.</p>
+<ul>
+<li><img alt="" src="https://gravatar.com/avatar/729e26a2a2c7ff24a71958d4aa4e5f35?s=60&amp;d=identicon" /></li>
+</ul>
+<h1 id="6-miguel-grinberg-said-2025-12-25t164457z">6 Miguel Grinberg said 2025-12-25T16:44:57Z<a class="headerlink" href="#6-miguel-grinberg-said-2025-12-25t164457z" title="Permanent link">&para;</a></h1>
+<p>@lmao: if the user's browser is compromised, then there isn't really much you can do. The "bad addon" as you call it can also steal your CSRF token and submit a malicious form with it. But if you assume that the browser is not compromised, then the values of the <code>Sec-Fetch-First</code> and <code>Origin</code> headers cannot be forged except when the client is not a browser. Given that CSRF attacks are browser-specific, this isn't really a problem.</p>
+<ul>
+<li><img alt="" src="https://gravatar.com/avatar/a68da6e6ffe44f0165b2992d15f46990?s=60&amp;d=identicon" /></li>
+</ul>
+<h1 id="7-adeadfed-said-2025-12-26t092053z">7 adeadfed said 2025-12-26T09:20:53Z<a class="headerlink" href="#7-adeadfed-said-2025-12-26t092053z" title="Permanent link">&para;</a></h1>
+<p>Howdy and Merry Christmas :) I was just passing by this post, so I don't have much of an insight into your web framework, but as Bot already mentioned, there are a lot of other tricks to prevent CSRF that might be useful, and I'm not sure why OWASP fails to mention them. Lax cookies would only fail to protect against CSRF in edge cases if someone decides to add a sensitive GET endpoint action (or if your framework does not respect HTTP verb when processing the request). Plus you can also add a custom static HTTP header to the frontend, e.g. X-Csrf: 1 and require it on the backend. The header will trigger a CORS preflight request which would block the actual request in the browser unless the CORS allows it explicitly. This would cut any CSRF attempts at all unless there is a flaw in your CORS allowlist. Any "non-standard" content type by CORS documentation on MSDN (e.g. application/json) would do the same job btw, so, honestly, a lot of stars need to align for a CSRF to happen in 2025 :) Nonetheless, great post! I haven't had much of an insight into Sec-* headers myself up to this point!</p>
+<ul>
+<li><img alt="" src="https://gravatar.com/avatar/729e26a2a2c7ff24a71958d4aa4e5f35?s=60&amp;d=identicon" /></li>
+</ul>
+<h1 id="8-miguel-grinberg-said-2025-12-26t095542z">8 Miguel Grinberg said 2025-12-26T09:55:42Z<a class="headerlink" href="#8-miguel-grinberg-said-2025-12-26t095542z" title="Permanent link">&para;</a></h1>
+<p>@adeadfed: if OWASP does not mention something, it is because they do not recommend it. They do mention lax cookies however. And injecting a random header does not work for regular forms, so it isn't a complete solution.</p>
+<ul>
+<li><img alt="" src="https://gravatar.com/avatar/d5839961d3314fe5655fb63abbb96c15?s=60&amp;d=identicon" /></li>
+</ul>
+<h1 id="9-theodore-said-2026-01-21t190909z">9 theodore said 2026-01-21T19:09:09Z<a class="headerlink" href="#9-theodore-said-2026-01-21t190909z" title="Permanent link">&para;</a></h1>
+<p>What about using a custom header which should trigger pre-flight request and prevent CSRF. A technique also mentioned in the cheatsheet.</p>
+<ul>
+<li><img alt="" src="https://gravatar.com/avatar/729e26a2a2c7ff24a71958d4aa4e5f35?s=60&amp;d=identicon" /></li>
+</ul>
+<h1 id="10-miguel-grinberg-said-2026-01-21t204448z">10 Miguel Grinberg said 2026-01-21T20:44:48Z<a class="headerlink" href="#10-miguel-grinberg-said-2026-01-21t204448z" title="Permanent link">&para;</a></h1>
+<p>@theodore: same answer as above. You cannot insert a custom header in a web form, so this isn't a solution that you can use across the board for all types of requests.</p>
+<ul>
+<li><a href="/post/csrf-protection-without-tokens-or-hidden-form-fields/page/1#comments">««</a></li>
+<li><a href="/post/csrf-protection-without-tokens-or-hidden-form-fields/page/0#comments">«</a></li>
+<li><a href="/post/csrf-protection-without-tokens-or-hidden-form-fields/page/0#comments">»</a></li>
+<li><a href="/post/csrf-protection-without-tokens-or-hidden-form-fields/page/0#comments">»»</a></li>
+</ul>
+<h3 id="leave-a-comment">Leave a Comment<a class="headerlink" href="#leave-a-comment" title="Permanent link">&para;</a></h3>
+<p>Name</p>
+<p>Email</p>
+<p>Comment</p>
+<p>Captcha</p>
+<p>The React Mega-Tutorial</p>
+<p><a href="https://amzn.to/3LK7Skg"> <img alt="" src="/static/react-book-small.png" /> </a></p>
+<p>If you would you like to support my <a href="https://blog.miguelgrinberg.com/post/introducing-the-react-mega-tutorial">React Mega-Tutorial series</a> on this blog and as a reward have access to the complete tutorial in book and/or video formats, you can now order it from my <a href="https://courses.miguelgrinberg.com/p/react-mega-tutorial">Courses</a> site or from <a href="https://amzn.to/3LK7Skg">Amazon</a>.</p>
+<p><a href="https://amzn.to/3LK7Skg">Click here to get the Book!</a><br />
+<a href="https://courses.miguelgrinberg.com/p/react-mega-tutorial">Click here to get the Video Course!</a></p>
+<p>About Miguel</p>
+<p><img alt="" src="/static/miguel.jpg" /></p>
+<p>Welcome to my blog!</p>
+<p>I'm a software engineer and technical writer, currently living in Drogheda, Ireland.</p>
+<p>You can also find me on <a href="https://github.com/miguelgrinberg">Github</a>, <a href="http://www.linkedin.com/in/miguelgrinberg">LinkedIn</a>, <a href="https://bsky.app/profile/miguelgrinberg.com">Bluesky</a>, <a href="https://mstdn.social/@miguelgrinberg">Mastodon</a>, <a href="https://twitter.com/miguelgrinberg">Twitter</a>, <a href="https://youtube.com/miguelgrinberg">YouTube</a>,  <a href="https://www.buymeacoffee.com/miguelgrinberg">Buy Me a Coffee</a>, and <a href="https://patreon.com/miguelgrinberg">Patreon</a>.</p>
+<p>Thank you for visiting!</p>
+<p>Categories</p>
+<p><a href="/category/AI/feed"><img alt="AI RSS Feed" src="/static/rss-small.png" /></a> <em>3</em></p>
+<p><a href="/category/Arduino/feed"><img alt="Arduino RSS Feed" src="/static/rss-small.png" /></a> <em>7</em></p>
+<p><a href="/category/Authentication/feed"><img alt="Authentication RSS Feed" src="/static/rss-small.png" /></a> <em>10</em></p>
+<p><a href="/category/Blog/feed"><img alt="Blog RSS Feed" src="/static/rss-small.png" /></a> <em>1</em></p>
+<p><a href="/category/C++/feed"><img alt="C++ RSS Feed" src="/static/rss-small.png" /></a> <em>5</em></p>
+<p><a href="/category/CSS/feed"><img alt="CSS RSS Feed" src="/static/rss-small.png" /></a> <em>1</em></p>
+<p><a href="/category/Cloud/feed"><img alt="Cloud RSS Feed" src="/static/rss-small.png" /></a> <em>11</em></p>
+<p><a href="/category/Database/feed"><img alt="Database RSS Feed" src="/static/rss-small.png" /></a> <em>23</em></p>
+<p><a href="/category/Docker/feed"><img alt="Docker RSS Feed" src="/static/rss-small.png" /></a> <em>5</em></p>
+<p><a href="/category/Filmmaking/feed"><img alt="Filmmaking RSS Feed" src="/static/rss-small.png" /></a> <em>6</em></p>
+<p><a href="/category/Flask/feed"><img alt="Flask RSS Feed" src="/static/rss-small.png" /></a> <em>130</em></p>
+<p><a href="/category/Games/feed"><img alt="Games RSS Feed" src="/static/rss-small.png" /></a> <em>1</em></p>
+<p><a href="/category/IoT/feed"><img alt="IoT RSS Feed" src="/static/rss-small.png" /></a> <em>8</em></p>
+<p><a href="/category/JavaScript/feed"><img alt="JavaScript RSS Feed" src="/static/rss-small.png" /></a> <em>37</em></p>
+<p><a href="/category/MicroPython/feed"><img alt="MicroPython RSS Feed" src="/static/rss-small.png" /></a> <em>10</em></p>
+<p><a href="/category/Microdot/feed"><img alt="Microdot RSS Feed" src="/static/rss-small.png" /></a> <em>1</em></p>
+<p><a href="/category/Microservices/feed"><img alt="Microservices RSS Feed" src="/static/rss-small.png" /></a> <em>2</em></p>
+<p><a href="/category/Movie Reviews/feed"><img alt="Movie Reviews RSS Feed" src="/static/rss-small.png" /></a> <em>5</em></p>
+<p><a href="/category/Personal/feed"><img alt="Personal RSS Feed" src="/static/rss-small.png" /></a> <em>3</em></p>
+<p><a href="/category/Photography/feed"><img alt="Photography RSS Feed" src="/static/rss-small.png" /></a> <em>7</em></p>
+<p><a href="/category/Product Reviews/feed"><img alt="Product Reviews RSS Feed" src="/static/rss-small.png" /></a> <em>2</em></p>
+<p><a href="/category/Programming/feed"><img alt="Programming RSS Feed" src="/static/rss-small.png" /></a> <em>197</em></p>
+<p><a href="/category/Project Management/feed"><img alt="Project Management RSS Feed" src="/static/rss-small.png" /></a> <em>1</em></p>
+<p><a href="/category/Python/feed"><img alt="Python RSS Feed" src="/static/rss-small.png" /></a> <em>175</em></p>
+<p><a href="/category/REST/feed"><img alt="REST RSS Feed" src="/static/rss-small.png" /></a> <em>7</em></p>
+<p><a href="/category/Raspberry Pi/feed"><img alt="Raspberry Pi RSS Feed" src="/static/rss-small.png" /></a> <em>8</em></p>
+<p><a href="/category/React/feed"><img alt="React RSS Feed" src="/static/rss-small.png" /></a> <em>19</em></p>
+<p><a href="/category/Reviews/feed"><img alt="Reviews RSS Feed" src="/static/rss-small.png" /></a> <em>1</em></p>
+<p><a href="/category/Robotics/feed"><img alt="Robotics RSS Feed" src="/static/rss-small.png" /></a> <em>6</em></p>
+<p><a href="/category/Security/feed"><img alt="Security RSS Feed" src="/static/rss-small.png" /></a> <em>13</em></p>
+<p><a href="/category/Video/feed"><img alt="Video RSS Feed" src="/static/rss-small.png" /></a> <em>22</em></p>
+<p><a href="/category/WebSocket/feed"><img alt="WebSocket RSS Feed" src="/static/rss-small.png" /></a> <em>2</em></p>
+<p><a href="/category/Webcast/feed"><img alt="Webcast RSS Feed" src="/static/rss-small.png" /></a> <em>3</em></p>
+<p><a href="/category/Windows/feed"><img alt="Windows RSS Feed" src="/static/rss-small.png" /></a> <em>1</em></p>
+<p>(C) 2012- by Miguel Grinberg. All rights reserved. <a href="mailto:webmaster _at_ miguelgrinberg _dot_ com">Questions?</a></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

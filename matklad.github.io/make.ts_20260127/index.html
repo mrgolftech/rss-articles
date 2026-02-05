@@ -409,14 +409,15 @@
 <strong>链接:</strong> https://matklad.github.io/2026/01/27/make-ts.html
 <strong>日期:</strong> 2026-01-27T00:00:00+00:00</p>
 <hr />
+<p><a href="/">matklad</a><a href="/about.html">About</a><a href="/links.html">Links</a><a href="/blogroll.html">Blogroll</a></p>
 <h1 id="makets_1">make.ts<a class="headerlink" href="#makets_1" title="Permanent link">&para;</a></h1>
 <p>Jan 27, 2026</p>
 <p><code>Up Enter</code> <code>Up Up Enter</code> <code>Up Up Up Enter</code></p>
-<p>Sounds familiar? This is how I historically have been running benchmarks and other experiments requiring a repeated sequence of commands — type them manually once, then rely on shell history (and maybe some terminal splits) for reproduction. These past few years I’ve arrived at a much better workflow pattern — <code>make.ts</code>. I was forced to adapt it once I started working with multiprocess applications, where manually entering commands is borderline infeasible. In retrospect, I should have adapted the workflow years earlier.</p>
-<h2 id="the-pattern"><a href="https://matklad.github.io/2026/01/27/make-ts.html#The-Pattern">The Pattern</a><a class="headerlink" href="#the-pattern" title="Permanent link">&para;</a></h2>
-<p>Use a (gitignored) file for interactive scripting. Instead of entering a command directly into the terminal, write it to a file first, and then run the file. For me, I type stuff into <code>make.ts</code> and then run <code>./make.ts</code> in my terminal (Ok, I need <em>one</em> <code>Up Enter</code> for that).</p>
-<p>I want to be clear here, I am not advocating writing “proper” scripts, just capturing your interactive, ad-hoc command to a persistent file. Of course any command that you want to execute <em>repeatedly</em> belongs to the build system. The surprising thing is that even more complex one-off commands benefit from running through file, because it will take you several tries to get them right!</p>
-<p>There are many benefits relative to <code>Up Up Up</code> workflow:</p>
+<p>Sounds familiar? This is how I historically have been running benchmarks and other experiments requiring a repeated sequence of commands — type them manually once, then rely on shell history (and maybe some terminal splits) for reproduction. These past few years I’ve arrived at a much better workflow pattern — <code>make.ts</code>. I was forced to adapt it once I started working with multiprocess applications, where manually entering commands is borderline infeasible. In retrospect, I should have adapted the workflow years earlier. </p>
+<h2 id="the-pattern">The Pattern<a class="headerlink" href="#the-pattern" title="Permanent link">&para;</a></h2>
+<p>Use a (gitignored) file for interactive scripting. Instead of entering a command directly into the terminal, write it to a file first, and then run the file. For me, I type stuff into <code>make.ts</code> and then run <code>./make.ts</code> in my terminal (Ok, I need <em>one</em> <code>Up Enter</code> for that). </p>
+<p>I want to be clear here, I am not advocating writing “proper” scripts, just capturing your interactive, ad-hoc command to a persistent file. Of course any command that you want to execute <em>repeatedly</em> belongs to the build system. The surprising thing is that even more complex one-off commands benefit from running through file, because it will take you several tries to get them right! </p>
+<p>There are many benefits relative to <code>Up Up Up</code> workflow: </p>
 <ul>
 <li>Real commands tend to get large, and it is so much nicer to use a real 2D text editor rather than shell’s line editor. </li>
 <li>If you need more than one command, you can write several commands, and still run them all with a single key (before <code>make.ts</code>, I was prone to constructing rather horrific &amp;&amp; conjuncts for this reason). </li>
@@ -424,9 +425,9 @@
 <li>At some point you might realize after, say, running a series of ad-hoc benchmarks interactively, that you’d rather write a proper script which executes a collection of benchmarks with varying parameters. With the file approach, you already have the meat of the script implemented, and you only need to wrap in a couple of fors and ifs. </li>
 <li>Finally, if you happen to work with multi-process projects, you’ll find it easier to manage concurrency declaratively, spawning a tree of processes from a single script, rather than switching between terminal splits. </li>
 </ul>
-<h2 id="details"><a href="https://matklad.github.io/2026/01/27/make-ts.html#Details">Details</a><a class="headerlink" href="#details" title="Permanent link">&para;</a></h2>
-<p>Use a consistent filename for the script. I use <code>make.ts</code>, and so there’s a <code>make.ts</code> in the root of most projects I work on. Correspondingly, I have <code>make.ts</code> line in project’s <code>.git/info/exclude</code> — the <code>.gitignore</code> file which is not shared. The fixed name reduces fixed costs — whenever I need complex interactivity I don’t need to come up with a name for a new file, I open my pre-existing <code>make.ts</code>, wipe whatever was there and start hacking. Similarly, I have <code>./make.ts</code> in my shell history, so <a href="https://fishshell.com/docs/current/interactive.html#autosuggestions">fish autosuggestions</a> work for me. At one point, I had a VS Code task to run <code>make.ts</code>, though I now use <a href="https://matklad.github.io/2025/08/31/vibe-coding-terminal-editor.html">terminal editor</a>.</p>
-<p>Start the script with hash bang, <code>#!/usr/bin/env -S deno run --allow-all</code> in my case, and <code>chmod a+x make.ts</code> the file, to make it easy to run.</p>
+<h2 id="details">Details<a class="headerlink" href="#details" title="Permanent link">&para;</a></h2>
+<p>Use a consistent filename for the script. I use <code>make.ts</code>, and so there’s a <code>make.ts</code> in the root of most projects I work on. Correspondingly, I have <code>make.ts</code> line in project’s <code>.git/info/exclude</code> — the <code>.gitignore</code> file which is not shared. The fixed name reduces fixed costs — whenever I need complex interactivity I don’t need to come up with a name for a new file, I open my pre-existing <code>make.ts</code>, wipe whatever was there and start hacking. Similarly, I have <code>./make.ts</code> in my shell history, so <a href="https://fishshell.com/docs/current/interactive.html#autosuggestions">fish autosuggestions</a> work for me. At one point, I had a VS Code task to run <code>make.ts</code>, though I now use <a href="https://matklad.github.io/2025/08/31/vibe-coding-terminal-editor.html">terminal editor</a>. </p>
+<p>Start the script with hash bang, <code>#!/usr/bin/env -S deno run --allow-all</code> in my case, and <code>chmod a+x make.ts</code> the file, to make it easy to run. </p>
 <p>Write the script in a language that:</p>
 <ul>
 <li>you are comfortable with, </li>
@@ -434,8 +435,8 @@
 <li>makes it easy to spawn subprocesses, </li>
 <li>has good support for concurrency. </li>
 </ul>
-<p>For me, that is TypeScript. Modern JavaScript is sufficiently ergonomic, and structural, gradual typing is a sweet spot that gives you reasonable code completion, but still allows brute-forcing any problem by throwing enough stringly dicts at it.</p>
-<p>JavaScript’s tagged template syntax is brilliant for scripting use-cases:</p>
+<p>For me, that is TypeScript. Modern JavaScript is sufficiently ergonomic, and structural, gradual typing is a sweet spot that gives you reasonable code completion, but still allows brute-forcing any problem by throwing enough stringly dicts at it. </p>
+<p>JavaScript’s tagged template syntax is brilliant for scripting use-cases: </p>
 <div class="language-text highlight"><pre><span></span><code>function $(literal, ...interpolated) {
   console.log({ literal, interpolated });
 }
@@ -449,17 +450,17 @@ $`ls ${dir}`;
     interpolated: [ &quot;hello, world&quot; ]
 }
 </code></pre></div>
-<p>What happens here is that <code>$</code> gets a list of literal string fragments inside the backticks, and then, separately, a list of values to be interpolated in-between. It <em>could</em> concatenate everything to just a single string, but it doesn’t have to. This is precisely what is required for process spawning, where you want to pass an array of strings to the <code>exec</code> syscall.</p>
-<p>Specifically, I use <a href="https://github.com/dsherret/dax">dax</a> library with Deno, which is excellent as a single-binary batteries-included scripting environment (see <a href="https://matklad.github.io/2023/02/12/a-love-letter-to-deno.html">&lt;3 Deno</a>). Bun has a dax-like library in the box and is a good alternative (though I personally stick with Deno because of <code>deno fmt</code> and <code>deno lsp</code>). You could also use famous zx, though be mindful that it <a href="https://google.github.io/zx/configuration#shell">uses your shell as a middleman</a>, something I consider to be sloppy (<a href="https://julialang.org/blog/2012/03/shelling-out-sucks/">explanation</a>).</p>
-<p>While <code>dax</code> makes it convenient to spawn a single program, <code>async/await</code> is excellent for herding a slither of processes:</p>
+<p>What happens here is that <code>$</code> gets a list of literal string fragments inside the backticks, and then, separately, a list of values to be interpolated in-between. It <em>could</em> concatenate everything to just a single string, but it doesn’t have to. This is precisely what is required for process spawning, where you want to pass an array of strings to the <code>exec</code> syscall. </p>
+<p>Specifically, I use <a href="https://github.com/dsherret/dax">dax</a> library with Deno, which is excellent as a single-binary batteries-included scripting environment (see <a href="https://matklad.github.io/2023/02/12/a-love-letter-to-deno.html">&lt;3 Deno</a>). Bun has a dax-like library in the box and is a good alternative (though I personally stick with Deno because of <code>deno fmt</code> and <code>deno lsp</code>). You could also use famous zx, though be mindful that it <a href="https://google.github.io/zx/configuration#shell">uses your shell as a middleman</a>, something I consider to be sloppy (<a href="https://julialang.org/blog/2012/03/shelling-out-sucks/">explanation</a>). </p>
+<p>While <code>dax</code> makes it convenient to spawn a single program, <code>async/await</code> is excellent for herding a slither of processes: </p>
 <div class="language-text highlight"><pre><span></span><code>await Promise.all([
     $`sleep 5`,
     $`sleep 10`,
 ]);
 </code></pre></div>
-<h2 id="concrete-example"><a href="https://matklad.github.io/2026/01/27/make-ts.html#Concrete-Example">Concrete Example</a><a class="headerlink" href="#concrete-example" title="Permanent link">&para;</a></h2>
-<p>Here’s how I applied this pattern earlier today. I wanted to measure how TigerBeetle cluster recovers from the crash of the primary. The manual way to do that would be to create a bunch of ssh sessions for several cloud machines, format datafiles, start replicas, and then create some load. I <em>almost</em> started to split my terminal up, but then figured out I can do it the smart way.</p>
-<p>The first step was cross-compiling the binary, uploading it to the cloud machines, and running the cluster (using my <a href="https://matklad.github.io/2026/01/20/vibecoding-2.html">box</a> from the other week):</p>
+<h2 id="concrete-example">Concrete Example<a class="headerlink" href="#concrete-example" title="Permanent link">&para;</a></h2>
+<p>Here’s how I applied this pattern earlier today. I wanted to measure how TigerBeetle cluster recovers from the crash of the primary. The manual way to do that would be to create a bunch of ssh sessions for several cloud machines, format datafiles, start replicas, and then create some load. I <em>almost</em> started to split my terminal up, but then figured out I can do it the smart way. </p>
+<p>The first step was cross-compiling the binary, uploading it to the cloud machines, and running the cluster (using my <a href="https://matklad.github.io/2026/01/20/vibecoding-2.html">box</a> from the other week): </p>
 <div class="language-text highlight"><pre><span></span><code>#!/usr/bin/env -S deno run --allow-all
 import $ from &quot;jsr:@david/dax@0.44.2&quot;;
 
@@ -470,7 +471,7 @@ await $`box run 0-5
 await $`box run 0-5
     ./tigerbeetle start --addresses=?0-5? 0_??.tigerbeetle`;
 </code></pre></div>
-<p>Running the above the second time, I realized that I need to kill the old cluster first, so two new commands are “interactively” inserted:</p>
+<p>Running the above the second time, I realized that I need to kill the old cluster first, so two new commands are “interactively” inserted: </p>
 <div class="language-text highlight"><pre><span></span><code>await $`./zig/zig build -Drelease -Dtarget=x86_64-linux`;
 await $`box sync 0-5 ./tigerbeetle`;
 
@@ -482,15 +483,15 @@ await $`box run 0-5
 await $`box run 0-5
     ./tigerbeetle start --addresses=?0-5? 0_??.tigerbeetle`;
 </code></pre></div>
-<p>At this point, my investment in writing this file and not just entering the commands one-by-one already paid off!</p>
-<p>The next step is to run the benchmark load in parallel with the cluster:</p>
+<p>At this point, my investment in writing this file and not just entering the commands one-by-one already paid off! </p>
+<p>The next step is to run the benchmark load in parallel with the cluster: </p>
 <div class="language-text highlight"><pre><span></span><code>await Promise.all([
     $`box run 0-5 ./tigerbeetle start     --addresses=?0-5? 0_??.tigerbeetle`,
     $`box run 6   ./tigerbeetle benchmark --addresses=?0-5?`,
 ])
 </code></pre></div>
-<p>I don’t need two terminals for two processes, and I get to copy-paste-edit the mostly same command.</p>
-<p>For the next step, I actually want to kill one of the replicas, and I also want to capture live logs, to see in real-time how the cluster reacts. This is where <code>0-5</code> multiplexing syntax of box falls short, but, given that this is JavaScript, I can just write a for loop:</p>
+<p>I don’t need two terminals for two processes, and I get to copy-paste-edit the mostly same command. </p>
+<p>For the next step, I actually want to kill one of the replicas, and I also want to capture live logs, to see in real-time how the cluster reacts. This is where <code>0-5</code> multiplexing syntax of box falls short, but, given that this is JavaScript, I can just write a for loop: </p>
 <div class="language-text highlight"><pre><span></span><code>const replicas = range(6).map((it) =&gt;
     $`box run ${it}
         ./tigerbeetle start --addresses=?0-5? 0_??.tigerbeetle
@@ -511,9 +512,9 @@ await Promise.all([
 replicas.forEach((it) =&gt; it.kill());
 await Promise.all(replicas);
 </code></pre></div>
-<p>At this point, I do need two terminals. One runs <code>./make.ts</code> and shows the log from the benchmark itself, the other runs <code>tail -f logs/2.log</code> to watch the next replica to become primary.</p>
-<p>I have definitelly crossed the line where writing a script makes sense, but the neat thing is that the gradual evolution up to this point. There isn’t a discontinuity where I need to spend 15 minutes trying to shape various ad-hoc commands from five terminals into a single coherent script, it was in the file to begin with.</p>
-<p>And then the script is easy to evolve. Once you realize that it’s a good idea to also run the same benchmark against a different, baseline version TigerBeetle, you replace <code>./tigerbeetle</code> with <code>./${tigerbeetle}</code> and wrap everything into</p>
+<p>At this point, I do need two terminals. One runs <code>./make.ts</code> and shows the log from the benchmark itself, the other runs <code>tail -f logs/2.log</code> to watch the next replica to become primary. </p>
+<p>I have definitelly crossed the line where writing a script makes sense, but the neat thing is that the gradual evolution up to this point. There isn’t a discontinuity where I need to spend 15 minutes trying to shape various ad-hoc commands from five terminals into a single coherent script, it was in the file to begin with. </p>
+<p>And then the script is easy to evolve. Once you realize that it’s a good idea to also run the same benchmark against a different, baseline version TigerBeetle, you replace <code>./tigerbeetle</code> with <code>./${tigerbeetle}</code> and wrap everything into </p>
 <div class="language-text highlight"><pre><span></span><code>async function benchmark(tigerbeetle: string) {
     // ...
 }
@@ -525,7 +526,7 @@ await benchmark(tigerbeetle);
 $ ./make.ts tigerbeetle-baseline
 $ ./make.ts tigerbeetle
 </code></pre></div>
-<p>A bit more hacking, and you end up with a repeatable benchmark schedule for a matrix of parameters:</p>
+<p>A bit more hacking, and you end up with a repeatable benchmark schedule for a matrix of parameters: </p>
 <div class="language-text highlight"><pre><span></span><code>for (const attempt of [0, 1])
 for (const tigerbeetle of [&quot;baseline&quot;, &quot;tigerbeetle&quot;])
 for (const mode of [&quot;normal&quot;, &quot;viewchange&quot;]) {
@@ -535,7 +536,8 @@ for (const mode of [&quot;normal&quot;, &quot;viewchange&quot;]) {
     await benchmark(tigerbeetle, mode, results);
 }
 </code></pre></div>
-<p>That’s the gist of it. Don’t let the shell history be your source, capture it into the file first!</p>
+<p>That’s the gist of it. Don’t let the shell history be your source, capture it into the file first! </p>
+<p><a href="https://github.com/matklad/matklad.github.io/edit/master/content/posts/2026-01-27-make-ts.dj">Fix typo</a><a href="/feed.xml">Subscribe</a><a href="mailto:aleksey.kladov+blog@gmail.com">Get in touch</a><a href="https://github.com/matklad">matklad</a></p>
 
 
 
@@ -556,7 +558,7 @@ for (const mode of [&quot;normal&quot;, &quot;viewchange&quot;]) {
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:06:05 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
   </span>
 
     

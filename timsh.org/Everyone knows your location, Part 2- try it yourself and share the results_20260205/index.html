@@ -1,0 +1,725 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/timsh.org/Everyone%20knows%20your%20location%2C%20Part%202-%20try%20it%20yourself%20and%20share%20the%20results_20260205/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Everyone knows your location, Part 2: try it yourself and share the results - Hacker News 精选博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#everyone-knows-your-location-part-2-try-it-yourself-and-share-the-results" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Hacker News 精选博客" class="md-header__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker News 精选博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Everyone knows your location, Part 2: try it yourself and share the results
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker News 精选博客" class="md-nav__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hacker News 精选博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/timsh.org/Everyone knows your location, Part 2- try it yourself and share the results_20260205.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="everyone-knows-your-location-part-2-try-it-yourself-and-share-the-results">Everyone knows your location, Part 2: try it yourself and share the results<a class="headerlink" href="#everyone-knows-your-location-part-2-try-it-yourself-and-share-the-results" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://timsh.org
+<strong>链接:</strong> https://timsh.org/everyone-knows-your-location-part-2-try-it-yourself/
+<strong>日期:</strong> Thu, 17 Apr 2025 10:05:43 GMT</p>
+<hr />
+<p><a href="https://timsh.org"> tim.sh </a></p>
+<ul>
+<li><a href="https://timsh.org/">blog</a></li>
+<li><a href="https://timsh.org/about/">about</a></li>
+<li><a href="https://bsky.app/profile/timsh.org">Bluesky</a></li>
+</ul>
+<p>sign in subscribe</p>
+<h1 id="everyone-knows-your-location-part-2-try-it-yourself-and-share-the-results_1">Everyone knows your location, Part 2: try it yourself and share the results<a class="headerlink" href="#everyone-knows-your-location-part-2-try-it-yourself-and-share-the-results_1" title="Permanent link">&para;</a></h1>
+<p><a href="/author/tim/"> <img alt="tim" src="/content/images/size/w160/2025/01/wg21-2.jpg" /> </a></p>
+<h4 id="tim"><a href="/author/tim/">tim</a><a class="headerlink" href="#tim" title="Permanent link">&para;</a></h4>
+<p>17 Apr 2025 — 11 min read</p>
+<p><img alt="Everyone knows your location, Part 2: try it yourself and share the results" src="/content/images/size/w1200/2025/04/Screenshot-2025-04-16-at-20.21.31.png" /></p>
+<p>It's been more than 2 months now since my first post on the topic of location data sharing between various 3rd parties came out – in case you haven't seen it, you should definitely start from there: </p>
+<p><a href="https://timsh.org/tracking-myself-down-through-in-app-ads/">Everyone knows your locationHow I tracked myself down using leaked location data in the in-app ads, and what I found along the way.<img alt="" src="https://timsh.org/content/images/icon/wg-4.jpg" />tim.shtim<img alt="" src="https://timsh.org/content/images/thumbnail/dataflow_upd-1.png" /></a></p>
+<p>Since then I had a chat with a lot of people working in this field – both members of non-profit organisations, fighting for data privacy rights in various countries, and employees of adtech companies, proving my words right or wrong (but mostly right). I was even invited to "<a href="https://www.malwarebytes.com/blog/podcast/2025/03/how-ads-weirdly-know-your-screen-brightness-headphone-jack-use-and-location-with-tim-shott-lock-and-code-s06e05?ref=timsh.org">Lock and Code</a>" podcast to talk about geolocation data and privacy. Ok, enough with the bragging. </p>
+<p>I went through the process described in my initial post and decided to make it faster and more scalable: manually going through hundreds of requests in Charles was very cool for research and educational purposes, but it also took me a lot of time to find "interesting" requests coming from a single app. </p>
+<p>I've significantly upgraded my approach (though it could definitely be more efficient), and in this post I wanted to share it with you.</p>
+<h3 id="tldr">TL;DR<a class="headerlink" href="#tldr" title="Permanent link">&para;</a></h3>
+<p>I have created a small guide and a Python notebook that allow anyone to record mobile app traffic and find surprising things in it. </p>
+<p>Here's <a href="https://github.com/tim-sha256/analyse-ad-traffic/?ref=timsh.org">the link to a GitHub repo</a> with it. </p>
+<p>The initial setup takes 10-30 minutes. <br />
+Analysis using this algorithm took me about 10 minutes per app - you can definitely dig deeper and get lost for hours if you find something interesting in there.. <br />
+Follow the <a href="https://github.com/tim-sha256/analyse-ad-traffic/blob/main/README.md?ref=timsh.org"><code>readme</code></a> or the guide below if you'd like to try!</p>
+<p><strong>I came up with an idea</strong> : it would take me hundreds of hours to go through each app and record the traffic, though I would love to do that – let's not blindly trust some table from the internet, but find out for ourselves. <br />
+I copied the Gravy Analytics Google Sheet and created a simple form that you can fill in (no personal info is collected) that writes to that Google Sheet<br />
+<a href="https://docs.google.com/spreadsheets/d/1fJbNT-kmfuWUlIpYr9sduvjZS1ggrmhydCzoDlqaMaA/edit?usp=sharing&amp;ref=timsh.org">Link to the table</a>  </p>
+<p>Look up any app you already have on your phone or just a random one in the table, check if others have commented on it already and record the traffic.  </p>
+<p>Finally, if you want to help crowdsource the information on the kinds of data the apps from the list collect and share – <a href="https://forms.gle/Wyj1K54B5NQw3Vxt7?ref=timsh.org">fill in the form</a>: </p>
+<p><a href="https://forms.gle/Wyj1K54B5NQw3Vxt7?ref=timsh.org">I found something interesting in the app trafficHey! I don’t know how much people will go through with all the instructions and analysis, but since you’re here, you probably already did it and found something. Thanks for being here and doing this. Fill in the form below and your response will be recorded to a shared spreadsheet. PLEASE CHECK ALL OF YOUR INPUTS FOR YOUR PERSONAL INFORMATION. This form is set in a way that I collect nothing personal from you (like email or Google account or whatever), but your response will be viewable by virtually anyone - so be aware!<img alt="" src="https://timsh.org/content/images/icon/android_192.png" />Google Docs<img alt="" src="https://timsh.org/content/images/thumbnail/jRCp4Akn5TH6KUw5HNa4mv0XrSReregDtVFTKJDD2eOqZtk6c3J69uGb5z85mbBlNu4ACbHFWRkUTBA-w1200-h630-p" /></a></p>
+<p>Please edit all the private information in your submission (in case it's there). </p>
+<hr />
+<h2 id="visualising-domain-power">Visualising "domain power"<a class="headerlink" href="#visualising-domain-power" title="Permanent link">&para;</a></h2>
+<p>Before jumping into the guide, I wanted to share a few cool-looking visualisations with you. <br />
+Long story short: lately I've been obsessed with graph visualisations of things, especially branchy-embedded ones. </p>
+<p>While analysing the traffic I found myself curious: how are the adtech companies domains distributed across all of the requests? <br />
+So I joined these two together and created a visualisation using <code>PyVis</code> that would answer that question:</p>
+<p><img alt="" src="https://timsh.org/content/images/2025/04/Screenshot-2025-04-16-at-20.26.37.png" /></p>
+<p>Here's some context: </p>
+<ol>
+<li>Every circle is a domain or a subdomain. <br />
+The hierarchy is represented by the inclusion of circles into others. <br />
+Example: <code>o-sdk.ads.unity3d.com</code> is represented by 3 circles: <code>o-sdk</code> inside of <code>ads</code> inside of <code>unity3d</code>. </li>
+<li>Colors represent the app (I analysed 5) that the request corresponds to. <br />
+I used low opacities for better visibility, and it turns out that in my mix of colors and their opacities purple is the combination of all of them. </li>
+<li>Circle sizes, or masses, represent the frequency: how often did this or that domain appear in the requests data. <br />
+See any insights?</li>
+</ol>
+<blockquote>
+<p><strong>Unity</strong> rules the mobile game app traffic scene. <br />
+For comparison, the <code>g / doubleclick</code> thing is Google Ad Network. </p>
+</blockquote>
+<p>Take a look at it in motion: </p>
+<p>I included the code for it – <a href="https://github.com/tim-sha256/analyse-ad-traffic/blob/main/visualise_domains.ipynb?ref=timsh.org"><code>visualise_domains.ipynb</code></a> in the same repo so that you could create the same visualisation out of the data you record. <br />
+I also included the <a href="https://github.com/tim-sha256/analyse-ad-traffic/blob/main/sample_ad_domains.html?ref=timsh.org"><code>ad_domains.html</code></a> file with this sample (mine) graph – simply open it in your browser if you want to play around with it.</p>
+<p>I also was curious of the density of the requests – in my last post, I mentioned that hundreds of requests happen in just a few seconds, and now I could finally take a look at them:</p>
+<p><img alt="" src="https://timsh.org/content/images/2025/04/Screenshot-2025-04-17-at-15.32.48.png" /></p>
+<p>Filenames in the legend are flows collected from 5 different games. <br />
+I cut it at 60s for better visibility, but obviously there were requests after that as well. </p>
+<p><img alt="" src="https://timsh.org/content/images/2025/04/Screenshot-2025-04-17-at-15.50.19.png" /></p>
+<p>This one is again a different view of the domain power – look at the list on the right.</p>
+<ul>
+<li>It should be obvious by now that Unity is the leader in this strange contest – it has the most subdomains called and the most requests made to. </li>
+<li>Applovin is a Palo Alto-based company that acquired above mentioned Adjust in 2021, has shown <a href="https://investors.applovin.com/news/news-details/2025/AppLovin-Announces-Fourth-Quarter-and-Full-Year-2024-Financial-Results/default.aspx?ref=timsh.org">$1.58 bln net income in 2024</a>, and decided to get rid of it's mobile games development products and focus on its advertising business just a few months ago.</li>
+<li>Doubleclick.net is Google Ads</li>
+<li>And surprisingly, Facebook, that I've seen in the requests from every single game, is in the last place among these. Well, at least based on this strange metric observed on 5 examples </li>
+</ul>
+<p>Now that you've seen these obscure but good-looking graphs - let's move on to the actual guide that you could follow to analyse any app traffic. </p>
+<hr />
+<h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-install-mitmproxy-on-your-pc">Step 1: Install mitmproxy on your PC<a class="headerlink" href="#step-1-install-mitmproxy-on-your-pc" title="Permanent link">&para;</a></h3>
+<p><code>mitmproxy</code> is an open-source tool for intercepting traffic with wide capabilities and a surprisingly nice web version called <code>mitmweb</code>.<br />
+Be aware that <code>mitmproxy</code> is recognised as malware by some anti-virus apps - looks scary, but it's not. </p>
+<p>Go to their <a href="https://mitmproxy.org/downloads/?ref=timsh.org">official downloads page</a> and choose whatever installation way you like more. <br />
+On Mac, for example, you can simply run <code>brew install mitmproxy</code> . </p>
+<p>After installation run this command to start <code>mitmweb</code> (mitmproxy + web interface): <code>mitmweb --listen-host 0.0.0.0 --listen-port 8080</code>  </p>
+<p>You can also use <code>mitmproxy</code> CLI, but I prefer mitmweb because it is actually very helpful for initial discovery (and understanding the scale of the RTB requests).</p>
+<p><img alt="" src="https://timsh.org/content/images/2025/04/Screenshot-2025-04-13-at-21.31.52.png" /></p>
+<p>We use <code>--listen-host 0.0.0.0</code> to avoid <code>mitmproxy</code> starting in the default location, which is localhost <code>128.0.0.1</code> – this way, you don't record your PC traffic and will see 0 requests until you complete the next step. </p>
+<h3 id="step-2-prepare-your-mobile-device">Step 2: prepare your mobile device<a class="headerlink" href="#step-2-prepare-your-mobile-device" title="Permanent link">&para;</a></h3>
+<p>What you'll need to do is to then setup proxy on your iPhone / Android device and install + trust a certificate. <br />
+I focused on iOS in my instruction, but setting up an Android phone for the same experiment is even easier and is well-documented - for example, <a href="https://medium.com/@williamxyz/monitoring-network-on-android-with-mitmproxy-bfb8722191ee?ref=timsh.org">here</a>.</p>
+<p>I believe you might need to turn on the developer mode, otherwise you won't have Certificate Trust in your settings. Or maybe not. <br />
+Anyway, if it's missing from your settings - <a href="https://developer.apple.com/documentation/xcode/enabling-developer-mode-on-a-device?ref=timsh.org">here's a guide</a> on how to do it. <br />
+By the way, your iPhone and computer must be in the same wifi network for all of this to work.</p>
+<h3 id="step-3-start-collecting-requests">Step 3: start collecting requests!<a class="headerlink" href="#step-3-start-collecting-requests" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Run <code>ipconfig getifaddr en0</code> to find your PC local IP address.</li>
+<li>Next, open the wifi network settings on iPhone, scroll down and setup manual proxy with:<br />
+<code>server</code> = the ip address you just found<br />
+<code>port</code> = 8080</li>
+</ol>
+<p>On iPhone, open browser and go to <code>mitm.it</code><br />
+further instructions are described here:<br />
+<a href="https://jasdev.me/intercepting-ios-traffic?ref=timsh.org">https://jasdev.me/intercepting-ios-traffic</a><br />
+or here: <a href="https://support.apple.com/en-us/102390?ref=timsh.org">https://support.apple.com/en-us/102390</a></p>
+<blockquote>
+<p>** <em>What is this for?</em>**<br />
+ You need to install the certificate and enable full trust to be able to decrypt TLS-encrypted traffic. <br />
+Otherwise you'll just see a bunch of encrypted packets flowing in and out. </p>
+</blockquote>
+<p>Congrats! If you completed all the steps correctly, you should now see requests in the <code>mitmweb</code> interface.<br />
+If you only want to record traffic coming from a specific app, close all apps, "Clear flows" and then open the desired app.</p>
+<p><img alt="" src="https://timsh.org/content/images/2025/04/Screenshot-2025-04-13-at-21.34.21.png" /></p>
+<p>If you don't have an app installed yet, you might have to turn off proxy on iPhone, download the app and then turn it on again and clear the flows - AppStore refused to work with proxy on for me. </p>
+<p>If you don't have anything specific on your mind – pick any app with "Checked = False" in the "original list" sheet. <a href="https://docs.google.com/spreadsheets/d/1fJbNT-kmfuWUlIpYr9sduvjZS1ggrmhydCzoDlqaMaA/?ref=timsh.org">https://docs.google.com/spreadsheets/d/1fJbNT-kmfuWUlIpYr9sduvjZS1ggrmhydCzoDlqaMaA/</a></p>
+<hr />
+<h2 id="lets-find-something-interesting">Let's find something interesting<a class="headerlink" href="#lets-find-something-interesting" title="Permanent link">&para;</a></h2>
+<p>All right, now we can record the data! </p>
+<p>You can already find interesting requests manually - for example, I'm pretty sure you'll see this Facebook request no matter what app you analyse: </p>
+<p><img alt="" src="https://timsh.org/content/images/2025/04/Screenshot-2025-04-07-at-11.49.09.png" /></p>
+<p>But looking through the requests in <code>mitmweb</code>, even with ok (not advanced) filtering is a very slow process. And you'll see – there will be hundreds (if not thousands) of requests in just a few minutes. </p>
+<p>When you feel like there's enough (you could even leave it open or play for an hour or so to collect more data), close the app and switch off the phone, then in <code>mitmweb</code> press File → Save.</p>
+<p>This will give you a <code>flows</code> file - rename it as <code>appname.flow</code>.</p>
+<h3 id="filtering-analysing-the-data">Filtering &amp; analysing the data<a class="headerlink" href="#filtering-analysing-the-data" title="Permanent link">&para;</a></h3>
+<p>Open the <a href="https://github.com/tim-sha256/analyse-ad-traffic/blob/main/mitm_test.ipynb?ref=timsh.org"><code>mitm_test.ipynb</code> </a>- either in a local Jupyter Notebook or in Google Colab (or wherever you work with <code>.ipynb</code>s).<br />
+Personally, I feel much more comfortable working with this kind of data in the local environment. <br />
+However, if you don't code at all / don't use python, e.t.c. – believe me, there's nothing faster and easier than opening up <a href="https://colab.research.google.com/?ref=timsh.org">Colab</a> and importing the file. </p>
+<p><img alt="" src="https://timsh.org/content/images/2025/04/Screenshot-2025-04-14-at-17.11.12.png" /></p>
+<p>There are quite clear and broad instructions in the file, so I won't repeat the full process, but just highlight a few things: </p>
+<p>A very important step - fill in as many keywords as you have on your mind. <br />
+I was strictly focused on IP and geo data, but you might want to look for other things, like "screen_brightness", "IDFA" or whatever. <br />
+Please note that these will only return the exact matches (imagine an amount of words / strings where "lat" or "lon" would be substrings). </p>
+<p><img alt="" src="https://timsh.org/content/images/2025/04/Screenshot-2025-04-14-at-17.18.04.png" /></p>
+<p>Now that you've put all the keywords in the list, run the cells below and it will create a <code>df_filtered</code> table with the requests (or responses) that match the keywords.</p>
+<p><img alt="" src="https://timsh.org/content/images/2025/04/Screenshot-2025-04-15-at-13.27.01.png" /></p>
+<p>Here you'll see a snippet of the match (<code>matched_in_request</code> and <code>matched_in_response</code>), as well as the "reason" for both cases - the keyword(s) that are in the match. </p>
+<p>Below is a simple <code>.loc</code> where you can input the index of the row (the first column on the left) and see the full value of a given column – in the example below, <code>"full_reponse"</code>.<br />
+If the string was too long, I just copied it to Sublime Text and use their built-in search to find more context or other surprising data points in the request or response text. </p>
+<p><img alt="" src="https://timsh.org/content/images/2025/04/Screenshot-2025-04-15-at-13.29.55.png" /></p>
+<p>And that's it! </p>
+<p>Finally, if you want to help crowdsource the information on the kinds of data the apps from the list collect and share – <a href="https://forms.gle/Wyj1K54B5NQw3Vxt7?ref=timsh.org">fill in the form</a>: </p>
+<p><a href="https://forms.gle/Wyj1K54B5NQw3Vxt7?ref=timsh.org">I found something interesting in the app trafficHey! I don’t know how much people will go through with all the instructions and analysis, but since you’re here, you probably already did it and found something. Thanks for being here and doing this. Fill in the form below and your response will be recorded to a shared spreadsheet. PLEASE CHECK ALL OF YOUR INPUTS FOR YOUR PERSONAL INFORMATION. This form is set in a way that I collect nothing personal from you (like email or Google account or whatever), but your response will be viewable by virtually anyone - so be aware!<img alt="" src="https://timsh.org/content/images/icon/android_192.png" />Google Docs<img alt="" src="https://timsh.org/content/images/thumbnail/jRCp4Akn5TH6KUw5HNa4mv0XrSReregDtVFTKJDD2eOqZtk6c3J69uGb5z85mbBlNu4ACbHFWRkUTBA-w1200-h630-p" /></a></p>
+<p>Please edit all the private information in your submission (in case it's there). </p>
+<h3 id="room-for-improvement">Room for improvement?<a class="headerlink" href="#room-for-improvement" title="Permanent link">&para;</a></h3>
+<p>I know this is a very primitive way of doing things – I could've done this all with <code>mitmdump</code> and automated saving / filtering straight to .csv, but I deliberately kept it semi-manual. <br />
+The format and structure of all these requests and responses is very diverse and the further you go from looking at them manually, the higher chance you'd miss something. <br />
+At first I tried filtering out by content type and encoding, but I've noticed that some of the matching requests are missing from the list. </p>
+<p>So I turned off the filters... and found this: </p>
+<p><img alt="" src="https://timsh.org/content/images/2025/04/Screenshot-2025-04-15-at-13.49.10.png" /></p>
+<p><code>gs-loc.apple.com</code> is an endpoint used by Apple to request user's location information. <br />
+It was called during a 3-minute recording of the traffic from a single opened app - Make More game. It didn't turn up ever before [when I was analysing other apps] + this game is on the Gravy list.   </p>
+<p>However, I don't want to make false claims saying that this app was responsible for Apple's request – that endpoint is not accessible directly for any app except for iOS itself, so in order to get the information from it an app needs to call a dedicated Apple API method and have corresponding permissions. Or maybe not? </p>
+<p>Anyway, the response to this request was encoded in protobuf format, so I had to find a way to decode it, obviously. And I found it. </p>
+<p>But that's a topic for another post – stay tuned!</p>
+<h2 id="sign-up-for-timsh">Sign up for tim.sh<a class="headerlink" href="#sign-up-for-timsh" title="Permanent link">&para;</a></h2>
+<p>Thoughts, stories and ideas.</p>
+<p>Subscribe</p>
+<p>Email sent! Check your inbox to complete your signup. </p>
+<p>No spam. Unsubscribe anytime.</p>
+<p>I really hope some people find this interesting enough to check at least 1 app and contribute to this process, or just to experiment and have fun. </p>
+<p>If you have any comments, ideas or just want to chat about it – hit me up at <a href="/cdn-cgi/l/email-protection#caa2afa6a6a58abea3a7b9a2e4a5b8ad">[email protected]</a>. </p>
+<h2 id="read-more">Read more<a class="headerlink" href="#read-more" title="Permanent link">&para;</a></h2>
+<p><a href="/scam-telegram-investigation/"> <img alt="Scam Telegram: Uncovering a network of groups spreading crypto drainers" src="/content/images/size/w600/2025/11/PREVIEW-1.png" /> Scam Telegram: Uncovering a network of groups spreading crypto drainers I accidentally discovered a network of hundreds of fake DeFi support chats spreading various phishing sites with wallet stealers and drainers, including infamous Inferno Drainer. TL;DR While searching for a contact of a member of one DeFi project, I found a fake "Official Support" group with botted By tim 05 Dec 2025 </a> <a href="/why-you-should-self-host/"> <img alt="Why you should self-host your (vibecoded) app" src="/content/images/size/w600/2025/10/self-hosting.png" /> Why you should self-host your (vibecoded) app Intro Over the last 5 years I had to deploy more than 50 different services, both at the companies I used to work at, my personal projects and at my now-dead startup, Track Pump. I started this journey with almost 0 knowledge about servers, dockers, CI/CDs and so on By tim 07 Oct 2025 </a> <a href="/claude-inside-docker/"> <img alt="Switching to Claude Code + VSCode inside Docker" src="/content/images/size/w600/2025/07/new-d.png" /> Switching to Claude Code + VSCode inside Docker Last night I finished a transition from my old AI coding setup I've been using for a while to running Claude Code in Docker using VSCode's "Dev Container" feature. In this post I lay out a few of my thoughts on why I wanted By tim 11 Jul 2025 </a> <a href="/github-scam-investigation-thousands-of-mods-and-cracks-stealing-your-data/"> <img alt="Github scam investigation: Thousands of &quot;mods&quot; and &quot;cracks&quot; stealing your data" src="/content/images/size/w600/2025/02/github-scams-flow.png" /> Github scam investigation: Thousands of "mods" and "cracks" stealing your data While looking through the articles on a "social engineering" themed forum I discovered a relatively new scam scheme that shocked me. People create thousands of GitHub repositories with all sorts of things - from Roblox and Fortnite mods to "cracked" FL Studio and Photoshop. As soon By tim 27 Feb 2025 </a></p>
+<p>tim.sh </p>
+<ul>
+<li>Subscribe</li>
+</ul>
+<p>Powered by <a href="https://ghost.org/">Ghost</a></p>
+<h2 id="timsh">tim.sh<a class="headerlink" href="#timsh" title="Permanent link">&para;</a></h2>
+<p>privacy, security and self-hosting related stuff </p>
+<p>Subscribe</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

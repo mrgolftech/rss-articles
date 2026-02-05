@@ -1,0 +1,1000 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/righto.com/Unusual%20circuits%20in%20the%20Intel%20386%27s%20standard%20cell%20logic_20260205/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Unusual circuits in the Intel 386's standard cell logic - Hacker News 精选博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unusual-circuits-in-the-intel-386s-standard-cell-logic" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Hacker News 精选博客" class="md-header__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker News 精选博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Unusual circuits in the Intel 386's standard cell logic
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker News 精选博客" class="md-nav__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hacker News 精选博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/righto.com/Unusual circuits in the Intel 386's standard cell logic_20260205.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="unusual-circuits-in-the-intel-386s-standard-cell-logic">Unusual circuits in the Intel 386's standard cell logic<a class="headerlink" href="#unusual-circuits-in-the-intel-386s-standard-cell-logic" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://righto.com
+<strong>链接:</strong> http://www.righto.com/2025/11/unusual-386-standard-cell-circuits.html
+<strong>日期:</strong> 2025-11-22T08:15:00.000-08:00</p>
+<hr />
+<h1 id="ken-shirriffs-blog"><a href="http://www.righto.com/"> Ken Shirriff's blog </a><a class="headerlink" href="#ken-shirriffs-blog" title="Permanent link">&para;</a></h1>
+<p>Computer history, restoring vintage computers, IC reverse engineering, and whatever</p>
+<h3 id="unusual-circuits-in-the-intel-386s-standard-cell-logic_1">Unusual circuits in the Intel 386's standard cell logic<a class="headerlink" href="#unusual-circuits-in-the-intel-386s-standard-cell-logic_1" title="Permanent link">&para;</a></h3>
+<p>I've been studying the standard cell circuitry in the Intel 386 processor recently. The 386, introduced in 1985, was Intel's most complex processor at the time, containing 285,000 transistors. Intel's existing design techniques couldn't handle this complexity and the chip began to fall behind schedule. To meet the schedule, the 386 team started using a technique called standard cell logic. Instead of laying out each transistor manually, the layout process was performed by a computer.</p>
+<p>The idea behind standard cell logic is to create standardized circuits (standard cells) for each type of logic element, such as an inverter, NAND gate, or latch. You feed your circuit description into software that selects the necessary cells, positions these cells into columns, and then routes the wiring between the cells. This "automatic place and route" process creates the chip layout much faster than manual layout. However, switching to standard cells was a risky decision since if the software couldn't create a dense enough layout, the chip couldn't be manufactured. But in the end, the 386 finished ahead of schedule, an almost unheard-of accomplishment.1</p>
+<p>The 386's standard cell circuitry contains a few circuits that I didn't expect. In this blog post, I'll take a quick look at some of these circuits: surprisingly large multiplexers, a transistor that doesn't fit into the standard cell layout, and inverters that turned out not to be inverters. (If you want more background on standard cells in the 386, see my earlier post, "<a href="https://www.righto.com/2024/01/intel-386-standard-cells.html">Reverse engineering standard cell logic in the Intel 386 processor</a>".)</p>
+<p>The photo below shows the 386 die with the automatic-place-and-route regions highlighted; I'm focusing on the red region in the lower right. These blocks of logic have cells arranged in rows, giving them a characteristic striped appearance. The dark stripes are the transistors that make up the logic gates, while the lighter regions between the stripes are the "routing channels" that hold the wiring that connects the cells. In comparison, functional blocks such as the datapath on the left and the microcode ROM in the lower right were designed manually to optimize density and performance, giving them a more solid appearance.</p>
+<p><a href="https://static.righto.com/images/386-curiosities/die-labeled.jpg"><img alt="The 386 die with the standard-cell regions highlighted." src="https://static.righto.com/images/386-curiosities/die-labeled-w500.jpg" /></a></p>
+<p>The 386 die with the standard-cell regions highlighted.</p>
+<p>As for other features on the chip, the black circles around the border are bond wire connections that go to the chip's external pins. The chip has two metal layers, a small number by modern standards, but a jump from the single metal layer of earlier processors such as the 286. (Providing two layers of metal made automated routing practical: one layer can hold horizontal wires while the other layer can hold vertical wires.) The metal appears white in larger areas, but purplish where circuitry underneath roughens its surface. The underlying silicon and the polysilicon wiring are obscured by the metal layers.</p>
+<h2 id="the-giant-multiplexers">The giant multiplexers<a class="headerlink" href="#the-giant-multiplexers" title="Permanent link">&para;</a></h2>
+<p>The standard cell circuitry that I'm examining (red box above) is part of the control logic that selects registers while executing an instruction. You might think that it is easy to select which registers take part in an instruction, but due to the complexity of the x86 architecture, it is more difficult. One problem is that a 32-bit register such as EAX can also be treated as the 16-bit register AX, or two 8-bit registers AH and AL. A second problem is that some instructions include a "direction" bit that switches the source and destination registers. Moreover, sometimes the register is specified by bits in the instruction, but in other cases, the register is specified by the microcode. Due to these factors, selecting the registers for an operation is a complicated process with many cases, using control bits from the instruction, from the microcode, and from other sources.</p>
+<p>Three registers need to be selected for an operation--two source registers and a destination register--and there are about 17 cases that need to be handled. Registers are specified with 7-bit control signals that select one of the 30 registers and control which part of the register is accessed. With three control signals, each 7 bits wide, and about 17 cases for each, you can see that the register control logic is large and complicated. (I wrote more about the 386's registers <a href="https://www.righto.com/2025/05/intel-386-register-circuitry.html">here</a>.)</p>
+<p>I'm still reverse engineering the register control logic, so I won't go into details. Instead, I'll discuss how the register control circuit uses multiplexers, implemented with standard cells. A multiplexer is a circuit that combines multiple input signals into a single output by selecting one of the inputs.2 A multiplexer can be implemented with logic gates, for instance, by ANDing each input with the corresponding control line, and then ORing the results together. However, the 386 uses a different approach--CMOS switches--that avoids a large AND/OR gate.</p>
+<p><a href="https://static.righto.com/images/386-curiosities/cmos-switch.jpg"><img alt="Schematic of a CMOS switch." src="https://static.righto.com/images/386-curiosities/cmos-switch-w200.jpg" /></a></p>
+<p>Schematic of a CMOS switch.</p>
+<p>The schematic above shows how a CMOS switch is constructed from two MOS transistors. When the two transistors are on, the output is connected to the input, but when the two transistors are off, the output is isolated. An NMOS transistor is turned on when its input is high, but a PMOS transistor is turned on when its input is <em>low</em>. Thus, the switch uses two control inputs, one inverted. The motivation for using two transistors is that an NMOS transistor is better at pulling the output low, while a PMOS transistor is better at pulling the output high, so combining them yields the best performance.3 Unlike a logic gate, the CMOS switch has no amplification, so a signal is weakened as it passes through the switch. As will be seen below, inverters can be used to amplify the signal.</p>
+<p>The image below shows how CMOS switches appear under the microscope. This image is very hard to interpret because the two layers of metal on the 386 are packed together densely, but you can see that some wires run horizontally and others run vertically. The bottom layer of metal (called M1) runs vertically in the routing area, as well as providing internal wiring for a cell. The top layer of metal (M2) runs horizontally; unlike M1, the M2 wires can cross a cell. The large circles are vias that connect the M1 and M2 layers, while the small circles are connections between M1 and polysilicon or M1 and silicon. The central third of the image is a column of standard cells with two CMOS switches outlined in green. The cells are bordered by the vertical ground rail and +5V rail that power the cells. The routing areas are on either side of the cells, holding the wiring that connects the cells.</p>
+<p><a href="https://static.righto.com/images/386-curiosities/switch-metal.jpg"><img alt="Two CMOS switches, highlighted in green. The lower switch is flipped vertically compared to the upper switch." src="https://static.righto.com/images/386-curiosities/switch-metal-w400.jpg" /></a></p>
+<p>Two CMOS switches, highlighted in green. The lower switch is flipped vertically compared to the upper switch.</p>
+<p>Removing the metal layers reveals the underlying silicon with a layer of polysilicon wiring on top. The doped silicon regions show up as dark outlines. I've drawn the polysilicon in green; it forms a transistor (brighter green) when it crosses doped silicon. The metal ground and power lines are shown in blue and red, respectively, with other metal wiring in purple. The black dots are vias between layers. Note how metal wiring (purple) and polysilicon wiring (green) are combined to route signals within the cell. Although this standard cell is complicated, the important thing is that it only needs to be designed once. The standard cells for different functions are all designed to have the same width, so the cells can be arranged in columns, snapped together like Lego bricks.</p>
+<p><a href="https://static.righto.com/images/386-curiosities/switch-diagram.jpg"><img alt="A diagram showing the silicon for a standard-cell switch. The polysilicon is shown in green. The bottom metal is shown in blue, red, and purple." src="https://static.righto.com/images/386-curiosities/switch-diagram-w400.jpg" /></a></p>
+<p>A diagram showing the silicon for a standard-cell switch. The polysilicon is shown in green. The bottom metal is shown in blue, red, and purple.</p>
+<p>To summarize, this switch circuit allows the input to be connected to the output or disconnected, controlled by the select signal. This switch is more complicated than the earlier schematic because it includes two inverters to amplify the signal. The data input and the two select lines are connected to the polysilicon (green); the cell is designed so these connections can be made on either side. At the top, the input goes through a standard two-transistor inverter. The lower left has two transistors, combining the NMOS half of an inverter with the NMOS half of the switch. A similar circuit on the right combines the PMOS part of an inverter and switch. However, because PMOS transistors are weaker, this part of the circuit is duplicated.</p>
+<p>A multiplexer is constructed by combining multiple switches, one for each input. Turning on one switch will select the corresponding input. For instance, a four-to-one multiplexer has four switches, so it can select one of the four inputs.</p>
+<p><a href="https://static.righto.com/images/386-curiosities/mux4.jpg"><img alt="A four-way multiplexer constructed from CMOS switches and individual transistors." src="https://static.righto.com/images/386-curiosities/mux4-w200.jpg" /></a></p>
+<p>A four-way multiplexer constructed from CMOS switches and individual transistors.</p>
+<p>The schematic above shows a hypothetical multiplexer with four inputs. One optimization is that if an input is always 0, the PMOS transistor can be omitted. Likewise, if an input is always 1, the NMOS transistor can be omitted. One set of select lines is activated at a time to select the corresponding input. The pink circuit selects 1, green selects input A, yellow selects input B, and blue selects 0. The multiplexers in the 386 are similar, but have more inputs.</p>
+<p>The diagram below shows how much circuitry is devoted to multiplexers in this block of standard cells. The green, purple, and red cells correspond to the multiplexers driving the three register control outputs. The yellow cells are inverters that generate the inverted control signals for the CMOS switches. This diagram also shows how the automatic layout of cells results in a layout that appears random.</p>
+<p><a href="https://static.righto.com/images/386-curiosities/muxes.jpg"><img alt="A block of standard-cell logic with multiplexers highlighted. The metal and polysilicon layers were removed for this photo, revealing the silicon transistors." src="https://static.righto.com/images/386-curiosities/muxes-w400.jpg" /></a></p>
+<p>A block of standard-cell logic with multiplexers highlighted. The metal and polysilicon layers were removed for this photo, revealing the silicon transistors.</p>
+<h2 id="the-misplaced-transistor">The misplaced transistor<a class="headerlink" href="#the-misplaced-transistor" title="Permanent link">&para;</a></h2>
+<p>The idea of standard-cell logic is that standardized cells are arranged in columns. The space between the cells is the "routing channel", holding the wiring that links the cells. The 386 circuitry follows this layout, except for one single transistor, sitting between two columns of cells.</p>
+<p><a href="https://static.righto.com/images/386-curiosities/extra-transistor.jpg"><img alt="The &quot;misplaced&quot; transistor, indicated by the arrow. The irregular green regions are oxide that was incompletely removed." src="https://static.righto.com/images/386-curiosities/extra-transistor-w500.jpg" /></a></p>
+<p>The "misplaced" transistor, indicated by the arrow. The irregular green regions are oxide that was incompletely removed.</p>
+<p>I wrote some software tools to help me analyze the standard cells. Unfortunately, my tools assumed that all the cells were in columns, so this one wayward transistor caused me considerable inconvenience.</p>
+<p>The transistor turns out to be a PMOS transistor, pulling a signal high as part of a multiplexer. But why is this transistor out of place? My hypothesis is that the transistor is a bug fix. Regenerating the cell layout was very costly, taking many hours on an IBM mainframe computer. Presumably, someone found that they could just stick the necessary transistor into an unused spot in the routing channel, manually add the necessary wiring, and avoid the delay of regenerating all the cells.</p>
+<h2 id="the-fake-inverter">The fake inverter<a class="headerlink" href="#the-fake-inverter" title="Permanent link">&para;</a></h2>
+<p>The simplest CMOS gate is the inverter, with an NMOS transistor to pull the output low and a PMOS transistor to pull the output high. The standard cell circuitry that I examined contains over a hundred inverters of various sizes. (Performance is improved by using inverters that aren't too small but also aren't larger than necessary for a particular circuit. Thus, the standard cell library includes inverters of multiple sizes.)</p>
+<p>The image below shows a medium-sized standard-cell inverter under the microscope. For this image, I removed the two metal layers with acid to show the underlying polysilicon (bright green) and silicon (gray). The quality of this image is poor--it is difficult to remove the metal without destroying the polysilicon--but the diagram below should clarify the circuit. The inverter has two transistors: a PMOS transistor connected to +5 volts to pull the output high when the input is 0, and an NMOS transistor connected to ground to pull the output low when the input is 1. (The PMOS transistor needs to be larger because PMOS transistors don't function as well as NMOS transistors due to silicon physics.)</p>
+<p><a href="https://static.righto.com/images/386-curiosities/inverter-diagram.jpg"><img alt="An inverter as seen on the die. The corresponding standard cell is shown below." src="https://static.righto.com/images/386-curiosities/inverter-diagram-w450.jpg" /></a></p>
+<p>An inverter as seen on the die. The corresponding standard cell is shown below.</p>
+<p>The polysilicon input line plays a key role: where it crosses the doped silicon, a transistor gate is formed. To make the standard cell more flexible, the input to the inverter can be connected on either the left or the right; in this case, the input is connected on the right and there is no connection on the left. The inverter's output can be taken from the polysilicon on the upper left or the right, but in this case, it is taken from the upper metal layer (not shown). The power, ground, and output lines are in the lower metal layer, which I have represented by the thin red, blue, and yellow lines. The black circles are connections between the metal layer and the underlying silicon.</p>
+<p>This inverter appears dozens of times in the circuitry. However, I came across a few inverters that didn't make sense. The problem was that the inverter's output was connected to the output of a multiplexer. Since an inverter is either on or off, its value would clobber the output of the multiplexer.4 This didn't make any sense. I double- and triple-checked the wiring to make sure I hadn't messed up. After more investigation, I found another problem: the input to a "bad" inverter didn't make sense either. The input consisted of two signals shorted together, which doesn't work.</p>
+<p>Finally, I realized what was going on. A "bad inverter" has the exact silicon layout of an inverter, but it wasn't an inverter: it was independent NMOS and PMOS transistors with separate inputs. Now it all made sense. With two inputs, the input signals were independent, not shorted together. And since the transistors were controlled separately, the NMOS transistor could pull the output low in some circumstances, the PMOS transistor could pull the output high in other circumstances, or both transistors could be off, allowing the multiplexer's output to be used undisturbed. In other words, the "inverter" was just two more cases for the multiplexer.</p>
+<p><a href="https://static.righto.com/images/386-curiosities/transistors-die.jpg"><img alt="The &quot;bad&quot; inverter. (Image is flipped vertically for comparison with the previous inverter.)" src="https://static.righto.com/images/386-curiosities/transistors-die-w450.jpg" /></a></p>
+<p>The "bad" inverter. (Image is flipped vertically for comparison with the previous inverter.)</p>
+<p>If you compare the "bad inverter" cell below with the previous cell, they look <em>almost</em> the same, but there are subtle differences. First, the gates of the two transistors are connected in the real inverter, but disconnected by a small gap in the transistor pair. I've indicated this gap in the photo above; it is hard to tell if the gap is real or just an imaging artifact, so I didn't spot it. The second difference is that the "fake" inverter has two input connections, one to each transistor, while the inverter has a single input connection. Unfortunately, I assumed that the two connections were just a trick to route the signal across the inverter without requiring an extra wire. In total, this cell was used 32 times as a real inverter and 9 times as independent transistors.</p>
+<h2 id="conclusions">Conclusions<a class="headerlink" href="#conclusions" title="Permanent link">&para;</a></h2>
+<p>Standard cell logic and automatic place and route have a long history before the 386, back to the early 1970s, so this isn't an Intel invention.5 Nonetheless, the 386 team deserves the credit for deciding to use this technology at a time when it was a risky decision. They needed to develop custom software for their placing and routing needs, so this wasn't a trivial undertaking. This choice paid off and they completed the 386 ahead of schedule. The 386 ended up being a huge success for Intel, moving the x86 architecture to 32 bits and defining the dominant computer architecture for the rest of the 20th century.</p>
+<p>If you're interested in standard cell logic, I also wrote about <a href="https://www.righto.com/2021/03/reverse-engineering-standard-cell-logic.html">standard cell logic in an IBM chip</a>. I plan to write more about the 386, so follow me on <a href="https://oldbytes.space/@kenshirriff">Mastodon</a>, <a href="https://bsky.app/profile/righto.com">Bluesky</a>, or RSS for updates. Thanks to Pat Gelsinger and Roxanne Koester for providing helpful papers.</p>
+<p>For more on the 386 and other chips, follow me on Mastodon (<a href="https://oldbytes.space/@kenshirriff">@[email protected]</a>), Bluesky (<a href="https://bsky.app/profile/righto.com">@righto.com</a>), or <a href="http://www.righto.com/feeds/posts/default">RSS</a>. (I've given up on Twitter.) If you want to read more about the 386, I've written about the <a href="https://www.righto.com/2023/11/intel-386-clock-circuit.html">clock pin</a>, <a href="https://www.righto.com/2025/05/386-prefetch-circuitry-reverse-engineered.html">prefetch queue</a>, <a href="https://www.righto.com/2023/10/intel-386-die-versions.html">die versions</a>, <a href="https://www.righto.com/2025/08/intel-386-package-ct-scan.html">packaging</a>, and <a href="https://www.righto.com/2025/08/static-latchup-metastability-386.html">I/O circuits</a>.</p>
+<h2 id="notes-and-references">Notes and references<a class="headerlink" href="#notes-and-references" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>The decision to use automatic place and route is described on page 13 of the <a href="https://archive.computerhistory.org/resources/text/Oral_History/Intel_386_Design_and_Dev/102702019.05.01.acc.pdf#page=13">Intel 386 Microprocessor Design and Development Oral History Panel</a>, a very interesting document on the 386 with discussion from some of the people involved in its development. ↩</p>
+</li>
+<li>
+<p>Multiplexers often take a binary control signal to select the desired input. For instance, an 8-to-1 multiplexer selects one of 8 inputs, so a 3-bit control signal can specify the desired input. The 386's multiplexers use a different approach with one control signal per input. One of the 8 control signals is activated to select the desired input. This approach is called a "one-hot encoding" since one control line is activated (hot) at a time. ↩</p>
+</li>
+<li>
+<p>Some chips, such as the MOS Technology 6502 processor, are built with NMOS technology, without PMOS transistors. Multiplexers in the 6502 use a single NMOS transistor, rather than the two transistors in the CMOS switch. However, the performance of the switch is worse. ↩</p>
+</li>
+<li>
+<p>One very common circuit in the 386 is a latch constructed from an inverter loop and a switch/multiplexer. The inverter's output and the switch's output are connected together. The trick, however, is that the inverter is constructed from special weak transistors. When the switch is disabled, the inverter's weak output is sufficient to drive the loop. But to write a value into the latch, the switch is enabled and its output overpowers the weak inverter.</p>
+</li>
+</ol>
+<p>The point of this is that there <em>are</em> circuits where an inverter and a multiplexer have their outputs connected. However, the inverter must be constructed with special weak transistors, which is not the situation that I'm discussing. ↩</p>
+<ol>
+<li>I'll provide more history on standard cells in this footnote. RCA <a href="https://patents.google.com/patent/US3573488A">patented</a> a bipolar standard cell in 1971, but this was a fixed arrangement of transistors and resistors, more of a gate array than a modern standard cell. Bell Labs researched standard cell layout techniques in the early 1970s, calling them Polycells, including a <a href="https://dl.acm.org/doi/10.1145/62882.62886">1973 paper</a> by Brian Kernighan. By 1979, <a href="http://www.bitsavers.org/pdf/xerox/parc/techReports/SSL-79-7_A_Guide_to_LSI_Implementation_Second_Edition.pdf">A Guide to LSI Implementation</a> discussed the standard cell approach and it was described as well-known in <a href="https://patents.google.com/patent/US4319396A">this patent application</a>. Even so, <a href="https://www.worldradiohistory.com/Archive-Electronics/80s/80/Electronics-1980-07-31.pdf#page=77">Electronics</a> called these design methods "futuristic" in 1980.</li>
+</ol>
+<p>Standard cells became popular in the mid-1980s as faster computers and improved design software made it practical to produce semi-custom designs that used standard cells. Standard cells made it to the cover of <a href="http://www.bitsavers.org/magazines/Digital_Design/Digital_Design_V15_N08_198508.pdf">Digital Design</a> in August 1985, and the article inside described numerous vendors and products. Companies like <a href="https://www.worldradiohistory.com/Archive-Electronics/80s/83/Electronics-1983-03-10.pdf#page=151">Zymos</a> and <a href="http://www.bitsavers.org/components/vti/tools/1988_VTI_Cell-Based_Design_Users_Guide.pdf">VLSI Technology</a> (VTI) focused on standard cells. Traditional companies such as <a href="http://www.bitsavers.org/components/ti/_dataBooks/1986_TI_2-um_CMOS_Standard_Cell_Data_Book.pdf">Texas Instruments</a>, NCR, GE/RCA, <a href="https://www.worldradiohistory.com/Archive-Electronics/80s/87/Electronics-1987-06-25.pdf#page=82">Fairchild</a>, Harris, <a href="https://www.worldradiohistory.com/Archive-ITT/80s/ITT-1983-58-No-4.pdf">ITT</a>, and Thomson introduced lines of standard cell products in the mid-1980s.  ↩</p>
+<p><a href="https://www.blogger.com/email-post/6264947694886887540/3467012800646079318" title="Email Post"> <img alt="" src="http://img1.blogblog.com/img/icon18_email.gif" /> </a> <a href="https://www.blogger.com/post-edit.g?blogID=6264947694886887540&amp;postID=3467012800646079318&amp;from=pencil" title="Edit Post"> <img alt="" src="https://resources.blogblog.com/img/icon18_edit_allbkg.gif" /> </a></p>
+<p><a href="https://www.blogger.com/share-post.g?blogID=6264947694886887540&amp;postID=3467012800646079318&amp;target=email" title="Email This">Email This</a><a href="https://www.blogger.com/share-post.g?blogID=6264947694886887540&amp;postID=3467012800646079318&amp;target=blog" title="BlogThis!">BlogThis!</a><a href="https://www.blogger.com/share-post.g?blogID=6264947694886887540&amp;postID=3467012800646079318&amp;target=twitter" title="Share to X">Share to X</a><a href="https://www.blogger.com/share-post.g?blogID=6264947694886887540&amp;postID=3467012800646079318&amp;target=facebook" title="Share to Facebook">Share to Facebook</a><a href="https://www.blogger.com/share-post.g?blogID=6264947694886887540&amp;postID=3467012800646079318&amp;target=pinterest" title="Share to Pinterest">Share to Pinterest</a></p>
+<p>Labels: <a href="http://www.righto.com/search/label/386">386</a>, <a href="http://www.righto.com/search/label/chips">chips</a>, <a href="http://www.righto.com/search/label/intel">intel</a>, <a href="http://www.righto.com/search/label/reverse-engineering">reverse-engineering</a></p>
+<h4 id="9-comments">9 comments:<a class="headerlink" href="#9-comments" title="Permanent link">&para;</a></h4>
+<p><a href="https://www.blogger.com/profile/05166570303512915170"><img alt="" src="//www.blogger.com/img/blogger_logo_round_35.png" /> </a></p>
+<p><a href="https://www.blogger.com/profile/05166570303512915170">Ed</a> said... </p>
+<p>Nice article, as ever! Just to note, we used to call these CMOS switches transmission gates, as the direct equivalent to pass gates in NMOS technology. </p>
+<div class="language-text highlight"><pre><span></span><code> [ November 22, 2025 at 10:29 AM ](http://www.righto.com/2025/11/unusual-386-standard-cell-circuits.html?showComment=1763836183014#c2667204501915310678 &quot;comment permalink&quot;) [ ![](https://resources.blogblog.com/img/icon_delete13.gif) ](https://www.blogger.com/comment/delete/6264947694886887540/2667204501915310678 &quot;Delete Comment&quot;)
+</code></pre></div>
+<p><img alt="" src="//resources.blogblog.com/img/blank.gif" /></p>
+<p>Anonymous said... </p>
+<p>Clearly written and instructive. Thank you for your interest in analyzing the 386. Looking forward to more articles </p>
+<div class="language-text highlight"><pre><span></span><code> [ November 22, 2025 at 6:16 PM ](http://www.righto.com/2025/11/unusual-386-standard-cell-circuits.html?showComment=1763864197931#c3823292192199171814 &quot;comment permalink&quot;) [ ![](https://resources.blogblog.com/img/icon_delete13.gif) ](https://www.blogger.com/comment/delete/6264947694886887540/3823292192199171814 &quot;Delete Comment&quot;)
+</code></pre></div>
+<p><img alt="" src="//resources.blogblog.com/img/blank.gif" /></p>
+<p>Anonymous said... </p>
+<p>Neat. It should be noted standard cell technology is what was the driving force behind VLSI (not the company) technology - the starting use of HDLs to design more complex chips with the aid of computers. This would bring us to the 90s and beyond and the evolution of design would come to an end as now chips are coded and then synthesized where even the synthesized units are now standard blocks containing blocks of standard cells and hand drawn high density blocks and other blocks of logic. The 386 was just at the cusp of the LSI to VLSI transition </p>
+<div class="language-text highlight"><pre><span></span><code> [ November 23, 2025 at 1:14 AM ](http://www.righto.com/2025/11/unusual-386-standard-cell-circuits.html?showComment=1763889251390#c5383765645995975965 &quot;comment permalink&quot;) [ ![](https://resources.blogblog.com/img/icon_delete13.gif) ](https://www.blogger.com/comment/delete/6264947694886887540/5383765645995975965 &quot;Delete Comment&quot;)
+</code></pre></div>
+<p><img alt="" src="//resources.blogblog.com/img/blank.gif" /></p>
+<p>Anonymous said... </p>
+<p>Fantastic work and writing </p>
+<div class="language-text highlight"><pre><span></span><code> [ November 23, 2025 at 1:55 AM ](http://www.righto.com/2025/11/unusual-386-standard-cell-circuits.html?showComment=1763891707478#c6673546565740456904 &quot;comment permalink&quot;) [ ![](https://resources.blogblog.com/img/icon_delete13.gif) ](https://www.blogger.com/comment/delete/6264947694886887540/6673546565740456904 &quot;Delete Comment&quot;)
+</code></pre></div>
+<p><img alt="" src="//resources.blogblog.com/img/blank.gif" /></p>
+<p>Anonymous said... </p>
+<p>Fantastic writing! It's amusing to see how they rolled back in the day. Turns out, building devices is like riding a bike--some things never change! </p>
+<div class="language-text highlight"><pre><span></span><code> [ November 23, 2025 at 4:47 AM ](http://www.righto.com/2025/11/unusual-386-standard-cell-circuits.html?showComment=1763902069708#c4576345467175691897 &quot;comment permalink&quot;) [ ![](https://resources.blogblog.com/img/icon_delete13.gif) ](https://www.blogger.com/comment/delete/6264947694886887540/4576345467175691897 &quot;Delete Comment&quot;)
+</code></pre></div>
+<p><img alt="" src="//resources.blogblog.com/img/blank.gif" /></p>
+<p>Anonymous said... </p>
+<p>Really great analysis! Looking forward to more such </p>
+<div class="language-text highlight"><pre><span></span><code> [ November 23, 2025 at 7:35 AM ](http://www.righto.com/2025/11/unusual-386-standard-cell-circuits.html?showComment=1763912133830#c7025850923336731563 &quot;comment permalink&quot;) [ ![](https://resources.blogblog.com/img/icon_delete13.gif) ](https://www.blogger.com/comment/delete/6264947694886887540/7025850923336731563 &quot;Delete Comment&quot;)
+</code></pre></div>
+<p><img alt="" src="//resources.blogblog.com/img/blank.gif" /></p>
+<p>Anonymous said... </p>
+<p>Hi Ken! Reading your articles, I always had the question - but never asked.<br />
+Could your RE technique work at modern CPUs with very small nanometer processes? </p>
+<div class="language-text highlight"><pre><span></span><code> [ November 25, 2025 at 2:00 AM ](http://www.righto.com/2025/11/unusual-386-standard-cell-circuits.html?showComment=1764064805840#c5441222103430970236 &quot;comment permalink&quot;) [ ![](https://resources.blogblog.com/img/icon_delete13.gif) ](https://www.blogger.com/comment/delete/6264947694886887540/5441222103430970236 &quot;Delete Comment&quot;)
+</code></pre></div>
+<p><img alt="" src="//resources.blogblog.com/img/blank.gif" /></p>
+<p>Anonymous said... </p>
+<p>Do you think Gelsinger could be persuaded to talk about early Intel decoders (286/386/486), even if only in the form of "you might very well think that -- I couldn't possible comment"? </p>
+<div class="language-text highlight"><pre><span></span><code> [ November 27, 2025 at 2:23 AM ](http://www.righto.com/2025/11/unusual-386-standard-cell-circuits.html?showComment=1764239037766#c583325656616153938 &quot;comment permalink&quot;) [ ![](https://resources.blogblog.com/img/icon_delete13.gif) ](https://www.blogger.com/comment/delete/6264947694886887540/583325656616153938 &quot;Delete Comment&quot;)
+</code></pre></div>
+<p><img alt="" src="//resources.blogblog.com/img/blank.gif" /></p>
+<p>Mark Jeronimus said... </p>
+<p>Hi anon, I can answer the RE question for you.  </p>
+<p>The problem with reverse engineering ever more modern chips is that the technology (node) keeps getting smaller. A node of 3.5 µm (3500 nm) from 1981 (8086/6502/6510/etc) is easily visible under an optical microscope. A 80386 with 1 µm feature size is pushing it (as you can tell from the story on the fake inverter). Once the chip has a feature size of under approximately 600 nm it becomes borderline impossible to resolve features optically. The reason for this is that visible light wavelengths themselves span from 400 to 700 nm. To go deeper, you'd have to use (deep) ultraviolet light and appropriate optical paths and image sensors (similar tech as used in the chip fabs), or electron microscopy. I've never heard of the former being used, even for general microscopy. The latter is only used in the chip industry for R&amp;D and fault inspection, not RE, although it would actually be very doable! For instance, the YouTuber BreakingTap has a second-hand vintage electron microscope. which he repaired and modernized himself, and it can even separate the scans into different elements and metals. In his video U885cIhOXBM he scans a 486 in great detail and shows some elements being used in certain areas, like aluminum and titanium (and iirc, tungsten for the vias). </p>
+<div class="language-text highlight"><pre><span></span><code> [ December 9, 2025 at 11:02 AM ](http://www.righto.com/2025/11/unusual-386-standard-cell-circuits.html?showComment=1765306922720#c5902845153391028784 &quot;comment permalink&quot;) [ ![](https://resources.blogblog.com/img/icon_delete13.gif) ](https://www.blogger.com/comment/delete/6264947694886887540/5902845153391028784 &quot;Delete Comment&quot;)
+</code></pre></div>
+<p><a href="https://www.blogger.com/comment/fullpage/post/6264947694886887540/3467012800646079318">Post a Comment</a></p>
+<p><a href="http://www.righto.com/2025/12/8087-stack-circuitry.html" title="Newer Post">Newer Post</a> <a href="http://www.righto.com/2025/10/solve-nyt-pips-with-constraints.html" title="Older Post">Older Post</a> <a href="http://www.righto.com/">Home</a></p>
+<p><a href="https://righto.kit.com/20bf534dff">Subscribe</a></p>
+<p><a href="https://www.righto.com/p/index.html">Contact info and site index</a></p>
+<h2 id="popular-posts">Popular Posts<a class="headerlink" href="#popular-posts" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="http://www.righto.com/2009/08/multi-protocol-infrared-remote-library.html"> <img alt="" src="https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_t5PKnrEF1fLjjQMJ1zf8UxFcfPawLITDCr0WNUtFW6MIIxrS6IudrPt1-W7zVHnA97AzVE41-UiFToXaEconRtOoduXW2eW9B_4T1sILyCoow=w72-h72-p-k-no-nu" /> </a></li>
+</ul>
+<p><a href="http://www.righto.com/2009/08/multi-protocol-infrared-remote-library.html">A Multi-Protocol Infrared Remote Library for the Arduino</a></p>
+<ul>
+<li><a href="http://www.righto.com/2026/01/notes-on-intel-8086-processors.html"> <img alt="" src="https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_uo1KLY6cKndrrJWcDDoa8dUlh97njRoAGoW0SVgwep70n5OXUeDIaSS1Qzh-Qh6pQhQ0p_otQB65DdtrcUVegfBkJIDgreT5mMxPHIo6yOeFyQCYRK_NRt5rU2ZNH2NMxbWTERYGc1-Q=w72-h72-p-k-no-nu" /> </a></li>
+</ul>
+<p><a href="http://www.righto.com/2026/01/notes-on-intel-8086-processors.html">Notes on the Intel 8086 processor's arithmetic-logic unit</a></p>
+<ul>
+<li><a href="http://www.righto.com/2012/10/a-dozen-usb-chargers-in-lab-apple-is.html"> <img alt="" src="https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_swxZd70ysen4R8ivBelCJa1S8moZ5n7WMk_qBGA4jR1pupa6VI56DieiiUZGpPY4vTItTIhdMeSTt02mygnDrDfVR4QTqjqOj-t-ThDwbV8eL2hNbqPsGCEUWLGgY=w72-h72-p-k-no-nu" /> </a></li>
+</ul>
+<p><a href="http://www.righto.com/2012/10/a-dozen-usb-chargers-in-lab-apple-is.html">A dozen USB chargers in the lab: Apple is very good, but not quite the best</a></p>
+<ul>
+<li><a href="http://www.righto.com/2012/05/apple-iphone-charger-teardown-quality.html"> <img alt="" src="https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_sB0xWSaLLTAiCdpvmN7Z9HQDS7BusrQOVxWxE37kvzblCiG5IXfRJBj0EAjjwBwpk59HCY62x7mpxzSocjG67K0s30uTQlrYEdio05YGGw_2l04AOy6OH3DQd_k516DtlMBZTI7ifk-IUeSZBenxOz2sA=w72-h72-p-k-no-nu" /> </a></li>
+</ul>
+<p><a href="http://www.righto.com/2012/05/apple-iphone-charger-teardown-quality.html">Apple iPhone charger teardown: quality in a tiny expensive package</a></p>
+<ul>
+<li><a href="http://www.righto.com/2025/12/8087-microcode-conditions.html"> <img alt="" src="https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_tLuRlv1pr3Y55WTXqO7O9Tnq-QNYV8Ko-fXIEdYB2qPZTLavUO7cg0KxVUs1Dj9hUcUN8aWa7QSYoU6rSHlJlwT-7IPQ2C7YBvpQh28u8-9t-P12mrRwKs3f-16k1DwZD7QRWBK2CS8BOkLjik=w72-h72-p-k-no-nu" /> </a></li>
+</ul>
+<p><a href="http://www.righto.com/2025/12/8087-microcode-conditions.html">Conditions in the Intel 8087 floating-point chip's microcode</a></p>
+<ul>
+<li><a href="http://www.righto.com/2013/06/teardown-and-exploration-of-magsafe.html"> <img alt="" src="https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_s7w0iYcjt66-9B3Al0qouosfmjkXxf7nCfReUKuHNzeMQBK_KAQnQiBzuoiwxdRY6p4_4CaPoIq5kzIzGUBzpgWF0w0leatGGNausbFxR4E9yDJb1l7XzPPMbIwx_wb9amMDC1Zp30G_i9Z04=w72-h72-p-k-no-nu" /> </a></li>
+</ul>
+<p><a href="http://www.righto.com/2013/06/teardown-and-exploration-of-magsafe.html">Teardown and exploration of Apple's Magsafe connector</a></p>
+<ul>
+<li><a href="http://www.righto.com/2014/09/mining-bitcoin-with-pencil-and-paper.html"> <img alt="" src="https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_sE7Ptz5al8KfBlCHim3ytsezk6nSOTMcZbvGBt6R9ZKDCjGKvCikjxVMNmxBH64gC38x4PNrPnVZYZFcdMHepMEkOTfs02h3YUb-mEA-rUEL7q1iLSH7WWWC9A7Jj0nqis=w72-h72-p-k-no-nu" /> </a></li>
+</ul>
+<p><a href="http://www.righto.com/2014/09/mining-bitcoin-with-pencil-and-paper.html">Mining Bitcoin with pencil and paper: 0.67 hashes per day</a></p>
+<ul>
+<li><a href="http://www.righto.com/2009/09/arduino-universal-remote-record-and.html"> <img alt="" src="https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_v8XWCKRvmI7Jmjtj7XPniyJLaC55pZAQdwebJIZ4q2MTfWdPF_AmhhaVy8YjISGQL2ZmXhZIZzeETT7dlTJxyFRTs7G44zo1-6JG2HN10B=w72-h72-p-k-no-nu" /> </a></li>
+</ul>
+<p><a href="http://www.righto.com/2009/09/arduino-universal-remote-record-and.html">An Arduino universal remote: record and playback IR signals</a></p>
+<h2 id="search-this-blog">Search This Blog<a class="headerlink" href="#search-this-blog" title="Permanent link">&para;</a></h2>
+<p>| <br />
+---|---  </p>
+<h2 id="labels">Labels<a class="headerlink" href="#labels" title="Permanent link">&para;</a></h2>
+<p><a href="http://www.righto.com/search/label/386">386</a> <a href="http://www.righto.com/search/label/6502">6502</a> <a href="http://www.righto.com/search/label/8008">8008</a> <a href="http://www.righto.com/search/label/8085">8085</a> <a href="http://www.righto.com/search/label/8086">8086</a> <a href="http://www.righto.com/search/label/8087">8087</a> <a href="http://www.righto.com/search/label/8088">8088</a> <a href="http://www.righto.com/search/label/aerospace">aerospace</a> <a href="http://www.righto.com/search/label/alto">alto</a> <a href="http://www.righto.com/search/label/analog">analog</a> <a href="http://www.righto.com/search/label/Apollo">Apollo</a> <a href="http://www.righto.com/search/label/apple">apple</a> <a href="http://www.righto.com/search/label/arc">arc</a> <a href="http://www.righto.com/search/label/arduino">arduino</a> <a href="http://www.righto.com/search/label/arm">arm</a> <a href="http://www.righto.com/search/label/beaglebone">beaglebone</a> <a href="http://www.righto.com/search/label/bitcoin">bitcoin</a> <a href="http://www.righto.com/search/label/c%23">c#</a> <a href="http://www.righto.com/search/label/cadc">cadc</a> <a href="http://www.righto.com/search/label/calculator">calculator</a> <a href="http://www.righto.com/search/label/chips">chips</a> <a href="http://www.righto.com/search/label/css">css</a> <a href="http://www.righto.com/search/label/datapoint">datapoint</a> <a href="http://www.righto.com/search/label/dx7">dx7</a> <a href="http://www.righto.com/search/label/electronics">electronics</a> <a href="http://www.righto.com/search/label/f%23">f#</a> <a href="http://www.righto.com/search/label/fairchild">fairchild</a> <a href="http://www.righto.com/search/label/fpga">fpga</a> <a href="http://www.righto.com/search/label/fractals">fractals</a> <a href="http://www.righto.com/search/label/genome">genome</a> <a href="http://www.righto.com/search/label/globus">globus</a> <a href="http://www.righto.com/search/label/haskell">haskell</a> <a href="http://www.righto.com/search/label/HP">HP</a> <a href="http://www.righto.com/search/label/html5">html5</a> <a href="http://www.righto.com/search/label/ibm">ibm</a> <a href="http://www.righto.com/search/label/ibm1401">ibm1401</a> <a href="http://www.righto.com/search/label/ibm360">ibm360</a> <a href="http://www.righto.com/search/label/intel">intel</a> <a href="http://www.righto.com/search/label/ipv6">ipv6</a> <a href="http://www.righto.com/search/label/ir">ir</a> <a href="http://www.righto.com/search/label/java">java</a> <a href="http://www.righto.com/search/label/javascript">javascript</a> <a href="http://www.righto.com/search/label/math">math</a> <a href="http://www.righto.com/search/label/microcode">microcode</a> <a href="http://www.righto.com/search/label/oscilloscope">oscilloscope</a> <a href="http://www.righto.com/search/label/Pentium">Pentium</a> <a href="http://www.righto.com/search/label/photo">photo</a> <a href="http://www.righto.com/search/label/power%20supply">power supply</a> <a href="http://www.righto.com/search/label/random">random</a> <a href="http://www.righto.com/search/label/reverse-engineering">reverse-engineering</a> <a href="http://www.righto.com/search/label/sheevaplug">sheevaplug</a> <a href="http://www.righto.com/search/label/snark">snark</a> <a href="http://www.righto.com/search/label/space">space</a> <a href="http://www.righto.com/search/label/spanish">spanish</a> <a href="http://www.righto.com/search/label/synth">synth</a> <a href="http://www.righto.com/search/label/teardown">teardown</a> <a href="http://www.righto.com/search/label/theory">theory</a> <a href="http://www.righto.com/search/label/unicode">unicode</a> <a href="http://www.righto.com/search/label/Z-80">Z-80</a></p>
+<h2 id="blog-archive">Blog Archive<a class="headerlink" href="#blog-archive" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2026/"> 2026 </a> (1)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2026/01/"> January </a> (1)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ▼ </a> <a href="http://www.righto.com/2025/"> 2025 </a> (22)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/12/"> December </a> (2)</li>
+<li><a href="javascript:void(0)"> ▼ </a> <a href="http://www.righto.com/2025/11/"> November </a> (1)</li>
+<li><a href="http://www.righto.com/2025/11/unusual-386-standard-cell-circuits.html">Unusual circuits in the Intel 386's standard cell ...</a></li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/10/"> October </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/09/"> September </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/08/"> August </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/07/"> July </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/06/"> June </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/05/"> May </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/04/"> April </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/03/"> March </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/02/"> February </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2025/01/"> January </a> (4)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/"> 2024 </a> (21)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/12/"> December </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/11/"> November </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/10/"> October </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/09/"> September </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/08/"> August </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/07/"> July </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/06/"> June </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/05/"> May </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/04/"> April </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/03/"> March </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/02/"> February </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2024/01/"> January </a> (3)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/"> 2023 </a> (35)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/12/"> December </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/11/"> November </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/10/"> October </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/09/"> September </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/08/"> August </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/07/"> July </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/05/"> May </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/04/"> April </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/03/"> March </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/02/"> February </a> (5)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2023/01/"> January </a> (8)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2022/"> 2022 </a> (18)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2022/11/"> November </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2022/08/"> August </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2022/07/"> July </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2022/06/"> June </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2022/05/"> May </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2022/04/"> April </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2022/03/"> March </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2022/02/"> February </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2022/01/"> January </a> (2)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/"> 2021 </a> (26)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/12/"> December </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/11/"> November </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/09/"> September </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/08/"> August </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/07/"> July </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/06/"> June </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/05/"> May </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/04/"> April </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/03/"> March </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/02/"> February </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2021/01/"> January </a> (3)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/"> 2020 </a> (33)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/12/"> December </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/11/"> November </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/10/"> October </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/09/"> September </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/08/"> August </a> (5)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/07/"> July </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/06/"> June </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/05/"> May </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/04/"> April </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/03/"> March </a> (5)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2020/01/"> January </a> (1)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2019/"> 2019 </a> (18)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2019/11/"> November </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2019/10/"> October </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2019/09/"> September </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2019/08/"> August </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2019/07/"> July </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2019/04/"> April </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2019/02/"> February </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2019/01/"> January </a> (2)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2018/"> 2018 </a> (17)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2018/12/"> December </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2018/09/"> September </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2018/08/"> August </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2018/06/"> June </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2018/05/"> May </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2018/04/"> April </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2018/03/"> March </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2018/02/"> February </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2018/01/"> January </a> (4)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/"> 2017 </a> (21)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/12/"> December </a> (5)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/11/"> November </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/10/"> October </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/08/"> August </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/07/"> July </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/06/"> June </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/04/"> April </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/03/"> March </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/02/"> February </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2017/01/"> January </a> (1)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/"> 2016 </a> (34)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/12/"> December </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/10/"> October </a> (5)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/09/"> September </a> (8)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/08/"> August </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/07/"> July </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/06/"> June </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/05/"> May </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/04/"> April </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/03/"> March </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/02/"> February </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2016/01/"> January </a> (3)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2015/"> 2015 </a> (12)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2015/12/"> December </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2015/11/"> November </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2015/10/"> October </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2015/08/"> August </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2015/05/"> May </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2015/03/"> March </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2015/02/"> February </a> (1)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2014/"> 2014 </a> (13)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2014/12/"> December </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2014/10/"> October </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2014/09/"> September </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2014/05/"> May </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2014/03/"> March </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2014/02/"> February </a> (5)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2013/"> 2013 </a> (24)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2013/11/"> November </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2013/09/"> September </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2013/08/"> August </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2013/07/"> July </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2013/06/"> June </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2013/04/"> April </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2013/03/"> March </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2013/02/"> February </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2013/01/"> January </a> (3)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2012/"> 2012 </a> (10)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2012/12/"> December </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2012/11/"> November </a> (5)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2012/10/"> October </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2012/05/"> May </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2012/03/"> March </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2012/02/"> February </a> (1)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2011/"> 2011 </a> (11)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2011/12/"> December </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2011/07/"> July </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2011/05/"> May </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2011/04/"> April </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2011/03/"> March </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2011/02/"> February </a> (3)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2010/"> 2010 </a> (22)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2010/12/"> December </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2010/11/"> November </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2010/10/"> October </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2010/08/"> August </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2010/06/"> June </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2010/05/"> May </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2010/04/"> April </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2010/03/"> March </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2010/01/"> January </a> (2)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/"> 2009 </a> (22)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/12/"> December </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/11/"> November </a> (5)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/09/"> September </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/08/"> August </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/07/"> July </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/06/"> June </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/04/"> April </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/03/"> March </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/02/"> February </a> (2)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2009/01/"> January </a> (1)</li>
+</ul>
+</li>
+<li>
+<p><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2008/"> 2008 </a> (27)</p>
+<ul>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2008/07/"> July </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2008/06/"> June </a> (1)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2008/05/"> May </a> (3)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2008/04/"> April </a> (4)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2008/03/"> March </a> (10)</li>
+<li><a href="javascript:void(0)"> ► </a> <a href="http://www.righto.com/2008/02/"> February </a> (6)</li>
+</ul>
+</li>
+</ul>
+<h2 id="dont-miss-a-post">Don't miss a post!<a class="headerlink" href="#dont-miss-a-post" title="Permanent link">&para;</a></h2>
+<p>Subscribe to get updates by email.</p>
+<p>Subscribe</p>
+<p>​</p>
+<p><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic">Built with Kit</a></p>
+<p>| <br />
+---|---  </p>
+<p>Powered by <a href="https://www.blogger.com">Blogger</a>. </p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

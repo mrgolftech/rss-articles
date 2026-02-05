@@ -25,7 +25,7 @@
     
     
       
-        <title>SQLite for a REST API Database?\n\n来源: https://matduggan.com\n链接: https://matduggan.com/sqlite-for-a-rest-api-database/\n日期: Fri, 12 Dec 2025 14:19:00 GMT\n\n---\n\nWhen I wrote the backend for my Firefox time-wasting extension (\nhere\n), I assumed I was going to be setting up Postgres. My setup is boilerplate and pretty boring, with everything running in Docker Compose for personal projects and then persistence happening in volumes.\nHowever when I was working with it locally, I obviously used SQLite since that's always the local option that I use. It's very easy to work with, nice to back up and move around and in general is a pleasure to work with. As I was setting up the launch, I realized I\nreally didn't\nwant to set up a database. There's nothing wrong with having a Postgres container running, but I'd like to skip it if its possible.\nCan you run SQLite for many readers and writers?\nSo my limited understanding of SQLite before I started this was "you can have one writer and many readers". I had vaguely heard of SQLite "WAL" but my understanding of WAL is more in the context of shipping WAL between database servers. You have one primary, many readers, you ship WAL to from the primary to the readers and then you can promote a reader to the primary position once it has caught up on WAL.\nMy first attempt at setting up SQLite for a REST API died immediately in exactly this way.\nLog Message: Error loading feeds: (sqlite3.OperationalError) database is locked - Hacker News 精选博客</title>
+        <title>SQLite for a REST API Database? - Hacker News 精选博客</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sqlite-for-a-rest-api-databasenn-httpsmatduggancomn-httpsmatduggancomsqlite-for-a-rest-api-databasen-fri-12-dec-2025-141900-gmtnn-nnwhen-i-wrote-the-backend-for-my-firefox-time-wasting-extension-nheren-i-assumed-i-was-going-to-be-setting-up-postgres-my-setup-is-boilerplate-and-pretty-boring-with-everything-running-in-docker-compose-for-personal-projects-and-then-persistence-happening-in-volumesnhowever-when-i-was-working-with-it-locally-i-obviously-used-sqlite-since-thats-always-the-local-option-that-i-use-its-very-easy-to-work-with-nice-to-back-up-and-move-around-and-in-general-is-a-pleasure-to-work-with-as-i-was-setting-up-the-launch-i-realized-inreally-didntnwant-to-set-up-a-database-theres-nothing-wrong-with-having-a-postgres-container-running-but-id-like-to-skip-it-if-its-possiblencan-you-run-sqlite-for-many-readers-and-writersnso-my-limited-understanding-of-sqlite-before-i-started-this-was-you-can-have-one-writer-and-many-readers-i-had-vaguely-heard-of-sqlite-wal-but-my-understanding-of-wal-is-more-in-the-context-of-shipping-wal-between-database-servers-you-have-one-primary-many-readers-you-ship-wal-to-from-the-primary-to-the-readers-and-then-you-can-promote-a-reader-to-the-primary-position-once-it-has-caught-up-on-walnmy-first-attempt-at-setting-up-sqlite-for-a-rest-api-died-immediately-in-exactly-this-waynlog-message-error-loading-feeds-sqlite3operationalerror-database-is-locked" class="md-skip">
+        <a href="#sqlite-for-a-rest-api-database" class="md-skip">
           跳转至
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SQLite for a REST API Database?\n\n来源: https://matduggan.com\n链接: https://matduggan.com/sqlite-for-a-rest-api-database/\n日期: Fri, 12 Dec 2025 14:19:00 GMT\n\n---\n\nWhen I wrote the backend for my Firefox time-wasting extension (\nhere\n), I assumed I was going to be setting up Postgres. My setup is boilerplate and pretty boring, with everything running in Docker Compose for personal projects and then persistence happening in volumes.\nHowever when I was working with it locally, I obviously used SQLite since that's always the local option that I use. It's very easy to work with, nice to back up and move around and in general is a pleasure to work with. As I was setting up the launch, I realized I\nreally didn't\nwant to set up a database. There's nothing wrong with having a Postgres container running, but I'd like to skip it if its possible.\nCan you run SQLite for many readers and writers?\nSo my limited understanding of SQLite before I started this was "you can have one writer and many readers". I had vaguely heard of SQLite "WAL" but my understanding of WAL is more in the context of shipping WAL between database servers. You have one primary, many readers, you ship WAL to from the primary to the readers and then you can promote a reader to the primary position once it has caught up on WAL.\nMy first attempt at setting up SQLite for a REST API died immediately in exactly this way.\nLog Message: Error loading feeds: (sqlite3.OperationalError) database is locked
+              SQLite for a REST API Database?
             
           </span>
         </div>
@@ -404,31 +404,108 @@
   
 
 
-<h1 id="sqlite-for-a-rest-api-databasenn-httpsmatduggancomn-httpsmatduggancomsqlite-for-a-rest-api-databasen-fri-12-dec-2025-141900-gmtnn-nnwhen-i-wrote-the-backend-for-my-firefox-time-wasting-extension-nheren-i-assumed-i-was-going-to-be-setting-up-postgres-my-setup-is-boilerplate-and-pretty-boring-with-everything-running-in-docker-compose-for-personal-projects-and-then-persistence-happening-in-volumesnhowever-when-i-was-working-with-it-locally-i-obviously-used-sqlite-since-thats-always-the-local-option-that-i-use-its-very-easy-to-work-with-nice-to-back-up-and-move-around-and-in-general-is-a-pleasure-to-work-with-as-i-was-setting-up-the-launch-i-realized-inreally-didntnwant-to-set-up-a-database-theres-nothing-wrong-with-having-a-postgres-container-running-but-id-like-to-skip-it-if-its-possiblencan-you-run-sqlite-for-many-readers-and-writersnso-my-limited-understanding-of-sqlite-before-i-started-this-was-you-can-have-one-writer-and-many-readers-i-had-vaguely-heard-of-sqlite-wal-but-my-understanding-of-wal-is-more-in-the-context-of-shipping-wal-between-database-servers-you-have-one-primary-many-readers-you-ship-wal-to-from-the-primary-to-the-readers-and-then-you-can-promote-a-reader-to-the-primary-position-once-it-has-caught-up-on-walnmy-first-attempt-at-setting-up-sqlite-for-a-rest-api-died-immediately-in-exactly-this-waynlog-message-error-loading-feeds-sqlite3operationalerror-database-is-locked">SQLite for a REST API Database?\n\n<strong>来源:</strong> https://matduggan.com\n<strong>链接:</strong> https://matduggan.com/sqlite-for-a-rest-api-database/\n<strong>日期:</strong> Fri, 12 Dec 2025 14:19:00 GMT\n\n---\n\nWhen I wrote the backend for my Firefox time-wasting extension (\nhere\n), I assumed I was going to be setting up Postgres. My setup is boilerplate and pretty boring, with everything running in Docker Compose for personal projects and then persistence happening in volumes.\nHowever when I was working with it locally, I obviously used SQLite since that's always the local option that I use. It's very easy to work with, nice to back up and move around and in general is a pleasure to work with. As I was setting up the launch, I realized I\nreally didn't\nwant to set up a database. There's nothing wrong with having a Postgres container running, but I'd like to skip it if its possible.\nCan you run SQLite for many readers and writers?\nSo my limited understanding of SQLite before I started this was "you can have one writer and many readers". I had vaguely heard of SQLite "WAL" but my understanding of WAL is more in the context of shipping WAL between database servers. You have one primary, many readers, you ship WAL to from the primary to the readers and then you can promote a reader to the primary position once it has caught up on WAL.\nMy first attempt at setting up SQLite for a REST API died immediately in exactly this way.\nLog Message: Error loading feeds: (sqlite3.OperationalError) database is locked<a class="headerlink" href="#sqlite-for-a-rest-api-databasenn-httpsmatduggancomn-httpsmatduggancomsqlite-for-a-rest-api-databasen-fri-12-dec-2025-141900-gmtnn-nnwhen-i-wrote-the-backend-for-my-firefox-time-wasting-extension-nheren-i-assumed-i-was-going-to-be-setting-up-postgres-my-setup-is-boilerplate-and-pretty-boring-with-everything-running-in-docker-compose-for-personal-projects-and-then-persistence-happening-in-volumesnhowever-when-i-was-working-with-it-locally-i-obviously-used-sqlite-since-thats-always-the-local-option-that-i-use-its-very-easy-to-work-with-nice-to-back-up-and-move-around-and-in-general-is-a-pleasure-to-work-with-as-i-was-setting-up-the-launch-i-realized-inreally-didntnwant-to-set-up-a-database-theres-nothing-wrong-with-having-a-postgres-container-running-but-id-like-to-skip-it-if-its-possiblencan-you-run-sqlite-for-many-readers-and-writersnso-my-limited-understanding-of-sqlite-before-i-started-this-was-you-can-have-one-writer-and-many-readers-i-had-vaguely-heard-of-sqlite-wal-but-my-understanding-of-wal-is-more-in-the-context-of-shipping-wal-between-database-servers-you-have-one-primary-many-readers-you-ship-wal-to-from-the-primary-to-the-readers-and-then-you-can-promote-a-reader-to-the-primary-position-once-it-has-caught-up-on-walnmy-first-attempt-at-setting-up-sqlite-for-a-rest-api-died-immediately-in-exactly-this-waynlog-message-error-loading-feeds-sqlite3operationalerror-database-is-locked" title="Permanent link">&para;</a></h1>
-<p>transaction</p>
-<p>fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware
-event_id</p>
-<p>Log Message: Error loading feeds: (sqlite3.OperationalError) database is locked ⋄ fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware\nSo by default SQLite:\nOnly\none writer\nat a time\nWriters\nblock readers\nduring transactions\nThis seems to be caused by SQLite having a rollback journal and using strict locking. Which makes perfect sense for the use-case that SQLite is typically used for, but I want to abuse that setup for something it is not typically used for.\nFirst Pass\nSo after doing some Googling I ended up with these as the sort of "best recommended" options. I'm 95% sure I copy/pasted the entire block.\n@event.listens_for(engine.sync_engine, "connect")
+<h1 id="sqlite-for-a-rest-api-database">SQLite for a REST API Database?<a class="headerlink" href="#sqlite-for-a-rest-api-database" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://matduggan.com
+<strong>链接:</strong> https://matduggan.com/sqlite-for-a-rest-api-database/
+<strong>日期:</strong> Fri, 12 Dec 2025 14:19:00 GMT</p>
+<hr />
+<p>Skip to content</p>
+<h1 id="matduggancom"><a href="https://matduggan.com">matduggan.com</a><a class="headerlink" href="#matduggancom" title="Permanent link">&para;</a></h1>
+<p>It's JSON all the way down</p>
+<ul>
+<li><a href="https://matduggan.com/rss/"> RSS Feed </a></li>
+</ul>
+<h1 id="sqlite-for-a-rest-api-database_1">SQLite for a REST API Database?<a class="headerlink" href="#sqlite-for-a-rest-api-database_1" title="Permanent link">&para;</a></h1>
+<p>December 12, 2025 in <a href="https://matduggan.com/tag/python/">Python</a></p>
+<p>When I wrote the backend for my Firefox time-wasting extension (<a href="https://addons.mozilla.org/en-US/firefox/addon/time-waster-pro/">here</a>), I assumed I was going to be setting up Postgres. My setup is boilerplate and pretty boring, with everything running in Docker Compose for personal projects and then persistence happening in volumes. </p>
+<p>However when I was working with it locally, I obviously used SQLite since that's always the local option that I use. It's very easy to work with, nice to back up and move around and in general is a pleasure to work with. As I was setting up the launch, I realized I <em>really didn't</em> want to set up a database. There's nothing wrong with having a Postgres container running, but I'd like to skip it if its possible. </p>
+<h3 id="can-you-run-sqlite-for-many-readers-and-writers">Can you run SQLite for many readers and writers?<a class="headerlink" href="#can-you-run-sqlite-for-many-readers-and-writers" title="Permanent link">&para;</a></h3>
+<p>So my limited understanding of SQLite before I started this was "you can have one writer and many readers". I had vaguely heard of SQLite "WAL" but my understanding of WAL is more in the context of shipping WAL between database servers. You have one primary, many readers, you ship WAL to from the primary to the readers and then you can promote a reader to the primary position once it has caught up on WAL. </p>
+<p>My first attempt at setting up SQLite for a REST API died immediately in exactly this way. </p>
+<div class="language-text highlight"><pre><span></span><code>Log Message: Error loading feeds: (sqlite3.OperationalError) database is locked
+transaction
+
+fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware
+event_id
+
+
+Log Message: Error loading feeds: (sqlite3.OperationalError) database is locked ⋄ fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware
+</code></pre></div>
+<p>So by default SQLite:</p>
+<ul>
+<li>Only <strong>one writer</strong> at a time</li>
+<li>Writers <strong>block readers</strong> during transactions</li>
+</ul>
+<p>This seems to be caused by SQLite having a rollback journal and using strict locking. Which makes perfect sense for the use-case that SQLite is typically used for, but I want to abuse that setup for something it is not typically used for. </p>
+<h3 id="first-pass">First Pass<a class="headerlink" href="#first-pass" title="Permanent link">&para;</a></h3>
+<p>So after doing some Googling I ended up with these as the sort of "best recommended" options. I'm 95% sure I copy/pasted the entire block. </p>
+<div class="language-text highlight"><pre><span></span><code>    @event.listens_for(engine.sync_engine, &quot;connect&quot;)
     def set_sqlite_pragma(dbapi_conn, connection_record):
         cursor = dbapi_conn.cursor()
-        cursor.execute("PRAGMA journal_mode=WAL")<br />
-        cursor.execute("PRAGMA synchronous=NORMAL")<br />
-        cursor.execute("PRAGMA busy_timeout=60000")<br />
-        cursor.execute("PRAGMA cache_size=-65536")<br />
-        cursor.execute("PRAGMA temp_store=MEMORY")<br />
-        cursor.close()\nWhat is this configuration doing.\nSwitches SQLite from rollback journal to Write-Ahead Logging (WAL)\nDefault behavior is Write -&gt; Copy original data to journal -&gt; Modify database -&gt; Delete journal.\nWAL mode is Write -&gt; Append changes to WAL file -&gt; Periodically checkpoint to main DB\nsynchronous=NORMAL\nSo here you have 4 options to toggle for how often SQLite syncs to disk.\nOFF is SQlite lets the OS handle it.\nNORMAL is the SQLite engine still syncs, but less often than FULL. WAL mode is safe from corruption with NORMAL typically.\nFULL uses the Xsync method of the VFS (don't feel bad I've never heard of it before either:\nhttps://sqlite.org/vfs.html\n) to ensure everything is written to disk before moving forward.\nEXTRA: I'm not 100% sure what this exactly does but it sounds extra. "EXTRA synchronous is like FULL with the addition that the directory containing a\nrollback journal\nis synced after that journal is unlinked to commit a transaction in DELETE mode. EXTRA provides additional durability if the commit is followed closely by a power loss. Without EXTRA, depending on the underlying filesystem, it is possible that a single transaction that commits right before a power loss might get rolled back upon reboot. The database will not go corrupt. But the last transaction might go missing, thus violating durability, if EXTRA is not set."\nbusy_timeout\n= please wait up to 60 seconds.\ncache_size\nthis one threw me for a loop. Why is it a negative number?\nIf you set it to a positive number, you mean pages. SQLite page size is 4kb by default, so 2000 = 8MB. A negative number means KB which is easier to reason about than pages.\nI don't really know what a "good" cache_size is here. 64MB feels right given the kind of data I'm throwing around and how small it is, but this is guess work.\ntemp_store\n= write to memory, not disk. Makes sense for speed.\nHowever my results from load testing sucked.\nResponse Times (ms):
+        cursor.execute(&quot;PRAGMA journal_mode=WAL&quot;)  
+        cursor.execute(&quot;PRAGMA synchronous=NORMAL&quot;)  
+        cursor.execute(&quot;PRAGMA busy_timeout=60000&quot;)  
+        cursor.execute(&quot;PRAGMA cache_size=-65536&quot;)  
+        cursor.execute(&quot;PRAGMA temp_store=MEMORY&quot;)  
+        cursor.close()
+</code></pre></div>
+<p>What is this configuration doing. </p>
+<ul>
+<li>Switches SQLite from rollback journal to Write-Ahead Logging (WAL)<ul>
+<li>Default behavior is Write -&gt; Copy original data to journal -&gt; Modify database -&gt; Delete journal. </li>
+<li>WAL mode is Write -&gt; Append changes to WAL file -&gt; Periodically checkpoint to main DB</li>
+</ul>
+</li>
+<li><strong><code>synchronous=NORMAL</code></strong><ul>
+<li>So here you have 4 options to toggle for how often SQLite syncs to disk. </li>
+<li>OFF is SQlite lets the OS handle it. </li>
+<li>NORMAL is the SQLite engine still syncs, but less often than FULL. WAL mode is safe from corruption with NORMAL typically. </li>
+<li>FULL uses the Xsync method of the VFS (don't feel bad I've never heard of it before either: <a href="https://sqlite.org/vfs.html">https://sqlite.org/vfs.html</a>) to ensure everything is written to disk before moving forward. </li>
+<li>EXTRA: I'm not 100% sure what this exactly does but it sounds extra. "EXTRA synchronous is like FULL with the addition that the directory containing a <a href="https://sqlite.org/lockingv3.html#rollback">rollback journal</a> is synced after that journal is unlinked to commit a transaction in DELETE mode. EXTRA provides additional durability if the commit is followed closely by a power loss. Without EXTRA, depending on the underlying filesystem, it is possible that a single transaction that commits right before a power loss might get rolled back upon reboot. The database will not go corrupt. But the last transaction might go missing, thus violating durability, if EXTRA is not set."</li>
+</ul>
+</li>
+<li><code>busy_timeout</code> = please wait up to 60 seconds.</li>
+<li><code>cache_size</code> this one threw me for a loop. Why is it a negative number?<ul>
+<li>If you set it to a positive number, you mean pages. SQLite page size is 4kb by default, so 2000 = 8MB. A negative number means KB which is easier to reason about than pages. </li>
+<li>I don't really know what a "good" cache_size is here. 64MB feels right given the kind of data I'm throwing around and how small it is, but this is guess work. </li>
+</ul>
+</li>
+<li><code>temp_store</code> = write to memory, not disk. Makes sense for speed. </li>
+</ul>
+<p>However my results from load testing sucked. </p>
+<div class="language-text highlight"><pre><span></span><code>Response Times (ms):
   Min: 678ms
   Avg: 4765ms
   P50: 5241ms
   P95: 5908ms
   P99: 6003ms
-  Max: 6004ms\nNow this is under heavy load (simulating 1000 active users making a lot of requests at the same time, which is more than I've seen), but still this is pretty bad. The cause of it was, of course, my fault.\nBlacklist logic\nMy "blacklist" is mostly just sites that publish a ton of dead links. However I had the setup wrong and was making a database query per website to see if it matched the black list. Stupid mistake. Once I fixed that.\nResponse Times (ms):
+  Max: 6004ms
+</code></pre></div>
+<p>Now this is under heavy load (simulating 1000 active users making a lot of requests at the same time, which is more than I've seen), but still this is pretty bad. The cause of it was, of course, my fault. </p>
+<h3 id="blacklist-logic">Blacklist logic<a class="headerlink" href="#blacklist-logic" title="Permanent link">&para;</a></h3>
+<p>My "blacklist" is mostly just sites that publish a ton of dead links. However I had the setup wrong and was making a database query per website to see if it matched the black list. Stupid mistake. Once I fixed that. </p>
+<div class="language-text highlight"><pre><span></span><code>Response Times (ms):
   Min: 138ms
   Avg: 456ms
   P50: 246ms
   P95: 1159ms
   P99: 1288ms
-  Max: 1316ms\nGreat! Or at least "good enough from an unstable home internet connection with some artificial packet loss randomly inserted".\nConclusion\nSo should you use SQLite as the backend database for a FastAPI setup? Well it depends on how many users you are planning on having. Right now I can handle between 1000 and 2000 requests per second if they're mostly reads, which is exponentially more than I will need for years of running the service. If at some point in the future that no longer works, it's thankfully very easy to migrate off of SQLite onto something else. So yeah overall I'm pretty happy with it as a design.</p>
+  Max: 1316ms
+</code></pre></div>
+<p>Great! Or at least "good enough from an unstable home internet connection with some artificial packet loss randomly inserted". </p>
+<h3 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h3>
+<p>So should you use SQLite as the backend database for a FastAPI setup? Well it depends on how many users you are planning on having. Right now I can handle between 1000 and 2000 requests per second if they're mostly reads, which is exponentially more than I will need for years of running the service. If at some point in the future that no longer works, it's thankfully very easy to migrate off of SQLite onto something else. So yeah overall I'm pretty happy with it as a design. </p>
+<h3 id="read-more">Read more<a class="headerlink" href="#read-more" title="Permanent link">&para;</a></h3>
+<h4 id="til-simple-merge-of-two-csvs-with-python"><a href="https://matduggan.com/til-simple-merge-of-two-csvs-with-python/">TIL Simple Merge of two CSVs with Python</a><a class="headerlink" href="#til-simple-merge-of-two-csvs-with-python" title="Permanent link">&para;</a></h4>
+<p>An easy script to merge two CSVs with Python and Pandas</p>
+<h4 id="til-how-to-make-brown-noise-in-python"><a href="https://matduggan.com/til-how-to-make-brown-noise-in-python/">TIL How To Make Brown Noise in Python</a><a class="headerlink" href="#til-how-to-make-brown-noise-in-python" title="Permanent link">&para;</a></h4>
+<p>Simple script to make brown noise MP3 in Python</p>
+<h4 id="making-fun-flask-apps-for-no-reason"><a href="https://matduggan.com/making-fun-flask-apps-for-no-reason/">Making Fun Flask Apps for No Reason</a><a class="headerlink" href="#making-fun-flask-apps-for-no-reason" title="Permanent link">&para;</a></h4>
+<p>Let's make a fun Python Flask app for absolutely no reason.</p>
+<h2 id="stay-updated">Stay Updated<a class="headerlink" href="#stay-updated" title="Permanent link">&para;</a></h2>
+<p>Subscribe to the RSS feed to get new posts delivered to your feed reader.</p>
+<p><a href="https://matduggan.com/rss/"> Subscribe via RSS </a></p>
+<p>(C) 2026 matduggan.com. All rights reserved.</p>
 
 
 
@@ -449,7 +526,7 @@ event_id</p>
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:06:05 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 10:25:24 UTC">2026-02-05</span>
   </span>
 
     

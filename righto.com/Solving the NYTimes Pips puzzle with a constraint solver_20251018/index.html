@@ -1,0 +1,857 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/righto.com/Solving%20the%20NYTimes%20Pips%20puzzle%20with%20a%20constraint%20solver_20251018/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Solving the NYTimes Pips puzzle with a constraint solver - RSS Articles</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#solving-the-nytimes-pips-puzzle-with-a-constraint-solver" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="RSS Articles" class="md-header__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RSS Articles
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Solving the NYTimes Pips puzzle with a constraint solver
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RSS Articles" class="md-nav__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RSS Articles
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/righto.com/Solving the NYTimes Pips puzzle with a constraint solver_20251018.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="solving-the-nytimes-pips-puzzle-with-a-constraint-solver">Solving the NYTimes Pips puzzle with a constraint solver<a class="headerlink" href="#solving-the-nytimes-pips-puzzle-with-a-constraint-solver" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> <a href="https://www.righto.com">righto.com</a>
+<strong>发布时间:</strong> 2025-10-18T08:41:00.000-07:00
+<strong>链接:</strong> http://www.righto.com/2025/10/solve-nyt-pips-with-constraints.html</p>
+<hr />
+<p>{'type': 'text/html', 'language': None, 'base': 'https://www.righto.com/feeds/posts/default', 'value': '
+The New York Times recently introduced a new daily puzzle called
+Pips
+.\nYou place a set of dominoes on a grid, satisfying various conditions.\nFor instance, in the puzzle below,\nthe pips (dots) in the purple squares must sum to 8,\nthere must be fewer than 5 pips in the red square, and the pips in the three green squares must be equal.\n(It doesn\'t take much thought to solve this "easy" puzzle, but the "medium" and "hard" puzzles\nare more challenging.)
+\n
+The New York Times Pips puzzle from Oct 5, 2025 (easy). Hint: What value must go in the three green squares?
+\n
+I was wondering about how to solve these puzzles with a computer.\nRecently, I saw an article on
+Hacker News
+—"
+Many hard LeetCode problems are easy constraint problems
+"—that described the benefits and flexibility of a system called\na constraint solver.\nA constraint solver takes a set of constraints and finds solutions that satisfy the constraints: exactly\nwhat Pips requires.
+\n
+I figured that solving Pips with a constraint solver would be a good way to learn more about these\nsolvers, but I had several questions.\nDid constraint solvers require incomprehensible mathematics?\nHow hard was it to express a problem? Would the solver quickly solve the problem, or\nwould it get caught in an exponential search?
+\n
+It turns out that using a constraint solver was straightforward; it took me under two hours from\nknowing nothing about constraint solvers to solving the problem.\nThe solver found solutions in milliseconds (for the most part).\nHowever, there were a few bumps along the way.\nIn this blog post, I\'ll discuss my experience with the
+MiniZinc
+1
+constraint\nmodeling system and show how it can solve Pips.
+\n
+Approaching the problem
+\n
+Writing a program for a constraint solver is very different from writing a regular program.\nInstead of telling the computer
+how
+to solve the problem, you tell it
+what
+you want:\nthe conditions that must be satisfied.\nThe solver then "magically" finds solutions that satisfy the problem.
+\n
+To solve the problem, I created an array called
+pips
+that holds the number of domino pips at each position\nin the grid.\nThen, the three constraints for the above problem can be expressed as follows.\nYou can see how the constraints directly express the conditions in the puzzle.
+\n
+\nconstraint pips[1,1] + pips[2,1] == 8;\nconstraint pips[2,3] &lt; 5;\nconstraint all_equal([pips[3,1], pips[3,2], pips[3,3]]);\n
+\n\n
+Next, I needed to specify where dominoes could be placed for the puzzle.\nTo do this, I defined an array called
+grid
+that indicated the allowable positions: 1 indicates a valid\nposition and 0 indicates an invalid position. (If you compare with the puzzle at the top of the article,\nyou can see that the grid below matches its shape.)
+\n
+\ngrid = [|\n1,1,0|\n1,1,1|\n1,1,1|];\n
+\n\n
+I also defined the set of dominoes for the problem above, specifying the number of spots in each half:
+\n
+\nspots = [|5,1| 1,4| 4,2| 1,3|];\n
+\n\n
+So far, the constraints directly match the problem.\nHowever, I needed to write some more code to specify how these pieces interact.\nBut\nbefore I describe that code, I\'ll show a solution.\nI wasn\'t sure what to expect: would the constraint solver give me a solution or would it spin\nforever?\nIt turned out to find the unique solution in 109 milliseconds, printing out the\nsolution arrays.\nThe
+pips
+array shows the number of pips in each position, while the
+dominogrid
+array shows which\ndomino (1 through 4) is in each position.
+\n
+\npips = \n[| 4, 2, 0\n | 4, 5, 3\n | 1, 1, 1\n |];\ndominogrid = \n[| 3, 3, 0\n | 2, 1, 4\n | 2, 1, 4\n |];\n
+\n\n
+The text-based solution above is a bit ugly.\nBut it is easy to create graphical output.\nMiniZinc provides a JavaScript API, so you can easily display\nsolutions on a web page.\nI wrote a few lines of JavaScript to draw the solution, as shown below.\n(I just display the numbers since I was too lazy to draw the dots.)\nSolving this puzzle is not too impressive—it\'s an "easy" puzzle after all—but I\'ll show below that\nthe solver can also handle considerably more difficult puzzles.
+\n
+Graphical display of the solution.
+\n
+Details of the code
+\n
+While the above code specifies a particular puzzle, a bit more code is required to define\nhow dominoes and the grid interact.\nThis code may appear strange because it is implemented as constraints, rather than the\nprocedural operations in a normal program.
+\n
+My main design decision was how to specify the locations of dominoes.\nI considered assigning a grid position and orientation\nto each domino, but it seemed inconvenient to deal with multiple orientations.\nInstead, I decided to position each half of the domino independently, with an
+x
+and
+y
+coordinate in\nthe grid.
+2
+I added a constraint that the two halves of each domino had to be in neighboring cells,\nthat is, either the X or Y coordinates had to differ by 1.
+\n
+\nconstraint forall(i in DOMINO) (abs(x[i, 1] - x[i, 2]) + abs(y[i, 1] - y[i, 2]) == 1);\n
+\n\n
+It took a bit of thought to fill in the
+pips
+array with the number of spots on each domino.\nIn a normal programming language, one would loop over the dominoes and store the values into
+pips
+.\nHowever, here it is done with a constraint so the solver makes sure the values are assigned.\nSpecifically, for each half-domino, the
+pips
+array entry at\nthe domino\'s x/y coordinate must equal the corresponding
+spots
+on the domino:
+\n
+\nconstraint forall(i in DOMINO, j in HALF) (pips[y[i,j], x[i, j]] == spots[i, j]);\n
+\n\n
+I decided to add another array to keep track of which domino is in which position.\nThis array is useful to see the domino locations in the output, but it also\nkeeps dominoes from overlapping.\nI used a constraint to put each domino\'s number (1, 2, 3, etc.) into the occupied position of
+dominogrid
+:
+\n
+\nconstraint forall(i in DOMINO, j in HALF) (dominogrid[y[i,j], x[i, j]] == i);\n
+\n\n
+Next, how do we make sure that dominoes only go into positions allowed by
+grid
+?\nI used a constraint that a square in
+dominogrid
+must be empty or the corresponding
+grid
+must allow a domino.
+3
+\nThis uses the "or" condition, which is expressed as
+\/
+, an unusual stylistic\nchoice. (Likewise, "and" is expressed as
+/\
+. These correspond to the logical symbols\n∨ and ∧.)
+\n
+\nconstraint forall(i in 1..H, j in 1..W) (dominogrid[i, j] == 0 \/ grid[i, j] != 0);\n
+\n\n
+Honestly, I was worried that I had too many arrays and the solver would end up in a rathole ensuring that the arrays were consistent.\nBut I figured I\'d try this brute-force approach and see if it worked.\nIt turns out that it worked for the most part, so I didn\'t need to do anything more clever.
+\n
+Finally, the program requires a few lines to define some constants and variables.\nThe constants below define the number of dominoes and the size of the grid for a particular problem:
+\n
+\nint: NDOMINO = 4; % Number of dominoes in the puzzle\nint: W = 3; % Width of the grid in this puzzle\nint: H = 3; % Height of the grid in this puzzle\n
+\n\n
+Next, datatypes are defined to specify the allowable values.\nThis is very important for the solver; it is a "finite domain" solver, so limiting the size of\nthe domains reduces the size of the problem.\nFor this problem, the values are integers in a particular range, called a
+set
+:
+\n
+\nset of int: DOMINO = 1..NDOMINO; % Dominoes are numbered 1 to NDOMINO\nset of int: HALF = 1..2; % The domino half is 1 or 2\nset of int: xcoord = 1..W; % Coordinate into the grid\nset of int: ycoord = 1..H;\n
+\n\n
+At last, I define the sizes and types of the various arrays that I use.\nOne very important syntax is
+var
+, which indicates variables that the solver must determine.\nNote that the first two arrays,
+grid
+and
+spots
+do not have
+var
+since they are constant,\ninitialized to specify the problem.
+\n
+\narray[1..H,1..W] of 0..1: grid; % The grid defining where dominoes can go\narray[DOMINO, HALF] of int: spots; % The number of spots on each half of each domino\narray[DOMINO, HALF] of var xcoord: x; % X coordinate of each domino half\narray[DOMINO, HALF] of var ycoord: y; % Y coordinate of each domino half\narray[1..H,1..W] of var 0..6: pips; % The number of pips (0 to 6) at each location.\narray[1..H,1..W] of var 0..NDOMINO: dominogrid; % The domino sequence number at each location\n
+\n\n
+You can find all the code on
+GitHub
+.\nOne weird thing is that because the code is not procedural, the lines can be in any order.\nYou can use arrays or constants before you use them.\nYou can even move
+include
+statements to the end of the file if you want!
+\n
+Complications
+\n
+Overall, the solver was much easier to use than I expected. However, there were a few complications.
+\n
+By changing a setting, the solver can find multiple solutions instead of stopping after the first.\nHowever, when I tried this, the solver generated thousands of meaningless solutions.\nA closer look showed that the problem was that the solver was putting arbitrary numbers into the "empty"\ncells, creating valid but pointlessly different solutions.\nIt turns out that I didn\'t explicitly forbid this, so the sneaky constraint solver went ahead and\ngenerated tons of solutions that I didn\'t want.\nAdding another constraint fixed the problem.\nThe moral is that even if you think your constraints are clear, solvers are very good at finding unwanted\nsolutions that technically satisfy the constraints.\n
+4
+\n
+A second problem is that if you do something wrong, the solver simply says that the problem is\nunsatisfiable. Maybe there\'s a clever way of debugging, but I ended up removing constraints until\nthe problem can be satisfied, and then see what I did wrong with that constraint.\n(For instance, I got the array indices backward at one point, making the problem insoluble.)
+\n
+The most concerning issue is the unpredictability of the solver:\nmaybe it will take milliseconds or maybe it will take hours.\nFor instance, the Oct 5 hard Pips puzzle (below) caused the solver to take minutes for no apparent reason.\nHowever, the MiniZinc IDE supports different solver backends. I switched from the default
+Gecode
+solver to\n
+Chuffed
+, and it immediately found numerous solutions, 384 to\nbe precise.\n(Sometimes the Pips puzzles sometimes have multiple solutions, which players find
+controversial
+.)\nI suspect that the multiple solutions messed up the Gecode solver somehow, perhaps because\nit couldn\'t narrow down a "good" branch in the search tree.\nFor a benchmark of the different solvers, see the footnote.
+5
+\n
+Two of the 384 solutions to the NYT Pips puzzle from Oct 5, 2025 (hard difficulty).
+\n
+How does a constraint solver work?
+\n
+If you were writing a program to solve Pips from scratch, you\'d probably have a loop to try\nassigning dominoes to positions.\nThe problem is that the problem grows exponentially. If you have 16 dominoes, there are 16 choices\nfor the first domino, 15 choices for the second, and so forth, so about 16! combinations in total,\nand that\'s ignoring orientations.\nYou can think of this as a search tree: at the first step, you have 16 branches. For the next step,\neach branch has 15 sub-branches. Each sub-branch has 14 sub-sub-branches, and so forth.
+\n
+An easy optimization is to check the constraints after each domino is added. For instance, as soon\nas the \n"less than 5" constraint is violated, you can
+backtrack
+and skip that entire\nsection of the tree.\nIn this way, only a subset of the tree needs to be searched; the number of branches will be large, but\nhopefully manageable.
+\n
+A constraint solver works similarly, but in a more abstract way.\nThe constraint solver assigns values to the variables, backtracking when a conflict is detected.\nSince the underlying problem is typically NP-complete, the solver uses heuristics to attempt to\nimprove performance.\nFor instance, variables can be assigned in different orders. The solver attempts to generate\nconflicts as soon as possible so large pieces of the search tree can be pruned sooner rather than later.\n(In the domino case, this corresponds to placing dominoes in places with the tightest constraints, rather\nthan scattering them around the puzzle in "easy" spots.)
+\n
+Another technique is constraint propagation. The idea is that you can derive new constraints and\ncatch conflicts earlier. For instance, suppose you have a problem with the constraints "a equals c" and "b equals c".\nIf you assign "a=1" and "b=2", you won\'t find a conflict until later, when you try to find a value for "c".\nBut with constraint propagation, you can derive a new constraint "a equals b", and the problem will\nturn up immediately.\n(Solvers handle more complicated constraint propagation, such as inequalities.)\nThe tradeoff is that generating new constraints takes time and makes the problem larger, so constraint\npropagation can make the solver slower. Thus, heuristics are used to decide when to apply constraint propagation.
+\n
+Researchers are actively developing new\nalgorithms, heuristics, and optimizations
+6
+such as backtracking more aggressively\n(called "backjumping"),\nkeeping track of failing variable assignments (called "nogoods"), and\nleveraging Boolean SAT (satisfiability) solvers.\nSolvers compete in
+annual challenges
+to test\nthese techniques against each other.\nThe nice thing about a constraint solver is that you don\'t need to know anything about these techniques;\nthey are applied automatically.
+\n
+Conclusions
+\n
+I hope this has convinced you that constraint solvers are interesting, not too scary, and can solve\nreal problems with little effort.\nEven as a beginner, I was able to get started with MiniZinc quickly.\n(I read half the
+tutorial
+and then jumped into programming.)
+\n
+One reason to look at constraint solvers is that they are a completely different programming paradigm.\nUsing a constraint solver is like programming on a higher level, not worrying about how the problem\ngets solved or what algorithm gets used.\nMoreover, analyzing a problem in terms of constraints is a different way of thinking about algorithms.\nSome of the time it\'s frustrating when you can\'t use familiar constructs such as loops and assignments,\nbut it expands your horizons.
+\n
+Finally,\nwriting code to solve Pips is more fun than solving the problems by hand, at least in my opinion,\nso give it a try!
+\n
+For more, follow me on\n Bluesky (
+@righto.com
+),\nMastodon (
+@kenshirriff@oldbytes.space
+),\n
+RSS
+, or subscribe
+here
+.
+\n
+Solution to the Pips puzzle, September 21, 2005 (hard). This puzzle has regions that must all be equal (=) and regions that must all be different (≠). Conveniently, MiniZinc has
+all_equal
+and
+alldifferent
+constraint functions.
+\n
+Notes and references
+\n
+\n
+\n
+\n
+\nI started by downloading the
+MiniZinc IDE
+and reading the\n
+MiniZinc tutorial
+. The MiniZinc IDE is straightforward, with an editor window at the top and an output window at\nthe bottom. Clicking the "Run" button causes it to generate a solution.
+\n
+Screenshot of the MiniZinc IDE. Click for a larger view.
+\n
+↩
+\n
+\n
+\n
+It might be cleaner to combine the X and Y coordinates into a single
+Point
+type, using a MiniZinc
+record type
+.
+↩
+\n
+\n
+\n
+I later decided that it made more sense to enforce that
+dominogrid
+is empty if and only if\n
+grid
+is 0 at that point, although it doesn\'t affect the solution.\nThis constraint uses the "if and only if" operator
+&lt;-&gt;
+.
+\n
+\nconstraint forall(i in 1..H, j in 1..W) (dominogrid[i, j] == 0 &lt;-&gt; grid[i, j] == 0);\n
+↩
+\n
+\n
+\n
+To prevent the solver from putting arbitrary numbers in the unused positions of
+pips
+, I added a\nconstraint to force these values to be zero:
+\n
+\nconstraint forall(i in 1..H, j in 1..W) (grid[i, j] == 0 -&gt; pips[i, j] == 0);\n
+\n
+Generating multiple solutions had a second issue, which I expected: A symmetric domino can be\nplaced in two redundant ways.\nFor instance, a double-six domino can be flipped to produce a solution that is technically\ndifferent but looks the same. I fixed this by adding constraints for each symmetric domino\nto allow only one of the two redundant positions. The constraint below forces a preferred\norientation for symmetric dominoes.
+\n
+\nconstraint forall(i in DOMINO) (spots[i,1] != spots[i,2] \/ x[i,1] &gt; x[i,2] \/ (x[i,1] == x[i,2] /\ y[i,1] &gt; y[i,2]));\n
+\n
+To enable multiple solutions in MiniZinc, the setting is under Show Configuration Editor &gt; User Defined Behavior &gt;\nSatisfaction Problems or the
+--all
+flag from the command line.
+↩
+\n
+\n
+\n
+MiniZinc has five solvers that can solve this sort of integer problem:
+Chuffed
+,\n
+OR Tools CP-SAT
+,\n
+Gecode
+,\n
+HiGHS
+,\nand
+Coin-OR BC
+.\nI measured the performance of the five solvers against 20 different Pips puzzles.\nMost of the solvers found solutions in under a second, most of the time, but there is a lot\nof variation.
+\n
+Timings for different solvers on 20 Pip puzzles.
+\n
+Overall, Chuffed had the best performance on the puzzles that I tested, taking well under a second.\nGoogle\'s OR-Tools won all\nthe categories in the
+2025 MiniZinc challenge
+,\nbut it was considerably slower than Chuffed for my Pips programs.\nThe default Gecode solver performed very well most of the time, but it did terribly on a few\nproblems, taking over 15 minutes.\nHiGHs was slower in general, taking a few minutes on the hardest problems, but it didn\'t fail\nas badly as Gecode.\n(Curiously, Gecode and HiGHS sometimes found different problems to be difficult.)\nFinally, Coin-OR BC was uniformly bad; at best it took a few seconds, but one puzzle took almost two\nhours and others weren\'t solved before I gave up after two hours.\n(I left Coin-OR BC off the graph because it messed up the scale.)
+\n
+Don\'t treat these results too seriously because different solvers are optimized for\ndifferent purposes. (In particular, Coin-OR BC is designed for linear problems.)\nBut the results demonstrate the unpredictability of solvers: maybe you get a solution in a second\nand maybe you get a solution in hours.
+↩
+\n
+\n
+\n
+If you want to read more about solvers,
+Constraint Satisfaction Problems
+is an overview presentation.\nThe Gecode algorithms are described in a nice technical report:
+Constraint Programming Algorithms used in Gecode
+.\nChuffed is more complicated: "Chuffed is a state of the art lazy clause solver designed from the ground up with lazy clause generation in mind. Lazy clause generation is a hybrid approach to constraint solving that combines features of finite domain propagation and Boolean satisfiability."\nThe Chuffed paper
+Lazy clause generation reengineered
+\nand
+slides
+are more of a challenge.\n
+↩
+\n
+\n
+\n
+'}</p>
+<hr />
+<p><em>抓取时间: 2026-02-05 12:51:49</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 04:51:56 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

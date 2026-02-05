@@ -1,0 +1,748 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/righto.com/Unusual%20circuits%20in%20the%20Intel%20386%27s%20standard%20cell%20logic_20251122/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Unusual circuits in the Intel 386's standard cell logic - RSS Articles</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unusual-circuits-in-the-intel-386s-standard-cell-logic" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="RSS Articles" class="md-header__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RSS Articles
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Unusual circuits in the Intel 386's standard cell logic
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RSS Articles" class="md-nav__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RSS Articles
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/righto.com/Unusual circuits in the Intel 386's standard cell logic_20251122.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="unusual-circuits-in-the-intel-386s-standard-cell-logic">Unusual circuits in the Intel 386's standard cell logic<a class="headerlink" href="#unusual-circuits-in-the-intel-386s-standard-cell-logic" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> <a href="https://www.righto.com">righto.com</a>
+<strong>发布时间:</strong> 2025-11-22T08:15:00.000-08:00
+<strong>链接:</strong> http://www.righto.com/2025/11/unusual-386-standard-cell-circuits.html</p>
+<hr />
+<p>{'type': 'text/html', 'language': None, 'base': 'https://www.righto.com/feeds/posts/default', 'value': '
+I\'ve been studying the standard cell circuitry in the Intel 386 processor recently.\nThe 386, introduced in 1985, was Intel\'s most complex processor at the time, containing 285,000 transistors.\nIntel\'s existing design techniques couldn\'t handle this complexity and the chip began to fall behind schedule.\nTo meet the schedule, the 386 team started using a technique called standard cell logic.\nInstead of laying out each transistor manually, the layout process was performed by a computer.
+\n
+The idea behind standard cell logic is to create standardized circuits (standard cells) for each type of logic element, such\nas an inverter, NAND gate, or latch.\nYou feed your circuit description into software that selects the necessary cells, \npositions these cells into columns, and then routes the wiring between the cells.\nThis "automatic place and route" process creates the chip layout much faster than manual layout.\nHowever, switching to standard cells was a risky decision since if the software couldn\'t create a\ndense enough layout, the chip couldn\'t be manufactured.\nBut in the end, the 386 finished ahead of schedule, an almost unheard-of accomplishment.
+1
+\n
+The 386\'s standard cell circuitry contains a few circuits that I didn\'t expect.\nIn this blog post, I\'ll take a quick look at some of these circuits:\nsurprisingly large multiplexers, a transistor that doesn\'t fit into the standard cell layout,\nand inverters that turned out not to be inverters.\n(If you want more background on standard cells in the 386, see my earlier post,\n"
+Reverse engineering standard cell logic in the Intel 386 processor
+".)
+\n
+The photo below shows the 386 die with the automatic-place-and-route regions highlighted; I\'m focusing\non the red region in the lower right.\nThese blocks of logic have cells arranged in rows, giving them a characteristic striped appearance.\nThe dark stripes are the transistors that make up the logic gates, while the lighter regions between the stripes are the\n"routing channels" that hold the wiring that connects the cells.\nIn comparison,\nfunctional blocks\nsuch as the datapath on the left\nand the microcode ROM in the lower right\nwere designed manually to optimize density and performance, giving them a more solid appearance.
+\n
+The 386 die with the standard-cell regions highlighted.
+\n
+As for other features on the chip,\nthe black circles around the border are bond wire connections that go to the chip\'s external pins.\nThe chip has two metal layers, a small number by modern\nstandards, but a jump from the single metal layer of earlier processors such as the 286.\n(Providing two layers of metal made automated routing practical: one layer can hold horizontal wires while the other layer\ncan hold vertical wires.)\nThe metal appears white in larger areas, but\npurplish where circuitry underneath roughens its surface.\nThe underlying silicon and the polysilicon wiring are obscured by the metal layers.
+\n
+The giant multiplexers
+\n
+The standard cell circuitry that I\'m examining (red box above) is part of the control logic that selects registers\nwhile executing an instruction.\nYou might think that it is easy to select which registers take part in an instruction, but\ndue to the complexity of the x86 architecture, it is more difficult.\nOne problem is that a 32-bit register such as EAX can also be treated as the 16-bit register AX,\nor two 8-bit registers AH and AL.\nA second problem is that some instructions include a "direction" bit that switches the source and\ndestination registers.\nMoreover, sometimes the register is specified by bits in the instruction, but in other cases,\nthe register is specified by the microcode.\nDue to these factors, selecting the registers for an operation is a complicated process with many\ncases, using control bits from the instruction, from the microcode, and from other sources.
+\n
+Three registers need to be selected for an operation—two source registers and a destination register—and there\nare about 17 cases that need to be handled.\nRegisters are specified with 7-bit control signals that select one of the 30 registers and control\nwhich part of the register is accessed.\nWith three control signals, each 7 bits wide, and about 17 cases for each, you can see that\nthe register control logic is large and complicated.\n(I wrote more about the 386\'s registers
+here
+.)
+\n
+I\'m still reverse engineering the register control logic, so I won\'t go into details.\nInstead, I\'ll discuss how the register control circuit uses multiplexers, implemented with standard cells.\nA multiplexer is a circuit that combines multiple\ninput signals into a single output by selecting one of the inputs.
+2
+\nA multiplexer can be implemented with logic gates, for instance, by ANDing each input with the\ncorresponding control line, and then ORing the results together.\nHowever, the 386 uses a different approach—CMOS switches—that avoids a large AND/OR gate.
+\n
+Schematic of a CMOS switch.
+\n
+The schematic above shows how a CMOS switch is constructed from two MOS transistors.\nWhen the two transistors are on, the output is connected to the input, but when the two transistors are\noff, the output is isolated.\nAn NMOS transistor is turned on when its input is high, but a PMOS transistor is turned on when its\ninput is
+low
+. Thus, the switch uses two control inputs, one inverted.\nThe motivation for using two transistors is that an NMOS transistor is better at pulling the output\nlow, while a PMOS transistor is better at pulling the output high, so combining them yields the best performance.
+3
+\nUnlike a logic gate, the CMOS switch has no amplification, so a signal is weakened as it passes through the switch.\nAs will be seen below, inverters can be used to amplify the signal.
+\n
+The image below shows how CMOS switches appear under the microscope.\nThis image is very hard to interpret because the two layers of metal on the 386 are packed together densely, but you\ncan see that some wires run horizontally and others run vertically.\nThe bottom layer of metal (called M1) runs vertically in the routing area, as well as providing internal\nwiring for a cell.\nThe top layer of metal (M2) runs horizontally; unlike M1, the M2 wires can cross a cell.\nThe large circles are vias that connect the M1 and M2 layers, while the small circles are connections\nbetween M1 and polysilicon or M1 and silicon.\nThe central third of the image is a column of standard cells with two CMOS switches outlined in green.\nThe cells are bordered by the vertical ground rail and\n+5V rail that power the cells. \nThe routing areas are on either side of the cells, holding the wiring that connects the cells.
+\n
+Two CMOS switches, highlighted in green. The lower switch is flipped vertically compared to the upper switch.
+\n
+Removing the metal layers reveals the underlying silicon with a layer of polysilicon wiring on top.\nThe doped silicon regions show up as dark outlines.\nI\'ve drawn the polysilicon in green; it forms a transistor (brighter green) when it crosses doped silicon.\nThe metal ground and power lines are shown in blue and red, respectively, with other metal wiring in purple.\nThe black dots are vias between layers.\nNote how metal wiring (purple) and polysilicon wiring (green) are combined to route signals within\nthe cell.\nAlthough this standard cell is complicated, the important thing is that it only needs to be designed once.\nThe standard cells for different functions are all designed to have the same width, so the cells can be arranged in\ncolumns, snapped together like Lego bricks.
+\n
+A diagram showing the silicon for a standard-cell switch. The polysilicon is shown in green. The bottom metal is shown in blue, red, and purple.
+\n
+To summarize, this switch circuit allows the input to be connected to the output or disconnected, controlled by the select signal.\nThis switch is more complicated than the earlier schematic because it includes two inverters to amplify\nthe signal.\nThe data input and the two select lines are connected to the polysilicon (green); the cell is designed so\nthese connections can be made on either side.\nAt the top, the input goes through a standard two-transistor inverter.\nThe lower left has two transistors, combining the NMOS half of an inverter with the NMOS half of the switch.\nA similar circuit on the right combines the PMOS part of an inverter and switch.\nHowever, because PMOS transistors are weaker, this part of the circuit is duplicated.
+\n
+A multiplexer is constructed by combining multiple switches, one for each input.\nTurning on one switch will select the corresponding input.\nFor instance, a four-to-one multiplexer has four switches, so it can select one of the four inputs.
+\n
+A four-way multiplexer constructed from CMOS switches and individual transistors.
+\n
+The schematic above shows a hypothetical multiplexer with four inputs.\nOne optimization is that if an input is always 0, the PMOS transistor can be omitted. Likewise,\nif an input is always 1, the NMOS transistor can be omitted.\nOne set of select lines is activated at a time to select the corresponding input.\nThe pink circuit selects 1,\ngreen selects input A, yellow selects input B, and blue selects 0.\nThe multiplexers in the 386 are similar, but have more inputs.
+\n
+The diagram below shows how much circuitry is devoted to multiplexers in this block of standard cells.\nThe green, purple, and red cells correspond to the multiplexers driving the three register control\noutputs.\nThe yellow cells are inverters that generate the inverted control signals for the CMOS switches.\nThis diagram also shows how the automatic layout of cells results in a layout that appears random.
+\n
+A block of standard-cell logic with multiplexers highlighted. The metal and polysilicon layers were removed for this photo, revealing the silicon transistors.
+\n
+The misplaced transistor
+\n
+The idea of standard-cell logic is that standardized cells are arranged in columns.\nThe space between the cells is the "routing channel", holding the wiring that links the cells.\nThe 386 circuitry follows this layout, except for one single transistor, sitting between two columns\nof cells.
+\n
+The "misplaced" transistor, indicated by the arrow. The irregular green regions are oxide that was incompletely removed.
+\n
+I wrote some software tools to help me analyze the standard cells. Unfortunately, my tools\nassumed that all the cells were in columns, so this one wayward transistor caused me considerable inconvenience.
+\n
+The transistor turns out to be a PMOS transistor, pulling a signal high as part of a multiplexer.\nBut why is this transistor out of place?\nMy hypothesis is that the transistor is a bug fix.\nRegenerating the cell layout was very costly, taking many hours on an IBM mainframe computer.\nPresumably, someone found that they could just stick the necessary transistor into an unused spot in the\nrouting channel, manually add the necessary wiring, and avoid the delay of regenerating all the cells.
+\n
+The fake inverter
+\n
+The simplest CMOS gate is the inverter, with an NMOS transistor to pull the output low and a\nPMOS transistor to pull the output high.\nThe standard cell circuitry that I examined contains over a hundred inverters of various\nsizes.\n(Performance is improved by using inverters that aren\'t too small but also aren\'t\nlarger than necessary for a particular circuit. Thus, the standard cell library includes inverters of multiple sizes.)
+\n
+The image below shows a medium-sized standard-cell inverter under the microscope.\nFor this image, I removed the two metal layers with acid to show the underlying polysilicon\n(bright green) and silicon (gray).\nThe quality of this image is\npoor—it is difficult to remove the metal without destroying the polysilicon—but the diagram below\nshould clarify the circuit.\nThe inverter has two transistors: a PMOS transistor connected to +5 volts to pull the output high when\nthe input is 0, and an NMOS transistor connected to ground to pull the output low when the input is 1.\n(The PMOS transistor needs to be larger because PMOS transistors don\'t function as well as NMOS transistors due to\nsilicon physics.)
+\n
+An inverter as seen on the die. The corresponding standard cell is shown below.
+\n
+The polysilicon input line plays a key role: where it crosses the doped silicon, a transistor gate is\nformed.\nTo make the standard cell more flexible, the input to the inverter\ncan be connected on either the left or the right; in this case, the input\nis connected on the right and there is no connection on the left.\nThe inverter\'s output can be taken from the polysilicon on the upper left or the right, but in this case, it\nis taken from the upper metal layer (not shown).\nThe power, ground, and output lines are in the lower metal layer, which I have represented by\nthe thin red, blue, and yellow lines. The black circles are connections between the metal layer and\nthe underlying silicon.
+\n
+This inverter appears dozens of times in the circuitry.\nHowever, I came across a few inverters that didn\'t make sense. The problem was\nthat the inverter\'s output was connected to the output of a multiplexer.\nSince an inverter is either on or off, its value would clobber the output of the multiplexer.
+4
+\nThis didn\'t make any sense.\nI double- and triple-checked the wiring to make sure I hadn\'t messed up.\nAfter more investigation, I found another problem: the input to a "bad" inverter didn\'t make sense\neither. The input consisted of two signals shorted together, which doesn\'t work.
+\n
+Finally, I realized what was going on. A "bad inverter" has the exact silicon layout of an inverter,\nbut it wasn\'t an inverter: it was independent NMOS and PMOS transistors with separate inputs.\nNow it all made sense.\nWith two inputs, the input signals were independent, not shorted together.\nAnd since the transistors were controlled separately, the NMOS transistor could pull the output\nlow in some circumstances, the PMOS transistor could pull the output high in other circumstances,\nor both transistors could be off, allowing the multiplexer\'s output to be used undisturbed.\nIn other words, the "inverter" was just two more cases for the multiplexer.
+\n
+The "bad" inverter. (Image is flipped vertically for comparison with the previous inverter.)
+\n
+If you compare the "bad inverter" cell below with the previous cell, they look
+almost
+the same, but\nthere are subtle differences.\nFirst, the gates of the two transistors are connected in the real inverter, but disconnected\nby a small gap in the transistor pair.\nI\'ve indicated this gap in the photo above; it is hard to tell if the gap is real or just an imaging\nartifact, so I didn\'t spot it.\nThe second difference is that the "fake" inverter has two input connections, one to each transistor,\nwhile the inverter has a single input connection.\nUnfortunately, I assumed that the two connections were just a trick to route the signal across\nthe inverter without requiring an extra wire.\nIn total, this cell was used 32 times as a real inverter and 9 times\nas independent transistors.
+\n
+Conclusions
+\n
+Standard cell logic and automatic place and route have a long history before the 386,\nback to the early 1970s, so this isn\'t an Intel invention.
+5
+\nNonetheless, the 386 team deserves the credit for deciding to use this technology at a time when it\nwas a risky decision.\nThey needed to develop custom software for their placing and routing needs, so this wasn\'t a trivial undertaking.\nThis choice paid off and they completed the 386 ahead of schedule.\nThe 386 ended up being a huge success for Intel, moving the x86 architecture to 32 bits and defining the dominant computer\narchitecture for the rest of the 20th century.
+\n
+If you\'re interested in standard cell logic, I also wrote about
+standard cell logic in an IBM chip
+.\nI plan to write more about the 386, so \nfollow me on\n
+Mastodon
+,
+Bluesky
+,\nor RSS for updates.\nThanks to Pat Gelsinger and Roxanne Koester for providing helpful papers.
+\n
+For more on the 386 and other chips, follow me on\nMastodon (
+@kenshirriff@oldbytes.space
+),\nBluesky (
+@righto.com
+),\nor
+RSS
+.  (I\'ve given up on Twitter.)\nIf you want to read more about the 386, I\'ve written about the
+clock pin
+,\n
+prefetch queue
+,
+die versions
+,
+packaging
+, and
+I/O circuits
+.
+\n
+Notes and references
+\n
+\n
+\n
+\n
+The decision to use automatic place and route is described on page 13 of the
+Intel 386 Microprocessor Design and Development Oral History Panel
+, a very interesting document on the 386 with discussion from\nsome of the people involved in its development.
+↩
+\n
+\n
+\n
+Multiplexers often take a binary control signal to select the desired input.\nFor instance, an 8-to-1 multiplexer selects one of 8 inputs, so a 3-bit control signal\ncan specify the desired input.\nThe 386\'s multiplexers use a different approach with one control signal per input.\nOne of the 8 control signals is activated to select the desired input.\nThis approach is called a "one-hot encoding" since one control line is activated (hot)\nat a time.
+↩
+\n
+\n
+\n
+Some chips, such as the MOS Technology 6502 processor, are built with NMOS technology, without PMOS transistors.\nMultiplexers in the 6502 use a single NMOS transistor, rather than the two transistors in the CMOS switch.\nHowever, the performance of the switch is worse.
+↩
+\n
+\n
+\n
+One very common circuit in the 386 is a latch constructed from an inverter loop and a switch/multiplexer.\nThe inverter\'s output and the switch\'s output are connected together.\nThe trick, however, is that the inverter is constructed from special weak transistors.\nWhen the switch is disabled, the inverter\'s weak output is sufficient to drive the loop.\nBut to write a value into the latch, the switch is enabled and its output overpowers the weak\ninverter.
+\n
+The point of this is that there
+are
+circuits where an inverter and a multiplexer have their\noutputs connected. However, the inverter must be constructed with special weak transistors, which is not the situation\nthat I\'m discussing.
+↩
+\n
+\n
+\n
+I\'ll provide more history on standard cells in this footnote.\n RCA
+patented
+a bipolar standard cell in 1971,\n but this was a fixed arrangement of transistors and resistors, more of a gate array than a modern\n standard cell.\n Bell Labs researched standard cell layout techniques in the early 1970s, calling them Polycells, including\n a
+1973 paper
+by Brian Kernighan.\n By 1979,
+A Guide to LSI Implementation
+discussed the standard cell approach and\n it was described as well-known in
+this patent application
+.\n Even so,
+Electronics
+called these design methods "futuristic" in 1980.
+\n
+Standard cells became popular in the mid-1980s as faster computers and improved design software made\n it practical to produce semi-custom designs that used standard cells.\n Standard cells made it to the cover of
+Digital Design
+in August 1985, and the article inside described numerous vendors and products.\n Companies like
+Zymos
+and
+VLSI Technology
+(VTI) focused on standard cells.\n Traditional companies such as
+Texas Instruments
+, NCR, GE/RCA,
+Fairchild
+, Harris,
+ITT
+, and Thomson introduced lines of standard cell products in\n the mid-1980s.\n
+\n
+↩
+\n
+\n
+\n
+'}</p>
+<hr />
+<p><em>抓取时间: 2026-02-05 12:51:49</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 04:51:56 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

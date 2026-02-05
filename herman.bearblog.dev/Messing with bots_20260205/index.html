@@ -25,7 +25,7 @@
     
     
       
-        <title>Messing with bots\n\n来源: https://herman.bearblog.dev\n链接: https://herman.bearblog.dev/messing-with-bots/\n日期: 2025-11-13T08:56:00+00:00\n\n---\n\nAs outlined in my previous\ntwo\nposts\n: scrapers are, inadvertently, DDoSing public websites. I've received a number of emails from people running small web services and blogs seeking advice on how to protect themselves.\nThis post isn't about that. This post is about fighting back.\nWhen I published my last post, there was an interesting write-up doing the rounds about\na guy who set up a Markov chain babbler\nto feed the scrapers endless streams of generated data. The idea here is that these crawlers are voracious, and if given a constant supply of junk data, they will continue consuming it forever, while (hopefully) not abusing your actual web server.\nThis is a pretty neat idea, so I dove down the rabbit hole and learnt about Markov chains, and even picked up Rust in the process. I ended up building my own babbler that could be trained on any text data, and would generate realistic looking content based on that data.\nNow, the AI scrapers are actually not the worst of the bots. The real enemy, at least to me, are the bots that scrape with malicious intent. I get hundreds of thousands of requests for things like\n.env\n,\n.aws\n, and all the different\n.php\npaths that could potentially signal a misconfigured Wordpress instance.\nThese people are the real baddies.\nGenerally I just block these requests with a\n403\nresponse. But since they want\n.php\nfiles, why don't I give them what they want?\nI trained my Markov chain on a few hundred\n.php\nfiles, and set it to generate. The responses certainly look like php at a glance, but on closer inspection they're obviously fake. I set it up to run on an isolated project of mine, while incrementally increasing the size of the generated php files from 2kb to 10mb just to test the waters.\nHere's a sample 1kb output:\n<?php wp_list_bookmarks () directly, use the Settings API. Use this method directly. Instead, use `unzip_file() { - RSS Articles</title>
+        <title>Messing with bots\n\n来源: https://herman.bearblog.dev\n链接: https://herman.bearblog.dev/messing-with-bots/\n日期: 2025-11-13T08:56:00+00:00\n\n---\n\nAs outlined in my previous\ntwo\nposts\n: scrapers are, inadvertently, DDoSing public websites. I've received a number of emails from people running small web services and blogs seeking advice on how to protect themselves.\nThis post isn't about that. This post is about fighting back.\nWhen I published my last post, there was an interesting write-up doing the rounds about\na guy who set up a Markov chain babbler\nto feed the scrapers endless streams of generated data. The idea here is that these crawlers are voracious, and if given a constant supply of junk data, they will continue consuming it forever, while (hopefully) not abusing your actual web server.\nThis is a pretty neat idea, so I dove down the rabbit hole and learnt about Markov chains, and even picked up Rust in the process. I ended up building my own babbler that could be trained on any text data, and would generate realistic looking content based on that data.\nNow, the AI scrapers are actually not the worst of the bots. The real enemy, at least to me, are the bots that scrape with malicious intent. I get hundreds of thousands of requests for things like\n.env\n,\n.aws\n, and all the different\n.php\npaths that could potentially signal a misconfigured Wordpress instance.\nThese people are the real baddies.\nGenerally I just block these requests with a\n403\nresponse. But since they want\n.php\nfiles, why don't I give them what they want?\nI trained my Markov chain on a few hundred\n.php\nfiles, and set it to generate. The responses certainly look like php at a glance, but on closer inspection they're obviously fake. I set it up to run on an isolated project of mine, while incrementally increasing the size of the generated php files from 2kb to 10mb just to test the waters.\nHere's a sample 1kb output:\n<?php wp_list_bookmarks () directly, use the Settings API. Use this method directly. Instead, use `unzip_file() { - Hacker News 精选博客</title>
       
     
     
@@ -92,7 +92,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../.." title="RSS Articles" class="md-header__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+    <a href="../.." title="Hacker News 精选博客" class="md-header__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -106,7 +106,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            RSS Articles
+            Hacker News 精选博客
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -284,13 +284,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="RSS Articles" class="md-nav__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+    <a href="../.." title="Hacker News 精选博客" class="md-nav__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    RSS Articles
+    Hacker News 精选博客
   </label>
   
     <div class="md-nav__source">
@@ -475,7 +475,7 @@ $signup_defaults = array(
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 07:07:57 UTC">2026-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 07:16:12 UTC">2026-02-05</span>
   </span>
 
     

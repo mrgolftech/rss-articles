@@ -1,0 +1,789 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/buttondown.com/hillelwayne/My%20Gripes%20with%20Prolog_20260205/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>My Gripes with Prolog - RSS Articles</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#my-gripes-with-prolog" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="RSS Articles" class="md-header__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RSS Articles
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              My Gripes with Prolog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="RSS Articles" class="md-nav__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RSS Articles
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#no-standardized-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No standardized strings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-standardized-collection-types-besides-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No standardized collection types besides lists
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-boolean-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No boolean values
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cuts-are-confusing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cuts are confusing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-cuts-are-confusing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-cuts are confusing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#straying-outside-of-default-queries-is-confusing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Straying outside of default queries is confusing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i-have-mixed-feelings-about-symbol-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I have mixed feelings about symbol terms
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go-home-sort-ur-drunk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        go home sort, ur drunk
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#please-just-let-me-end-rules-with-a-trailing-comma-instead-of-a-period-im-begging-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Please just let me end rules with a trailing comma instead of a period, I'm begging you
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/buttondown.com/hillelwayne/My Gripes with Prolog_20260205.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="my-gripes-with-prolog">My Gripes with Prolog<a class="headerlink" href="#my-gripes-with-prolog" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://buttondown.com/hillelwayne
+<strong>链接:</strong> https://buttondown.com/hillelwayne/archive/my-gripes-with-prolog/
+<strong>日期:</strong> Wed, 14 Jan 2026 16:48:51 +0000</p>
+<hr />
+<p>For the next release of <a href="https://leanpub.com/logic/">Logic for Programmers</a>, I'm finally adding the sections on Answer Set Programming and Constraint Logic Programming that I TODOd back in version 0.9. And this is making me re-experience some of my pain points with Prolog, which I will gripe about now. If you want to know more about why Prolog is cool instead, go <a href="https://buttondown.com/hillelwayne/archive/a48fce5b-8a05-4302-b620-9b26f057f145/">here</a> or <a href="https://www.metalevel.at/prolog">here</a> or <a href="https://ianthehenry.com/posts/drinking-with-datalog/">here</a> or <a href="https://logicprogramming.org/">here</a>. </p>
+<h3 id="no-standardized-strings">No standardized strings<a class="headerlink" href="#no-standardized-strings" title="Permanent link">&para;</a></h3>
+<p>ISO "strings" are just atoms or lists of single-character atoms (or lists of integer character codes). The various implementations of Prolog add custom string operators but they are not cross compatible, so code written with strings in SWI-Prolog will not work in Scryer Prolog. </p>
+<h3 id="no-functions">No functions<a class="headerlink" href="#no-functions" title="Permanent link">&para;</a></h3>
+<p>Code logic is expressed entirely in <em>rules</em> , predicates which return true or false for certain values. For example if you wanted to get the length of a Prolog list, you write this:</p>
+<div class="language-text highlight"><pre><span></span><code>?- length([a, b, c], Len).
+
+   Len = 3.
+</code></pre></div>
+<p>Now this is pretty cool in that it allows bidirectionality, or running predicates "in reverse". To generate lists of length 3, you can write <code>length(L, 3)</code>. But it also means that if you want to get the length a list <em>plus one</em> , you can't do that in one expression, you have to write <code>length(List, Out), X is Out+1</code>.</p>
+<p>For a while I thought no functions was necessary evil for bidirectionality, but then I discovered <a href="https://picat-lang.org/">Picat</a> has functions and works just fine. That by itself is a reason for me to prefer Picat for my LP needs.</p>
+<p>(Bidirectionality is a killer feature of Prolog, so it's a shame I so rarely run into situations that use it.)</p>
+<h3 id="no-standardized-collection-types-besides-lists">No standardized collection types besides lists<a class="headerlink" href="#no-standardized-collection-types-besides-lists" title="Permanent link">&para;</a></h3>
+<p>Aside from atoms (<code>abc</code>) and numbers, there are two data types:</p>
+<ul>
+<li>Linked lists like <code>[a,b,c,d]</code>.</li>
+<li>
+<p>Compound terms like <code>dog(rex, poodle)</code>, which <em>seem</em> like record types but are actually tuples. You can even convert compound terms to linked lists with <code>=..</code>:</p>
+<p>?- L =.. [a, b, c].
+   L = a(b, c).
+?- a(b, c(c)) =.. L.
+   L = [a, b, c(c)].</p>
+</li>
+</ul>
+<p>There's no proper key-value maps or even struct types. Again, this is something that individual distributions can fix (without cross compatibility), but these never feel integrated with the rest of the language. </p>
+<h3 id="no-boolean-values">No boolean values<a class="headerlink" href="#no-boolean-values" title="Permanent link">&para;</a></h3>
+<p><code>true</code> and <code>false</code> aren't values, they're control flow statements. <code>true</code> is a noop and <code>false</code> says that the current search path is a dead end, so backtrack and start again. You can't explicitly store true and false as values, you have to implicitly have them in facts (<code>passed(test)</code> instead of <code>test.passed? == true</code>).</p>
+<p>This hasn't made any tasks impossible, and I can usually find a workaround to whatever I want to do. But I do think it makes things more inconvenient! Sometimes I want to do something dumb like "get all atoms that don't pass at least three of these rules", and that'd be a lot easier if I could shove intermediate results into a sack of booleans. </p>
+<p>(This is called "<a href="https://en.wikipedia.org/wiki/Negation_as_failure">Negation as Failure</a>". I think this might be necessary to make Prolog a Turing complete general programming language. Picat fixes a lot of Prolog's gripes and still has negation as failure. ASP has regular negation but it's not Turing complete.) </p>
+<h3 id="cuts-are-confusing">Cuts are confusing<a class="headerlink" href="#cuts-are-confusing" title="Permanent link">&para;</a></h3>
+<p>Prolog finds solutions through depth first search, and a "cut" (<code>!</code>) symbol prevents backtracking past a certain point. This is necessary for optimization but can lead to invalid programs. </p>
+<p>You're not supposed to use cuts if you can avoid it, so I pretended cuts didn't exist. Which is why I was surprised to find that <a href="https://eu.swi-prolog.org/pldoc/doc_for?object=(-%3E)/2">conditionals</a> are implemented with cuts. Because cuts are spooky dark magic conditionals <em>sometimes</em> conditionals work as I expect them to and sometimes leave out valid solutions and I have no idea how to tell which it'll be. Usually I find it safer to just avoid conditionals entirely, which means my code gets a lot longer and messier. </p>
+<h3 id="non-cuts-are-confusing">Non-cuts are confusing<a class="headerlink" href="#non-cuts-are-confusing" title="Permanent link">&para;</a></h3>
+<p>The original example in the last section was this: </p>
+<div class="language-text highlight"><pre><span></span><code>foo(A, B) :-
+    \+ (A = B),
+    A = 1,
+    B = 2.
+</code></pre></div>
+<p><code>foo(1, 2)</code> returns true, so you'd expect <code>f(A, B)</code> to return <code>A=1, B=2</code>. But it returns <code>false</code>. Whereas this works as expected.</p>
+<div class="language-text highlight"><pre><span></span><code>bar(A, B) :-
+    A = 1,
+    B = 2,
+    \+ (A = B).
+</code></pre></div>
+<p>I <em>thought</em> this was because <code>\+</code> was implemented with cuts, and the <a href="https://www.amazon.com/Programming-Prolog-Using-ISO-Standard/dp/3540006788">Clocksin book</a> suggests it's <code>call(P), !, fail</code>, so this was my prime example about how cuts are confusing. But then I tried this:</p>
+<div class="language-text highlight"><pre><span></span><code>?- member(A, [1,2,3]), \+ (A = 2), A = 3.
+A = 3. % wtf?
+</code></pre></div>
+<p>There's no way to get that behavior with cuts! I don't think <code>\+</code> uses cuts at all! And now I have to figure out why <code>foo(A, B)</code> doesn't returns results. Is it <a href="https://github.com/dtonhofer/prolog_notes/blob/master/other_notes/about_negation/floundering.md">floundering</a>? Is it because <code>\+ P</code> only succeeds if <code>P</code> fails, and <code>A = B</code> always succeeds? A closed-world assumption? Something else?<a href="https://buttondown.com/hillelwayne/rss#fn:dif">1</a></p>
+<h3 id="straying-outside-of-default-queries-is-confusing">Straying outside of default queries is confusing<a class="headerlink" href="#straying-outside-of-default-queries-is-confusing" title="Permanent link">&para;</a></h3>
+<p>Say I have a program like this:</p>
+<div class="language-text highlight"><pre><span></span><code>tree(n, n1).
+tree(n, n2).
+tree(n1, n11).
+tree(n2, n21).
+tree(n2, n22).
+tree(n11, n111).
+tree(n11, n112).
+
+branch(N) :- % two children
+    tree(N, C1),
+    tree(N, C2),
+    C1 @&lt; C2. % ordering
+</code></pre></div>
+<p>And I want to know all of the nodes that are parents of branches. The normal way to do this is with a query:</p>
+<div class="language-text highlight"><pre><span></span><code>?- tree(A, N), branch(N).
+A = n, N = n2; % show more...
+A = n1, N = n11.
+</code></pre></div>
+<p>This is interactively making me query for every result. That's usually not what I want, I know the result of my query is finite and I want all of the results at once, so I can count or farble or whatever them. It took a while to figure out that the proper solution is <a href="https://www.swi-prolog.org/pldoc/man?predicate=bagof/3"><code>bagof(Template, Goal, Bag)</code></a>, which will "Unify Bag with the alternatives of Template":</p>
+<div class="language-text highlight"><pre><span></span><code>?- bagof(A, (tree(A, N), branch(N)), As).
+
+As = [n1], N = n11;
+As = [n], N = n2.
+</code></pre></div>
+<p>Wait crap that's still giving one result at a time, because <code>N</code> is a free variable in <code>bagof</code> so it backtracks over that. It surprises me but I guess it's good to have as an option. So how do I get all of the results at once?</p>
+<div class="language-text highlight"><pre><span></span><code>?- bagof(A, N^(tree(A, N), branch(N)), As).
+
+As = [n, n1]
+</code></pre></div>
+<p>The only difference is the <code>N^Goal</code>, which tells <code>bagof</code> to ignore and group the results of <code>N</code>. As far as I can tell, this is the <em>only</em> place the ISO standard uses <code>^</code> to mean anything besides exponentiation. Supposedly it's the <a href="https://sicstus.sics.se/sicstus/docs/latest4/html/sicstus.html/ref_002dall_002dsum.html">existential quantifier</a>? In general whenever I try to stray outside simpler use-cases, especially if I try to do things non-interactively, I run into trouble.</p>
+<h3 id="i-have-mixed-feelings-about-symbol-terms">I have mixed feelings about symbol terms<a class="headerlink" href="#i-have-mixed-feelings-about-symbol-terms" title="Permanent link">&para;</a></h3>
+<p>It took me a long time to realize the reason <code>bagof</code> "works" is because infix symbols are mapped to prefix compound terms, so that <code>a^b</code> is <code>^(a, b)</code>, and then different predicates can decide to do different things with <code>^(a, b)</code>.</p>
+<p>This is also why you can't just write <code>A = B+1</code>: that unifies <code>A</code> with the <em>compound term</em> <code>+(B, 1)</code>. <code>A+1 = B+2</code> is <em>false</em> , as <code>1 \= 2</code>. You have to write <code>A+1 is B+2</code>, as <code>is</code> is the operator that converts <code>+(B, 1)</code> to a mathematical term.</p>
+<p>(And <em>that</em> fails because <code>is</code> isn't fully bidirectional. The lhs <em>must</em> be a single variable. You have to import <code>clpfd</code> and write <code>A + 1 #= B + 2</code>.)</p>
+<p>I don't like this, but I'm a hypocrite for saying that because I appreciate the idea and don't mind custom symbols in other languages. I guess what annoys me is there's no official definition of what <code>^(a, b)</code> is, it's purely a convention. ISO Prolog uses <code>-(a, b)</code> (aka <code>a-b</code>) as a convention to mean "pairs", and the only way to realize that is to see that an awful lot of standard modules use that convention. But you can use <code>-(a, b)</code> to mean something else in your own code and nothing will warn you of the inconsistency.</p>
+<p>Anyway I griped about pairs so I can gripe about <code>sort</code>.</p>
+<h3 id="go-home-sort-ur-drunk">go home sort, ur drunk<a class="headerlink" href="#go-home-sort-ur-drunk" title="Permanent link">&para;</a></h3>
+<p>This one's just a blunder:</p>
+<div class="language-text highlight"><pre><span></span><code>?- sort([3,1,2,1,3], Out).
+   Out = [1, 2, 3]. % wat
+</code></pre></div>
+<p>According to an expert online this is because sort is supposed to return a sorted <em>set</em> , not a sorted list. If you want to preserve duplicates you're supposed to lift all of the values into <code>-($key, $value)</code> compound terms, then use <a href="https://eu.swi-prolog.org/pldoc/doc_for?object=keysort/2">keysort</a>, then extract the values. And, since there's no functions, this process takes at least three lines. This is also how you're supposed to sort by a custom predicate, like "the second value of a compound term". </p>
+<p>(Most (but not all) distributions have a duplicate merge like <a href="https://eu.swi-prolog.org/pldoc/doc_for?object=msort/2">msort</a>. SWI-Prolog also has a <a href="https://eu.swi-prolog.org/pldoc/doc_for?object=predsort/3">sort by key</a> but it removes duplicates.)</p>
+<h3 id="please-just-let-me-end-rules-with-a-trailing-comma-instead-of-a-period-im-begging-you">Please just let me end rules with a trailing comma instead of a period, I'm begging you<a class="headerlink" href="#please-just-let-me-end-rules-with-a-trailing-comma-instead-of-a-period-im-begging-you" title="Permanent link">&para;</a></h3>
+<p>I don't care if it makes fact parsing ambiguous, I just don't want "reorder two lines" to be a syntax error anymore</p>
+<hr />
+<p>I expect by this time tomorrow I'll have been Cunningham'd and there will be a 2000 word essay about how all of my gripes are either easily fixable by doing XYZ or how they are the best possible choice that Prolog could have made. I mean, even in writing this I found out some fixes to problems I had. Like I was going to gripe about how I can't run SWI-Prolog queries from the command line but, in doing do diligence finally <em>finally</em> figured it out:</p>
+<div class="language-text highlight"><pre><span></span><code>swipl -t halt -g &quot;bagof(X, Goal, Xs), print(Xs)&quot; ./file.pl
+</code></pre></div>
+<p>It's pretty clunky but still better than the old process of having to enter an interactive session every time I wanted to validate a script change.</p>
+<p>(Also, answer set programming is pretty darn cool. Excited to write about it in the book!)</p>
+<hr />
+<ol>
+<li>A couple of people mentioned using <a href="https://eu.swi-prolog.org/pldoc/doc_for?object=dif/2">dif/2</a> instead of <code>\+ A = B</code>. Dif is great but usually I hit the negation footgun with things like <code>\+ foo(A, B), bar(B, C), baz(A, C)</code>, where <code>dif/2</code> isn't applicable. <a href="https://buttondown.com/hillelwayne/rss#fnref:dif" title="Jump back to footnote 1 in the text">↩</a></li>
+</ol>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 05:40:42 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

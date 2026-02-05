@@ -1,0 +1,560 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/gwern.net/February%202021%20Gwern.net%20Newsletter_20260205/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>February 2021 Gwern.net Newsletter\n\n来源: https://gwern.net\n链接: https://gwern.substack.com/p/february-2021-gwernnet-newsletter\n日期: Sat, 13 Mar 2021 15:18:44 GMT\n\n---\n\nFebruary 2021’s\nGwern.net\nnewsletter\nis now out; previous,\nJanuary 2021\n(\narchives\n). This is a summary of the revision-history RSS feed, overlapping with my\nChangelog\n&\n/r/gwern\n; brought to you by my donors on\nPatreon\n.\n1 Writings\nGwern.net\n: popups: can now be moved, stickied, and full-screened (another step towards our ambition of Windows-95-in-the-browser!)\n2 Links\n2.1 AI\n“Controllable Neural Text Generation”\n, Lilian Weng;\n“Recent Advances in Language Model Fine-tuning”\n, Sebastian Ruder (review)\n“Prompt Programming for Large Language Models: Beyond the Few-Shot Paradigm”\n, Reynolds & McDonell 2021 (original 10-shot Fr → En translation can be beaten by the better 0-shot prompt: “French: XYZ / English:…”; this is “true of most worst-performing prompts…”);\n“Calibrate Before Use: Improving Few-Shot Performance of Language Models”\n, Zhao et al 2021 (huge boost from calibrating unstable prompts; both demonstrate,\nas always\n, that “sampling can prove the presence of knowledge but not the absence.”)\n“TransGAN: Two Transformers Can Make One Strong GAN”\n, Jiang et al 2021 (Transformer-only GAN: attention is all you need)\n“PACT: Proof Artifact Co-training for Theorem Proving with Language Models”\n, Han et al 2021 (\nGPT-f\nfor\nLean\n)\n“Towards End-to-End In-Image Neural Machine Translation”\n, Mansimov et al 2020 (sure why not)\nBrains\n:\n“Artificial Neural Nets Finally Yield Clues to How Brains Learn”\n(short overview of biologically-plausible backprop: feedback alignment, target propagation, predictive coding, & attentional feedback; also of recent interest,\nVS-ML\n; given their increasing success in training while respecting more biological constraints, the increasing power of backprop-trained ANNs and the neurological success of ANNs in predicting & imitating brain signals, it is increasingly clear that brains\nreally do\ndo backprop in some sense)\n“NSD: A massive 7-tesla fMRI dataset to bridge cognitive and computational neuroscience”\n, Jean et al 2021 (“…The availability of NSD thus opens the door to using brain activity to directly guide the optimization of deep neural networks.”)\n“Brain2Pix: Fully convolutional naturalistic video reconstruction from brain activity”\n, Le et al 2021 (reconstructing\nDr. Who\n)\n“High-performance brain-to-text communication via imagined handwriting”\n, Willett et al 2020\n“Brain-computer interface for generating personally attractive images”\n, Spape et al 2021 (many ways to improve this…)\nMatters Of Scale\n:\n“Scaling Laws for Transfer”\n, Hernandez et al 2021 (“We find that pre-training effectively multiplies the fine-tuning dataset size”; a shot across the bow of anyone floating on a proprietary-dataset moat: large models can drop data requirements by orders of magnitude overnight, even surpassing you)\n“ALIGN: Scaling Up Visual and Vision-Language Representation Learning With Noisy Text Supervision”\n, Jia et al 2021 (see also\nCC-12M\n;\nCLIP\n-like w/EfficientNet trained on 1.8 billion images on a TPUv3-1024—\nDM\nargues that fancier cross-modal Transformers are better, nevertheless,\n‘TPUs go brrr’\n. Given DALL·E, CLIP, ALIGN,\nVDVAE\n,\nCW-VAE\n,\nAIPO\net al, are GANs already dead, and just don’t realize it yet? Or at least soon to be relegated to only DRL-like uses as a final finetuning phase to sharpen up a self-supervised model?);\n“WenLan: Bridging Vision and Language by Large-Scale Multi-Modal Pre-Training”\n, Huo et al 2021\n“DALL·E: Zero-Shot Text-to-Image Generation”\n, Ramesh et al 2021 (\noriginal blog\n);\n“M6: A Chinese Multimodal Pretrainer”\n, Lin et al 2021 (Chinese DALL·E: 1.9TB images/0.29TB text for 10b-parameter dense/100b-parameter MoE Transformer; shockingly fast Chinese replication of DALL·E/CLIP)\n“Explaining Neural Scaling Laws”\n, Bahri et al 2021/\n“Learning Curve Theory”\n, Hutter 2021 (\nRohin Shah commentary\n; more on the manifold hypothesis)\n2.2 Genetics\nEverything Is Heritable:\n“Phenotypic covariance across the entire spectrum of relatedness for 86 billion pairs of individuals”\n, Kemper et al 2021\n“Genetic variation, brain, and intelligence differences”\n, Deary et al 2021\n“Pathfinder: A gamified measure to integrate general cognitive ability into the biological, medical and behavioural sciences”\n, Malanchini et al 2021 (not the focus, but the IQ PGS is a slight improvement over\nAllegrini et al 2018\ndue to less phenotype measurement error?)\n“Polygenic burden has broader impact on health, cognition, and socioeconomic outcomes than most rare and high-risk copy number variants”\n, Saarentaus et al 2021\nOn candidate-genes & COMT\nRecent Evolution:\n“Million-Year-Old DNA Rewrites the Mammoth Family Tree: Genomic data—the oldest ever recovered from a fossil—reveals the origin and evolution of the Columbian mammoth”\n“Kin selection explains the evolution of cooperation in the gut microbiota”\n, Simonet & McNally 2021\nEngineering:\nFirst Black-Footed Ferret cloned\n2.3 Statistics/Meta-Science\n“Lessons from Gerolamo Cardano’s\nThe Book of My Life\n”\n(progress studies; see also\nNewton’s anthropic argument\n,\nBakewell & inventing progress\n,\nThe Autobiography of Benvenuto Cellini\n)\n“How Many Microcovids Would You Spend on a Burrito?”\n(on the\nmicroCOVID Project Calculator\n)\n“On the enfeeblement of mathematical skills by ‘Modern Mathematics’ and by similar soft intellectual trash in schools and universities”\n, Hammersley 1968 (\nKnuth\nhighlights as also amusing:\n“A Note on Piffles”\n, Smith 1967;\n“A rebuke of A. B. Smith’s paper, ‘A Note on Piffles’”\n, Farlow 1980)\n“Artifact and Recording Concepts in EEG”\n, Tatum et al 2011 (on the\nEEG\nsignals of\nJell-O\n, or, the importance of\nnegative controls\n)\n2.4 Politics/Religion\n“The Logic of Fashion Cycles”\n, Acerbi et al 2012;\n“Fashion and art cycles are driven by counter-dominance signals of elite competition: quantitative evidence from music styles”\n, Klimek et al 2019;\n“The hipster effect: When anti-conformists all look the same”\n, Touboul 2019;\n“Right Is The New Left”\n, Scott Alexander (see also\nHan et al 2010\n,\nDowns 1972\n/\nGupta & Jenkins-Smith 2015\n,\nLorenz-Spreen et al 2019\n/\nCandia et al 2019\n,\nLoury 1994\n)\n“What can we learn from the lunar pandemic that never was?”\n(NASA’s lunar quarantine was a sham intended to mollify the public as they covered up repeated major failures & lab leaks both before & after—had there been any dangerous lunar organisms, they would have escaped easily)\nMrBeast\n(the new aristocracy of\nprestige\n? Borrowed plumage, perhaps, but effective…)\n“Russia’s new Lysenkoism”\n, Kolchinsky et al 2017\n2.5 Psychology/Biology\nSemaglutide\n:\n“Once-Weekly Semaglutide in Adults with Overweight or Obesity”\n, Wilding et al 2021;\n“Effect of Subcutaneous Semaglutide vs Placebo as an Adjunct to Intensive Behavioral Therapy on Body Weight in Adults With Overweight or Obesity: The STEP 3 Randomized Clinical Trial”\n, Wadden et al 2021\nA longer-acting version of the insulin/appetite peptide\nliraglutide\n, semaglutide greatly reduces weight, fat, blood sugar, cholesterol etc, with an\nupcoming oral version\n; background:\nKushner et al 2020\n,\nAroda et al 2019\n,\nNauck & Meier 2019\n,\nO’Neil et al 2018\n,\nBlundell et al 2017\n,\nNauck et al 2016\n,\nLau et al 2015\n.\n“Lessons from the host defences of bats, a unique viral reservoir”\n, Irving et al 2021 (\nbat-borne viruses\n; previously,\nTrevor Klee\n)\n“Beneficial & Detrimental Effects of Reactive Oxygen Species on Lifespan: A Comprehensive Review of Comparative & Experimental Studies”\n, Shields et al 2021 (antioxidants still aren’t the fountain of youth, and may be harmful; animal studies still frequently inconsistent)\n“Positive expectations predict improved mental-health outcomes linked to psychedelic microdosing”\n, Kaertner et al 2021 (placebo)\n“The Effects of Fluoride in Drinking Water”\n, Aggeborn & Öhman 2021\n“Sleep & Sex: What Can Go Wrong? A Review of the Literature on Sleep Related Disorders and Abnormal Sexual Behaviors & Experiences”\n, Schenck et al 2007\n2.6 Technology\nNew X-Prize: $100m in prizes for Carbon Removal\nWringing gauge blocks\n(“With their precisely-flat metal faces, gauge blocks can be stuck together non-magnetically via a process calling ‘wringing’, requiring substantial effort to separate. Scientists are still uncertain exactly how wringing works.”)\nArmored train\n2.7 Economics\n“Why did renewables become so cheap so fast? And what can we do to use this global opportunity for green growth?”\n, Max Roser (specifically, why such an extreme\nexperience curve\n?)\n“IQ, trading behavior, and performance”\n, Grinblatt et al 2012;\n“Genetic Endowments and Wealth Inequality”\n, Barth et al 2020 (why, despite notorious setbacks, did Isaac Newton & LTCM’s founders die wealthy? Why, in general, are more intelligent people so much better investors? ‘The indifference of the indicator’: it’s not one thing, it’s everything—more intelligent people have lower discount rates, save more for longer & are less risk-averse, more accurately predict future growth or inflation, are more likely to participate in +EV opportunities like the stock market, to use low-fee rather than high-fee (and thus, underperforming) mutual funds, succumb less to biases like herding as they trade better & at better times, trade less, and harvest losses more efficiently when trading poorly.)\n2.8 Philosophy\nAre\nethics experts more ethical\n?\n“The Behavior of Ethicists”\n, Schwitzgebel & Rust 2016 (most recently:\n“The moral behavior of ethics professors: A replication-extension in German-speaking countries”\n, Schönegger et al 2019; given moral licensing & activism, perhaps we should be surprised we don’t hear about more ethicists doing things like posting enemy lists or trying to dox reviewers. “Woe to you Pharisees!”)\n“Meta-analysis on belief in free will manipulations”\n, Genschow et al 2021 (another noble lie turns out to be ignoble)\nGricean maxims of communication\n2.9 Fiction\nBunnies & Burrows\n2.10 Miscellaneous\n“Caesar Lives”\n,\nIggy Pop\n1995 (on\nGibbon\n)\nMad honey\nImperial Court System - RSS Articles</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#february-2021-gwernnet-newsletternn-httpsgwernnetn-httpsgwernsubstackcompfebruary-2021-gwernnet-newslettern-sat-13-mar-2021-151844-gmtnn-nnfebruary-2021sngwernnetnnewsletternis-now-out-previousnjanuary-2021nnarchivesn-this-is-a-summary-of-the-revision-history-rss-feed-overlapping-with-mynchangelognnrgwernn-brought-to-you-by-my-donors-onnpatreonnn1-writingsngwernnetn-popups-can-now-be-moved-stickied-and-full-screened-another-step-towards-our-ambition-of-windows-95-in-the-browsern2-linksn21-aincontrollable-neural-text-generationn-lilian-wengnrecent-advances-in-language-model-fine-tuningn-sebastian-ruder-reviewnprompt-programming-for-large-language-models-beyond-the-few-shot-paradigmn-reynolds-mcdonell-2021-original-10-shot-fr-en-translation-can-be-beaten-by-the-better-0-shot-prompt-french-xyz-english-this-is-true-of-most-worst-performing-promptsncalibrate-before-use-improving-few-shot-performance-of-language-modelsn-zhao-et-al-2021-huge-boost-from-calibrating-unstable-prompts-both-demonstratenas-alwaysn-that-sampling-can-prove-the-presence-of-knowledge-but-not-the-absencentransgan-two-transformers-can-make-one-strong-gann-jiang-et-al-2021-transformer-only-gan-attention-is-all-you-neednpact-proof-artifact-co-training-for-theorem-proving-with-language-modelsn-han-et-al-2021-ngpt-fnfornleannntowards-end-to-end-in-image-neural-machine-translationn-mansimov-et-al-2020-sure-why-notnbrainsnnartificial-neural-nets-finally-yield-clues-to-how-brains-learnnshort-overview-of-biologically-plausible-backprop-feedback-alignment-target-propagation-predictive-coding-attentional-feedback-also-of-recent-interestnvs-mln-given-their-increasing-success-in-training-while-respecting-more-biological-constraints-the-increasing-power-of-backprop-trained-anns-and-the-neurological-success-of-anns-in-predicting-imitating-brain-signals-it-is-increasingly-clear-that-brainsnreally-dondo-backprop-in-some-sensennsd-a-massive-7-tesla-fmri-dataset-to-bridge-cognitive-and-computational-neurosciencen-jean-et-al-2021-the-availability-of-nsd-thus-opens-the-door-to-using-brain-activity-to-directly-guide-the-optimization-of-deep-neural-networksnbrain2pix-fully-convolutional-naturalistic-video-reconstruction-from-brain-activityn-le-et-al-2021-reconstructingndr-whonnhigh-performance-brain-to-text-communication-via-imagined-handwritingn-willett-et-al-2020nbrain-computer-interface-for-generating-personally-attractive-imagesn-spape-et-al-2021-many-ways-to-improve-thisnmatters-of-scalennscaling-laws-for-transfern-hernandez-et-al-2021-we-find-that-pre-training-effectively-multiplies-the-fine-tuning-dataset-size-a-shot-across-the-bow-of-anyone-floating-on-a-proprietary-dataset-moat-large-models-can-drop-data-requirements-by-orders-of-magnitude-overnight-even-surpassing-younalign-scaling-up-visual-and-vision-language-representation-learning-with-noisy-text-supervisionn-jia-et-al-2021-see-alsoncc-12mnnclipn-like-wefficientnet-trained-on-18-billion-images-on-a-tpuv3-1024ndmnargues-that-fancier-cross-modal-transformers-are-better-neverthelessntpus-go-brrrn-given-dalle-clip-alignnvdvaenncw-vaennaiponet-al-are-gans-already-dead-and-just-dont-realize-it-yet-or-at-least-soon-to-be-relegated-to-only-drl-like-uses-as-a-final-finetuning-phase-to-sharpen-up-a-self-supervised-modelnwenlan-bridging-vision-and-language-by-large-scale-multi-modal-pre-trainingn-huo-et-al-2021ndalle-zero-shot-text-to-image-generationn-ramesh-et-al-2021-noriginal-blognnm6-a-chinese-multimodal-pretrainern-lin-et-al-2021-chinese-dalle-19tb-images029tb-text-for-10b-parameter-dense100b-parameter-moe-transformer-shockingly-fast-chinese-replication-of-dalleclipnexplaining-neural-scaling-lawsn-bahri-et-al-2021nlearning-curve-theoryn-hutter-2021-nrohin-shah-commentaryn-more-on-the-manifold-hypothesisn22-geneticsneverything-is-heritablenphenotypic-covariance-across-the-entire-spectrum-of-relatedness-for-86-billion-pairs-of-individualsn-kemper-et-al-2021ngenetic-variation-brain-and-intelligence-differencesn-deary-et-al-2021npathfinder-a-gamified-measure-to-integrate-general-cognitive-ability-into-the-biological-medical-and-behavioural-sciencesn-malanchini-et-al-2021-not-the-focus-but-the-iq-pgs-is-a-slight-improvement-overnallegrini-et-al-2018ndue-to-less-phenotype-measurement-errornpolygenic-burden-has-broader-impact-on-health-cognition-and-socioeconomic-outcomes-than-most-rare-and-high-risk-copy-number-variantsn-saarentaus-et-al-2021non-candidate-genes-comtnrecent-evolutionnmillion-year-old-dna-rewrites-the-mammoth-family-tree-genomic-datathe-oldest-ever-recovered-from-a-fossilreveals-the-origin-and-evolution-of-the-columbian-mammothnkin-selection-explains-the-evolution-of-cooperation-in-the-gut-microbiotan-simonet-mcnally-2021nengineeringnfirst-black-footed-ferret-clonedn23-statisticsmeta-sciencenlessons-from-gerolamo-cardanosnthe-book-of-my-lifennprogress-studies-see-alsonnewtons-anthropic-argumentnnbakewell-inventing-progressnnthe-autobiography-of-benvenuto-cellininnhow-many-microcovids-would-you-spend-on-a-burritonon-thenmicrocovid-project-calculatornnon-the-enfeeblement-of-mathematical-skills-by-modern-mathematics-and-by-similar-soft-intellectual-trash-in-schools-and-universitiesn-hammersley-1968-nknuthnhighlights-as-also-amusingna-note-on-pifflesn-smith-1967na-rebuke-of-a-b-smiths-paper-a-note-on-pifflesn-farlow-1980nartifact-and-recording-concepts-in-eegn-tatum-et-al-2011-on-theneegnsignals-ofnjell-on-or-the-importance-ofnnegative-controlsnn24-politicsreligionnthe-logic-of-fashion-cyclesn-acerbi-et-al-2012nfashion-and-art-cycles-are-driven-by-counter-dominance-signals-of-elite-competition-quantitative-evidence-from-music-stylesn-klimek-et-al-2019nthe-hipster-effect-when-anti-conformists-all-look-the-samen-touboul-2019nright-is-the-new-leftn-scott-alexander-see-alsonhan-et-al-2010nndowns-1972nngupta-jenkins-smith-2015nnlorenz-spreen-et-al-2019nncandia-et-al-2019nnloury-1994nnwhat-can-we-learn-from-the-lunar-pandemic-that-never-wasnnasas-lunar-quarantine-was-a-sham-intended-to-mollify-the-public-as-they-covered-up-repeated-major-failures-lab-leaks-both-before-afterhad-there-been-any-dangerous-lunar-organisms-they-would-have-escaped-easilynmrbeastnthe-new-aristocracy-ofnprestigen-borrowed-plumage-perhaps-but-effectivenrussias-new-lysenkoismn-kolchinsky-et-al-2017n25-psychologybiologynsemaglutidennonce-weekly-semaglutide-in-adults-with-overweight-or-obesityn-wilding-et-al-2021neffect-of-subcutaneous-semaglutide-vs-placebo-as-an-adjunct-to-intensive-behavioral-therapy-on-body-weight-in-adults-with-overweight-or-obesity-the-step-3-randomized-clinical-trialn-wadden-et-al-2021na-longer-acting-version-of-the-insulinappetite-peptidenliraglutiden-semaglutide-greatly-reduces-weight-fat-blood-sugar-cholesterol-etc-with-annupcoming-oral-versionn-backgroundnkushner-et-al-2020nnaroda-et-al-2019nnnauck-meier-2019nnoneil-et-al-2018nnblundell-et-al-2017nnnauck-et-al-2016nnlau-et-al-2015nnlessons-from-the-host-defences-of-bats-a-unique-viral-reservoirn-irving-et-al-2021-nbat-borne-virusesn-previouslyntrevor-kleennbeneficial-detrimental-effects-of-reactive-oxygen-species-on-lifespan-a-comprehensive-review-of-comparative-experimental-studiesn-shields-et-al-2021-antioxidants-still-arent-the-fountain-of-youth-and-may-be-harmful-animal-studies-still-frequently-inconsistentnpositive-expectations-predict-improved-mental-health-outcomes-linked-to-psychedelic-microdosingn-kaertner-et-al-2021-placebonthe-effects-of-fluoride-in-drinking-watern-aggeborn-ohman-2021nsleep-sex-what-can-go-wrong-a-review-of-the-literature-on-sleep-related-disorders-and-abnormal-sexual-behaviors-experiencesn-schenck-et-al-2007n26-technologynnew-x-prize-100m-in-prizes-for-carbon-removalnwringing-gauge-blocksnwith-their-precisely-flat-metal-faces-gauge-blocks-can-be-stuck-together-non-magnetically-via-a-process-calling-wringing-requiring-substantial-effort-to-separate-scientists-are-still-uncertain-exactly-how-wringing-worksnarmored-trainn27-economicsnwhy-did-renewables-become-so-cheap-so-fast-and-what-can-we-do-to-use-this-global-opportunity-for-green-growthn-max-roser-specifically-why-such-an-extremenexperience-curvenniq-trading-behavior-and-performancen-grinblatt-et-al-2012ngenetic-endowments-and-wealth-inequalityn-barth-et-al-2020-why-despite-notorious-setbacks-did-isaac-newton-ltcms-founders-die-wealthy-why-in-general-are-more-intelligent-people-so-much-better-investors-the-indifference-of-the-indicator-its-not-one-thing-its-everythingmore-intelligent-people-have-lower-discount-rates-save-more-for-longer-are-less-risk-averse-more-accurately-predict-future-growth-or-inflation-are-more-likely-to-participate-in-ev-opportunities-like-the-stock-market-to-use-low-fee-rather-than-high-fee-and-thus-underperforming-mutual-funds-succumb-less-to-biases-like-herding-as-they-trade-better-at-better-times-trade-less-and-harvest-losses-more-efficiently-when-trading-poorlyn28-philosophynarenethics-experts-more-ethicalnnthe-behavior-of-ethicistsn-schwitzgebel-rust-2016-most-recentlynthe-moral-behavior-of-ethics-professors-a-replication-extension-in-german-speaking-countriesn-schonegger-et-al-2019-given-moral-licensing-activism-perhaps-we-should-be-surprised-we-dont-hear-about-more-ethicists-doing-things-like-posting-enemy-lists-or-trying-to-dox-reviewers-woe-to-you-phariseesnmeta-analysis-on-belief-in-free-will-manipulationsn-genschow-et-al-2021-another-noble-lie-turns-out-to-be-ignoblengricean-maxims-of-communicationn29-fictionnbunnies-burrowsn210-miscellaneousncaesar-livesnniggy-popn1995-onngibbonnnmad-honeynimperial-court-system" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="RSS Articles" class="md-header__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RSS Articles
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              February 2021 Gwern.net Newsletter\n\n来源: https://gwern.net\n链接: https://gwern.substack.com/p/february-2021-gwernnet-newsletter\n日期: Sat, 13 Mar 2021 15:18:44 GMT\n\n---\n\nFebruary 2021’s\nGwern.net\nnewsletter\nis now out; previous,\nJanuary 2021\n(\narchives\n). This is a summary of the revision-history RSS feed, overlapping with my\nChangelog\n&amp;\n/r/gwern\n; brought to you by my donors on\nPatreon\n.\n1 Writings\nGwern.net\n: popups: can now be moved, stickied, and full-screened (another step towards our ambition of Windows-95-in-the-browser!)\n2 Links\n2.1 AI\n“Controllable Neural Text Generation”\n, Lilian Weng;\n“Recent Advances in Language Model Fine-tuning”\n, Sebastian Ruder (review)\n“Prompt Programming for Large Language Models: Beyond the Few-Shot Paradigm”\n, Reynolds &amp; McDonell 2021 (original 10-shot Fr → En translation can be beaten by the better 0-shot prompt: “French: XYZ / English:…”; this is “true of most worst-performing prompts…”);\n“Calibrate Before Use: Improving Few-Shot Performance of Language Models”\n, Zhao et al 2021 (huge boost from calibrating unstable prompts; both demonstrate,\nas always\n, that “sampling can prove the presence of knowledge but not the absence.”)\n“TransGAN: Two Transformers Can Make One Strong GAN”\n, Jiang et al 2021 (Transformer-only GAN: attention is all you need)\n“PACT: Proof Artifact Co-training for Theorem Proving with Language Models”\n, Han et al 2021 (\nGPT-f\nfor\nLean\n)\n“Towards End-to-End In-Image Neural Machine Translation”\n, Mansimov et al 2020 (sure why not)\nBrains\n:\n“Artificial Neural Nets Finally Yield Clues to How Brains Learn”\n(short overview of biologically-plausible backprop: feedback alignment, target propagation, predictive coding, &amp; attentional feedback; also of recent interest,\nVS-ML\n; given their increasing success in training while respecting more biological constraints, the increasing power of backprop-trained ANNs and the neurological success of ANNs in predicting &amp; imitating brain signals, it is increasingly clear that brains\nreally do\ndo backprop in some sense)\n“NSD: A massive 7-tesla fMRI dataset to bridge cognitive and computational neuroscience”\n, Jean et al 2021 (“…The availability of NSD thus opens the door to using brain activity to directly guide the optimization of deep neural networks.”)\n“Brain2Pix: Fully convolutional naturalistic video reconstruction from brain activity”\n, Le et al 2021 (reconstructing\nDr. Who\n)\n“High-performance brain-to-text communication via imagined handwriting”\n, Willett et al 2020\n“Brain-computer interface for generating personally attractive images”\n, Spape et al 2021 (many ways to improve this…)\nMatters Of Scale\n:\n“Scaling Laws for Transfer”\n, Hernandez et al 2021 (“We find that pre-training effectively multiplies the fine-tuning dataset size”; a shot across the bow of anyone floating on a proprietary-dataset moat: large models can drop data requirements by orders of magnitude overnight, even surpassing you)\n“ALIGN: Scaling Up Visual and Vision-Language Representation Learning With Noisy Text Supervision”\n, Jia et al 2021 (see also\nCC-12M\n;\nCLIP\n-like w/EfficientNet trained on 1.8 billion images on a TPUv3-1024—\nDM\nargues that fancier cross-modal Transformers are better, nevertheless,\n‘TPUs go brrr’\n. Given DALL·E, CLIP, ALIGN,\nVDVAE\n,\nCW-VAE\n,\nAIPO\net al, are GANs already dead, and just don’t realize it yet? Or at least soon to be relegated to only DRL-like uses as a final finetuning phase to sharpen up a self-supervised model?);\n“WenLan: Bridging Vision and Language by Large-Scale Multi-Modal Pre-Training”\n, Huo et al 2021\n“DALL·E: Zero-Shot Text-to-Image Generation”\n, Ramesh et al 2021 (\noriginal blog\n);\n“M6: A Chinese Multimodal Pretrainer”\n, Lin et al 2021 (Chinese DALL·E: 1.9TB images/0.29TB text for 10b-parameter dense/100b-parameter MoE Transformer; shockingly fast Chinese replication of DALL·E/CLIP)\n“Explaining Neural Scaling Laws”\n, Bahri et al 2021/\n“Learning Curve Theory”\n, Hutter 2021 (\nRohin Shah commentary\n; more on the manifold hypothesis)\n2.2 Genetics\nEverything Is Heritable:\n“Phenotypic covariance across the entire spectrum of relatedness for 86 billion pairs of individuals”\n, Kemper et al 2021\n“Genetic variation, brain, and intelligence differences”\n, Deary et al 2021\n“Pathfinder: A gamified measure to integrate general cognitive ability into the biological, medical and behavioural sciences”\n, Malanchini et al 2021 (not the focus, but the IQ PGS is a slight improvement over\nAllegrini et al 2018\ndue to less phenotype measurement error?)\n“Polygenic burden has broader impact on health, cognition, and socioeconomic outcomes than most rare and high-risk copy number variants”\n, Saarentaus et al 2021\nOn candidate-genes &amp; COMT\nRecent Evolution:\n“Million-Year-Old DNA Rewrites the Mammoth Family Tree: Genomic data—the oldest ever recovered from a fossil—reveals the origin and evolution of the Columbian mammoth”\n“Kin selection explains the evolution of cooperation in the gut microbiota”\n, Simonet &amp; McNally 2021\nEngineering:\nFirst Black-Footed Ferret cloned\n2.3 Statistics/Meta-Science\n“Lessons from Gerolamo Cardano’s\nThe Book of My Life\n”\n(progress studies; see also\nNewton’s anthropic argument\n,\nBakewell &amp; inventing progress\n,\nThe Autobiography of Benvenuto Cellini\n)\n“How Many Microcovids Would You Spend on a Burrito?”\n(on the\nmicroCOVID Project Calculator\n)\n“On the enfeeblement of mathematical skills by ‘Modern Mathematics’ and by similar soft intellectual trash in schools and universities”\n, Hammersley 1968 (\nKnuth\nhighlights as also amusing:\n“A Note on Piffles”\n, Smith 1967;\n“A rebuke of A. B. Smith’s paper, ‘A Note on Piffles’”\n, Farlow 1980)\n“Artifact and Recording Concepts in EEG”\n, Tatum et al 2011 (on the\nEEG\nsignals of\nJell-O\n, or, the importance of\nnegative controls\n)\n2.4 Politics/Religion\n“The Logic of Fashion Cycles”\n, Acerbi et al 2012;\n“Fashion and art cycles are driven by counter-dominance signals of elite competition: quantitative evidence from music styles”\n, Klimek et al 2019;\n“The hipster effect: When anti-conformists all look the same”\n, Touboul 2019;\n“Right Is The New Left”\n, Scott Alexander (see also\nHan et al 2010\n,\nDowns 1972\n/\nGupta &amp; Jenkins-Smith 2015\n,\nLorenz-Spreen et al 2019\n/\nCandia et al 2019\n,\nLoury 1994\n)\n“What can we learn from the lunar pandemic that never was?”\n(NASA’s lunar quarantine was a sham intended to mollify the public as they covered up repeated major failures &amp; lab leaks both before &amp; after—had there been any dangerous lunar organisms, they would have escaped easily)\nMrBeast\n(the new aristocracy of\nprestige\n? Borrowed plumage, perhaps, but effective…)\n“Russia’s new Lysenkoism”\n, Kolchinsky et al 2017\n2.5 Psychology/Biology\nSemaglutide\n:\n“Once-Weekly Semaglutide in Adults with Overweight or Obesity”\n, Wilding et al 2021;\n“Effect of Subcutaneous Semaglutide vs Placebo as an Adjunct to Intensive Behavioral Therapy on Body Weight in Adults With Overweight or Obesity: The STEP 3 Randomized Clinical Trial”\n, Wadden et al 2021\nA longer-acting version of the insulin/appetite peptide\nliraglutide\n, semaglutide greatly reduces weight, fat, blood sugar, cholesterol etc, with an\nupcoming oral version\n; background:\nKushner et al 2020\n,\nAroda et al 2019\n,\nNauck &amp; Meier 2019\n,\nO’Neil et al 2018\n,\nBlundell et al 2017\n,\nNauck et al 2016\n,\nLau et al 2015\n.\n“Lessons from the host defences of bats, a unique viral reservoir”\n, Irving et al 2021 (\nbat-borne viruses\n; previously,\nTrevor Klee\n)\n“Beneficial &amp; Detrimental Effects of Reactive Oxygen Species on Lifespan: A Comprehensive Review of Comparative &amp; Experimental Studies”\n, Shields et al 2021 (antioxidants still aren’t the fountain of youth, and may be harmful; animal studies still frequently inconsistent)\n“Positive expectations predict improved mental-health outcomes linked to psychedelic microdosing”\n, Kaertner et al 2021 (placebo)\n“The Effects of Fluoride in Drinking Water”\n, Aggeborn &amp; Öhman 2021\n“Sleep &amp; Sex: What Can Go Wrong? A Review of the Literature on Sleep Related Disorders and Abnormal Sexual Behaviors &amp; Experiences”\n, Schenck et al 2007\n2.6 Technology\nNew X-Prize: $100m in prizes for Carbon Removal\nWringing gauge blocks\n(“With their precisely-flat metal faces, gauge blocks can be stuck together non-magnetically via a process calling ‘wringing’, requiring substantial effort to separate. Scientists are still uncertain exactly how wringing works.”)\nArmored train\n2.7 Economics\n“Why did renewables become so cheap so fast? And what can we do to use this global opportunity for green growth?”\n, Max Roser (specifically, why such an extreme\nexperience curve\n?)\n“IQ, trading behavior, and performance”\n, Grinblatt et al 2012;\n“Genetic Endowments and Wealth Inequality”\n, Barth et al 2020 (why, despite notorious setbacks, did Isaac Newton &amp; LTCM’s founders die wealthy? Why, in general, are more intelligent people so much better investors? ‘The indifference of the indicator’: it’s not one thing, it’s everything—more intelligent people have lower discount rates, save more for longer &amp; are less risk-averse, more accurately predict future growth or inflation, are more likely to participate in +EV opportunities like the stock market, to use low-fee rather than high-fee (and thus, underperforming) mutual funds, succumb less to biases like herding as they trade better &amp; at better times, trade less, and harvest losses more efficiently when trading poorly.)\n2.8 Philosophy\nAre\nethics experts more ethical\n?\n“The Behavior of Ethicists”\n, Schwitzgebel &amp; Rust 2016 (most recently:\n“The moral behavior of ethics professors: A replication-extension in German-speaking countries”\n, Schönegger et al 2019; given moral licensing &amp; activism, perhaps we should be surprised we don’t hear about more ethicists doing things like posting enemy lists or trying to dox reviewers. “Woe to you Pharisees!”)\n“Meta-analysis on belief in free will manipulations”\n, Genschow et al 2021 (another noble lie turns out to be ignoble)\nGricean maxims of communication\n2.9 Fiction\nBunnies &amp; Burrows\n2.10 Miscellaneous\n“Caesar Lives”\n,\nIggy Pop\n1995 (on\nGibbon\n)\nMad honey\nImperial Court System
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RSS Articles" class="md-nav__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RSS Articles
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/gwern.net/February 2021 Gwern.net Newsletter_20260205.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="february-2021-gwernnet-newsletternn-httpsgwernnetn-httpsgwernsubstackcompfebruary-2021-gwernnet-newslettern-sat-13-mar-2021-151844-gmtnn-nnfebruary-2021sngwernnetnnewsletternis-now-out-previousnjanuary-2021nnarchivesn-this-is-a-summary-of-the-revision-history-rss-feed-overlapping-with-mynchangelognnrgwernn-brought-to-you-by-my-donors-onnpatreonnn1-writingsngwernnetn-popups-can-now-be-moved-stickied-and-full-screened-another-step-towards-our-ambition-of-windows-95-in-the-browsern2-linksn21-aincontrollable-neural-text-generationn-lilian-wengnrecent-advances-in-language-model-fine-tuningn-sebastian-ruder-reviewnprompt-programming-for-large-language-models-beyond-the-few-shot-paradigmn-reynolds-mcdonell-2021-original-10-shot-fr-en-translation-can-be-beaten-by-the-better-0-shot-prompt-french-xyz-english-this-is-true-of-most-worst-performing-promptsncalibrate-before-use-improving-few-shot-performance-of-language-modelsn-zhao-et-al-2021-huge-boost-from-calibrating-unstable-prompts-both-demonstratenas-alwaysn-that-sampling-can-prove-the-presence-of-knowledge-but-not-the-absencentransgan-two-transformers-can-make-one-strong-gann-jiang-et-al-2021-transformer-only-gan-attention-is-all-you-neednpact-proof-artifact-co-training-for-theorem-proving-with-language-modelsn-han-et-al-2021-ngpt-fnfornleannntowards-end-to-end-in-image-neural-machine-translationn-mansimov-et-al-2020-sure-why-notnbrainsnnartificial-neural-nets-finally-yield-clues-to-how-brains-learnnshort-overview-of-biologically-plausible-backprop-feedback-alignment-target-propagation-predictive-coding-attentional-feedback-also-of-recent-interestnvs-mln-given-their-increasing-success-in-training-while-respecting-more-biological-constraints-the-increasing-power-of-backprop-trained-anns-and-the-neurological-success-of-anns-in-predicting-imitating-brain-signals-it-is-increasingly-clear-that-brainsnreally-dondo-backprop-in-some-sensennsd-a-massive-7-tesla-fmri-dataset-to-bridge-cognitive-and-computational-neurosciencen-jean-et-al-2021-the-availability-of-nsd-thus-opens-the-door-to-using-brain-activity-to-directly-guide-the-optimization-of-deep-neural-networksnbrain2pix-fully-convolutional-naturalistic-video-reconstruction-from-brain-activityn-le-et-al-2021-reconstructingndr-whonnhigh-performance-brain-to-text-communication-via-imagined-handwritingn-willett-et-al-2020nbrain-computer-interface-for-generating-personally-attractive-imagesn-spape-et-al-2021-many-ways-to-improve-thisnmatters-of-scalennscaling-laws-for-transfern-hernandez-et-al-2021-we-find-that-pre-training-effectively-multiplies-the-fine-tuning-dataset-size-a-shot-across-the-bow-of-anyone-floating-on-a-proprietary-dataset-moat-large-models-can-drop-data-requirements-by-orders-of-magnitude-overnight-even-surpassing-younalign-scaling-up-visual-and-vision-language-representation-learning-with-noisy-text-supervisionn-jia-et-al-2021-see-alsoncc-12mnnclipn-like-wefficientnet-trained-on-18-billion-images-on-a-tpuv3-1024ndmnargues-that-fancier-cross-modal-transformers-are-better-neverthelessntpus-go-brrrn-given-dalle-clip-alignnvdvaenncw-vaennaiponet-al-are-gans-already-dead-and-just-dont-realize-it-yet-or-at-least-soon-to-be-relegated-to-only-drl-like-uses-as-a-final-finetuning-phase-to-sharpen-up-a-self-supervised-modelnwenlan-bridging-vision-and-language-by-large-scale-multi-modal-pre-trainingn-huo-et-al-2021ndalle-zero-shot-text-to-image-generationn-ramesh-et-al-2021-noriginal-blognnm6-a-chinese-multimodal-pretrainern-lin-et-al-2021-chinese-dalle-19tb-images029tb-text-for-10b-parameter-dense100b-parameter-moe-transformer-shockingly-fast-chinese-replication-of-dalleclipnexplaining-neural-scaling-lawsn-bahri-et-al-2021nlearning-curve-theoryn-hutter-2021-nrohin-shah-commentaryn-more-on-the-manifold-hypothesisn22-geneticsneverything-is-heritablenphenotypic-covariance-across-the-entire-spectrum-of-relatedness-for-86-billion-pairs-of-individualsn-kemper-et-al-2021ngenetic-variation-brain-and-intelligence-differencesn-deary-et-al-2021npathfinder-a-gamified-measure-to-integrate-general-cognitive-ability-into-the-biological-medical-and-behavioural-sciencesn-malanchini-et-al-2021-not-the-focus-but-the-iq-pgs-is-a-slight-improvement-overnallegrini-et-al-2018ndue-to-less-phenotype-measurement-errornpolygenic-burden-has-broader-impact-on-health-cognition-and-socioeconomic-outcomes-than-most-rare-and-high-risk-copy-number-variantsn-saarentaus-et-al-2021non-candidate-genes-comtnrecent-evolutionnmillion-year-old-dna-rewrites-the-mammoth-family-tree-genomic-datathe-oldest-ever-recovered-from-a-fossilreveals-the-origin-and-evolution-of-the-columbian-mammothnkin-selection-explains-the-evolution-of-cooperation-in-the-gut-microbiotan-simonet-mcnally-2021nengineeringnfirst-black-footed-ferret-clonedn23-statisticsmeta-sciencenlessons-from-gerolamo-cardanosnthe-book-of-my-lifennprogress-studies-see-alsonnewtons-anthropic-argumentnnbakewell-inventing-progressnnthe-autobiography-of-benvenuto-cellininnhow-many-microcovids-would-you-spend-on-a-burritonon-thenmicrocovid-project-calculatornnon-the-enfeeblement-of-mathematical-skills-by-modern-mathematics-and-by-similar-soft-intellectual-trash-in-schools-and-universitiesn-hammersley-1968-nknuthnhighlights-as-also-amusingna-note-on-pifflesn-smith-1967na-rebuke-of-a-b-smiths-paper-a-note-on-pifflesn-farlow-1980nartifact-and-recording-concepts-in-eegn-tatum-et-al-2011-on-theneegnsignals-ofnjell-on-or-the-importance-ofnnegative-controlsnn24-politicsreligionnthe-logic-of-fashion-cyclesn-acerbi-et-al-2012nfashion-and-art-cycles-are-driven-by-counter-dominance-signals-of-elite-competition-quantitative-evidence-from-music-stylesn-klimek-et-al-2019nthe-hipster-effect-when-anti-conformists-all-look-the-samen-touboul-2019nright-is-the-new-leftn-scott-alexander-see-alsonhan-et-al-2010nndowns-1972nngupta-jenkins-smith-2015nnlorenz-spreen-et-al-2019nncandia-et-al-2019nnloury-1994nnwhat-can-we-learn-from-the-lunar-pandemic-that-never-wasnnasas-lunar-quarantine-was-a-sham-intended-to-mollify-the-public-as-they-covered-up-repeated-major-failures-lab-leaks-both-before-afterhad-there-been-any-dangerous-lunar-organisms-they-would-have-escaped-easilynmrbeastnthe-new-aristocracy-ofnprestigen-borrowed-plumage-perhaps-but-effectivenrussias-new-lysenkoismn-kolchinsky-et-al-2017n25-psychologybiologynsemaglutidennonce-weekly-semaglutide-in-adults-with-overweight-or-obesityn-wilding-et-al-2021neffect-of-subcutaneous-semaglutide-vs-placebo-as-an-adjunct-to-intensive-behavioral-therapy-on-body-weight-in-adults-with-overweight-or-obesity-the-step-3-randomized-clinical-trialn-wadden-et-al-2021na-longer-acting-version-of-the-insulinappetite-peptidenliraglutiden-semaglutide-greatly-reduces-weight-fat-blood-sugar-cholesterol-etc-with-annupcoming-oral-versionn-backgroundnkushner-et-al-2020nnaroda-et-al-2019nnnauck-meier-2019nnoneil-et-al-2018nnblundell-et-al-2017nnnauck-et-al-2016nnlau-et-al-2015nnlessons-from-the-host-defences-of-bats-a-unique-viral-reservoirn-irving-et-al-2021-nbat-borne-virusesn-previouslyntrevor-kleennbeneficial-detrimental-effects-of-reactive-oxygen-species-on-lifespan-a-comprehensive-review-of-comparative-experimental-studiesn-shields-et-al-2021-antioxidants-still-arent-the-fountain-of-youth-and-may-be-harmful-animal-studies-still-frequently-inconsistentnpositive-expectations-predict-improved-mental-health-outcomes-linked-to-psychedelic-microdosingn-kaertner-et-al-2021-placebonthe-effects-of-fluoride-in-drinking-watern-aggeborn-ohman-2021nsleep-sex-what-can-go-wrong-a-review-of-the-literature-on-sleep-related-disorders-and-abnormal-sexual-behaviors-experiencesn-schenck-et-al-2007n26-technologynnew-x-prize-100m-in-prizes-for-carbon-removalnwringing-gauge-blocksnwith-their-precisely-flat-metal-faces-gauge-blocks-can-be-stuck-together-non-magnetically-via-a-process-calling-wringing-requiring-substantial-effort-to-separate-scientists-are-still-uncertain-exactly-how-wringing-worksnarmored-trainn27-economicsnwhy-did-renewables-become-so-cheap-so-fast-and-what-can-we-do-to-use-this-global-opportunity-for-green-growthn-max-roser-specifically-why-such-an-extremenexperience-curvenniq-trading-behavior-and-performancen-grinblatt-et-al-2012ngenetic-endowments-and-wealth-inequalityn-barth-et-al-2020-why-despite-notorious-setbacks-did-isaac-newton-ltcms-founders-die-wealthy-why-in-general-are-more-intelligent-people-so-much-better-investors-the-indifference-of-the-indicator-its-not-one-thing-its-everythingmore-intelligent-people-have-lower-discount-rates-save-more-for-longer-are-less-risk-averse-more-accurately-predict-future-growth-or-inflation-are-more-likely-to-participate-in-ev-opportunities-like-the-stock-market-to-use-low-fee-rather-than-high-fee-and-thus-underperforming-mutual-funds-succumb-less-to-biases-like-herding-as-they-trade-better-at-better-times-trade-less-and-harvest-losses-more-efficiently-when-trading-poorlyn28-philosophynarenethics-experts-more-ethicalnnthe-behavior-of-ethicistsn-schwitzgebel-rust-2016-most-recentlynthe-moral-behavior-of-ethics-professors-a-replication-extension-in-german-speaking-countriesn-schonegger-et-al-2019-given-moral-licensing-activism-perhaps-we-should-be-surprised-we-dont-hear-about-more-ethicists-doing-things-like-posting-enemy-lists-or-trying-to-dox-reviewers-woe-to-you-phariseesnmeta-analysis-on-belief-in-free-will-manipulationsn-genschow-et-al-2021-another-noble-lie-turns-out-to-be-ignoblengricean-maxims-of-communicationn29-fictionnbunnies-burrowsn210-miscellaneousncaesar-livesnniggy-popn1995-onngibbonnnmad-honeynimperial-court-system">February 2021 Gwern.net Newsletter\n\n<strong>来源:</strong> https://gwern.net\n<strong>链接:</strong> https://gwern.substack.com/p/february-2021-gwernnet-newsletter\n<strong>日期:</strong> Sat, 13 Mar 2021 15:18:44 GMT\n\n---\n\nFebruary 2021’s\nGwern.net\nnewsletter\nis now out; previous,\nJanuary 2021\n(\narchives\n). This is a summary of the revision-history RSS feed, overlapping with my\nChangelog\n&amp;\n/r/gwern\n; brought to you by my donors on\nPatreon\n.\n1 Writings\nGwern.net\n: popups: can now be moved, stickied, and full-screened (another step towards our ambition of Windows-95-in-the-browser!)\n2 Links\n2.1 AI\n“Controllable Neural Text Generation”\n, Lilian Weng;\n“Recent Advances in Language Model Fine-tuning”\n, Sebastian Ruder (review)\n“Prompt Programming for Large Language Models: Beyond the Few-Shot Paradigm”\n,  Reynolds &amp; McDonell 2021 (original 10-shot Fr → En translation can  be beaten by the better 0-shot prompt: “French: XYZ / English:…”; this  is “true of most worst-performing prompts…”);\n“Calibrate Before Use: Improving Few-Shot Performance of Language Models”\n, Zhao et al 2021 (huge boost from calibrating unstable prompts; both demonstrate,\nas always\n, that “sampling can prove the presence of knowledge but not the absence.”)\n“TransGAN: Two Transformers Can Make One Strong GAN”\n, Jiang et al 2021 (Transformer-only GAN: attention is all you need)\n“PACT: Proof Artifact Co-training for Theorem Proving with Language Models”\n, Han et al 2021 (\nGPT-f\nfor\nLean\n)\n“Towards End-to-End In-Image Neural Machine Translation”\n, Mansimov et al 2020 (sure why not)\nBrains\n:\n“Artificial Neural Nets Finally Yield Clues to How Brains Learn”\n(short overview of biologically-plausible backprop: feedback alignment,  target propagation, predictive coding, &amp; attentional feedback; also  of recent interest,\nVS-ML\n;  given their increasing success in training while respecting more  biological constraints, the increasing power of backprop-trained ANNs  and the neurological success of ANNs in predicting &amp; imitating brain  signals, it is increasingly clear that brains\nreally do\ndo backprop in some sense)\n“NSD: A massive 7-tesla fMRI dataset to bridge cognitive and computational neuroscience”\n,  Jean et al 2021 (“…The availability of NSD thus opens the door to using  brain activity to directly guide the optimization of deep neural  networks.”)\n“Brain2Pix: Fully convolutional naturalistic video reconstruction from brain activity”\n, Le et al 2021 (reconstructing\nDr. Who\n)\n“High-performance brain-to-text communication via imagined handwriting”\n, Willett et al 2020\n“Brain-computer interface for generating personally attractive images”\n, Spape et al 2021 (many ways to improve this…)\nMatters Of Scale\n:\n“Scaling Laws for Transfer”\n,  Hernandez et al 2021 (“We find that pre-training effectively multiplies  the fine-tuning dataset size”; a shot across the bow of anyone floating  on a proprietary-dataset moat: large models can drop data requirements  by orders of magnitude overnight, even surpassing you)\n“ALIGN: Scaling Up Visual and Vision-Language Representation Learning With Noisy Text Supervision”\n, Jia et al 2021 (see also\nCC-12M\n;\nCLIP\n-like w/EfficientNet trained on 1.8 billion images on a TPUv3-1024—\nDM\nargues that fancier cross-modal Transformers are better, nevertheless,\n‘TPUs go brrr’\n. Given DALL·E, CLIP, ALIGN,\nVDVAE\n,\nCW-VAE\n,\nAIPO\net al, are GANs already dead, and just don’t realize it yet? Or at  least soon to be relegated to only DRL-like uses as a final finetuning  phase to sharpen up a self-supervised model?);\n“WenLan: Bridging Vision and Language by Large-Scale Multi-Modal Pre-Training”\n, Huo et al 2021\n“DALL·E: Zero-Shot Text-to-Image Generation”\n, Ramesh et al 2021 (\noriginal blog\n);\n“M6: A Chinese Multimodal Pretrainer”\n,  Lin et al 2021 (Chinese DALL·E: 1.9TB images/0.29TB text for  10b-parameter dense/100b-parameter MoE Transformer; shockingly fast Chinese replication of DALL·E/CLIP)\n“Explaining Neural Scaling Laws”\n, Bahri et al 2021/\n“Learning Curve Theory”\n, Hutter 2021 (\nRohin Shah commentary\n; more on the manifold hypothesis)\n2.2 Genetics\nEverything Is Heritable:\n“Phenotypic covariance across the entire spectrum of relatedness for 86 billion pairs of individuals”\n, Kemper et al 2021\n“Genetic variation, brain, and intelligence differences”\n, Deary et al 2021\n“Pathfinder: A gamified measure to integrate general cognitive ability into the biological, medical and behavioural sciences”\n, Malanchini et al 2021 (not the focus, but the IQ PGS is a slight improvement over\nAllegrini et al 2018\ndue to less phenotype measurement error?)\n“Polygenic  burden has broader impact on health, cognition, and socioeconomic  outcomes than most rare and high-risk copy number variants”\n, Saarentaus et al 2021\nOn candidate-genes &amp; COMT\nRecent Evolution:\n“Million-Year-Old  DNA Rewrites the Mammoth Family Tree: Genomic data—the oldest ever  recovered from a fossil—reveals the origin and evolution of the  Columbian mammoth”\n“Kin selection explains the evolution of cooperation in the gut microbiota”\n, Simonet &amp; McNally 2021\nEngineering:\nFirst Black-Footed Ferret cloned\n2.3 Statistics/Meta-Science\n“Lessons from Gerolamo Cardano’s\nThe Book of My Life\n”\n(progress studies; see also\nNewton’s anthropic argument\n,\nBakewell &amp; inventing progress\n,\nThe Autobiography of Benvenuto Cellini\n)\n“How Many Microcovids Would You Spend on a Burrito?”\n(on the\nmicroCOVID Project Calculator\n)\n“On  the enfeeblement of mathematical skills by ‘Modern Mathematics’ and by  similar soft intellectual trash in schools and universities”\n, Hammersley 1968 (\nKnuth\nhighlights as also amusing:\n“A Note on Piffles”\n, Smith 1967;\n“A rebuke of A. B. Smith’s paper, ‘A Note on Piffles’”\n, Farlow 1980)\n“Artifact and Recording Concepts in EEG”\n, Tatum et al 2011 (on the\nEEG\nsignals of\nJell-O\n, or, the importance of\nnegative controls\n)\n2.4 Politics/Religion\n“The Logic of Fashion Cycles”\n, Acerbi et al 2012;\n“Fashion and art cycles are driven by counter-dominance signals of elite competition: quantitative evidence from music styles”\n, Klimek et al 2019;\n“The hipster effect: When anti-conformists all look the same”\n, Touboul 2019;\n“Right Is The New Left”\n, Scott Alexander (see also\nHan et al 2010\n,\nDowns 1972\n/\nGupta &amp; Jenkins-Smith 2015\n,\nLorenz-Spreen et al 2019\n/\nCandia et al 2019\n,\nLoury 1994\n)\n“What can we learn from the lunar pandemic that never was?”\n(NASA’s lunar quarantine was a sham intended to mollify the public as  they covered up repeated major failures &amp; lab leaks both before  &amp; after—had there been any dangerous lunar organisms, they would  have escaped easily)\nMrBeast\n(the new aristocracy of\nprestige\n? Borrowed plumage, perhaps, but effective…)\n“Russia’s new Lysenkoism”\n, Kolchinsky et al 2017\n2.5 Psychology/Biology\nSemaglutide\n:\n“Once-Weekly Semaglutide in Adults with Overweight or Obesity”\n, Wilding et al 2021;\n“Effect  of Subcutaneous Semaglutide vs Placebo as an Adjunct to Intensive  Behavioral Therapy on Body Weight in Adults With Overweight or Obesity:  The STEP 3 Randomized Clinical Trial”\n, Wadden et al 2021\nA longer-acting version of the insulin/appetite peptide\nliraglutide\n, semaglutide greatly reduces weight, fat, blood sugar, cholesterol etc, with an\nupcoming oral version\n; background:\nKushner et al 2020\n,\nAroda et al 2019\n,\nNauck &amp; Meier 2019\n,\nO’Neil et al 2018\n,\nBlundell et al 2017\n,\nNauck et al 2016\n,\nLau et al 2015\n.\n“Lessons from the host defences of bats, a unique viral reservoir”\n, Irving et al 2021 (\nbat-borne viruses\n; previously,\nTrevor Klee\n)\n“Beneficial  &amp; Detrimental Effects of Reactive Oxygen Species on Lifespan: A  Comprehensive Review of Comparative &amp; Experimental Studies”\n,  Shields et al 2021 (antioxidants still aren’t the fountain of youth, and  may be harmful; animal studies still frequently inconsistent)\n“Positive expectations predict improved mental-health outcomes linked to psychedelic microdosing”\n, Kaertner et al 2021 (placebo)\n“The Effects of Fluoride in Drinking Water”\n, Aggeborn &amp; Öhman 2021\n“Sleep  &amp; Sex: What Can Go Wrong? A Review of the Literature on Sleep  Related Disorders and Abnormal Sexual Behaviors &amp; Experiences”\n, Schenck et al 2007\n2.6 Technology\nNew X-Prize: $100m in prizes for Carbon Removal\nWringing gauge blocks\n(“With their precisely-flat metal faces, gauge blocks can be stuck  together non-magnetically via a process calling ‘wringing’, requiring  substantial effort to separate. Scientists are still uncertain exactly  how wringing works.”)\nArmored train\n2.7 Economics\n“Why did renewables become so cheap so fast? And what can we do to use this global opportunity for green growth?”\n, Max Roser (specifically, why such an extreme\nexperience curve\n?)\n“IQ, trading behavior, and performance”\n, Grinblatt et al 2012;\n“Genetic Endowments and Wealth Inequality”\n,  Barth et al 2020 (why, despite notorious setbacks, did Isaac Newton  &amp; LTCM’s founders die wealthy? Why, in general, are more intelligent  people so much better investors? ‘The indifference of the indicator’:  it’s not one thing, it’s everything—more intelligent people have lower  discount rates, save more for longer &amp; are less risk-averse, more  accurately predict future growth or inflation, are more likely to  participate in +EV opportunities like the stock market, to use low-fee  rather than high-fee (and thus, underperforming) mutual funds, succumb  less to biases like herding as they trade better &amp; at better times,  trade less, and harvest losses more efficiently when trading poorly.)\n2.8 Philosophy\nAre\nethics experts more ethical\n?\n“The Behavior of Ethicists”\n, Schwitzgebel &amp; Rust 2016 (most recently:\n“The moral behavior of ethics professors: A replication-extension in German-speaking countries”\n,  Schönegger et al 2019; given moral licensing &amp; activism, perhaps we  should be surprised we don’t hear about more ethicists doing things  like posting enemy lists or trying to dox reviewers. “Woe to you  Pharisees!”)\n“Meta-analysis on belief in free will manipulations”\n, Genschow et al 2021 (another noble lie turns out to be ignoble)\nGricean maxims of communication\n2.9 Fiction\nBunnies &amp; Burrows\n2.10 Miscellaneous\n“Caesar Lives”\n,\nIggy Pop\n1995 (on\nGibbon\n)\nMad honey\nImperial Court System<a class="headerlink" href="#february-2021-gwernnet-newsletternn-httpsgwernnetn-httpsgwernsubstackcompfebruary-2021-gwernnet-newslettern-sat-13-mar-2021-151844-gmtnn-nnfebruary-2021sngwernnetnnewsletternis-now-out-previousnjanuary-2021nnarchivesn-this-is-a-summary-of-the-revision-history-rss-feed-overlapping-with-mynchangelognnrgwernn-brought-to-you-by-my-donors-onnpatreonnn1-writingsngwernnetn-popups-can-now-be-moved-stickied-and-full-screened-another-step-towards-our-ambition-of-windows-95-in-the-browsern2-linksn21-aincontrollable-neural-text-generationn-lilian-wengnrecent-advances-in-language-model-fine-tuningn-sebastian-ruder-reviewnprompt-programming-for-large-language-models-beyond-the-few-shot-paradigmn-reynolds-mcdonell-2021-original-10-shot-fr-en-translation-can-be-beaten-by-the-better-0-shot-prompt-french-xyz-english-this-is-true-of-most-worst-performing-promptsncalibrate-before-use-improving-few-shot-performance-of-language-modelsn-zhao-et-al-2021-huge-boost-from-calibrating-unstable-prompts-both-demonstratenas-alwaysn-that-sampling-can-prove-the-presence-of-knowledge-but-not-the-absencentransgan-two-transformers-can-make-one-strong-gann-jiang-et-al-2021-transformer-only-gan-attention-is-all-you-neednpact-proof-artifact-co-training-for-theorem-proving-with-language-modelsn-han-et-al-2021-ngpt-fnfornleannntowards-end-to-end-in-image-neural-machine-translationn-mansimov-et-al-2020-sure-why-notnbrainsnnartificial-neural-nets-finally-yield-clues-to-how-brains-learnnshort-overview-of-biologically-plausible-backprop-feedback-alignment-target-propagation-predictive-coding-attentional-feedback-also-of-recent-interestnvs-mln-given-their-increasing-success-in-training-while-respecting-more-biological-constraints-the-increasing-power-of-backprop-trained-anns-and-the-neurological-success-of-anns-in-predicting-imitating-brain-signals-it-is-increasingly-clear-that-brainsnreally-dondo-backprop-in-some-sensennsd-a-massive-7-tesla-fmri-dataset-to-bridge-cognitive-and-computational-neurosciencen-jean-et-al-2021-the-availability-of-nsd-thus-opens-the-door-to-using-brain-activity-to-directly-guide-the-optimization-of-deep-neural-networksnbrain2pix-fully-convolutional-naturalistic-video-reconstruction-from-brain-activityn-le-et-al-2021-reconstructingndr-whonnhigh-performance-brain-to-text-communication-via-imagined-handwritingn-willett-et-al-2020nbrain-computer-interface-for-generating-personally-attractive-imagesn-spape-et-al-2021-many-ways-to-improve-thisnmatters-of-scalennscaling-laws-for-transfern-hernandez-et-al-2021-we-find-that-pre-training-effectively-multiplies-the-fine-tuning-dataset-size-a-shot-across-the-bow-of-anyone-floating-on-a-proprietary-dataset-moat-large-models-can-drop-data-requirements-by-orders-of-magnitude-overnight-even-surpassing-younalign-scaling-up-visual-and-vision-language-representation-learning-with-noisy-text-supervisionn-jia-et-al-2021-see-alsoncc-12mnnclipn-like-wefficientnet-trained-on-18-billion-images-on-a-tpuv3-1024ndmnargues-that-fancier-cross-modal-transformers-are-better-neverthelessntpus-go-brrrn-given-dalle-clip-alignnvdvaenncw-vaennaiponet-al-are-gans-already-dead-and-just-dont-realize-it-yet-or-at-least-soon-to-be-relegated-to-only-drl-like-uses-as-a-final-finetuning-phase-to-sharpen-up-a-self-supervised-modelnwenlan-bridging-vision-and-language-by-large-scale-multi-modal-pre-trainingn-huo-et-al-2021ndalle-zero-shot-text-to-image-generationn-ramesh-et-al-2021-noriginal-blognnm6-a-chinese-multimodal-pretrainern-lin-et-al-2021-chinese-dalle-19tb-images029tb-text-for-10b-parameter-dense100b-parameter-moe-transformer-shockingly-fast-chinese-replication-of-dalleclipnexplaining-neural-scaling-lawsn-bahri-et-al-2021nlearning-curve-theoryn-hutter-2021-nrohin-shah-commentaryn-more-on-the-manifold-hypothesisn22-geneticsneverything-is-heritablenphenotypic-covariance-across-the-entire-spectrum-of-relatedness-for-86-billion-pairs-of-individualsn-kemper-et-al-2021ngenetic-variation-brain-and-intelligence-differencesn-deary-et-al-2021npathfinder-a-gamified-measure-to-integrate-general-cognitive-ability-into-the-biological-medical-and-behavioural-sciencesn-malanchini-et-al-2021-not-the-focus-but-the-iq-pgs-is-a-slight-improvement-overnallegrini-et-al-2018ndue-to-less-phenotype-measurement-errornpolygenic-burden-has-broader-impact-on-health-cognition-and-socioeconomic-outcomes-than-most-rare-and-high-risk-copy-number-variantsn-saarentaus-et-al-2021non-candidate-genes-comtnrecent-evolutionnmillion-year-old-dna-rewrites-the-mammoth-family-tree-genomic-datathe-oldest-ever-recovered-from-a-fossilreveals-the-origin-and-evolution-of-the-columbian-mammothnkin-selection-explains-the-evolution-of-cooperation-in-the-gut-microbiotan-simonet-mcnally-2021nengineeringnfirst-black-footed-ferret-clonedn23-statisticsmeta-sciencenlessons-from-gerolamo-cardanosnthe-book-of-my-lifennprogress-studies-see-alsonnewtons-anthropic-argumentnnbakewell-inventing-progressnnthe-autobiography-of-benvenuto-cellininnhow-many-microcovids-would-you-spend-on-a-burritonon-thenmicrocovid-project-calculatornnon-the-enfeeblement-of-mathematical-skills-by-modern-mathematics-and-by-similar-soft-intellectual-trash-in-schools-and-universitiesn-hammersley-1968-nknuthnhighlights-as-also-amusingna-note-on-pifflesn-smith-1967na-rebuke-of-a-b-smiths-paper-a-note-on-pifflesn-farlow-1980nartifact-and-recording-concepts-in-eegn-tatum-et-al-2011-on-theneegnsignals-ofnjell-on-or-the-importance-ofnnegative-controlsnn24-politicsreligionnthe-logic-of-fashion-cyclesn-acerbi-et-al-2012nfashion-and-art-cycles-are-driven-by-counter-dominance-signals-of-elite-competition-quantitative-evidence-from-music-stylesn-klimek-et-al-2019nthe-hipster-effect-when-anti-conformists-all-look-the-samen-touboul-2019nright-is-the-new-leftn-scott-alexander-see-alsonhan-et-al-2010nndowns-1972nngupta-jenkins-smith-2015nnlorenz-spreen-et-al-2019nncandia-et-al-2019nnloury-1994nnwhat-can-we-learn-from-the-lunar-pandemic-that-never-wasnnasas-lunar-quarantine-was-a-sham-intended-to-mollify-the-public-as-they-covered-up-repeated-major-failures-lab-leaks-both-before-afterhad-there-been-any-dangerous-lunar-organisms-they-would-have-escaped-easilynmrbeastnthe-new-aristocracy-ofnprestigen-borrowed-plumage-perhaps-but-effectivenrussias-new-lysenkoismn-kolchinsky-et-al-2017n25-psychologybiologynsemaglutidennonce-weekly-semaglutide-in-adults-with-overweight-or-obesityn-wilding-et-al-2021neffect-of-subcutaneous-semaglutide-vs-placebo-as-an-adjunct-to-intensive-behavioral-therapy-on-body-weight-in-adults-with-overweight-or-obesity-the-step-3-randomized-clinical-trialn-wadden-et-al-2021na-longer-acting-version-of-the-insulinappetite-peptidenliraglutiden-semaglutide-greatly-reduces-weight-fat-blood-sugar-cholesterol-etc-with-annupcoming-oral-versionn-backgroundnkushner-et-al-2020nnaroda-et-al-2019nnnauck-meier-2019nnoneil-et-al-2018nnblundell-et-al-2017nnnauck-et-al-2016nnlau-et-al-2015nnlessons-from-the-host-defences-of-bats-a-unique-viral-reservoirn-irving-et-al-2021-nbat-borne-virusesn-previouslyntrevor-kleennbeneficial-detrimental-effects-of-reactive-oxygen-species-on-lifespan-a-comprehensive-review-of-comparative-experimental-studiesn-shields-et-al-2021-antioxidants-still-arent-the-fountain-of-youth-and-may-be-harmful-animal-studies-still-frequently-inconsistentnpositive-expectations-predict-improved-mental-health-outcomes-linked-to-psychedelic-microdosingn-kaertner-et-al-2021-placebonthe-effects-of-fluoride-in-drinking-watern-aggeborn-ohman-2021nsleep-sex-what-can-go-wrong-a-review-of-the-literature-on-sleep-related-disorders-and-abnormal-sexual-behaviors-experiencesn-schenck-et-al-2007n26-technologynnew-x-prize-100m-in-prizes-for-carbon-removalnwringing-gauge-blocksnwith-their-precisely-flat-metal-faces-gauge-blocks-can-be-stuck-together-non-magnetically-via-a-process-calling-wringing-requiring-substantial-effort-to-separate-scientists-are-still-uncertain-exactly-how-wringing-worksnarmored-trainn27-economicsnwhy-did-renewables-become-so-cheap-so-fast-and-what-can-we-do-to-use-this-global-opportunity-for-green-growthn-max-roser-specifically-why-such-an-extremenexperience-curvenniq-trading-behavior-and-performancen-grinblatt-et-al-2012ngenetic-endowments-and-wealth-inequalityn-barth-et-al-2020-why-despite-notorious-setbacks-did-isaac-newton-ltcms-founders-die-wealthy-why-in-general-are-more-intelligent-people-so-much-better-investors-the-indifference-of-the-indicator-its-not-one-thing-its-everythingmore-intelligent-people-have-lower-discount-rates-save-more-for-longer-are-less-risk-averse-more-accurately-predict-future-growth-or-inflation-are-more-likely-to-participate-in-ev-opportunities-like-the-stock-market-to-use-low-fee-rather-than-high-fee-and-thus-underperforming-mutual-funds-succumb-less-to-biases-like-herding-as-they-trade-better-at-better-times-trade-less-and-harvest-losses-more-efficiently-when-trading-poorlyn28-philosophynarenethics-experts-more-ethicalnnthe-behavior-of-ethicistsn-schwitzgebel-rust-2016-most-recentlynthe-moral-behavior-of-ethics-professors-a-replication-extension-in-german-speaking-countriesn-schonegger-et-al-2019-given-moral-licensing-activism-perhaps-we-should-be-surprised-we-dont-hear-about-more-ethicists-doing-things-like-posting-enemy-lists-or-trying-to-dox-reviewers-woe-to-you-phariseesnmeta-analysis-on-belief-in-free-will-manipulationsn-genschow-et-al-2021-another-noble-lie-turns-out-to-be-ignoblengricean-maxims-of-communicationn29-fictionnbunnies-burrowsn210-miscellaneousncaesar-livesnniggy-popn1995-onngibbonnnmad-honeynimperial-court-system" title="Permanent link">&para;</a></h1>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 05:40:42 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

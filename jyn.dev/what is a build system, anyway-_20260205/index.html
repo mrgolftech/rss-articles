@@ -1,0 +1,947 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/jyn.dev/what%20is%20a%20build%20system%2C%20anyway-_20260205/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>what is a build system, anyway? - RSS Articles</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#what-is-a-build-system-anyway" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="RSS Articles" class="md-header__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RSS Articles
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              what is a build system, anyway?
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RSS Articles" class="md-nav__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RSS Articles
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#big-picture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        big picture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifying-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        specifying dependencies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="specifying dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#applicative-and-monadic-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        applicative and monadic structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#early-cutoff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        early cutoff
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebuild-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rebuild detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-executor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        the executor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inter-process-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        inter-process builds
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="inter-process builds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#determinism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        determinism
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        remote caching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        interface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meta-build-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        meta-build systems
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VFS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intra-process-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        intra-process builds
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="intra-process builds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tracing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tracing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FRP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#so-what-counts-as-a-build-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        so, what counts as a build system?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bibliography" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bibliography
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/jyn.dev/what is a build system, anyway-_20260205.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="what-is-a-build-system-anyway">what is a build system, anyway?<a class="headerlink" href="#what-is-a-build-system-anyway" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://jyn.dev
+<strong>链接:</strong> https://jyn.dev/what-is-a-build-system-anyway/
+<strong>日期:</strong> 2025-12-12T00:00:00+00:00</p>
+<hr />
+<p>Andrew Nesbitt recently wrote a post titled <a href="https://nesbitt.io/2025/12/02/what-is-a-package-manager.html">What is a Package Manager</a>? This post attempts to do the same for build systems.</p>
+<h2 id="big-picture">big picture<a href="https://jyn.dev/what-is-a-build-system-anyway/#big-picture"></a><a class="headerlink" href="#big-picture" title="Permanent link">&para;</a></h2>
+<p>At a high level, <strong>build systems</strong> are tools or libraries that provide a way to <strong>define</strong> and <strong>execute</strong> a series of transformations from <strong>input</strong> data to <strong>output</strong> data that are <strong>memoized</strong> by <strong>caching</strong> them in an <strong>object store</strong>.</p>
+<p>Transformations are called <strong>steps</strong> or <strong>rules</strong> <a href="https://jyn.dev/what-is-a-build-system-anyway/#fn-14">1</a> and define how to execute a <strong>task</strong> that generates zero or more outputs from zero or more inputs. A rule is usually the <strong>unit of caching</strong> ; i.e. the <strong>cache points</strong> are the outputs of a rule, and <strong>cache invalidations</strong> must happen on the inputs of a rule. Rules can have <strong>dependencies</strong> on previous outputs, forming a directed graph called a <strong>dependency graph</strong>. Dependencies that form a cyclic graph are called <strong>circular dependencies</strong> and are usually banned.<a href="https://jyn.dev/what-is-a-build-system-anyway/#fn-5">2</a></p>
+<p>Outputs that are only used by other rules, but not “interesting” to the end-user, are called <strong>intermediate outputs</strong>.</p>
+<p>A output is <strong>outdated</strong> , <strong>dirty</strong> , or <strong>stale</strong> if one of its dependencies is modified, or, <strong>transitively</strong> , if one of its dependencies is outdated. Stale outputs invalidate the cache and require the outputs to be <strong>rebuilt</strong>. An output that is cached and not dirty is <strong>up-to-date</strong>. Rules are outdated if any of their outputs are outdated. If a rule has no outputs, it is always outdated.</p>
+<p>Each invocation of the build tool is called a <strong>build</strong>. A <strong>full build</strong> or <strong>clean build</strong> occurs when the cache is empty and all transformations are executed as a <strong>batch job</strong>. A cache is <strong>full</strong> if all its rules are up-to-date. An <strong>incremental build</strong> occurs when the cache is partially full but some outputs are outdated and need to be rebuilt. Deleting the cache is called <strong>cleaning</strong>.</p>
+<p>A build is <strong>correct</strong> or <strong>sound</strong> if all possible incremental builds have the same result as a full build.<a href="https://jyn.dev/what-is-a-build-system-anyway/#fn-1">3</a> A build is <strong>minimal</strong> (occasionally <strong>optimal</strong>) if rules are rerun at most once per build, and only run if necessary for soundness (<a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2018/03/build-systems.pdf">Build Systems à la Carte</a>, <a href="https://www.mathematik.uni-marburg.de/~seba/publications/pluto-incremental-build.pdf">Pluto</a>).</p>
+<p>In order for a build to be sound, all possible cache invalidations must be <strong>tracked</strong> as dependencies.</p>
+<p>A build system without caching is called a <strong>task runner</strong> or <strong>batch compiler</strong>. Note that task runners still often support dependencies even if they don't support caching. Build systems with caching can emulate a task runner by only defining tasks with zero outputs, but they are usually not designed for this use case. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fn-7">4</a></p>
+<p>Some examples of build systems: <code>make</code>, <code>docker build</code>, rustc. Some examples of task runners: <a href="https://just.systems/man/en/"><code>just</code></a>, shell scripts, <a href="https://fabiensanglard.net/dc/driver.php">gcc</a>.</p>
+<h2 id="specifying-dependencies">specifying dependencies<a href="https://jyn.dev/what-is-a-build-system-anyway/#specifying-dependencies"></a><a class="headerlink" href="#specifying-dependencies" title="Permanent link">&para;</a></h2>
+<p>A build can be either <strong>inter-process</strong> , in which case the task is usually a single <strong>process execution</strong> and its input and output files, or <strong>intra-process</strong> , in which case a task is usually a single function call and its arguments and return values.</p>
+<p>In order to track dependencies, either all inputs and outputs must be <strong>declared</strong> in source code ahead of time, or it must be possible to <strong>infer</strong> them from the execution of a task.</p>
+<p>Build systems that track changes to a rule definition are called <strong>self-tracking</strong>. Past versions of the rule are called its <strong>history</strong> (<a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2018/03/build-systems.pdf">Build Systems à la Carte</a>).</p>
+<p>The act of inferring dependencies from runtime behavior is called <strong>tracing</strong>. If a traced rule depends on a dependency that hasn’t been built yet, the build system may either error, <strong>suspend</strong> the task and <strong>resume</strong> it later once the dependency is built, or <strong>abort</strong> the task and <strong>restart</strong> it later once the dependency is built (<a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2018/03/build-systems.pdf">Build Systems à la Carte</a>).</p>
+<p>Inter-process builds often declare their inputs and outputs, and intra-process builds often infer them, but this is not inherent to the definition. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fn-8">5</a></p>
+<p>Some example of intra-process builds include spreadsheets, the <a href="https://davidlattimore.github.io/posts/2024/11/19/designing-wilds-incremental-linking.html">wild</a> linker, and memoization libraries such as python’s <a href="https://docs.python.org/3/library/functools.html#functools.cache"><code>functools.cache</code></a>.</p>
+<h3 id="applicative-and-monadic-structure">applicative and monadic structure<a href="https://jyn.dev/what-is-a-build-system-anyway/#applicative-and-monadic-structure"></a><a class="headerlink" href="#applicative-and-monadic-structure" title="Permanent link">&para;</a></h3>
+<p>A build graph is <strong>applicative</strong> if all inputs, outputs, and rules are declared ahead of time. We say in this case the graph is <strong>statically known</strong>. Very few build systems are purely applicative, almost all have an escape hatch.</p>
+<p>The graph is <strong>monadic</strong> if not all outputs are known ahead of time, or if rules can generate other rules dynamically at runtime. Inputs that aren’t known ahead of time are called <strong>dynamic dependencies</strong>. Dynamic dependencies are weaker than a fully monadic build system, in the sense that they can <a href="https://buttondown.com/hillelwayne/archive/the-capability-tractability-tradeoff/">express</a> fewer build graphs. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fn-15">6</a></p>
+<p>Build systems that do not require declaring build rules are always monadic.</p>
+<p>Some examples of monadic build systems include <a href="https://shakebuild.com/">Shake</a>, ninja <a href="https://ninja-build.org/manual.html#ref_dyndep"><code>dyndeps</code></a>, and Cargo build scripts.</p>
+<p>Some examples of applicative build systems include <code>make</code> (with <a href="https://accu.org/journals/overload/14/71/miller_2004/">recursive make</a> and <a href="https://www.gnu.org/software/make/manual/html_node/Remaking-Makefiles.html">self-rebuilding Makefiles</a> disallowed), Bazel (excluding native rules), and map/reduce libraries with memoization, such as <a href="https://www.unison-lang.org/articles/distributed-datasets/incremental-evaluation/">this unison program</a>.</p>
+<h3 id="early-cutoff">early cutoff<a href="https://jyn.dev/what-is-a-build-system-anyway/#early-cutoff"></a><a class="headerlink" href="#early-cutoff" title="Permanent link">&para;</a></h3>
+<p>If a dirty rule R has an outdated output, reruns, and creates a new output that matches the old one, the build system has an opportunity to avoid running later rules that depend on R. Taking advantage of that opportunity is called <strong>early cutoff</strong>.</p>
+<p>See <a href="https://rustc-dev-guide.rust-lang.org/queries/incremental-compilation-in-detail.html">the rustc-dev-guide</a> for much more information about early cutoff. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fn-9">7</a></p>
+<h3 id="rebuild-detection">rebuild detection<a href="https://jyn.dev/what-is-a-build-system-anyway/#rebuild-detection"></a><a class="headerlink" href="#rebuild-detection" title="Permanent link">&para;</a></h3>
+<p>In unsound build systems, it’s possible that the build system does not accurately <strong>detect</strong> that it needs to rebuild. Such systems sometimes offer a way to <strong>force-rerun</strong> a target: keeping the existing cache, but rerunning a single rule. For inter-process build systems, this often involves <code>touch</code>ing a file to set its modification date to the current time.</p>
+<h2 id="the-executor">the executor<a href="https://jyn.dev/what-is-a-build-system-anyway/#the-executor"></a><a class="headerlink" href="#the-executor" title="Permanent link">&para;</a></h2>
+<p>A <strong>build executor</strong> runs tasks and is responsible for <strong>scheduling</strong> tasks in an order that respects all dependencies, often using heuristics such as dependency depth or the time taken by the task on the last run. They also detect whether rule inputs have been modified, making the rule outdated; this is called <strong>rebuild detection</strong>. The build executor is responsible for restarting or suspending tasks in build systems that support it.</p>
+<p>Executors usually schedule many tasks in parallel, but this is not inherent to the definition.</p>
+<p>Executors often provide <strong>progress reporting</strong> , and sometimes allow <strong>querying</strong> the dependency graph. Occasionally they trace the inputs used by the task to enforce they match the declared dependencies, or to automatically add them to an internal dependency graph.</p>
+<h2 id="inter-process-builds">inter-process builds<a href="https://jyn.dev/what-is-a-build-system-anyway/#inter-process-builds"></a><a class="headerlink" href="#inter-process-builds" title="Permanent link">&para;</a></h2>
+<p>In the context of inter-process builds, an <strong>artifact</strong> is an output file generated by a rule.<a href="https://jyn.dev/what-is-a-build-system-anyway/#fn-6">8</a> A <strong>source file</strong> is an input file that is specific to the current <strong>project</strong><a href="https://jyn.dev/what-is-a-build-system-anyway/#fn-11">9</a> (sometimes <strong>repository</strong> or <strong>workspace</strong>) as opposed to a <strong>system dependency</strong> that is reused across multiple projects. A project is loosely defined but generally refers to the set of all input and output files that the build system knows about, usually contained in a single directory. Source files can be <strong>generated</strong> , which means they are an output of a previous rule.</p>
+<p><strong>Build files</strong> contain rule definitions, including (but not limited to) task definitions, input and output declarations, and metadata such as a human-readable description of the rule. Inputs are usually split into <strong>explicit inputs</strong> passed to the spawned process, <strong>implicit inputs</strong> that are tracked by the build system but not used in the task definition, and <strong>order-only inputs</strong> that must exist before the rule can execute, but do not invalidate the cache when modified.</p>
+<p>Process executions have more inputs than just files, such as the rule itself, environment variables, the current time, the current working directory, and occasionally network services or local daemons <a href="https://jyn.dev/what-is-a-build-system-anyway/#fn-2">10</a>.</p>
+<p>The set of all inputs that are not source files or command line arguments is called the <strong>environment</strong>. Processes can be <strong>sandboxed</strong> to prevent them from depending on the network, a daemon, or occasionally system dependencies; this is sometimes called a <strong>sandboxed environment</strong> or <strong>isolated environment</strong>.</p>
+<p>System dependencies are more expansive than I think they are often understood to be. They include compilers, linkers, programming language libraries <a href="https://jyn.dev/what-is-a-build-system-anyway/#fn-3">11</a>, and <a href="https://jyn.dev/build-system-tradeoffs/#dynamic-linking-and-platform-maintainers">static and dynamically linked object files</a>, but also the dynamic loader, language runtime, and various system configuration files. The subset of these dependencies needed for building a minimal program in a given language, along with various tools for inspecting and modifying the outputs at runtime, are called a <strong>toolchain</strong>. Toolchains are inherently specific to a given language, but sometimes (e.g. in GCC) a single compiler will support multiple languages as inputs.</p>
+<p>A build is <strong>hermetic</strong> (rarely, <strong>self-contained</strong> or <strong>isolated</strong> <a href="https://jyn.dev/what-is-a-build-system-anyway/#fn-16">12</a>) if it uses no system dependencies and instead defines all its dependencies in the project (<a href="https://bazel.build/basics/hermeticity">Bazel</a>). Sandboxing and hermeticity are orthogonal axes; neither one implies the other. For example, docker builds are sandboxed but not hermetic, and nix shells are hermetic but not sandboxed.</p>
+<p>Compiler or linkers sometimes have their own <strong>incremental caches</strong>. Reusing the cache requires you to <strong>trust</strong> the compiler to be sound when incrementally rebuilding. This is usually implicit, but hermetic or sandboxed builds require an opt-in to reuse the cache. Bazel calls this kind of reuse a <a href="https://bazel.build/versions/7.0.0/remote/persistent"><strong>persistent worker</strong></a>.</p>
+<h3 id="determinism">determinism<a href="https://jyn.dev/what-is-a-build-system-anyway/#determinism"></a><a class="headerlink" href="#determinism" title="Permanent link">&para;</a></h3>
+<p>A build is <strong>deterministic</strong> if it creates the same output every time in some specific environment. A build is <strong>reproducible</strong> if it is deterministic and also has the same output in <a href="https://reproducible-builds.org/docs/commandments/">any environment</a>, as long as the system dependencies remain the same.</p>
+<h3 id="remote-caching">remote caching<a href="https://jyn.dev/what-is-a-build-system-anyway/#remote-caching"></a><a class="headerlink" href="#remote-caching" title="Permanent link">&para;</a></h3>
+<p>Caching can be remote or local. <strong>Remote caching</strong> is almost always unsound unless the build is both hermetic and reproducible (i.e. its only environment dependencies are controlled by the build system).</p>
+<p>Downloading files from the remote cache is called <strong>materializing</strong> them. Most build systems with remote caching <strong>defer materialization</strong> as long as possible, since in large build graphs the cache is often too large to fit on disk. Builds where the cache is never fully materialized are called <strong>shallow builds</strong> (<a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2018/03/build-systems.pdf">Build Systems à la Carte</a>).</p>
+<p>Remote caching usually, but not necessarily, uses <strong>content addressed hashing</strong> in a <strong>key-value store</strong> to identify which artifact to download.</p>
+<p>Some example build systems that use remote caching: Bazel, Buck2, nix, <code>docker build</code>.</p>
+<h3 id="interface">interface<a href="https://jyn.dev/what-is-a-build-system-anyway/#interface"></a><a class="headerlink" href="#interface" title="Permanent link">&para;</a></h3>
+<p>Build systems usually have a way to run a subset of the build. The identifier used to specify which part of the build you want to run is called a <strong>target</strong>.<a href="https://jyn.dev/what-is-a-build-system-anyway/#fn-4">13</a> Targets are usually the filenames of an artifact, but can also be abstract names of one or more rules. Bazel-descended build systems call these names <a href="https://bazel.build/concepts/labels"><strong>labels</strong></a>. Make-descended build systems call these <a href="https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html"><strong>phony targets</strong></a>. Some build systems, such as cargo, do not use target identifiers but instead only have subcommands with arguments; the combination of arguments together specifies a set of targets.</p>
+<p>Some example targets:</p>
+<ul>
+<li><code>make all</code></li>
+<li><code>cargo build --test http_integration</code></li>
+<li><code>buck2 build :main</code></li>
+</ul>
+<h3 id="meta-build-systems">meta-build systems<a href="https://jyn.dev/what-is-a-build-system-anyway/#meta-build-systems"></a><a class="headerlink" href="#meta-build-systems" title="Permanent link">&para;</a></h3>
+<p>Inter-process build systems are often divided into a <strong>configuration</strong> step and a <strong>build</strong> step. A build system that only runs the configuration step, and requires another tool for the build step, is called a <strong>meta-build system</strong>.</p>
+<p>Usually this meta-build system <strong>discovers</strong> the rules that need to be executed (often through file globbing or some other programmatic way to describe dependencies), then <strong>serializes</strong> these rules into an <a href="https://jyn.dev/i-want-a-better-action-graph-serialization/"><strong>action graph</strong></a>, which can be stored either in-memory or on-disk. On-disk serialized action graphs are usually themselves build files, in the sense that you can write them by hand but you wouldn't want to.</p>
+<p>Configuration steps usually allow the developer to choose a set of <strong>configuration flags</strong> (occasionally, <strong>build flags</strong>) that affect the generated rules.</p>
+<p>Some build systems also integrate directly with the <a href="https://nesbitt.io/2025/12/02/what-is-a-package-manager.html"><strong>package manager</strong></a>, but this is uncommon, and usually the build system expects all packages to be pre-downloaded into a known location.</p>
+<p>Some examples of meta-build systems are CMake, meson, and autotools.</p>
+<h3 id="vfs">VFS<a href="https://jyn.dev/what-is-a-build-system-anyway/#vfs"></a><a class="headerlink" href="#vfs" title="Permanent link">&para;</a></h3>
+<p>Advanced build systems can integrate with a <strong>virtual file system</strong> (VFS) to check-out source control files on-demand, rather than eagerly (<a href="https://github.com/facebook/sapling?tab=readme-ov-file#ejdenfs">EdenFS</a>). A VFS can also persistently store <strong>content hashes</strong> and provide efficient <strong>change detection</strong> for files, avoiding the need for file watching or constant re-hashing.</p>
+<h2 id="intra-process-builds">intra-process builds<a href="https://jyn.dev/what-is-a-build-system-anyway/#intra-process-builds"></a><a class="headerlink" href="#intra-process-builds" title="Permanent link">&para;</a></h2>
+<p>The equivalent of system dependencies within a process is <strong>non-local state</strong> , including environment variables, globals, thread-locals, and class member fields (for languages where <code>this</code> is passed implicitly). Especially tricky are function calls that do <strong>inter-process communication</strong> (IPC), which are basically never sound to cache. Tracing intra-process builds is very very hard since it’s easy to call a function that depends on global state without you knowing. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fn-19">14</a></p>
+<p>In this intra-process context, most object stores are <strong>in-memory caches</strong>. A build system that supports saving (<strong>persisting</strong>) the cache to disk is said to have <a href="https://jyn.dev/complected-and-orthogonal-persistence/"><strong>persistence</strong></a>. The system for persisting the cache is sometimes called a <strong>database</strong> , even if it is not a general-purpose database in the sense the term is normally used (<a href="https://salsa-rs.netlify.app/tutorial/db">Salsa</a>).</p>
+<h3 id="tracing">tracing<a href="https://jyn.dev/what-is-a-build-system-anyway/#tracing"></a><a class="headerlink" href="#tracing" title="Permanent link">&para;</a></h3>
+<p>Tracing intra-process build systems are sometimes called a <strong>query system</strong>. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fn-18">15</a> They work similarly to their inter-process equivalents: the interface looks like normal function calls, and the build system tracks which functions call which other functions, so it knows which to rerun later.</p>
+<p>Some examples of tools with tracing intra-process build systems: <a href="https://docs.rs/salsa/latest/salsa/">salsa</a>, the <a href="https://rustc-dev-guide.rust-lang.org/query.html">rustc query system</a>.</p>
+<h3 id="frp">FRP<a href="https://jyn.dev/what-is-a-build-system-anyway/#frp"></a><a class="headerlink" href="#frp" title="Permanent link">&para;</a></h3>
+<p>Intra-process build systems that allow you to explicitly declare dependencies usually come from the background of <a href="https://blog.janestreet.com/breaking-down-frp/"><strong>functional reactive programming</strong></a> (FRP). FRP is most often used in UI and frontend design, but many of the ideas are the same as the build systems used for compiling programs.</p>
+<p>Unlike any of the build systems we've talked about so far, FRP libraries let you look at <em>past versions</em> of your outputs, which is sometimes called <strong>remembering</strong> state (<a href="https://react.dev/learn/state-a-components-memory">React</a>). To make this easier to reason about, rules can be written as <strong>event handlers</strong>.</p>
+<p>Some examples of libraries with dependency declarations: <a href="https://react.dev/learn/adding-interactivity">React</a>.</p>
+<h2 id="so-what-counts-as-a-build-system">so, what counts as a build system?<a href="https://jyn.dev/what-is-a-build-system-anyway/#so-what-counts-as-a-build-system"></a><a class="headerlink" href="#so-what-counts-as-a-build-system" title="Permanent link">&para;</a></h2>
+<p>A build system is pretty much anything that lets you specify dependencies on a previous artifact 😄 Some more weird examples of build systems:</p>
+<ul>
+<li>Github Actions (jobs and workflows)</li>
+<li>Static site generators</li>
+<li>Docker-compose files</li>
+<li>Systemd unit files</li>
+<li>Excel</li>
+</ul>
+<p>Hopefully this post has given you both a vocabulary to talk about build systems and a context to compare them!</p>
+<h2 id="bibliography">bibliography<a href="https://jyn.dev/what-is-a-build-system-anyway/#bibliography"></a><a class="headerlink" href="#bibliography" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://nesbitt.io/2025/12/02/what-is-a-package-manager.html">Andrew Nesbitt, “What is a Package Manager?”</a></li>
+<li><a href="https://jyn.dev/build-system-tradeoffs/">jyn, “build system tradeoffs”</a></li>
+<li><a href="https://jade.fyi/blog/the-postmodern-build-system/">Jade Lovelace, “The postmodern build system”</a></li>
+<li><a href="https://just.systems/man/en/">Casey Rodarmor, “Just Programmer's Manual”</a></li>
+<li><a href="https://fabiensanglard.net/dc/driver.php">Fabien Sanglard, “Driving Compilers”</a></li>
+<li><a href="https://rustc-dev-guide.rust-lang.org/queries/incremental-compilation-in-detail.html">The Rust Project Contributors, “Incremental compilation in detail”</a></li>
+<li><a href="https://rustc-dev-guide.rust-lang.org/query.html">The Rust Project Contributors, “Queries: demand-driven compilation”</a></li>
+<li><a href="https://docs.python.org/3/library/functools.html">“functools — Higher-order functions and operations on callable objects — Python 3.14.2 documentation”</a></li>
+<li><a href="https://buttondown.com/hillelwayne/archive/the-capability-tractability-tradeoff/">Hillel Wayne, “The Capability-Tractability Tradeoff”</a></li>
+<li><a href="https://shakebuild.com/">Neil Mitchell, “Shake Build System”</a></li>
+<li><a href="https://ninja-build.org/manual.html">“The Ninja build system”</a></li>
+<li><a href="https://accu.org/journals/overload/14/71/miller_2004/">Peter Miller, “Recursive Make Considered Harmful”</a></li>
+<li><a href="https://www.unison-lang.org/articles/distributed-datasets/incremental-evaluation/">Rebecca Mark and Paul Chiusano, “Incremental evaluation via memoization · Unison programming language”</a></li>
+<li><a href="https://bazel.build/basics/hermeticity">“Hermeticity | Bazel”</a></li>
+<li><a href="https://bazel.build/versions/7.0.0/remote/persistent">“Persistent Workers | Bazel”</a></li>
+<li><a href="https://bazel.build/concepts/labels">“Labels | Bazel”</a></li>
+<li><a href="https://reproducible-builds.org/docs/commandments/">“Commandments of reproducible builds”</a></li>
+<li><a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2018/03/build-systems.pdf">Mokhov et. al., Build Systems à la Carte</a></li>
+<li><a href="https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html">“Phony Targets (GNU make)”</a></li>
+<li><a href="https://github.com/facebook/sapling?tab=readme-ov-file">Facebook, “Sapling: A Scalable, User-Friendly Source Control System.”</a></li>
+<li><a href="https://www.mathematik.uni-marburg.de/~seba/publications/pluto-incremental-build.pdf">Erdweg et. al., "A Sound and Optimal Incremental Build System with Dynamic Dependencies"</a></li>
+<li><a href="https://davidlattimore.github.io/posts/2024/11/19/designing-wilds-incremental-linking.html">David Lattimore, “Designing Wild's incremental linking”</a></li>
+<li><a href="https://lord.io/spreadsheets/">Bo Lord, “How to Recalculate a Spreadsheet”</a></li>
+<li><a href="https://github.com/ninja-build/ninja/blob/4b72b15aac766afe6a9a2c0dad535b0c2035a550/src/depfile_parser.in.cc">“ninja—<code>depfile_parser</code>”</a></li>
+<li><a href="https://salsa-rs.netlify.app/">“salsa - A generic framework for on-demand, incrementalized computation”</a></li>
+<li><a href="https://salsa-rs.netlify.app/tutorial/db">“Defining the database struct - Salsa”</a></li>
+<li><a href="https://blog.rust-lang.org/2021/05/10/Rust-1.52.1/">Felix Klock and Mark Rousskov on behalf of the Rust compiler team, “Announcing Rust 1.52.1”</a></li>
+<li><a href="https://blog.janestreet.com/breaking-down-frp/">Yaron Minsky, “Jane Street Blog - Breaking down FRP ”</a></li>
+<li><a href="https://react.dev/learn/adding-interactivity">“Adding Interactivity – React”</a></li>
+<li>
+<p><a href="https://react.dev/learn/state-a-components-memory">“State: A Component's Memory – React”</a></p>
+</li>
+<li>
+<p>Nearly all build systems are inconsistent about whether a rule refers to an <em>abstract description</em> of how to build an output (i.e., can be reused for multiple sets of inputs and outputs), or a <em>concrete instantiation</em> of that description for a specific set of inputs and outputs. We have to live with the ambiguity, unfortunately. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fr-14-1">↩</a></p>
+</li>
+<li>
+<p>Weird things can happen here though; for example early cutoff can allow circular dependencies. This sometimes comes up for generated build.ninja files. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fr-5-1">↩</a></p>
+</li>
+<li>
+<p>The <a href="https://www.mathematik.uni-marburg.de/~seba/publications/pluto-incremental-build.pdf">pluto paper</a> defines this as “after a build, generated files consistently reflect the latest source files”. Neither my definition nor pluto's definition are particularly well-defined if the build is non-deterministic. Defining this formally would probably require constructing an isomorphism between all programs with the same runtime behavior; but “runtime behavior” is not well-defined for a general-purpose build system that can output artifacts that are not programs. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fr-1-1">↩</a></p>
+</li>
+<li>
+<p>As we'll see later, the reverse is also true: a common design for build systems is to automatically inject cache points into an existing task runner, or to design the rule file to look as similar to a shell script or function call as possible. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fr-7-1">↩</a></p>
+</li>
+<li>
+<p>In particular, nearly all modern inter-process build systems have a limited form of tracing where they ask the compiler to generate "dep-info" files <a href="https://jyn.dev/what-is-a-build-system-anyway/#fn-13">16</a> that show which files were used (usually through imports) by a given source file. Note that this dep-info is not available until after the first time a build has run, and that this only works if the compiler supports it. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fr-8-1">↩</a></p>
+</li>
+<li>
+<p>For more information about the spectrum of designs between applicative and monadic, see <a href="https://jade.fyi/blog/the-postmodern-build-system/">the post-modern build system</a>. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fr-15-1">↩</a></p>
+</li>
+<li>
+<p>Note that the dev-guide assumes that tasks are expensive relative to the cost of constructing the graph. This is true in the context of rustc, where LLVM codegen <a href="https://jyn.dev/what-is-a-build-system-anyway/#fn-10">17</a> normally dominates compilation time, but it isn't true for e.g. <a href="https://lord.io/spreadsheets/">spreadsheets</a>. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fr-9-1">↩</a></p>
+</li>
+<li>
+<p>It's possible for tasks to create files that aren't tracked by the build system, but these aren't called artifacts. I don't know a good word for these; "byproducts" is the closest but some build systems use that to mean <em>any</em> intermediate artifacts. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fr-6-1">↩</a></p>
+</li>
+<li>
+<p>I'm not super happy with this definition because it conflicts with how compilers use the term, but I do think it describes how most build systems think about files. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fr-11-1">↩</a></p>
+</li>
+<li>
+<p>Poorly written rules can also depend on which other rules are executing at the same time, which is called a <strong>race condition</strong>. Note this does not require the rule to be unsound, only for it to use intermediate files the build system doesn’t know about. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fr-2-1">↩</a></p>
+</li>
+<li>
+<p>for C, header files; for other languages, usually source files or intermediate representations. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fr-3-1">↩</a></p>
+</li>
+<li>
+<p>Yes, this overlaps with the term for sandboxing. Try to avoid the word "isolated" if possible. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fr-16-1">↩</a></p>
+</li>
+<li>
+<p>This has no relation to a <strong>target platfom</strong> , which is related to cross-compiling. I wish we had better names for these things. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fr-4-1">↩</a></p>
+</li>
+<li>
+<p>I would actually describe this as much harder than tracing an inter-process build system, since <a href="https://jyn.dev/i-want-a-better-build-executor/#environment-variables">there aren't very good systems for tracking memory access</a>. See <a href="https://blog.rust-lang.org/2021/05/10/Rust-1.52.1/">this post about unstable fingerprints</a> for an idea of what bugs this causes in practice. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fr-19-1">↩</a></p>
+</li>
+<li>
+<p>This actually has very strong analogies to the way "query" is used in a database context: just like a tracing query system, a database has to be able to restart a query's transaction if the data it's trying to access has been modified. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fr-18-1">↩</a></p>
+</li>
+<li>
+<p>What is a dep-info file? Good question! It's a makefile. It's literally a makefile. Don't you just love <a href="https://github.com/ninja-build/ninja/blob/4b72b15aac766afe6a9a2c0dad535b0c2035a550/src/depfile_parser.in.cc#L27-L47">proving backslashes by induction</a>? <a href="https://jyn.dev/what-is-a-build-system-anyway/#fr-13-1">↩</a></p>
+</li>
+<li>
+<p>Or, more rarely, type-checking, borrow-checking, or coherence checking. <a href="https://jyn.dev/what-is-a-build-system-anyway/#fr-10-1">↩</a></p>
+</li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 05:40:42 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

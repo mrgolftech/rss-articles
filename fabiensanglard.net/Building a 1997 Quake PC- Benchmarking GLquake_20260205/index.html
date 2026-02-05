@@ -1,0 +1,737 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/fabiensanglard.net/Building%20a%201997%20Quake%20PC-%20Benchmarking%20GLquake_20260205/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Building a 1997 Quake PC: Benchmarking GLquake - RSS Articles</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#building-a-1997-quake-pc-benchmarking-glquake" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="RSS Articles" class="md-header__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RSS Articles
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Building a 1997 Quake PC: Benchmarking GLquake
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RSS Articles" class="md-nav__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RSS Articles
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/fabiensanglard.net/Building a 1997 Quake PC- Benchmarking GLquake_20260205.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="building-a-1997-quake-pc-benchmarking-glquake">Building a 1997 Quake PC: Benchmarking GLquake<a class="headerlink" href="#building-a-1997-quake-pc-benchmarking-glquake" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://fabiensanglard.net
+<strong>链接:</strong> https://fabiensanglard.net/quake_pc/glquake/index.html
+<strong>日期:</strong> 14 Jan 2026 00:00:00 +0000</p>
+<hr />
+<p><a href="/"><strong>FABIEN SANGLARD'S WEBSITE</strong><br />
+</a></p>
+<hr />
+<p><a href="mailto:fabiensanglard.net@gmail.com">CONTACT</a>    <a href="../rss.xml">RSS</a>     <a href="https://paypal.me/fabiensanglard">DONATE</a></p>
+<p>Jan 14, 2026  </p>
+<p>This article is part of the <a href="../">Quake PC series</a>.</p>
+<p>Building a Quake PC: GLQuake</p>
+<hr />
+<p>To play GLQuake, I wanted to get the card labeled by John Caramak as "The benchmark against which everything else is measured."[1]. I found a "tested" Orchid Righteous 3Dfx Voodoo on eBay for what might as well be its weight in diamonds.</p>
+<p><a href="3dfx_righteous.webp"><img alt="" src="3dfx_righteous.webp" /></a></p>
+<p>These are the earliest consumer grade 3D accelerators. Many things give them an "artisanal" feel. For example, they completely take over the VGA output via a passthrough cable, there is no windowed mode support. The Orchid Righteous have mechanical relays (later revisions of the card removed them) which makes a very loud "click" sound when the 3Dfx card takes over or releases the signal!</p>
+<p>I suspect these mechanical parts are components begging to fail. I seriously expected this card to die any day I used it.</p>
+<p>All flavors of Quake use a different image format for their screenshot. While quake.exe uses PCX, vquake.exe generates BMP, and glquale.exe uses TGA!</p>
+<p>First impression</p>
+<hr />
+<p>I installed the latest 3DFX Voodoo Orchid Righteous drivers <a href="https://www.philscomputerlab.com/drivers-for-voodoo.html">v3.00.00</a> (satisfying it is to make sense of the drivers files now that I understand VxDs). As I launched <code>glquake.exe</code>, the game did not start right away. First it generated a palette translation file (<code>15to8.pal</code>).</p>
+<p><a href="palette.png"><img alt="" src="palette.png" /></a></p>
+<p>Then it "meshed" all the alias models. It is a step that converts all mdl files to a structure made of <code>GL_TRIANGLE_FAN</code>/<code>GL_TRIANGLE_STRIP</code> and cache them into <a href="https://www.celephais.net/board/view_thread.php?id=61319">ms2</a> files.</p>
+<p><a href="meshing.png"><img alt="" src="meshing.png" /></a></p>
+<p>My first impression of GLQuake was terrible. The feeling came from a combination of small annoyances and bigger problems. In the small things, I thought the menu was kind of blurry compared to VQuake.</p>
+<p><a href="menu.png"><img alt="" src="menu.png" /></a></p>
+<p>glquake      vquake</p>
+<p>There is also no way to change the resolution at runtime. It was quite annoying to see a screen telling you to do it via command-line given that all other versions of Quake (quake.exe, winquake.exe, and vquake.exe) are capable of it.</p>
+<p><a href="vmodes.png"><img alt="" src="vmodes.png" /></a></p>
+<p>If a user messes up the parameters into an incompatible configuration, they are welcomed with a crude error message which lacks polish. Moreover, most of the modes listed are not supported, which means it is trial and error to discover what works and what doesn't.</p>
+<p><a href="crude_glquake_error.png"><img alt="" src="crude_glquake_error.png" /></a></p>
+<p>In the end, it turned out that only 640x480 and 512x384 worked in my configuration. Sadly no 400x300 which I thought was the sweet spot when enjoying vquake.exe.</p>
+<p>It gets worse!</p>
+<hr />
+<p>The impression got worse when I started a new game. While the explosions looked really good, the colors looked washed out.</p>
+<p><a href="explosion6.png"><img alt="" src="explosion6.png" /></a></p>
+<p>Doing some research, it turned out I was not the only one being thrown off. Only people used more colorful terms back in the days.</p>
+<blockquote>
+<p>Glquake looks like shit. I know a few of you may argue here, but really, lets face it - it looks terrible, especially on NVidia cards.  </p>
+<p>- @Frib, Unofficial Glquake &amp; QW Guide[2]</p>
+</blockquote>
+<p>There is a cool list of the difference between quake.exe and glquake.exe on <a href="https://www.quaddicted.com/engines/software_vs_glquake">quakeaddicted</a>(texture filtering, over-bright, fullbrights, Non-square pixels, and Affine texture mapping on alias models).</p>
+<p>There is also a partial explanation of why the colors are different.</p>
+<blockquote>
+<p>The original quake (software) engine used overbright lighting, which means the lightmap brightness can go up to 200%. So, light.exe creates BSP files with lightmaps that go up to 200%.  </p>
+<p>In glquake […] there is no overbright lighting, so every part of the lightmap that goes above 100% is flattened to equal 100%. This is why glquake looks just fine in darker rooms, but in bright areas the lighting looks very flat.  </p>
+<p>- quakeaddicted[3]</p>
+</blockquote>
+<p>Second impression</p>
+<hr />
+<p>The thing I had to understand is that GLQuake does not work like VQuake. VQuake was tailored made for one chip, the v1000. It is designed to work "out of the box" with next to no parameters to tweak. GLQuake on the other hand had to cater for anything via OpenGL standard. It is up to the user to tune it down for their particular card. GLQuake is a la carte.</p>
+<p>And GLQuake has many items on the menu. Some are 3DFX specific environment variables while some are in-game engine cvars. John Bye (aka Gestalt666) put together a fantastic site[4][5] to summarize them all and even provided a <a href="glquake.bat">glquake.bat</a> and a <a href="glquake.cfg">glquake.cfg</a> (to be placed in the id1 folder).</p>
+<p>The environment variables range from quality of life like <code>FX_GLIDE_NO_SPLASH</code> to skip the 3dfx splash screen to deep change such as overlocking from 50MHz to 56MHz (<code>SST_GRXCLK=56</code>). The biggest improvement for me is that it fixed the colors <code>SST_GAMMA=1.2</code>.</p>
+<div class="language-text highlight"><pre><span></span><code>SET SST_SCREENREFRESH=72
+SET SST_SWAP_EN_WAIT_ON_VSYNC=0
+SET SST_VIDEO_24BPP=1
+SET SST_GAMMA=1.2
+SET FX_GLIDE_NO_SPLASH=1
+SET FX_GLIDE_SWAPINTERVAL=0
+SET SST_FASTMEM=1
+SET SST_FASTPCIRD=1
+SET SST_GRXCLK=56
+</code></pre></div>
+<p>I am not sure I would recommend overclocking to 56MHz. The card ran hot HOT <em>HOT</em>!</p>
+<p><a href="explosion3_gamma.png"><img alt="" src="explosion3_gamma.png" /></a></p>
+<p>Stock      Gamma 1.2</p>
+<p>The colors can also be fixed with a program like IdGamma[6] to overload the palette.</p>
+<p>While the environment variable controls the 3dfx chip, the Quake cvar configures the engine. One of my favorite options was to disable bilinear filtering and get to see these cute pixels.</p>
+<p><a href="GL_LINEAR.png"><img alt="" src="GL_LINEAR.png" /></a></p>
+<p>GL_LINEAR      GL_NEAREST</p>
+<p>Bilinear texture filtering costs nothing on a 3dfx thanks to the four-way interleaved VRAM storing the textures. GL_LINEAR/GL_NEAREST does not affect the framerate contrary to v1000 cards.</p>
+<p>There are many cvar that provide a trade-off between performance and visual improvement. A quite impressive one for 1997 is that Quake is able to <a href="https://github.com/id-Software/Quake/blob/bf4ac424ce754894ac8f1dae6a3981954bc9852d/WinQuake/gl_rmain.c#L579">draw real projected</a> shadows. It looks however that it was an experimental feature (disabled by default) since I saw quite a bit of peter-panning.</p>
+<p><a href="shadow.png"><img alt="" src="shadow.png" /></a></p>
+<p>Another cool trade-off is flash configuration. GLQuake can either regenerate surfaces to be lit according to dynamic light source (slow and involves the CPU). Alternatively, it can throw the 3fdx and its fillrate at it by <a href="https://github.com/id-Software/Quake/blob/bf4ac424ce754894ac8f1dae6a3981954bc9852d/WinQuake/gl_rmain.c#L718">blending</a> a blast sphere. The latter is enabled by default and looks quite good.</p>
+<p><a href="gl_flashblend.png"><img alt="" src="gl_flashblend.png" /></a></p>
+<p>gl_flashblend 0      gl_flashblend 1</p>
+<p>It seems there was support for alpha transparency of water but I found it quite buggy. Also Quake maps had to be re-processed to have the PVS include surfaces that would otherwise be opaque in the software renderer.</p>
+<p><a href="water.png"><img alt="" src="water.png" /></a><em>This was supposed to be water.</em></p>
+<p>GLQuake had to find a way to replicate "palette shift" where the whole screen briefly fades to yellow when picking up an item or red when taking damage. That is something that consumes a lot of fillrate in glquake because it is done by blending a quad over the whole screen. This was identified as a performance hit and could be disabled.</p>
+<p><a href="particles.png"><img alt="" src="particles.png" /></a></p>
+<p>In this ocean of features and parameters, I settled for little visual embellishment close to the software renderer in favor of high framerate.</p>
+<div class="language-text highlight"><pre><span></span><code>r_drawviewmodel 1        // Enable/Disable drawing the weapon held by the player.
+r_mirroralpha 0          // Turn some surfaces into mirrors. See readme.glquake.
+[r_shadows](https://quakewiki.org/wiki/r_shadows) 0              // Make alias models cast a shadow. Pretty cool.
+r_wateralpha 1           // Buggy. Alpha blend water but poor map support. 1 mandatory.
+gl_texturemode GL_LINEAR // Blurry or pixelated textures.
+[gl_flashblend](https://quakewiki.org/wiki/Gl_flashblend) 1          // Blend to simulate explosions instead of regenerating surfaces.
+[gl_polyblend](https://quakewiki.org/wiki/gl_polyblend) 1           // Simulate palette shift with a GL_QUAD over the screen.
+[gl_ztrick](https://quakewiki.org/wiki/Gl_ztrick) 1              // Trick to avoid clearing the depth buffer
+[gl_keeptjunctions](https://quakewiki.org/wiki/Gl_keeptjunctions) 0      // Remove collinear vertices when it reloads the level.
+gl_subdivide_size 256    // Sets the division value for the sky brushes.
+</code></pre></div>
+<p>GLQuake rules</p>
+<hr />
+<p>With all the tuning done, I changed my mind about GLQuake. It was insanely cool and the framerate was a dream at 640x480. I loved it. It was time to run some benchmarks.</p>
+<p>Benchmarking</p>
+<hr />
+<p>The Orchid Righteous 3dfx only really supports 640x480. The resolution 512x384 did work but displayed weird and unpleasant vertical "bands".</p>
+<p>| MMX 233 MHz | MMX 200 MHz | MMX 166 MHz | MMX 133 MHz<br />
+---|---|---|---|---<br />
+quake.exe | 27.8 | 27.0  | 27.2 | 26.9<br />
+gl_quake.bat | 33.8 | 33.4 | 33.6 | 29.4 Pretty impressive how little impact the CPU frequency has on the framerate when rendering via the 3dfx. It would mean the framerate is dominated by rasterization and pushing the pixels to the video card which in the case of glquake is not done by the CPU. But since all the projection and clipping is done on the CPU in the glide driver, this could mean that Gary's team may have had aces in their sleeve that id did not. After all, they knew about the InvSqrt that surfaced in Quake III (1999) since 1995[7]. I think it is fairly safe to say the InvSqrt[8] trick helped to run the 3dfx 1. To take things to an extreme level, one could download <a href="http://ftp.oldskool.org/pub/drivers/3dfx/voodoo1/game_patches/">GLQPlus</a> which reportedly push cards to deliver 5 - 10+ fps[9]. I did not want to push grandpa too hard so I did not try it. K5</p>
+<hr />
+<p>Like for the v1000, I wanted to see how much a 3dfx 1 could enable a K5/6x86 to play Quake. I ran a basic test with an AMD K5 PR166. The machine did reach a playable framerate with 26.3fps at 640x480[10]. Going Voodoo2</p>
+<hr />
+<p>It does not make much sense to use a 3Dfx Voodoo2 in a Pentium 1 build. But this is a card I ava adore, and we must never be apart. The Voodoo2 embodies excellence[11]. I even find the PCB beautiful. Back in the day this card dominated consumer 3D and nothing came close to challenge its performance. I never owned one until now. So I decided to use it anyway despite the anachronism (the Voodoo2 was released in Feb 1998, after Quake II came out). Most of the environment variables changed (see them all on <a href="https://www.mdgx.com/3dfx.htm">mdgx.com</a>) so I crafted two launch scripts, <a href="3dfx2_640_480.bat">3dfx2_640_480.bat</a> and <a href="3dfx2_800_600.bat">3dfx2_800_600.bat</a>. The <a href="glquake.cfg">glquake.cfg</a> script remained the same. <a href="voodoo2.webp"><img alt="" src="voodoo2.webp" /></a> The Creative Voodoo2 does not have a mechanical relay. Switching to 3D rendering is reassuringly silent. Benchmark running at 640x480. |  | MMX 233 MHz | MMX 200 MHz | MMX 166 MHz | MMX 133 MHz<br />
+---|---|---|---|---<br />
+quake.exe |  58.5 |  57.2 |  55.1 |  51.9<br />
+gl_quake.bat | 78.3 | 72.9 | 64.8 | 57.8 Benchmark running at 800x600. |  | MMX 233 MHz | MMX 200 MHz | MMX 166 MHz | MMX 133 MHz<br />
+---|---|---|---|---<br />
+quake.exe | 46.9 | 46.5 | 45.9 | 44.8<br />
+gl_quake.bat | 46.8 | 60.1 | 57.7 | 54.2 The numbers speak for themselves. More benchmarks are available on <a href="https://groups.google.com/g/3dfx.products.voodoo2/c/5BFm3u-je6U">Voodoo2 Support Guide and FAQ</a>. Next</p>
+<hr />
+<p><a href="../disclaimer/">Epilogue</a>.References</p>
+<hr />
+<table>
+<thead>
+<tr>
+<th>^</th>
+<th>[ 1]</th>
+<th><a href="https://fabiensanglard.net/fd_proxy/doom3/pdfs/johnc-plan_1998.pdf">Johm Carmack .plan, FEB 12, 1998</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^</td>
+<td>[ 2]</td>
+<td><a href="https://web.archive.org/web/20190805025615/https://www.quakewiki.net/archives/frib/glquake.htm#:~:text=Glquake%20looks%20like%20shit.">Unofficial Glquake &amp; QW Guide</a></td>
+</tr>
+<tr>
+<td>^</td>
+<td>[ 3]</td>
+<td><a href="https://www.quaddicted.com/engines/software_vs_glquake">Differences between software rendered Quake and GLQuake</a></td>
+</tr>
+<tr>
+<td>^</td>
+<td>[ 4]</td>
+<td><a href="https://www.oocities.org/gestalt666/faquake4.html#2">GLQuake FAQs</a></td>
+</tr>
+<tr>
+<td>^</td>
+<td>[ 5]</td>
+<td><a href="https://www.oocities.org/gestalt666/faquake5.html">GLQuake Troubleshooting FAQs</a></td>
+</tr>
+<tr>
+<td>^</td>
+<td>[ 6]</td>
+<td><a href="https://www.quaketerminus.com/exe.shtml">idGamma and tools webpage</a></td>
+</tr>
+<tr>
+<td>^</td>
+<td>[ 7]</td>
+<td><a href="https://web.archive.org/web/20070104021541/https://www.beyond3d.com/articles/fastinvsqrt/">Origin of Quake3's Fast InvSqrt()</a></td>
+</tr>
+<tr>
+<td>^</td>
+<td>[ 8]</td>
+<td><a href="https://en.wikipedia.org/wiki/Fast_inverse_square_root">Fast inverse square root</a></td>
+</tr>
+<tr>
+<td>^</td>
+<td>[ 9]</td>
+<td><a href="https://www.soldcentralfl.com/quakecoop/compare1.htm">Comparison of Frame-rates in GLQuake Using Voodoo &amp; Voodoo 2 3D Cards</a></td>
+</tr>
+<tr>
+<td>^</td>
+<td>[10]</td>
+<td><a href="https://dosreloaded.de/forum/thread/2123-projekt-highend-win95-rechner-ohne-mmx/">Project: High-End Win95 Computer without MMX!</a></td>
+</tr>
+<tr>
+<td>^</td>
+<td>[11]</td>
+<td><a href="../../3dfx_sst1">The story of the 3dfx Voodoo1</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>*</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 05:40:42 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

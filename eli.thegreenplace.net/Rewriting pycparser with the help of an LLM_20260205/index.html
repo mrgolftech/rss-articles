@@ -1,0 +1,849 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/eli.thegreenplace.net/Rewriting%20pycparser%20with%20the%20help%20of%20an%20LLM_20260205/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Rewriting pycparser with the help of an LLM - RSS Articles</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rewriting-pycparser-with-the-help-of-an-llm" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="RSS Articles" class="md-header__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RSS Articles
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Rewriting pycparser with the help of an LLM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RSS Articles" class="md-nav__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RSS Articles
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-issues-with-the-existing-parser-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The issues with the existing parser implementation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The issues with the existing parser implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parsing-strategy-yacc-vs-hand-written-recursive-descent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parsing strategy: YACC vs. hand-written recursive descent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-other-issue-with-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The other issue with dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#growing-complexity-of-parsing-a-messy-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Growing complexity of parsing a messy language
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-mental-roadblock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The mental roadblock
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-would-this-even-work-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why would this even work? Tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-initial-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The initial port
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-quick-note-on-reviews-and-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A quick note on reviews and branches
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-long-tail-of-goofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The long tail of goofs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-end-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The end result
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#followup-static-typing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Followup - static typing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conclusions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#does-code-quality-even-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Does code quality even matter?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/eli.thegreenplace.net/Rewriting pycparser with the help of an LLM_20260205.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="rewriting-pycparser-with-the-help-of-an-llm">Rewriting pycparser with the help of an LLM<a class="headerlink" href="#rewriting-pycparser-with-the-help-of-an-llm" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://eli.thegreenplace.net
+<strong>链接:</strong> https://eli.thegreenplace.net/2026/rewriting-pycparser-with-the-help-of-an-llm/
+<strong>日期:</strong> 2026-02-04T19:35:00-08:00</p>
+<hr />
+<p><a href="https://github.com/eliben/pycparser">pycparser</a> is my most widely used open source project (with ~20M daily downloads from PyPI <a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-1">[1]</a>). It's a pure-Python parser for the C programming language, producing ASTs inspired by <a href="https://docs.python.org/3/library/ast.html">Python's own</a>. Until very recently, it's been using <a href="https://www.dabeaz.com/ply/ply.html">PLY: Python Lex-Yacc</a> for the core parsing.</p>
+<p>In this post, I'll describe how I collaborated with an LLM coding agent (Codex) to help me rewrite pycparser to use a hand-written recursive-descent parser and remove the dependency on PLY. This has been an interesting experience and the post contains lots of information and is therefore quite long; if you're just interested in the final result, check out the latest code of pycparser - the <code>main</code> branch already has the new implementation.</p>
+<p><img alt="meme picture saying &quot;can't come to bed because my AI agent produced something slightly wrong&quot;" src="https://eli.thegreenplace.net/images/2026/cantcometobed.png" /></p>
+<h2 id="the-issues-with-the-existing-parser-implementation">The issues with the existing parser implementation<a class="headerlink" href="#the-issues-with-the-existing-parser-implementation" title="Permanent link">&para;</a></h2>
+<p>While pycparser has been working well overall, there were a number of nagging issues that persisted over years.</p>
+<h3 id="parsing-strategy-yacc-vs-hand-written-recursive-descent">Parsing strategy: YACC vs. hand-written recursive descent<a class="headerlink" href="#parsing-strategy-yacc-vs-hand-written-recursive-descent" title="Permanent link">&para;</a></h3>
+<p>I began working on pycparser in 2008, and back then using a YACC-based approach for parsing a whole language like C seemed like a no-brainer to me. Isn't this what everyone does when writing a serious parser? Besides, the K&amp;R2 book famously carries the entire grammar of the C99 language in an appendix - so it seemed like a simple matter of translating that to PLY-yacc syntax.</p>
+<p>And indeed, it wasn't <em>too</em> hard, though there definitely were some complications in building the ASTs for declarations (C's <a href="https://eli.thegreenplace.net/2008/10/18/implementing-cdecl-with-pycparser">gnarliest part</a>).</p>
+<p>Shortly after completing pycparser, I got more and more interested in compilation and started learning about the different kinds of parsers more seriously. Over time, I grew convinced that <a href="https://eli.thegreenplace.net/tag/recursive-descent-parsing">recursive descent</a> is the way to go - producing parsers that are easier to understand and maintain (and are often faster!).</p>
+<p>It all ties in to the <a href="https://eli.thegreenplace.net/2017/benefits-of-dependencies-in-software-projects-as-a-function-of-effort/">benefits of dependencies in software projects as a function of effort</a>. Using parser generators is a heavy <em>conceptual</em> dependency: it's really nice when you have to churn out many parsers for small languages. But when you have to maintain a single, very complex parser, as part of a large project - the benefits quickly dissipate and you're left with a substantial dependency that you constantly grapple with.</p>
+<h3 id="the-other-issue-with-dependencies">The other issue with dependencies<a class="headerlink" href="#the-other-issue-with-dependencies" title="Permanent link">&para;</a></h3>
+<p>And then there are the usual problems with dependencies; dependencies get abandoned, and they may also develop security issues. Sometimes, both of these become true.</p>
+<p>Many years ago, pycparser forked and started vendoring its own version of PLY. This was part of transitioning pycparser to a dual Python 2/3 code base when PLY was slower to adapt. I believe this was the right decision, since PLY "just worked" and I didn't have to deal with active (and very tedious in the Python ecosystem, where packaging tools are replaced faster than dirty socks) dependency management.</p>
+<p>A couple of weeks ago <a href="https://github.com/eliben/pycparser/issues/588">this issue</a> was opened for pycparser. It turns out the some old PLY code triggers security checks used by some Linux distributions; while this code was fixed in a later commit of PLY, PLY itself was apparently abandoned and archived in late 2025. And guess what? That happened in the middle of a large rewrite of the package, so re-vendoring the pre-archiving commit seemed like a risky proposition.</p>
+<p>On the issue it was suggested that "hopefully the dependent packages move on to a non-abandoned parser or implement their own"; I originally laughed this idea off, but then it got me thinking... which is what this post is all about.</p>
+<h3 id="growing-complexity-of-parsing-a-messy-language">Growing complexity of parsing a messy language<a class="headerlink" href="#growing-complexity-of-parsing-a-messy-language" title="Permanent link">&para;</a></h3>
+<p>The original K&amp;R2 grammar for C99 had - famously - a single shift-reduce conflict having to do with dangling <code>else</code>s belonging to the most recent <code>if</code> statement. And indeed, other than the famous <a href="https://en.wikipedia.org/wiki/Lexer_hack">lexer hack</a> used to deal with <a href="https://eli.thegreenplace.net/2011/05/02/the-context-sensitivity-of-cs-grammar-revisited">C's type name / ID ambiguity</a>, pycparser only had this single shift-reduce conflict.</p>
+<p>But things got more complicated. Over the years, features were added that weren't strictly in the standard but were supported by all the industrial compilers. The more advanced C11 and C23 standards weren't beholden to the promises of conflict-free YACC parsing (since almost no industrial-strength compilers use YACC at this point), so all caution went out of the window.</p>
+<p>The latest (PLY-based) release of pycparser has many reduce-reduce conflicts <a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-2">[2]</a>; these are a severe maintenance hazard because it means the parsing rules essentially have to be tie-broken by order of appearance in the code. This is very brittle; pycparser has only managed to maintain its stability and quality through its comprehensive test suite. Over time, it became harder and harder to extend, because YACC parsing rules have all kinds of spooky-action-at-a-distance effects. The straw that broke the camel's back was <a href="https://github.com/eliben/pycparser/pull/590">this PR</a> which again proposed to increase the number of reduce-reduce conflicts <a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-3">[3]</a>.</p>
+<p>This - again - prompted me to think "what if I just dump YACC and switch to a hand-written recursive descent parser", and here we are.</p>
+<h2 id="the-mental-roadblock">The mental roadblock<a class="headerlink" href="#the-mental-roadblock" title="Permanent link">&para;</a></h2>
+<p>None of the challenges described above are new; I've been pondering them for many years now, and yet biting the bullet and rewriting the parser didn't feel like something I'd like to get into. By my private estimates it'd take at least a week of deep heads-down work to port the gritty 2000 lines of YACC grammar rules to a recursive descent parser <a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-4">[4]</a>. Moreover, it wouldn't be a particularly <em>fun</em> project either - I didn't feel like I'd learn much new and my interests have shifted away from this project. In short, the <a href="https://en.wikipedia.org/wiki/Potential_well">Potential well</a> was just too deep.</p>
+<h2 id="why-would-this-even-work-tests">Why would this even work? Tests<a class="headerlink" href="#why-would-this-even-work-tests" title="Permanent link">&para;</a></h2>
+<p>I've definitely noticed the improvement in capabilities of LLM coding agents in the past few months, and many reputable people online rave about using them for increasingly larger projects. That said, would an LLM agent really be able to accomplish such a complex project on its own? This isn't just a toy, it's thousands of lines of dense parsing code.</p>
+<p>What gave me hope is the concept of <a href="https://simonwillison.net/2025/Dec/31/the-year-in-llms/#the-year-of-conformance-suites">conformance suites mentioned by Simon Willison</a>. Agents seem to do well when there's a very clear and rigid goal function - such as a large, high-coverage conformance test suite.</p>
+<p>And pycparser has an <a href="https://github.com/eliben/pycparser/blob/main/tests/test_c_parser.py">very extensive one</a>. Over 2500 lines of test code parsing various C snippets to ASTs with expected results, grown over a decade and a half of real issues and bugs reported by users.</p>
+<p>I figured the LLM can either succeed or fail and throw its hands up in despair, but it's quite unlikely to produce a <em>wrong</em> port that would still pass all the tests. So I set it to run.</p>
+<h2 id="the-initial-port">The initial port<a class="headerlink" href="#the-initial-port" title="Permanent link">&para;</a></h2>
+<p>I fired up Codex in pycparser's repository, and wrote this prompt just to make sure it understands me and can run the tests:</p>
+<div class="language-text highlight"><pre><span></span><code>This repository implements a Python parser producing an AST. It has a very
+extensive test suite; can you first verify you successfully run all the tests?
+(with python3 -m unittest discover, from the root dir)
+</code></pre></div>
+<p>Codex figured it out (I gave it the exact command, after all!); my next prompt was the real thing <a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-5">[5]</a>:</p>
+<div class="language-text highlight"><pre><span></span><code>pycparser uses the PLY library for its lexer and parser, and its own AST
+package for the ASTs created by the parser. I want to explore replacing the
+Parser component (leaving the Lexer alone for now) with a hand written
+recursive descent parser that will pass all the same tests. Can you try that?
+</code></pre></div>
+<p>Here Codex went to work and churned <em>for over an hour</em>. Having never observed an agent work for nearly this long, I kind of assumed it went off the rails and will fail sooner or later. So I was rather surprised and skeptical when it eventually came back with:</p>
+<div class="language-text highlight"><pre><span></span><code>Replaced the PLY parse path with a handwritten recursive‑descent parser while
+keeping the existing lexer and AST helpers intact; CParser now points to the
+new RD implementation, with the old PLY version preserved as PLYCParser in
+pycparser/c_parser.py. The RD parser includes a token stream, declarator/type
+parsing, expression precedence handling, pragmas, and statement parsing to
+match the previous AST output and coordinate behavior.
+</code></pre></div>
+<p>It took me a while to poke around the code and run it until I was convinced - it had actually done it! It wrote a new recursive descent parser with only ancillary dependencies on PLY, and that parser passed the test suite. After a few more prompts, we've removed the ancillary dependencies and made the structure clearer. I hadn't looked too deeply into code quality at this point, but at least on the functional level - it succeeded. This was very impressive!</p>
+<h2 id="a-quick-note-on-reviews-and-branches">A quick note on reviews and branches<a class="headerlink" href="#a-quick-note-on-reviews-and-branches" title="Permanent link">&para;</a></h2>
+<p>A change like the one described above is impossible to code-review as one PR in any meaningful way; so I used a different strategy. Before embarking on this path, I created a new branch and once Codex finished the initial rewrite, I committed this change, knowing that I will review it in detail, piece-by-piece later on.</p>
+<p>Even though coding agents have their own notion of history and can "revert" certain changes, I felt much safer relying on Git. In the worst case if all of this goes south, I can nuke the branch and it's as if nothing ever happened. I was determined to only merge this branch onto <code>main</code> once I was fully satisfied with the code. In what follows, I had to <code>git reset</code> several times when I didn't like the direction in which Codex was going. In hindsight, doing this work in a branch was absolutely the right choice.</p>
+<h2 id="the-long-tail-of-goofs">The long tail of goofs<a class="headerlink" href="#the-long-tail-of-goofs" title="Permanent link">&para;</a></h2>
+<p>Once I've sufficiently convinced myself that the new parser is actually working, I used Codex to similarly rewrite the lexer and get rid of the PLY dependency entirely, deleting it from the repository. Then, I started looking more deeply into code quality - reading the code created by Codex and trying to wrap my head around it.</p>
+<p>And - oh my - this was quite the journey. Much has been written about the code produced by agents, and much of it seems to be true. Maybe it's a setting I'm missing (I'm not using my own custom <code>AGENTS.md</code> yet, for instance), but Codex seems to be that eager programmer that wants to get from A to B whatever the cost. Readability, minimalism and code clarity are very much secondary goals.</p>
+<p>Using <code>raise...except</code> for control flow? Yep. Abusing Python's weak typing (like having <code>None</code>, <code>false</code> and other values all mean different things for a given variable)? For sure. Spreading the logic of a complex function all over the place instead of putting all the key parts in a single switch statement? You bet.</p>
+<p>Moreover, the agent is hilariously <em>lazy</em>. More than once I had to convince it to do something it initially said is impossible, and even insisted again in follow-up messages. The anthropomorphization here is mildly concerning, to be honest. I could never imagine I would be writing something like the following to a computer, and yet - here we are: "Remember how we moved X to Y before? You can do it again for Z, definitely. Just try".</p>
+<p>My process was to see how I can instruct Codex to fix things, and intervene myself (by rewriting code) as little as possible. I've <em>mostly</em> succeeded in this, and did maybe 20% of the work myself.</p>
+<p>My branch grew <em>dozens</em> of commits, falling into roughly these categories:</p>
+<ol>
+<li>The code in X is too complex; why can't we do Y instead?</li>
+<li>The use of X is needlessly convoluted; change Y to Z, and T to V in all instances.</li>
+<li>The code in X is unclear; please add a detailed comment - with examples - to explain what it does.</li>
+</ol>
+<p>Interestingly, after doing (3), the agent was often more effective in giving the code a "fresh look" and succeeding in either (1) or (2).</p>
+<h2 id="the-end-result">The end result<a class="headerlink" href="#the-end-result" title="Permanent link">&para;</a></h2>
+<p>Eventually, after many hours spent in this process, I was reasonably pleased with the code. It's far from perfect, of course, but taking the essential complexities into account, it's something I could see myself maintaining (with or without the help of an agent). I'm sure I'll find more ways to improve it in the future, but I have a reasonable degree of confidence that this will be doable.</p>
+<p>It passes all the tests, so I've been able to release a new version (3.00) without major issues so far. The only issue I've discovered is that some of CFFI's tests are overly precise about the phrasing of errors reported by pycparser; this was <a href="https://github.com/python-cffi/cffi/pull/224">an easy fix</a>.</p>
+<p>The new parser is also faster, by about 30% based on my benchmarks! This is typical of recursive descent when compared with YACC-generated parsers, in my experience. After reviewing the initial rewrite of the lexer, I've spent a while instructing Codex on how to make it faster, and it worked reasonably well.</p>
+<h2 id="followup-static-typing">Followup - static typing<a class="headerlink" href="#followup-static-typing" title="Permanent link">&para;</a></h2>
+<p>While working on this, it became quite obvious that static typing would make the process easier. LLM coding agents really benefit from closed loops with strict guardrails (e.g. a test suite to pass), and type-annotations act as such. For example, had pycparser already been type annotated, Codex would probably not have overloaded values to multiple types (like <code>None</code> vs. <code>False</code> vs. others).</p>
+<p>In a followup, I asked Codex to type-annotate pycparser (running checks using <code>ty</code>), and this was also a back-and-forth because the process exposed some issues that needed to be refactored. Time will tell, but hopefully it will make further changes in the project simpler for the agent.</p>
+<p>Based on this experience, I'd bet that coding agents will be somewhat more effective in strongly typed languages like Go, TypeScript and especially Rust.</p>
+<h2 id="conclusions">Conclusions<a class="headerlink" href="#conclusions" title="Permanent link">&para;</a></h2>
+<p>Overall, this project has been a really good experience, and I'm impressed with what modern LLM coding agents can do! While there's no reason to expect that progress in this domain will stop, even if it does - these are already very useful tools that can significantly improve programmer productivity.</p>
+<p>Could I have done this myself, without an agent's help? Sure. But it would have taken me <em>much</em> longer, assuming that I could even muster the will and concentration to engage in this project. I estimate it would take me at least a week of full-time work (so 30-40 hours) spread over who knows how long to accomplish. With Codex, I put in an order of magnitude less work into this (around 4-5 hours, I'd estimate) and I'm happy with the result.</p>
+<p>It was also <em>fun</em>. At least in one sense, my professional life can be described as the pursuit of focus, deep work and <em>flow</em>. It's not easy for me to get into this state, but when I do I'm highly productive and find it very enjoyable. Agents really help me here. When I know I need to write some code and it's hard to get started, asking an agent to write a prototype is a great catalyst for my motivation. Hence the meme at the beginning of the post.</p>
+<h3 id="does-code-quality-even-matter">Does code quality even matter?<a class="headerlink" href="#does-code-quality-even-matter" title="Permanent link">&para;</a></h3>
+<p>One can't avoid a nagging question - does the quality of the code produced by agents even matter? Clearly, the agents themselves can understand it (if not today's agent, then at least next year's). Why worry about future maintainability if the agent can maintain it? In other words, does it make sense to just go full vibe-coding?</p>
+<p>This is a fair question, and one I don't have an answer to. Right now, for projects I maintain and <em>stand behind</em> , it seems obvious to me that the code should be fully understandable and accepted by me, and the agent is just a tool helping me get to that state more efficiently. It's hard to say what the future holds here; it's going to interesting, for sure.</p>
+<hr />
+<table>
+<thead>
+<tr>
+<th><a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-reference-1">[1]</a></th>
+<th>pycparser has a fair number of <a href="https://deps.dev/pypi/pycparser/3.0.0/dependents">direct dependents</a>, but the majority of downloads comes through <a href="https://github.com/python-cffi/cffi">CFFI</a>, which itself is a major building block for much of the Python ecosystem.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-reference-2">[2]</a></td>
+<td>The table-building report says 177, but that's certainly an over-dramatization because it's common for a single conflict to manifest in several ways.</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-reference-3">[3]</a></td>
+<td>It didn't help the PR's case that it was almost certainly vibe coded.</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-reference-4">[4]</a></td>
+<td>There was also the lexer to consider, but this seemed like a much simpler job. My impression is that in the early days of computing, <code>lex</code> gained prominence because of strong regexp support which wasn't very common yet. These days, with excellent regexp libraries existing for pretty much every language, the added value of <code>lex</code> over a <a href="https://eli.thegreenplace.net/2013/06/25/regex-based-lexical-analysis-in-python-and-javascript">custom regexp-based lexer</a> isn't very high. That said, it wouldn't make much sense to embark on a journey to rewrite <em>just</em> the lexer; the dependency on PLY would still remain, and besides, PLY's lexer and parser are designed to work well together. So it wouldn't help me much without tackling the parser beast.</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><a href="https://eli.thegreenplace.net/feeds/all.atom.xml#footnote-reference-5">[5]</a></td>
+<td>I've decided to ask it to the port the parser first, leaving the lexer alone. This was to split the work into reasonable chunks. Besides, I figured that the parser is the hard job anyway - if it succeeds in that, the lexer should be easy. That assumption turned out to be correct.</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 05:40:42 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

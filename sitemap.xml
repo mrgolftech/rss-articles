@@ -9,6 +9,14 @@
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
+         <loc>https://mrgolftech.github.io/rss-articles/abortretry.fail/A%20Brief%20History%20of%20Sega%20Enterprises_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/abortretry.fail/The%20Olivetti%20Company_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
          <loc>https://mrgolftech.github.io/rss-articles/anildash.com/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
@@ -65,6 +73,54 @@
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
+         <loc>https://mrgolftech.github.io/rss-articles/beej.us/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/beej.us/Adding%20Mastodon%20Comments%20to%20your%20Blog_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/beej.us/Exploring%20Rust%20Traits_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/beej.us/Rust%20RPN%20Calculator_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/beej.us/Stop%20Using%20DRM%20on%20your%20Books_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/beej.us/Using%20Virtual%20Environments%20in%20Python_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/bernsteinbear.com/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/bernsteinbear.com/A%20multi-entry%20CFG%20design%20conundrum_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/bernsteinbear.com/Load%20and%20store%20forwarding%20in%20the%20Toy%20Optimizer_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/bernsteinbear.com/Sorry%20for%20marking%20all%20the%20posts%20as%20unread_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/bernsteinbear.com/The%20GDB%20JIT%20interface_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/bernsteinbear.com/ZJIT%20is%20now%20available%20in%20Ruby%204.0_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
          <loc>https://mrgolftech.github.io/rss-articles/berthub.eu/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
@@ -82,6 +138,30 @@
     </url>
     <url>
          <loc>https://mrgolftech.github.io/rss-articles/blog.jim-nielsen.com/The%20Browser%E2%80%99s%20Little%20White%20Lies_20260201/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/bogdanthegeek.github.io/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/bogdanthegeek.github.io/Hosting%20a%20WebSite%20on%20a%20Disposable%20Vape_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/bogdanthegeek.github.io/J-Link%20RTT%20for%20the%20Masses_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/bogdanthegeek.github.io/Making%20PCBs_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/bogdanthegeek.github.io/MicroAlloc_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/bogdanthegeek.github.io/World%27s%20Cheapest%20ARM%20Debugger%20is%20Actually%20RISC-V_20260205/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
@@ -109,6 +189,26 @@
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
+         <loc>https://mrgolftech.github.io/rss-articles/brutecat.com/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/brutecat.com/Decoding%20Google-%20Converting%20a%20Black%20Box%20to%20a%20White%20Box_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/brutecat.com/Disclosing%20YouTube%20Creator%20Emails%20for%20a%20%2420k%20Bounty_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/brutecat.com/Leaking%20the%20email%20of%20any%20YouTube%20user%20for%20%2410%2C000_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/brutecat.com/Leaking%20the%20phone%20number%20of%20any%20Google%20user_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
          <loc>https://mrgolftech.github.io/rss-articles/buttondown.com/hillelwayne/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
@@ -117,7 +217,15 @@
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
+         <loc>https://mrgolftech.github.io/rss-articles/buttondown.com/hillelwayne/Logic%20for%20Programmers%20New%20Release%20and%20Next%20Steps_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
          <loc>https://mrgolftech.github.io/rss-articles/buttondown.com/hillelwayne/My%20Gripes%20with%20Prolog_20260114/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/buttondown.com/hillelwayne/My%20Gripes%20with%20Prolog_20260205/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
@@ -125,11 +233,23 @@
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
+         <loc>https://mrgolftech.github.io/rss-articles/buttondown.com/hillelwayne/Refinement%20without%20Specification_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
          <loc>https://mrgolftech.github.io/rss-articles/buttondown.com/hillelwayne/Some%20Fun%20Software%20Facts_20251210/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
+         <loc>https://mrgolftech.github.io/rss-articles/buttondown.com/hillelwayne/Some%20Fun%20Software%20Facts_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
          <loc>https://mrgolftech.github.io/rss-articles/buttondown.com/hillelwayne/The%20Liskov%20Substitution%20Principle%20does%20more%20than%20you%20think_20260106/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/buttondown.com/hillelwayne/The%20Liskov%20Substitution%20Principle%20does%20more%20than%20you%20think_20260205/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
@@ -157,6 +277,54 @@
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
+         <loc>https://mrgolftech.github.io/rss-articles/chiark.greenend.org.uk/~sgtatham/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/chiark.greenend.org.uk/~sgtatham/Aperiodic%20Tilings%20V-%20the%20Refinable%20Frontier_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/chiark.greenend.org.uk/~sgtatham/Brute-forcing%20Langley%E2%80%99s%20geometry%20problem%20with%20field%20extensions_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/chiark.greenend.org.uk/~sgtatham/Iconography%20of%20the%20PuTTY%20tools_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/chiark.greenend.org.uk/~sgtatham/In%20which%20I%20have%20Opinions%20about%20parsing%20and%20grammars_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/chiark.greenend.org.uk/~sgtatham/Policy%20of%20transience_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/computer.rip/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/computer.rip/Flock%20and%20Urban%20Surveillance_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/computer.rip/RuBee_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/computer.rip/air%20traffic%20control-%20the%20IBM%209020_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/computer.rip/speed%20reading%20%28the%20meaning%20of%20language%29_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/computer.rip/the%20essence%20of%20frigidity_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
          <loc>https://mrgolftech.github.io/rss-articles/construction-physics.com/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
@@ -166,6 +334,78 @@
     </url>
     <url>
          <loc>https://mrgolftech.github.io/rss-articles/construction-physics.com/Reading%20List%20for%2001-31-2026_20260131/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/danielchasehooper.com/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/danielchasehooper.com/A%20Fast%2C%20Growable%20Array%20With%20Stable%20Pointers%20in%20C_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/danielchasehooper.com/Hot%20reloading%20is%20better%20than%20SwiftUI%20previews_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/danielchasehooper.com/I%20Made%20A%20Real-Time%20Build%20Visualizer_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/danielchasehooper.com/Testing%20Opus%204.5%20For%20C%20Programming_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/danielchasehooper.com/Type%20Safe%20Generic%20Data%20Structures%20in%20C_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/danieldelaney.net/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/danieldelaney.net/Chat%20is%20a%20bad%20UI%20pattern%20for%20development%20tools_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/danieldelaney.net/Data%20Center%20Monitoring_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/danieldelaney.net/Free%20software%20scares%20normal%20people_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/danieldelaney.net/I%20built%20a%20timer%20I%20can%E2%80%99t%20fail%20to%20set_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/danieldelaney.net/Objectivity%20is%20superstition_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/danielwirtz.com/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/danielwirtz.com/How%20to%20create%20a%20tool%20library%20in%20Airtable_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/danielwirtz.com/Pulling%20the%20plug%20on%20Roamflow_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/danielwirtz.com/Task%20Management%20in%20Roam%20Research_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/danielwirtz.com/Tracking%20LinkedIn%20profile%20analytics%20with%20Airtable_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/danielwirtz.com/Using%20Roam%20Highlighter%20with%20Logseq_20260205/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
@@ -193,6 +433,14 @@
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
+         <loc>https://mrgolftech.github.io/rss-articles/derekthompson.org/The%20Affordability%20Curse_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/derekthompson.org/The%20Era%20of%20Step-on-a-Rake%20Capitalism_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
          <loc>https://mrgolftech.github.io/rss-articles/devblogs.microsoft.com/oldnewthing/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
@@ -201,7 +449,15 @@
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
+         <loc>https://mrgolftech.github.io/rss-articles/devblogs.microsoft.com/oldnewthing/How%20can%20I%20prevent%20the%20user%20from%20changing%20the%20widths%20of%20ListView%20columns-_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
          <loc>https://mrgolftech.github.io/rss-articles/devblogs.microsoft.com/oldnewthing/Some%20small%20stories%20about%20the%20giant%20satellite%20dish%20antenna%20that%20was%20behind%20Microsoft%20Building%2011_20260203/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/devblogs.microsoft.com/oldnewthing/Some%20small%20stories%20about%20the%20giant%20satellite%20dish%20antenna%20that%20was%20behind%20Microsoft%20Building%2011_20260205/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
@@ -209,11 +465,23 @@
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
+         <loc>https://mrgolftech.github.io/rss-articles/devblogs.microsoft.com/oldnewthing/Studying%20compiler%20error%20messages%20closely-%20Input%20file%20paths_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
          <loc>https://mrgolftech.github.io/rss-articles/devblogs.microsoft.com/oldnewthing/Super%20Bowl%20LX%20creates%20an%20opportunity%20for%20symphonic%20friendly%20wagering_20260204/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
+         <loc>https://mrgolftech.github.io/rss-articles/devblogs.microsoft.com/oldnewthing/Super%20Bowl%20LX%20creates%20an%20opportunity%20for%20symphonic%20friendly%20wagering_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
          <loc>https://mrgolftech.github.io/rss-articles/devblogs.microsoft.com/oldnewthing/Why%20not%20store%20the%20SAFEARRAY%20reference%20count%20as%20a%20hidden%20allocation%20next%20to%20the%20SAFEARRAY-_20260130/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/devblogs.microsoft.com/oldnewthing/Why%20not%20store%20the%20SAFEARRAY%20reference%20count%20as%20a%20hidden%20allocation%20next%20to%20the%20SAFEARRAY-_20260205/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
@@ -241,11 +509,123 @@
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
+         <loc>https://mrgolftech.github.io/rss-articles/downtowndougbrown.com/An%20update%20about%20the%20hidden%20Performa%20550%20recovery%20partition_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/downtowndougbrown.com/Debugging%20BeagleBoard%20USB%20boot%20with%20a%20sniffer-%20fixing%20omap_loader%20on%20modern%20PCs_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/downtowndougbrown.com/Finding%20a%2027-year-old%20easter%20egg%20in%20the%20Power%20Mac%20G3%20ROM_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/downtowndougbrown.com/Finding%20a%20broken%20trace%20on%20my%20old%20Mac%20with%20the%20help%20of%20its%20ROM%20diagnostics_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/dwarkesh.com/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/dwarkesh.com/01_Hiring_scouts_to_help_me_find_guests/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/dwarkesh.com/02_What_I_ve_been_reading_recently_-_Jan_10__2026/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/dwarkesh.com/03_Adam_Marblestone___AI_is_missing_something_fundame/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/dwarkesh.com/04_An_audio_version_of_my_blog_post__Thoughts_on_AI_p/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/dwarkesh.com/05_Sarah_Paine___Why_Russia_Lost_the_Cold_War/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/dynomight.net/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/dynomight.net/Good%20if%20make%20prior%20after%20data%20instead%20of%20before_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/dynomight.net/Make%20product%20worse%2C%20get%20money_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/dynomight.net/Underrated%20reasons%20to%20be%20thankful%20V_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/dynomight.net/Why%20read%20novels-_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/dynomight.net/Why%20the%20chicken%20crossed%20the%20road%2C%20according%20to%20various%20entities_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/eli.thegreenplace.net/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/eli.thegreenplace.net/Compiling%20Scheme%20to%20WebAssembly_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/eli.thegreenplace.net/Plugins%20case%20study-%20mdBook%20preprocessors_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/eli.thegreenplace.net/Revisiting%20-Let%27s%20Build%20a%20Compiler-_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/eli.thegreenplace.net/Rewriting%20pycparser%20with%20the%20help%20of%20an%20LLM_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/eli.thegreenplace.net/Summary%20of%20reading-%20October%20-%20December%202025_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
          <loc>https://mrgolftech.github.io/rss-articles/entropicthoughts.com/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://mrgolftech.github.io/rss-articles/entropicthoughts.com/Laws%20of%20Succession_20260202/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/ericmigi.com/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/ericmigi.com/01_On_Being_A_Canadian_In_America_In_2026/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/ericmigi.com/02_Pebble_Round_2_-_The_Most_Stylish_Pebble_Ever/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/ericmigi.com/03_Pebble_Relaunch_-_Year_One_Done_/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/ericmigi.com/04_Meet_Pebble_Index_01_-_External_Memory_For_Your_Br/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/ericmigi.com/05_Pebble_Watch_Software_Is_Now_100__Open_Source___Ti/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
@@ -262,6 +642,30 @@
     </url>
     <url>
          <loc>https://mrgolftech.github.io/rss-articles/experimental-history.com/Underrated%20ways%20to%20change%20the%20world%2C%20vol.%20II_20260203/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/fabiensanglard.net/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/fabiensanglard.net/Building%20a%201997%20Quake%20PC%21_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/fabiensanglard.net/Building%20a%201997%20Quake%20PC-%20Benchmarking%20GLquake_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/fabiensanglard.net/Building%20a%201997%20Quake%20PC-%20Benchmarking%20Quake_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/fabiensanglard.net/Building%20a%201997%20Quake%20PC-%20Benchmarking%20Vquake_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/fabiensanglard.net/Is%20QSpy%20still%20cool-%20Let%27s%20play%20QuakeWorld%21_20260205/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
@@ -293,11 +697,199 @@
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
+         <loc>https://mrgolftech.github.io/rss-articles/geoffreylitt.com/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/geoffreylitt.com/AI%20as%20teleportation_20250910/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/geoffreylitt.com/Code%20like%20a%20surgeon_20251024/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/geoffreylitt.com/Enough%20AI%20copilots%21%20We%20need%20AI%20HUDs_20250727/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/geoffreylitt.com/Is%20chat%20a%20good%20UI%20for%20AI-%20A%20Socratic%20dialogue_20250629/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/geoffreylitt.com/Stevens-%20a%20hackable%20AI%20assistant%20using%20a%20single%20SQLite%20table%20and%20a%20handful%20of%20cron%20jobs_20250412/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/geohot.github.io/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/geohot.github.io/The%20Coming%20War%20on%20Car%20Ownership_20260125/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/geohot.github.io/The%20Importance%20of%20Diversity_20260127/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/geohot.github.io/Will%20I%20ever%20own%20a%20zettaflop-_20260126/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/geohot.github.io/how%20do%20I%20stop%20participating-_20260118/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/geohot.github.io/you%20have%20three%20minutes%20to%20escape%20the%20perpetual%20underclass_20260117/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/gilesthomas.com/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/gilesthomas.com/01_Writing_an_LLM_from_scratch__part_26_--_evaluating/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/gilesthomas.com/02_Writing_an_LLM_from_scratch__part_27_--_what_s_lef/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/gilesthomas.com/03_Why_smart_instruction-following_makes_prompt_injec/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/gilesthomas.com/04_Writing_an_LLM_from_scratch__part_28_--_training_a/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/gilesthomas.com/05_Writing_an_LLM_from_scratch__part_29_--_using_Dist/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
          <loc>https://mrgolftech.github.io/rss-articles/grantslatton.com/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://mrgolftech.github.io/rss-articles/grantslatton.com/Manufacturing%20as%20Maintenance_20260131/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/gwern.net/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/gwern.net/April%202021%20newsletter_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/gwern.net/February%202021%20Gwern.net%20Newsletter_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/gwern.net/Jan%202021%20Gwern.net%20Newsletter_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/gwern.net/March%202021%20Gwern.net%20Newsletter_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/gwern.net/May%202021%20Gwern.net%20Newsletter_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/herman.bearblog.dev/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/herman.bearblog.dev/Aggressive%20bots%20ruined%20my%20weekend_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/herman.bearblog.dev/Discovery%20and%20AI_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/herman.bearblog.dev/Grow%20slowly%2C%20stay%20small_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/herman.bearblog.dev/Messing%20with%20bots_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/herman.bearblog.dev/Things%20that%20work%20%28for%20me%29_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/hey.paris/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/hey.paris/AUC_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/hey.paris/About%20Paris_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/hey.paris/Bolted%20Down_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/hey.paris/Signal%20to%20Noise_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/hey.paris/The%20Chair_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/hugotunius.se/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/hugotunius.se/Claude%2C%20Teach%20Me%20Something_20251026/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/hugotunius.se/Claude%2C%20Teach%20Me%20Something_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/hugotunius.se/On%20Async%20Rust_20240308/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/hugotunius.se/On%20Async%20Rust_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/hugotunius.se/Stop%20Using%20%28only%29%20GitHub%20Releases_20240120/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/hugotunius.se/Stop%20Using%20%28only%29%20GitHub%20Releases_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/hugotunius.se/The%20Great%20Pendulum_20230709/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/hugotunius.se/The%20Great%20Pendulum_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/hugotunius.se/What%20Every%20Argument%20About%20Sideloading%20Gets%20Wrong_20250831/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/hugotunius.se/What%20Every%20Argument%20About%20Sideloading%20Gets%20Wrong_20260205/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
@@ -314,6 +906,58 @@
     </url>
     <url>
          <loc>https://mrgolftech.github.io/rss-articles/idiallo.com/You%20Don%27t%20Understand%20Things%20Better%2C%20You%20Just%20Feel%20Smarter_20260130/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/it-notes.dragas.net/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/it-notes.dragas.net/Installing%20Void%20Linux%20on%20ZFS%20with%20Hibernation%20Support_20251222/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/it-notes.dragas.net/Installing%20Void%20Linux%20on%20ZFS%20with%20Hibernation%20Support_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/it-notes.dragas.net/Self-hosting%20your%20Mastodon%20media%20with%20SeaweedFS_20251106/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/it-notes.dragas.net/Self-hosting%20your%20Mastodon%20media%20with%20SeaweedFS_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/it-notes.dragas.net/Static%20Web%20Hosting%20on%20the%20Intel%20N150-%20FreeBSD%2C%20SmartOS%2C%20NetBSD%2C%20OpenBSD%20and%20Linux%20Compared_20251119/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/it-notes.dragas.net/Static%20Web%20Hosting%20on%20the%20Intel%20N150-%20FreeBSD%2C%20SmartOS%2C%20NetBSD%2C%20OpenBSD%20and%20Linux%20Compared_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/it-notes.dragas.net/Time%20Machine%20inside%20a%20FreeBSD%20jail_20260128/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/it-notes.dragas.net/Time%20Machine%20inside%20a%20FreeBSD%20jail_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/it-notes.dragas.net/Why%20I%20%28still%29%20love%20Linux_20251124/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/it-notes.dragas.net/Why%20I%20%28still%29%20love%20Linux_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/jayd.ml/MORE%20ENTICING%20THAN%20EVER-%20THE%20HYPNOVERSE_20260105/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/jayd.ml/Someone%20At%20YouTube%20Needs%20Glasses-%20The%20Prophecy%20Has%20Been%20Fulfilled_20251110/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
@@ -357,6 +1001,54 @@
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
+         <loc>https://mrgolftech.github.io/rss-articles/jyn.dev/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/jyn.dev/I%20want%20a%20better%20build%20executor_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/jyn.dev/i%27m%20just%20having%20fun_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/jyn.dev/pre-commit%20hooks%20are%20fundamentally%20broken_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/jyn.dev/remotely%20unlocking%20an%20encrypted%20hard%20disk_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/jyn.dev/what%20is%20a%20build%20system%2C%20anyway-_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/keygen.sh/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/keygen.sh/How%20I%20replaced%20Baremetrics%20and%20ChartMogul%20with%20Rake_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/keygen.sh/How%20to%20Build%20a%20Webhook%20System%20in%20Rails%20Using%20Sidekiq_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/keygen.sh/How%20to%20Generate%20Secure%20License%20Keys%20in%202026_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/keygen.sh/How%20to%20Implement%20API%20Key%20Authentication%20in%20Rails%20Without%20Devise_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/keygen.sh/How%20to%20License%20and%20Distribute%20a%20Private%20Node%20Module_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
          <loc>https://mrgolftech.github.io/rss-articles/krebsonsecurity.com/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
@@ -381,6 +1073,30 @@
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
+         <loc>https://mrgolftech.github.io/rss-articles/lcamtuf.substack.com/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/lcamtuf.substack.com/01_You_gotta_think_outside_the_hypercube/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/lcamtuf.substack.com/02_The_toil_of__blog__art/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/lcamtuf.substack.com/03_See_it_with_your_lying_ears/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/lcamtuf.substack.com/04_Cursed_circuits__4__PLL_frequency_multiplier/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/lcamtuf.substack.com/05_Cursed_circuits__3__true_mathematics/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
          <loc>https://mrgolftech.github.io/rss-articles/lucumr.pocoo.org/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
@@ -394,6 +1110,78 @@
     </url>
     <url>
          <loc>https://mrgolftech.github.io/rss-articles/martinalderson.com/Two%20kinds%20of%20AI%20users%20are%20emerging.%20The%20gap%20between%20them%20is%20astonishing._20260201/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/matduggan.com/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/matduggan.com/Greenland%20is%20a%20beautiful%20nightmare_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/matduggan.com/I%20broke%20and%20fixed%20my%20Ghost%20blog_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/matduggan.com/Making%20RSS%20More%20Fun_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/matduggan.com/SQLite%20for%20a%20REST%20API%20Database-_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/matduggan.com/The%20Year%20of%20the%203D%20Printed%20Miniature%20%28And%20Other%20Lies%20We%20Tell%20Ourselves%29_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/matklad.github.io/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/matklad.github.io/Considering%20Strictly%20Monotonic%20Time_20260123/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/matklad.github.io/Memory%20Safety%20Is_20251230/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/matklad.github.io/The%20Second%20Great%20Error%20Model%20Convergence_20251229/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/matklad.github.io/Vibecoding%20%232_20260120/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/matklad.github.io/make.ts_20260127/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/maurycyz.com/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/maurycyz.com/01_Notes_on_blog_future-proofing/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/maurycyz.com/02_Writing_my_own_static_site_generator/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/maurycyz.com/03_How_to_write_your_own_website/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/maurycyz.com/04_The_horsehead_nebula__2026_/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/maurycyz.com/05_You_should_start_a_blog/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
@@ -425,6 +1213,78 @@
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
+         <loc>https://mrgolftech.github.io/rss-articles/minimaxir.com/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/minimaxir.com/01_Nano_Banana_Pro_is_the_best_AI_image_generator__wi/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/minimaxir.com/02_Nano_Banana_can_be_prompt_engineered_for_extremely/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/minimaxir.com/03_Claude_Haiku_4.5_does_not_appreciate_my_attempts_t/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/minimaxir.com/04_Can_modern_LLMs_actually_count_the_number_of_b_s_i/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/minimaxir.com/05_LLMs_can_now_identify_public_figures_in_images/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/mitchellh.com/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/mitchellh.com/01_Don_t_Trip_wire__Yourself__Testing_Error_Recovery_/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/mitchellh.com/02_Finding_and_Fixing_Ghostty_s_Largest_Memory_Leak/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/mitchellh.com/03_Ghostty_Is_Now_Non-Profit/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/mitchellh.com/04_Vibing_a_Non-Trivial_Ghostty_Feature/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/mitchellh.com/05_Zig_Builds_Are_Getting_Faster/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/mjg59.dreamwidth.org/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/mjg59.dreamwidth.org/Cordoomceps%20-%20replacing%20an%20Amiga%27s%20brain%20with%20Doom_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/mjg59.dreamwidth.org/How%20did%20IRC%20ping%20timeouts%20end%20up%20in%20a%20lawsuit-_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/mjg59.dreamwidth.org/Investigating%20a%20forged%20PDF_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/mjg59.dreamwidth.org/Not%20here_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/mjg59.dreamwidth.org/Where%20are%20we%20on%20X%20Chat%20security-_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
          <loc>https://mrgolftech.github.io/rss-articles/nesbitt.io/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
@@ -446,6 +1306,54 @@
     </url>
     <url>
          <loc>https://mrgolftech.github.io/rss-articles/nesbitt.io/Zig%20and%20the%20M%C3%97N%20Supply%20Chain%20Problem_20260129/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/oldvcr.blogspot.com/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/oldvcr.blogspot.com/A%20Christmas%202007%20video%20present%20from%20Old%20VCR%20with%20Jack%20Tramiel%20et%20al_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/oldvcr.blogspot.com/Hands-on%20with%20two%20Apple%20Network%20Server%20prototype%20ROMs_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/oldvcr.blogspot.com/Oblast-%20a%20better%20Blasto%20game%20for%20the%20Commodore%2064_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/oldvcr.blogspot.com/Stewart%20Cheifet%20has%20died_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/oldvcr.blogspot.com/The%20Texas%20Instruments%20CC-40%20invades%20Gopherspace%20%28plus%20TI-74%20BASICALC%29_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/overreacted.io/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/overreacted.io/01_A_Social_Filesystem/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/overreacted.io/02_Introducing_RSC_Explorer/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/overreacted.io/03_Hire_Me_in_Japan/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/overreacted.io/04_How_to_Fix_Any_Bug/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/overreacted.io/05_Where_It_s_at___/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
@@ -473,6 +1381,30 @@
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
+         <loc>https://mrgolftech.github.io/rss-articles/philiplaine.com/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/philiplaine.com/Alfrodull_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/philiplaine.com/Cross%20Compiling%20Docker%20Images_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/philiplaine.com/Getting%20Forked%20by%20Microsoft_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/philiplaine.com/Kubernetes%20Generated%20Secret_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/philiplaine.com/Laine%20Cloud_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
          <loc>https://mrgolftech.github.io/rss-articles/pluralistic.net/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
@@ -494,6 +1426,54 @@
     </url>
     <url>
          <loc>https://mrgolftech.github.io/rss-articles/pluralistic.net/Pluralistic-%20Threads%27%20margin%20is%20the%20Eurostack%27s%20opportunity%20%2830%20Jan%202026%29_20260130/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/rakhim.exotext.com/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/rakhim.exotext.com/01_Alarm_is_sacred__must_not_fail__but_iOS_26_is_wick/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/rakhim.exotext.com/02_Examples_are_the_best_documentation/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/rakhim.exotext.com/03_Benjamin_Button_Reviews_macOS/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/rakhim.exotext.com/04_AI_is_not_another_abstraction_because_god_plays_di/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/rakhim.exotext.com/05_Finland_is_a_high-context_society_that_loves_defau/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/refactoringenglish.com/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/refactoringenglish.com/Adam%20Gordon%20Bell%20on%20Attracting%20Customers%20through%20Blogging_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/refactoringenglish.com/How%20to%20Get%20Meaningful%20Feedback%20on%20Your%20Design%20Document_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/refactoringenglish.com/The%20Most%20Popular%20Blogs%20of%20Hacker%20News%20in%202025_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/refactoringenglish.com/The%20Software%20Essays%20that%20Shaped%20Me_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/refactoringenglish.com/What%20Makes%20the%20Intro%20to%20-Crafting%20Interpreters-%20so%20Good-_20260205/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
@@ -553,6 +1533,30 @@
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
+         <loc>https://mrgolftech.github.io/rss-articles/simone.org/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/simone.org/Consumerism-%20The%20First%20Universal%20Religion%20Humans%20Actually%20Practice_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/simone.org/The%20Antiportfolio-%20Counter-advice%20for%20Aspiring%20Artists_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/simone.org/The%20Mirror%20With%20No%20Reflection_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/simone.org/The%20Postcard%20and%20the%20Thing%20Itself%20%28On%20Falling%20in%20Love%20with%20Ideas%29_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/simone.org/What%20If%20We%20Made%20Advertising%20Illegal-_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
          <loc>https://mrgolftech.github.io/rss-articles/simonwillison.net/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
@@ -577,11 +1581,59 @@
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
+         <loc>https://mrgolftech.github.io/rss-articles/skyfall.dev/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/skyfall.dev/01_The_UK_paid__4.1_million_for_a_bookmarks_site/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/skyfall.dev/02_Using_the_M1_MacBook_Air_in_2026/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/skyfall.dev/03_Getting_Rails__ActiveStorage_blob_IDs_from_file_UR/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/skyfall.dev/04_Why_AI_browsers_haven_t_taken_off/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/skyfall.dev/05_Slack_is_extorting_us_with_a__195k_yr_bill_increas/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
          <loc>https://mrgolftech.github.io/rss-articles/steveblank.com/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://mrgolftech.github.io/rss-articles/steveblank.com/Making%20the%20Wrong%20Things%20Go%20Faster%20at%20The%20Department%20of%20War_20260203/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/susam.net/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/susam.net/01_QuickQWERTY_1.2.1/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/susam.net/02_Attention_Media___Social_Media/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/susam.net/03_Nested_Code_Fences_in_Markdown/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/susam.net/04_Minimal_GitHub_Workflow/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/susam.net/05_Three_Inverse_Laws_of_Robotics/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
@@ -614,6 +1666,54 @@
     </url>
     <url>
          <loc>https://mrgolftech.github.io/rss-articles/terriblesoftware.org/Why%20Am%20I%20Doing%20the%20Thinking%20for%20You-_20260202/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/timsh.org/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/timsh.org/01_Scam_Telegram__Uncovering_a_network_of_groups_spre/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/timsh.org/02_Why_you_should_self-host_your__vibecoded__app/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/timsh.org/03_Switching_to_Claude_Code___VSCode_inside_Docker/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/timsh.org/04_Everyone_knows_your_location__Part_2__try_it_yours/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/timsh.org/05_Github_scam_investigation__Thousands_of__mods__and/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/tomrenner.com/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/tomrenner.com/Does%20my%20toaster%20love%20me-_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/tomrenner.com/LLMs%20are%20a%20400-year-long%20confidence%20trick_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/tomrenner.com/Optimising%20for%20trust_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/tomrenner.com/Things%20that%20made%20me%20think-%20Cycle%20time%2C%20learning%20theory%2C%20and%20build%20chain%20security_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/tomrenner.com/Things%20that%20made%20me%20think-%20Digital%20gardening%2C%20web%20degradation%2C%20and%20digital%20ghosts_20260205/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
@@ -678,6 +1778,30 @@
     </url>
     <url>
          <loc>https://mrgolftech.github.io/rss-articles/xania.org/When%20compilers%20surprise%20you/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/xeiaso.net/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/xeiaso.net/2026%20will%20be%20my%20year%20of%20the%20Linux%20desktop_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/xeiaso.net/Backfilling%20Discord%20forum%20channels%20with%20the%20power%20of%20terrible%20code_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/xeiaso.net/Did%20Zendesk%20get%20popped-_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/xeiaso.net/I%20made%20a%20simple%20agent%20for%20PR%20reviews.%20Don%27t%20use%20it_20260205/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://mrgolftech.github.io/rss-articles/xeiaso.net/Tormentmaxxing%20%27simple%20requests%27_20260205/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
 </urlset>

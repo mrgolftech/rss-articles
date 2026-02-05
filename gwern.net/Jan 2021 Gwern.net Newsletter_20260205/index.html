@@ -1,0 +1,560 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/gwern.net/Jan%202021%20Gwern.net%20Newsletter_20260205/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Jan 2021 Gwern.net Newsletter\n\n来源: https://gwern.net\n链接: https://gwern.substack.com/p/jan-2021-gwernnet-newsletter\n日期: Thu, 04 Feb 2021 20:23:01 GMT\n\n---\n\nJanuary 2021’s\nGwern.net\nnewsletter\nis now out; previous,\nDecember 2020\n(\narchives\n). This is a summary of the revision-history RSS feed, overlapping with my\nChangelog\n& /r/gwern; brought to you by my donors on\nPatreon\n.\n1 Writings\n“Danbooru2020: A Large-Scale Crowdsourced and Tagged Anime Illustration Dataset”\nThis Anime Does Not Exist.ai (TADNE)\n(\ndiscussion\n)\nGwern.net\n: +return-to-top floating button;\npopups\n: can now be disabled (use the ‘gear’ icon); final reimplementation (dynamic JS now; memoizing the recursive inlining, however clever & elegant, turns out to have painful edge-cases & still not be efficient enough—web browsers\nreally\ndon’t like loading hundreds of kilobytes of extra HTML)\n2 Links\n2.1 AI\nMatters Of Scale\n:\nScaling up\n:\n“DALL·E: Creating Images from Text”\n, OpenAI (GPT-3-12.5b generating 1280 tokens →\nVQ-VAE\npixels; generates illustration & photos);\n“CLIP (Contrastive Language-Image Pre-training): Connecting Text and Images”\n, OpenAI (\nRadford et al 2021\n: zero-shot image understanding via text description—useful for much more than just ranking DALL·E samples by quality)\nFurther\nblessings of scale\n: simple\ncontrastive\ntraining on\nn\n= 400m leads to remarkable generalization & combinatorial flexibility of image generation by DALL·E, and CLIP learns to reach image classification SOTA by zero-shot on many datasets, with more human-like errors & less degradation out of samples than rivals, while costing the same to train. OpenAI released their smallest CLIP model (the “\nViT\n-B/32”-equivalent) and people are discovering it seems able to do just about anything without any further training—the paper notes that it does everything from “fine-grained object classification, geo-localization, action recognition in videos, and OCR”, but there’s so much more, and you can use it to generate image captions/descriptions, classify your anime images, pull a specific target image description by gradient ascent or out of another neural network such as an ImageNet\nBigGAN\nor TADNE StyleGAN2-ext (or, why not, synthesize images images embodying abstract concepts like emoji or words like “nightmare fuel” or “confusion”!), search your image datasets by embedding, find mislabeled images (eg by\nusing “upside down” as the prompt\n)… One wonders, like GPT-3, how much better the largest CLIP (“L/14-336px”) is and how many ways of using it (or DALL·E) remain to be found? And why prediction losses work so well in one place, but then contrastive elsewhere?\nFor perspective: there are newly-minted PhDs going on the job market who got excited about deep learning because of these new\n“resnet”\nthings; undergrads who applied to grad school because\nBERT\net al were blowing open NLP & extending neural supremacy to natural language would not yet have passed quals; and it has been only 1 academic semester since\nGPT-3\nwas announced. Or to put it quantitatively, for just sequence modeling: it has been 8,478 days since\nLSTM\nRNNs were published; 3,045 days since\nAlexNet’s\nImageNet scores were released; 1,880 days since residual networks were published in a paper; 1,330 days since\n“Attention Is All You Need”\nhit Arxiv; 844 days since BERT’s paper was published; 718 days since\nGPT-2\nwas announced; 353 days since\nSimCLR\n, and 249 days since GPT-3 was; and 27 days since CLIP/DALL·E.^1^\nSpring is coming.\n(Some still insist we need not worry about “overpopulation on Mars” for >18,264 more days…)\n“Meta Pseudo Labels”\n, Pham et al 2020 (90% on ImageNet by pretraining a meta-learning teacher using JFT-300M on a TPUv3-2048)\n“Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity”\n, Fedus et al 2021 (1.57t-parameter\nGShard\nfollowup; the mixture-of-experts approach, while scaling stably, starts showing its limits)\nScaling down\n:\n“DeiT: Training data-efficient image transformers & distillation through attention”\n, Touvron et al 2020 (scaling Transformer classifiers down to ImageNet+1-GPU);\n“BoTNet: Bottleneck Transformers for Visual Recognition”\n, Srinivas et al 2021/\n“Tokens-to-Token ViT: Training Vision Transformers from Scratch on ImageNet”\n, Yuan et al 2021 (hybrids);\n“not-so-BigGAN: Generating High-Fidelity Images on Small Compute with Wavelet-based Super-Resolution”\n, Han et al 2020/\n“VQGAN: Taming Transformers for High-Resolution Image Synthesis”\n, Esser et al 2020 (training >1024px Transformer GANs on just 2 GPUs)\nTransformer supremacy in image-related tasks continues, and GANs are becoming increasingly hybridized. Do pure-GANs have a future, now that VAEs and autoregressive models are making such inroads into both the highest-quality & lowest-compute sample generation? To take the GAN/DRL analogy seriously, perhaps they were they ultimately a dead end, akin to trying to learn everything from rewards, and an adversarial GAN loss ought to be only\nthe cherry on the cake\nof a large unsupervised/semi-supervised generative model.\n“ZeRO-Offload: Democratizing Billion-Scale Model Training”\n, Ren et al 2021 (partial CPU training for 13b-parameter models on 1 V100 GPU, scaling to 128 GPUs)\n“Prefix-Tuning: Optimizing Continuous Prompts for Generation”\n, Li & Liang 2021 (could the\nPET\n& CLIP trick of averaging multiple embeddings to yield much better performance be reused for GPT-3 prompts to greatly improve prompting? The fact that the prefix-tuning, by directly optimizing the prompt embeddings, yields better performance than even single optimized text prompts, suggests so. The user could provide 3 or 4 similar prompts, and synthesize them into a single super-prompt to better program GPT-3…)\n“Scaling down Deep Learning”\n, Greydanus 2020 (cute: parametric simplified-MNIST for rapid iteration on tiny NNs: experiments in lottery-ticket & meta-learning of LRs/activations)\n“The neural network of the Stockfish chess engine”\n(very lightweight NN designed for incremental recomputation over changing board states)\n“Transformers in Vision: A Survey”\n, Khan et al 2021\nOpenAI departures\n: Dario Amodei, Sam McCandlish, Tom Brown, Tom Henighan, Chris Olah, Jack Clark, Ben Mann, Paul Christiano et al leave—most for an unspecified new entity (\n“the elves leave Middle Earth”\n?)\nAnd the rest:\n“2020 AI Alignment Literature Review and Charity Comparison”\n, Larks\n“Grounded Language Learning Fast and Slow”\n, Hill et al 2020\n“DeBERTa: Decoding-enhanced BERT with Disentangled Attention”\n, He et al 2020 (\nSuperGLUE\nfalls)\n“Solving Mixed Integer Programs Using Neural Networks”\n, Nair et al 2020\n“Towards Fully Automated Manga Translation”\n, Hinami et al 2020\n“UPDeT: Universal Multi-agent Reinforcement Learning via Policy Decoupling with Transformers”\n, Hu et al 2021\n“FERM: A Framework for Efficient Robotic Manipulation”\n, Zhan et al 2021 (contrastive semi-supervised learning + data augmentation for sample-efficiency)\n“XMC-GAN: Cross-Modal Contrastive Learning for Text-to-Image Generation”\n, Zhang et al 2021\n2.2 Genetics\nEverything Is Heritable:\n“Nurture might be nature: cautionary tales and proposed solutions”\n, Hart et al 2021\n“A genetic perspective on the association between exercise and mental health in the era of genome-wide association studies”\n, de Geus 2020;\n“Evidence for shared genetics between physical activity, sedentary behaviour and adiposity-related traits”\n, Schnurr et al 2020\n“Antidepressant Response in Major Depressive Disorder: A Genome-wide Association Study”\n, Pain et al 2020\n“Genome wide analysis of gene dosage in 24,092 individuals shows that 10,000 genes modulate cognitive ability”\n, Huguet et al 2020 (yep, still polygenic)\n“GWAS of three molecular traits highlights core genes and pathways alongside a highly polygenic background”\n, Sinnott-Armstrong et al 2021\n“Genome-scale sequencing and analysis of human, wolf and bison DNA from 25,000 year-old sediment”\n, Gelabert et al 2021 (incredible this is possible)\n“Disentangling sex differences in the shared genetic architecture of PTSD, traumatic experiences, and social support with body size and composition”\n, Carvalho et al 2021 (\nLCV\n)\nRecent Evolution:\n“African genetic diversity and adaptation inform a precision medicine agenda”\n, Pereira et al 2021;\n“The influence of evolutionary history on human health and disease”\n, Benton et al 2021;\n“Local adaptation and archaic introgression shape global diversity at human structural variant loci”\n, Yan et al 2021\n“Genome scans of dog behavior implicate a gene network underlying psychopathology in mammals, including humans”\n, Zapata et al 2021\n“Natural Selection in Contemporary Humans is Linked to Income and Substitution Effects”\n, Hugh-Jones & Abdellaoui 2021\n“The diversity and function of sourdough starter microbiomes”\n, Landis et al 2021 (crowdsourced sourdough show little trace of geographic origins?)\nEngineering:\n“In vivo base editing rescues Hutchinson-Gilford progeria syndrome in mice”\n, Koblan et al 2021\n“From Genotype to Phenotype: polygenic prediction of complex human traits”\n, Raben et al 2021\n2.3 Statistics/Meta-Science/Math\n“The Quantum Field Theory on Which the Everyday World Supervenes”\n, Carroll 2021 (“…we have reason to be confident that the laws of physics underlying the phenomena of everyday life are completely known” because all unknown particles/fields are constrained to being extremely rare/weak, eg by\nAdelberger et al 2009\n)\n“How accurate are citations of frequently cited papers in biomedical literature?”\n, Pavlovic et al 2020 (includes original author’s evaluation of whether a citation of their work is correct)\n“Energy-Efficient Algorithms”\n, Demaine et al 2016 (\nreversible computing\nasymptotics: constant-factor\nstacks\n/\narrays\n, 𝒪(log\nn\n) time/energy\nAVL trees\n, 𝒪(\nn\n) space\nsorts\n, & various 𝒪(Vertex+Edge) time/space/energy\ngraph searches\n)\n“The Optimizer’s Curse: Skepticism and Postdecision Surprise in Decision Analysis”\n, Smith & Winkler 2006 (regression to the mean is everywhere; another example of why Bayes & decision theory are two great flavors that go great together)\n2.4 Politics/Religion\n“The Mechanisms of Cult Production: An Overview”\n, Xavier Marquez 2020 (see previously his\nblog roundup\n)\n“When Prophecy Fails and Faith Persists: A Theoretical Overview”\n, Dawson 1999\n“Why We Fight Over Fiction”\n, Robin Hanson\nThe All-Woman Supreme Court\n2.5 Psychology/Biology\n“Still Alive”\n, Scott Alexander (announcement of SSC return as Substack newsletter ‘Astral Codex Ten’ & launching a low-cost psychiatry clinic ‘Lorien Psychiatry’)\n“The Temporal Dynamics of Opportunity Costs: A Normative Account of Cognitive Fatigue and Boredom”\n, Agrawal et al 2020\n“A unified framework for association and prediction from vertex-wise grey-matter structure”\n, Couvy-Duchesne et al 2020 (more\nmorphometricity\n)\nCommon phenomena\n:\n“Sounds from seeing silent motion: Who hears them, and what looks loudest?”\n, Fassnidge & Freeman 2018 (on ‘visual ear’; previously:\nSaenz & Koch 2008\n,\nFassnidge et al 2017\n)\n“Predicting Mental Health From Followed Accounts on Twitter”\n, Costelli et al 2021 (\nRegistered Report\n: who you choose to follow says a lot about you—\neverything is correlated\n)\n“No evidence for general intelligence in a fish”\n, Aellen et al 2021\nDelirium tremens\n“Microbiome connections with host metabolism and habitual diet from 1,098 deeply phenotyped individuals”\n, Asnicar et al 2021\n“Universal DNA methylation age across mammalian tissues”\n, Lu et al 2021;\n“Whole-body senescent cell clearance alleviates age-related brain inflammation and cognitive impairment in mice”\n, Ogrodnik et al 2021\n“BENDR: using transformers and a contrastive self-supervised learning task to learn from massive amounts of EEG data”\n, Kostas et al 2021 (towards brain imitation learning)\nParker-Hulme murder case\n;\nThe Slender Man stabbing\n(\nparacosms?\n)\nCorrection\n:\nProgramming competition skills do not inversely correlate with job performance\nafter all\n2.6 Technology\nNatural nuclear fission reactors (Oklo)\n“Baffles and Bastions: The Universal Features of Fortifications”\n, Keeley et al 2007\nThe Corrupted Blood incident\nFootnote\n36: “Redisturbed”\n: a\nunicase\nfont experiment\n2.7 Economics\n“Businesses Aim to Pull Greenhouse Gases From the Air. It’s a Gamble”\n"Does Advertising\nActually Work?"\n(what could be more obvious than “advertising works”, and trivial to confirm with correlational data? Yet, the tedious saying “correlation ≠ causation” stubbornly insists on being true);\n“Digital Paywall Design: Implications for Content Demand and Subscriptions”\n, Aral & Dhillon 2020 (NYT nag-paywall caused −9.9% reading; in line with\nall the other results\n)\n“Who Gains and Who Loses from Credit Card Payments? Theory and Calibrations”\n, Schuh et al 2010 (a compelling case for getting a rewards credit card if you’re a\ndebit card\nuser—why subsidize them so much?)\n“Squeezing the bears: cornering risk and limits on arbitrage during the ‘British bicycle mania’, 1896–1898”\n, Quinn 2019\n2.8 Fiction\n“On Venus, Have We Got a Rabbi!”\n,\nWilliam Tenn\n2016\n“St Martin’s Four Wishes”\n, Anonymous\nmedieval poet\n(trans. Dubin 2013)\n2.9 Miscellaneous\nThe\nAnglo-Japanese style\nStalag Luft III\nFerdinandea\nBut it’ll still be too many days ’till we say we’re sorry. - RSS Articles</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#jan-2021-gwernnet-newsletternn-httpsgwernnetn-httpsgwernsubstackcompjan-2021-gwernnet-newslettern-thu-04-feb-2021-202301-gmtnn-nnjanuary-2021sngwernnetnnewsletternis-now-out-previousndecember-2020nnarchivesn-this-is-a-summary-of-the-revision-history-rss-feed-overlapping-with-mynchangelogn-rgwern-brought-to-you-by-my-donors-onnpatreonnn1-writingsndanbooru2020-a-large-scale-crowdsourced-and-tagged-anime-illustration-datasetnthis-anime-does-not-existai-tadnenndiscussionnngwernnetn-return-to-top-floating-buttonnpopupsn-can-now-be-disabled-use-the-gear-icon-final-reimplementation-dynamic-js-now-memoizing-the-recursive-inlining-however-clever-elegant-turns-out-to-have-painful-edge-cases-still-not-be-efficient-enoughweb-browsersnreallyndont-like-loading-hundreds-of-kilobytes-of-extra-htmln2-linksn21-ainmatters-of-scalennscaling-upnndalle-creating-images-from-textn-openai-gpt-3-125b-generating-1280-tokens-nvq-vaenpixels-generates-illustration-photosnclip-contrastive-language-image-pre-training-connecting-text-and-imagesn-openai-nradford-et-al-2021n-zero-shot-image-understanding-via-text-descriptionuseful-for-much-more-than-just-ranking-dalle-samples-by-qualitynfurthernblessings-of-scalen-simplencontrastiventraining-onnnn-400m-leads-to-remarkable-generalization-combinatorial-flexibility-of-image-generation-by-dalle-and-clip-learns-to-reach-image-classification-sota-by-zero-shot-on-many-datasets-with-more-human-like-errors-less-degradation-out-of-samples-than-rivals-while-costing-the-same-to-train-openai-released-their-smallest-clip-model-the-nvitn-b32-equivalent-and-people-are-discovering-it-seems-able-to-do-just-about-anything-without-any-further-trainingthe-paper-notes-that-it-does-everything-from-fine-grained-object-classification-geo-localization-action-recognition-in-videos-and-ocr-but-theres-so-much-more-and-you-can-use-it-to-generate-image-captionsdescriptions-classify-your-anime-images-pull-a-specific-target-image-description-by-gradient-ascent-or-out-of-another-neural-network-such-as-an-imagenetnbiggannor-tadne-stylegan2-ext-or-why-not-synthesize-images-images-embodying-abstract-concepts-like-emoji-or-words-like-nightmare-fuel-or-confusion-search-your-image-datasets-by-embedding-find-mislabeled-images-eg-bynusing-upside-down-as-the-promptn-one-wonders-like-gpt-3-how-much-better-the-largest-clip-l14-336px-is-and-how-many-ways-of-using-it-or-dalle-remain-to-be-found-and-why-prediction-losses-work-so-well-in-one-place-but-then-contrastive-elsewherenfor-perspective-there-are-newly-minted-phds-going-on-the-job-market-who-got-excited-about-deep-learning-because-of-these-newnresnetnthings-undergrads-who-applied-to-grad-school-becausenbertnet-al-were-blowing-open-nlp-extending-neural-supremacy-to-natural-language-would-not-yet-have-passed-quals-and-it-has-been-only-1-academic-semester-sincengpt-3nwas-announced-or-to-put-it-quantitatively-for-just-sequence-modeling-it-has-been-8478-days-sincenlstmnrnns-were-published-3045-days-sincenalexnetsnimagenet-scores-were-released-1880-days-since-residual-networks-were-published-in-a-paper-1330-days-sincenattention-is-all-you-neednhit-arxiv-844-days-since-berts-paper-was-published-718-days-sincengpt-2nwas-announced-353-days-sincensimclrn-and-249-days-since-gpt-3-was-and-27-days-since-clipdalle1nspring-is-comingnsome-still-insist-we-need-not-worry-about-overpopulation-on-mars-for-18264-more-daysnmeta-pseudo-labelsn-pham-et-al-2020-90-on-imagenet-by-pretraining-a-meta-learning-teacher-using-jft-300m-on-a-tpuv3-2048nswitch-transformers-scaling-to-trillion-parameter-models-with-simple-and-efficient-sparsityn-fedus-et-al-2021-157t-parameterngshardnfollowup-the-mixture-of-experts-approach-while-scaling-stably-starts-showing-its-limitsnscaling-downnndeit-training-data-efficient-image-transformers-distillation-through-attentionn-touvron-et-al-2020-scaling-transformer-classifiers-down-to-imagenet1-gpunbotnet-bottleneck-transformers-for-visual-recognitionn-srinivas-et-al-2021ntokens-to-token-vit-training-vision-transformers-from-scratch-on-imagenetn-yuan-et-al-2021-hybridsnnot-so-biggan-generating-high-fidelity-images-on-small-compute-with-wavelet-based-super-resolutionn-han-et-al-2020nvqgan-taming-transformers-for-high-resolution-image-synthesisn-esser-et-al-2020-training-1024px-transformer-gans-on-just-2-gpusntransformer-supremacy-in-image-related-tasks-continues-and-gans-are-becoming-increasingly-hybridized-do-pure-gans-have-a-future-now-that-vaes-and-autoregressive-models-are-making-such-inroads-into-both-the-highest-quality-lowest-compute-sample-generation-to-take-the-gandrl-analogy-seriously-perhaps-they-were-they-ultimately-a-dead-end-akin-to-trying-to-learn-everything-from-rewards-and-an-adversarial-gan-loss-ought-to-be-onlynthe-cherry-on-the-cakenof-a-large-unsupervisedsemi-supervised-generative-modelnzero-offload-democratizing-billion-scale-model-trainingn-ren-et-al-2021-partial-cpu-training-for-13b-parameter-models-on-1-v100-gpu-scaling-to-128-gpusnprefix-tuning-optimizing-continuous-prompts-for-generationn-li-liang-2021-could-thenpetn-clip-trick-of-averaging-multiple-embeddings-to-yield-much-better-performance-be-reused-for-gpt-3-prompts-to-greatly-improve-prompting-the-fact-that-the-prefix-tuning-by-directly-optimizing-the-prompt-embeddings-yields-better-performance-than-even-single-optimized-text-prompts-suggests-so-the-user-could-provide-3-or-4-similar-prompts-and-synthesize-them-into-a-single-super-prompt-to-better-program-gpt-3nscaling-down-deep-learningn-greydanus-2020-cute-parametric-simplified-mnist-for-rapid-iteration-on-tiny-nns-experiments-in-lottery-ticket-meta-learning-of-lrsactivationsnthe-neural-network-of-the-stockfish-chess-enginenvery-lightweight-nn-designed-for-incremental-recomputation-over-changing-board-statesntransformers-in-vision-a-surveyn-khan-et-al-2021nopenai-departuresn-dario-amodei-sam-mccandlish-tom-brown-tom-henighan-chris-olah-jack-clark-ben-mann-paul-christiano-et-al-leavemost-for-an-unspecified-new-entity-nthe-elves-leave-middle-earthnnand-the-restn2020-ai-alignment-literature-review-and-charity-comparisonn-larksngrounded-language-learning-fast-and-slown-hill-et-al-2020ndeberta-decoding-enhanced-bert-with-disentangled-attentionn-he-et-al-2020-nsupergluenfallsnsolving-mixed-integer-programs-using-neural-networksn-nair-et-al-2020ntowards-fully-automated-manga-translationn-hinami-et-al-2020nupdet-universal-multi-agent-reinforcement-learning-via-policy-decoupling-with-transformersn-hu-et-al-2021nferm-a-framework-for-efficient-robotic-manipulationn-zhan-et-al-2021-contrastive-semi-supervised-learning-data-augmentation-for-sample-efficiencynxmc-gan-cross-modal-contrastive-learning-for-text-to-image-generationn-zhang-et-al-2021n22-geneticsneverything-is-heritablennurture-might-be-nature-cautionary-tales-and-proposed-solutionsn-hart-et-al-2021na-genetic-perspective-on-the-association-between-exercise-and-mental-health-in-the-era-of-genome-wide-association-studiesn-de-geus-2020nevidence-for-shared-genetics-between-physical-activity-sedentary-behaviour-and-adiposity-related-traitsn-schnurr-et-al-2020nantidepressant-response-in-major-depressive-disorder-a-genome-wide-association-studyn-pain-et-al-2020ngenome-wide-analysis-of-gene-dosage-in-24092-individuals-shows-that-10000-genes-modulate-cognitive-abilityn-huguet-et-al-2020-yep-still-polygenicngwas-of-three-molecular-traits-highlights-core-genes-and-pathways-alongside-a-highly-polygenic-backgroundn-sinnott-armstrong-et-al-2021ngenome-scale-sequencing-and-analysis-of-human-wolf-and-bison-dna-from-25000-year-old-sedimentn-gelabert-et-al-2021-incredible-this-is-possiblendisentangling-sex-differences-in-the-shared-genetic-architecture-of-ptsd-traumatic-experiences-and-social-support-with-body-size-and-compositionn-carvalho-et-al-2021-nlcvnnrecent-evolutionnafrican-genetic-diversity-and-adaptation-inform-a-precision-medicine-agendan-pereira-et-al-2021nthe-influence-of-evolutionary-history-on-human-health-and-diseasen-benton-et-al-2021nlocal-adaptation-and-archaic-introgression-shape-global-diversity-at-human-structural-variant-locin-yan-et-al-2021ngenome-scans-of-dog-behavior-implicate-a-gene-network-underlying-psychopathology-in-mammals-including-humansn-zapata-et-al-2021nnatural-selection-in-contemporary-humans-is-linked-to-income-and-substitution-effectsn-hugh-jones-abdellaoui-2021nthe-diversity-and-function-of-sourdough-starter-microbiomesn-landis-et-al-2021-crowdsourced-sourdough-show-little-trace-of-geographic-originsnengineeringnin-vivo-base-editing-rescues-hutchinson-gilford-progeria-syndrome-in-micen-koblan-et-al-2021nfrom-genotype-to-phenotype-polygenic-prediction-of-complex-human-traitsn-raben-et-al-2021n23-statisticsmeta-sciencemathnthe-quantum-field-theory-on-which-the-everyday-world-supervenesn-carroll-2021-we-have-reason-to-be-confident-that-the-laws-of-physics-underlying-the-phenomena-of-everyday-life-are-completely-known-because-all-unknown-particlesfields-are-constrained-to-being-extremely-rareweak-eg-bynadelberger-et-al-2009nnhow-accurate-are-citations-of-frequently-cited-papers-in-biomedical-literaturen-pavlovic-et-al-2020-includes-original-authors-evaluation-of-whether-a-citation-of-their-work-is-correctnenergy-efficient-algorithmsn-demaine-et-al-2016-nreversible-computingnasymptotics-constant-factornstacksnnarraysn-olognnn-timeenergynavl-treesn-onnn-spacensortsn-various-overtexedge-timespaceenergyngraph-searchesnnthe-optimizers-curse-skepticism-and-postdecision-surprise-in-decision-analysisn-smith-winkler-2006-regression-to-the-mean-is-everywhere-another-example-of-why-bayes-decision-theory-are-two-great-flavors-that-go-great-togethern24-politicsreligionnthe-mechanisms-of-cult-production-an-overviewn-xavier-marquez-2020-see-previously-hisnblog-roundupnnwhen-prophecy-fails-and-faith-persists-a-theoretical-overviewn-dawson-1999nwhy-we-fight-over-fictionn-robin-hansonnthe-all-woman-supreme-courtn25-psychologybiologynstill-aliven-scott-alexander-announcement-of-ssc-return-as-substack-newsletter-astral-codex-ten-launching-a-low-cost-psychiatry-clinic-lorien-psychiatrynthe-temporal-dynamics-of-opportunity-costs-a-normative-account-of-cognitive-fatigue-and-boredomn-agrawal-et-al-2020na-unified-framework-for-association-and-prediction-from-vertex-wise-grey-matter-structuren-couvy-duchesne-et-al-2020-morenmorphometricitynncommon-phenomenannsounds-from-seeing-silent-motion-who-hears-them-and-what-looks-loudestn-fassnidge-freeman-2018-on-visual-ear-previouslynsaenz-koch-2008nnfassnidge-et-al-2017nnpredicting-mental-health-from-followed-accounts-on-twittern-costelli-et-al-2021-nregistered-reportn-who-you-choose-to-follow-says-a-lot-about-youneverything-is-correlatednnno-evidence-for-general-intelligence-in-a-fishn-aellen-et-al-2021ndelirium-tremensnmicrobiome-connections-with-host-metabolism-and-habitual-diet-from-1098-deeply-phenotyped-individualsn-asnicar-et-al-2021nuniversal-dna-methylation-age-across-mammalian-tissuesn-lu-et-al-2021nwhole-body-senescent-cell-clearance-alleviates-age-related-brain-inflammation-and-cognitive-impairment-in-micen-ogrodnik-et-al-2021nbendr-using-transformers-and-a-contrastive-self-supervised-learning-task-to-learn-from-massive-amounts-of-eeg-datan-kostas-et-al-2021-towards-brain-imitation-learningnparker-hulme-murder-casennthe-slender-man-stabbingnnparacosmsnncorrectionnnprogramming-competition-skills-do-not-inversely-correlate-with-job-performancenafter-alln26-technologynnatural-nuclear-fission-reactors-oklonbaffles-and-bastions-the-universal-features-of-fortificationsn-keeley-et-al-2007nthe-corrupted-blood-incidentnfootnoten36-redisturbedn-anunicasenfont-experimentn27-economicsnbusinesses-aim-to-pull-greenhouse-gases-from-the-air-its-a-gamblendoes-advertisingnactually-worknwhat-could-be-more-obvious-than-advertising-works-and-trivial-to-confirm-with-correlational-data-yet-the-tedious-saying-correlation-causation-stubbornly-insists-on-being-truendigital-paywall-design-implications-for-content-demand-and-subscriptionsn-aral-dhillon-2020-nyt-nag-paywall-caused-99-reading-in-line-withnall-the-other-resultsnnwho-gains-and-who-loses-from-credit-card-payments-theory-and-calibrationsn-schuh-et-al-2010-a-compelling-case-for-getting-a-rewards-credit-card-if-youre-andebit-cardnuserwhy-subsidize-them-so-muchnsqueezing-the-bears-cornering-risk-and-limits-on-arbitrage-during-the-british-bicycle-mania-18961898n-quinn-2019n28-fictionnon-venus-have-we-got-a-rabbinnwilliam-tennn2016nst-martins-four-wishesn-anonymousnmedieval-poetntrans-dubin-2013n29-miscellaneousnthenanglo-japanese-stylenstalag-luft-iiinferdinandeanbut-itll-still-be-too-many-days-till-we-say-were-sorry" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="RSS Articles" class="md-header__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RSS Articles
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Jan 2021 Gwern.net Newsletter\n\n来源: https://gwern.net\n链接: https://gwern.substack.com/p/jan-2021-gwernnet-newsletter\n日期: Thu, 04 Feb 2021 20:23:01 GMT\n\n---\n\nJanuary 2021’s\nGwern.net\nnewsletter\nis now out; previous,\nDecember 2020\n(\narchives\n). This is a summary of the revision-history RSS feed, overlapping with my\nChangelog\n&amp; /r/gwern; brought to you by my donors on\nPatreon\n.\n1 Writings\n“Danbooru2020: A Large-Scale Crowdsourced and Tagged Anime Illustration Dataset”\nThis Anime Does Not Exist.ai (TADNE)\n(\ndiscussion\n)\nGwern.net\n: +return-to-top floating button;\npopups\n: can now be disabled (use the ‘gear’ icon); final reimplementation (dynamic JS now; memoizing the recursive inlining, however clever &amp; elegant, turns out to have painful edge-cases &amp; still not be efficient enough—web browsers\nreally\ndon’t like loading hundreds of kilobytes of extra HTML)\n2 Links\n2.1 AI\nMatters Of Scale\n:\nScaling up\n:\n“DALL·E: Creating Images from Text”\n, OpenAI (GPT-3-12.5b generating 1280 tokens →\nVQ-VAE\npixels; generates illustration &amp; photos);\n“CLIP (Contrastive Language-Image Pre-training): Connecting Text and Images”\n, OpenAI (\nRadford et al 2021\n: zero-shot image understanding via text description—useful for much more than just ranking DALL·E samples by quality)\nFurther\nblessings of scale\n: simple\ncontrastive\ntraining on\nn\n= 400m leads to remarkable generalization &amp; combinatorial flexibility of image generation by DALL·E, and CLIP learns to reach image classification SOTA by zero-shot on many datasets, with more human-like errors &amp; less degradation out of samples than rivals, while costing the same to train. OpenAI released their smallest CLIP model (the “\nViT\n-B/32”-equivalent) and people are discovering it seems able to do just about anything without any further training—the paper notes that it does everything from “fine-grained object classification, geo-localization, action recognition in videos, and OCR”, but there’s so much more, and you can use it to generate image captions/descriptions, classify your anime images, pull a specific target image description by gradient ascent or out of another neural network such as an ImageNet\nBigGAN\nor TADNE StyleGAN2-ext (or, why not, synthesize images images embodying abstract concepts like emoji or words like “nightmare fuel” or “confusion”!), search your image datasets by embedding, find mislabeled images (eg by\nusing “upside down” as the prompt\n)… One wonders, like GPT-3, how much better the largest CLIP (“L/14-336px”) is and how many ways of using it (or DALL·E) remain to be found? And why prediction losses work so well in one place, but then contrastive elsewhere?\nFor perspective: there are newly-minted PhDs going on the job market who got excited about deep learning because of these new\n“resnet”\nthings; undergrads who applied to grad school because\nBERT\net al were blowing open NLP &amp; extending neural supremacy to natural language would not yet have passed quals; and it has been only 1 academic semester since\nGPT-3\nwas announced. Or to put it quantitatively, for just sequence modeling: it has been 8,478 days since\nLSTM\nRNNs were published; 3,045 days since\nAlexNet’s\nImageNet scores were released; 1,880 days since residual networks were published in a paper; 1,330 days since\n“Attention Is All You Need”\nhit Arxiv; 844 days since BERT’s paper was published; 718 days since\nGPT-2\nwas announced; 353 days since\nSimCLR\n, and 249 days since GPT-3 was; and 27 days since CLIP/DALL·E.^1^\nSpring is coming.\n(Some still insist we need not worry about “overpopulation on Mars” for &gt;18,264 more days…)\n“Meta Pseudo Labels”\n, Pham et al 2020 (90% on ImageNet by pretraining a meta-learning teacher using JFT-300M on a TPUv3-2048)\n“Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity”\n, Fedus et al 2021 (1.57t-parameter\nGShard\nfollowup; the mixture-of-experts approach, while scaling stably, starts showing its limits)\nScaling down\n:\n“DeiT: Training data-efficient image transformers &amp; distillation through attention”\n, Touvron et al 2020 (scaling Transformer classifiers down to ImageNet+1-GPU);\n“BoTNet: Bottleneck Transformers for Visual Recognition”\n, Srinivas et al 2021/\n“Tokens-to-Token ViT: Training Vision Transformers from Scratch on ImageNet”\n, Yuan et al 2021 (hybrids);\n“not-so-BigGAN: Generating High-Fidelity Images on Small Compute with Wavelet-based Super-Resolution”\n, Han et al 2020/\n“VQGAN: Taming Transformers for High-Resolution Image Synthesis”\n, Esser et al 2020 (training &gt;1024px Transformer GANs on just 2 GPUs)\nTransformer supremacy in image-related tasks continues, and GANs are becoming increasingly hybridized. Do pure-GANs have a future, now that VAEs and autoregressive models are making such inroads into both the highest-quality &amp; lowest-compute sample generation? To take the GAN/DRL analogy seriously, perhaps they were they ultimately a dead end, akin to trying to learn everything from rewards, and an adversarial GAN loss ought to be only\nthe cherry on the cake\nof a large unsupervised/semi-supervised generative model.\n“ZeRO-Offload: Democratizing Billion-Scale Model Training”\n, Ren et al 2021 (partial CPU training for 13b-parameter models on 1 V100 GPU, scaling to 128 GPUs)\n“Prefix-Tuning: Optimizing Continuous Prompts for Generation”\n, Li &amp; Liang 2021 (could the\nPET\n&amp; CLIP trick of averaging multiple embeddings to yield much better performance be reused for GPT-3 prompts to greatly improve prompting? The fact that the prefix-tuning, by directly optimizing the prompt embeddings, yields better performance than even single optimized text prompts, suggests so. The user could provide 3 or 4 similar prompts, and synthesize them into a single super-prompt to better program GPT-3…)\n“Scaling down Deep Learning”\n, Greydanus 2020 (cute: parametric simplified-MNIST for rapid iteration on tiny NNs: experiments in lottery-ticket &amp; meta-learning of LRs/activations)\n“The neural network of the Stockfish chess engine”\n(very lightweight NN designed for incremental recomputation over changing board states)\n“Transformers in Vision: A Survey”\n, Khan et al 2021\nOpenAI departures\n: Dario Amodei, Sam McCandlish, Tom Brown, Tom Henighan, Chris Olah, Jack Clark, Ben Mann, Paul Christiano et al leave—most for an unspecified new entity (\n“the elves leave Middle Earth”\n?)\nAnd the rest:\n“2020 AI Alignment Literature Review and Charity Comparison”\n, Larks\n“Grounded Language Learning Fast and Slow”\n, Hill et al 2020\n“DeBERTa: Decoding-enhanced BERT with Disentangled Attention”\n, He et al 2020 (\nSuperGLUE\nfalls)\n“Solving Mixed Integer Programs Using Neural Networks”\n, Nair et al 2020\n“Towards Fully Automated Manga Translation”\n, Hinami et al 2020\n“UPDeT: Universal Multi-agent Reinforcement Learning via Policy Decoupling with Transformers”\n, Hu et al 2021\n“FERM: A Framework for Efficient Robotic Manipulation”\n, Zhan et al 2021 (contrastive semi-supervised learning + data augmentation for sample-efficiency)\n“XMC-GAN: Cross-Modal Contrastive Learning for Text-to-Image Generation”\n, Zhang et al 2021\n2.2 Genetics\nEverything Is Heritable:\n“Nurture might be nature: cautionary tales and proposed solutions”\n, Hart et al 2021\n“A genetic perspective on the association between exercise and mental health in the era of genome-wide association studies”\n, de Geus 2020;\n“Evidence for shared genetics between physical activity, sedentary behaviour and adiposity-related traits”\n, Schnurr et al 2020\n“Antidepressant Response in Major Depressive Disorder: A Genome-wide Association Study”\n, Pain et al 2020\n“Genome wide analysis of gene dosage in 24,092 individuals shows that 10,000 genes modulate cognitive ability”\n, Huguet et al 2020 (yep, still polygenic)\n“GWAS of three molecular traits highlights core genes and pathways alongside a highly polygenic background”\n, Sinnott-Armstrong et al 2021\n“Genome-scale sequencing and analysis of human, wolf and bison DNA from 25,000 year-old sediment”\n, Gelabert et al 2021 (incredible this is possible)\n“Disentangling sex differences in the shared genetic architecture of PTSD, traumatic experiences, and social support with body size and composition”\n, Carvalho et al 2021 (\nLCV\n)\nRecent Evolution:\n“African genetic diversity and adaptation inform a precision medicine agenda”\n, Pereira et al 2021;\n“The influence of evolutionary history on human health and disease”\n, Benton et al 2021;\n“Local adaptation and archaic introgression shape global diversity at human structural variant loci”\n, Yan et al 2021\n“Genome scans of dog behavior implicate a gene network underlying psychopathology in mammals, including humans”\n, Zapata et al 2021\n“Natural Selection in Contemporary Humans is Linked to Income and Substitution Effects”\n, Hugh-Jones &amp; Abdellaoui 2021\n“The diversity and function of sourdough starter microbiomes”\n, Landis et al 2021 (crowdsourced sourdough show little trace of geographic origins?)\nEngineering:\n“In vivo base editing rescues Hutchinson-Gilford progeria syndrome in mice”\n, Koblan et al 2021\n“From Genotype to Phenotype: polygenic prediction of complex human traits”\n, Raben et al 2021\n2.3 Statistics/Meta-Science/Math\n“The Quantum Field Theory on Which the Everyday World Supervenes”\n, Carroll 2021 (“…we have reason to be confident that the laws of physics underlying the phenomena of everyday life are completely known” because all unknown particles/fields are constrained to being extremely rare/weak, eg by\nAdelberger et al 2009\n)\n“How accurate are citations of frequently cited papers in biomedical literature?”\n, Pavlovic et al 2020 (includes original author’s evaluation of whether a citation of their work is correct)\n“Energy-Efficient Algorithms”\n, Demaine et al 2016 (\nreversible computing\nasymptotics: constant-factor\nstacks\n/\narrays\n, 𝒪(log\nn\n) time/energy\nAVL trees\n, 𝒪(\nn\n) space\nsorts\n, &amp; various 𝒪(Vertex+Edge) time/space/energy\ngraph searches\n)\n“The Optimizer’s Curse: Skepticism and Postdecision Surprise in Decision Analysis”\n, Smith &amp; Winkler 2006 (regression to the mean is everywhere; another example of why Bayes &amp; decision theory are two great flavors that go great together)\n2.4 Politics/Religion\n“The Mechanisms of Cult Production: An Overview”\n, Xavier Marquez 2020 (see previously his\nblog roundup\n)\n“When Prophecy Fails and Faith Persists: A Theoretical Overview”\n, Dawson 1999\n“Why We Fight Over Fiction”\n, Robin Hanson\nThe All-Woman Supreme Court\n2.5 Psychology/Biology\n“Still Alive”\n, Scott Alexander (announcement of SSC return as Substack newsletter ‘Astral Codex Ten’ &amp; launching a low-cost psychiatry clinic ‘Lorien Psychiatry’)\n“The Temporal Dynamics of Opportunity Costs: A Normative Account of Cognitive Fatigue and Boredom”\n, Agrawal et al 2020\n“A unified framework for association and prediction from vertex-wise grey-matter structure”\n, Couvy-Duchesne et al 2020 (more\nmorphometricity\n)\nCommon phenomena\n:\n“Sounds from seeing silent motion: Who hears them, and what looks loudest?”\n, Fassnidge &amp; Freeman 2018 (on ‘visual ear’; previously:\nSaenz &amp; Koch 2008\n,\nFassnidge et al 2017\n)\n“Predicting Mental Health From Followed Accounts on Twitter”\n, Costelli et al 2021 (\nRegistered Report\n: who you choose to follow says a lot about you—\neverything is correlated\n)\n“No evidence for general intelligence in a fish”\n, Aellen et al 2021\nDelirium tremens\n“Microbiome connections with host metabolism and habitual diet from 1,098 deeply phenotyped individuals”\n, Asnicar et al 2021\n“Universal DNA methylation age across mammalian tissues”\n, Lu et al 2021;\n“Whole-body senescent cell clearance alleviates age-related brain inflammation and cognitive impairment in mice”\n, Ogrodnik et al 2021\n“BENDR: using transformers and a contrastive self-supervised learning task to learn from massive amounts of EEG data”\n, Kostas et al 2021 (towards brain imitation learning)\nParker-Hulme murder case\n;\nThe Slender Man stabbing\n(\nparacosms?\n)\nCorrection\n:\nProgramming competition skills do not inversely correlate with job performance\nafter all\n2.6 Technology\nNatural nuclear fission reactors (Oklo)\n“Baffles and Bastions: The Universal Features of Fortifications”\n, Keeley et al 2007\nThe Corrupted Blood incident\nFootnote\n36: “Redisturbed”\n: a\nunicase\nfont experiment\n2.7 Economics\n“Businesses Aim to Pull Greenhouse Gases From the Air. It’s a Gamble”\n"Does Advertising\nActually Work?"\n(what could be more obvious than “advertising works”, and trivial to confirm with correlational data? Yet, the tedious saying “correlation ≠ causation” stubbornly insists on being true);\n“Digital Paywall Design: Implications for Content Demand and Subscriptions”\n, Aral &amp; Dhillon 2020 (NYT nag-paywall caused −9.9% reading; in line with\nall the other results\n)\n“Who Gains and Who Loses from Credit Card Payments? Theory and Calibrations”\n, Schuh et al 2010 (a compelling case for getting a rewards credit card if you’re a\ndebit card\nuser—why subsidize them so much?)\n“Squeezing the bears: cornering risk and limits on arbitrage during the ‘British bicycle mania’, 1896–1898”\n, Quinn 2019\n2.8 Fiction\n“On Venus, Have We Got a Rabbi!”\n,\nWilliam Tenn\n2016\n“St Martin’s Four Wishes”\n, Anonymous\nmedieval poet\n(trans. Dubin 2013)\n2.9 Miscellaneous\nThe\nAnglo-Japanese style\nStalag Luft III\nFerdinandea\nBut it’ll still be too many days ’till we say we’re sorry.
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RSS Articles" class="md-nav__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RSS Articles
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/gwern.net/Jan 2021 Gwern.net Newsletter_20260205.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="jan-2021-gwernnet-newsletternn-httpsgwernnetn-httpsgwernsubstackcompjan-2021-gwernnet-newslettern-thu-04-feb-2021-202301-gmtnn-nnjanuary-2021sngwernnetnnewsletternis-now-out-previousndecember-2020nnarchivesn-this-is-a-summary-of-the-revision-history-rss-feed-overlapping-with-mynchangelogn-rgwern-brought-to-you-by-my-donors-onnpatreonnn1-writingsndanbooru2020-a-large-scale-crowdsourced-and-tagged-anime-illustration-datasetnthis-anime-does-not-existai-tadnenndiscussionnngwernnetn-return-to-top-floating-buttonnpopupsn-can-now-be-disabled-use-the-gear-icon-final-reimplementation-dynamic-js-now-memoizing-the-recursive-inlining-however-clever-elegant-turns-out-to-have-painful-edge-cases-still-not-be-efficient-enoughweb-browsersnreallyndont-like-loading-hundreds-of-kilobytes-of-extra-htmln2-linksn21-ainmatters-of-scalennscaling-upnndalle-creating-images-from-textn-openai-gpt-3-125b-generating-1280-tokens-nvq-vaenpixels-generates-illustration-photosnclip-contrastive-language-image-pre-training-connecting-text-and-imagesn-openai-nradford-et-al-2021n-zero-shot-image-understanding-via-text-descriptionuseful-for-much-more-than-just-ranking-dalle-samples-by-qualitynfurthernblessings-of-scalen-simplencontrastiventraining-onnnn-400m-leads-to-remarkable-generalization-combinatorial-flexibility-of-image-generation-by-dalle-and-clip-learns-to-reach-image-classification-sota-by-zero-shot-on-many-datasets-with-more-human-like-errors-less-degradation-out-of-samples-than-rivals-while-costing-the-same-to-train-openai-released-their-smallest-clip-model-the-nvitn-b32-equivalent-and-people-are-discovering-it-seems-able-to-do-just-about-anything-without-any-further-trainingthe-paper-notes-that-it-does-everything-from-fine-grained-object-classification-geo-localization-action-recognition-in-videos-and-ocr-but-theres-so-much-more-and-you-can-use-it-to-generate-image-captionsdescriptions-classify-your-anime-images-pull-a-specific-target-image-description-by-gradient-ascent-or-out-of-another-neural-network-such-as-an-imagenetnbiggannor-tadne-stylegan2-ext-or-why-not-synthesize-images-images-embodying-abstract-concepts-like-emoji-or-words-like-nightmare-fuel-or-confusion-search-your-image-datasets-by-embedding-find-mislabeled-images-eg-bynusing-upside-down-as-the-promptn-one-wonders-like-gpt-3-how-much-better-the-largest-clip-l14-336px-is-and-how-many-ways-of-using-it-or-dalle-remain-to-be-found-and-why-prediction-losses-work-so-well-in-one-place-but-then-contrastive-elsewherenfor-perspective-there-are-newly-minted-phds-going-on-the-job-market-who-got-excited-about-deep-learning-because-of-these-newnresnetnthings-undergrads-who-applied-to-grad-school-becausenbertnet-al-were-blowing-open-nlp-extending-neural-supremacy-to-natural-language-would-not-yet-have-passed-quals-and-it-has-been-only-1-academic-semester-sincengpt-3nwas-announced-or-to-put-it-quantitatively-for-just-sequence-modeling-it-has-been-8478-days-sincenlstmnrnns-were-published-3045-days-sincenalexnetsnimagenet-scores-were-released-1880-days-since-residual-networks-were-published-in-a-paper-1330-days-sincenattention-is-all-you-neednhit-arxiv-844-days-since-berts-paper-was-published-718-days-sincengpt-2nwas-announced-353-days-sincensimclrn-and-249-days-since-gpt-3-was-and-27-days-since-clipdalle1nspring-is-comingnsome-still-insist-we-need-not-worry-about-overpopulation-on-mars-for-18264-more-daysnmeta-pseudo-labelsn-pham-et-al-2020-90-on-imagenet-by-pretraining-a-meta-learning-teacher-using-jft-300m-on-a-tpuv3-2048nswitch-transformers-scaling-to-trillion-parameter-models-with-simple-and-efficient-sparsityn-fedus-et-al-2021-157t-parameterngshardnfollowup-the-mixture-of-experts-approach-while-scaling-stably-starts-showing-its-limitsnscaling-downnndeit-training-data-efficient-image-transformers-distillation-through-attentionn-touvron-et-al-2020-scaling-transformer-classifiers-down-to-imagenet1-gpunbotnet-bottleneck-transformers-for-visual-recognitionn-srinivas-et-al-2021ntokens-to-token-vit-training-vision-transformers-from-scratch-on-imagenetn-yuan-et-al-2021-hybridsnnot-so-biggan-generating-high-fidelity-images-on-small-compute-with-wavelet-based-super-resolutionn-han-et-al-2020nvqgan-taming-transformers-for-high-resolution-image-synthesisn-esser-et-al-2020-training-1024px-transformer-gans-on-just-2-gpusntransformer-supremacy-in-image-related-tasks-continues-and-gans-are-becoming-increasingly-hybridized-do-pure-gans-have-a-future-now-that-vaes-and-autoregressive-models-are-making-such-inroads-into-both-the-highest-quality-lowest-compute-sample-generation-to-take-the-gandrl-analogy-seriously-perhaps-they-were-they-ultimately-a-dead-end-akin-to-trying-to-learn-everything-from-rewards-and-an-adversarial-gan-loss-ought-to-be-onlynthe-cherry-on-the-cakenof-a-large-unsupervisedsemi-supervised-generative-modelnzero-offload-democratizing-billion-scale-model-trainingn-ren-et-al-2021-partial-cpu-training-for-13b-parameter-models-on-1-v100-gpu-scaling-to-128-gpusnprefix-tuning-optimizing-continuous-prompts-for-generationn-li-liang-2021-could-thenpetn-clip-trick-of-averaging-multiple-embeddings-to-yield-much-better-performance-be-reused-for-gpt-3-prompts-to-greatly-improve-prompting-the-fact-that-the-prefix-tuning-by-directly-optimizing-the-prompt-embeddings-yields-better-performance-than-even-single-optimized-text-prompts-suggests-so-the-user-could-provide-3-or-4-similar-prompts-and-synthesize-them-into-a-single-super-prompt-to-better-program-gpt-3nscaling-down-deep-learningn-greydanus-2020-cute-parametric-simplified-mnist-for-rapid-iteration-on-tiny-nns-experiments-in-lottery-ticket-meta-learning-of-lrsactivationsnthe-neural-network-of-the-stockfish-chess-enginenvery-lightweight-nn-designed-for-incremental-recomputation-over-changing-board-statesntransformers-in-vision-a-surveyn-khan-et-al-2021nopenai-departuresn-dario-amodei-sam-mccandlish-tom-brown-tom-henighan-chris-olah-jack-clark-ben-mann-paul-christiano-et-al-leavemost-for-an-unspecified-new-entity-nthe-elves-leave-middle-earthnnand-the-restn2020-ai-alignment-literature-review-and-charity-comparisonn-larksngrounded-language-learning-fast-and-slown-hill-et-al-2020ndeberta-decoding-enhanced-bert-with-disentangled-attentionn-he-et-al-2020-nsupergluenfallsnsolving-mixed-integer-programs-using-neural-networksn-nair-et-al-2020ntowards-fully-automated-manga-translationn-hinami-et-al-2020nupdet-universal-multi-agent-reinforcement-learning-via-policy-decoupling-with-transformersn-hu-et-al-2021nferm-a-framework-for-efficient-robotic-manipulationn-zhan-et-al-2021-contrastive-semi-supervised-learning-data-augmentation-for-sample-efficiencynxmc-gan-cross-modal-contrastive-learning-for-text-to-image-generationn-zhang-et-al-2021n22-geneticsneverything-is-heritablennurture-might-be-nature-cautionary-tales-and-proposed-solutionsn-hart-et-al-2021na-genetic-perspective-on-the-association-between-exercise-and-mental-health-in-the-era-of-genome-wide-association-studiesn-de-geus-2020nevidence-for-shared-genetics-between-physical-activity-sedentary-behaviour-and-adiposity-related-traitsn-schnurr-et-al-2020nantidepressant-response-in-major-depressive-disorder-a-genome-wide-association-studyn-pain-et-al-2020ngenome-wide-analysis-of-gene-dosage-in-24092-individuals-shows-that-10000-genes-modulate-cognitive-abilityn-huguet-et-al-2020-yep-still-polygenicngwas-of-three-molecular-traits-highlights-core-genes-and-pathways-alongside-a-highly-polygenic-backgroundn-sinnott-armstrong-et-al-2021ngenome-scale-sequencing-and-analysis-of-human-wolf-and-bison-dna-from-25000-year-old-sedimentn-gelabert-et-al-2021-incredible-this-is-possiblendisentangling-sex-differences-in-the-shared-genetic-architecture-of-ptsd-traumatic-experiences-and-social-support-with-body-size-and-compositionn-carvalho-et-al-2021-nlcvnnrecent-evolutionnafrican-genetic-diversity-and-adaptation-inform-a-precision-medicine-agendan-pereira-et-al-2021nthe-influence-of-evolutionary-history-on-human-health-and-diseasen-benton-et-al-2021nlocal-adaptation-and-archaic-introgression-shape-global-diversity-at-human-structural-variant-locin-yan-et-al-2021ngenome-scans-of-dog-behavior-implicate-a-gene-network-underlying-psychopathology-in-mammals-including-humansn-zapata-et-al-2021nnatural-selection-in-contemporary-humans-is-linked-to-income-and-substitution-effectsn-hugh-jones-abdellaoui-2021nthe-diversity-and-function-of-sourdough-starter-microbiomesn-landis-et-al-2021-crowdsourced-sourdough-show-little-trace-of-geographic-originsnengineeringnin-vivo-base-editing-rescues-hutchinson-gilford-progeria-syndrome-in-micen-koblan-et-al-2021nfrom-genotype-to-phenotype-polygenic-prediction-of-complex-human-traitsn-raben-et-al-2021n23-statisticsmeta-sciencemathnthe-quantum-field-theory-on-which-the-everyday-world-supervenesn-carroll-2021-we-have-reason-to-be-confident-that-the-laws-of-physics-underlying-the-phenomena-of-everyday-life-are-completely-known-because-all-unknown-particlesfields-are-constrained-to-being-extremely-rareweak-eg-bynadelberger-et-al-2009nnhow-accurate-are-citations-of-frequently-cited-papers-in-biomedical-literaturen-pavlovic-et-al-2020-includes-original-authors-evaluation-of-whether-a-citation-of-their-work-is-correctnenergy-efficient-algorithmsn-demaine-et-al-2016-nreversible-computingnasymptotics-constant-factornstacksnnarraysn-olognnn-timeenergynavl-treesn-onnn-spacensortsn-various-overtexedge-timespaceenergyngraph-searchesnnthe-optimizers-curse-skepticism-and-postdecision-surprise-in-decision-analysisn-smith-winkler-2006-regression-to-the-mean-is-everywhere-another-example-of-why-bayes-decision-theory-are-two-great-flavors-that-go-great-togethern24-politicsreligionnthe-mechanisms-of-cult-production-an-overviewn-xavier-marquez-2020-see-previously-hisnblog-roundupnnwhen-prophecy-fails-and-faith-persists-a-theoretical-overviewn-dawson-1999nwhy-we-fight-over-fictionn-robin-hansonnthe-all-woman-supreme-courtn25-psychologybiologynstill-aliven-scott-alexander-announcement-of-ssc-return-as-substack-newsletter-astral-codex-ten-launching-a-low-cost-psychiatry-clinic-lorien-psychiatrynthe-temporal-dynamics-of-opportunity-costs-a-normative-account-of-cognitive-fatigue-and-boredomn-agrawal-et-al-2020na-unified-framework-for-association-and-prediction-from-vertex-wise-grey-matter-structuren-couvy-duchesne-et-al-2020-morenmorphometricitynncommon-phenomenannsounds-from-seeing-silent-motion-who-hears-them-and-what-looks-loudestn-fassnidge-freeman-2018-on-visual-ear-previouslynsaenz-koch-2008nnfassnidge-et-al-2017nnpredicting-mental-health-from-followed-accounts-on-twittern-costelli-et-al-2021-nregistered-reportn-who-you-choose-to-follow-says-a-lot-about-youneverything-is-correlatednnno-evidence-for-general-intelligence-in-a-fishn-aellen-et-al-2021ndelirium-tremensnmicrobiome-connections-with-host-metabolism-and-habitual-diet-from-1098-deeply-phenotyped-individualsn-asnicar-et-al-2021nuniversal-dna-methylation-age-across-mammalian-tissuesn-lu-et-al-2021nwhole-body-senescent-cell-clearance-alleviates-age-related-brain-inflammation-and-cognitive-impairment-in-micen-ogrodnik-et-al-2021nbendr-using-transformers-and-a-contrastive-self-supervised-learning-task-to-learn-from-massive-amounts-of-eeg-datan-kostas-et-al-2021-towards-brain-imitation-learningnparker-hulme-murder-casennthe-slender-man-stabbingnnparacosmsnncorrectionnnprogramming-competition-skills-do-not-inversely-correlate-with-job-performancenafter-alln26-technologynnatural-nuclear-fission-reactors-oklonbaffles-and-bastions-the-universal-features-of-fortificationsn-keeley-et-al-2007nthe-corrupted-blood-incidentnfootnoten36-redisturbedn-anunicasenfont-experimentn27-economicsnbusinesses-aim-to-pull-greenhouse-gases-from-the-air-its-a-gamblendoes-advertisingnactually-worknwhat-could-be-more-obvious-than-advertising-works-and-trivial-to-confirm-with-correlational-data-yet-the-tedious-saying-correlation-causation-stubbornly-insists-on-being-truendigital-paywall-design-implications-for-content-demand-and-subscriptionsn-aral-dhillon-2020-nyt-nag-paywall-caused-99-reading-in-line-withnall-the-other-resultsnnwho-gains-and-who-loses-from-credit-card-payments-theory-and-calibrationsn-schuh-et-al-2010-a-compelling-case-for-getting-a-rewards-credit-card-if-youre-andebit-cardnuserwhy-subsidize-them-so-muchnsqueezing-the-bears-cornering-risk-and-limits-on-arbitrage-during-the-british-bicycle-mania-18961898n-quinn-2019n28-fictionnon-venus-have-we-got-a-rabbinnwilliam-tennn2016nst-martins-four-wishesn-anonymousnmedieval-poetntrans-dubin-2013n29-miscellaneousnthenanglo-japanese-stylenstalag-luft-iiinferdinandeanbut-itll-still-be-too-many-days-till-we-say-were-sorry">Jan 2021 Gwern.net Newsletter\n\n<strong>来源:</strong> https://gwern.net\n<strong>链接:</strong> https://gwern.substack.com/p/jan-2021-gwernnet-newsletter\n<strong>日期:</strong> Thu, 04 Feb 2021 20:23:01 GMT\n\n---\n\nJanuary 2021’s\nGwern.net\nnewsletter\nis now out; previous,\nDecember 2020\n(\narchives\n). This is a summary of the revision-history RSS feed, overlapping with my\nChangelog\n&amp; /r/gwern; brought to you by my donors on\nPatreon\n.\n1 Writings\n“Danbooru2020: A Large-Scale Crowdsourced and Tagged Anime Illustration Dataset”\nThis Anime Does Not Exist.ai (TADNE)\n(\ndiscussion\n)\nGwern.net\n: +return-to-top floating button;\npopups\n:  can now be disabled (use the ‘gear’ icon); final reimplementation  (dynamic JS now; memoizing the recursive inlining, however clever &amp;  elegant, turns out to have painful edge-cases &amp; still not be  efficient enough—web browsers\nreally\ndon’t like loading hundreds of kilobytes of extra HTML)\n2 Links\n2.1 AI\nMatters Of Scale\n:\nScaling up\n:\n“DALL·E: Creating Images from Text”\n, OpenAI (GPT-3-12.5b generating 1280 tokens →\nVQ-VAE\npixels; generates illustration &amp; photos);\n“CLIP (Contrastive Language-Image Pre-training): Connecting Text and Images”\n, OpenAI (\nRadford et al 2021\n: zero-shot image understanding via text description—useful for much more than just ranking DALL·E samples by quality)\nFurther\nblessings of scale\n: simple\ncontrastive\ntraining on\nn\n= 400m leads to remarkable generalization &amp; combinatorial  flexibility of image generation by DALL·E, and CLIP learns to reach  image classification SOTA by zero-shot on many datasets, with more  human-like errors &amp; less degradation out of samples than rivals,  while costing the same to train. OpenAI released their smallest CLIP  model (the “\nViT\n-B/32”-equivalent)  and people are discovering it seems able to do just about anything  without any further training—the paper notes that it does everything  from “fine-grained object classification, geo-localization, action  recognition in videos, and OCR”, but there’s so much more, and you can  use it to generate image captions/descriptions, classify your anime  images, pull a specific target image description by gradient ascent or  out of another neural network such as an ImageNet\nBigGAN\nor TADNE StyleGAN2-ext (or, why not, synthesize images images embodying  abstract concepts like emoji or words like “nightmare fuel” or  “confusion”!), search your image datasets by embedding, find mislabeled  images (eg by\nusing “upside down” as the prompt\n)…  One wonders, like GPT-3, how much better the largest CLIP  (“L/14-336px”) is and how many ways of using it (or DALL·E) remain to be  found? And why prediction losses work so well in one place, but then  contrastive elsewhere?\nFor perspective: there are newly-minted PhDs going on the job market who got excited about deep learning because of these new\n“resnet”\nthings; undergrads who applied to grad school because\nBERT\net al were blowing open NLP &amp; extending neural supremacy to natural  language would not yet have passed quals; and it has been only 1  academic semester since\nGPT-3\nwas announced. Or to put it quantitatively, for just sequence modeling: it has been 8,478 days since\nLSTM\nRNNs were published; 3,045 days since\nAlexNet’s\nImageNet scores were released; 1,880 days since residual networks were published in a paper; 1,330 days since\n“Attention Is All You Need”\nhit Arxiv; 844 days since BERT’s paper was published; 718 days since\nGPT-2\nwas announced; 353 days since\nSimCLR\n, and 249 days since GPT-3 was; and 27 days since CLIP/DALL·E.^1^\nSpring is coming.\n(Some still insist we need not worry about “overpopulation on Mars” for &gt;18,264 more days…)\n“Meta Pseudo Labels”\n, Pham et al 2020 (90% on ImageNet by pretraining a meta-learning teacher using JFT-300M on a TPUv3-2048)\n“Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity”\n, Fedus et al 2021 (1.57t-parameter\nGShard\nfollowup; the mixture-of-experts approach, while scaling stably, starts showing its limits)\nScaling down\n:\n“DeiT: Training data-efficient image transformers &amp; distillation through attention”\n, Touvron et al 2020 (scaling Transformer classifiers down to ImageNet+1-GPU);\n“BoTNet: Bottleneck Transformers for Visual Recognition”\n, Srinivas et al 2021/\n“Tokens-to-Token ViT: Training Vision Transformers from Scratch on ImageNet”\n, Yuan et al 2021 (hybrids);\n“not-so-BigGAN: Generating High-Fidelity Images on Small Compute with Wavelet-based Super-Resolution”\n, Han et al 2020/\n“VQGAN: Taming Transformers for High-Resolution Image Synthesis”\n, Esser et al 2020 (training &gt;1024px Transformer GANs on just 2 GPUs)\nTransformer supremacy in image-related tasks continues, and GANs  are becoming increasingly hybridized. Do pure-GANs have a future, now  that VAEs and autoregressive models are making such inroads into both  the highest-quality &amp; lowest-compute sample generation? To take the  GAN/DRL analogy seriously, perhaps they were they ultimately a dead end,  akin to trying to learn everything from rewards, and an adversarial GAN  loss ought to be only\nthe cherry on the cake\nof a large unsupervised/semi-supervised generative model.\n“ZeRO-Offload: Democratizing Billion-Scale Model Training”\n, Ren et al 2021 (partial CPU training for 13b-parameter models on 1 V100 GPU, scaling to 128 GPUs)\n“Prefix-Tuning: Optimizing Continuous Prompts for Generation”\n, Li &amp; Liang 2021 (could the\nPET\n&amp; CLIP trick of averaging multiple embeddings to yield much better  performance be reused for GPT-3 prompts to greatly improve prompting?  The fact that the prefix-tuning, by directly optimizing the prompt  embeddings, yields better performance than even single optimized text  prompts, suggests so. The user could provide 3 or 4 similar prompts, and  synthesize them into a single super-prompt to better program GPT-3…)\n“Scaling down Deep Learning”\n,  Greydanus 2020 (cute: parametric simplified-MNIST for rapid iteration  on tiny NNs: experiments in lottery-ticket &amp; meta-learning of  LRs/activations)\n“The neural network of the Stockfish chess engine”\n(very lightweight NN designed for incremental recomputation over changing board states)\n“Transformers in Vision: A Survey”\n, Khan et al 2021\nOpenAI departures\n:  Dario Amodei, Sam McCandlish, Tom Brown, Tom Henighan, Chris Olah, Jack  Clark, Ben Mann, Paul Christiano et al leave—most for an unspecified  new entity (\n“the elves leave Middle Earth”\n?)\nAnd the rest:\n“2020 AI Alignment Literature Review and Charity Comparison”\n, Larks\n“Grounded Language Learning Fast and Slow”\n, Hill et al 2020\n“DeBERTa: Decoding-enhanced BERT with Disentangled Attention”\n, He et al 2020 (\nSuperGLUE\nfalls)\n“Solving Mixed Integer Programs Using Neural Networks”\n, Nair et al 2020\n“Towards Fully Automated Manga Translation”\n, Hinami et al 2020\n“UPDeT: Universal Multi-agent Reinforcement Learning via Policy Decoupling with Transformers”\n, Hu et al 2021\n“FERM: A Framework for Efficient Robotic Manipulation”\n, Zhan et al 2021 (contrastive semi-supervised learning + data augmentation for sample-efficiency)\n“XMC-GAN: Cross-Modal Contrastive Learning for Text-to-Image Generation”\n, Zhang et al 2021\n2.2 Genetics\nEverything Is Heritable:\n“Nurture might be nature: cautionary tales and proposed solutions”\n, Hart et al 2021\n“A genetic perspective on the association between exercise and mental health in the era of genome-wide association studies”\n, de Geus 2020;\n“Evidence for shared genetics between physical activity, sedentary behaviour and adiposity-related traits”\n, Schnurr et al 2020\n“Antidepressant Response in Major Depressive Disorder: A Genome-wide Association Study”\n, Pain et al 2020\n“Genome wide analysis of gene dosage in 24,092 individuals shows that 10,000 genes modulate cognitive ability”\n, Huguet et al 2020 (yep, still polygenic)\n“GWAS of three molecular traits highlights core genes and pathways alongside a highly polygenic background”\n, Sinnott-Armstrong et al 2021\n“Genome-scale sequencing and analysis of human, wolf and bison DNA from 25,000 year-old sediment”\n, Gelabert et al 2021 (incredible this is possible)\n“Disentangling  sex differences in the shared genetic architecture of PTSD, traumatic  experiences, and social support with body size and composition”\n, Carvalho et al 2021 (\nLCV\n)\nRecent Evolution:\n“African genetic diversity and adaptation inform a precision medicine agenda”\n, Pereira et al 2021;\n“The influence of evolutionary history on human health and disease”\n, Benton et al 2021;\n“Local adaptation and archaic introgression shape global diversity at human structural variant loci”\n, Yan et al 2021\n“Genome scans of dog behavior implicate a gene network underlying psychopathology in mammals, including humans”\n, Zapata et al 2021\n“Natural Selection in Contemporary Humans is Linked to Income and Substitution Effects”\n, Hugh-Jones &amp; Abdellaoui 2021\n“The diversity and function of sourdough starter microbiomes”\n, Landis et al 2021 (crowdsourced sourdough show little trace of geographic origins?)\nEngineering:\n“In vivo base editing rescues Hutchinson-Gilford progeria syndrome in mice”\n, Koblan et al 2021\n“From Genotype to Phenotype: polygenic prediction of complex human traits”\n, Raben et al 2021\n2.3 Statistics/Meta-Science/Math\n“The Quantum Field Theory on Which the Everyday World Supervenes”\n,  Carroll 2021 (“…we have reason to be confident that the laws of physics  underlying the phenomena of everyday life are completely known” because  all unknown particles/fields are constrained to being extremely  rare/weak, eg by\nAdelberger et al 2009\n)\n“How accurate are citations of frequently cited papers in biomedical literature?”\n, Pavlovic et al 2020 (includes original author’s evaluation of whether a citation of their work is correct)\n“Energy-Efficient Algorithms”\n, Demaine et al 2016 (\nreversible computing\nasymptotics: constant-factor\nstacks\n/\narrays\n, 𝒪(log\nn\n) time/energy\nAVL trees\n, 𝒪(\nn\n) space\nsorts\n, &amp; various 𝒪(Vertex+Edge) time/space/energy\ngraph searches\n)\n“The Optimizer’s Curse: Skepticism and Postdecision Surprise in Decision Analysis”\n,  Smith &amp; Winkler 2006 (regression to the mean is everywhere; another  example of why Bayes &amp; decision theory are two great flavors that  go great together)\n2.4 Politics/Religion\n“The Mechanisms of Cult Production: An Overview”\n, Xavier Marquez 2020 (see previously his\nblog roundup\n)\n“When Prophecy Fails and Faith Persists: A Theoretical Overview”\n, Dawson 1999\n“Why We Fight Over Fiction”\n, Robin Hanson\nThe All-Woman Supreme Court\n2.5 Psychology/Biology\n“Still Alive”\n,  Scott Alexander (announcement of SSC return as Substack newsletter  ‘Astral Codex Ten’ &amp; launching a low-cost psychiatry clinic ‘Lorien  Psychiatry’)\n“The Temporal Dynamics of Opportunity Costs: A Normative Account of Cognitive Fatigue and Boredom”\n, Agrawal et al 2020\n“A unified framework for association and prediction from vertex-wise grey-matter structure”\n, Couvy-Duchesne et al 2020 (more\nmorphometricity\n)\nCommon phenomena\n:\n“Sounds from seeing silent motion: Who hears them, and what looks loudest?”\n, Fassnidge &amp; Freeman 2018 (on ‘visual ear’; previously:\nSaenz &amp; Koch 2008\n,\nFassnidge et al 2017\n)\n“Predicting Mental Health From Followed Accounts on Twitter”\n, Costelli et al 2021 (\nRegistered Report\n: who you choose to follow says a lot about you—\neverything is correlated\n)\n“No evidence for general intelligence in a fish”\n, Aellen et al 2021\nDelirium tremens\n“Microbiome connections with host metabolism and habitual diet from 1,098 deeply phenotyped individuals”\n, Asnicar et al 2021\n“Universal DNA methylation age across mammalian tissues”\n, Lu et al 2021;\n“Whole-body senescent cell clearance alleviates age-related brain inflammation and cognitive impairment in mice”\n, Ogrodnik et al 2021\n“BENDR: using transformers and a contrastive self-supervised learning task to learn from massive amounts of EEG data”\n, Kostas et al 2021 (towards brain imitation learning)\nParker-Hulme murder case\n;\nThe Slender Man stabbing\n(\nparacosms?\n)\nCorrection\n:\nProgramming competition skills do not inversely correlate with job performance\nafter all\n2.6 Technology\nNatural nuclear fission reactors (Oklo)\n“Baffles and Bastions: The Universal Features of Fortifications”\n, Keeley et al 2007\nThe Corrupted Blood incident\nFootnote\n36: “Redisturbed”\n: a\nunicase\nfont experiment\n2.7 Economics\n“Businesses Aim to Pull Greenhouse Gases From the Air. It’s a Gamble”\n"Does Advertising\nActually Work?"\n(what could be more obvious than “advertising works”, and trivial to  confirm with correlational data? Yet, the tedious saying “correlation ≠  causation” stubbornly insists on being true);\n“Digital Paywall Design: Implications for Content Demand and Subscriptions”\n, Aral &amp; Dhillon 2020 (NYT nag-paywall caused −9.9% reading; in line with\nall the other results\n)\n“Who Gains and Who Loses from Credit Card Payments? Theory and Calibrations”\n, Schuh et al 2010 (a compelling case for getting a rewards credit card if you’re a\ndebit card\nuser—why subsidize them so much?)\n“Squeezing the bears: cornering risk and limits on arbitrage during the ‘British bicycle mania’, 1896–1898”\n, Quinn 2019\n2.8 Fiction\n“On Venus, Have We Got a Rabbi!”\n,\nWilliam Tenn\n2016\n“St Martin’s Four Wishes”\n, Anonymous\nmedieval poet\n(trans. Dubin 2013)\n2.9 Miscellaneous\nThe\nAnglo-Japanese style\nStalag Luft III\nFerdinandea\nBut it’ll still be too many days ’till we say we’re sorry.<a class="headerlink" href="#jan-2021-gwernnet-newsletternn-httpsgwernnetn-httpsgwernsubstackcompjan-2021-gwernnet-newslettern-thu-04-feb-2021-202301-gmtnn-nnjanuary-2021sngwernnetnnewsletternis-now-out-previousndecember-2020nnarchivesn-this-is-a-summary-of-the-revision-history-rss-feed-overlapping-with-mynchangelogn-rgwern-brought-to-you-by-my-donors-onnpatreonnn1-writingsndanbooru2020-a-large-scale-crowdsourced-and-tagged-anime-illustration-datasetnthis-anime-does-not-existai-tadnenndiscussionnngwernnetn-return-to-top-floating-buttonnpopupsn-can-now-be-disabled-use-the-gear-icon-final-reimplementation-dynamic-js-now-memoizing-the-recursive-inlining-however-clever-elegant-turns-out-to-have-painful-edge-cases-still-not-be-efficient-enoughweb-browsersnreallyndont-like-loading-hundreds-of-kilobytes-of-extra-htmln2-linksn21-ainmatters-of-scalennscaling-upnndalle-creating-images-from-textn-openai-gpt-3-125b-generating-1280-tokens-nvq-vaenpixels-generates-illustration-photosnclip-contrastive-language-image-pre-training-connecting-text-and-imagesn-openai-nradford-et-al-2021n-zero-shot-image-understanding-via-text-descriptionuseful-for-much-more-than-just-ranking-dalle-samples-by-qualitynfurthernblessings-of-scalen-simplencontrastiventraining-onnnn-400m-leads-to-remarkable-generalization-combinatorial-flexibility-of-image-generation-by-dalle-and-clip-learns-to-reach-image-classification-sota-by-zero-shot-on-many-datasets-with-more-human-like-errors-less-degradation-out-of-samples-than-rivals-while-costing-the-same-to-train-openai-released-their-smallest-clip-model-the-nvitn-b32-equivalent-and-people-are-discovering-it-seems-able-to-do-just-about-anything-without-any-further-trainingthe-paper-notes-that-it-does-everything-from-fine-grained-object-classification-geo-localization-action-recognition-in-videos-and-ocr-but-theres-so-much-more-and-you-can-use-it-to-generate-image-captionsdescriptions-classify-your-anime-images-pull-a-specific-target-image-description-by-gradient-ascent-or-out-of-another-neural-network-such-as-an-imagenetnbiggannor-tadne-stylegan2-ext-or-why-not-synthesize-images-images-embodying-abstract-concepts-like-emoji-or-words-like-nightmare-fuel-or-confusion-search-your-image-datasets-by-embedding-find-mislabeled-images-eg-bynusing-upside-down-as-the-promptn-one-wonders-like-gpt-3-how-much-better-the-largest-clip-l14-336px-is-and-how-many-ways-of-using-it-or-dalle-remain-to-be-found-and-why-prediction-losses-work-so-well-in-one-place-but-then-contrastive-elsewherenfor-perspective-there-are-newly-minted-phds-going-on-the-job-market-who-got-excited-about-deep-learning-because-of-these-newnresnetnthings-undergrads-who-applied-to-grad-school-becausenbertnet-al-were-blowing-open-nlp-extending-neural-supremacy-to-natural-language-would-not-yet-have-passed-quals-and-it-has-been-only-1-academic-semester-sincengpt-3nwas-announced-or-to-put-it-quantitatively-for-just-sequence-modeling-it-has-been-8478-days-sincenlstmnrnns-were-published-3045-days-sincenalexnetsnimagenet-scores-were-released-1880-days-since-residual-networks-were-published-in-a-paper-1330-days-sincenattention-is-all-you-neednhit-arxiv-844-days-since-berts-paper-was-published-718-days-sincengpt-2nwas-announced-353-days-sincensimclrn-and-249-days-since-gpt-3-was-and-27-days-since-clipdalle1nspring-is-comingnsome-still-insist-we-need-not-worry-about-overpopulation-on-mars-for-18264-more-daysnmeta-pseudo-labelsn-pham-et-al-2020-90-on-imagenet-by-pretraining-a-meta-learning-teacher-using-jft-300m-on-a-tpuv3-2048nswitch-transformers-scaling-to-trillion-parameter-models-with-simple-and-efficient-sparsityn-fedus-et-al-2021-157t-parameterngshardnfollowup-the-mixture-of-experts-approach-while-scaling-stably-starts-showing-its-limitsnscaling-downnndeit-training-data-efficient-image-transformers-distillation-through-attentionn-touvron-et-al-2020-scaling-transformer-classifiers-down-to-imagenet1-gpunbotnet-bottleneck-transformers-for-visual-recognitionn-srinivas-et-al-2021ntokens-to-token-vit-training-vision-transformers-from-scratch-on-imagenetn-yuan-et-al-2021-hybridsnnot-so-biggan-generating-high-fidelity-images-on-small-compute-with-wavelet-based-super-resolutionn-han-et-al-2020nvqgan-taming-transformers-for-high-resolution-image-synthesisn-esser-et-al-2020-training-1024px-transformer-gans-on-just-2-gpusntransformer-supremacy-in-image-related-tasks-continues-and-gans-are-becoming-increasingly-hybridized-do-pure-gans-have-a-future-now-that-vaes-and-autoregressive-models-are-making-such-inroads-into-both-the-highest-quality-lowest-compute-sample-generation-to-take-the-gandrl-analogy-seriously-perhaps-they-were-they-ultimately-a-dead-end-akin-to-trying-to-learn-everything-from-rewards-and-an-adversarial-gan-loss-ought-to-be-onlynthe-cherry-on-the-cakenof-a-large-unsupervisedsemi-supervised-generative-modelnzero-offload-democratizing-billion-scale-model-trainingn-ren-et-al-2021-partial-cpu-training-for-13b-parameter-models-on-1-v100-gpu-scaling-to-128-gpusnprefix-tuning-optimizing-continuous-prompts-for-generationn-li-liang-2021-could-thenpetn-clip-trick-of-averaging-multiple-embeddings-to-yield-much-better-performance-be-reused-for-gpt-3-prompts-to-greatly-improve-prompting-the-fact-that-the-prefix-tuning-by-directly-optimizing-the-prompt-embeddings-yields-better-performance-than-even-single-optimized-text-prompts-suggests-so-the-user-could-provide-3-or-4-similar-prompts-and-synthesize-them-into-a-single-super-prompt-to-better-program-gpt-3nscaling-down-deep-learningn-greydanus-2020-cute-parametric-simplified-mnist-for-rapid-iteration-on-tiny-nns-experiments-in-lottery-ticket-meta-learning-of-lrsactivationsnthe-neural-network-of-the-stockfish-chess-enginenvery-lightweight-nn-designed-for-incremental-recomputation-over-changing-board-statesntransformers-in-vision-a-surveyn-khan-et-al-2021nopenai-departuresn-dario-amodei-sam-mccandlish-tom-brown-tom-henighan-chris-olah-jack-clark-ben-mann-paul-christiano-et-al-leavemost-for-an-unspecified-new-entity-nthe-elves-leave-middle-earthnnand-the-restn2020-ai-alignment-literature-review-and-charity-comparisonn-larksngrounded-language-learning-fast-and-slown-hill-et-al-2020ndeberta-decoding-enhanced-bert-with-disentangled-attentionn-he-et-al-2020-nsupergluenfallsnsolving-mixed-integer-programs-using-neural-networksn-nair-et-al-2020ntowards-fully-automated-manga-translationn-hinami-et-al-2020nupdet-universal-multi-agent-reinforcement-learning-via-policy-decoupling-with-transformersn-hu-et-al-2021nferm-a-framework-for-efficient-robotic-manipulationn-zhan-et-al-2021-contrastive-semi-supervised-learning-data-augmentation-for-sample-efficiencynxmc-gan-cross-modal-contrastive-learning-for-text-to-image-generationn-zhang-et-al-2021n22-geneticsneverything-is-heritablennurture-might-be-nature-cautionary-tales-and-proposed-solutionsn-hart-et-al-2021na-genetic-perspective-on-the-association-between-exercise-and-mental-health-in-the-era-of-genome-wide-association-studiesn-de-geus-2020nevidence-for-shared-genetics-between-physical-activity-sedentary-behaviour-and-adiposity-related-traitsn-schnurr-et-al-2020nantidepressant-response-in-major-depressive-disorder-a-genome-wide-association-studyn-pain-et-al-2020ngenome-wide-analysis-of-gene-dosage-in-24092-individuals-shows-that-10000-genes-modulate-cognitive-abilityn-huguet-et-al-2020-yep-still-polygenicngwas-of-three-molecular-traits-highlights-core-genes-and-pathways-alongside-a-highly-polygenic-backgroundn-sinnott-armstrong-et-al-2021ngenome-scale-sequencing-and-analysis-of-human-wolf-and-bison-dna-from-25000-year-old-sedimentn-gelabert-et-al-2021-incredible-this-is-possiblendisentangling-sex-differences-in-the-shared-genetic-architecture-of-ptsd-traumatic-experiences-and-social-support-with-body-size-and-compositionn-carvalho-et-al-2021-nlcvnnrecent-evolutionnafrican-genetic-diversity-and-adaptation-inform-a-precision-medicine-agendan-pereira-et-al-2021nthe-influence-of-evolutionary-history-on-human-health-and-diseasen-benton-et-al-2021nlocal-adaptation-and-archaic-introgression-shape-global-diversity-at-human-structural-variant-locin-yan-et-al-2021ngenome-scans-of-dog-behavior-implicate-a-gene-network-underlying-psychopathology-in-mammals-including-humansn-zapata-et-al-2021nnatural-selection-in-contemporary-humans-is-linked-to-income-and-substitution-effectsn-hugh-jones-abdellaoui-2021nthe-diversity-and-function-of-sourdough-starter-microbiomesn-landis-et-al-2021-crowdsourced-sourdough-show-little-trace-of-geographic-originsnengineeringnin-vivo-base-editing-rescues-hutchinson-gilford-progeria-syndrome-in-micen-koblan-et-al-2021nfrom-genotype-to-phenotype-polygenic-prediction-of-complex-human-traitsn-raben-et-al-2021n23-statisticsmeta-sciencemathnthe-quantum-field-theory-on-which-the-everyday-world-supervenesn-carroll-2021-we-have-reason-to-be-confident-that-the-laws-of-physics-underlying-the-phenomena-of-everyday-life-are-completely-known-because-all-unknown-particlesfields-are-constrained-to-being-extremely-rareweak-eg-bynadelberger-et-al-2009nnhow-accurate-are-citations-of-frequently-cited-papers-in-biomedical-literaturen-pavlovic-et-al-2020-includes-original-authors-evaluation-of-whether-a-citation-of-their-work-is-correctnenergy-efficient-algorithmsn-demaine-et-al-2016-nreversible-computingnasymptotics-constant-factornstacksnnarraysn-olognnn-timeenergynavl-treesn-onnn-spacensortsn-various-overtexedge-timespaceenergyngraph-searchesnnthe-optimizers-curse-skepticism-and-postdecision-surprise-in-decision-analysisn-smith-winkler-2006-regression-to-the-mean-is-everywhere-another-example-of-why-bayes-decision-theory-are-two-great-flavors-that-go-great-togethern24-politicsreligionnthe-mechanisms-of-cult-production-an-overviewn-xavier-marquez-2020-see-previously-hisnblog-roundupnnwhen-prophecy-fails-and-faith-persists-a-theoretical-overviewn-dawson-1999nwhy-we-fight-over-fictionn-robin-hansonnthe-all-woman-supreme-courtn25-psychologybiologynstill-aliven-scott-alexander-announcement-of-ssc-return-as-substack-newsletter-astral-codex-ten-launching-a-low-cost-psychiatry-clinic-lorien-psychiatrynthe-temporal-dynamics-of-opportunity-costs-a-normative-account-of-cognitive-fatigue-and-boredomn-agrawal-et-al-2020na-unified-framework-for-association-and-prediction-from-vertex-wise-grey-matter-structuren-couvy-duchesne-et-al-2020-morenmorphometricitynncommon-phenomenannsounds-from-seeing-silent-motion-who-hears-them-and-what-looks-loudestn-fassnidge-freeman-2018-on-visual-ear-previouslynsaenz-koch-2008nnfassnidge-et-al-2017nnpredicting-mental-health-from-followed-accounts-on-twittern-costelli-et-al-2021-nregistered-reportn-who-you-choose-to-follow-says-a-lot-about-youneverything-is-correlatednnno-evidence-for-general-intelligence-in-a-fishn-aellen-et-al-2021ndelirium-tremensnmicrobiome-connections-with-host-metabolism-and-habitual-diet-from-1098-deeply-phenotyped-individualsn-asnicar-et-al-2021nuniversal-dna-methylation-age-across-mammalian-tissuesn-lu-et-al-2021nwhole-body-senescent-cell-clearance-alleviates-age-related-brain-inflammation-and-cognitive-impairment-in-micen-ogrodnik-et-al-2021nbendr-using-transformers-and-a-contrastive-self-supervised-learning-task-to-learn-from-massive-amounts-of-eeg-datan-kostas-et-al-2021-towards-brain-imitation-learningnparker-hulme-murder-casennthe-slender-man-stabbingnnparacosmsnncorrectionnnprogramming-competition-skills-do-not-inversely-correlate-with-job-performancenafter-alln26-technologynnatural-nuclear-fission-reactors-oklonbaffles-and-bastions-the-universal-features-of-fortificationsn-keeley-et-al-2007nthe-corrupted-blood-incidentnfootnoten36-redisturbedn-anunicasenfont-experimentn27-economicsnbusinesses-aim-to-pull-greenhouse-gases-from-the-air-its-a-gamblendoes-advertisingnactually-worknwhat-could-be-more-obvious-than-advertising-works-and-trivial-to-confirm-with-correlational-data-yet-the-tedious-saying-correlation-causation-stubbornly-insists-on-being-truendigital-paywall-design-implications-for-content-demand-and-subscriptionsn-aral-dhillon-2020-nyt-nag-paywall-caused-99-reading-in-line-withnall-the-other-resultsnnwho-gains-and-who-loses-from-credit-card-payments-theory-and-calibrationsn-schuh-et-al-2010-a-compelling-case-for-getting-a-rewards-credit-card-if-youre-andebit-cardnuserwhy-subsidize-them-so-muchnsqueezing-the-bears-cornering-risk-and-limits-on-arbitrage-during-the-british-bicycle-mania-18961898n-quinn-2019n28-fictionnon-venus-have-we-got-a-rabbinnwilliam-tennn2016nst-martins-four-wishesn-anonymousnmedieval-poetntrans-dubin-2013n29-miscellaneousnthenanglo-japanese-stylenstalag-luft-iiinferdinandeanbut-itll-still-be-too-many-days-till-we-say-were-sorry" title="Permanent link">&para;</a></h1>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 05:40:42 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

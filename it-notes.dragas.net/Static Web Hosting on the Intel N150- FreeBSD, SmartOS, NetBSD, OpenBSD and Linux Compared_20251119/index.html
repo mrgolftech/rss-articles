@@ -1,0 +1,999 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/it-notes.dragas.net/Static%20Web%20Hosting%20on%20the%20Intel%20N150-%20FreeBSD%2C%20SmartOS%2C%20NetBSD%2C%20OpenBSD%20and%20Linux%20Compared_20251119/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Static Web Hosting on the Intel N150: FreeBSD, SmartOS, NetBSD, OpenBSD and Linux Compared - RSS Articles</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#static-web-hosting-on-the-intel-n150-freebsd-smartos-netbsd-openbsd-and-linux-compared" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="RSS Articles" class="md-header__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RSS Articles
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Static Web Hosting on the Intel N150: FreeBSD, SmartOS, NetBSD, OpenBSD and Linux Compared
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RSS Articles" class="md-nav__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RSS Articles
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/it-notes.dragas.net/Static Web Hosting on the Intel N150- FreeBSD, SmartOS, NetBSD, OpenBSD and Linux Compared_20251119.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="static-web-hosting-on-the-intel-n150-freebsd-smartos-netbsd-openbsd-and-linux-compared">Static Web Hosting on the Intel N150: FreeBSD, SmartOS, NetBSD, OpenBSD and Linux Compared<a class="headerlink" href="#static-web-hosting-on-the-intel-n150-freebsd-smartos-netbsd-openbsd-and-linux-compared" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://it-notes.dragas.net
+<strong>链接:</strong> https://it-notes.dragas.net/2025/11/19/static-web-hosting-intel-n150-freebsd-smartos-netbsd-openbsd-linux/
+<strong>日期:</strong> Wed, 19 Nov 2025 09:16:00 +0100</p>
+<hr />
+<p>Skip to main content [Access Key: S]</p>
+<p><strong>Notice:</strong> This site works best with JavaScript enabled, but all content is accessible without it. Skip to main content</p>
+<p><a href="https://it-notes.dragas.net">IT Notes</a>Open navigation menu</p>
+<ul>
+<li><a href="https://it-notes.dragas.net" title="Return to homepage">Home</a></li>
+<li><a href="https://it-notes.dragas.net/archives/" title="Browse post archives by date">Archives</a></li>
+<li><a href="https://it-notes.dragas.net/categories/" title="Browse posts by category">Categories</a></li>
+<li><a href="https://it-notes.dragas.net/tags/" title="Browse posts by tag">Tags</a></li>
+<li><a href="https://it-notes.dragas.net/series/" title="Series">Series</a></li>
+<li><a href="https://it-notes.dragas.net/under-the-hood/" title="Under The Hood">Under The Hood</a></li>
+<li><a href="https://it-notes.dragas.net/professional-services/" title="Professional Services">Professional Services</a></li>
+<li><a href="https://it-notes.dragas.net/about-me/" title="About">About</a></li>
+</ul>
+<p>Search articles and pages Enter keywords to search articles and pages Submit search</p>
+<p><img alt="Static Web Hosting on the Intel N150: FreeBSD, SmartOS, NetBSD, OpenBSD and Linux Compared   - Featured image" src="/featured/server_rack.webp" /></p>
+<h1 id="static-web-hosting-on-the-intel-n150-freebsd-smartos-netbsd-openbsd-and-linux-compared_1">Static Web Hosting on the Intel N150: FreeBSD, SmartOS, NetBSD, OpenBSD and Linux Compared<a class="headerlink" href="#static-web-hosting-on-the-intel-n150-freebsd-smartos-netbsd-openbsd-and-linux-compared_1" title="Permanent link">&para;</a></h1>
+<p>FreeBSDNetBSDOpenBSD</p>
+<p>20 min read</p>
+<p>19/11/2025 09:16:00 â¢ Last modified:  21/11/2025 18:45:00 </p>
+<p>by Stefano Marinelli</p>
+<p>A server rack with some servers and cables </p>
+<p>Categories: <a href="https://it-notes.dragas.net/categories/freebsd/"> freebsd</a>, <a href="https://it-notes.dragas.net/categories/smartos/"> smartos</a>, <a href="https://it-notes.dragas.net/categories/illumos/"> illumos</a>, <a href="https://it-notes.dragas.net/categories/linux/"> linux</a>, <a href="https://it-notes.dragas.net/categories/netbsd/"> netbsd</a>, <a href="https://it-notes.dragas.net/categories/openbsd/"> openbsd</a>, <a href="https://it-notes.dragas.net/categories/jail/"> jail</a>, <a href="https://it-notes.dragas.net/categories/zones/"> zones</a>, <a href="https://it-notes.dragas.net/categories/docker/"> docker</a>, <a href="https://it-notes.dragas.net/categories/hosting/"> hosting</a>, <a href="https://it-notes.dragas.net/categories/server/"> server</a>, <a href="https://it-notes.dragas.net/categories/sysadmin/"> sysadmin</a>, <a href="https://it-notes.dragas.net/categories/ownyourdata/"> ownyourdata</a></p>
+<p>Tags: <a href="https://it-notes.dragas.net/tags/freebsd/">freebsd</a>, <a href="https://it-notes.dragas.net/tags/smartos/">smartos</a>, <a href="https://it-notes.dragas.net/tags/illumos/">illumos</a>, <a href="https://it-notes.dragas.net/tags/linux/">linux</a>, <a href="https://it-notes.dragas.net/tags/netbsd/">netbsd</a>, <a href="https://it-notes.dragas.net/tags/openbsd/">openbsd</a>, <a href="https://it-notes.dragas.net/tags/jail/">jail</a>, <a href="https://it-notes.dragas.net/tags/zones/">zones</a>, <a href="https://it-notes.dragas.net/tags/docker/">docker</a>, <a href="https://it-notes.dragas.net/tags/hosting/">hosting</a>, <a href="https://it-notes.dragas.net/tags/server/">server</a>, <a href="https://it-notes.dragas.net/tags/sysadmin/">sysadmin</a>, <a href="https://it-notes.dragas.net/tags/ownyourdata/">ownyourdata</a></p>
+<blockquote>
+<p><strong>Update</strong> : This post has been updated to include <strong>Docker</strong> benchmarks and a comparison of container overhead versus FreeBSD Jails and illumos Zones.</p>
+<p><strong>Note</strong> : Some operating systems (FreeBSD and Linux) support kernel TLS (kTLS) and the related SSL_sendfile path in nginx, which can improve HTTPS performance for static files. Since this feature is not available on all the systems included in the comparison (for example NetBSD, OpenBSD and illumos), the benchmarks were run with a common baseline configuration that does not rely on kTLS. The goal is to compare the systems under similar conditions rather than to measure OS specific optimizations.</p>
+</blockquote>
+<p>I often get very specific infrastructure requests from clients. Most of the time it is some form of hosting. My job is usually to suggest and implement the setup that fits their goals, skills and long term plans. </p>
+<p>If there are competent technicians on the other side, and they are willing to learn or already comfortable with Unix style systems, my first choices are usually one of the BSDs or an illumos distribution. If they need a control panel, or they already have a lot of experience with a particular stack that will clearly help them, I will happily use Linux and it usually delivers solid, reliable results. </p>
+<p>Every now and then someone asks the question I like the least: </p>
+<blockquote>
+<p>âBut how does it <em>perform</em> compared to X or Y?â </p>
+</blockquote>
+<p>I have never been a big fan of benchmarks. At best they capture a very specific workload on a very specific setup. They are almost never a perfect reflection of what will happen in the real world. </p>
+<p>For example, I discovered that idle bhyve VMs seem to use fewer resources when the host is illumos than when the host is FreeBSD. It looks strange at first sight, but the illumos people are clearly working very hard on this, and the result is a very capable and efficient platform. </p>
+<p>Despite my skepticism, from time to time I enjoy running some comparative tests. I already did it with <a href="https://it-notes.dragas.net/2024/06/10/proxmox-vs-freebsd-which-virtualization-host-performs-better/">Proxmox KVM versus FreeBSD bhyve</a>, and I also <a href="https://it-notes.dragas.net/2025/09/19/freebsd-vs-smartos-whos-faster-for-jails-zones-bhyve/">compared Jails, Zones, bhyve and KVM</a> on the same Intel N150 box. That led to the FreeBSD vs SmartOS article where I focused on CPU and memory performance on this small mini PC. </p>
+<p>This time I wanted to do something simpler, but also closer to what I see every day: <strong>static web hosting.</strong></p>
+<p>Instead of synthetic CPU or I/O tests, I wanted to measure how different operating systems behave when they serve a small static site with nginx, both over HTTP and HTTPS. </p>
+<p>This is <strong>not</strong> meant to be a super rigorous benchmark. I used the default nginx packages, almost default configuration, and did not tune any OS specific kernel settings. In my experience, careful tuning of kernel and network parameters can easily move numbers by several tens of percentage points. The problem is that very few people actually spend time chasing such optimizations. Much more often, once a limit is reached, someone yells âwe need mooooar powaaaarâ while the real fix would be to tune the existing stack a bit.</p>
+<p>So the question I want to answer here is more modest and more practical:</p>
+<blockquote>
+<p>With default nginx and a small static site, how much does the choice of host OS really matter on this Intel N150 mini PC?</p>
+</blockquote>
+<p><em>Spoiler</em> : less than people think, at least for plain HTTP. Things get more interesting once TLS enters the picture.</p>
+<hr />
+<blockquote>
+<p><strong>Disclaimer</strong><br />
+ These benchmarks are a snapshot of my specific hardware, network and configuration. They are useful to compare <em>relative</em> behavior on this setup. They are not a universal ranking of operating systems. Different CPUs, NICs, crypto extensions, kernel versions or nginx builds can completely change the picture. </p>
+</blockquote>
+<hr />
+<h2 id="test-setup">Test setup<a class="headerlink" href="#test-setup" title="Permanent link">&para;</a></h2>
+<p>The hardware is the same Intel N150 mini PC I used in my previous tests: a small, low power box that still has enough cores to be interesting for lab and small production workloads. </p>
+<p>On it, I installed several operating systems and environments, always on the bare metal, not nested inside each other. On each OS I installed nginx from the official packages. </p>
+<h3 id="software-under-test">Software under test<a class="headerlink" href="#software-under-test" title="Permanent link">&para;</a></h3>
+<p>On the host: </p>
+<p><strong>SmartOS</strong> , with:<br />
+- a Debian 12 LX zone<br />
+- an Alpine Linux 3.22 LX zone<br />
+- a native SmartOS zone </p>
+<p><strong>FreeBSD</strong> 14.3-RELEASE:<br />
+- nginx running inside a native jail </p>
+<p><strong>OpenBSD</strong> 7.8:<br />
+- nginx on the host </p>
+<p><strong>NetBSD</strong> 10.1:<br />
+- nginx on the host </p>
+<p><strong>Debian</strong> 13.2:<br />
+- nginx on the host </p>
+<p><strong>Alpine Linux</strong> 3.22:<br />
+- nginx on the host<br />
+- Docker: Debian 13 container running on the Alpine host (ports mapped)</p>
+<p>I also tried to include <strong>DragonFlyBSD</strong> , but the NIC in this box is not supported. Using a different NIC just for one OS would have made the comparison meaningless, so I excluded it. </p>
+<h3 id="nginx-configuration">nginx configuration<a class="headerlink" href="#nginx-configuration" title="Permanent link">&para;</a></h3>
+<p>In all environments: </p>
+<ul>
+<li>nginx was installed from the system packages </li>
+<li><code>worker_processes</code> was set to <code>auto</code></li>
+<li>the web root contained the same static content </li>
+</ul>
+<p>The important part is that I used <strong>exactly the same<code>nginx.conf</code> file for all operating systems and all combinations in this article</strong>. I copied the same configuration file verbatim to every host, jail and zone. The only changes were the IP address and file paths where needed, for example for the TLS certificate and key. </p>
+<p>The static content was a default build of the example site generated by <a href="https://bssg.dragas.net/"><strong>BSSG</strong> , my Bash static site generator</a>. The web root was the same logical structure on every OS and container type. </p>
+<p>There is no OS specific tuning in the configuration and no kernel level tweaks. This is very close to a âpackage install plus minimal configâ situation. </p>
+<h3 id="tls-configuration">TLS configuration<a class="headerlink" href="#tls-configuration" title="Permanent link">&para;</a></h3>
+<p>For HTTPS I used a very simple configuration, identical on every host. </p>
+<p>Self signed certificate created with: </p>
+<div class="language-text highlight"><pre><span></span><code>openssl req -x509 -newkey rsa:4096 -nodes -keyout server.key -out server.crt -days 365 -subj &quot;/CN=localhost&quot;
+</code></pre></div>
+<p>Example nginx <code>server</code> block for HTTPS (simplified): </p>
+<div class="language-text highlight"><pre><span></span><code>server {  
+listen 443 ssl http2;  
+listen [::]:443 ssl http2;
+
+server_name _;
+
+ssl_certificate /etc/nginx/ssl/server.crt;  
+ssl_certificate_key /etc/nginx/ssl/server.key;
+
+root /var/www/html;  
+index index.html index.htm;
+
+location / {  
+try_files $uri $uri/ =404;  
+}  
+}
+</code></pre></div>
+<p>The HTTP virtual host is also the same everywhere, with the root pointing to the BSSG example site. </p>
+<h3 id="load-generator">Load generator<a class="headerlink" href="#load-generator" title="Permanent link">&para;</a></h3>
+<p>The tests were run from my workstation on the same LAN: </p>
+<ul>
+<li>client host: a mini PC machine connected at 2.5 Gbit/s </li>
+<li>switch: 2.5 Gbit/s </li>
+<li>test tool: <code>wrk</code></li>
+</ul>
+<p>For each target host I ran: </p>
+<ul>
+<li><code>wrk -t4 -c50 -d10s http://IP</code></li>
+<li><code>wrk -t4 -c10 -d10s http://IP</code></li>
+<li><code>wrk -t4 -c50 -d10s https://IP</code></li>
+<li><code>wrk -t4 -c10 -d10s https://IP</code></li>
+</ul>
+<p>Each scenario was executed multiple times to reduce noise; the numbers below are medians (or very close to them) from the runs.</p>
+<h2 id="the-contenders">The contenders<a class="headerlink" href="#the-contenders" title="Permanent link">&para;</a></h2>
+<p>To keep things readable, I will refer to each setup as follows: </p>
+<ul>
+<li><strong>SmartOS Debian LX</strong> â SmartOS host, Debian 12 LX zone </li>
+<li><strong>SmartOS Alpine LX</strong> â SmartOS host, Alpine 3.22 LX zone </li>
+<li><strong>SmartOS Native</strong> â SmartOS host, native zone </li>
+<li><strong>FreeBSD Jail</strong> â FreeBSD 14.3-RELEASE, nginx in a jail </li>
+<li><strong>OpenBSD Host</strong> â OpenBSD 7.8, nginx on the host </li>
+<li><strong>NetBSD Host</strong> â NetBSD 10.1, nginx on the host </li>
+<li><strong>Debian Host</strong> â Debian 13.2, nginx on the host </li>
+<li><strong>Alpine Host</strong> â Alpine 3.22, nginx on the host </li>
+<li><strong>Docker Container</strong> â Alpine host, Debian 13 Docker container</li>
+</ul>
+<p>Everything uses the same nginx configuration file and the same static site. </p>
+<h2 id="static-http-results">Static HTTP results<a class="headerlink" href="#static-http-results" title="Permanent link">&para;</a></h2>
+<p>Let us start with plain HTTP, since this removes TLS from the picture and focuses on the kernel, network stack and nginx itself. </p>
+<h3 id="http-4-threads-50-concurrent-connections">HTTP, 4 threads, 50 concurrent connections<a class="headerlink" href="#http-4-threads-50-concurrent-connections" title="Permanent link">&para;</a></h3>
+<p>Approximate median <code>wrk</code> results: </p>
+<table>
+<thead>
+<tr>
+<th>Environment</th>
+<th>HTTP 50 connections</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SmartOS Debian LX</td>
+<td>~46.2 k</td>
+</tr>
+<tr>
+<td>SmartOS Alpine LX</td>
+<td>~49.2 k</td>
+</tr>
+<tr>
+<td>SmartOS Native</td>
+<td>~63.7 k</td>
+</tr>
+<tr>
+<td>FreeBSD Jail</td>
+<td>~63.9 k</td>
+</tr>
+<tr>
+<td>OpenBSD Host</td>
+<td>~64.1 k</td>
+</tr>
+<tr>
+<td>NetBSD Host</td>
+<td>~64.0 k</td>
+</tr>
+<tr>
+<td>Debian Host</td>
+<td>~63.8 k</td>
+</tr>
+<tr>
+<td>Alpine Host</td>
+<td>~63.9 k</td>
+</tr>
+<tr>
+<td>Docker Container</td>
+<td>~63.7 k</td>
+</tr>
+</tbody>
+</table>
+<p>Two things stand out: </p>
+<ol>
+<li>All the native or jail/container setups on the hosts that are not LX zones cluster around 63 to 64k requests per second. </li>
+<li>The two SmartOS LX zones sit slightly lower, in the 46 to 49k range, which is still very respectable for this hardware. </li>
+</ol>
+<p>In other words, as long as you are on the host or in something very close to it (FreeBSD jail, SmartOS native zone, NetBSD, OpenBSD, Linux on bare metal), static HTTP on nginx will happily max out around 64k requests per second with this small Intel N150 CPU. </p>
+<p>The Debian and Alpine LX zones on SmartOS are a bit slower, but not dramatically so. They still deliver close to 50k requests per second and, in a real world scenario, you would probably saturate the network or the client long before hitting those numbers. </p>
+<h3 id="http-4-threads-10-concurrent-connections">HTTP, 4 threads, 10 concurrent connections<a class="headerlink" href="#http-4-threads-10-concurrent-connections" title="Permanent link">&para;</a></h3>
+<p>With fewer concurrent connections, absolute throughput drops, but the relative picture is similar: </p>
+<ul>
+<li>SmartOS Native around 44k </li>
+<li>NetBSD and Alpine Host around 34 to 35k </li>
+<li>FreeBSD, Debian, OpenBSD around 31 to 33k </li>
+<li>The Docker Container sits slightly lower at ~30.2k req/s, showing a small overhead from the networking layer </li>
+<li>The SmartOS LX zones sit slightly below, around 35 to 37k req/s </li>
+</ul>
+<p>The important conclusion is simple: </p>
+<blockquote>
+<p>For plain HTTP static hosting, once nginx is installed and correctly configured, the choice between these operating systems makes very little difference on this hardware. Zones and jails add negligible overhead, LX zones add a small one. </p>
+</blockquote>
+<p>If you are only serving static content over HTTP, your choice of OS should be driven by other factors: ecosystem, tooling, update strategy, your own expertise and preference. </p>
+<h2 id="static-https-results">Static HTTPS results<a class="headerlink" href="#static-https-results" title="Permanent link">&para;</a></h2>
+<p>TLS is where things start to diverge more clearly and where CPU utilization becomes interesting. </p>
+<h3 id="https-4-threads-50-concurrent-connections">HTTPS, 4 threads, 50 concurrent connections<a class="headerlink" href="#https-4-threads-50-concurrent-connections" title="Permanent link">&para;</a></h3>
+<p>Approximate medians: </p>
+<table>
+<thead>
+<tr>
+<th>Environment</th>
+<th>HTTPS 50 connections</th>
+<th>CPU notes at 50 HTTPS connections</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SmartOS Debian LX</td>
+<td>~51.4 k</td>
+<td>CPU saturated</td>
+</tr>
+<tr>
+<td>SmartOS Alpine LX</td>
+<td>~40.4 k</td>
+<td>CPU saturated</td>
+</tr>
+<tr>
+<td>SmartOS Native</td>
+<td>~52.8 k</td>
+<td>CPU saturated</td>
+</tr>
+<tr>
+<td>FreeBSD Jail</td>
+<td>~62.9 k</td>
+<td>around 60% CPU idle</td>
+</tr>
+<tr>
+<td>OpenBSD Host</td>
+<td>~39.7 k</td>
+<td>CPU saturated</td>
+</tr>
+<tr>
+<td>NetBSD Host</td>
+<td>~40.4 k</td>
+<td>CPU saturated</td>
+</tr>
+<tr>
+<td>Debian Host</td>
+<td>~62.8 k</td>
+<td>about 20% CPU idle</td>
+</tr>
+<tr>
+<td>Alpine Host</td>
+<td>~62.4 k</td>
+<td>small idle headroom, around 7% idle</td>
+</tr>
+<tr>
+<td>Docker Container</td>
+<td>~62.7 k</td>
+<td>CPU saturated</td>
+</tr>
+</tbody>
+</table>
+<p>These numbers tell a more nuanced story. </p>
+<ol>
+<li>
+<p><strong>FreeBSD, Debian and Alpine on bare metal form a âfast TLSâ group.</strong><br />
+All three sit around 62 to 63k requests per second with 50 concurrent HTTPS connections. </p>
+</li>
+<li>
+<p><strong>FreeBSD does this while using significantly less CPU.</strong><br />
+During the HTTPS tests with 50 connections, the FreeBSD host still had around 60% CPU idle. It is the platform that handled TLS load most comfortably in terms of CPU headroom. </p>
+</li>
+<li>
+<p><strong>Debian and Alpine are close in throughput, but push the CPU harder.</strong><br />
+Debian still had some idle time left, Alpine even less. In practice, all three are excellent here, but FreeBSD gives you more room before you hit the wall. </p>
+</li>
+<li>
+<p><strong>SmartOS, NetBSD and OpenBSD form a âgood but heavierâ TLS group.</strong><br />
+Their HTTPS throughput is in the 40 to 52k req/s range and they reach full CPU usage at 50 concurrent connections. OpenBSD and NetBSD stabilize around 39 to 40k req/s. SmartOS native and the Debian LX zone manage slightly better (around 51 to 53k) but still with the CPU pegged. </p>
+</li>
+</ol>
+<h3 id="https-4-threads-10-concurrent-connections">HTTPS, 4 threads, 10 concurrent connections<a class="headerlink" href="#https-4-threads-10-concurrent-connections" title="Permanent link">&para;</a></h3>
+<p>With lower concurrency: </p>
+<ul>
+<li>FreeBSD, Debian and Alpine still sit in roughly the 29 to 31k req/s range </li>
+<li>SmartOS Native and LX zones are in the mid to high 30k range </li>
+<li>The Docker Container drops slightly to ~27.8k req/s </li>
+<li>NetBSD and OpenBSD sit around 26 to 27k req/s </li>
+</ul>
+<p>The relative pattern is the same: for this TLS workload, FreeBSD and modern Linux distributions on bare metal appear to make better use of the cryptographic capabilities of the CPU, delivering higher throughput or more headroom or both. </p>
+<h2 id="what-tls-seems-to-highlight">What TLS seems to highlight<a class="headerlink" href="#what-tls-seems-to-highlight" title="Permanent link">&para;</a></h2>
+<p>The HTTPS tests point to something that is not about nginx itself, but about the TLS stack and how well it can exploit the hardware. </p>
+<p>On this Intel N150, my feeling is: </p>
+<ul>
+<li>FreeBSD, with the userland and crypto stack I am running, is very efficient at TLS here. It delivers the highest throughput while keeping plenty of CPU in reserve. </li>
+<li>Debian and Alpine, with their recent kernels and libraries, are also strong performers, close to FreeBSD in throughput, but with less idle CPU. </li>
+<li>NetBSD, OpenBSD and SmartOS (native and LX) are still perfectly capable of serving a lot of HTTPS traffic, but they have to work harder to keep up and they hit 100% CPU much earlier. </li>
+</ul>
+<p>This matches what I see in day to day operations: TLS performance is often less about ânginx vs something elseâ and more about the combination of: </p>
+<ul>
+<li>the TLS library version and configuration </li>
+<li>how well the OS uses the CPU crypto instructions </li>
+<li>kernel level details in the network and crypto paths </li>
+</ul>
+<p>I suspect the differences here are mostly due to how each system combines its TLS stack (OpenSSL, LibreSSL and friends), its kernel and its hardware acceleration support. It would take a deeper dive into profiling and configuration knobs to attribute the gaps precisely. </p>
+<p>In any case, on this specific mini PC, if I had to pick a platform to handle a large amount of HTTPS static traffic, FreeBSD, Debian and Alpine would be my first candidates, in that order. </p>
+<h2 id="zones-jails-containers-and-docker-overhead-in-practice">Zones, jails, containers and Docker: overhead in practice<a class="headerlink" href="#zones-jails-containers-and-docker-overhead-in-practice" title="Permanent link">&para;</a></h2>
+<p>Another interesting part of the story is the overhead introduced by different isolation technologies. </p>
+<p>From these tests and the <a href="https://it-notes.dragas.net/2025/09/19/freebsd-vs-smartos-whos-faster-for-jails-zones-bhyve/">previous virtualization article on the same N150 machine</a>, the picture is consistent: </p>
+<ul>
+<li>
+<p><strong>FreeBSD jails behave almost like bare metal and are significantly more efficient than Docker.</strong><br />
+For both HTTP and HTTPS, running nginx in a jail on FreeBSD 14.3-RELEASE produces numbers practically identical to native hosts.<br />
+The contrast with Docker is striking: while the Docker container required 100% CPU to reach peak for the HTTP and HTTPS throughput, <strong>the FreeBSD jail delivered the same speed with ~60% of the CPU sitting idle</strong>. In terms of performance cost per request, Jails are drastically cheaper.</p>
+</li>
+<li>
+<p><strong>SmartOS native zones are also very close to the metal.</strong><br />
+Static HTTP performance reaches the same 64k req/s region and HTTPS is only slightly behind the "fast TLS" group, although with higher CPU usage. </p>
+</li>
+<li>
+<p><strong>SmartOS LX zones introduce a noticeable but modest overhead.</strong><br />
+Both Debian and Alpine LX zones on SmartOS perform slightly worse than the native zone or FreeBSD jails. For static HTTP they are still very fast. For HTTPS the Debian LX zone remains competitive but costs more CPU, while the Alpine LX zone is slower. </p>
+</li>
+<li>
+<p><strong>Docker on Linux performs efficiently but eats the margins.</strong> I ran an additional test using a Debian 13 Docker container running on the Alpine Linux host. At peak load (50 connections), the throughput was impressive and virtually identical to bare metal: ~63.7k req/s for HTTP and ~62.7k req/s for HTTPS. However, there is a clear cost. First, while the bare metal host maintained a small CPU buffer (~7% idle) during the HTTPS test, Docker <strong>saturated the CPU to 100%</strong>. Second, at lower concurrency (10 connections), the overhead became visible. The Docker container scored ~30.2k req/s for HTTP and ~27.8k req/s for HTTPS, slightly trailing the ~31-34k and ~29-31k range of the bare metal counterparts. The abstraction layers (NAT, bridging, namespaces) are extremely efficient, but they are not completely free.</p>
+</li>
+</ul>
+<p>This leads to a clear conclusion on efficiency: <strong>FreeBSD Jails provide the highest throughput with the lowest CPU cost.</strong> LX zones and Docker containers can match the speed (or come close), but they burn significantly more CPU cycles to do so.</p>
+<h2 id="what-this-means-for-real-workloads">What this means for real workloads<a class="headerlink" href="#what-this-means-for-real-workloads" title="Permanent link">&para;</a></h2>
+<p>It is easy to get lost in tables and percentages, so let us go back to the initial question. </p>
+<blockquote>
+<p>A client wants static hosting.<br />
+ Does the choice between FreeBSD, SmartOS, NetBSD or Linux matter in terms of performance? </p>
+</blockquote>
+<p>For <strong>plain HTTP</strong> on this hardware, with nginx and the same configuration: </p>
+<ul>
+<li>Not really.<br />
+All the native hosts and FreeBSD jails deliver roughly the same maximum throughput, in the 63 to 64k req/s range. SmartOS LX zones are slightly slower but still strong. </li>
+</ul>
+<p>For <strong>HTTPS</strong> : </p>
+<ul>
+<li>Yes, it starts to matter a bit more. </li>
+<li>FreeBSD stands out for how relaxed the CPU is under high TLS load. </li>
+<li>Debian and Alpine are very close in throughput, with more CPU used but still with some headroom. </li>
+<li>SmartOS, NetBSD and OpenBSD can still push a lot of HTTPS traffic, but they reach 100% CPU earlier and stabilize at lower request rates. </li>
+</ul>
+<p>Does this mean you should always choose FreeBSD or Debian or Alpine for static HTTPS hosting? </p>
+<p>Not necessarily. </p>
+<p>In real deployments, the bottleneck is rarely the TLS performance of a single node serving a small static site. Network throughput, storage, logging, reverse proxies, CDNs and application layers all play a role. </p>
+<p>However, knowing that FreeBSD and current Linux distributions can squeeze more out of a small CPU under TLS is useful when you are: </p>
+<ul>
+<li>sizing hardware for small VPS nodes that must serve many HTTPS requests </li>
+<li>planning to consolidate multiple services on a low power box </li>
+<li>deciding whether you can afford to keep some CPU aside for other tasks (cache, background jobs, monitoring, and so on) </li>
+</ul>
+<p>As always, the right answer depends on the complete picture: your skills, your tooling, your backups, your monitoring, the rest of your stack, and your tolerance for troubleshooting when things go sideways. </p>
+<h2 id="final-thoughts">Final thoughts<a class="headerlink" href="#final-thoughts" title="Permanent link">&para;</a></h2>
+<p>From these small tests, my main takeaways are: </p>
+<ol>
+<li>
+<p><strong>Static HTTP is basically solved on all these platforms.</strong><br />
+On a modest Intel N150, every system tested can push around 64k static HTTP requests per second with nginx set to almost default settings. For many use cases, that is already more than enough. </p>
+</li>
+<li>
+<p><strong>TLS performance is where the OS and crypto stack start to matter.</strong><br />
+FreeBSD, Debian and Alpine squeeze more HTTPS requests out of the N150, and FreeBSD in particular does it with a surprising amount of idle CPU left. NetBSD, OpenBSD and SmartOS need more CPU to reach similar speeds and stabilize at lower throughput once the CPU is saturated. </p>
+</li>
+<li>
+<p><strong>Jails and native zones are essentially free, LX zones cost a bit more.</strong><br />
+FreeBSD jails and SmartOS native zones show very little overhead for this workload. SmartOS LX zones are still perfectly usable, but if you are chasing every last request per second you will see the cost of the translation layer. </p>
+</li>
+<li>
+<p><strong>Benchmarks are only part of the story.</strong><br />
+If your team knows OpenBSD inside out and has tooling, scripts and workflows built around it, you might happily accept using more CPU on TLS in exchange for security features, simplicity and familiarity. The same goes for NetBSD or SmartOS in environments where their specific strengths shine. </p>
+</li>
+</ol>
+<p>I will not choose an operating system for a client just because a benchmark looks nicer. These numbers are one of the many inputs I consider. What matters most is always the combination of reliability, security, maintainability and the human beings who will have to operate the<br />
+system at three in the morning when something goes wrong. </p>
+<p>Still, it is nice to know that if you put a tiny Intel N150 in front of a static site and you pick FreeBSD or a modern Linux distribution for HTTPS, you are giving that little CPU a fair chance to shine.</p>
+<h3 id="tags">Tags:<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h3>
+<p><a href="https://it-notes.dragas.net/tags/freebsd/">freebsd</a> <a href="https://it-notes.dragas.net/tags/smartos/">smartos</a> <a href="https://it-notes.dragas.net/tags/illumos/">illumos</a> <a href="https://it-notes.dragas.net/tags/linux/">linux</a> <a href="https://it-notes.dragas.net/tags/netbsd/">netbsd</a> <a href="https://it-notes.dragas.net/tags/openbsd/">openbsd</a> <a href="https://it-notes.dragas.net/tags/jail/">jail</a> <a href="https://it-notes.dragas.net/tags/zones/">zones</a> <a href="https://it-notes.dragas.net/tags/docker/">docker</a> <a href="https://it-notes.dragas.net/tags/hosting/">hosting</a> <a href="https://it-notes.dragas.net/tags/server/">server</a> <a href="https://it-notes.dragas.net/tags/sysadmin/">sysadmin</a> <a href="https://it-notes.dragas.net/tags/ownyourdata/">ownyourdata</a></p>
+<p><a href="https://it-notes.dragas.net/2025/11/24/why-i-still-love-linux/">&lt;- Next PostWhy I (still) love Linux</a><a href="https://it-notes.dragas.net/2025/11/06/self-hosting-your-mastodon-media-with-seaweedfs/">Previous Post -&gt;Self-hosting your Mastodon media with SeaweedFS</a></p>
+<h3 id="you-may-also-like">You may also like<a class="headerlink" href="#you-may-also-like" title="Permanent link">&para;</a></h3>
+<h2 id="freebsd-vs-smartos-whos-faster-for-jails-zones-and-bhyve-vms"><a href="https://it-notes.dragas.net/2025/09/19/freebsd-vs-smartos-whos-faster-for-jails-zones-bhyve/">FreeBSD vs. SmartOS: Who's Faster for Jails, Zones, and bhyve VMs?</a><a class="headerlink" href="#freebsd-vs-smartos-whos-faster-for-jails-zones-and-bhyve-vms" title="Permanent link">&para;</a></h2>
+<p>19/09/2025 10:50:00  by Stefano Marinelli</p>
+<p>Which virtualization host performs better? I put FreeBSD and SmartOS in a head-to-head showdown. The performance of Jails, Zones, and bhyve VMs surprised me, forcing a second round of tests on different hardware to find the real winner.</p>
+<p><a href="https://it-notes.dragas.net/2025/09/19/freebsd-vs-smartos-whos-faster-for-jails-zones-bhyve/">Read More</a></p>
+<h2 id="how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-3-proxmox-to-freebsd"><a href="https://it-notes.dragas.net/2023/03/14/how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-3/">How we are migrating (many of) our servers from Linux to FreeBSD - Part 3 - Proxmox to FreeBSD</a><a class="headerlink" href="#how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-3-proxmox-to-freebsd" title="Permanent link">&para;</a></h2>
+<p>14/03/2023 13:00:00  by Stefano Marinelli</p>
+<p>Part 3 of our migration series details the complex process of moving servers from Proxmox to FreeBSD, including overcoming challenges with old hardware, problematic LXC containers, and fine-tuning virtual machines for optimal performance on bhyve.</p>
+<p><a href="https://it-notes.dragas.net/2023/03/14/how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-3/">Read More</a></p>
+<h2 id="new-article-on-bsd-cafe-journal-wordpress-on-freebsd-with-bastillebsd"><a href="https://it-notes.dragas.net/2025/07/21/new-article-wordpress-on-freebsd-bastillebsd-on-bsd-cafe-journal/">New Article on BSD Cafe Journal: WordPress on FreeBSD with BastilleBSD</a><a class="headerlink" href="#new-article-on-bsd-cafe-journal-wordpress-on-freebsd-with-bastillebsd" title="Permanent link">&para;</a></h2>
+<p>21/07/2025 09:30:00  by Stefano Marinelli</p>
+<p>A new article on running WordPress on FreeBSD with BastilleBSD has been published on the BSD Cafe Journal, plus a small update on future technical content.</p>
+<p><a href="https://it-notes.dragas.net/2025/07/21/new-article-wordpress-on-freebsd-bastillebsd-on-bsd-cafe-journal/">Read More</a></p>
+<h3 id="about">About<a class="headerlink" href="#about" title="Permanent link">&para;</a></h3>
+<p>Scattered IT Notes - by Stefano Marinelli</p>
+<p><a href="https://2025.eurobsdcon.org/"><img alt="EuroBSDCon 2025" src="https://it-notes.dragas.net/banner_zagreb.png" /></a></p>
+<p>EuroBSDCon 2025 - Zagreb, Croatia; September 25-28, 2025.</p>
+<h3 id="categories">Categories<a class="headerlink" href="#categories" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://it-notes.dragas.net/categories/server/">server</a></li>
+<li><a href="https://it-notes.dragas.net/categories/freebsd/">freebsd</a></li>
+<li><a href="https://it-notes.dragas.net/categories/hosting/">hosting</a></li>
+<li><a href="https://it-notes.dragas.net/categories/ownyourdata/">ownyourdata</a></li>
+<li><a href="https://it-notes.dragas.net/categories/tutorial/">tutorial</a></li>
+<li><a href="https://it-notes.dragas.net/categories/linux/">linux</a></li>
+<li><a href="https://it-notes.dragas.net/categories/data/">data</a></li>
+<li><a href="https://it-notes.dragas.net/categories/networking/">networking</a></li>
+<li><a href="https://it-notes.dragas.net/categories/zfs/">zfs</a></li>
+<li><a href="https://it-notes.dragas.net/categories/jail/">jail</a></li>
+<li><a href="https://it-notes.dragas.net/categories/container/">container</a></li>
+<li><a href="https://it-notes.dragas.net/categories/filesystems/">filesystems</a></li>
+<li><a href="https://it-notes.dragas.net/categories/series/">series</a></li>
+<li><a href="https://it-notes.dragas.net/categories/web/">web</a></li>
+<li><a href="https://it-notes.dragas.net/categories/backup/">backup</a></li>
+<li><a href="https://it-notes.dragas.net/categories/">View All Categories</a></li>
+</ul>
+<h3 id="links">Links<a class="headerlink" href="#links" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://it-notes.dragas.net">Home</a></li>
+<li><a href="https://it-notes.dragas.net/archives/">Archives</a></li>
+<li><a href="https://it-notes.dragas.net/tags/">Tags</a></li>
+<li><a href="https://it-notes.dragas.net/categories/">Categories</a></li>
+<li><a href="https://it-notes.dragas.net/series/">Series</a></li>
+<li><a href="https://it-notes.dragas.net/under-the-hood/">Under The Hood</a></li>
+<li><a href="https://it-notes.dragas.net/professional-services/">Professional Services</a></li>
+<li><a href="https://it-notes.dragas.net/about-me/">About</a></li>
+<li><a href="https://it-notes.dragas.net/feed.xml">RSS</a></li>
+</ul>
+<p>(C) 2026 IT Notes. All rights reserved. </p>
+<p>Generated with <a href="https://itnblog.dragas.net">ITNBlog</a> on 29/01/2026 09:12:41 UTC </p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 05:40:42 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

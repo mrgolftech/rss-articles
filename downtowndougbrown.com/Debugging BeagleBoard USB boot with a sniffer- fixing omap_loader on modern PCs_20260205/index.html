@@ -1,0 +1,728 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/downtowndougbrown.com/Debugging%20BeagleBoard%20USB%20boot%20with%20a%20sniffer-%20fixing%20omap_loader%20on%20modern%20PCs_20260205/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Debugging BeagleBoard USB boot with a sniffer: fixing omap_loader on modern PCs - RSS Articles</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#debugging-beagleboard-usb-boot-with-a-sniffer-fixing-omap_loader-on-modern-pcs" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="RSS Articles" class="md-header__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RSS Articles
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Debugging BeagleBoard USB boot with a sniffer: fixing omap_loader on modern PCs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RSS Articles" class="md-nav__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RSS Articles
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/downtowndougbrown.com/Debugging BeagleBoard USB boot with a sniffer- fixing omap_loader on modern PCs_20260205.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="debugging-beagleboard-usb-boot-with-a-sniffer-fixing-omap_loader-on-modern-pcs">Debugging BeagleBoard USB boot with a sniffer: fixing omap_loader on modern PCs<a class="headerlink" href="#debugging-beagleboard-usb-boot-with-a-sniffer-fixing-omap_loader-on-modern-pcs" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://www.downtowndougbrown.com
+<strong>链接:</strong> https://www.downtowndougbrown.com/2025/11/debugging-beagleboard-usb-boot-with-a-sniffer-fixing-omap_loader-on-modern-pcs/
+<strong>日期:</strong> Sat, 08 Nov 2025 20:27:32 +0000</p>
+<hr />
+<p>This post is about the original <a href="https://www.beagleboard.org/boards/beagleboard">OMAP3530 BeagleBoard</a> from 2008. Yes, the one so old that it doesn't even show up in <a href="https://www.beagleboard.org/boards">the board list on BeagleBoard.org</a> anymore. The Beagle<strong>Board</strong> , not the BeagleBone. During my Chumby 8 kernel escapades, at one point <a href="https://www.downtowndougbrown.com/2024/07/upgrading-my-chumby-8-kernel-part-12-uart-woes/">I ran into a UART bug that affected multiple drivers</a>, including the omap-serial driver. This led me to buy a BeagleBoard so I could verify the omap-serial bug on hardware.</p>
+<p><a href="https://www.downtowndougbrown.com/wp-content/uploads/2024/07/beagleboard.jpg"><img alt="" src="https://www.downtowndougbrown.com/wp-content/uploads/2024/07/beagleboard.jpg" /></a></p>
+<p>After I figured out the bug with the UART driver, I realized that the OMAP3530 has support for booting from USB, so I decided to go off on a random tangent to get USB boot working. There was no problem I was trying to solve or anything like that. I just thought it would be a fun experiment (am I a masochist?). Little did I know, I would be getting myself into some tricky USB packet analysis.</p>
+<p>I struggled to find info about this process because of how old the OMAP is today. The main utility I found was a program called <a href="https://github.com/grant-h/omap_loader">omap_loader</a> by Grant Hernandez, which is a newer rewrite of Martin Mueller's original <a href="https://groups.google.com/g/beagleboard/c/K56ZiGu3p0c">omap3_usbload</a> circa 2008. Thanks to some lucky searching combined with the Internet Archive, I connected the dots between 2008 and the present. At some point before 2013, Rick Bronson <a href="https://web.archive.org/web/20120905211155/http://elinux.org/BeagleBoard#Serial_and_USB_boot">provided an update to omap3_usbload (along with a patch to TI's X-Loader bootloader)</a> that enabled uploading additional files like a full U-Boot and Linux kernel into RAM after X-Loader, all through USB. This unlocked the ability to boot all the way to Linux from a completely blank BeagleBoard. Grant's newer omap_loader utility also incorporates these same improvements.</p>
+<p>All of this research was difficult. Many of the links I found pointed to sites like gitorious.org and arago-project.org, both of which no longer exist (although Arago's Git repos are now <a href="https://git.ti.com/cgit/">hosted by TI</a>). eLinux.org's BeagleBoard wiki was totally rearranged at some point and lost its info about USB recovery, and Rick's site no longer exists, but as usual, the Internet Archive saved the day.</p>
+<p>At some point later on, X-Loader was replaced by U-Boot SPL, so I think that is partially why so much of this info eventually disappeared from the web. But it's a darn shame. This USB booting functionality is really cool, and it seems like most of the documentation for it has slowly gone by the wayside! The main breadcrumbs remaining on modern Google are the newer omap_loader utility, and also some references to Nest thermostats. For example, <a href="https://nest-open-source.googlesource.com/nest-learning-thermostat/5.9.4/x-loader/+/refs/heads/master/x-loader/drivers/usb/usb.c">Nest's X-Loader had the USB patch applied</a> (with some tweaks added).</p>
+<p>With all that research out of the way, I was ready to try it all out. I compiled omap_loader, grabbed the pre-built binary of x-load.bin that was included with Rick's patchset, and also used a u-boot.bin that I had compiled myself using Buildroot while performing my UART tests with a modern kernel on the BeagleBoard. Then, I tried to load it:</p>
+<div class="language-text highlight"><pre><span></span><code>$ sudo ./omap_loader -p 0xd009 -f x-load.bin -f u-boot.bin -a 0x80800000 -j 0x80800000 -v  
+OMAP Loader 1.0.0  
+File &#39;x-load.bin&#39; at 0x40200000, size 26956  
+File &#39;u-boot.bin&#39; at 0x80800000, size 777760  
+[+] scanning for USB device matching 0451:d009...
+</code></pre></div>
+<p>The idea behind this command is it sends X-Loader (x-load.bin) as the main payload that the OMAP's on-chip bootloader is listening for over USB. Then, X-Loader starts up. Next, omap_loader sends any additional files using X-Loader's USB protocol. In this case, I've supplied one extra file: u-boot.bin, which I told it to load into RAM at 0x80800000. Finally, the <code>-j 0x80800000</code> argument tells X-Loader to jump into U-Boot rather than hanging around doing nothing afterward.</p>
+<p>The output of the command looked normal so far. I plugged in my BeagleBoard, which didn't have an SD card inserted and also had its NAND flash erased, so it had no bootloader installed and thus it would attempt a USB boot.</p>
+<div class="language-text highlight"><pre><span></span><code>[+] successfully opened 0451:d009 (Texas Instruments OMAP3430)  
+[+] got ASIC ID - Num Subblocks [05], Device ID Info [01050134300757], Reserved [13020100], Ident Data [1215010000000000000000000000000000000000000000], Reserved [1415010000000000000000000000000000000000000000], CRC (4 bytes) [150901f7488f2800000000]  
+[-] fatal transfer error (BULK_OUT) for 26956 bytes (0 made it): LIBUSB_ERROR_PIPE  
+[-] failed to send file &#39;x-load.bin&#39; (size 26956)  
+[-] failed to transfer the first stage file &#39;x-load.bin&#39;
+</code></pre></div>
+<p>Darn. The utility recognized the BeagleBoard being plugged in, but libusb errored out with a pipe error. Long story short, I messed around with a few other computers, and I found that a few of my older computers, old enough that they didn't have USB 3.0 ports on their motherboards, actually worked perfectly fine with omap_loader. I couldn't get it to work properly with most of my modern machines though, AMD or Intel.</p>
+<p>I thought this would be a great application for a <a href="https://www.downtowndougbrown.com/2023/08/building-alex-taradovs-open-source-usb-sniffer/">USB sniffer</a>, so I decided to record some traces of success versus failure.</p>
+<p><a href="https://www.downtowndougbrown.com/wp-content/uploads/2025/11/img_5086.jpg"><img alt="" src="https://www.downtowndougbrown.com/wp-content/uploads/2025/11/img_5086-300x225.jpg" /></a></p>
+<p><a href="https://github.com/grant-h/omap_loader/issues/1#issuecomment-2138675431">Here's a link to my in-depth investigation comparing success versus failure</a> on the GitHub issue about this problem. Yep, it turns out I wasn't the only one running into this exact same issue. Grant himself was seeing similar problems, and had come to a similar conclusion that it seemed to be machine-dependent. Other people had mentioned that adding delays at certain points in the code seemed to help. I was intrigued, so I tried to get to the bottom of it.</p>
+<p>Here's what the USB boot process is supposed to look like, according to TI's <a href="https://www.ti.com/lit/ug/spruf98y/spruf98y.pdf">OMAP35x Technical Reference Manual</a>:</p>
+<ul>
+<li>The OMAP device enumerates as a USB device.</li>
+<li>Within 300 ms, the host needs to read an "ASIC ID" structure from the OMAP or else it will disconnect from USB.</li>
+<li>Then, the host sends a 4-byte command: 0xF0030002 means to continue booting through USB.</li>
+<li>Next, the host sends the 4-byte length of bootloader data it wants to transfer.</li>
+<li>Finally, the host sends the bootloader (X-Loader in this case), which will be loaded into internal SRAM starting at 0x40200000.</li>
+<li>After the OMAP device receives all of the data, it runs the received bootloader by jumping to 0x40200000.</li>
+</ul>
+<p>Again, this process worked perfectly fine on my older computers that don't support USB 3.0, but on my newer computers with USB 3.0, it was hanging up. I did notice that the newer computers were trying to fit a lot more data into a single USB frame. For example, the start of my older computer's communication with the OMAP looked like this:</p>
+<ul>
+<li><strong>Frame 1</strong><ul>
+<li>Host sends boot command</li>
+<li>OMAP confirms it</li>
+</ul>
+</li>
+<li><strong>Frame 2</strong><ul>
+<li>Host sends length</li>
+<li>OMAP confirms it</li>
+</ul>
+</li>
+<li><strong>Frame 3</strong><ul>
+<li>Host sends first packet of bootloader data</li>
+<li>OMAP confirms it</li>
+<li>Host sends second packet of bootloader data</li>
+<li>OMAP says it's not ready</li>
+<li>Host pings</li>
+<li>OMAP says it's ready now</li>
+<li>Host sends second packet of bootloader data again</li>
+<li>OMAP confirms it</li>
+</ul>
+</li>
+</ul>
+<p>And then from that point on, it was just a process of sending the rest of the data like that. About 5 data packets would fit into each frame. My newer computer's traffic looked like this instead:</p>
+<ul>
+<li><strong>Frame 1</strong><ul>
+<li>Host sends boot command</li>
+<li>OMAP confirms it</li>
+<li>Host sends length</li>
+<li>OMAP says it's not ready</li>
+<li>Host pings a few times until the OMAP is ready</li>
+<li>Host sends length again</li>
+<li>OMAP confirms it</li>
+<li>Host sends first packet of bootloader data</li>
+<li>OMAP confirms it</li>
+<li>Host sends second packet of bootloader data</li>
+<li>OMAP says it's not ready</li>
+<li>Host pings several times, OMAP never says it's ready during the rest of this frame</li>
+</ul>
+</li>
+<li><strong>Frame 2</strong><ul>
+<li>Host pings</li>
+<li>OMAP responds with a STALL packet</li>
+</ul>
+</li>
+</ul>
+<p>The newer xHCI host controller was trying its best to efficiently squeeze a lot of packets into the first frame. Even though this is a pattern that should be perfectly valid to follow when communicating with a USB device, the OMAP bootloader was clearly not happy about something, and eventually sent a STALL packet before omap_loader made much progress. Various USB packet traces on different modern computers revealed similar issues. It would either STALL after the second packet, or just NAK forever and never accept additional incoming data.</p>
+<p>Inspired by other comments about adding delays, I tried to work around this by inserting an artificial 1 ms delay before every <code>libusb_bulk_transfer()</code> call. This would force modern machines to slow down a little bit. As soon as I added those delays, all of my new computers had no trouble uploading X-Loader to the OMAP. So yeah, I think the OMAP just doesn't like receiving USB data too quickly.</p>
+<p>That wasn't the end of this little project, though. The 1 ms delay fixed the issue with getting X-Loader to run, but the newer computers also ran into problems while trying to upload U-Boot through X-Loader!</p>
+<div class="language-text highlight"><pre><span></span><code>[-] device timed out while transfering in 512 bytes (got 0)  
+[-] device timed out while transfering in 512 bytes (got 0)  
+[-] device timed out while transfering in 512 bytes (got 0)  
+[-] failed to read command from X-Loader  
+[-] failed to transfer the additional files in to memory
+</code></pre></div>
+<p>Rats. I went back to the USB sniffer for more research.</p>
+<p>This time, it was a different problem. I found the point where the host would try to read the initial request from X-Loader: <code>USBf</code>. On my older computer, this worked fine; it received a 13-byte string from X-Loader: <code>USBffile req</code> followed by a null terminator. It was happy with this, and omap_usbload kept going on with the rest of the file load process and everything succeeded.</p>
+<p>On the newer computer, some shenanigans were going on. Let's look at the USB trace in depth:</p>
+<p><a href="https://www.downtowndougbrown.com/wp-content/uploads/2025/11/image-1.png"><img alt="" src="https://www.downtowndougbrown.com/wp-content/uploads/2025/11/image-1.png" /></a></p>
+<p>The 335-byte packet contains 332 actual bytes of data (the packet ID and CRC account for the other 3 bytes), and is the final chunk of X-Loader. It was successfully received and confirmed by the OMAP with an ACK. At that point, we can assume that the OMAP has begun jumping into X-Loader to start it up.</p>
+<p>A millisecond later (due to the delay I added), we start trying to read from X-Loader. It's clearly too soon, though; I don't think X-Loader has finished starting up yet. There's nothing ready to read. So these IN/NAK packets continue on for about 5 more milliseconds, which is totally normal. But then, something finally happens: the OMAP stops responding to our IN packets. My computer's USB host controller tries three times (see the three IN packets in a row below?) and then it gives up. I'm guessing this is around the same time that X-Loader is doing its own hardware initialization, so maybe the OMAP's USB controller is temporarily disabled.</p>
+<p><a href="https://www.downtowndougbrown.com/wp-content/uploads/2025/11/image-2.png"><img alt="" src="https://www.downtowndougbrown.com/wp-content/uploads/2025/11/image-2.png" /></a></p>
+<p>This all makes sense so far. We tried to read too quickly before X-Loader finished starting up, so when it did finally load, there was a brief moment where it would not respond to IN packets. The host controller didn't like this and stopped trying, so all we saw from that point on was SOF packets because we weren't attempting any more USB reads. Some of my other computers gave up after 15 unanswered IN packets instead of 3. I'm not sure if that's a difference in the host controller or what, but it's the same root problem.</p>
+<p>You may be wondering: why didn't the older computers run into this same issue? They were also trying to talk with X-Loader too early, so why wouldn't they run into this same roadblock? The answer is that their older host controllers are more tolerant of the missing NAKs. I recorded a similar trace with one of my older computers that works fine without any patches to omap_loader. It also immediately began sending IN packets trying to read from X-Loader way too soon. Just like the problematic computers, it experienced a brief period where the OMAP stopped responding to INs with NAKs. The difference is that it didn't abandon hope so quickly. There were 33 unanswered IN packets. After that, the OMAP continued responding with NAKs again and everything was fine from that point on. 17 ms after we had originally finished sending out X-Loader, the OMAP finally responded with an actual data packet. So that's the total time it took for X-Loader to launch.</p>
+<p>Back to the newer computers that weren't playing nicely. I was still confused. Even though this is a problem with newer host controllers, omap_loader has a retry mechanism! If it fails to read X-Loader's initial data, it will try again 2 seconds later. You'd think it would succeed at that point. Let's see what happens:</p>
+<p><a href="https://www.downtowndougbrown.com/wp-content/uploads/2025/11/image-3.png"><img alt="" src="https://www.downtowndougbrown.com/wp-content/uploads/2025/11/image-3.png" /></a></p>
+<p>Ah, interesting. The retry is actually 3 seconds later. I'm guessing the first failed read attempt had a 1-second timeout, so then with a 2-second retry timer, that adds up to 3 seconds total.</p>
+<p>Anyway, something funky happens here. The USB host <strong>finally</strong> reads the 13-byte string from X-Loader as a DATA1 packet (again, it shows up as 16 bytes because of the packet ID and CRC). The host then acknowledges reception with an ACK, but for some bizarre reason, it immediately continues attempting to read more data! I won't show the whole trace, but the host keeps polling with IN packets for a whole second. And of course, they're all NAKed. X-Loader knows it successfully sent data to us, so it has shifted over to waiting for the host to send an OUT packet instead. It's like the host controller gets confused and expects X-Loader to send more data. The kernel never reports those 13 bytes back to libusb, even after the 1-second transfer timeout expires.</p>
+<p>I don't consider myself to be a USB expert, so maybe I'm misunderstanding something. This behavior just seems wrong, though. When my computer finally reads 13 bytes (proven by the sniffer trace shown above), why isn't this data reported back to libusb? I would have expected the reception of a short DATA0/1 packet to cause the host controller to stop reading and return the data back immediately. Is this some kind of strange bug in the Linux kernel or the host controller hardware or something? I don't know for sure. I find this behavior to be very odd, and I can't explain it. My off-the-cuff guess is that the initial failure to respond to the three IN packets results in something getting out of sync in the host controller, but I really don't know for sure. In my opinion, the retry <em>should</em> have worked, but clearly, something got confused. Not sure what. I don't think it's libusb's fault, though.</p>
+<p>I hate adding arbitrary delays in order to fix things, but a 20-millisecond delay between uploading X-Loader and attempting to read from it fixes this final issue. It ensures that the OMAP has been given ample time to launch X-Loader before we try reading from it, preventing the host controller from encountering the weird situation with unanswered IN packets.</p>
+<p>After all of this tinkering and patching that I did to get things to play nicely on newer machines, here is a successful run of omap_loader:</p>
+<div class="language-text highlight"><pre><span></span><code>[+] successfully opened 0451:d009 (Texas Instruments OMAP3430)  
+[+] got ASIC ID - Num Subblocks [05], Device ID Info [01050134300757], Reserved [13020100], Ident Data [1215010000000000000000000000000000000000000000], Reserved [1415010000000000000000000000000000000000000000], CRC (4 bytes) [150901f7488f2800000000]  
+[+] uploading &#39;u-boot.bin&#39; (size 777760) to 0x80800000  
+[+] jumping to address 0x80800000  
+[+] successfully transfered 2 files
+</code></pre></div>
+<p>Meanwhile, the following output pops up on the BeagleBoard's UART:</p>
+<div class="language-text highlight"><pre><span></span><code>Texas Instruments X-Loader 1.5.1 (Nov 15 2011 - 09:36:31)  
+Beagle Rev C4  
+Trying load from USB  
+USBLOAD_CMD_FILE total = 12 addr = 0x73425355 val = 0xbde20 val = 0x80800000  
+got file addr = 0x808bde20  
+USBLOAD_CMD_JUMP total = 8 addr = 0x6a425355 val = 0x80800000
+
+
+U-Boot 2023.10 (May 25 2024 - 22:05:27 -0700)
+
+OMAP3530-GP ES3.1, CPU-OPP2, L3-165MHz, Max CPU Clock 720 MHz  
+Model: TI OMAP3 BeagleBoard  
+OMAP3 Beagle board + LPDDR/NAND  
+I2C:   ready  
+DRAM:  256 MiB  
+Core:  44 devices, 18 uclasses, devicetree: separate  
+NAND:  256 MiB  
+MMC:   OMAP SD/MMC: 0  
+Loading Environment from NAND... *** Warning - bad CRC, using default environment
+
+Beagle Rev C4  
+Timed out in wait_for_event: status=0000  
+Check if pads/pull-ups of bus are properly configured  
+No EEPROM on expansion board  
+OMAP die ID: 79b8000400000000040398da1401c009  
+Net:   No ethernet found.  
+Hit any key to stop autoboot:  2
+</code></pre></div>
+<p>I believe the "Timed out in wait_for_event" error is harmless. Anyway, success! It loads U-Boot! You can imagine that I could have easily transmitted a Linux kernel and initramfs as well, and fully booted this thing over USB. Once U-Boot is running, I can do whatever I want.</p>
+<p>With these simple delay tweaks, omap_loader works great on all modern computers I've thrown at it, including Raspberry Pis. The only "gotcha" I've encountered is that some slower computers (my i3-7100U laptop and a Raspberry Pi Zero) don't forward the USB hotplug event through udev quickly enough before the BeagleBoard decides it's not being asked to boot over USB. omap_loader never gets past scanning for a device, even though the <code>dmesg</code> log clearly shows that it was detected:</p>
+<div class="language-text highlight"><pre><span></span><code>[4076310.258842] usb 11-5: new high-speed USB device number 65 using xhci_hcd  
+[4076310.407944] usb 11-5: unable to get BOS descriptor or descriptor too short  
+[4076310.410041] usb 11-5: New USB device found, idVendor=0451, idProduct=d009, bcdDevice= 0.00  
+[4076310.410046] usb 11-5: New USB device strings: Mfr=33, Product=37, SerialNumber=0  
+[4076310.410051] usb 11-5: Product: OMAP3430  
+[4076310.410054] usb 11-5: Manufacturer: Texas Instruments  
+[4076310.710703] usb 11-5: USB disconnect, device number 65
+</code></pre></div>
+<p>As you can see, it's a very short timeframe; just like TI's manual says, it only stays connected for about 300 ms if it doesn't hear from the host. I guess that's not enough time for udev on some computers. The only solution I found for this issue on my slower machines was to compile a custom version of libusb with udev disabled, which forces it to directly use netlink for hotplug detection instead.</p>
+<p>My patch also limits libusb transfers to 512 bytes at a time. I don't think this change is critical, though. It fixed an issue I ran into where my bus was really loaded and libusb reported a memory error. I don't think it actually helps anything in most cases as long as people aren't performing crazy big USB transfers at the same time.</p>
+<p>In summary:</p>
+<ul>
+<li>Trying to write USB data to the OMAP's on-chip bootloader too quickly seems to hit some edge cases that it doesn't handle correctly. A 1 ms delay fixes this.</li>
+<li>Trying to read from X-Loader before it's ready to go irritates newer USB host controllers when they send out several IN packets without receiving any response (not even a NAK). A 20 ms delay fixes this. <ul>
+<li>Even retries afterward fail; the host controller gets out of sync due to the unanswered IN packets or something like that.</li>
+</ul>
+</li>
+<li>On some slower computers, udev doesn't give you enough time to respond to the OMAP's 300 ms timeout, so libusb never detects the hotplug. This can be solved with a custom libusb that uses netlink instead of udev.</li>
+</ul>
+<p>I <a href="https://github.com/grant-h/omap_loader/pull/7">opened up a PR to submit these fixes (except for the udev thing) upstream to omap_loader in 2024</a>. Why am I writing about this now? Well, remember when I mentioned Nest earlier? <a href="https://support.google.com/googlenest/answer/16233096?hl=en">Google ended support for older Nest thermostats last month</a>, which <a href="https://github.com/grant-h/omap_loader/pull/7#issuecomment-3479819869">renewed some interest in merging my reliability improvements</a> so that people can flash custom firmware to their Nest thermostats. Those old Nest devices also use OMAP processors.</p>
+<p>What it boils down to is: all this tinkering I did last year with pointlessly booting old BeagleBoards over USB accidentally ended up being useful. It helped out some <a href="https://github.com/codykociemba/NoLongerEvil-Thermostat">Nest thermostat revival projects</a> that have been <a href="https://github.com/cuckoo-nest/cuckoo_loader">popping up in the last month</a>. So I thought now might be a fun time to talk about my tiny involvement with that. Yay! It's always fun when a random side project unexpectedly helps other people.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 05:40:42 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

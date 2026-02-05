@@ -1,0 +1,981 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/it-notes.dragas.net/Installing%20Void%20Linux%20on%20ZFS%20with%20Hibernation%20Support_20251222/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Installing Void Linux on ZFS with Hibernation Support - RSS Articles</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#installing-void-linux-on-zfs-with-hibernation-support" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="RSS Articles" class="md-header__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RSS Articles
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Installing Void Linux on ZFS with Hibernation Support
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RSS Articles" class="md-nav__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RSS Articles
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/it-notes.dragas.net/Installing Void Linux on ZFS with Hibernation Support_20251222.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="installing-void-linux-on-zfs-with-hibernation-support">Installing Void Linux on ZFS with Hibernation Support<a class="headerlink" href="#installing-void-linux-on-zfs-with-hibernation-support" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://it-notes.dragas.net
+<strong>链接:</strong> https://it-notes.dragas.net/2025/12/22/void-linux-zfs-hibernation-guide/
+<strong>日期:</strong> Mon, 22 Dec 2025 08:43:02 +0000</p>
+<hr />
+<p>Skip to main content [Access Key: S]</p>
+<p><strong>Notice:</strong> This site works best with JavaScript enabled, but all content is accessible without it. Skip to main content</p>
+<p><a href="https://it-notes.dragas.net">IT Notes</a>Open navigation menu</p>
+<ul>
+<li><a href="https://it-notes.dragas.net" title="Return to homepage">Home</a></li>
+<li><a href="https://it-notes.dragas.net/archives/" title="Browse post archives by date">Archives</a></li>
+<li><a href="https://it-notes.dragas.net/categories/" title="Browse posts by category">Categories</a></li>
+<li><a href="https://it-notes.dragas.net/tags/" title="Browse posts by tag">Tags</a></li>
+<li><a href="https://it-notes.dragas.net/series/" title="Series">Series</a></li>
+<li><a href="https://it-notes.dragas.net/under-the-hood/" title="Under The Hood">Under The Hood</a></li>
+<li><a href="https://it-notes.dragas.net/professional-services/" title="Professional Services">Professional Services</a></li>
+<li><a href="https://it-notes.dragas.net/about-me/" title="About">About</a></li>
+</ul>
+<p>Search articles and pages Enter keywords to search articles and pages Submit search</p>
+<p><img alt="Installing Void Linux on ZFS with Hibernation Support - Featured image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Void_Linux_logo.svg/2560px-Void_Linux_logo.svg.png" /></p>
+<h1 id="installing-void-linux-on-zfs-with-hibernation-support_1">Installing Void Linux on ZFS with Hibernation Support<a class="headerlink" href="#installing-void-linux-on-zfs-with-hibernation-support_1" title="Permanent link">&para;</a></h1>
+<p>16 min read</p>
+<p>22/12/2025 08:43:02 â¢ Last modified:  23/12/2025 10:37:00 </p>
+<p>by Stefano Marinelli</p>
+<p>Categories: <a href="https://it-notes.dragas.net/categories/linux/"> linux</a>, <a href="https://it-notes.dragas.net/categories/desktop/"> desktop</a>, <a href="https://it-notes.dragas.net/categories/zfs/"> zfs</a>, <a href="https://it-notes.dragas.net/categories/server/"> server</a>, <a href="https://it-notes.dragas.net/categories/tutorial/"> tutorial</a>, <a href="https://it-notes.dragas.net/categories/ownyourdata/"> ownyourdata</a>, <a href="https://it-notes.dragas.net/categories/voidlinux/"> voidlinux</a></p>
+<p>Tags: <a href="https://it-notes.dragas.net/tags/linux/">linux</a>, <a href="https://it-notes.dragas.net/tags/desktop/">desktop</a>, <a href="https://it-notes.dragas.net/tags/zfs/">zfs</a>, <a href="https://it-notes.dragas.net/tags/server/">server</a>, <a href="https://it-notes.dragas.net/tags/tutorial/">tutorial</a>, <a href="https://it-notes.dragas.net/tags/ownyourdata/">ownyourdata</a>, <a href="https://it-notes.dragas.net/tags/voidlinux/">voidlinux</a></p>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>FreeBSD continues to make strides in desktop support, but Linux still holds an advantage in hardware compatibility. After running openSUSE Tumbleweed on my mini PC for several months, I decided it was time to switch to a solution I could control more closely. Not because Tumbleweed doesn't work well - it works great! - but I prefer having direct control over what happens on my machine. And I want native ZFS, because I prefer it over btrfs and it allows me to manage snapshots, backups, and rollbacks just as I do on FreeBSD, using the same tools and procedures.</p>
+<p>The choice of <a href="https://voidlinux.org/">Void Linux</a> comes from its BSD-like approach: modular and free of unnecessary complexity. This makes it an excellent solution for this type of setup.</p>
+<p><a href="https://docs.zfsbootmenu.org/">ZFSBootMenu</a> is an extremely powerful tool. It provides an experience similar to FreeBSD's boot loader and natively supports ZFS. I strongly recommend reading the documentation and exploring its features, as some of them - like the built-in SSH daemon - can be genuine lifesavers in recovery scenarios.</p>
+<h2 id="prerequisites-and-audience">Prerequisites and Audience<a class="headerlink" href="#prerequisites-and-audience" title="Permanent link">&para;</a></h2>
+<p><strong>This guide is not for absolute beginners.</strong> If you're new to Linux or Unix-like operating systems, you'd be better served by a ready-to-use distribution like <a href="https://www.opensuse.org/">openSUSE</a> Leap (or Tumbleweed for a rolling distribution), <a href="https://linuxmint.com/">Linux Mint</a>, <a href="https://www.debian.org/">Debian</a>, <a href="https://ubuntu.com/">Ubuntu</a>, or <a href="https://manjaro.org/">Manjaro</a>. The purpose of this article is to demonstrate a stable, upgradeable, and reasonably secure base setup for users already comfortable with system administration. It uses the <strong>glibc</strong> variant of Void Linux. The <em><a href="https://docs.voidlinux.org/installation/musl.html">musl</a></em> version requires different commands, for example for locale generation.</p>
+<p><strong>Use at your own risk.</strong></p>
+<p>This guide synthesizes instructions from several sources:</p>
+<ul>
+<li><a href="https://docs.zfsbootmenu.org/en/latest/guides/void-linux/uefi.html">Void Linux (UEFI) from ZFSBootMenu</a> - which doesn't address swap. Using a zvol for swap (not the best solution) prevents hibernation and resume. Our approach uses a separate encrypted swap partition that enables proper resume.</li>
+<li><a href="https://docs.voidlinux.org/installation/guides/fde.html">Void Linux Full Disk Encryption</a> - excellent for btrfs or ext4, but we want ZFS. We'll borrow the swap configuration approach from here.</li>
+<li><a href="https://compactbunker.org/p/install-void-linux/">Install Void Linux with a desktop environment + Flatpaks</a> - for the desktop portion.</li>
+</ul>
+<p>If your setup differs from what's described here (NVMe disk, UEFI boot, Secure Boot disabled), consult the linked guides for explanations and variations.</p>
+<h3 id="installation-script-optional">Installation Script (Optional)<a class="headerlink" href="#installation-script-optional" title="Permanent link">&para;</a></h3>
+<p>If you want to reproduce this setup quickly, I maintain a script that automates the procedure described in this guide: disk partitioning, ZFS pool and dataset creation, encrypted swap for hibernation resume, dracut configuration, and ZFSBootMenu EFI setup. An optional KDE Plasma desktop installation is also supported.</p>
+<p>The script is interactive and will ask for the required parameters (target disk, timezone and keymap, passphrases, desktop options). <a href="https://brew.bsd.cafe/stefano/void-zfs-hibernation">Requirements, usage instructions, and known limitations are documented in the repository README</a></p>
+<p>That said, I still recommend going through the manual process at least once. Understanding each step is part of the value of this setup, especially when troubleshooting or adapting it to different hardware.</p>
+<h2 id="boot-environment">Boot Environment<a class="headerlink" href="#boot-environment" title="Permanent link">&para;</a></h2>
+<p>Since ZFS isn't supported by the base Void Linux image, we'll use <a href="https://github.com/leahneukirchen/hrmpf/releases">hrmpf</a>, an excellent rescue system based on Void Linux that includes ZFS support out of the box.</p>
+<p>After booting, you can either proceed directly or SSH into the machine to continue remotely. I generally prefer SSH since it makes copy-paste operations much easier - especially when dealing with UUIDs and long commands. To enable SSH access, set a root password and allow root login:</p>
+<div class="language-text highlight"><pre><span></span><code>passwd
+</code></pre></div>
+<p>Edit <code>/etc/ssh/sshd_config</code> and enable:</p>
+<div class="language-text highlight"><pre><span></span><code>PermitRootLogin yes
+</code></pre></div>
+<p>Restart the SSH daemon:</p>
+<div class="language-text highlight"><pre><span></span><code>sv restart sshd
+</code></pre></div>
+<p>Find the machine's IP address:</p>
+<div class="language-text highlight"><pre><span></span><code>ip addr
+</code></pre></div>
+<p>You can now connect via SSH from another device.</p>
+<h2 id="initial-setup">Initial Setup<a class="headerlink" href="#initial-setup" title="Permanent link">&para;</a></h2>
+<p>Set up the environment variables and generate a host ID - we need it for ZFS:</p>
+<div class="language-text highlight"><pre><span></span><code>source /etc/os-release
+export ID
+
+zgenhostid -f 0x00bab10c
+</code></pre></div>
+<h2 id="disk-configuration">Disk Configuration<a class="headerlink" href="#disk-configuration" title="Permanent link">&para;</a></h2>
+<p>Identify your target disk and set up the partition variables. This approach keeps everything consistent and reduces errors:</p>
+<div class="language-text highlight"><pre><span></span><code># Set the base disk - adjust this to match your system
+export DISK=&quot;/dev/nvme0n1&quot;
+
+# For NVMe disks, partitions are named like nvme0n1p1, nvme0n1p2, etc.
+# For SATA/SAS disks (sda, sdb), partitions are named sda1, sda2, etc.
+# Set the partition separator accordingly:
+export PART_SEP=&quot;p&quot;  # Use &quot;p&quot; for NVMe, empty string &quot;&quot; for SATA/SAS
+
+# Define partition numbers
+export BOOT_PART=&quot;1&quot;
+export SWAP_PART=&quot;2&quot;
+export POOL_PART=&quot;3&quot;
+
+# Build full device paths
+export BOOT_DEVICE=&quot;${DISK}${PART_SEP}${BOOT_PART}&quot;
+export SWAP_DEVICE=&quot;${DISK}${PART_SEP}${SWAP_PART}&quot;
+export POOL_DEVICE=&quot;${DISK}${PART_SEP}${POOL_PART}&quot;
+</code></pre></div>
+<p>Verify your configuration before proceeding:</p>
+<div class="language-text highlight"><pre><span></span><code>echo &quot;Boot device: $BOOT_DEVICE&quot;
+echo &quot;Swap device: $SWAP_DEVICE&quot;
+echo &quot;Pool device: $POOL_DEVICE&quot;
+</code></pre></div>
+<h2 id="wipe-the-disk">Wipe the Disk<a class="headerlink" href="#wipe-the-disk" title="Permanent link">&para;</a></h2>
+<p><strong>Warning: This operation will irreversibly destroy all data on the selected disk. Double-check that you've selected the correct disk and be sure to have a complete backup of your system!</strong></p>
+<div class="language-text highlight"><pre><span></span><code>zpool labelclear -f &quot;$DISK&quot;
+
+wipefs -a &quot;$DISK&quot;
+sgdisk --zap-all &quot;$DISK&quot;
+</code></pre></div>
+<h2 id="create-partitions">Create Partitions<a class="headerlink" href="#create-partitions" title="Permanent link">&para;</a></h2>
+<h3 id="efi-system-partition">EFI System Partition<a class="headerlink" href="#efi-system-partition" title="Permanent link">&para;</a></h3>
+<p>If you're not using UEFI boot, adapt this procedure following the appropriate guide linked at the beginning of this post:</p>
+<div class="language-text highlight"><pre><span></span><code>sgdisk -n &quot;${BOOT_PART}:1m:+512m&quot; -t &quot;${BOOT_PART}:ef00&quot; &quot;$DISK&quot;
+</code></pre></div>
+<h3 id="swap-partition">Swap Partition<a class="headerlink" href="#swap-partition" title="Permanent link">&para;</a></h3>
+<p>The swap partition should be slightly larger than your RAM to support hibernation. When you hibernate, the entire contents of RAM are written to swap, so you need enough space to hold it all plus some overhead. In this example, I have 16 GB of RAM, so I'm creating an 18 GB swap partition:</p>
+<div class="language-text highlight"><pre><span></span><code>sgdisk -n &quot;${SWAP_PART}:0:+18g&quot; -t &quot;${SWAP_PART}:8200&quot; &quot;$DISK&quot;
+</code></pre></div>
+<h3 id="zfs-pool-partition">ZFS Pool Partition<a class="headerlink" href="#zfs-pool-partition" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code>sgdisk -n &quot;${POOL_PART}:0:-10m&quot; -t &quot;${POOL_PART}:bf00&quot; &quot;$DISK&quot;
+</code></pre></div>
+<h2 id="set-up-zfs-encryption">Set Up ZFS Encryption<a class="headerlink" href="#set-up-zfs-encryption" title="Permanent link">&para;</a></h2>
+<p>Encrypting the disk is strongly recommended, especially for laptops. Replace <code>SomeKeyphrase</code> with a strong passphrase that's easy to type. Keep in mind that during early boot, the keyboard layout might default to US, so choose a passphrase that's easy to type on a US keyboard layout:</p>
+<div class="language-text highlight"><pre><span></span><code>echo &#39;SomeKeyphrase&#39; &gt; /etc/zfs/zroot.key
+chmod 000 /etc/zfs/zroot.key
+</code></pre></div>
+<h2 id="create-the-zfs-pool">Create the ZFS Pool<a class="headerlink" href="#create-the-zfs-pool" title="Permanent link">&para;</a></h2>
+<p>Create the pool with conservative, well-tested options:</p>
+<div class="language-text highlight"><pre><span></span><code>zpool create -f -o ashift=12 \
+ -O compression=lz4 \
+ -O acltype=posixacl \
+ -O xattr=sa \
+ -O relatime=on \
+ -O encryption=aes-256-gcm \
+ -O keylocation=file:///etc/zfs/zroot.key \
+ -O keyformat=passphrase \
+ -o autotrim=on \
+ -o compatibility=openzfs-2.2-linux \
+ -m none zroot &quot;$POOL_DEVICE&quot;
+</code></pre></div>
+<h2 id="create-zfs-datasets">Create ZFS Datasets<a class="headerlink" href="#create-zfs-datasets" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code>zfs create -o mountpoint=none zroot/ROOT
+zfs create -o mountpoint=/ -o canmount=noauto zroot/ROOT/${ID}
+zfs create -o mountpoint=/home zroot/home
+
+zpool set bootfs=zroot/ROOT/${ID} zroot
+</code></pre></div>
+<h2 id="export-and-reimport-for-installation">Export and Reimport for Installation<a class="headerlink" href="#export-and-reimport-for-installation" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code>zpool export zroot
+zpool import -N -R /mnt zroot
+zfs load-key -L prompt zroot
+
+zfs mount zroot/ROOT/${ID}
+zfs mount zroot/home
+
+udevadm trigger
+</code></pre></div>
+<h2 id="install-the-base-system">Install the Base System<a class="headerlink" href="#install-the-base-system" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code>XBPS_ARCH=x86_64 xbps-install \
+  -S -R https://mirrors.servercentral.com/voidlinux/current \
+  -r /mnt base-system
+</code></pre></div>
+<h2 id="copy-host-configuration">Copy Host Configuration<a class="headerlink" href="#copy-host-configuration" title="Permanent link">&para;</a></h2>
+<p>Copy the files we generated earlier to the new system:</p>
+<div class="language-text highlight"><pre><span></span><code>cp /etc/hostid /mnt/etc
+mkdir -p /mnt/etc/zfs
+cp /etc/zfs/zroot.key /mnt/etc/zfs
+</code></pre></div>
+<h2 id="configure-encrypted-swap">Configure Encrypted Swap<a class="headerlink" href="#configure-encrypted-swap" title="Permanent link">&para;</a></h2>
+<p>Now we'll set up the encrypted swap partition. This is where the hibernation magic happens - by using a separate LUKS-encrypted partition instead of a ZFS zvol, we can properly resume from hibernation.</p>
+<p>Format the swap partition with LUKS:</p>
+<div class="language-text highlight"><pre><span></span><code>cryptsetup luksFormat --type luks1 &quot;$SWAP_DEVICE&quot;
+</code></pre></div>
+<p>Open the encrypted partition, create the swap filesystem, and activate it:</p>
+<div class="language-text highlight"><pre><span></span><code>cryptsetup luksOpen &quot;$SWAP_DEVICE&quot; cryptswap
+mkswap /dev/mapper/cryptswap
+swapon /dev/mapper/cryptswap
+</code></pre></div>
+<h2 id="preserve-variables-for-chroot">Preserve Variables for Chroot<a class="headerlink" href="#preserve-variables-for-chroot" title="Permanent link">&para;</a></h2>
+<p>Before entering the chroot, save the disk variables so they remain available inside the new environment:</p>
+<div class="language-text highlight"><pre><span></span><code>cat &lt;&lt; EOF &gt; /mnt/root/disk-vars.sh
+export DISK=&quot;$DISK&quot;
+export PART_SEP=&quot;$PART_SEP&quot;
+export BOOT_PART=&quot;$BOOT_PART&quot;
+export SWAP_PART=&quot;$SWAP_PART&quot;
+export POOL_PART=&quot;$POOL_PART&quot;
+export BOOT_DEVICE=&quot;$BOOT_DEVICE&quot;
+export SWAP_DEVICE=&quot;$SWAP_DEVICE&quot;
+export POOL_DEVICE=&quot;$POOL_DEVICE&quot;
+export ID=&quot;$ID&quot;
+EOF
+</code></pre></div>
+<h2 id="enter-the-chroot-environment">Enter the Chroot Environment<a class="headerlink" href="#enter-the-chroot-environment" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code>xchroot /mnt
+</code></pre></div>
+<p>From this point forward, all commands are executed inside the new system.</p>
+<p>First, load the saved variables:</p>
+<div class="language-text highlight"><pre><span></span><code>source /root/disk-vars.sh
+</code></pre></div>
+<h2 id="configure-fstab">Configure fstab<a class="headerlink" href="#configure-fstab" title="Permanent link">&para;</a></h2>
+<p>Add the swap entry to <code>/etc/fstab</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>/dev/mapper/cryptswap   none            swap            defaults        0 0
+</code></pre></div>
+<h2 id="set-up-automatic-swap-unlock">Set Up Automatic Swap Unlock<a class="headerlink" href="#set-up-automatic-swap-unlock" title="Permanent link">&para;</a></h2>
+<p>To avoid entering the swap password separately after unlocking the ZFS pool, we'll create a keyfile stored on the encrypted ZFS dataset. This is secure because the keyfile only becomes accessible after the ZFS pool is unlocked.</p>
+<p>First, install cryptsetup in the new system:</p>
+<div class="language-text highlight"><pre><span></span><code>xbps-install -S cryptsetup
+</code></pre></div>
+<p>Generate a random keyfile and add it to the LUKS partition:</p>
+<div class="language-text highlight"><pre><span></span><code>dd bs=1 count=64 if=/dev/urandom of=/boot/volume.key
+
+cryptsetup luksAddKey &quot;$SWAP_DEVICE&quot; /boot/volume.key
+
+chmod 000 /boot/volume.key
+chmod -R g-rwx,o-rwx /boot
+</code></pre></div>
+<p>Add the keyfile to <code>/etc/crypttab</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>echo &quot;cryptswap   $SWAP_DEVICE   /boot/volume.key   luks&quot; &gt;&gt; /etc/crypttab
+</code></pre></div>
+<p>Include the keyfile and crypttab in the initramfs. Create <code>/etc/dracut.conf.d/10-crypt.conf</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>install_items+=&quot; /boot/volume.key /etc/crypttab &quot;
+</code></pre></div>
+<h2 id="basic-system-configuration">Basic System Configuration<a class="headerlink" href="#basic-system-configuration" title="Permanent link">&para;</a></h2>
+<p>Configure keyboard layout and hardware clock. Adjust the keymap and timezone to match your location:</p>
+<div class="language-text highlight"><pre><span></span><code>cat &lt;&lt; EOF &gt;&gt; /etc/rc.conf
+KEYMAP=&quot;us&quot;
+HARDWARECLOCK=&quot;UTC&quot;
+EOF
+
+ln -sf /usr/share/zoneinfo/Europe/Rome /etc/localtime
+</code></pre></div>
+<p>Configure locales:</p>
+<div class="language-text highlight"><pre><span></span><code>cat &lt;&lt; EOF &gt;&gt; /etc/default/libc-locales
+en_US.UTF-8 UTF-8
+en_US ISO-8859-1
+EOF
+
+echo &quot;LANG=en_US.UTF-8&quot; &gt; /etc/locale.conf
+
+xbps-reconfigure -f glibc-locales
+</code></pre></div>
+<p>Set the root password:</p>
+<div class="language-text highlight"><pre><span></span><code>passwd
+</code></pre></div>
+<h2 id="configure-zfs-boot-support">Configure ZFS Boot Support<a class="headerlink" href="#configure-zfs-boot-support" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code>cat &lt;&lt; EOF &gt; /etc/dracut.conf.d/zol.conf
+nofsck=&quot;yes&quot;
+add_dracutmodules+=&quot; zfs &quot;
+omit_dracutmodules+=&quot; btrfs &quot;
+install_items+=&quot; /etc/zfs/zroot.key &quot;
+EOF
+</code></pre></div>
+<p>Install ZFS:</p>
+<div class="language-text highlight"><pre><span></span><code>xbps-install -S zfs
+</code></pre></div>
+<h2 id="configure-zfsbootmenu">Configure ZFSBootMenu<a class="headerlink" href="#configure-zfsbootmenu" title="Permanent link">&para;</a></h2>
+<p>Set the basic boot properties:</p>
+<div class="language-text highlight"><pre><span></span><code>zfs set org.zfsbootmenu:commandline=&quot;quiet&quot; zroot/ROOT
+zfs set org.zfsbootmenu:keysource=&quot;zroot/ROOT/${ID}&quot; zroot
+</code></pre></div>
+<h3 id="the-critical-step-hibernation-support">The Critical Step: Hibernation Support<a class="headerlink" href="#the-critical-step-hibernation-support" title="Permanent link">&para;</a></h3>
+<p>Now we need to configure hibernation resume. This is the key insight that makes this setup work: normally, the encrypted ZFS root mounts first, and then it unlocks the swap partition. But when resuming from hibernation, the kernel needs to read the hibernation image from swap <em>before</em> mounting the root filesystem - otherwise, the saved state would be lost.</p>
+<p>To solve this, we tell ZFSBootMenu to unlock the swap partition early, before mounting ZFS, by specifying its LUKS UUID.</p>
+<p>Get the UUID of your swap partition:</p>
+<div class="language-text highlight"><pre><span></span><code>blkid &quot;$SWAP_DEVICE&quot;
+</code></pre></div>
+<p>You'll see output like:</p>
+<div class="language-text highlight"><pre><span></span><code>/dev/...: UUID=&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot; TYPE=&quot;crypto_LUKS&quot; PARTUUID=&quot;...&quot;
+</code></pre></div>
+<p>Store the UUID in a variable for the next step:</p>
+<div class="language-text highlight"><pre><span></span><code>SWAP_UUID=$(blkid -s UUID -o value &quot;$SWAP_DEVICE&quot;)
+echo &quot;Swap UUID: $SWAP_UUID&quot;
+</code></pre></div>
+<p>Now set the boot parameters using the captured UUID:</p>
+<div class="language-text highlight"><pre><span></span><code>zfs set org.zfsbootmenu:commandline=&quot;rd.luks.uuid=$SWAP_UUID resume=/dev/mapper/cryptswap&quot; zroot/ROOT/${ID}
+</code></pre></div>
+<h2 id="set-up-efi-boot">Set Up EFI Boot<a class="headerlink" href="#set-up-efi-boot" title="Permanent link">&para;</a></h2>
+<p>Create and mount the EFI partition:</p>
+<div class="language-text highlight"><pre><span></span><code>mkfs.vfat -F32 &quot;$BOOT_DEVICE&quot;
+
+mkdir -p /boot/efi
+</code></pre></div>
+<p>Add the EFI partition to <code>/etc/fstab</code> using its UUID:</p>
+<div class="language-text highlight"><pre><span></span><code>BOOT_UUID=$(blkid -s UUID -o value &quot;$BOOT_DEVICE&quot;)
+echo &quot;UUID=$BOOT_UUID    /boot/efi    vfat    defaults    0 0&quot; &gt;&gt; /etc/fstab
+</code></pre></div>
+<p>Mount it:</p>
+<div class="language-text highlight"><pre><span></span><code>mount /boot/efi
+</code></pre></div>
+<h2 id="install-zfsbootmenu">Install ZFSBootMenu<a class="headerlink" href="#install-zfsbootmenu" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code>xbps-install -S curl
+
+mkdir -p /boot/efi/EFI/ZBM
+curl -o /boot/efi/EFI/ZBM/VMLINUZ.EFI -L https://get.zfsbootmenu.org/efi
+cp /boot/efi/EFI/ZBM/VMLINUZ.EFI /boot/efi/EFI/ZBM/VMLINUZ-BACKUP.EFI
+</code></pre></div>
+<p>Configure the EFI boot entries:</p>
+<div class="language-text highlight"><pre><span></span><code>xbps-install -S efibootmgr
+
+efibootmgr -c -d &quot;$DISK&quot; -p &quot;$BOOT_PART&quot; \
+  -L &quot;ZFSBootMenu (Backup)&quot; \
+  -l &#39;\EFI\ZBM\VMLINUZ-BACKUP.EFI&#39;
+
+efibootmgr -c -d &quot;$DISK&quot; -p &quot;$BOOT_PART&quot; \
+  -L &quot;ZFSBootMenu&quot; \
+  -l &#39;\EFI\ZBM\VMLINUZ.EFI&#39;
+</code></pre></div>
+<h3 id="microcode-updates">Microcode updates<a class="headerlink" href="#microcode-updates" title="Permanent link">&para;</a></h3>
+<p>Void Linux is modular, so you may need to install additional packages for your specific hardware. For the Intel microcode, you need the non-free repo: For example:</p>
+<div class="language-text highlight"><pre><span></span><code># For Intel CPUs
+xbps-install -S void-repo-nonfree 
+xbps-install -S intel-ucode
+
+# For AMD CPUs/GPUs
+xbps-install -S linux-firmware-amd
+</code></pre></div>
+<p>After installing microcode updates, regenerate the boot images and exit:</p>
+<div class="language-text highlight"><pre><span></span><code>xbps-reconfigure -fa
+</code></pre></div>
+<h2 id="desktop-installation-optional">Desktop Installation (Optional)<a class="headerlink" href="#desktop-installation-optional" title="Permanent link">&para;</a></h2>
+<p>If all you need is a minimal system or a server, you're done and ready to reboot. For a complete desktop environment, continue with the following steps.</p>
+<h3 id="install-core-desktop-packages">Install Core Desktop Packages<a class="headerlink" href="#install-core-desktop-packages" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code>xbps-install -S vim nano dbus elogind polkit xorg xorg-fonts xorg-video-drivers xorg-input-drivers dejavu-fonts-ttf terminus-font NetworkManager pipewire alsa-pipewire wireplumber xdg-user-dirs unzip gzip xz 7zip
+</code></pre></div>
+<h3 id="install-kde-plasma">Install KDE Plasma<a class="headerlink" href="#install-kde-plasma" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code>xbps-install -S kde-plasma dolphin konsole firefox kdegraphics-thumbnailers ffmpegthumbs vlc ark kwrite discover kf6-purpose
+</code></pre></div>
+<h3 id="enable-services">Enable Services<a class="headerlink" href="#enable-services" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code>ln -s /etc/sv/NetworkManager /etc/runit/runsvdir/default/
+ln -s /etc/sv/dbus /etc/runit/runsvdir/default/
+ln -s /etc/sv/udevd /etc/runit/runsvdir/default/
+ln -s /etc/sv/polkitd /etc/runit/runsvdir/default/
+ln -s /etc/sv/sddm /etc/runit/runsvdir/default/
+</code></pre></div>
+<h3 id="configure-pipewire-audio">Configure PipeWire Audio<a class="headerlink" href="#configure-pipewire-audio" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code>mkdir -p /etc/xdg/autostart
+ln -sf /usr/share/applications/pipewire.desktop /etc/xdg/autostart/
+
+mkdir -p /etc/pipewire/pipewire.conf.d
+ln -sf /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
+ln -sf /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
+
+mkdir -p /etc/alsa/conf.d
+ln -sf /usr/share/alsa/alsa.conf.d/50-pipewire.conf /etc/alsa/conf.d
+ln -sf /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d
+</code></pre></div>
+<h3 id="enable-additional-repositories-and-flatpak-optional">Enable Additional Repositories and Flatpak (Optional)<a class="headerlink" href="#enable-additional-repositories-and-flatpak-optional" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code>xbps-install -S void-repo-nonfree void-repo-multilib void-repo-multilib-nonfree
+
+xbps-install -S flatpak
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+</code></pre></div>
+<h3 id="create-a-regular-user-and-exit">Create a Regular User and exit<a class="headerlink" href="#create-a-regular-user-and-exit" title="Permanent link">&para;</a></h3>
+<p>For desktop use, create a non-root user with appropriate group memberships. Replace <code>username</code> with your desired username.</p>
+<div class="language-text highlight"><pre><span></span><code>useradd -m username
+passwd username
+usermod username -G video,wheel,plugdev,kvm,audio,network
+exit
+</code></pre></div>
+<h3 id="fix-for-networkmanager">Fix for NetworkManager<a class="headerlink" href="#fix-for-networkmanager" title="Permanent link">&para;</a></h3>
+<p>xchroot will bind mount /etc/resolv.conf and leave an empty file. Network Manager won't like it. So let's clean it up:</p>
+<div class="language-text highlight"><pre><span></span><code>umount -l /mnt/etc/resolv.conf 2&gt;/dev/null || true
+
+rm -f /mnt/etc/resolv.conf
+ln -s /run/NetworkManager/resolv.conf /mnt/etc/resolv.conf
+</code></pre></div>
+<h2 id="exit-and-reboot">Exit and Reboot<a class="headerlink" href="#exit-and-reboot" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code>umount -n -R /mnt
+zpool export zroot
+reboot
+</code></pre></div>
+<h2 id="post-installation">Post-Installation<a class="headerlink" href="#post-installation" title="Permanent link">&para;</a></h2>
+<p>If everything went well, after entering your ZFS encryption password, you'll be greeted by the SDDM login screen.</p>
+<h2 id="testing-hibernation">Testing Hibernation<a class="headerlink" href="#testing-hibernation" title="Permanent link">&para;</a></h2>
+<p>To verify that hibernation works correctly, you can clock the "Hibernate" button or:</p>
+<div class="language-text highlight"><pre><span></span><code>loginctl hibernate
+</code></pre></div>
+<p>The system should power off. When you turn it back on, ZFSBootMenu will prompt for the password, unlock the swap partition, detect the hibernation image, and resume your session exactly where you left off.</p>
+<p>If resume fails, check that: 1. The LUKS UUID in the ZFS commandline property matches your swap partition 2. The swap partition is large enough for your RAM 3. The dracut configuration includes the crypttab and keyfile</p>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>You now have a fully functional Void Linux system with native ZFS, full disk encryption, and working hibernation. The system is rolling, lightweight, and easy to maintain. Enjoy!</p>
+<h3 id="tags">Tags:<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h3>
+<p><a href="https://it-notes.dragas.net/tags/linux/">linux</a> <a href="https://it-notes.dragas.net/tags/desktop/">desktop</a> <a href="https://it-notes.dragas.net/tags/zfs/">zfs</a> <a href="https://it-notes.dragas.net/tags/server/">server</a> <a href="https://it-notes.dragas.net/tags/tutorial/">tutorial</a> <a href="https://it-notes.dragas.net/tags/ownyourdata/">ownyourdata</a> <a href="https://it-notes.dragas.net/tags/voidlinux/">voidlinux</a></p>
+<p><a href="https://it-notes.dragas.net/2026/01/28/time-machine-freebsd-jail/">&lt;- Next PostTime Machine inside a FreeBSD jail</a><a href="https://it-notes.dragas.net/2025/11/24/why-i-still-love-linux/">Previous Post -&gt;Why I (still) love Linux</a></p>
+<h3 id="you-may-also-like">You may also like<a class="headerlink" href="#you-may-also-like" title="Permanent link">&para;</a></h3>
+<h2 id="moving-an-entire-freebsd-installation-to-a-new-host-or-vm-in-a-few-easy-steps"><a href="https://it-notes.dragas.net/2024/09/16/moving-freebsd-installation-new-host-vm/">Moving an entire FreeBSD installation to a new host or VM in a few easy steps</a><a class="headerlink" href="#moving-an-entire-freebsd-installation-to-a-new-host-or-vm-in-a-few-easy-steps" title="Permanent link">&para;</a></h2>
+<p>16/09/2024 09:41:00  by Stefano Marinelli</p>
+<p>A comprehensive guide on how to move a FreeBSD installation, including the operating system, from one host to another, with a focus on ZFS and bootloader configurations (UEFI and BIOS).</p>
+<p><a href="https://it-notes.dragas.net/2024/09/16/moving-freebsd-installation-new-host-vm/">Read More</a></p>
+<h2 id="how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-2-backups-and-disaster-recovery"><a href="https://it-notes.dragas.net/2022/05/30/how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-2/">How we are migrating (many of) our servers from Linux to FreeBSD - Part 2 - Backups and Disaster Recovery</a><a class="headerlink" href="#how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-2-backups-and-disaster-recovery" title="Permanent link">&para;</a></h2>
+<p>30/05/2022 03:03:52  by Stefano Marinelli</p>
+<p>Some details on how we're performing backups and disaster recovery of the migrated servers.</p>
+<p><a href="https://it-notes.dragas.net/2022/05/30/how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-2/">Read More</a></p>
+<h2 id="how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-1-system-and-jails-setup"><a href="https://it-notes.dragas.net/2022/02/05/how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-1-system-and-jails-setup/">How we are migrating (many of) our servers from Linux to FreeBSD - Part 1 - System and jails setup</a><a class="headerlink" href="#how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-1-system-and-jails-setup" title="Permanent link">&para;</a></h2>
+<p>05/02/2022 10:10:47  by Stefano Marinelli</p>
+<p><a href="https://it-notes.dragas.net/2022/02/05/how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-1-system-and-jails-setup/">Read More</a></p>
+<h3 id="about">About<a class="headerlink" href="#about" title="Permanent link">&para;</a></h3>
+<p>Scattered IT Notes - by Stefano Marinelli</p>
+<p><a href="https://2025.eurobsdcon.org/"><img alt="EuroBSDCon 2025" src="https://it-notes.dragas.net/banner_zagreb.png" /></a></p>
+<p>EuroBSDCon 2025 - Zagreb, Croatia; September 25-28, 2025.</p>
+<h3 id="categories">Categories<a class="headerlink" href="#categories" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://it-notes.dragas.net/categories/server/">server</a></li>
+<li><a href="https://it-notes.dragas.net/categories/freebsd/">freebsd</a></li>
+<li><a href="https://it-notes.dragas.net/categories/hosting/">hosting</a></li>
+<li><a href="https://it-notes.dragas.net/categories/ownyourdata/">ownyourdata</a></li>
+<li><a href="https://it-notes.dragas.net/categories/tutorial/">tutorial</a></li>
+<li><a href="https://it-notes.dragas.net/categories/linux/">linux</a></li>
+<li><a href="https://it-notes.dragas.net/categories/data/">data</a></li>
+<li><a href="https://it-notes.dragas.net/categories/networking/">networking</a></li>
+<li><a href="https://it-notes.dragas.net/categories/zfs/">zfs</a></li>
+<li><a href="https://it-notes.dragas.net/categories/jail/">jail</a></li>
+<li><a href="https://it-notes.dragas.net/categories/container/">container</a></li>
+<li><a href="https://it-notes.dragas.net/categories/filesystems/">filesystems</a></li>
+<li><a href="https://it-notes.dragas.net/categories/series/">series</a></li>
+<li><a href="https://it-notes.dragas.net/categories/web/">web</a></li>
+<li><a href="https://it-notes.dragas.net/categories/backup/">backup</a></li>
+<li><a href="https://it-notes.dragas.net/categories/">View All Categories</a></li>
+</ul>
+<h3 id="links">Links<a class="headerlink" href="#links" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://it-notes.dragas.net">Home</a></li>
+<li><a href="https://it-notes.dragas.net/archives/">Archives</a></li>
+<li><a href="https://it-notes.dragas.net/tags/">Tags</a></li>
+<li><a href="https://it-notes.dragas.net/categories/">Categories</a></li>
+<li><a href="https://it-notes.dragas.net/series/">Series</a></li>
+<li><a href="https://it-notes.dragas.net/under-the-hood/">Under The Hood</a></li>
+<li><a href="https://it-notes.dragas.net/professional-services/">Professional Services</a></li>
+<li><a href="https://it-notes.dragas.net/about-me/">About</a></li>
+<li><a href="https://it-notes.dragas.net/feed.xml">RSS</a></li>
+</ul>
+<p>(C) 2026 IT Notes. All rights reserved. </p>
+<p>Generated with <a href="https://itnblog.dragas.net">ITNBlog</a> on 29/01/2026 09:12:41 UTC </p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 05:40:42 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

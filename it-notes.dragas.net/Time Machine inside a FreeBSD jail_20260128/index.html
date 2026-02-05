@@ -1,0 +1,744 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/it-notes.dragas.net/Time%20Machine%20inside%20a%20FreeBSD%20jail_20260128/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Time Machine inside a FreeBSD jail - RSS Articles</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#time-machine-inside-a-freebsd-jail" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="RSS Articles" class="md-header__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RSS Articles
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Time Machine inside a FreeBSD jail
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RSS Articles" class="md-nav__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RSS Articles
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/it-notes.dragas.net/Time Machine inside a FreeBSD jail_20260128.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="time-machine-inside-a-freebsd-jail">Time Machine inside a FreeBSD jail<a class="headerlink" href="#time-machine-inside-a-freebsd-jail" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://it-notes.dragas.net
+<strong>链接:</strong> https://it-notes.dragas.net/2026/01/28/time-machine-freebsd-jail/
+<strong>日期:</strong> Wed, 28 Jan 2026 08:52:00 +0000</p>
+<hr />
+<p>Skip to main content [Access Key: S]</p>
+<p><strong>Notice:</strong> This site works best with JavaScript enabled, but all content is accessible without it. Skip to main content</p>
+<p><a href="https://it-notes.dragas.net">IT Notes</a>Open navigation menu</p>
+<ul>
+<li><a href="https://it-notes.dragas.net" title="Return to homepage">Home</a></li>
+<li><a href="https://it-notes.dragas.net/archives/" title="Browse post archives by date">Archives</a></li>
+<li><a href="https://it-notes.dragas.net/categories/" title="Browse posts by category">Categories</a></li>
+<li><a href="https://it-notes.dragas.net/tags/" title="Browse posts by tag">Tags</a></li>
+<li><a href="https://it-notes.dragas.net/series/" title="Series">Series</a></li>
+<li><a href="https://it-notes.dragas.net/under-the-hood/" title="Under The Hood">Under The Hood</a></li>
+<li><a href="https://it-notes.dragas.net/professional-services/" title="Professional Services">Professional Services</a></li>
+<li><a href="https://it-notes.dragas.net/about-me/" title="About">About</a></li>
+</ul>
+<p>Search articles and pages Enter keywords to search articles and pages Submit search</p>
+<p><img alt="Time Machine inside a FreeBSD jail - Featured image" src="https://unsplash.com/photos/W32yvc0JJjw/download?force=true&amp;w=640" /></p>
+<h1 id="time-machine-inside-a-freebsd-jail_1">Time Machine inside a FreeBSD jail<a class="headerlink" href="#time-machine-inside-a-freebsd-jail_1" title="Permanent link">&para;</a></h1>
+<p>FreeBSD</p>
+<p>8 min read</p>
+<p>28/01/2026 08:52:00 </p>
+<p>by Stefano Marinelli</p>
+<p>Categories: <a href="https://it-notes.dragas.net/categories/freebsd/"> freebsd</a>, <a href="https://it-notes.dragas.net/categories/timemachine/"> timemachine</a>, <a href="https://it-notes.dragas.net/categories/apple/"> apple</a>, <a href="https://it-notes.dragas.net/categories/backup/"> backup</a>, <a href="https://it-notes.dragas.net/categories/data/"> data</a>, <a href="https://it-notes.dragas.net/categories/zfs/"> zfs</a>, <a href="https://it-notes.dragas.net/categories/server/"> server</a>, <a href="https://it-notes.dragas.net/categories/tutorial/"> tutorial</a>, <a href="https://it-notes.dragas.net/categories/ownyourdata/"> ownyourdata</a></p>
+<p>Tags: <a href="https://it-notes.dragas.net/tags/freebsd/">freebsd</a>, <a href="https://it-notes.dragas.net/tags/timemachine/">timemachine</a>, <a href="https://it-notes.dragas.net/tags/apple/">apple</a>, <a href="https://it-notes.dragas.net/tags/backup/">backup</a>, <a href="https://it-notes.dragas.net/tags/data/">data</a>, <a href="https://it-notes.dragas.net/tags/zfs/">zfs</a>, <a href="https://it-notes.dragas.net/tags/server/">server</a>, <a href="https://it-notes.dragas.net/tags/tutorial/">tutorial</a>, <a href="https://it-notes.dragas.net/tags/ownyourdata/">ownyourdata</a></p>
+<p>Many of my clients do not use Microsoft systems on their desktops; they use Linux-based systems or, in some cases, FreeBSD. Many use Apple systems - macOS - and are generally satisfied with them. While I wash my hands of it when it comes to Microsoft systems (telling them they have to manage their desktops autonomously), I am often able to lend a hand with macOS. And one of the main requests they make is to manage the backups of their individual workstations.</p>
+<p>macOS, thanks to its Unix base, offers good native tools. Time Machine is transparent and effective, allowing a certain freedom of management. APFS, Apple's current file system, supports snapshots, so the backup will be effectively made on a snapshot. It also supports multiple receiving devices, so you can even have a certain redundancy of the backup itself.</p>
+<p>Having many FreeBSD servers, I am often asked to use their resources and storage. To build, in practice, a Time Machine inside one of the servers. And it is a simple and practical operation, quick and "painless". There are many guides, including the excellent one by <a href="https://freebsdfoundation.org/our-work/journal/browser-based-edition/storage-and-filesystems/samba-based-time-machine-backups/">Benedict Reuschling</a> from which I took inspiration for this one, and I will describe the steps I usually follow to set it all up in just a few minutes.</p>
+<p>I usually use <a href="https://bastillebsd.org">BastilleBSD</a> to manage my jails, so the first step is to create a new jail dedicated to the purpose. Here you have to decide on the approach: I suggest using a VNET jail or an "inherit" jail - meaning one that attaches to the host's network stack. On one hand, the inherit approach is less secure but, as often happens, it depends on the complexity of the situation. If, for example, we are using a Raspberry PI dedicated to the purpose, there is no reason to complicate things with bridges, etc., but we can attach directly to the network card with a creation command like:</p>
+<div class="language-text highlight"><pre><span></span><code>bastille create tmjail 15.0-RELEASE inherit igb0
+</code></pre></div>
+<p>Where <code>igb0</code> is the network interface we want to attach to.</p>
+<p>In case we want to attach to the interface but in the form of a bridge, we should use this syntax:</p>
+<div class="language-text highlight"><pre><span></span><code>bastille create -V tmjail 15.0-RELEASE 192.168.0.42/24 igb0
+</code></pre></div>
+<p>Or, if our server already has a bridge (in this case it's <code>bridge0</code>, but yours might be named differently):</p>
+<div class="language-text highlight"><pre><span></span><code>bastille create -B tmjail 15.0-RELEASE 192.168.0.42/24 bridge0
+</code></pre></div>
+<p>At this point, you can choose: do we want to keep the backups inside the jail or in a separate dataset - which can even be on another pool? In some cases, this can be extremely useful: often I have jails running on fast disks (SSD or NVMe) but abundant storage on slower devices. In this example, therefore, I will create an external dataset for the backups (directly from the host) and mount it in the jail. You could also delegate the entire management of the dataset to the jail, which is a different approach.</p>
+<p>Let's create a space of 600 GB - already reserved - on the chosen pool. 600 GB is a small space, but it's ok for an example:</p>
+<div class="language-text highlight"><pre><span></span><code>zfs create -o quota=600G -o reservation=600G bigpool/tmdata
+</code></pre></div>
+<p>We can also create separate datasets inside for each user and assign a specific space:</p>
+<div class="language-text highlight"><pre><span></span><code>zfs create -o refquota=500g -o refreservation=500g bigpool/tmdata/stefano
+</code></pre></div>
+<p>We can enter the jail and install what we need, remembering also to create the "mountpoint" for the dataset we just created:</p>
+<div class="language-text highlight"><pre><span></span><code>bastille console tmjail
+
+pkg install -y samba419
+mkdir /tmdata
+</code></pre></div>
+<p>Exit the jail and instruct Bastille to mount the dataset inside the jail every time it is launched:</p>
+<div class="language-text highlight"><pre><span></span><code>exit
+bastille mount tmjail /bigpool/tmdata /tmdata nullfs rw 0 0
+</code></pre></div>
+<p>Let's go back into the jail and start with the actual configuration. First, for each Time Machine user, we will create a system user. In my example, I will create the user "stefano", giving him <code>/var/empty</code> as the home directory - this will give an error since we created a Bastille thin jail, but it's not a problem. It happens because in a thin jail some system paths are read-only or not manageable as they are on a full base system, but the user is only needed for ownership and Samba login.</p>
+<div class="language-text highlight"><pre><span></span><code>root@tmjail:~ # adduser
+Username: stefano
+Full name: Stefano
+Uid (Leave empty for default):
+Login group [stefano]:
+Login group is stefano. Invite stefano into other groups? []:
+Login class [default]:
+Shell (sh csh tcsh nologin) [sh]: nologin
+Home directory [/home/stefano]: /var/empty
+Home directory permissions (Leave empty for default):
+Use password-based authentication? [yes]: no
+Lock out the account after creation? [no]:
+Username    : stefano
+Password    : &lt;disabled&gt;
+Full Name   : Stefano
+Uid         : 1001
+Class       :
+Groups      : stefano
+Home        : /var/empty
+Home Mode   :
+Shell       : /usr/sbin/nologin
+Locked      : no
+OK? (yes/no) [yes]: yes
+pw: chmod(var/empty): Operation not permitted
+pw: chown(var/empty): Operation not permitted
+adduser: INFO: Successfully added (stefano) to the user database.
+Add another user? (yes/no) [no]: no
+Goodbye!
+</code></pre></div>
+<p>Give the correct permissions to the user:</p>
+<div class="language-text highlight"><pre><span></span><code># If you&#39;ve not created specific datasets for the users, you&#39;d better create their home directories now
+mkdir /tmdata/stefano
+chown -R stefano /tmdata/stefano/
+</code></pre></div>
+<p>Now we configure Samba for Time Machine. The file to create/modify is <code>/usr/local/etc/smb4.conf</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>[global]
+workgroup = WORKGROUP
+security = user
+passdb backend = tdbsam
+fruit:aapl = yes
+fruit:model = MacSamba
+fruit:advertise_fullsync = true
+fruit:metadata = stream
+fruit:veto_appledouble = no
+fruit:nfs_aces = no
+fruit:wipe_intentionally_left_blank_rfork = yes
+fruit:delete_empty_adfiles = yes
+
+[TimeMachine]
+path = /tmdata/%U
+valid users = %U
+browseable = yes
+writeable = yes
+vfs objects = catia fruit streams_xattr zfsacl
+fruit:time machine = yes
+create mask = 0600
+directory mask = 0700
+</code></pre></div>
+<p>We have set up Time Machine to support all the necessary features of macOS and to show itself as "Time Machine". Having set <code>path = /tmdata/%U</code>, each user will only see their own path.</p>
+<p>At this point, we create the Samba user (meaning the one we will have to type on macOS when we configure the Time Machine):</p>
+<div class="language-text highlight"><pre><span></span><code>smbpasswd -a stefano
+</code></pre></div>
+<p>The Time Machine is seen by macOS because it announces itself via mDNS on the network. This type of service is performed by Avahi, which we are now going to configure. Although not strictly necessary (we can always find the Time Machine by connecting directly to its IP and macOS will remember everything), seeing it announced will help other non-expert users and ourselves when we have to configure another Mac in the future.</p>
+<p>Recent Samba releases won't need any specific avahi configuration, so we can skip this step.</p>
+<p>We are now ready to enable everything.</p>
+<div class="language-text highlight"><pre><span></span><code>service dbus enable
+service dbus start
+service avahi-daemon enable
+service avahi-daemon start
+service samba_server enable
+service samba_server start
+</code></pre></div>
+<p>Et voilÃ . If everything went according to plan, the Time Machine will announce itself on your network (if you have different networks, remember to configure the mDNS proxy on your router) and you will be able to log in (with the smb user you created) and start your first backup.</p>
+<p>I suggest encrypting the backups for maximum security and observing, from time to time, your Mac as it silently makes its backups to your trusted FreeBSD server.</p>
+<h3 id="tags">Tags:<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h3>
+<p><a href="https://it-notes.dragas.net/tags/freebsd/">freebsd</a> <a href="https://it-notes.dragas.net/tags/timemachine/">timemachine</a> <a href="https://it-notes.dragas.net/tags/apple/">apple</a> <a href="https://it-notes.dragas.net/tags/backup/">backup</a> <a href="https://it-notes.dragas.net/tags/data/">data</a> <a href="https://it-notes.dragas.net/tags/zfs/">zfs</a> <a href="https://it-notes.dragas.net/tags/server/">server</a> <a href="https://it-notes.dragas.net/tags/tutorial/">tutorial</a> <a href="https://it-notes.dragas.net/tags/ownyourdata/">ownyourdata</a></p>
+<p><a href="https://it-notes.dragas.net/2025/12/22/void-linux-zfs-hibernation-guide/">Previous Post -&gt;Installing Void Linux on ZFS with Hibernation Support</a></p>
+<h3 id="you-may-also-like">You may also like<a class="headerlink" href="#you-may-also-like" title="Permanent link">&para;</a></h3>
+<h2 id="how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-2-backups-and-disaster-recovery"><a href="https://it-notes.dragas.net/2022/05/30/how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-2/">How we are migrating (many of) our servers from Linux to FreeBSD - Part 2 - Backups and Disaster Recovery</a><a class="headerlink" href="#how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-2-backups-and-disaster-recovery" title="Permanent link">&para;</a></h2>
+<p>30/05/2022 03:03:52  by Stefano Marinelli</p>
+<p>Some details on how we're performing backups and disaster recovery of the migrated servers.</p>
+<p><a href="https://it-notes.dragas.net/2022/05/30/how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-2/">Read More</a></p>
+<h2 id="how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-3-proxmox-to-freebsd"><a href="https://it-notes.dragas.net/2023/03/14/how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-3/">How we are migrating (many of) our servers from Linux to FreeBSD - Part 3 - Proxmox to FreeBSD</a><a class="headerlink" href="#how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-3-proxmox-to-freebsd" title="Permanent link">&para;</a></h2>
+<p>14/03/2023 13:00:00  by Stefano Marinelli</p>
+<p>Part 3 of our migration series details the complex process of moving servers from Proxmox to FreeBSD, including overcoming challenges with old hardware, problematic LXC containers, and fine-tuning virtual machines for optimal performance on bhyve.</p>
+<p><a href="https://it-notes.dragas.net/2023/03/14/how-we-are-migrating-many-of-our-servers-from-linux-to-freebsd-part-3/">Read More</a></p>
+<h2 id="freebsd-vs-smartos-whos-faster-for-jails-zones-and-bhyve-vms"><a href="https://it-notes.dragas.net/2025/09/19/freebsd-vs-smartos-whos-faster-for-jails-zones-bhyve/">FreeBSD vs. SmartOS: Who's Faster for Jails, Zones, and bhyve VMs?</a><a class="headerlink" href="#freebsd-vs-smartos-whos-faster-for-jails-zones-and-bhyve-vms" title="Permanent link">&para;</a></h2>
+<p>19/09/2025 10:50:00  by Stefano Marinelli</p>
+<p>Which virtualization host performs better? I put FreeBSD and SmartOS in a head-to-head showdown. The performance of Jails, Zones, and bhyve VMs surprised me, forcing a second round of tests on different hardware to find the real winner.</p>
+<p><a href="https://it-notes.dragas.net/2025/09/19/freebsd-vs-smartos-whos-faster-for-jails-zones-bhyve/">Read More</a></p>
+<h3 id="about">About<a class="headerlink" href="#about" title="Permanent link">&para;</a></h3>
+<p>Scattered IT Notes - by Stefano Marinelli</p>
+<p><a href="https://2025.eurobsdcon.org/"><img alt="EuroBSDCon 2025" src="https://it-notes.dragas.net/banner_zagreb.png" /></a></p>
+<p>EuroBSDCon 2025 - Zagreb, Croatia; September 25-28, 2025.</p>
+<h3 id="categories">Categories<a class="headerlink" href="#categories" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://it-notes.dragas.net/categories/server/">server</a></li>
+<li><a href="https://it-notes.dragas.net/categories/freebsd/">freebsd</a></li>
+<li><a href="https://it-notes.dragas.net/categories/hosting/">hosting</a></li>
+<li><a href="https://it-notes.dragas.net/categories/ownyourdata/">ownyourdata</a></li>
+<li><a href="https://it-notes.dragas.net/categories/tutorial/">tutorial</a></li>
+<li><a href="https://it-notes.dragas.net/categories/linux/">linux</a></li>
+<li><a href="https://it-notes.dragas.net/categories/data/">data</a></li>
+<li><a href="https://it-notes.dragas.net/categories/networking/">networking</a></li>
+<li><a href="https://it-notes.dragas.net/categories/zfs/">zfs</a></li>
+<li><a href="https://it-notes.dragas.net/categories/jail/">jail</a></li>
+<li><a href="https://it-notes.dragas.net/categories/container/">container</a></li>
+<li><a href="https://it-notes.dragas.net/categories/filesystems/">filesystems</a></li>
+<li><a href="https://it-notes.dragas.net/categories/series/">series</a></li>
+<li><a href="https://it-notes.dragas.net/categories/web/">web</a></li>
+<li><a href="https://it-notes.dragas.net/categories/backup/">backup</a></li>
+<li><a href="https://it-notes.dragas.net/categories/">View All Categories</a></li>
+</ul>
+<h3 id="links">Links<a class="headerlink" href="#links" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://it-notes.dragas.net">Home</a></li>
+<li><a href="https://it-notes.dragas.net/archives/">Archives</a></li>
+<li><a href="https://it-notes.dragas.net/tags/">Tags</a></li>
+<li><a href="https://it-notes.dragas.net/categories/">Categories</a></li>
+<li><a href="https://it-notes.dragas.net/series/">Series</a></li>
+<li><a href="https://it-notes.dragas.net/under-the-hood/">Under The Hood</a></li>
+<li><a href="https://it-notes.dragas.net/professional-services/">Professional Services</a></li>
+<li><a href="https://it-notes.dragas.net/about-me/">About</a></li>
+<li><a href="https://it-notes.dragas.net/feed.xml">RSS</a></li>
+</ul>
+<p>(C) 2026 IT Notes. All rights reserved. </p>
+<p>Generated with <a href="https://itnblog.dragas.net">ITNBlog</a> on 29/01/2026 09:12:41 UTC </p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 05:40:42 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

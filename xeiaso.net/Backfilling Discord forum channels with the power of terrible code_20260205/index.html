@@ -1,0 +1,805 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/xeiaso.net/Backfilling%20Discord%20forum%20channels%20with%20the%20power%20of%20terrible%20code_20260205/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Backfilling Discord forum channels with the power of terrible code - RSS Articles</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#backfilling-discord-forum-channels-with-the-power-of-terrible-code" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="RSS Articles" class="md-header__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RSS Articles
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Backfilling Discord forum channels with the power of terrible code
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RSS Articles" class="md-nav__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RSS Articles
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#thinking-about-this-from-an-ai-big-datatm-perspective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thinking about this from an AI Big Data™ perspective
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Thinking about this from an AI Big Data™ perspective">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gathering-the-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gathering the dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-youre-given-the-whole-webapp-you-use-the-whole-webapp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If you're given the whole webapp, you use the whole webapp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shoving-it-in-tigris" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shoving it in Tigris
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#massaging-the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Massaging the data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoiding-everything-being-a-generic-pile-of-meh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Avoiding everything being a generic pile of meh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-the-forum-threads-look-like-threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Making the forum threads look like threads
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-big-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The big import
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion-making-useful-forums" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion: making useful forums
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#join-our-discord-community" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Join our Discord community
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/xeiaso.net/Backfilling Discord forum channels with the power of terrible code_20260205.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="backfilling-discord-forum-channels-with-the-power-of-terrible-code">Backfilling Discord forum channels with the power of terrible code<a class="headerlink" href="#backfilling-discord-forum-channels-with-the-power-of-terrible-code" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://xeiaso.net
+<strong>链接:</strong> https://www.tigrisdata.com/blog/discord-backfill/
+<strong>日期:</strong> Tue, 27 Jan 2026 00:00:00 GMT</p>
+<hr />
+<p>Hey all! We've got a <a href="https://discord.gg/X5QzkP4Ams">Discord</a> so you can chat with us about the wild world of object storage and get any help you need. We've also set up <a href="http://community.tigrisdata.com/">Answer Overflow</a> so that you can browse the Q&amp;A from the web.</p>
+<p>Today I'm going to discuss how we got there and solved one of the biggest problems with setting up a new community or forum: backfilling existing Q&amp;A data so that the forum doesn't look sad and empty.</p>
+<p>All the code I wrote to do this is open source in <a href="https://github.com/tigrisdata-community/glue">our glue repo</a>. The rest of this post is a dramatic retelling of the thought process and tradeoffs that were made as a part of implementing, testing, and deploying <a href="https://github.com/tigrisdata-community/glue/pull/2">this pull request</a>.</p>
+<p>Ready? Let's begin!</p>
+<h2 id="thinking-about-this-from-an-ai-big-datatm-perspective">Thinking about this from an AI Big Data™ perspective<a class="headerlink" href="#thinking-about-this-from-an-ai-big-datatm-perspective" title="Permanent link">&para;</a></h2>
+<p>There's a bunch of ways you can think about this problem, but given the current hype zeitgeist and contractual obligations we can frame this as a dataset management problem. Effectively we have a bunch of forum question/answer threads on another site, and we want to migrate the data over to a new home on Discord. This is the standard "square peg to round hole" problem you get with Extract, Transform, Load (ETL) pipelines and AI dataset management (mostly taking your raw data and tokenizing it so that AI models work properly).</p>
+<p>So let's think about this from an AI dataset perspective. Our pipeline has three distinct steps:</p>
+<ul>
+<li>Extracting the raw data from the upstream source and caching it in Tigris.</li>
+<li>Transforming the cached data to make it easier to consume in Discord, storing that in Tigris again.</li>
+<li>Loading the transformed data into Discord so that people can see the threads in app and on the web with <a href="http://community.tigrisdata.com/">Answer Overflow</a>.</li>
+</ul>
+<p>When thinking about gathering and transforming datasets, it's helpful to start by thinking about the modality of the data you're working with. Our dataset is mostly forum posts, which is structured text. One part of the structure contains HTML rendered by the forum engine. This, the "does this solve my question" flag, and the user ID of the person that posted the reply are the things we care the most about.</p>
+<p>I made a bucket for this (in typical recovering former SRE fashion it's named for a completely different project) with snapshots enabled, and then got cracking. Tigris snapshots will let me recover prior state in case I don't like my transformations.</p>
+<h3 id="gathering-the-dataset">Gathering the dataset<a class="headerlink" href="#gathering-the-dataset" title="Permanent link">&para;</a></h3>
+<p>When you are gathering data from one source in particular, one of the first things you need to do is ask permission from the administrator of that service. You don't know if your scraping could cause unexpected load leading to an outage. It's a classic tragedy of the commons problem that I have <a href="https://www.theregister.com/2025/07/09/anubis_fighting_the_llm_hordes/">a lot of personal experience</a> in preventing. When you reach out, let the administrators know the data you want to scrape and the expected load– a lot of the time, they can give you a data dump, and you don't even need to write your scraper. We got approval for this project, so we're good to go!</p>
+<p>To get a head start, I adapted an old package of mine to assemble User-Agent strings in such a way that gives administrators information about who is requesting data from their servers along with contact information in case something goes awry. Here's an example User-Agent string:</p>
+<div class="language-text highlight"><pre><span></span><code>tigris-gtm-glue (go1.25.5/darwin/arm64; https://tigrisdata.com; +qna-importer) Hostname/hoshimi-miyabi.local
+</code></pre></div>
+<p>This gives administrators the following information:</p>
+<ul>
+<li>The name of the project associated with the requests (tigris-gtm-glue, where gtm means "go-to-market", which is the current in-vogue buzzword translation for whatever it is we do).</li>
+<li>The Go version, computer OS, and CPU architecture of the machine the program is running on so that administrator complaints can be easier isolated to individual machines.</li>
+<li>A contact URL for the workload, in our case it's just the Tigris home page.</li>
+<li>The name of the program doing the scraping so that we can isolate root causes down even further. Specifically it's the last path element of <code>os.Args[0]</code>, which contains the path the kernel was passed to the executable.</li>
+<li>The hostname where the workload is being run in so that we can isolate down to an exact machine or Kubernetes pod. In my case it's the hostname of my work laptop.</li>
+</ul>
+<p>This seems like a lot of information, but realistically it's not much more than the average Firefox install attaches to each request:</p>
+<div class="language-text highlight"><pre><span></span><code>User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:146.0) Gecko/20100101 Firefox/146.0
+</code></pre></div>
+<p>The main difference is adding the workload hostname purely to help debugging a misbehaving workload. This is a concession that makes each workload less anonymous, however keep in mind that when you are actively scraping data you are being seen as a foreign influence. Conceding more data than you need to is just being nice at that point.</p>
+<h3 id="if-youre-given-the-whole-webapp-you-use-the-whole-webapp">If you're given the whole webapp, you use the whole webapp<a class="headerlink" href="#if-youre-given-the-whole-webapp-you-use-the-whole-webapp" title="Permanent link">&para;</a></h3>
+<p>One of the other "good internet citizen" things to do when doing benign scraping is try to reduce the amount of load you cause to the target server. In my case the forum engine is a Rails app (Discourse), which means there's a few properties of Rails that work to my advantage.</p>
+<p>Fun fact about Rails: if you append <code>.json</code> to the end of a URL, you typically get a JSON response based on the inputs to the view. For example, consider <a href="https://lobste.rs/~cadey">my profile on Lobsters</a> at <a href="https://lobste.rs/~cadey">https://lobste.rs/~cadey</a>. If you instead head to <a href="https://lobste.rs/~cadey.json">https://lobste.rs/~cadey.json</a>, you get a JSON view of my profile information. This means that a lot of the process involved gathering a list of URLs with the thread indices we wanted, then constructing the thread URLs with <code>.json</code> slapped on the end to get machine-friendly JSON back.</p>
+<p>This made my life so much easier.</p>
+<h3 id="shoving-it-in-tigris">Shoving it in Tigris<a class="headerlink" href="#shoving-it-in-tigris" title="Permanent link">&para;</a></h3>
+<p>Now that we have easy ways to get the data from the forum engine, the next step is to copy it out to Tigris directly after ingesting it. In order to do that I reused some code I made ages ago as a generic data storage layer <a href="https://keyv.org/">kinda like Keyv in the node ecosystem</a>. One of the storage backends was a generic object storage backend. I plugged Tigris into it and it worked on the first try. Good enough for me!</p>
+<p>Either way: this is the interface I used:</p>
+<div class="language-text highlight"><pre><span></span><code>// Interface defines the calls used for storage in a local or remote datastore.
+        // This can be implemented with an in-memory, on-disk, or in-database storage
+        // backend.
+        type Interface interface {
+            // Delete removes a value from the store by key.
+            Delete(ctx context.Context, key string) error
+
+            // Exists returns nil if the key exists, ErrNotFound if it does not exist.
+            Exists(ctx context.Context, key string) error
+
+            // Get returns the value of a key assuming that value exists and has not expired.
+            Get(ctx context.Context, key string) ([]byte, error)
+
+            // Set puts a value into the store that expires according to its expiry.
+            Set(ctx context.Context, key string, value []byte) error
+
+            // List lists the keys in this keyspace optionally matching by a prefix.
+            List(ctx context.Context, prefix string) ([]string, error)
+        }
+</code></pre></div>
+<p>By itself this isn't the most useful, however the real magic comes with my <a href="https://github.com/tigrisdata-community/glue/blob/90f9df622223a4bcf9c7962e23fadec48a7d3e7c/internal/store/store.go#L60-L130"><code>JSON[T]</code> adaptor type</a>. This uses Go generics to do type-safe operations on Tigris such that you have 90% of what you need for a database replacement. When you do any operations on a <code>JSON[T]</code> adaptor, the following happens:</p>
+<ul>
+<li>Key names get prefixed automatically.</li>
+<li>All data is encoded into JSON on write and decoded from JSON on read using the Go standard library.</li>
+<li>Type safety at the compiler level means the only way you can corrupt data is by having different "tables" share the same key prefix. Try not to do that! You can use Tigris bucket snapshots to help mitigate this risk in the worst case.</li>
+</ul>
+<p>In the future I hope to extend this to include native facilities for forking, snapshots, and other nice to haves like an in-memory cache to avoid IOPs pressure, but for now this is fine.</p>
+<p>As the data was being read from the forum engine, it was saved into Tigris. All future lookups to that data I scraped happened from Tigris, meaning that the upstream server only had to serve the data I needed <em>once</em> instead of having to constantly re-load and re-reference it <a href="https://social.kernel.org/notice/B2JlhcxNTfI8oDVoyO">like the latest batch of abusive scrapers seem to do</a>.</p>
+<h3 id="massaging-the-data">Massaging the data<a class="headerlink" href="#massaging-the-data" title="Permanent link">&para;</a></h3>
+<p>So now I have all the data, I need to do some massaging to comply both with Discord's standards and with some arbitrary limitations we set on ourselves:</p>
+<ol>
+<li>Discord needs Markdown, the forum engine posts are all HTML.</li>
+<li>We want to remove personally-identifiable information from those posts just to keep things a bit more anonymous.</li>
+<li>Discord has a limit of 2048 characters per message and some posts will need to be summarized to fit within that window.</li>
+</ol>
+<p>In general, this means I needed to take the raw data from the forum engine and streamline it down to this Go type:</p>
+<div class="language-text highlight"><pre><span></span><code>type DiscourseQuestion struct {
+            Title string          `json:&quot;title&quot;`
+            Slug  string          `json:&quot;slug&quot;`
+            Posts []DiscoursePost `json:&quot;posts&quot;`
+        }
+
+        type DiscoursePost struct {
+            Body     string `json:&quot;body&quot;`
+            UserID   string `json:&quot;userID&quot;`
+            Accepted bool   `json:&quot;accepted&quot;`
+        }
+</code></pre></div>
+<p>In order to make this happen, I ended up using <a href="https://github.com/tigrisdata-community/glue/blob/main/cmd/qna-importer/massage-system-prompt.txt">a simple AI agent</a> to do the cleanup. It was prompted to do the following:</p>
+<ul>
+<li><strong>Convert HTML to Markdown</strong> : Okay, I could have gotten away using a dedicated library for this like <a href="https://pkg.go.dev/github.com/jaytaylor/html2text?utm_source=godoc">html2text</a>, but I didn't think about that at the time.</li>
+<li><strong>Remove mentions and names</strong> : Just strip them out or replace the mentions with generic placeholders ("someone I know", "a friend", "a colleague", etc.).</li>
+<li><strong>Keep "useful" links</strong>: This was left intentionally vague and random sampling showed that it was good enough.</li>
+<li><strong>Summarize long text</strong> : If the text is over 1000 characters, summarize it to less than 1000 characters.</li>
+</ul>
+<p>I figured this should be good enough so I sent it to my local DGX Spark running GPT-OSS 120b via llama.cpp and manually looked at the output for a few randomly selected threads. The sample was legit, which is good enough for me.</p>
+<p>Once that was done I figured it would be better to switch from the locally hosted model to a model in a roughly equivalent weight class (gpt-5-mini). I assumed that the cloud model would be faster and slightly better in terms of its output. This test failed because I have somehow managed to write code that works great with llama.cpp on the Spark but results in errors using OpenAI's production models.</p>
+<p>I didn't totally understand what went wrong, but I didn't dig too deep because I knew that the local model would probably work well enough. It ended up taking about 10 minutes to chew through all the data, which was way better than I expected and continues to reaffirm my theory that GPT-OSS 120b is a good enough generic workhorse model, even if <a href="https://www.tigrisdata.com/blog/gpt-oss/">it's not the best at coding</a>.</p>
+<h3 id="avoiding-everything-being-a-generic-pile-of-meh">Avoiding everything being a generic pile of meh<a class="headerlink" href="#avoiding-everything-being-a-generic-pile-of-meh" title="Permanent link">&para;</a></h3>
+<p>From here things worked, I was able to ingest things and made a test Discord to try things out without potentially getting things indexed. I had my tool test-migrate a thread to the test Discord and got a working result.</p>
+<p>To be fair, this worked way better than expected (I added random name generation and as a result our CEO Ovais, became Mr. Quinn Price for that test), but it felt like one thing was missing: avatars. Having everyone in the migrated posts use the generic "no avatar set" avatar certainly would work, but I feel like it would look lazy. Then I remembered that I also have an image generation model running on the Spark: <a href="https://arxiv.org/abs/2511.22699">Z-Image Turbo</a>. Just to try it out, I adapted <a href="https://github.com/tigrisdata-community/glue/blob/90f9df622223a4bcf9c7962e23fadec48a7d3e7c/cmd/qna-importer/avatargen.go#L71">a hacky bit of code I originally wrote on stream while I was learning to use voice coding tools</a> to generate per-user avatars based on the internal user ID.</p>
+<p>This worked way better than I expected when I tested how it would look with each avatar attached to their own users.</p>
+<p>In order to serve the images, I stored them in the same Tigris bucket, but set ACLs on each object so that they were public, meaning that the private data stayed private, but <a href="https://gtm-glue-discord-webhook.t3.storage.dev/avatars/2ab739853bbe4f1bcfa7d6598ba7a2960e11e059c990df833305ca1edaac57e5.webp">anyone can view the objects that were explicitly marked public</a> when they were added to Tigris. This let me mix and match the data so that I only had one bucket to worry about. This reduced a lot of cognitive load and I highly suggest that you repeat this pattern should you need this exact adaptor between this exact square peg and round hole combination.</p>
+<h3 id="making-the-forum-threads-look-like-threads">Making the forum threads look like threads<a class="headerlink" href="#making-the-forum-threads-look-like-threads" title="Permanent link">&para;</a></h3>
+<p>Now that everything was working in development, it was time to see how things would break in production! In order to give the façade that every post was made by a separate user, I used a trick that my friend who wrote <a href="https://pluralkit.me/">Pluralkit</a> (an accessibility tool for a certain kind of neurodivergence) uses: using <a href="https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks">Discord webhooks</a> to introduce multiple pseudo-users into one channel.</p>
+<p>I had never combined forum channels with webhook pseudo-users like this before, but it turned out to be <a href="https://discord.com/developers/docs/resources/webhook#execute-webhook">way easier than expected</a>. All I had to do was add the right <code>thread_name</code> parameter when creating a new thread and the <code>thread_id</code> parameter when appending a new message to it. It was really neat and made it pretty easy to associate each thread ingressed from Discourse into its own Discord thread.</p>
+<h3 id="the-big-import">The big import<a class="headerlink" href="#the-big-import" title="Permanent link">&para;</a></h3>
+<p>Then all that was left was to run the Big Scary Command™ and see what broke. A couple messages were too long (which was easy to fix by simply manually rewriting them, doing the right state layer brain surgery, deleting things on Discord, and re-running the migration tool. However 99.9% of messages were correctly imported on the first try.</p>
+<p>I had to double check a few times including the bog-standard wakefulness tests. If you've never gone deep into lucid dreaming before, a wakefulness test is where you do something obviously impossible to confirm that it does not happen, such as trying to put your fingers through your palm. My fingers did not go through my palm. After having someone else confirm that I wasn't hallucinating more than usual I found out that my code did in fact work and as a result you can now <a href="https://community.tigrisdata.com/">search through the archives on community.tigrisdata.com or via the MCP server</a>!</p>
+<p>I consider that a massive success.</p>
+<h2 id="conclusion-making-useful-forums">Conclusion: making useful forums<a class="headerlink" href="#conclusion-making-useful-forums" title="Permanent link">&para;</a></h2>
+<p>As someone who has seen many truly helpful answers get forgotten in the endless scroll of chats, I wanted to build a way to get that help in front of users when they need it by making it searchable outside of Discord. Finding AnswerOverflow was pure luck: I happened to know someone who uses it for the support Discord for the Linux distribution I use on my ROG Ally, <a href="https://bazzite.gg/">Bazzite</a>. Thanks, j0rge!</p>
+<p>AnswerOverflow also has an MCP server so that your agents can hook into our knowledge base to get the best answers. To find out more about setting it up, take a look at the "MCP Server" button on <a href="https://community.tigrisdata.com/">the Tigris Community page</a>. They've got instructions for most MCP clients on the market. Worst case, configure your client to access this URL:</p>
+<div class="language-text highlight"><pre><span></span><code>https://community.tigrisdata.com/mcp
+</code></pre></div>
+<p>And bam, your agent has access to the wisdom of the ancients.</p>
+<p>But none of this is helpful without the actual answers. We were lucky enough to have existing Q&amp;A in another forum to leverage. If you don't have the luxury, you can write your own FAQs and scenarios as a start. All I can say is, thank you to the folks who asked and answered these questions– we're happy to help, and know that you're helping other users by sharing.</p>
+<h2 id="join-our-discord-community">Join our Discord community<a class="headerlink" href="#join-our-discord-community" title="Permanent link">&para;</a></h2>
+<p>Connect with other developers, get help, and share your projects. Search our Q&amp;A archives or ask a new question. <a href="https://discord.gg/X5QzkP4Ams">Join the Discord</a>.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 05:40:42 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

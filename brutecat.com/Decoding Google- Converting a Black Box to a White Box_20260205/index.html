@@ -1,0 +1,1130 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/brutecat.com/Decoding%20Google-%20Converting%20a%20Black%20Box%20to%20a%20White%20Box_20260205/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Decoding Google: Converting a Black Box to a White Box - RSS Articles</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#decoding-google-converting-a-black-box-to-a-white-box" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="RSS Articles" class="md-header__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RSS Articles
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Decoding Google: Converting a Black Box to a White Box
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RSS Articles" class="md-nav__button md-logo" aria-label="RSS Articles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RSS Articles
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-google-api-authentication-works-on-the-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Google API authentication works on the web
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secret-visibility-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secret visibility labels
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-google-api-authentication-works-on-android" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Google API authentication works on Android
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#android-refresh-tokens-aasxx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Android Refresh Tokens (aas/xx)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-a-bearer-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generating a Bearer Token
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-word-on-x-goog-spatula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A word on X-Goog-Spatula
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leaking-request-parameters-through-error-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leaking request parameters through error messages
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/brutecat.com/Decoding Google- Converting a Black Box to a White Box_20260205.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="decoding-google-converting-a-black-box-to-a-white-box">Decoding Google: Converting a Black Box to a White Box<a class="headerlink" href="#decoding-google-converting-a-black-box-to-a-white-box" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> https://brutecat.com
+<strong>链接:</strong> https://brutecat.com/articles/decoding-google
+<strong>日期:</strong> Fri, 01 Nov 2024 00:00:00 GMT</p>
+<hr />
+<p>We've all been there - staring at Google's search box, overwhelmed by the maze of complexity hiding behind that minimalist interface, thinking it's impossible to break in. The key to decoding Google? Converting the attack surface from a black box to a white box. The first step is finding all the endpoints that exist, and all of their respective parameters, especially ones that are hidden and aren't used in the actual app and were left from some developer testing, since they likely contain security bugs.  </p>
+<h4 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h4>
+<ul>
+<li><a href="https://brutecat.com/rss.xml#how-google-api-authentication-works-on-the-web">How Google API authentication works on the web</a></li>
+<li><a href="https://brutecat.com/rss.xml#secret-visibility-labels">Secret visibility labels</a></li>
+<li><a href="https://brutecat.com/rss.xml#how-google-api-authentication-works-on-android">How Google API authentication works on Android</a></li>
+<li><a href="https://brutecat.com/rss.xml#a-word-on-x-goog-spatula">A word on X-Goog-Spatula</a></li>
+<li><a href="https://brutecat.com/rss.xml#leaking-request-parameters-through-error-messages">Leaking request parameters through error messages</a></li>
+</ul>
+<p>In Google, there's something known as <a href="https://developers.google.com/discovery/v1/reference/apis">discovery documents</a> that are essentially like swagger documents, intended for listing API methods on Google's public APIs such as their <a href="https://developers.google.com/youtube/v3">YouTube Data API</a> (<a href="https://youtube.googleapis.com/$discovery/rest">discovery</a>). As it turns out, these discovery documents aren't just available for their public APIs but also for their private ones such as the Internal People API (<a href="https://people-pa.googleapis.com/$discovery/rest">discovery</a>).</p>
+<p>While this discovery document doesn't require any authentication to view, if we try fetching something like the Takeout Private API, we get the following error:</p>
+<p><strong>Request</strong></p>
+<div class="language-text highlight"><pre><span></span><code>GET /$discovery/rest
+Host: takeout-pa.googleapis.com
+</code></pre></div>
+<p><strong>Response</strong></p>
+<div class="language-text highlight"><pre><span></span><code>HTTP/2 403 Forbidden
+Content-Type: application/json; charset=UTF-8
+
+{
+  &quot;error&quot;: {
+    &quot;code&quot;: 403,
+    &quot;message&quot;: &quot;Method doesn&#39;t allow unregistered callers (callers without established identity). Please use API Key or other form of API consumer identity to call this API.&quot;,
+    &quot;status&quot;: &quot;PERMISSION_DENIED&quot;
+  }
+}
+</code></pre></div>
+<p>Thankfully, by looking into how Google authentication works, it's possible to get past this.</p>
+<h3 id="how-google-api-authentication-works-on-the-web">How Google API authentication works on the web<a class="headerlink" href="#how-google-api-authentication-works-on-the-web" title="Permanent link">&para;</a></h3>
+<p>If we look at a random request to the People Internal API to lookup a Google user from the web that we can find from DevTools on <a href="https://chat.google.com">https://chat.google.com</a>:</p>
+<div class="language-text highlight"><pre><span></span><code>POST /$rpc/google.internal.people.v2.minimal.InternalPeopleMinimalService/GetPeople HTTP/2
+Host: people-pa.clients6.google.com
+Cookie: &lt;redacted&gt;
+Content-Type: application/json+protobuf
+X-Goog-Api-Key: AIzaSyB0RaagJhe9JF2mKDpMml645yslHfLI8iA
+Origin: https://chat.google.com
+Authorization: SAPISIDHASH &lt;redacted&gt;
+...
+</code></pre></div>
+<blockquote>
+<p>Note: clients6.google.com is an alias for googleapis.com</p>
+</blockquote>
+<p>The first important header here is <code>X-Goog-Api-Key</code>. This API key gives us permission to call endpoints in the Internal People API. This specific endpoint requires us to be authenticated with our Google account, which is done through the <code>Cookie</code> header and <code>SAPISIDHASH</code> (this value is generated <a href="https://stackoverflow.com/a/32065323">using the SAPISID cookie</a>)</p>
+<p>If you're worked with Google Cloud before, you might know that APIs need to be enabled for your project before you can make calls to them. If we tried taking this key and doing a call to some random unrelated API like the Play Atoms Private API <code>playatoms-pa.googleapis.com</code></p>
+<div class="language-text highlight"><pre><span></span><code>GET /$discovery/rest
+Host: playatoms-pa.googleapis.com
+X-Goog-Api-Key: AIzaSyB0RaagJhe9JF2mKDpMml645yslHfLI8iA
+</code></pre></div>
+<p>We would get the following error:</p>
+<div class="language-text highlight"><pre><span></span><code>{
+  &quot;error&quot;: {
+    &quot;code&quot;: 403,
+    &quot;message&quot;: &quot;Play Atoms Private API has not been used in project 576267593750 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/playatoms-pa.googleapis.com/overview?project=576267593750 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.&quot;,
+    ...
+  }
+}
+</code></pre></div>
+<p>This is because just like Google Cloud projects we can make ourselves, the API key we found is tied to some Google-owned Cloud project, which doesn't have the Play Atoms Private API enabled for it.</p>
+<p>However, this key does in fact work for the <strong>staging environment</strong> of the Internal People API which otherwise without authentication isn't public:</p>
+<p><strong>Request</strong></p>
+<div class="language-text highlight"><pre><span></span><code>GET /$discovery/rest
+Host: staging-people-pa.sandbox.googleapis.com
+Referer: https://chat.google.com
+X-Goog-Api-Key: AIzaSyB0RaagJhe9JF2mKDpMml645yslHfLI8iA
+</code></pre></div>
+<blockquote>
+<p>Note: all staging/test endpoints are under *.sandbox.googleapis.com. This API key also requires the use of the chat.google.com Referer header.</p>
+</blockquote>
+<p><strong>Response</strong></p>
+<div class="language-text highlight"><pre><span></span><code>HTTP/2 200 OK
+Content-Type: application/json; charset=UTF-8
+
+{
+  &quot;title&quot;: &quot;Internal People API - Staging&quot;,
+  &quot;documentationLink&quot;: &quot;http://boq/java/com/google/social/boq/release/socialgraphapiserver&quot;,
+  &quot;discoveryVersion&quot;: &quot;v1&quot;,
+  &quot;id&quot;: &quot;people_pa:v2&quot;,
+  &quot;revision&quot;: &quot;20241031&quot;,
+  ...
+}
+</code></pre></div>
+<p>Unlike the public discovery document, this version contains comments for everything, leaking a lot of how stuff works behind-the-scenes:</p>
+<div class="language-text highlight"><pre><span></span><code>...
+    &quot;InAppNotificationTarget&quot;: {
+      &quot;id&quot;: &quot;InAppNotificationTarget&quot;,
+      &quot;description&quot;: &quot;How and where to send notifications to this person in other apps, and why the requester can do so. See go/reachability for more info. \&quot;How\&quot; and \&quot;where\&quot; identify the recipient in a P2P Bridge (glossary/p2p bridge), and \&quot;why\&quot; may be helpful in a UI to disambiguate which of several ways may be used to contact the recipient. How: Via a Google profile or a reachable-only phone number that the requester has access to. Specified in the target \&quot;type\&quot; and \&quot;value\&quot;. Where: Apps in which the profile/phone number owner may receive notifications. Specified in the repeated \&quot;app\&quot;. Why: Which fields in, e.g., a contact associated with this person make the notification target info visible to the requester. Specified in the repeated originating_field param. Example: Alice has a contact Bob, with: Email 0 = bob@gmail.com Phone 0 = +12223334444 Phone 1 = +15556667777 Email 0 and Phone 0 let Alice see Bob&#39;s public profile (obfuscated gaia ID = 123). Public profiles are visible by email by default, and Bob has explicitly made it visible via Phone 0. Bob says people can send notifications to his public profile in YouTube. Phone 2 is associated with another Google profile that Bob owns, but he doesn&#39;t want others to see it. He is okay with people sending notifications to him in Who&#39;s Down if they have this phone number, however. There will be separate InAppNotificationTargets: one for Bob&#39;s public Google profile, and one for the second phone number, which is in his private profile. IANT #1 - targeting Bob&#39;s public profile (visible via Email 0 and Phone 0): app = [YOUTUBE] type = OBFUSCATED_GAIA_ID value = 123 originating_field: [ { field_type = EMAIL, field_index = 0 } // For Email 0 { field_type = PHONE, field_index = 0 } // For Phone 0 ] IANT #2 - targeting Bob&#39;s private profile phone number Phone 1: app = [WHOS_DOWN] type = PHONE value = +15556667777 originating_field: [ { field_type = PHONE, field_index = 1 } // For Phone 1 ]&quot;,
+...
+</code></pre></div>
+<blockquote>
+<p><strong>Update 2025-02-06:</strong> Google has <a href="https://x.com/brutecat/status/1887436162744410509">removed all comments</a> from the staging discovery doc.</p>
+</blockquote>
+<h3 id="secret-visibility-labels">Secret visibility labels<a class="headerlink" href="#secret-visibility-labels" title="Permanent link">&para;</a></h3>
+<p>As it turns out, certain Google cloud projects have visibility labels enabled for them, giving them more access than others. Endpoints can be hidden behind visibility labels, and they won't show up in the discovery document unless the secret <code>labels</code> parameter is provided. This <a href="https://www.youtube.com/watch?v=9pviQ19njIs">was discovered</a> by an awesome researcher <a href="https://www.ezequiel.tech/">Ezequiel Pereira</a> who now works at Google.</p>
+<p>For instance, if we use the API key <code>AIzaSyCI-zsRP85UVOi0DjtiCwWBwQ1djDy741g</code> that we can find from <a href="https://console.cloud.google.com">console.cloud.google.com</a> and try fetching the discovery document for <code>servicemanagement.googleapis.com</code></p>
+<p><strong>Request</strong></p>
+<div class="language-text highlight"><pre><span></span><code>GET /$discovery/rest HTTP/2
+Host: servicemanagement.googleapis.com
+Content-Type: application/json
+X-Goog-Api-Key: AIzaSyCI-zsRP85UVOi0DjtiCwWBwQ1djDy741g
+Referer: https://console.cloud.google.com
+</code></pre></div>
+<p>The response would have 214k bytes. However, if we try this same request with <code>&amp;labels=PANTHEON</code></p>
+<div class="language-text highlight"><pre><span></span><code>GET /$discovery/rest?labels=PANTHEON HTTP/2
+Host: servicemanagement.googleapis.com
+Content-Type: application/json
+X-Goog-Api-Key: AIzaSyCI-zsRP85UVOi0DjtiCwWBwQ1djDy741g
+Referer: https://console.cloud.google.com
+</code></pre></div>
+<p>The response now has 329k bytes and there's a lot more hidden documentation revealed.</p>
+<p>Additionally, certain APIs like the Internal People API provide extra permissions for specific API clients. So far, we've covered how we can use API keys to fetch discovery documents or access endpoints in the context of Google Cloud projects that have their keys used in Google web services. However, by learning how authorization works on Android, we can get access to the context of lot more Google Cloud projects.</p>
+<h3 id="how-google-api-authentication-works-on-android">How Google API authentication works on Android<a class="headerlink" href="#how-google-api-authentication-works-on-android" title="Permanent link">&para;</a></h3>
+<p>If you've ever logged into a Google account via Google Play Services (GPS) on an Android device, you might have noticed that all Google apps are able to authenticate as your Google account seamlessly, without having to manually log into each one.</p>
+<p>The way this works is your Google account's Android session is actually tied to a refresh token that's generated the first time you log in. Unlike on the web where Google internal APIs use cookies for authentication, on Android and iOS scoped bearer tokens generated from a refresh token are used instead.<br />
+On Android, that same Internal People API request would look something like this:</p>
+<div class="language-text highlight"><pre><span></span><code>POST /$rpc/google.internal.people.v2.minimal.InternalPeopleMinimalService/GetPeople HTTP/2
+Host: people-pa.clients6.google.com
+Content-Type: application/json+protobuf
+Authorization: ya29.&lt;redacted&gt;
+...
+</code></pre></div>
+<p>There is no need for an API key for this request, as the bearer token actually includes the context of the Google API project that you used to generate the bearer token. (this will make more sense once we look into how bearer tokens are generated from an android refresh token)</p>
+<p>The interesting thing about some Google APIs is that requests from the context of certain Google Cloud project IDs have extra functionality/permissions enabled just for that project on that API. This is usually based on the requirements of the client (ex. the Google Chat app may need to be able to fetch extra information on other Google users from the Internal People API as compared to something like Google Earth)</p>
+<h3 id="android-refresh-tokens-aasxx">Android Refresh Tokens (aas/xx)<a class="headerlink" href="#android-refresh-tokens-aasxx" title="Permanent link">&para;</a></h3>
+<p>So, how can we generate an Android refresh token to use for testing? It's actually quite simple. We can simply visit <a href="https://accounts.google.com/EmbeddedSetup">https://accounts.google.com/EmbeddedSetup</a>, go through the authentication flow, and at the end there will be a cookie set called <code>oauth_token</code></p>
+<p>We can then do the following request to exchange this oauth_token for an Android refresh token:</p>
+<div class="language-text highlight"><pre><span></span><code>POST /auth
+Host: android.googleapis.com
+User-Agent: com.google.android.gms/243530022
+Content-Type: application/x-www-form-urlencoded
+
+androidId=fb213fefa471dcde&amp;Token=&lt;oauth_token&gt;&amp;service=ac2dm&amp;get_accountid=1&amp;ACCESS_TOKEN=1&amp;callerPkg=com.google.android.gms&amp;add_account=1&amp;callerSig=38918a453d07199354f8b19af05ec6562ced5788
+</code></pre></div>
+<p>The <code>androidId</code> is just any random 16 character hex string. At the moment you don't require this for generating a bearer token, but this could change in the future so it's advisable to store it along with your Android refresh token.  </p>
+<blockquote>
+<p>On newer Android versions, a DroidGuard token is also supplied to this request. My guess is that it's likely an anti-abuse measure. However, they're unable to enforce this token without breaking Google Play Services support for older Android devices. It's possible this could be changed in the future though.</p>
+</blockquote>
+<p>The response to the request will look something like this:</p>
+<div class="language-text highlight"><pre><span></span><code>HTTP/2 200 OK
+Content-Type: text/plain; charset=utf-8
+
+Token=aas_et/&lt;redacted&gt;
+Auth=g.a000&lt;redacted&gt;
+SID=BAD_COOKIE
+LSID=BAD_COOKIE
+services=mail,hist,dynamite,cl,youtube,jotspot,uif,multilogin,analytics
+Email=&lt;redacted&gt;@gmail.com
+GooglePlusUpdate=0
+firstName=&lt;redacted&gt;
+lastName=&lt;redacted&gt;
+capabilities.canHaveUsername=1
+capabilities.canHavePassword=1
+...
+</code></pre></div>
+<p>You can actually see this Android device on <a href="https://myaccount.google.com/device-activity">https://myaccount.google.com/device-activity</a></p>
+<h3 id="generating-a-bearer-token">Generating a Bearer Token<a class="headerlink" href="#generating-a-bearer-token" title="Permanent link">&para;</a></h3>
+<p>Now that you have an Android refresh token, you can use this to generate a bearer token in the context of a Android app's Google Cloud project with the scopes that you require.</p>
+<p>This is an example request to generate scopes for Google Play Games to use with <code>playgateway-pa.googleapis.com</code></p>
+<div class="language-text highlight"><pre><span></span><code>POST /auth HTTP/2
+Host: android.googleapis.com
+User-Agent: GoogleAuth/1.4
+Content-Length: 808
+Content-Type: application/x-www-form-urlencoded
+
+androidId=fb213fefa471dcde&amp;app=com.google.android.play.games&amp;service=oauth2:https://www.googleapis.com/auth/games.firstparty https://www.googleapis.com/auth/googleplay&amp;client_sig=38918a453d07199354f8b19af05ec6562ced5788&amp;has_permission=1&amp;Token=&lt;redacted&gt;
+</code></pre></div>
+<p>Let's breakdown everything in that request:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>android_id</td>
+<td>This isn't validated, it can be any 16 character hex string</td>
+</tr>
+<tr>
+<td>app</td>
+<td>Package name of the app that's cloud project context you wish to use.</td>
+</tr>
+<tr>
+<td>service</td>
+<td>Space seperated scopes</td>
+</tr>
+<tr>
+<td>client_sig</td>
+<td>SHA1 hash in hex format of the app's signature</td>
+</tr>
+<tr>
+<td>has_permission</td>
+<td>Only required on few android clients that don't have auto mode enabled for them.</td>
+</tr>
+<tr>
+<td>Token</td>
+<td>Your Android refresh token</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>It's actually possible to omit <code>client_sig</code> and <code>app</code> for certain scopes, but you wouldn't have the context of the Google API project and this does not work for most scopes.</p>
+</blockquote>
+<p>The first problem we have is, let's say we want to get authentication on the following Google Internal People API endpoint: <code>https://people-pa.googleapis.com/v2/people</code> to start playing around with it, how would we know what scopes this endpoint needs?</p>
+<p>In this case, there's a <a href="https://people-pa.googleapis.com/$discovery/rest">public discovery document</a> that lists all the endpoints and the scopes for each of them, but many Google APIs may require an API key to access the discovery document which we may not always have (ex. <a href="https://gameswhitelisted.googleapis.com/$discovery/rest">gameswhitelisted</a>).</p>
+<p>Turns out, if we send a request to an endpoint with a bearer token with insufficient scopes, it actually tells us all the scopes we need:</p>
+<p><strong>Request</strong></p>
+<div class="language-text highlight"><pre><span></span><code>GET /v2/people
+Host: people-pa.googleapis.com
+Authorization: Bearer ya29.&lt;redacted&gt;
+</code></pre></div>
+<p><strong>Response</strong></p>
+<div class="language-text highlight"><pre><span></span><code>HTTP/2 403 Forbidden
+Www-Authenticate: Bearer realm=&quot;https://accounts.google.com/&quot;, error=&quot;insufficient_scope&quot;, scope=&quot;https://www.googleapis.com/auth/peopleapi.legacy.readwrite https://www.googleapis.com/auth/plus.peopleapi.readwrite https://www.googleapis.com/auth/peopleapi.readonly https://www.googleapis.com/auth/peopleapi.readwrite openid https://www.googleapis.com/auth/plus.me&quot;
+Content-Type: application/json; charset=UTF-8
+
+{
+  &quot;error&quot;: {
+    &quot;code&quot;: 403,
+    &quot;message&quot;: &quot;Request had insufficient authentication scopes.&quot;,
+    ...
+        &quot;metadata&quot;: {
+          &quot;service&quot;: &quot;people-pa.googleapis.com&quot;,
+          &quot;method&quot;: &quot;google.internal.people.v2.InternalPeopleService.GetPeople&quot;
+        }
+    ...
+  }
+}
+</code></pre></div>
+<blockquote>
+<p>Something interesting to note: <code>google.internal.people.v2.InternalPeopleService.GetPeople</code> is actually the gRPC service name of the endpoint.</p>
+</blockquote>
+<p>To simply this process, I wrote a Go script that I've <a href="https://github.com/ddd/req2proto/tree/main/tools/gapi-service">published on GitHub</a> that we can use to easily get this information:</p>
+<div class="language-text highlight"><pre><span></span><code>$ export ANDROID_REFRESH_TOKEN=&quot;&lt;redacted&gt;&quot;
+$ git clone https://github.com/ddd/req2proto
+$ cd tools/gapi-service
+$ go build # this requires golang to be installed, see https://go.dev/doc/install
+$ ./gapi-service -e https://people-pa.googleapis.com/v2/people
+scopes: https://www.googleapis.com/auth/peopleapi.legacy.readwrite https://www.googleapis.com/auth/plus.peopleapi.readwrite https://www.googleapis.com/auth/peopleapi.readwrite
+method: google.internal.people.v2.InternalPeopleService.InsertPerson
+service: people-pa.googleapis.com
+</code></pre></div>
+<p>Now that we have the scopes we need. Let's say we want to call this endpoint in the context of Google Chat. We can get the package name <code>com.google.android.apps.dynamite</code> from the Play Store web URL (<a href="https://play.google.com/store/apps/details?id=com.google.android.apps.dynamite">https://play.google.com/store/apps/details?id=com.google.android.apps.dynamite</a>) but we still need the <code>client_sig</code> of the app.</p>
+<p>While this is true for most cases, the client signature isn't necessarily always the SHA1 hash of the target app's signature. To solve this problem, I collected the package names as well as SHA1 client signature of all Google apps and wrote a <a href="https://github.com/ddd/req2proto/tree/main/tools/aas-rs">Rust program</a> that bruteforces all SHA1 signature and package name combinations to find working ones. You can find the output of this script <a href="https://github.com/ddd/req2proto/blob/main/tools/data/android_clients.json">here</a></p>
+<p>We can simply search this file for <code>com.google.android.apps.dynamite</code> and we can see that the client_sig <code>519c5a17a60596e6fe5933b9cb4285e7b0e5eb7b</code> works for this app:</p>
+<div class="language-text highlight"><pre><span></span><code>&quot;com.google.android.apps.dynamite&quot;: [
+    {
+      &quot;spatula&quot;: &quot;CkAKIGNvbS5nb29nbGUuYW5kcm9pZC5hcHBzLmR5bmFtaXRlGhxVWnhhRjZZRmx1YitXVE81eTBLRjU3RGw2M3M9GLingOeJmKD6Ng==&quot;,
+      &quot;sig&quot;: &quot;519c5a17a60596e6fe5933b9cb4285e7b0e5eb7b&quot;
+    }
+  ],
+</code></pre></div>
+<h3 id="a-word-on-x-goog-spatula">A word on X-Goog-Spatula<a class="headerlink" href="#a-word-on-x-goog-spatula" title="Permanent link">&para;</a></h3>
+<p>Even though we may have authentication in the context of an app's Google API project, we can't just fetch the discovery document with it. That's where <code>X-Goog-Spatula</code> comes in. If you've ever looked at Android traffic to Google APIs, you might have noticed this header.</p>
+<p>It's actually just a keyless authentication header. Similar to an API key, it's used to provide context to a specific Google Cloud project.</p>
+<p>They look like this (base64-encoded protobuf):<br />
+<code>Cj0KHWNvbS5nb29nbGUuYW5kcm9pZC5wbGF5LmdhbWVzGhxPSkdLUlQwSEdaTlUrTEdhOEY3R1ZpenRWNGc9GLingOeJmKD6Ng==</code></p>
+<p>If we look at how this is formed:</p>
+<div class="language-text highlight"><pre><span></span><code>$ echo -n &quot;Cj0KHWNvbS5nb29nbGUuYW5kcm9pZC5wbGF5LmdhbWVzGhxPSkdLUlQwSEdaTlUrTEdhOEY3R1ZpenRWNGc9GLingOeJmKD6Ng==&quot; | base64 -d | protoc --decode_raw
+1 {
+  1: &quot;com.google.android.play.games&quot; // package name
+  3: &quot;6Zi8TwQNyiOD+us24/5aYpwxt5A=&quot; // base64 of SHA1 hash of the app signature
+}
+3: 3959931537119515576 // this is generated from DroidGuard using the device_key
+</code></pre></div>
+<p>This example is from some Spatula header I <a href="https://github.com/4kumano/reftoken/blob/99d1d980c0015c8b1113cb65b02ee0ede96ae471/sumber.txt">found on the internet</a></p>
+<p>If you wish to dive into how this DroidGuard value is generated, there's <a href="https://gist.github.com/Romern/e58e634e4d70b2be5b57d7abdb77f7ef">an awesome gist</a> on this, but we don't actually need to care about that in order to utilize it. As it turns out, this value isn't actually validated, and we can impersonate any client we want by simply changing the package name and SHA1 hash of the app signature.</p>
+<p>Since just like API keys, they provide context of a Google Cloud project, we're actually able to use this to fetch discovery documents of several Android Google APIs like <code>gameswhitelisted.googleapis.com</code>:</p>
+<p><strong>Request</strong></p>
+<div class="language-text highlight"><pre><span></span><code>GET /$discovery/rest
+Host: gameswhitelisted.googleapis.com
+X-Goog-Spatula: Cj0KHWNvbS5nb29nbGUuYW5kcm9pZC5wbGF5LmdhbWVzGhxPSkdLUlQwSEdaTlUrTEdhOEY3R1ZpenRWNGc9GLingOeJmKD6Ng==
+</code></pre></div>
+<p><strong>Response</strong></p>
+<div class="language-text highlight"><pre><span></span><code>HTTP/2 200 OK
+Content-Type: application/json; charset=UTF-8
+
+{
+  &quot;kind&quot;: &quot;discovery#restDescription&quot;,
+  &quot;description&quot;: &quot;Internal-only 1P access to the oneup APIs.&quot;,
+  ...
+</code></pre></div>
+<blockquote>
+<p>We can actually use this along with Cookie authentication on the web, as a direct replacement for <code>X-Goog-Api-Key</code> to get us access to the context of an Android app's Google Cloud project</p>
+</blockquote>
+<h3 id="leaking-request-parameters-through-error-messages">Leaking request parameters through error messages<a class="headerlink" href="#leaking-request-parameters-through-error-messages" title="Permanent link">&para;</a></h3>
+<p>Occasionally we may come across Google APIs where there's seemingly no way to access the discovery document. This could be due to not being able to find a working API key/spatula, 404 page or otherwise. One such example is YouTube's Internal API:</p>
+<p><strong>Request</strong></p>
+<div class="language-text highlight"><pre><span></span><code>GET /$discovery/rest
+Host: youtubei.googleapis.com
+</code></pre></div>
+<p><strong>Response</strong></p>
+<div class="language-text highlight"><pre><span></span><code>HTTP/2 405 Method Not Allowed
+Content-Type: text/html; charset=UTF-8
+Referrer-Policy: no-referrer
+...
+</code></pre></div>
+<blockquote>
+<p>Fun fact: there's actually 2 workaround methods to leaking the discovery document of the Innertube API. Are you able to find them? :)<br />
+<strong>Update 2025-03-01:</strong> Google has <a href="https://x.com/brutecat/status/1894282218929037727">removed</a> both the prod (<a href="https://tracker.brute.network/api/documents/youtubei.googleapis.com">archive</a>) and staging (<a href="https://tracker.brute.network/api/documents/green-youtubei.sandbox.googleapis.com">archive</a>) discovery documents.</p>
+</blockquote>
+<p>If we take a look at a random Innertube API endpoint, such as <code>/youtubei/v1/browse</code> endpoint and clean it up:</p>
+<div class="language-text highlight"><pre><span></span><code>POST /youtubei/v1/browse HTTP/2
+Host: youtubei.googleapis.com
+Content-Type: application/json
+Content-Length: 164
+
+{
+  &quot;context&quot;: {
+    &quot;client&quot;: {
+      &quot;clientName&quot;: &quot;WEB&quot;,
+      &quot;clientVersion&quot;: &quot;2.20241101.01.00&quot;,
+    }
+  },
+  &quot;browseId&quot;: &quot;UCX6OQ3DkcsbYNE6H8uQQuVA&quot;
+}
+</code></pre></div>
+<p>The request payload is in the json format. The <code>browseId</code> seems to be accepting the YouTube Channel ID as a string. What happens if we change that to a boolean like <code>true</code></p>
+<p><strong>Request</strong></p>
+<div class="language-text highlight"><pre><span></span><code>POST /youtubei/v1/browse HTTP/2
+Host: youtubei.googleapis.com
+Content-Type: application/json
+Content-Length: 141
+
+{
+  &quot;context&quot;: {
+    &quot;client&quot;: {
+      &quot;clientName&quot;: &quot;WEB&quot;,
+      &quot;clientVersion&quot;: &quot;2.20241101.01.00&quot;,
+    }
+  },
+  &quot;browseId&quot;:true
+}
+</code></pre></div>
+<p><strong>Response</strong></p>
+<div class="language-text highlight"><pre><span></span><code>HTTP/2 400 Bad Request
+Content-Type: application/json; charset=UTF-8
+Server: scaffolding on HTTPServer2
+
+{
+  &quot;error&quot;: {
+    &quot;code&quot;: 400,
+    &quot;message&quot;: &quot;Invalid value at &#39;browse_id&#39; (TYPE_STRING), true&quot;,
+    &quot;errors&quot;: [
+      {
+        &quot;message&quot;: &quot;Invalid value at &#39;browse_id&#39; (TYPE_STRING), true&quot;,
+        &quot;reason&quot;: &quot;invalid&quot;
+      }
+    ],
+    &quot;status&quot;: &quot;INVALID_ARGUMENT&quot;,
+    &quot;details&quot;: [
+      {
+        &quot;@type&quot;: &quot;type.googleapis.com/google.rpc.BadRequest&quot;,
+        &quot;fieldViolations&quot;: [
+          {
+            &quot;field&quot;: &quot;browse_id&quot;,
+            &quot;description&quot;: &quot;Invalid value at &#39;browse_id&#39; (TYPE_STRING), true&quot;
+          }
+        ]
+      }
+    ]
+  }
+}
+</code></pre></div>
+<p>It tells us that <code>browse_id</code> is a TYPE_STRING. So awesome, we can leak the parameter type if we know the parameter name. But how can we take this a step further?</p>
+<p>As it turns out, in Google, there's 4 different content types:</p>
+<ul>
+<li>application/json (aka. JSON)</li>
+<li>application/json+protobuf (aka. ProtoJson)</li>
+<li>application/x-protobuf (aka. <a href="https://googleapis.github.io/HowToRPC.html">Proto over HTTP fallback</a>)</li>
+<li>application/grpc</li>
+</ul>
+<p>In Google, all endpoints are defined in <code>.proto</code> files such that they can be queried over gRPC. To allow for JSON, ProtoJson and Proto over HTTP, there's a Extensible Service Proxy (ESP) that <a href="https://cloud.google.com/endpoints/docs/grpc/transcoding">transcodes these requests to gRPC</a> before they hit the actual Google microservice.</p>
+<p>For instance, if a requests JSON payload looks like this:</p>
+<div class="language-text highlight"><pre><span></span><code>{
+  &quot;name&quot;: &quot;John Smith&quot;,
+  &quot;age&quot;: 25,
+  &quot;favoriteColor&quot;: &quot;orange&quot;
+}
+</code></pre></div>
+<p>The protobuf representation of this would look like this:</p>
+<div class="language-text highlight"><pre><span></span><code>message Request {
+  string name = 1;
+  string age = 2;
+  string favourite_color = 3;
+}
+</code></pre></div>
+<p>The idea with protobuf is that sending <code>"name"</code>, <code>"age"</code> and <code>"favoriteColor"</code> from the client to the server in every request is a waste of bandwidth especially if the server knows what to expect from the client. Hence, protobuf is just a binary format compressing the data as much as possible. It does this by assigning everything an index (ex. name is 1, age is 2 etc.)</p>
+<p>ProtoJson is similar to this, except you just send an array rather than compressing it to protobuf:</p>
+<div class="language-text highlight"><pre><span></span><code>[
+  &quot;John Smith&quot;,
+  25,
+  &quot;orange&quot;
+]
+</code></pre></div>
+<p>You can probably see where we're going with this, what if we just sent the following to this endpoint:</p>
+<div class="language-text highlight"><pre><span></span><code>[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
+</code></pre></div>
+<p><strong>Request</strong></p>
+<div class="language-text highlight"><pre><span></span><code>POST /youtubei/v1/browse HTTP/2
+Host: youtubei.googleapis.com
+Content-Type: application/json+protobuf
+Content-Length: 22
+
+[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
+</code></pre></div>
+<p><strong>Response</strong></p>
+<div class="language-text highlight"><pre><span></span><code>HTTP/2 400 Bad Request
+Content-Type: application/json; charset=UTF-8
+Server: scaffolding on HTTPServer2
+
+{
+  &quot;error&quot;: {
+    &quot;code&quot;: 400,
+    &quot;message&quot;: &quot;Invalid value at &#39;context&#39; (type.googleapis.com/youtube.api.pfiinnertube.YoutubeApiInnertube.InnerTubeContext), 1\nInvalid value at &#39;browse_id&#39; (TYPE_STRING), 2\nInvalid value at &#39;params&#39; (TYPE_STRING), 3\nInvalid value at &#39;continuation&#39; (TYPE_STRING), 7\nInvalid value at &#39;force_ad_format&#39; (TYPE_STRING), 8\nInvalid value at &#39;player_request&#39; (type.googleapis.com/youtube.api.pfiinnertube.YoutubeApiInnertube.PlayerRequest), 10\nInvalid value at &#39;query&#39; (TYPE_STRING), 11\nInvalid value at &#39;has_external_ad_vars&#39; (TYPE_BOOL), 12\nInvalid value at &#39;force_ad_parameters&#39; (type.googleapis.com/youtube.api.pfiinnertube.YoutubeApiInnertube.ForceAdParameters), 13\nInvalid value at &#39;previous_ad_information&#39; (TYPE_STRING), 14\nInvalid value at &#39;offline&#39; (TYPE_BOOL), 15\nInvalid value at &#39;unplugged_sort_filter_options&#39; (type.googleapis.com/youtube.api.pfiinnertube.YoutubeApiInnertube.UnpluggedSortFilterOptions), 16\nInvalid value at &#39;offline_mode_forced&#39; (TYPE_BOOL), 17\nInvalid value at &#39;form_data&#39; (type.googleapis.com/youtube.api.pfiinnertube.YoutubeApiInnertube.BrowseFormData), 18\nInvalid value at &#39;suggest_stats&#39; (type.googleapis.com/youtube.api.pfiinnertube.YoutubeApiInnertube.SearchboxStats), 19\nInvalid value at &#39;lite_client_request_data&#39; (type.googleapis.com/youtube.api.pfiinnertube.YoutubeApiInnertube.LiteClientRequestData), 20\nInvalid value at &#39;unplugged_browse_options&#39; (type.googleapis.com/youtube.api.pfiinnertube.YoutubeApiInnertube.UnpluggedBrowseOptions), 22\nInvalid value at &#39;consistency_token&#39; (type.googleapis.com/youtube.api.pfiinnertube.YoutubeApiInnertube.ConsistencyToken), 23\nInvalid value at &#39;intended_deeplink&#39; (type.googleapis.com/youtube.api.pfiinnertube.YoutubeApiInnertube.DeeplinkData), 24\nInvalid value at &#39;android_extended_permissions&#39; (TYPE_BOOL), 25\nInvalid value at &#39;browse_notification_params&#39; (type.googleapis.com/youtube.api.pfiinnertube.YoutubeApiInnertube.BrowseNotificationsParams), 26\nInvalid value at &#39;recent_user_event_infos&#39; (type.googleapis.com/youtube.api.pfiinnertube.YoutubeApiInnertube.RecentUserEventInfo), 28\nInvalid value at &#39;detected_activity_info&#39; (type.googleapis.com/youtube.api.pfiinnertube.YoutubeApiInnertube.DetectedActivityInfo), 30&quot;,
+    ...
+}
+</code></pre></div>
+<p>We can find every non-integer parameter this way. We can then send only booleans instead to find all non-boolean parameters (including integer parameters). We can repeat this for nested messages to find the entire possible request payload.</p>
+<p>To simplify this process, I wrote a Go tool called <a href="https://github.com/ddd/req2proto">req2proto</a> which we can use to automate this.</p>
+<div class="language-text highlight"><pre><span></span><code>$ git clone https://github.com/ddd/req2proto
+$ go build # this requires golang to be installed, see https://go.dev/doc/install
+$ ./req2proto -X POST -u https://youtubei.googleapis.com/youtubei/v1/browse -p youtube.api.pfiinnertube.GetBrowseRequest -o output -d 3 -v
+</code></pre></div>
+<p>If we look at <code>output/youtube/api/pfiinnertube/message.proto</code>, we can see the full request proto for this endpoint:</p>
+<div class="language-text highlight"><pre><span></span><code>syntax = &quot;proto3&quot;;
+
+package youtube.api.pfiinnertube;
+
+message GetBrowseRequest {
+  InnerTubeContext context = 1;
+  string browse_id = 2;
+  string params = 3;
+  string continuation = 7;
+  string force_ad_format = 8;
+  int32 debug_level = 9;
+  PlayerRequest player_request = 10;
+  string query = 11;
+  bool has_external_ad_vars = 12;
+  ForceAdParameters force_ad_parameters = 13;
+  string previous_ad_information = 14;
+  bool offline = 15;
+  UnpluggedSortFilterOptions unplugged_sort_filter_options = 16;
+  bool offline_mode_forced = 17;
+  BrowseFormData form_data = 18;
+  SearchboxStats suggest_stats = 19;
+  LiteClientRequestData lite_client_request_data = 20;
+  UnpluggedBrowseOptions unplugged_browse_options = 22;
+  ConsistencyToken consistency_token = 23;
+  DeeplinkData intended_deeplink = 24;
+  bool android_extended_permissions = 25;
+  BrowseNotificationsParams browse_notification_params = 26;
+  int32 installed_sharing_service_ids = 27;
+  RecentUserEventInfo recent_user_event_infos = 28;
+  InlineSettingStatus inline_setting_status = 29;
+  DetectedActivityInfo detected_activity_info = 30;
+  BrowseRequestContext browse_request_context = 31;
+  DeviceContextEvent device_context_info = 32;
+  BrowseRequestSupportedMetadata browse_request_supported_metadata = 33;
+  string target_id = 35;
+  MySubsSettingsState subscription_settings_state = 36;
+  MdxContext mdx_context = 37;
+  CustomTabContext custom_tab_context = 38;
+  ProducerAssetRequestData producer_asset_request_data = 39;
+  LatestContainerItemEventsInfo latest_container_item_events_info = 40;
+  ScrubContinuationClientData scrub_continuation_client_data = 41;
+}
+...
+</code></pre></div>
+<p>That's all for now! Happy hacking and feel free to reach out to me if you have any questions.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 05:40:42 UTC">2026-02-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -106,5 +106,5 @@ extra:
             感谢反馈！我们会改进。
 
 # Custom directory
-docs_dir: .
+docs_dir: docs
 site_dir: site

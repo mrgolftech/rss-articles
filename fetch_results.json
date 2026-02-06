@@ -1,0 +1,108 @@
+{
+  "success": [
+    "ericmigi.com",
+    "maurycyz.com",
+    "lcamtuf.substack.com",
+    "mitchellh.com",
+    "devblogs.microsoft.com/oldnewthing",
+    "skyfall.dev",
+    "overreacted.io",
+    "timsh.org",
+    "gilesthomas.com",
+    "rakhim.exotext.com",
+    "susam.net",
+    "buttondown.com/hillelwayne",
+    "dwarkesh.com",
+    "minimaxir.com",
+    "downtowndougbrown.com",
+    "brutecat.com",
+    "abortretry.fail",
+    "fabiensanglard.net",
+    "bogdanthegeek.github.io",
+    "gwern.net",
+    "simone.org",
+    "it-notes.dragas.net",
+    "beej.us",
+    "hey.paris",
+    "danielwirtz.com",
+    "matduggan.com",
+    "refactoringenglish.com",
+    "philiplaine.com",
+    "bernsteinbear.com",
+    "danieldelaney.net",
+    "tomrenner.com",
+    "danielchasehooper.com",
+    "keygen.sh",
+    "mjg59.dreamwidth.org",
+    "computer.rip"
+  ],
+  "failed": [
+    [
+      "dynomight.net",
+      "No articles found"
+    ],
+    [
+      "utcc.utoronto.ca/~cks",
+      "No articles found"
+    ],
+    [
+      "rachelbythebay.com",
+      "curl failed with code 28"
+    ],
+    [
+      "matklad.github.io",
+      "No articles found"
+    ],
+    [
+      "derekthompson.org",
+      "No articles found"
+    ],
+    [
+      "jayd.ml",
+      "No articles found"
+    ],
+    [
+      "geohot.github.io",
+      "No articles found"
+    ],
+    [
+      "jyn.dev",
+      "No articles found"
+    ],
+    [
+      "geoffreylitt.com",
+      "No articles found"
+    ],
+    [
+      "eli.thegreenplace.net",
+      "No articles found"
+    ],
+    [
+      "oldvcr.blogspot.com",
+      "No articles found"
+    ],
+    [
+      "hugotunius.se",
+      "No articles found"
+    ],
+    [
+      "herman.bearblog.dev",
+      "No articles found"
+    ],
+    [
+      "blog.pixelmelt.dev",
+      "Empty or too short response"
+    ],
+    [
+      "chiark.greenend.org.uk/~sgtatham",
+      "No articles found"
+    ],
+    [
+      "tedunangst.com",
+      "curl failed with code 28"
+    ]
+  ],
+  "skipped": [
+    "xeiaso.net"
+  ]
+}

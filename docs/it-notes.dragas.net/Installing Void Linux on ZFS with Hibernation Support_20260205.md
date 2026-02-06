@@ -1,0 +1,1 @@
+# Installing Void Linux on ZFS with Hibernation Support\n\n**来源:** https://it-notes.dragas.net\n**链接:** https://it-notes.dragas.net/2025/12/22/void-linux-zfs-hibernation-guide/\n**日期:** Mon, 22 Dec 2025 08:43:02 +0000\n\n---\n\nA practical guide to installing Void Linux on an encrypted ZFS root with LUKS-encrypted swap and working hibernation support.

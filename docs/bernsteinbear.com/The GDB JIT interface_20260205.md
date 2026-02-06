@@ -1,0 +1,165 @@
+# The GDB JIT interface
+
+**来源:** https://bernsteinbear.com
+**链接:** https://bernsteinbear.com/blog/gdb-jit/?utm_source=rss
+**日期:** Tue, 30 Dec 2025 00:00:00 +0000
+
+---
+
+[home](/) [blog](/blog/) [microblog](/microblog/) [favorites](/favorites/) [pl resources](/pl-resources/) [bread](/bread/) [recipes](/recipes/) [rss](/feed.xml)
+
+# The GDB JIT interface
+
+_December 30, 2025_
+
+GDB is great for stepping through machine code to figure out what is going on. It uses debug information under the hood to present you with a tidy backtrace and also determine how much machine code to print when you type `disassemble`.
+
+This debug information comes from your compiler. Clang, GCC, rustc, etc all produce debug data in a format called [DWARF](https://dwarfstd.org/) and then embed that debug information inside the binary (ELF, Mach-O, …) when you do `-ggdb` or equivalent.
+
+Unfortunately, this means that by default, GDB has no idea what is going on if you break in a JIT-compiled function. You can step instruction-by-instruction and whatnot, but that’s about it. This is because the current instruction pointer is nowhere to be found in any of the existing debug info tables from the host runtime code, so your terminal is filled with `???`. See this example from the V8 docs:
+    
+    
+    #8  0x08281674 in v8::internal::Runtime_SetProperty (args=...) at src/runtime.cc:3758
+    #9  0xf5cae28e in ?? ()
+    #10 0xf5cc3a0a in ?? ()
+    #11 0xf5cc38f4 in ?? ()
+    #12 0xf5cbef19 in ?? ()
+    #13 0xf5cb09a2 in ?? ()
+    #14 0x0809e0a5 in v8::internal::Invoke (...) at src/execution.cc:97
+    
+
+Fortunately, there is a _JIT interface_ to GDB. If you implement a couple of functions in your JIT and run them every time you finish compiling a function, you can get the debugging niceties for your JIT code too. See again a V8 example:
+    
+    
+    #6  0x082857fc in v8::internal::Runtime_SetProperty (args=...) at src/runtime.cc:3758
+    #7  0xf5cae28e in ?? ()
+    #8  0xf5cc3a0a in loop () at test.js:6
+    #9  0xf5cc38f4 in test.js () at test.js:13
+    #10 0xf5cbef19 in ?? ()
+    #11 0xf5cb09a2 in ?? ()
+    #12 0x0809e1f9 in v8::internal::Invoke (...) at src/execution.cc:97
+    
+
+Unfortunately, the GDB docs are [somewhat sparse](https://sourceware.org/gdb/current/onlinedocs/gdb.html/JIT-Interface.html). So I went spelunking through a bunch of different projects to try and understand what is going on.
+
+## The big picture (and the old interface)
+
+GDB expects your runtime to expose a function called `__jit_debug_register_code` and a global variable called `__jit_debug_descriptor`. GDB automatically adds its own internal breakpoints at this function, if it exists. Then, when you compile code, you call this function from your runtime.
+
+In slightly more detail:
+
+  1. Compile a function in your JIT compiler. This gives you a function name, maybe other metadata, an executable code address, and a code size
+  2. Generate an _entire_ ELF/Mach-O/… object in-memory (!) for that one function, describing its name, code region, maybe other DWARF metadata such as line number maps
+  3. Write a `jit_code_entry` linked list node that points at your object (“symfile”)
+  4. Link it into the `__jit_debug_descriptor` linked list
+  5. Call `__jit_debug_register_code`, which gives GDB control of the process so it can pick up the new function’s metadata
+  6. Optionally, break into (or crash inside) one of your JITed functions
+  7. At some point, later, when your function gets GCed, unregister your code by editing the linked list and calling `__jit_debug_register_code` again
+
+
+
+This is why you see compiler projects such as V8 including large swaths of code just to make object files:
+
+  * [V8](https://github.com/v8/v8/blob/5668ed57de1c7c8dd5c3dc1598bf071e17d29c8c/src/diagnostics/gdb-jit.cc)
+  * [Cinder](https://github.com/facebookincubator/cinderx/blob/e6e925b20e6fa3fe1e100f147e1c8cd03076ebfb/cinderx/Jit/jit_gdb_support.cpp)
+  * [Zend PHP](https://github.com/zendtech/php-src/blob/f82e5b3abe1ff1d3ffc7954b0810bc584fd650a5/ext/opcache/jit/zend_jit_gdb.c#L473)
+  * [CoreCLR/.NET](https://github.com/dotnet/runtime/blob/3c040478f19e0f317790acab05dbe3ada9f52dc4/src/coreclr/vm/gdbjit.cpp)
+  * [QEMU](https://github.com/qemu/qemu/blob/942b0d378a1de9649085ad6db5306d5b8cef3591/tcg/tcg.c#L7064)
+  * [JavaScriptCore](https://github.com/WebKit/WebKit/blob/0afc2a867ab45651ac6c353c7b6ade5482b7bba7/Source/JavaScriptCore/jit/GdbJIT.cpp)
+  * [LuaJIT](https://github.com/LuaJIT/LuaJIT/blob/7152e15489d2077cd299ee23e3d51a4c599ab14f/src/lj_gdbjit.c)
+  * [ART](https://github.com/LineageOS/android_art/blob/8ce603e0c68899bdfbc9cd4c50dcc65bbf777982/runtime/jit/debugger_interface.cc#L187)
+    * which looks like it does something smart about grouping the JIT code entries together (`RepackEntries`), but I’m not sure exactly what it does
+  * [HHVM](https://github.com/facebook/hhvm/blob/b1c47dcfbc574b508fd084f27ba4a06bcf4ba188/hphp/runtime/vm/debug/elfwriter.cpp#L622)
+  * [TomatoDotNet](https://github.com/TomatOrg/TomatoDotNet/blob/80266bb8dc0e7f0644f0638ecd98dfad4fb74427/src/dotnet/jit/gdb.c)
+  * [Jato JVM](https://github.com/jatovm/jato/blob/bb1c7d4fd987e016b2e0379182c4bfbb8c1c1a78/jit/elf.c#L164)
+  * [a minimal example](https://gist.github.com/yyny/4a012029b5889853c18b1efc19bb598e)
+  * [monoruby](https://github.com/sisshiki1969/jit-debug/blob/213c72512761f815fc0b067ce68ee0ae12962e2a/src/main.rs)
+  * [Mono](https://github.com/mono/mono/blob/0f53e9e151d92944cacab3e24ac359410c606df6/mono/mini/dwarfwriter.c)
+  * It looks like Dart [used to](https://github.com/dart-lang/sdk/commit/c4238c71da13d61ff32332058d371c5b2e92694b) have support for this but has since removed it
+  * [wasmtime](https://github.com/bytecodealliance/wasmtime/blob/b5272a5f103053f5ada2a38d5302a8d1e2de442d/crates/wasmtime/src/runtime/code_memory.rs#L509)
+
+
+
+Because this is a huge hassle, GDB also has a newer interface that does not require making an ELF/Mach-O/…+DWARF object.
+
+## Custom debug info (the new interface)
+
+This new interface requires writing a binary format of your choice. You make the writer and you make the reader. Then, when you are in GDB, you load your reader as a shared object.
+
+The reader must implement [the interface specified by GDB](https://sourceware.org/gdb/current/onlinedocs/gdb.html/Writing-JIT-Debug-Info-Readers.html#Writing-JIT-Debug-Info-Readers):
+    
+    
+    GDB_DECLARE_GPL_COMPATIBLE_READER;
+    extern struct gdb_reader_funcs *gdb_init_reader (void);
+    struct gdb_reader_funcs
+    {
+      /* Must be set to GDB_READER_INTERFACE_VERSION.  */
+      int reader_version;
+    
+      /* For use by the reader.  */
+      void *priv_data;
+    
+      gdb_read_debug_info *read;
+      gdb_unwind_frame *unwind;
+      gdb_get_frame_id *get_frame_id;
+      gdb_destroy_reader *destroy;
+    };
+    
+
+The `read` function pointer does the bulk of the work and is responsible for matching code ranges to function names, line numbers, and more.
+
+Here are [some details from Sanjoy Das](https://pwparchive.wordpress.com/2011/11/20/new-jit-interface-for-gdb/).
+
+Only a few runtimes implement this interface. Most of them stub out the `unwind` and `get_frame_id` function pointers:
+
+  * [yk write](https://github.com/ykjit/yk/blob/755e533aa74ef5fa82a6586147727e23146b95fc/ykrt/src/compile/jitc_yk/gdb.rs#L216)   
+[yk read](https://github.com/ykjit/yk/blob/755e533aa74ef5fa82a6586147727e23146b95fc/ykrt/yk_gdb_plugin/yk_gdb_plugin.c#L22)
+  * [asmjit-utilities write](https://github.com/tetzank/asmjit-utilities/blob/2fdbb99f7e002df4f8d7aa97c29910743adfc991/gdb/gdbjit.cpp)   
+[asmjit-utilities read](https://github.com/tetzank/asmjit-utilities/blob/2fdbb99f7e002df4f8d7aa97c29910743adfc991/gdb/jit-reader/gdbjit-reader.c)
+  * [Erlang/OTP write](https://github.com/erlang/otp/blob/28a44634fb04b95ea666abb8aac7254e2c87ae05/erts/emulator/beam/jit/beam_jit_metadata.cpp#L123)   
+[Erlang/OTP read](https://github.com/erlang/otp-gdb-tools/blob/7b864f58c534699e4124e31ecfda86041b941037/jit-reader.c)
+  * [FEX write](https://github.com/FEX-Emu/FEX/blob/c8d72eabe589392b962bec94d002c5ffdb7381c2/FEXCore/Source/Interface/GDBJIT/GDBJIT.cpp#L110)   
+[FEX read](https://github.com/FEX-Emu/FEX/blob/c8d72eabe589392b962bec94d002c5ffdb7381c2/Source/Tools/FEXGDBReader/FEXGDBReader.cpp#L8)
+  * [buxn-jit write](https://github.com/bullno1/buxn-jit/blob/69effb96d5fe9725258fe367efcefd6911ef32fd/src/gdb/hook.c)   
+[buxn-jit read](https://github.com/bullno1/buxn-jit/blob/69effb96d5fe9725258fe367efcefd6911ef32fd/src/gdb/reader.c)
+  * [box64 write](https://github.com/KreitinnSoftware/box64/blob/f224a93cc83f9da34bc85ebb5414168d476a135d/src/tools/gdbjit.c#L45)   
+[box64 read](https://github.com/KreitinnSoftware/box64/blob/f224a93cc83f9da34bc85ebb5414168d476a135d/gdbjit/reader.c)
+  * [ccl write](https://github.com/no-defun-allowed/ccl/blob/094a9ec5bf203db118e0ffc8ce2b5b80fc1c91dd/lisp-kernel/gdb.c)   
+[ccl read](https://gist.github.com/no-defun-allowed/32d38c5e664586c724cf2e0e97f0d2b1)
+
+
+
+I think it also requires at least the reader to proclaim it is GPL via the macro `GDB_DECLARE_GPL_COMPATIBLE_READER`.
+
+Since I wrote about the [perf map interface](/blog/jit-perf-map/) recently, I have it on my mind. Why can’t we reuse it in GDB?
+
+## Adapting to the Linux perf interface
+
+I suppose it would be possible to try and upstream a patch to GDB to support the Linux perf map interface for JITs. After all, why shouldn’t it be able to automatically pick up symbols from `/tmp/perf-...`? That would be great baseline debug info for “free”.
+
+In the meantime, maybe it is reasonable to create a re-usable custom debug reader:
+
+  * When registering code, write the address and name to `/tmp/perf-...` as you normally would
+  * Write the filename as the symfile (does this make `/tmp` the magic number?)
+  * Have the debug info reader just parse the perf map file
+
+
+
+It would be less flexible than both the DWARF and custom readers support: it would only be able to handle filename and code region. No embedding source code for GDB to display in your debugger. But maybe that is okay for a partial solution?
+
+**Update:** Here is [my small attempt](https://github.com/tekknolagi/gdb-jit-linux-perf-map) at such a plugin.
+
+## The n-squared problem
+
+V8 notes in their [GDB JIT docs](https://v8.dev/docs/gdb-jit) that because the JIT interface is a linked list and we only keep a pointer to the head, we get O(n2) behavior. Bummer. This becomes especially noticeable since they register additional code objects not just for functions, but also trampolines, cache stubs, etc.
+
+## Garbage collection
+
+Since GDB expects the code pointer in your symbol object file not to move, you have to make sure to have a stable symbol file pointer and stable executable code pointer. To make this happen, V8 disables its moving GC.
+
+Additionally, if your compiled function gets collected, you have to make sure to unregister the function. Instead of doing this eagerly, ART treats the GDB JIT linked list as a weakref and periodically removes dead code entries from it.
+
+* * *
+
+This blog is [open source](https://github.com/tekknolagi/tekknolagi.github.com). See an error? Go ahead and [propose a change](https://github.com/tekknolagi/tekknolagi.github.com/edit/main/_posts/2025-12-30-gdb-jit.md "Help improve _posts/2025-12-30-gdb-jit.md").   
+![](/assets/img/banner.png) [![](/assets/img/notbyai.svg)](https://notbyai.fyi/) [ ](https://www.recurse.com/scout/click?t=e8845120d0b98bbc3341fa6fa69539bb)

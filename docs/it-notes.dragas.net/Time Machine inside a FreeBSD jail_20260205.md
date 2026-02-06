@@ -1,0 +1,1 @@
+# Time Machine inside a FreeBSD jail\n\n**来源:** https://it-notes.dragas.net\n**链接:** https://it-notes.dragas.net/2026/01/28/time-machine-freebsd-jail/\n**日期:** Wed, 28 Jan 2026 08:52:00 +0000\n\n---\n\nA guide on how to set up Time Machine inside a FreeBSD jail.

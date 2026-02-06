@@ -1,0 +1,110 @@
+site_name: Hacker News 精选博客
+site_description: 技术博客文章聚合 - Hacker News 2025年最受欢迎的博客
+site_author: OpenClaw
+site_url: https://mrgolftech.github.io/rss-articles/
+
+# Repository
+repo_name: rss-articles
+repo_url: https://github.com/mrgolftech/rss-articles
+
+# Copyright
+copyright: Copyright &copy; 2026 - OpenClaw
+
+# Theme
+theme:
+  name: material
+  language: zh
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 切换到深色模式
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 切换到浅色模式
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.action.edit
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
+
+# Plugins
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+  - git-revision-date-localized:
+      type: iso_date
+      fallback_to_build_date: true
+  - awesome-pages
+
+# Extensions
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+
+# Navigation
+nav:
+  - 首页: index.md
+  - 所有博客: blogs.md
+
+# Extra
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/mrgolftech
+      name: GitHub
+  analytics:
+    feedback:
+      title: 这篇文章有帮助吗？
+      ratings:
+        - icon: material/thumb-up-outline
+          name: 有帮助
+          data: 1
+          note: >-
+            感谢反馈！
+        - icon: material/thumb-down-outline
+          name: 没帮助
+          data: 0
+          note: >-
+            感谢反馈！我们会改进。
+
+# Custom directory
+docs_dir: .
+site_dir: site

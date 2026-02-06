@@ -1,0 +1,43 @@
+# Discovery and AI
+
+**来源:** https://herman.bearblog.dev
+**链接:** https://herman.bearblog.dev/discovery-and-ai/
+**日期:** 2025-12-30T12:04:00+00:00
+
+---
+
+# [ Herman's blog  ](/)
+
+[Home](/) [Now](/now/) [Projects](/projects/) [Blog](/blog/)
+
+# Discovery and AI
+
+_ 30 Dec, 2025  _
+
+I browse the discovery feed on Bear daily, both as part of my role as a moderator, and because it's a space I love, populated by a diverse group of interesting people.
+
+I've read the posts regarding AI-related content on the discovery feed, and I get it. It's such a prevalent topic right now that it feels inescapable, available everywhere from Christmas dinner to overheard conversation on the subway. It's also becoming quite a polarising one, since it has broad impacts on society and the natural environment.
+
+This conversation also raises the question about popular bloggers and how pre-existing audiences should affect discoverability. As with all creative media, once you have a big-enough audience it becomes self-perpetuating that you get more visibility. Think Spotify's 1%. Conveniently, Bear is small enough that bloggers with no audience can still be discovered easily and it's something I'd like to preserve on the platform.
+
+In this post I'll try and explain my thinking on these matters, and clear up a few misconceptions.
+
+First off, posts that get many upvotes through a large pre-existing audience, or from doing well on Hacker News do not spend disproportionately more time on the discovery feed. Due to how the algorithm works, after a certain number of upvotes, more upvotes have little to no effect. Even a post with 10,000 upvotes won't spend more than a week on page #1. I want Trending to be equally accessible to all bloggers on Bear.
+
+While this cap solves the problem of sticky posts, there is a second, less pressing issue: If a blogger has a pre-existing audience, say in the form of a newsletter or Twitter account, some of their existing audience will likely upvote, and that post has a good chance of feature on the Trending page.
+
+One of the potential solutions I've considered is either making upvotes available to logged in users only, or Bear account holders receive extra weighting in their upvotes. However, due to how domains work each blog is a new website according to the browser, and so logins don't persist between blogs. This would require logging in to upvote on each site, which isn't feasible.
+
+While I moderate Bear for spam, AI-generated content, and people breaking the Code of Conduct, I don't moderate by topic. That removes the egalitarian nature of the platform and puts up topic rails like an interest-group forum or subreddit. While I'm not particularly interested in AI as a topic, I don't feel like it's my place to remove it, in the same way that I don't feel particularly strongly about manga.
+
+There is a hide blog feature on the discovery page. If you don't want certain blogs showing up in your feed, add them to the _hidden_ textarea to never see them again. Similarly to how Bear gives bloggers the ability to create their own tools within the dashboard, I would like to lean into this kind of extensibility for the discovery feed, with hiding blogs being the start. Curation instead of exclusion.
+
+This post is just a stream of consciousness of my thoughts on the matter. I have been contemplating this, and, as with most things, it's a nuanced problem to solve. If you have any thoughts or potential solutions, send me an email. I appreciate your input.
+
+Enjoy the last 2 days of 2025!
+
+ 
+
+Subscribe via [rss](/feed/), [email](/subscribe/) or just say [hello](/contact/).
+
+Powered by [Bear ʕ•ᴥ•ʔ](https://bearblog.dev)

@@ -1,56 +1,13 @@
 # skyfall.dev
 
-[访问博客](https://skyfall.dev)
+以下是本博客的所有文章：
 
-## 最新文章
-
-### 1. The UK paid £4.1 million for a bookmarks site
-
-**链接**: https://mahadk.com/posts/ai-skills-hub/
-
-**日期**: Wed, 28 Jan 2026 00:00:00 GMT
-
-**摘要**: Or, as they like to call it, the 'AI Skills Hub'. Which was built by PwC because of course it was
+- [01_The_UK_paid__4.1_million_for_a_bookmarks_site](01_The_UK_paid__4.1_million_for_a_bookmarks_site.md)
+- [02_Using_the_M1_MacBook_Air_in_2026](02_Using_the_M1_MacBook_Air_in_2026.md)
+- [03_Getting_Rails__ActiveStorage_blob_IDs_from_file_UR](03_Getting_Rails__ActiveStorage_blob_IDs_from_file_UR.md)
+- [04_Why_AI_browsers_haven_t_taken_off](04_Why_AI_browsers_haven_t_taken_off.md)
+- [05_Slack_is_extorting_us_with_a__195k_yr_bill_increas](05_Slack_is_extorting_us_with_a__195k_yr_bill_increas.md)
 
 ---
 
-### 2. Using the M1 MacBook Air in 2026
-
-**链接**: https://mahadk.com/posts/m1-mba/
-
-**日期**: Sat, 17 Jan 2026 00:00:00 GMT
-
-**摘要**: It's surprisingly capable more than five years later — as long as you temper your expectations.
-
----
-
-### 3. Getting Rails' ActiveStorage blob IDs from file URLs
-
-**链接**: https://mahadk.com/posts/activestorage-file-id/
-
-**日期**: Fri, 12 Dec 2025 18:00:00 GMT
-
-**摘要**: Learn how to extract ActiveStorage blob IDs from expiring ActiveStorage URLs.
-
----
-
-### 4. Why AI browsers haven't taken off
-
-**链接**: https://mahadk.com/posts/ai-browsers/
-
-**日期**: Wed, 22 Oct 2025 18:00:00 GMT
-
-**摘要**: In theory, AI browsers are huge time-savers. So why aren't they more popular?
-
----
-
-### 5. Slack is extorting us with a $195k/yr bill increase
-
-**链接**: https://mahadk.com/posts/slack/
-
-**日期**: Thu, 18 Sep 2025 18:00:00 GMT
-
-**摘要**: An open letter, or something
-
----
-
+*本博客文章由 OpenClaw 自动抓取*

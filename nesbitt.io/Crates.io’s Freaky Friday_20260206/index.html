@@ -1,0 +1,567 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/nesbitt.io/Crates.io%E2%80%99s%20Freaky%20Friday_20260206/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Crates.io’s Freaky Friday - Hacker News 精选博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cratesios-freaky-friday" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Hacker News 精选博客" class="md-header__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker News 精选博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Crates.io’s Freaky Friday
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker News 精选博客" class="md-nav__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hacker News 精选博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/nesbitt.io/Crates.io’s Freaky Friday_20260206.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="cratesios-freaky-friday">Crates.io’s Freaky Friday<a class="headerlink" href="#cratesios-freaky-friday" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> <a href="https://nesbitt.io">nesbitt.io</a>
+<strong>发布时间:</strong> 2026-02-06T00:00:00+00:00
+<strong>链接:</strong> https://nesbitt.io/2026/02/06/cratesio-freaky-friday.html</p>
+<hr />
+<p>{'type': 'text/html', 'language': None, 'base': 'https://nesbitt.io/2026/02/06/cratesio-freaky-friday.html', 'value': '<p>The maintainers of <a href="https://crates.io/">crates.io</a> wake up Friday morning to find their registry has swapped design philosophies with Debian. They still serve the Rust ecosystem, Debian still serves Linux distributions, but the tradeoffs they’ve chosen have reversed. Like Tess and Anna in <a href="https://www.imdb.com/title/tt0322330/">Freaky Friday</a>, they’re stuck in each other’s bodies, forced to navigate constraints they’ve spent years criticizing from the outside.</p>\n\n<p>The crates.io team reaches for their coffee and tries to ship a hotfix, only to discover they can’t publish without a signed GPG key from a designated sponsor and a three-day waiting period for linting and policy review. Meanwhile, Debian maintainers watch in horror as packages flow into their repository without coordination, breaking stable in ways that won’t surface until someone’s server fails to boot.</p>\n\n<h3 id="waking-up-with-snapshots">Waking up with snapshots</h3>\n\n<p>Freaky Friday crates.io splits into multiple coexisting suites. There’s a “stable” suite with older, well-tested crate versions, a “testing” suite with recent versions undergoing integration testing, and an “unstable” suite with the latest uploads. Within each suite, only one version of each crate exists, but the suites themselves persist simultaneously, and when you configure your project, you choose which suite to track. The entire collection of crates within a suite is tested together to ensure compatibility. If your crate depends on <code class="language-plaintext highlighter-rouge">tokio ^1.0</code> and <code class="language-plaintext highlighter-rouge">hyper ^1.0</code> in the stable suite, you can trust those specific versions work together because someone actually built them in combination.</p>\n\n<p>Within a suite, there’s no version selection because there are no versions to select. But the resolver still needs to handle feature unification across the dependency graph, optional dependencies that conditionally activate features, default features, and platform-specific dependencies. Debian’s resolver still deals with alternatives, virtual packages, and conflicts even within a single suite. Builds become reproducible by default within a suite since the suite itself acts as the lockfile, fixing both versions and the available feature combinations.</p>\n\n<p>Breaking changes in popular crates create suite-wide coordination problems. When <code class="language-plaintext highlighter-rouge">tokio</code> wants to ship 2.0 to the unstable suite, either every dependent crate adapts before it migrates to testing and stable, or the breaking change waits, or incompatible crates get dropped. Projects tracking stable can stay on <code class="language-plaintext highlighter-rouge">tokio</code> 1.x while the ecosystem adapts, but they can’t cherry-pick updates since you get the whole suite or none of it, and the suite model forces coordination within each channel while allowing different migration speeds across suites.</p>\n\n<p>Rust promises that code compiling on Rust 1.x will compile on Rust 1.y where y &gt; x. But in Freaky Friday crates.io, switching suites can break your build even if your code hasn’t changed and the compiler version is compatible.</p>\n\n<p>Freaky Friday Debian collapses its suites into a single rolling repository where <a href="https://nesbitt.io/2025/12/05/package-manager-tradeoffs">every version ever published stays available</a>. When <code class="language-plaintext highlighter-rouge">libc6</code> releases a new version, the old ones remain fetchable alongside it. Projects can pin to specific versions and stay there for years. The resolver now has to choose among thousands of versions for popular packages, optimizing for the newest compatible set. Dependency conflicts that Debian’s suite-based integration testing would have caught now surface at runtime. Packages make incompatible assumptions about shared libraries or system state, and nobody finds out until something breaks. Debian would need to implement lockfiles. Right now each suite acts as an implicit lockfile, but with all versions available in a single repository, you need a way to freeze exact package versions or installations drift as new versions appear.</p>\n\n<p>The Debian team would face a new class of bugs. Two packages both depend on different versions of <code class="language-plaintext highlighter-rouge">libssl</code>, and because there’s no coordinated testing, conflicts emerge. Many would surface at install time when dpkg detects incompatible dependencies, but some slip through: if the versions are ABI-compatible, everything works until one package calls a function that behaves differently across versions, creating subtle runtime failures. The careful integration testing that made Debian stable can’t happen when packages target arbitrary version combinations.</p>\n\n<h3 id="moving-on-someone-elses-schedule">Moving on someone else’s schedule</h3>\n\n<p>Freaky Friday crates.io manages transitions between its suites by allowing crates to enter unstable immediately upon upload while requiring them to build cleanly and show no obvious breakage for a period before migrating to testing. From there, they pass integration tests against the entire stable suite and wait for the next stable release window before migrating to stable. Packages flow through suites based on demonstrated stability rather than author intent.</p>\n\n<p>The six-week Rust compiler cadence provides a natural rhythm for stable releases, with packages that have proven stable in testing migrating to a new stable suite every six weeks. Projects tracking stable get coordinated updates on this schedule, projects tracking unstable get updates immediately but accept the instability, and projects tracking testing find a middle ground between the two.</p>\n\n<p>When a vulnerability drops in a popular crate like <code class="language-plaintext highlighter-rouge">tokio</code> or <code class="language-plaintext highlighter-rouge">rustls</code>, projects tracking unstable get the fix immediately. Projects tracking testing get it after automated migration checks pass. Projects tracking stable might wait until the next stable release, which could mean nearly six weeks for a vulnerability announced just after a release.</p>\n\n<p>Right now when <code class="language-plaintext highlighter-rouge">rustls</code> ships a security fix, it might inadvertently break something else. Projects pulling the update immediately discover this the hard way. In Freaky Friday crates.io, the security fix goes through testing’s integration checks before reaching stable. By the time stable-tracking projects get it, the registry has verified it doesn’t break anything.</p>\n\n<p>Freaky Friday crates.io would need a security update mechanism like Debian’s stable-security suite. Critical fixes could bypass the normal migration process and flow directly to stable with lighter testing. Different environments would choose differently. Rapidly-developed web services might track unstable to get fixes within minutes. Embedded systems might track stable with security updates only, avoiding any destabilization between planned upgrade windows.</p>\n\n<p>Freaky Friday Debian becomes rolling, where package maintainers can upload new versions of <code class="language-plaintext highlighter-rouge">systemd</code> or <code class="language-plaintext highlighter-rouge">nginx</code> that go live immediately without the extensive integration testing that characterized Debian stable. Individual packages work fine, but combinations are untested, leaving users who relied on Debian stable for servers that run for years without breaking in need of a new distribution.</p>\n\n<h3 id="who-decides-what-exists">Who decides what exists</h3>\n\n<p>Freaky Friday crates.io requires review before publication. You don’t publish your own crate directly. Instead, you submit it for review by a team of packagers who evaluate the code, check for duplicates, ensure it meets quality standards, and decide whether it belongs in the registry. The packagers might not be the original authors. Sometimes they’re downstream users who want a library available and volunteer to maintain the packaging. Sometimes they’re registry maintainers filling gaps.</p>\n\n<p>Right now, the friction of publishing to crates.io is so low that people publish tiny utility crates for their own convenience. With review as a gate, you’d only submit crates you think are worth someone else’s time to evaluate. The ecosystem would have fewer packages, but each one would represent a more deliberate decision. The explosion of micro-dependencies that characterizes the npm ecosystem would slow down.</p>\n\n<p>The packagers become a new power center. They decide not just whether code is safe, but whether it’s useful, whether it duplicates existing crates, whether it meets their standards for documentation or API design. In Debian this works because the community of package maintainers is accountable to the broader Debian community through democratic governance. Without that structure, the crates.io packagers would be making subjective judgments with limited oversight. Whose standards are they enforcing?</p>\n\n<p>Freaky Friday Debian removes the gatekeeping. Anyone can publish a package to their own namespace without review. The namespace structure prevents collisions, and there’s no central authority deciding what deserves to exist. Debian would get new software faster, but it would break something deeper than just technical quality control.</p>\n\n<p>Debian’s curation is part of its social contract and legal guarantees. The Debian Free Software Guidelines aren’t just about code quality, they’re about license compliance and user freedoms. When software makes it into Debian, you know someone verified those guarantees. In Freaky Friday Debian, being in the repository just means someone published it. Organizations using Debian because it’s curated would need to build their own curation layer on top, including their own license vetting and policy enforcement.</p>\n\n<p>When Azer Koçulu unpublished left-pad from npm in 2016, thousands of builds broke because npm trusted authors to control their packages. The registry had to override that trust and restore the package. Crates.io learned from this and implemented yanking instead of deletion: authors can mark versions as unavailable for new projects, but existing lockfiles still work. Freaky Friday crates.io wouldn’t need yanking at all. Once a crate passes review and enters a suite, the packagers own it. Authors can submit updates for future suites, but they can’t retroactively remove what’s already shipped.</p>\n\n<h3 id="the-build-farm-swap">The build farm swap</h3>\n\n<p>Crates.io currently distributes source, pushing build costs to users. Debian runs a build farm and distributes binaries, concentrating costs on the registry operators.</p>\n\n<p>Freaky Friday crates.io adopts the build farm model, compiling every crate for every supported platform and Rust version, then distributing pre-built artifacts. First-time builds drop from twenty minutes to seconds. But the registry now handles Rust’s platform matrix spanning multiple operating systems, toolchain variants (gnu, musl, mingw), architectures, and Rust versions going back years. Debian’s build farm handles <a href="https://wiki.debian.org/SupportedArchitectures">multiple architectures</a> for a curated package set. Rust has 150,000 crates with a broader platform matrix and faster churn. The infrastructure costs scale differently.</p>\n\n<h3 id="surviving-the-week">Surviving the week</h3>\n\n<p>Freaky Friday crates.io would struggle most with user expectations about iteration speed. Rust developers expect to publish a new version and have it immediately available. You push <code class="language-plaintext highlighter-rouge">serde</code> 1.0.215 with a bug fix, other developers pull it minutes later, find issues, you publish 1.0.216 the same afternoon. That feedback loop is how the ecosystem works. In Freaky Friday crates.io, your update enters unstable immediately but sits in review before that, then waits for testing migration, then waits for the next stable release up to six weeks away for projects tracking stable. By the time most users can try your fix, you’ve already identified and fixed three more bugs, but those are stuck in the pipeline too.</p>\n\n<p>The review bottleneck compounds this. When Rust adds language features, thousands of crates rush to adopt them in the same week. The current crates.io team is seven people managing over 150,000 packages. Debian handles this by having far fewer packages and slower language evolution, but Rust’s pace of change makes that model impractical. Even if suite releases align with the six-week compiler cadence, the stable suite would likely lag behind as crates take time to stabilize in testing, creating a version gap where new compiler features remain unusable because the stable suite’s crates haven’t adopted them yet. The ecosystem would fragment between developers tracking unstable for new features and those tracking stable for reliability.</p>\n\n<p>But Freaky Friday crates.io would gain something Debian has: confidence that the pieces fit together. Right now when a popular crate publishes a breaking change, you only discover the fallout when your build breaks. The ecosystem fragments as some projects upgrade and others don’t. With coordinated suites and integration testing, breaking changes get caught before they reach stable. You can’t have five different major versions of <code class="language-plaintext highlighter-rouge">tokio</code> in the same suite because the suite is tested as a unit, so the maintainers would see exactly which crates break before a new version migrates from testing to stable. They could coordinate with those maintainers or delay the migration, smoothing out the churn that makes Rust dependency management exhausting.</p>\n\n<p>Rolling Debian would fix a problem that drives users to testing and unstable: staleness. Debian stable is often years behind upstream, which is fine for servers but painful for desktop users who want recent software. The careful integration testing that makes Debian reliable also makes it slow. By accepting rolling releases, Freaky Friday Debian could ship current software at the cost of occasional breakage, which some users would consider a better tradeoff.</p>\n\n<p>But the security team would now face backporting fixes to an unbounded number of actively-used package versions. The current model works because Debian can say “we only support the versions in stable.” With all versions available, the security burden grows unless they only support the newest version of each major series, which recreates the forced migration they were trying to avoid.</p>\n\n<h3 id="the-morning-meeting">The morning meeting</h3>\n\n<p>Rust’s foundation model works because the ecosystem moves fast and decisions need to happen quickly, with six-week compiler releases requiring a tight feedback loop where small teams with clear ownership can make decisions and respond when something breaks without waiting for consensus.</p>\n\n<p>Debian’s democratic governance works because the conditions are different. The distribution moves slowly, giving time for deliberation. Decisions have long-term consequences that affect thousands of downstream distributions and millions of users. The contributor-to-package ratio is higher, so more people have the context to vote meaningfully on technical decisions. The social contract and democratic process are what hold the community together across decades. A vote on systemd adoption takes months because Debian will live with the choice for years, and the legitimacy of the decision matters as much as its technical correctness.</p>\n\n<p>Freaky Friday crates.io with Debian’s democratic governance would struggle to coordinate suite releases. Deciding which crates make it into each suite’s stable release would become a political process where the packagers with the most voting weight push their priorities and niche crates maintained by newcomers get deprioritized. Votes on technical decisions would take weeks, consistently missing the six-week release window. The pace of language evolution would either slow to match the governance speed or the governance would become a rubber stamp, breaking the democratic accountability that makes the model legitimate.</p>\n\n<p>Freaky Friday Debian with foundation governance would face legitimacy problems. Debian’s community trust comes from transparent decision-making and the knowledge that anyone sufficiently invested can participate in governance. The volunteers who maintain packages do so partly because they have a voice in the project’s direction. A board making policy decisions behind closed doors would break that social contract, potentially driving volunteers away and giving corporate sponsors more influence, which might improve funding but would change what Debian optimizes for and transform the distribution that prides itself on being “the universal operating system” built by its users into something else.</p>\n\n<p>At the end of the week, <a href="https://github.com/LawnGnome">Adam Harvey</a> finds the fortune cookie. Everyone wakes up the next day with things back to normal, but with a better understanding of the tradeoffs and benefits of each choice.</p>'}</p>
+<hr />
+<p><em>抓取时间: 2026-02-07 09:36:39</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月7日 01:36:39 UTC">2026-02-07</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

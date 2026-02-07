@@ -4,6 +4,7 @@
 
 - [A Number Of Surprising Importance](A Number Of Surprising Importance.md)
 - [A Number Of Surprising Importance 17245690](A Number Of Surprising Importance_17245690.md)
+- [A Quiet Townhouse, A Great Gift](A Quiet Townhouse, A Great Gift.md)
 - [Minus World](Minus World.md)
 - [Minus World 17261173](Minus World_17261173.md)
 - [Slide Away](Slide Away.md)

@@ -4,6 +4,7 @@
 
 - [Everyone's okay with their AI, just not yours 20260205](Everyone's okay with their AI, just not yours_20260205.md)
 - [LLM Adblockers are coming! 20260205](LLM Adblockers are coming!_20260205.md)
+- [Open Molten Claw 20260206](Open Molten Claw_20260206.md)
 - [The Shoe on The Other Foot 20260202](The Shoe on The Other Foot_20260202.md)
 - [The Shoe on The Other Foot 20260205](The Shoe on The Other Foot_20260205.md)
 - [We installed a single turnstile to feel secure 20260204](We installed a single turnstile to feel secure_20260204.md)

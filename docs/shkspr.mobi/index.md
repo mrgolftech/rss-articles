@@ -2,6 +2,7 @@
 
 以下是本博客的所有文章：
 
+- [Book Review- Diversifying Open Source - An Open Standards Playbook for Inclusive and Equitable Tech  20260206](Book Review- Diversifying Open Source - An Open Standards Playbook for Inclusive and Equitable Tech _20260206.md)
 - [Book Review- The Examiner - Janice Hallett ★★★★⯪ 20260204](Book Review- The Examiner - Janice Hallett ★★★★⯪_20260204.md)
 - [Book Review- The Examiner - Janice Hallett ★★★★⯪ 20260205](Book Review- The Examiner - Janice Hallett ★★★★⯪_20260205.md)
 - [Book Review- The Voyage of the Space Beagle by Alfred Elton Van Vogt ★★☆☆☆ 20260202](Book Review- The Voyage of the Space Beagle by Alfred Elton Van Vogt ★★☆☆☆_20260202.md)

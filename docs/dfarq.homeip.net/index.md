@@ -8,6 +8,7 @@
 - [Intel 286 introduced Feb 2, 1982 20260205](Intel 286 introduced Feb 2, 1982_20260205.md)
 - [Radio Shack’s 2015 bankruptcy 20260204](Radio Shack’s 2015 bankruptcy_20260204.md)
 - [Radio Shack’s 2015 bankruptcy 20260205](Radio Shack’s 2015 bankruptcy_20260205.md)
+- [The first computer chip 20260206](The first computer chip_20260206.md)
 - [What happened to Conner hard drives 20260205](What happened to Conner hard drives_20260205.md)
 - [What happened to Packard Bell- 20260130](What happened to Packard Bell-_20260130.md)
 - [What happened to Packard Bell- 20260205](What happened to Packard Bell-_20260205.md)

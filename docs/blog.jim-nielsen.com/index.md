@@ -5,6 +5,7 @@
 - [CTA Hierarchy in the Wild 20260205](CTA Hierarchy in the Wild_20260205.md)
 - [Saying “No” In an Age of Abundance 20260203](Saying “No” In an Age of Abundance_20260203.md)
 - [Saying “No” In an Age of Abundance 20260205](Saying “No” In an Age of Abundance_20260205.md)
+- [Study Finds Obvious Truth Everybody Knows 20260206](Study Finds Obvious Truth Everybody Knows_20260206.md)
 - [The Browser’s Little White Lies 20260201](The Browser’s Little White Lies_20260201.md)
 - [The Browser’s Little White Lies 20260205](The Browser’s Little White Lies_20260205.md)
 - [The Don’t “Contact Us” Page 20260205](The Don’t “Contact Us” Page_20260205.md)

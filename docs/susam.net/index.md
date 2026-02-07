@@ -12,6 +12,7 @@
 - [Nested Code Fences in Markdown 20260205](Nested Code Fences in Markdown_20260205.md)
 - [QuickQWERTY 1.2.1 20260205](QuickQWERTY 1.2.1_20260205.md)
 - [Stories From 25 Years of Computing 20260206](Stories From 25 Years of Computing_20260206.md)
+- [Stories From 25 Years of Software Development 20260206](Stories From 25 Years of Software Development_20260206.md)
 - [Three Inverse Laws of Robotics 20260205](Three Inverse Laws of Robotics_20260205.md)
 
 ---

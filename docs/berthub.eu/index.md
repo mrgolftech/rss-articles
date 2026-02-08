@@ -8,6 +8,7 @@
 - [Digitaal zoet en zuur in het coalitieakkoord 20260205](Digitaal zoet en zuur in het coalitieakkoord_20260205.md)
 - [Europe's executives need to skill up to solve our total US cloud dependency 20260205](Europe's executives need to skill up to solve our total US cloud dependency_20260205.md)
 - [Rondetafeloverleg Tweede Kamer over Solvinity- Position paper 20260205](Rondetafeloverleg Tweede Kamer over Solvinity- Position paper_20260205.md)
+- [Updates 7 februari- Tweede Kamer, TV Bureau Buitenland 20260207](Updates 7 februari- Tweede Kamer, TV Bureau Buitenland_20260207.md)
 
 ---
 

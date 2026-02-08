@@ -2,6 +2,8 @@
 
 以下是本博客的所有文章：
 
+- [How to generate good looking reports with Claude Code, Cowork or Codex 20260208](How to generate good looking reports with Claude Code, Cowork or Codex_20260208.md)
+- [Self-improving CLAUDE.md files 20260208](Self-improving CLAUDE.md files_20260208.md)
 - [The Coming AI Compute Crunch 20260205](The Coming AI Compute Crunch_20260205.md)
 - [Turns out I was wrong about TDD 20260205](Turns out I was wrong about TDD_20260205.md)
 - [Two kinds of AI users are emerging. The gap between them is astonishing. 20260201](Two kinds of AI users are emerging. The gap between them is astonishing._20260201.md)

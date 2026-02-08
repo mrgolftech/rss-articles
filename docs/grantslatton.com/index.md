@@ -3,6 +3,7 @@
 以下是本博客的所有文章：
 
 - [Claude Code 20260205](Claude Code_20260205.md)
+- [Every Man a Microservice 20260208](Every Man a Microservice_20260208.md)
 - [LLM Memory 20260205](LLM Memory_20260205.md)
 - [Manufacturing as Maintenance 20260131](Manufacturing as Maintenance_20260131.md)
 - [Manufacturing as Maintenance 20260205](Manufacturing as Maintenance_20260205.md)

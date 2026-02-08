@@ -11,6 +11,7 @@
 - [Introducing Deno Sandbox 20260205](Introducing Deno Sandbox_20260205.md)
 - [January sponsors-only newsletter is out 20260203](January sponsors-only newsletter is out_20260203.md)
 - [January sponsors-only newsletter is out 20260205](January sponsors-only newsletter is out_20260205.md)
+- [Kākāpō mug by Karen James 20260208](Kākāpō mug by Karen James_20260208.md)
 - [Mitchell Hashimoto- My AI Adoption Journey 20260205](Mitchell Hashimoto- My AI Adoption Journey_20260205.md)
 - [Opus 4.6 and Codex 5.3 20260205](Opus 4.6 and Codex 5.3_20260205.md)
 - [Quoting David Crawshaw 20260207](Quoting David Crawshaw_20260207.md)

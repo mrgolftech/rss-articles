@@ -4,8 +4,10 @@
 
 - [AGI, ASI, A-I – Do we have all we need to get there- 20260130](AGI, ASI, A-I – Do we have all we need to get there-_20260130.md)
 - [Bridging secrets is hard 20260130](Bridging secrets is hard_20260130.md)
+- [Computing large Fibonacci numbers 20260208](Computing large Fibonacci numbers_20260208.md)
 - [Eigenvalue homework problems are backward 20260206](Eigenvalue homework problems are backward_20260206.md)
 - [Fibonacci number certificates 20260205](Fibonacci number certificates_20260205.md)
+- [Fibonacci numbers and time-space tradeoffs 20260208](Fibonacci numbers and time-space tradeoffs_20260208.md)
 - [Minimum of cosine sum 20260207](Minimum of cosine sum_20260207.md)
 - [Polish serenity 20260203](Polish serenity_20260203.md)
 - [Satellites have a lot of room 20260202](Satellites have a lot of room_20260202.md)

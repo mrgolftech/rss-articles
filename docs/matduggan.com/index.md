@@ -7,6 +7,7 @@
 - [03_Making_RSS_More_Fun](03_Making_RSS_More_Fun.md)
 - [04_I_broke_and_fixed_my_Ghost_blog](04_I_broke_and_fixed_my_Ghost_blog.md)
 - [05_Greenland_is_a_beautiful_nightmare](05_Greenland_is_a_beautiful_nightmare.md)
+- [GitButler CLI Is Really Good 20260209](GitButler CLI Is Really Good_20260209.md)
 - [Greenland is a beautiful nightmare 20260205](Greenland is a beautiful nightmare_20260205.md)
 - [I broke and fixed my Ghost blog 20260205](I broke and fixed my Ghost blog_20260205.md)
 - [Making RSS More Fun 20260205](Making RSS More Fun_20260205.md)

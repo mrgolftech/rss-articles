@@ -2,6 +2,7 @@
 
 以下是本博客的所有文章：
 
+- [Buy.com’s Feb 2000 IPO 20260209](Buy.com’s Feb 2000 IPO_20260209.md)
 - [Gateway announces merger with eMachines, 1-30-2004 20260129](Gateway announces merger with eMachines, 1-30-2004_20260129.md)
 - [Gateway announces merger with eMachines, 1-30-2004 20260205](Gateway announces merger with eMachines, 1-30-2004_20260205.md)
 - [Intel 286 introduced Feb 2, 1982 20260202](Intel 286 introduced Feb 2, 1982_20260202.md)

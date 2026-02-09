@@ -9,6 +9,7 @@
 - [Pluralistic- Luxury Kafka (06 Feb 2026) 20260206](Pluralistic- Luxury Kafka (06 Feb 2026)_20260206.md)
 - [Pluralistic- Michael Swanwick's -The Universe Box- (03 Feb 2026) 20260203](Pluralistic- Michael Swanwick's -The Universe Box- (03 Feb 2026)_20260203.md)
 - [Pluralistic- Stock swindles (02 Feb 2026) 20260202](Pluralistic- Stock swindles (02 Feb 2026)_20260202.md)
+- [Pluralistic- The Epstein class and collapse porn (09 Feb 2026) 20260209](Pluralistic- The Epstein class and collapse porn (09 Feb 2026)_20260209.md)
 - [Pluralistic- Threads' margin is the Eurostack's opportunity (30 Jan 2026) 20260130](Pluralistic- Threads' margin is the Eurostack's opportunity (30 Jan 2026)_20260130.md)
 
 ---

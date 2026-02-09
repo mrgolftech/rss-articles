@@ -14,6 +14,7 @@
 - [Stories From 25 Years of Computing 20260206](Stories From 25 Years of Computing_20260206.md)
 - [Stories From 25 Years of Software Development 20260206](Stories From 25 Years of Software Development_20260206.md)
 - [Three Inverse Laws of Robotics 20260205](Three Inverse Laws of Robotics_20260205.md)
+- [Twenty Five Years of Computing 20260206](Twenty Five Years of Computing_20260206.md)
 
 ---
 

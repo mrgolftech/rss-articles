@@ -2,6 +2,7 @@
 
 以下是本博客的所有文章：
 
+- [A Language For Agents 20260209](A Language For Agents_20260209.md)
 - [Advent of Slop- A Guest Post by Claude 20251223](Advent of Slop- A Guest Post by Claude_20251223.md)
 - [Agent Psychosis- Are We Going Insane- 20260205](Agent Psychosis- Are We Going Insane-_20260205.md)
 - [Colin and Earendil 20260205](Colin and Earendil_20260205.md)

@@ -10,6 +10,7 @@
 - [semaglutide-has-changed-the-world 20260205](semaglutide-has-changed-the-world_20260205.md)
 - [solving-macro](solving-macro.md)
 - [solving-macro 20260205](solving-macro_20260205.md)
+- [start-vibe-coding-fast](start-vibe-coding-fast.md)
 - [whats-wrong-with-a-for-loop](whats-wrong-with-a-for-loop.md)
 - [whats-wrong-with-a-for-loop 20260205](whats-wrong-with-a-for-loop_20260205.md)
 

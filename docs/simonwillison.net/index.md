@@ -2,6 +2,7 @@
 
 以下是本博客的所有文章：
 
+- [AI Doesn’t Reduce Work—It Intensifies It 20260209](AI Doesn’t Reduce Work—It Intensifies It_20260209.md)
 - [An Update on Heroku 20260206](An Update on Heroku_20260206.md)
 - [Claude- Speed up responses with fast mode 20260207](Claude- Speed up responses with fast mode_20260207.md)
 - [Distributing Go binaries like sqlite-scanner through PyPI using go-to-wheel 20260204](Distributing Go binaries like sqlite-scanner through PyPI using go-to-wheel_20260204.md)

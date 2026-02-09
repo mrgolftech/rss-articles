@@ -2,6 +2,7 @@
 
 以下是本博客的所有文章：
 
+- [A Brief History of App Icons From Apple’s Creator Studio 20260209](A Brief History of App Icons From Apple’s Creator Studio_20260209.md)
 - [CTA Hierarchy in the Wild 20260205](CTA Hierarchy in the Wild_20260205.md)
 - [Saying “No” In an Age of Abundance 20260203](Saying “No” In an Age of Abundance_20260203.md)
 - [Saying “No” In an Age of Abundance 20260205](Saying “No” In an Age of Abundance_20260205.md)

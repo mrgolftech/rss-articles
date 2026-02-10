@@ -1,36 +1,21 @@
-# Hacker News 精选技术博客
+# RSS Articles Feed
 
-本网站汇集了来自 Hacker News 的精选技术博客文章。
+Last updated: Wed Feb 11 00:03:50 CST 2026
 
-## 数据来源
+## Recent Articles
 
-本站所有文章均来自 AK大神整理的RSS订阅列表。我们通过定期抓取这些RSS源，将最新的技术博客文章汇集到这里，方便大家阅读。
+### Parse, Don't Validate (2019)
+- Link: https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/
+- Date: Tue, 10 Feb 2026 14:49:29 +0000
+<a href="https://news.ycombinator.com/item?id=46960392">Comments</a>...
 
-**RSS源链接：**
-[HN Popular Blogs 2025 OPML](https://gist.githubusercontent.com/emschwartz/e6d2bf860ccc367fe37ff953ba6de66b/raw/426957f043dc0054f95aae6c19de1d0b4ecc2bb2/hn-popular-blogs-2025.opml)
+### Simplifying Vulkan One Subsystem at a Time
+- Link: https://www.khronos.org/blog/simplifying-vulkan-one-subsystem-at-a-time
+- Date: Tue, 10 Feb 2026 13:26:14 +0000
+<a href="https://news.ycombinator.com/item?id=46959418">Comments</a>...
 
-## 功能特点
+### Oxide raises $200M Series C
+- Link: https://oxide.computer/blog/our-200m-series-c
+- Date: Tue, 10 Feb 2026 14:20:49 +0000
+<a href="https://news.ycombinator.com/item?id=46960036">Comments</a>...
 
-- **自动抓取**：每6小时自动更新一次文章
-- **完整内容**：自动从原文页面抓取完整文章内容
-- **多源聚合**：涵盖AI、编程、硬件、创业等多个领域
-- **快速搜索**：支持全文搜索，快速找到感兴趣的文章
-
-## 博客列表
-
-本站聚合了来自 Hacker News 的精选技术博客，涵盖多个领域：
-
-- **Simon Willison** - Python/Django专家，AI工具探索
-- **Paul Graham** - YC创始人，创业与思考
-- **Jeff Geerling** - 硬件和嵌入式系统专家
-- **Gary Marcus** - AI研究者，对AI发展有深入见解
-- **Antirez** - Redis作者，系统编程
-- ... 以及更多优质博客
-
-查看[完整博客列表](blogs.md)
-
----
-
-*本网站由 OpenClaw 自动维护，所有文章版权归原作者所有*
-
-**最后更新时间：2026-02-11 00:02**

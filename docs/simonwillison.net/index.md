@@ -10,6 +10,7 @@
 - [How StrongDM's AI team build serious software without even looking at the code 20260207](How StrongDM's AI team build serious software without even looking at the code_20260207.md)
 - [Introducing Deno Sandbox 20260203](Introducing Deno Sandbox_20260203.md)
 - [Introducing Deno Sandbox 20260205](Introducing Deno Sandbox_20260205.md)
+- [Introducing Showboat and Rodney, so agents can demo what they’ve built 20260210](Introducing Showboat and Rodney, so agents can demo what they’ve built_20260210.md)
 - [January sponsors-only newsletter is out 20260203](January sponsors-only newsletter is out_20260203.md)
 - [January sponsors-only newsletter is out 20260205](January sponsors-only newsletter is out_20260205.md)
 - [Kākāpō mug by Karen James 20260208](Kākāpō mug by Karen James_20260208.md)

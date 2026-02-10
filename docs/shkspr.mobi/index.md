@@ -2,6 +2,7 @@
 
 以下是本博客的所有文章：
 
+- [Book Review- Ashes To Admin - Tales from the Caseload of a Council Funeral Officer by Evie King ★★★★ 20260210](Book Review- Ashes To Admin - Tales from the Caseload of a Council Funeral Officer by Evie King ★★★★_20260210.md)
 - [Book Review- Diversifying Open Source - An Open Standards Playbook for Inclusive and Equitable Tech  20260206](Book Review- Diversifying Open Source - An Open Standards Playbook for Inclusive and Equitable Tech _20260206.md)
 - [Book Review- Me vs Brain - An Overthinker’s Guide to Life by Hayley Morris ★★★★☆ 20260208](Book Review- Me vs Brain - An Overthinker’s Guide to Life by Hayley Morris ★★★★☆_20260208.md)
 - [Book Review- The Examiner - Janice Hallett ★★★★⯪ 20260204](Book Review- The Examiner - Janice Hallett ★★★★⯪_20260204.md)

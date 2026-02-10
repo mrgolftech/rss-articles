@@ -6,6 +6,7 @@
 - [Dependency Resolution Methods 20260206](Dependency Resolution Methods_20260206.md)
 - [Git’s Magic Files 20260205](Git’s Magic Files_20260205.md)
 - [Incident Report- CVE-2024-YIKES 20260203](Incident Report- CVE-2024-YIKES_20260203.md)
+- [Lockfiles Killed Vendoring 20260210](Lockfiles Killed Vendoring_20260210.md)
 - [Package Management at FOSDEM 2026 20260204](Package Management at FOSDEM 2026_20260204.md)
 - [Package Manager Podcast Episodes 20260209](Package Manager Podcast Episodes_20260209.md)
 - [Sandwich Bill of Materials 20260208](Sandwich Bill of Materials_20260208.md)

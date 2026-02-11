@@ -2,6 +2,7 @@
 
 以下是本博客的所有文章：
 
+- [Communities are not fungible 20260211](Communities are not fungible_20260211.md)
 - [How to stop being boring 20260205](How to stop being boring_20260205.md)
 - [The Coherence Premium 20260202](The Coherence Premium_20260202.md)
 - [The Discourse is a Distributed Denial-of-Service Attack 20260205](The Discourse is a Distributed Denial-of-Service Attack_20260205.md)

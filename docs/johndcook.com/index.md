@@ -3,6 +3,7 @@
 以下是本博客的所有文章：
 
 - [AGI, ASI, A-I – Do we have all we need to get there- 20260130](AGI, ASI, A-I – Do we have all we need to get there-_20260130.md)
+- [Aligning one matrix with another 20260211](Aligning one matrix with another_20260211.md)
 - [Bridging secrets is hard 20260130](Bridging secrets is hard_20260130.md)
 - [Computing large Fibonacci numbers 20260208](Computing large Fibonacci numbers_20260208.md)
 - [Eigenvalue homework problems are backward 20260206](Eigenvalue homework problems are backward_20260206.md)

@@ -10,6 +10,7 @@
 - [The Browser’s Little White Lies 20260201](The Browser’s Little White Lies_20260201.md)
 - [The Browser’s Little White Lies 20260205](The Browser’s Little White Lies_20260205.md)
 - [The Don’t “Contact Us” Page 20260205](The Don’t “Contact Us” Page_20260205.md)
+- [Unresponsive Buttons on My Fastest Hardware Ever 20260211](Unresponsive Buttons on My Fastest Hardware Ever_20260211.md)
 - [You Can Just Say No to the Data 20260205](You Can Just Say No to the Data_20260205.md)
 
 ---

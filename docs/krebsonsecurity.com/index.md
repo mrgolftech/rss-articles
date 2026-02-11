@@ -4,6 +4,7 @@
 
 - [Kimwolf Botnet Lurking in Corporate, Govt. Networks 20260120](Kimwolf Botnet Lurking in Corporate, Govt. Networks_20260120.md)
 - [Kimwolf Botnet Lurking in Corporate, Govt. Networks 20260205](Kimwolf Botnet Lurking in Corporate, Govt. Networks_20260205.md)
+- [Kimwolf Botnet Swamps Anonymity Network I2P 20260211](Kimwolf Botnet Swamps Anonymity Network I2P_20260211.md)
 - [Patch Tuesday, February 2026 Edition 20260210](Patch Tuesday, February 2026 Edition_20260210.md)
 - [Patch Tuesday, January 2026 Edition 20260114](Patch Tuesday, January 2026 Edition_20260114.md)
 - [Patch Tuesday, January 2026 Edition 20260205](Patch Tuesday, January 2026 Edition_20260205.md)

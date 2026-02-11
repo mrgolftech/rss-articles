@@ -3,6 +3,7 @@
 以下是本博客的所有文章：
 
 - [Logic for Programmers New Release and Next Steps 20260204](Logic for Programmers New Release and Next Steps_20260204.md)
+- [Proving What's Possible 20260211](Proving What's Possible_20260211.md)
 
 ---
 

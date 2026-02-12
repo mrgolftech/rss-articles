@@ -10,6 +10,7 @@
 - [Is the Great AI meltdown imminent- [NSFW] 20260205](Is the Great AI meltdown imminent- [NSFW]_20260205.md)
 - [OpenClaw (a.k.a. Moltbot) is everywhere all at once, and a disaster waiting to happen 20260201](OpenClaw (a.k.a. Moltbot) is everywhere all at once, and a disaster waiting to happen_20260201.md)
 - [OpenClaw (a.k.a. Moltbot) is everywhere all at once, and a disaster waiting to happen 20260205](OpenClaw (a.k.a. Moltbot) is everywhere all at once, and a disaster waiting to happen_20260205.md)
+- [Promises are cheap 20260212](Promises are cheap_20260212.md)
 - [Sam Altman and the day Nvidia’s meteoric rise came to an end 20260204](Sam Altman and the day Nvidia’s meteoric rise came to an end_20260204.md)
 - [Sam Altman and the day Nvidia’s meteoric rise came to an end 20260205](Sam Altman and the day Nvidia’s meteoric rise came to an end_20260205.md)
 - [Some disconcerting facts about AI and banking that may have profound consequences 20260210](Some disconcerting facts about AI and banking that may have profound consequences_20260210.md)

@@ -2,6 +2,7 @@
 
 以下是本博客的所有文章：
 
+- [How can I distinguish between the numeric keypad 0 and the top-row 0 in the WM_KEY­DOWN message- 20260212](How can I distinguish between the numeric keypad 0 and the top-row 0 in the WM_KEY­DOWN message-_20260212.md)
 - [How can I prevent the user from changing the widths of ListView columns in version 5 of the common c 20260205](How can I prevent the user from changing the widths of ListView columns in version 5 of the common c_20260205.md)
 - [How can I prevent the user from changing the widths of ListView columns in version 5 of the common c 20260206](How can I prevent the user from changing the widths of ListView columns in version 5 of the common c_20260206.md)
 - [How can I prevent the user from changing the widths of ListView columns- 20260204](How can I prevent the user from changing the widths of ListView columns-_20260204.md)

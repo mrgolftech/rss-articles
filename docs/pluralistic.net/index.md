@@ -4,6 +4,7 @@
 
 - [Pluralistic- All laws are local (05 Feb 2026) 20260205](Pluralistic- All laws are local (05 Feb 2026)_20260205.md)
 - [Pluralistic- Disenshittification Nation (29 Jan 2026) 20260129](Pluralistic- Disenshittification Nation (29 Jan 2026)_20260129.md)
+- [Pluralistic- Doctors' union may yet save the NHS from Palantir (12 Feb 2026) 20260212](Pluralistic- Doctors' union may yet save the NHS from Palantir (12 Feb 2026)_20260212.md)
 - [Pluralistic- End of the line for video essays (07 Feb 2026) 20260207](Pluralistic- End of the line for video essays (07 Feb 2026)_20260207.md)
 - [Pluralistic- Europe takes a big step towards a post-dollar world (11 Feb 2026) 20260211](Pluralistic- Europe takes a big step towards a post-dollar world (11 Feb 2026)_20260211.md)
 - [Pluralistic- Justin Key's -The Hospital at the End Of the World- (04 Feb 2026) 20260204](Pluralistic- Justin Key's -The Hospital at the End Of the World- (04 Feb 2026)_20260204.md)

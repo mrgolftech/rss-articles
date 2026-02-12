@@ -12,6 +12,7 @@
 - [Package Manager Podcast Episodes 20260209](Package Manager Podcast Episodes_20260209.md)
 - [Sandwich Bill of Materials 20260208](Sandwich Bill of Materials_20260208.md)
 - [The Dependency Layer in Digital Sovereignty 20260128](The Dependency Layer in Digital Sovereignty_20260128.md)
+- [The Many Flavors of Ignore Files 20260212](The Many Flavors of Ignore Files_20260212.md)
 - [Will AI Make Package Managers Redundant- 20260130](Will AI Make Package Managers Redundant-_20260130.md)
 - [Zig and the M×N Supply Chain Problem 20260129](Zig and the M×N Supply Chain Problem_20260129.md)
 

@@ -7,6 +7,7 @@
 - [How Markdown took over the world](How Markdown took over the world.md)
 - [How the hell are you supposed to have a career in tech in 2026-](How the hell are you supposed to have a career in tech in 2026-.md)
 - [How the hell are you supposed to have a career in tech in 2026- 20260105](How the hell are you supposed to have a career in tech in 2026-_20260105.md)
+- [How to know if that job will crush your soul](How to know if that job will crush your soul.md)
 - [They have to be able to talk about us without us](They have to be able to talk about us without us.md)
 - [They have to be able to talk about us without us 20251205](They have to be able to talk about us without us_20251205.md)
 - [Vibe Coding- Empowering and Imprisoning](Vibe Coding- Empowering and Imprisoning.md)

@@ -14,6 +14,7 @@
 - [Pluralistic- The Epstein class and collapse porn (09 Feb 2026) 20260209](Pluralistic- The Epstein class and collapse porn (09 Feb 2026)_20260209.md)
 - [Pluralistic- The Nuremberg Caucus (10 Feb 2026) 20260210](Pluralistic- The Nuremberg Caucus (10 Feb 2026)_20260210.md)
 - [Pluralistic- Threads' margin is the Eurostack's opportunity (30 Jan 2026) 20260130](Pluralistic- Threads' margin is the Eurostack's opportunity (30 Jan 2026)_20260130.md)
+- [Pluralistic- Trump antitrust is dead (13 Feb 2026) 20260213](Pluralistic- Trump antitrust is dead (13 Feb 2026)_20260213.md)
 
 ---
 

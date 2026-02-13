@@ -14,6 +14,7 @@
 - [Book Review- With the End in Mind - Dying, Death and Wisdom in an Age of Denial by Kathryn Mannix ★★★⯪☆ 20260205](Book Review- With the End in Mind - Dying, Death and Wisdom in an Age of Denial by Kathryn Mannix ★★★⯪☆_20260205.md)
 - [Gadget Review- Epomaker TH87 ISO Mechanical Keyboard ★★★★⯪ 20260211](Gadget Review- Epomaker TH87 ISO Mechanical Keyboard ★★★★⯪_20260211.md)
 - [Gadget Review- Orico Power Strip (UK) ★★⯪☆☆ 20260209](Gadget Review- Orico Power Strip (UK) ★★⯪☆☆_20260209.md)
+- [Gadget Review- Topdon TS004 Thermal Monocular ★★★★⯪ 20260213](Gadget Review- Topdon TS004 Thermal Monocular ★★★★⯪_20260213.md)
 - [Get all the reactions to your GitHub content using GraphQL 20260205](Get all the reactions to your GitHub content using GraphQL_20260205.md)
 - [Reputation Scores for GitHub Accounts 20260207](Reputation Scores for GitHub Accounts_20260207.md)
 - [The cost of running OpenBenches.org 20260203](The cost of running OpenBenches.org_20260203.md)

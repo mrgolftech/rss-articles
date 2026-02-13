@@ -12,6 +12,7 @@
 - [I broke and fixed my Ghost blog 20260205](I broke and fixed my Ghost blog_20260205.md)
 - [Making RSS More Fun 20260205](Making RSS More Fun_20260205.md)
 - [SQLite for a REST API Database- 20260205](SQLite for a REST API Database-_20260205.md)
+- [The Small Web is Tricky to Find 20260213](The Small Web is Tricky to Find_20260213.md)
 - [The Year of the 3D Printed Miniature (And Other Lies We Tell Ourselves) 20260205](The Year of the 3D Printed Miniature (And Other Lies We Tell Ourselves)_20260205.md)
 
 ---

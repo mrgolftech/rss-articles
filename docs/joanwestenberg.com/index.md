@@ -4,6 +4,7 @@
 
 - [Communities are not fungible 20260211](Communities are not fungible_20260211.md)
 - [How to stop being boring 20260205](How to stop being boring_20260205.md)
+- [Members only- -Won't Fix- self help 20260213](Members only- -Won't Fix- self help_20260213.md)
 - [The Coherence Premium 20260202](The Coherence Premium_20260202.md)
 - [The Discourse is a Distributed Denial-of-Service Attack 20260205](The Discourse is a Distributed Denial-of-Service Attack_20260205.md)
 - [The pitch deck is dead. Write a pitch.md instead. 20260209](The pitch deck is dead. Write a pitch.md instead._20260209.md)

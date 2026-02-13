@@ -10,6 +10,7 @@
 - [Package Management Consulting 20260211](Package Management Consulting_20260211.md)
 - [Package Management at FOSDEM 2026 20260204](Package Management at FOSDEM 2026_20260204.md)
 - [Package Manager Podcast Episodes 20260209](Package Manager Podcast Episodes_20260209.md)
+- [Respectful Open Source 20260213](Respectful Open Source_20260213.md)
 - [Sandwich Bill of Materials 20260208](Sandwich Bill of Materials_20260208.md)
 - [The Dependency Layer in Digital Sovereignty 20260128](The Dependency Layer in Digital Sovereignty_20260128.md)
 - [The Many Flavors of Ignore Files 20260212](The Many Flavors of Ignore Files_20260212.md)

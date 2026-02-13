@@ -3,6 +3,7 @@
 以下是本博客的所有文章：
 
 - [Everyone's okay with their AI, just not yours 20260205](Everyone's okay with their AI, just not yours_20260205.md)
+- [Factional Drift- We cluster into factions online 20260213](Factional Drift- We cluster into factions online_20260213.md)
 - [LLM Adblockers are coming! 20260205](LLM Adblockers are coming!_20260205.md)
 - [Last year, all my non-programmer friends built apps 20260211](Last year, all my non-programmer friends built apps_20260211.md)
 - [Markdown.exe 20260212](Markdown.exe_20260212.md)

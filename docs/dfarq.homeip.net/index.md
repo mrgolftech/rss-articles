@@ -15,6 +15,7 @@
 - [What happened to Conner hard drives 20260205](What happened to Conner hard drives_20260205.md)
 - [What happened to Packard Bell- 20260130](What happened to Packard Bell-_20260130.md)
 - [What happened to Packard Bell- 20260205](What happened to Packard Bell-_20260205.md)
+- [What happened to Prodigy Internet 20260213](What happened to Prodigy Internet_20260213.md)
 - [When Bill Gates claimed to work for $2 an hour 20260203](When Bill Gates claimed to work for $2 an hour_20260203.md)
 - [When Bill Gates claimed to work for $2 an hour 20260205](When Bill Gates claimed to work for $2 an hour_20260205.md)
 - [Why Pets.com failed and became a dotcom joke 20260210](Why Pets.com failed and became a dotcom joke_20260210.md)

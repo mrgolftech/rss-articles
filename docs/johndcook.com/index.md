@@ -7,6 +7,7 @@
 - [Bridging secrets is hard 20260130](Bridging secrets is hard_20260130.md)
 - [Computing large Fibonacci numbers 20260208](Computing large Fibonacci numbers_20260208.md)
 - [Eigenvalue homework problems are backward 20260206](Eigenvalue homework problems are backward_20260206.md)
+- [Expressing a prime as the sum of two squares 20260213](Expressing a prime as the sum of two squares_20260213.md)
 - [Fibonacci number certificates 20260205](Fibonacci number certificates_20260205.md)
 - [Fibonacci numbers and time-space tradeoffs 20260208](Fibonacci numbers and time-space tradeoffs_20260208.md)
 - [Minimum of cosine sum 20260207](Minimum of cosine sum_20260207.md)

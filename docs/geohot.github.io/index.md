@@ -2,6 +2,7 @@
 
 以下是本博客的所有文章：
 
+- [I Told You So 20260212](I Told You So_20260212.md)
 - [The Coming War on Car Ownership 20260125](The Coming War on Car Ownership_20260125.md)
 - [The Importance of Diversity 20260127](The Importance of Diversity_20260127.md)
 - [Will I ever own a zettaflop- 20260126](Will I ever own a zettaflop-_20260126.md)

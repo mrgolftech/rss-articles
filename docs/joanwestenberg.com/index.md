@@ -2,6 +2,7 @@
 
 以下是本博客的所有文章：
 
+- [AI twitter's favourite lie- everyone wants to be a developer 20260214](AI twitter's favourite lie- everyone wants to be a developer_20260214.md)
 - [Communities are not fungible 20260211](Communities are not fungible_20260211.md)
 - [How to stop being boring 20260205](How to stop being boring_20260205.md)
 - [Members only- -Won't Fix- self help 20260213](Members only- -Won't Fix- self help_20260213.md)

@@ -8,6 +8,7 @@
 - [Incident Report- CVE-2024-YIKES 20260203](Incident Report- CVE-2024-YIKES_20260203.md)
 - [Lockfiles Killed Vendoring 20260210](Lockfiles Killed Vendoring_20260210.md)
 - [Package Management Consulting 20260211](Package Management Consulting_20260211.md)
+- [Package Management Namespaces 20260214](Package Management Namespaces_20260214.md)
 - [Package Management at FOSDEM 2026 20260204](Package Management at FOSDEM 2026_20260204.md)
 - [Package Manager Podcast Episodes 20260209](Package Manager Podcast Episodes_20260209.md)
 - [Respectful Open Source 20260213](Respectful Open Source_20260213.md)

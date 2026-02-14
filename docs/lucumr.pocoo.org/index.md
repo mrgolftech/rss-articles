@@ -9,6 +9,7 @@
 - [Pi- The Minimal Agent Within OpenClaw 20260131](Pi- The Minimal Agent Within OpenClaw_20260131.md)
 - [Pi- The Minimal Agent Within OpenClaw 20260205](Pi- The Minimal Agent Within OpenClaw_20260205.md)
 - [Porting MiniJinja to Go With an Agent 20260205](Porting MiniJinja to Go With an Agent_20260205.md)
+- [The Final Bottleneck 20260213](The Final Bottleneck_20260213.md)
 
 ---
 

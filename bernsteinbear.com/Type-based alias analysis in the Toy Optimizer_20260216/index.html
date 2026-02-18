@@ -1,0 +1,973 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/bernsteinbear.com/Type-based%20alias%20analysis%20in%20the%20Toy%20Optimizer_20260216/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Type-based alias analysis in the Toy Optimizer - Hacker News 精选博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#type-based-alias-analysis-in-the-toy-optimizer" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Hacker News 精选博客" class="md-header__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker News 精选博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Type-based alias analysis in the Toy Optimizer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker News 精选博客" class="md-nav__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hacker News 精选博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/bernsteinbear.com/Type-based alias analysis in the Toy Optimizer_20260216.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="type-based-alias-analysis-in-the-toy-optimizer">Type-based alias analysis in the Toy Optimizer<a class="headerlink" href="#type-based-alias-analysis-in-the-toy-optimizer" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> <a href="https://bernsteinbear.com">bernsteinbear.com</a>
+<strong>发布时间:</strong> Mon, 16 Feb 2026 00:00:00 +0000
+<strong>链接:</strong> https://bernsteinbear.com/blog/toy-tbaa/?utm_source=rss</p>
+<hr />
+<p><em>Another entry in the <a href="https://pypy.org/categories/toy-optimizer.html">Toy Optimizer series</a></em>.</p>
+
+<p>Last time, we did <a href="https://bernsteinbear.com/blog/toy-load-store/">load-store forwarding</a> in the context
+of our Toy Optimizer. We managed to cache the results of both reads from and
+writes to the heap—at compile-time!</p>
+
+<p>We were careful to mind object aliasing: we separated our heap information into
+alias classes based on what offset the reads/writes referenced. This way, if we
+didn’t know if object <code class="language-plaintext highlighter-rouge">a</code> and <code class="language-plaintext highlighter-rouge">b</code> aliased, we could at least know that
+different offsets would never alias (assuming our objects don’t overlap and
+memory accesses are on word-sized slots). This is a coarse-grained heuristic.</p>
+
+<p>Fortunately, we often have much more information available at compile-time than
+just the offset, so we should use it. I mentioned in a footnote that we could
+use type information, for example, to improve our alias analysis. We’ll add
+a lightweight form of <a href="https://bernsteinbear.com/assets/img/tbaa.pdf">type-based alias analysis (TBAA)</a>
+(PDF) in this post.</p>
+
+<h2 id="representing-types">Representing types</h2>
+
+<p>We return once again to Fil Pizlo land, specifically <a href="https://gist.github.com/pizlonator/cf1e72b8600b1437dda8153ea3fdb963">How I implement SSA
+form</a>.
+We’re going to be using the hierarchical heap effect representation from the
+post in our implementation, but you can use your own type representation if you
+have one already.</p>
+
+<p>This representation divides the heap into disjoint regions by type. Consider,
+for example, that <code class="language-plaintext highlighter-rouge">Array</code> objects and <code class="language-plaintext highlighter-rouge">String</code> objects do not overlap. A
+<code class="language-plaintext highlighter-rouge">LinkedList</code> pointer is never going to alias an <code class="language-plaintext highlighter-rouge">Integer</code> pointer. They can
+therefore be reasoned about separately.</p>
+
+<p>But sometimes you don’t have perfect type information available. If you have in
+your language an <code class="language-plaintext highlighter-rouge">Object</code> base class of all objects, then the <code class="language-plaintext highlighter-rouge">Object</code> heap
+overlaps with, say, the <code class="language-plaintext highlighter-rouge">Array</code> heap. So you need some way to represent that
+too—just having an enum doesn’t work cleanly.</p>
+
+<p>Here is an example simplified type hierarchy:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Any
+  Object
+    Array
+    String
+  Other
+</code></pre></div></div>
+
+<p>Where <code class="language-plaintext highlighter-rouge">Other</code> might represent different parts of the runtime’s data structures,
+and could be further segmented into <code class="language-plaintext highlighter-rouge">GC</code>, <code class="language-plaintext highlighter-rouge">Thread</code>, etc.</p>
+
+<p>Fil’s idea is that we can represent each node in that hierarchy with a tuple of
+integers <code class="language-plaintext highlighter-rouge">[start, end)</code> (inclusive, exclusive) that represent the pre- and
+post-order traversals of the tree. Or, if tree traversals are not engraved into
+your bones, they represent the range of all the nested objects within them.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Any [0, 3)
+  Object [0, 2)
+    Array [0, 1)
+    String [1, 2)
+  Other [2, 3)
+</code></pre></div></div>
+
+<p>Then the “does this write interfere with this read” check—the aliasing
+check—is a range overlap query.</p>
+
+<p>Here’s a perhaps over-engineered Python implementation of the range and heap
+hierarchy based on the Ruby generator and C++ runtime code from JavaScriptCore:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">HeapRange</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">start</span> <span class="o">=</span> <span class="n">start</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">end</span> <span class="o">=</span> <span class="n">end</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s">"[</span><span class="si">{</span><span class="bp">self</span><span class="p">.</span><span class="n">start</span><span class="si">}</span><span class="s">, </span><span class="si">{</span><span class="bp">self</span><span class="p">.</span><span class="n">end</span><span class="si">}</span><span class="s">)"</span>
+
+    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">start</span> <span class="o">==</span> <span class="bp">self</span><span class="p">.</span><span class="n">end</span>
+
+    <span class="k">def</span> <span class="nf">overlaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s">"HeapRange"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="c1"># Empty ranges interfere with nothing
+</span>        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span> <span class="ow">or</span> <span class="n">other</span><span class="p">.</span><span class="n">is_empty</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">end</span> <span class="o">&gt;</span> <span class="n">other</span><span class="p">.</span><span class="n">start</span> <span class="ow">and</span> <span class="n">other</span><span class="p">.</span><span class="n">end</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="p">.</span><span class="n">start</span>
+
+
+<span class="k">class</span> <span class="nc">AbstractHeap</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">parent</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="p">.</span><span class="nb">range</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">add_child</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">AbstractHeap</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">.</span><span class="n">parent</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">children</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="n">start</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="p">.</span><span class="n">children</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="nb">range</span> <span class="o">=</span> <span class="n">HeapRange</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">current</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">children</span><span class="p">:</span>
+            <span class="n">child</span><span class="p">.</span><span class="n">compute</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">child</span><span class="p">.</span><span class="nb">range</span><span class="p">.</span><span class="n">end</span>
+        <span class="bp">self</span><span class="p">.</span><span class="nb">range</span> <span class="o">=</span> <span class="n">HeapRange</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">current</span><span class="p">)</span>
+
+
+<span class="n">Any</span> <span class="o">=</span> <span class="n">AbstractHeap</span><span class="p">(</span><span class="s">"Any"</span><span class="p">)</span>
+<span class="n">Object</span> <span class="o">=</span> <span class="n">Any</span><span class="p">.</span><span class="n">add_child</span><span class="p">(</span><span class="s">"Object"</span><span class="p">)</span>
+<span class="n">Array</span> <span class="o">=</span> <span class="n">Object</span><span class="p">.</span><span class="n">add_child</span><span class="p">(</span><span class="s">"Array"</span><span class="p">)</span>
+<span class="n">String</span> <span class="o">=</span> <span class="n">Object</span><span class="p">.</span><span class="n">add_child</span><span class="p">(</span><span class="s">"String"</span><span class="p">)</span>
+<span class="n">Other</span> <span class="o">=</span> <span class="n">Any</span><span class="p">.</span><span class="n">add_child</span><span class="p">(</span><span class="s">"Other"</span><span class="p">)</span>
+<span class="n">Any</span><span class="p">.</span><span class="n">compute</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Where <code class="language-plaintext highlighter-rouge">Any.compute(0)</code> kicks off the tree-numbering scheme.</p>
+
+<p>Fil’s implementation also covers a bunch of abstract heaps such as SSAState and
+Control because his is used for code motion and whatnot. That can be added on
+later but we will not do so in this post.</p>
+
+<p>So there you have it: a type representation. Now we need to use it in our
+load-store forwarding.</p>
+
+<h2 id="load-store-forwarding">Load-store forwarding</h2>
+
+<p>Recall that our load-store optimization pass looks like this:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">optimize_load_store</span><span class="p">(</span><span class="n">bb</span><span class="p">:</span> <span class="n">Block</span><span class="p">):</span>
+    <span class="n">opt_bb</span> <span class="o">=</span> <span class="n">Block</span><span class="p">()</span>
+    <span class="c1"># Stores things we know about the heap at... compile-time.
+</span>    <span class="c1"># Key: an object and an offset pair acting as a heap address
+</span>    <span class="c1"># Value: a previous SSA value we know exists at that address
+</span>    <span class="n">compile_time_heap</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Value</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">Value</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">bb</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">op</span><span class="p">.</span><span class="n">name</span> <span class="o">==</span> <span class="s">"store"</span><span class="p">:</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="n">op</span><span class="p">.</span><span class="n">arg</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">offset</span> <span class="o">=</span> <span class="n">get_num</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">store_info</span> <span class="o">=</span> <span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span>
+            <span class="n">current_value</span> <span class="o">=</span> <span class="n">compile_time_heap</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">store_info</span><span class="p">)</span>
+            <span class="n">new_value</span> <span class="o">=</span> <span class="n">op</span><span class="p">.</span><span class="n">arg</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">eq_value</span><span class="p">(</span><span class="n">current_value</span><span class="p">,</span> <span class="n">new_value</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="n">compile_time_heap</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">load_info</span><span class="p">:</span> <span class="n">value</span>
+                <span class="k">for</span> <span class="n">load_info</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">compile_time_heap</span><span class="p">.</span><span class="n">items</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">load_info</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">offset</span>
+            <span class="p">}</span>
+            <span class="n">compile_time_heap</span><span class="p">[</span><span class="n">store_info</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_value</span>
+        <span class="k">elif</span> <span class="n">op</span><span class="p">.</span><span class="n">name</span> <span class="o">==</span> <span class="s">"load"</span><span class="p">:</span>
+            <span class="n">load_info</span> <span class="o">=</span> <span class="p">(</span><span class="n">op</span><span class="p">.</span><span class="n">arg</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">get_num</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">load_info</span> <span class="ow">in</span> <span class="n">compile_time_heap</span><span class="p">:</span>
+                <span class="n">op</span><span class="p">.</span><span class="n">make_equal_to</span><span class="p">(</span><span class="n">compile_time_heap</span><span class="p">[</span><span class="n">load_info</span><span class="p">])</span>
+                <span class="k">continue</span>
+            <span class="n">compile_time_heap</span><span class="p">[</span><span class="n">load_info</span><span class="p">]</span> <span class="o">=</span> <span class="n">op</span>
+        <span class="n">opt_bb</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">op</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">opt_bb</span>
+</code></pre></div></div>
+
+<p>At its core, it iterates over the instructions, keeping a representation of the
+heap at compile-time. Reads get cached, writes get cached, and writes also
+invalidate the state of compile-time information about fields that may alias.</p>
+
+<p>In this case, our <em>may alias</em> asks only if the offsets overlap. This means that
+the following unit test will fail:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_store_to_same_offset_different_heaps_does_not_invalidate_load</span><span class="p">():</span>
+    <span class="n">bb</span> <span class="o">=</span> <span class="n">Block</span><span class="p">()</span>
+    <span class="n">var0</span> <span class="o">=</span> <span class="n">bb</span><span class="p">.</span><span class="n">getarg</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">var0</span><span class="p">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">Array</span>
+    <span class="n">var1</span> <span class="o">=</span> <span class="n">bb</span><span class="p">.</span><span class="n">getarg</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">var1</span><span class="p">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">String</span>
+    <span class="n">var2</span> <span class="o">=</span> <span class="n">bb</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">var0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">var3</span> <span class="o">=</span> <span class="n">bb</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">var1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">var4</span> <span class="o">=</span> <span class="n">bb</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">var0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">bb</span><span class="p">.</span><span class="n">escape</span><span class="p">(</span><span class="n">var4</span><span class="p">)</span>
+    <span class="n">opt_bb</span> <span class="o">=</span> <span class="n">optimize_load_store</span><span class="p">(</span><span class="n">bb</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="p">(</span>
+        <span class="n">bb_to_str</span><span class="p">(</span><span class="n">opt_bb</span><span class="p">)</span>
+        <span class="o">==</span> <span class="s">"""</span><span class="se">\
+</span><span class="s">var0 = getarg(0)
+var1 = getarg(1)
+var2 = store(var0, 0, 3)
+var3 = store(var1, 0, 4)
+var4 = escape(3)"""</span>
+    <span class="p">)</span>
+</code></pre></div></div>
+
+<p>This test is expecting the write to <code class="language-plaintext highlighter-rouge">var0</code> to still remain cached even though
+we wrote to the same offset in <code class="language-plaintext highlighter-rouge">var1</code>—because we have annotated <code class="language-plaintext highlighter-rouge">var0</code> as
+being an <code class="language-plaintext highlighter-rouge">Array</code> and <code class="language-plaintext highlighter-rouge">var1</code> as being a <code class="language-plaintext highlighter-rouge">String</code>. If we account for type
+information in our alias analysis, we can get this test to pass.</p>
+
+<p>After doing a bunch of fussing around with the load-store forwarding (many
+rewrites), I eventually got it down to a very short diff:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gi">+def may_alias(left: Value, right: Value) -&gt; bool:
++    return (left.info or Any).range.overlaps((right.info or Any).range)
++
++
+</span> def optimize_load_store(bb: Block):
+     opt_bb = Block()
+     # Stores things we know about the heap at... compile-time.
+<span class="p">@@ -138,6 +210,10 @@</span> def optimize_load_store(bb: Block):
+                 load_info: value
+                 for load_info, value in compile_time_heap.items()
+                 if load_info[1] != offset
+<span class="gi">+                or not may_alias(load_info[0], obj)
+</span>             }
+             compile_time_heap[store_info] = new_value
+</code></pre></div></div>
+
+<p>If we don’t have any type/alias information, we default to “I know nothing”
+(<code class="language-plaintext highlighter-rouge">Any</code>) for each object. Then we check range overlap.</p>
+
+<p>The boolean logic in <code class="language-plaintext highlighter-rouge">optimize_load_store</code> looks a little weird, maybe. But we
+can also rewrite (via DeMorgan’s law) as:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="p">...</span> <span class="k">for</span> <span class="p">...</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">load_info</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">offset</span>
+            <span class="ow">and</span> <span class="n">may_alias</span><span class="p">(</span><span class="n">load_info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">obj</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>So, keeping all the cached field state about fields that are known by offset
+and by type not to alias. Maybe that is clearer (but not as nice a diff).</p>
+
+<blockquote>
+  <p>Note that the type representation is not so important here! You could use a
+bitset version of the type information if you want. The important things are
+that you can cheaply construct types and check overlap between them.</p>
+</blockquote>
+
+<!--
+Note that we do not currently have a notion of "must-alias" other than if two
+SSA values are equal. Therefore we can't make use of writes to object A for
+loads from object B even if A and B must alias.
+-->
+
+<p>Nice, now our test passes! We can differentiate between memory accesses on
+objects of different types.</p>
+
+<p>But what if we knew more?</p>
+
+<h2 id="object-provenance--allocation-site">Object provenance / allocation site</h2>
+
+<p>Sometimes we know where an object came from. For example, we may have seen it
+get allocated in the trace. If we saw an object’s allocation, we know that it
+does not alias (for example) any object that was passed in via a parameter. We
+can use this kind of information to our advantage.</p>
+
+<p>For example, in the following made up IR snippet:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>trace(arg0):
+  v0 = malloc(8)
+  v1 = malloc(16)
+  ...
+</code></pre></div></div>
+
+<p>We know that (among other facts) <code class="language-plaintext highlighter-rouge">v0</code> doesn’t alias <code class="language-plaintext highlighter-rouge">arg0</code> or <code class="language-plaintext highlighter-rouge">v1</code> because we
+have seen its allocation site.</p>
+
+<p>I saw this in the old V8 IR Hydrogen’s lightweight alias analysis<sup id="fnref:fork"><a class="footnote" href="https://bernsteinbear.com/feed.xml#fn:fork" rel="footnote">1</a></sup>:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">enum</span> <span class="n">HAliasing</span> <span class="p">{</span>
+  <span class="n">kMustAlias</span><span class="p">,</span>
+  <span class="n">kMayAlias</span><span class="p">,</span>
+  <span class="n">kNoAlias</span>
+<span class="p">};</span>
+
+<span class="n">HAliasing</span> <span class="n">Query</span><span class="p">(</span><span class="n">HValue</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="n">HValue</span><span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// The same SSA value always references the same object.</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span> <span class="k">return</span> <span class="n">kMustAlias</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">IsAllocate</span><span class="p">()</span> <span class="o">||</span> <span class="n">a</span><span class="o">-&gt;</span><span class="n">IsInnerAllocatedObject</span><span class="p">())</span> <span class="p">{</span>
+    <span class="c1">// Two non-identical allocations can never be aliases.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">IsAllocate</span><span class="p">())</span> <span class="k">return</span> <span class="n">kNoAlias</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">IsInnerAllocatedObject</span><span class="p">())</span> <span class="k">return</span> <span class="n">kNoAlias</span><span class="p">;</span>
+    <span class="c1">// An allocation can never alias a parameter or a constant.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">IsParameter</span><span class="p">())</span> <span class="k">return</span> <span class="n">kNoAlias</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">IsConstant</span><span class="p">())</span> <span class="k">return</span> <span class="n">kNoAlias</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">IsAllocate</span><span class="p">()</span> <span class="o">||</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">IsInnerAllocatedObject</span><span class="p">())</span> <span class="p">{</span>
+    <span class="c1">// An allocation can never alias a parameter or a constant.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">IsParameter</span><span class="p">())</span> <span class="k">return</span> <span class="n">kNoAlias</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">IsConstant</span><span class="p">())</span> <span class="k">return</span> <span class="n">kNoAlias</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Constant objects can be distinguished statically.</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">IsConstant</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">IsConstant</span><span class="p">())</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">-&gt;</span><span class="n">Equals</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">?</span> <span class="n">kMustAlias</span> <span class="o">:</span> <span class="n">kNoAlias</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">kMayAlias</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>There is plenty of other useful information such as:</p>
+
+<ul>
+  <li>If we know at compile-time that object A has 5 at offset 0 and object B has 7
+at offset 0, then A and B don’t alias (thanks, CF)
+    <ul>
+      <li>In the RPython JIT in PyPy, this is used to determine if two user (Python)
+objects don’t alias because we know the contents of the user (Python) class
+field</li>
+    </ul>
+  </li>
+  <li>Object size (though perhaps that is a special case of the above bullet)</li>
+  <li>Field size/type</li>
+  <li>Deferring alias checks to run-time
+    <ul>
+      <li>Have a branch <code class="language-plaintext highlighter-rouge">if (a == b) { ... } else { ... }</code></li>
+    </ul>
+  </li>
+  <li>…</li>
+</ul>
+
+<p>If you have other fun ones, please write in.</p>
+
+<h2 id="interacting-with-other-instructions">Interacting with other instructions</h2>
+
+<p>We only handle loads and stores in our optimizer. Unfortunately, this means we
+may accidentally cache stale information. Consider: what happens if a function
+call (or any other opaque instruction) writes into an object we are tracking?</p>
+
+<p>The conservative approach is to invalidate all cached information on a function
+call. This is definitely correct, but it’s a bummer for the optimizer. Can we
+do anything?</p>
+
+<p>Well, perhaps we are calling a well-known function or a specific IR
+instruction. In that case, we can annotate it with effects in the same abstract
+heap model: if the instruction does not write, or only writes to some heaps, we
+can at least only partially invalidate our heap.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">known_builtin_functions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"Array_length"</span><span class="p">:</span> <span class="n">Effects</span><span class="p">(</span><span class="n">reads</span><span class="o">=</span><span class="n">Array</span><span class="p">,</span> <span class="n">writes</span><span class="o">=</span><span class="n">Empty</span><span class="p">()),</span>
+  <span class="s">"Object_setShape"</span><span class="p">:</span> <span class="n">Effects</span><span class="p">(</span><span class="n">reads</span><span class="o">=</span><span class="n">Empty</span><span class="p">(),</span> <span class="n">writes</span><span class="o">=</span><span class="n">Object</span><span class="p">),</span>
+  <span class="s">"String_setEncoding"</span><span class="p">:</span> <span class="n">Effects</span><span class="p">(</span><span class="n">reads</span><span class="o">=</span><span class="n">Empty</span><span class="p">(),</span> <span class="n">writes</span><span class="o">=</span><span class="n">String</span><span class="p">),</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>However, if the function is unknown or otherwise opaque, we need at least more
+advanced alias information and perhaps even (partial) escape analysis.</p>
+
+<p>Consider: even if an instruction takes no operands, we have no idea what state
+it has access to. If it writes to any object A, we cannot safely cache
+information about any other object B unless we know <em>for sure</em> that A and B do
+not alias. And we don’t know what the instruction writes to. So we may only
+know we can cache information about B because it was allocated locally and has
+not escaped.</p>
+
+<h2 id="storing-vs-computing-on-the-fly">Storing vs computing on the fly</h2>
+
+<p>Some runtimes such as ART <a href="https://github.com/LineageOS/android_art/blob/8ce603e0c68899bdfbc9cd4c50dcc65bbf777982/compiler/optimizing/load_store_analysis.h#L395">pre-compute all of their alias information</a> in a bit
+matrix. This makes more sense if you are using alias information in a full
+control-flow graph, where you might need to iterate over the graph a few times.
+In a trace context, you can do a lot in one single pass—no need to make a
+matrix.</p>
+
+<h2 id="when-is-this-useful-how-much">When is this useful? How much?</h2>
+
+<p>As usual, this is a toy IR and a toy optimizer, so it’s hard to say how much
+faster it makes its toy programs.</p>
+
+<p>In general, though, there is a dial for analysis and optimization that goes
+between precision and speed. This is a happy point on that dial, only a tiny
+incremental analysis cost bump above offset-only invalidation, but for higher
+precision. I like that tradeoff.</p>
+
+<p>Also, it is very useful in JIT compilers where generally the managed language
+is a little <a href="https://blog.regehr.org/archives/959">better-behaved than a C-like
+language</a>. Somewhere in your IR there
+will be a lot of duplicate loads and stores from a strength reduction pass, and
+this can clean up the mess.</p>
+
+<!--
+## In other languages
+
+Taking address of objects throws a wrench in it
+
+Can't really do it in C, even though UB
+-->
+
+<!--
+https://github.com/WebKit/WebKit/blob/main/Source/JavaScriptCore/dfg/DFGObjectAllocationSinkingPhase.cpp
+-->
+
+<h2 id="wrapping-up">Wrapping up</h2>
+
+<p>Thanks for joining as I work through a small use of type-based alias analysis
+for myself. I hope you enjoyed.</p>
+
+<h2 id="thanks">Thanks</h2>
+
+<p>Thank you to <a href="https://www.chrisgregory.me/">Chris Gregory</a> for helpful feedback.</p>
+<div class="footnotes">
+  <ol>
+    <li id="fn:fork">
+      <p>I made <a href="https://github.com/tekknolagi/v8">a fork of V8</a> to go spelunk
+around the Hydrogen IR. I reset the V8 repo to the last commit before they
+deleted it in favor of their new Sea of Nodes based IR called TurboFan. <a class="reversefootnote" href="https://bernsteinbear.com/feed.xml#fnref:fork">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+<hr />
+<p><em>抓取时间: 2026-02-18 18:04:21</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月18日 10:04:23 UTC">2026-02-18</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

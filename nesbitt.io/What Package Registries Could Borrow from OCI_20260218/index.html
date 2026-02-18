@@ -1,0 +1,567 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/nesbitt.io/What%20Package%20Registries%20Could%20Borrow%20from%20OCI_20260218/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>What Package Registries Could Borrow from OCI - Hacker News 精选博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#what-package-registries-could-borrow-from-oci" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Hacker News 精选博客" class="md-header__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker News 精选博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              What Package Registries Could Borrow from OCI
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker News 精选博客" class="md-nav__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hacker News 精选博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/nesbitt.io/What Package Registries Could Borrow from OCI_20260218.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="what-package-registries-could-borrow-from-oci">What Package Registries Could Borrow from OCI<a class="headerlink" href="#what-package-registries-could-borrow-from-oci" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> <a href="https://nesbitt.io">nesbitt.io</a>
+<strong>发布时间:</strong> 2026-02-18T00:00:00+00:00
+<strong>链接:</strong> https://nesbitt.io/2026/02/18/what-package-registries-could-borrow-from-oci.html</p>
+<hr />
+<p>{'type': 'text/html', 'language': None, 'base': 'https://nesbitt.io/2026/02/18/what-package-registries-could-borrow-from-oci.html', 'value': '<p>Every package manager ships code as an archive, and every one of them has a slightly different way to do it. npm wraps tarballs in a <code class="language-plaintext highlighter-rouge">package/</code> directory prefix. RubyGems nests gzipped files inside an uncompressed tar. Alpine concatenates three gzip streams and calls it a package. Python cycled through four distribution formats in twenty years. RPM used cpio as its payload format for nearly three decades before finally dropping it in 2025.</p>\n\n<p>Meanwhile, the container world converged on a single format: OCI, the Open Container Initiative spec. And over the past few years, OCI registries have quietly started storing things that aren’t containers at all: Helm charts, Homebrew bottles, WebAssembly modules, AI models. The format was designed for container images, but the underlying primitives turn out to be general enough that it’s worth asking whether every package manager could use OCI for distribution.</p>\n\n<h3 id="what-oci-actually-is">What OCI actually is</h3>\n\n<p>OCI defines three specifications: a Runtime Spec (how to run containers), an Image Spec (how to describe container contents), and a Distribution Spec (how to push and pull from registries).</p>\n\n<p>At the storage level, an OCI registry deals in two primitives: <strong>manifests</strong> and <strong>blobs</strong>. A manifest is a JSON document that references one or more blobs by their SHA-256 digest. A blob is an opaque chunk of binary content, and tags are human-readable names that point to manifests.</p>\n\n<p>A container image manifest looks like this:</p>\n\n<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">\n  </span><span class="nl">"schemaVersion"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">\n  </span><span class="nl">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/vnd.oci.image.manifest.v1+json"</span><span class="p">,</span><span class="w">\n  </span><span class="nl">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">\n    </span><span class="nl">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/vnd.oci.image.config.v1+json"</span><span class="p">,</span><span class="w">\n    </span><span class="nl">"digest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha256:abc123..."</span><span class="p">,</span><span class="w">\n    </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="w">\n  </span><span class="p">},</span><span class="w">\n  </span><span class="nl">"layers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">\n    </span><span class="p">{</span><span class="w">\n      </span><span class="nl">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/vnd.oci.image.layer.v1.tar+gzip"</span><span class="p">,</span><span class="w">\n      </span><span class="nl">"digest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha256:def456..."</span><span class="p">,</span><span class="w">\n      </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">56789</span><span class="w">\n    </span><span class="p">}</span><span class="w">\n  </span><span class="p">]</span><span class="w">\n</span><span class="p">}</span><span class="w">\n</span></code></pre></div></div>\n\n<p>The config blob holds metadata (what OS, what architecture, what environment variables). Each layer blob holds a tarball of filesystem changes. The registry doesn’t care what’s inside the blobs, only that each one is identified and verified by its digest.</p>\n\n<p>The <a href="https://opencontainers.org/posts/blog/2024-03-13-image-and-distribution-1-1/">v1.1 update</a> in February 2024 added <code class="language-plaintext highlighter-rouge">artifactType</code>, which declares what kind of thing a manifest describes so a registry can distinguish a Helm chart from a container image from a Homebrew bottle, and <code class="language-plaintext highlighter-rouge">subject</code>, which lets one artifact reference another and is how signatures and SBOMs get attached to the thing they describe. Before 1.1, people stored non-container artifacts by setting custom media types on the config blob, which worked but registries sometimes rejected or mishandled the results.</p>\n\n<p>To push an artifact, you upload each blob (to <code class="language-plaintext highlighter-rouge">/v2/&lt;name&gt;/blobs/uploads/</code>), then push a manifest that references those blobs by digest and size. To pull, you fetch the manifest, read the digests, and download the blobs. Because everything is addressed by digest, the registry only stores one copy of any given blob even if multiple artifacts reference it.</p>\n\n<h3 id="why-oci-and-not-something-purpose-built">Why OCI and not something purpose-built</h3>\n\n<p>The format itself carries a lot of container-specific ceremony, but every major cloud provider already runs an OCI-compliant registry: GitHub Container Registry, Amazon ECR, Azure Container Registry, Google Artifact Registry. Self-hosted options like Harbor and Zot are mature. Authentication, access control, replication, and CDN-backed blob storage all exist because container registries already solved those problems at scale, and a package registry built on OCI inherits all of it without reimplementing any of it.</p>\n\n<p><a href="https://oras.land/">ORAS</a> (OCI Registry As Storage) is a CNCF project that abstracts the multi-step OCI upload process into simple commands:</p>\n\n<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oras push registry.example.com/mypackage:1.0.0 \\n  package.tar.gz:application/vnd.example.package.v1.tar+gzip\n</code></pre></div></div>\n\n<p>This uploads the file as a blob, creates a manifest referencing it, and tags it. Helm, Flux, Crossplane, and the Sigstore signing tools all use ORAS or the underlying OCI client libraries.</p>\n\n<h3 id="what-package-managers-ship-today">What package managers ship today</h3>\n\n<p>No individual choice here is wrong, but seventeen different answers to the same basic problem suggests the archive format was never the part anyone thought hard about.</p>\n\n<table>\n  <thead>\n    <tr>\n      <th>Ecosystem</th>\n      <th>Format</th>\n      <th>What’s inside</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>npm</td>\n      <td><code class="language-plaintext highlighter-rouge">.tgz</code> (gzip tar)</td>\n      <td>Files under a <code class="language-plaintext highlighter-rouge">package/</code> prefix</td>\n    </tr>\n    <tr>\n      <td>PyPI</td>\n      <td><code class="language-plaintext highlighter-rouge">.whl</code> (zip) or <code class="language-plaintext highlighter-rouge">.tar.gz</code></td>\n      <td>Wheel: pre-built files + <code class="language-plaintext highlighter-rouge">.dist-info</code>. Sdist: source + <code class="language-plaintext highlighter-rouge">PKG-INFO</code></td>\n    </tr>\n    <tr>\n      <td>RubyGems</td>\n      <td><code class="language-plaintext highlighter-rouge">.gem</code> (tar of gzips)</td>\n      <td><code class="language-plaintext highlighter-rouge">metadata.gz</code> + <code class="language-plaintext highlighter-rouge">data.tar.gz</code> + <code class="language-plaintext highlighter-rouge">checksums.yaml.gz</code></td>\n    </tr>\n    <tr>\n      <td>Maven</td>\n      <td><code class="language-plaintext highlighter-rouge">.jar</code> (zip)</td>\n      <td>Compiled <code class="language-plaintext highlighter-rouge">.class</code> files + <code class="language-plaintext highlighter-rouge">META-INF/MANIFEST.MF</code></td>\n    </tr>\n    <tr>\n      <td>Cargo</td>\n      <td><code class="language-plaintext highlighter-rouge">.crate</code> (gzip tar)</td>\n      <td>Source + <code class="language-plaintext highlighter-rouge">Cargo.toml</code> + <code class="language-plaintext highlighter-rouge">Cargo.lock</code></td>\n    </tr>\n    <tr>\n      <td>NuGet</td>\n      <td><code class="language-plaintext highlighter-rouge">.nupkg</code> (zip)</td>\n      <td>DLL assemblies + <code class="language-plaintext highlighter-rouge">.nuspec</code> XML metadata</td>\n    </tr>\n    <tr>\n      <td>Homebrew</td>\n      <td><code class="language-plaintext highlighter-rouge">.bottle.tar.gz</code></td>\n      <td>Compiled binaries under install prefix</td>\n    </tr>\n    <tr>\n      <td>Go</td>\n      <td><code class="language-plaintext highlighter-rouge">.zip</code></td>\n      <td>Source under <code class="language-plaintext highlighter-rouge">module@version/</code> path prefix</td>\n    </tr>\n    <tr>\n      <td>Hex</td>\n      <td>Outer tar of inner files</td>\n      <td><code class="language-plaintext highlighter-rouge">VERSION</code> + <code class="language-plaintext highlighter-rouge">metadata.config</code> + <code class="language-plaintext highlighter-rouge">contents.tar.gz</code> + <code class="language-plaintext highlighter-rouge">CHECKSUM</code></td>\n    </tr>\n    <tr>\n      <td>Debian</td>\n      <td><code class="language-plaintext highlighter-rouge">.deb</code> (ar archive)</td>\n      <td><code class="language-plaintext highlighter-rouge">debian-binary</code> + <code class="language-plaintext highlighter-rouge">control.tar.<em></code> + <code class="language-plaintext highlighter-rouge">data.tar.</em></code></td>\n    </tr>\n    <tr>\n      <td>RPM</td>\n      <td>Custom binary format</td>\n      <td>Header sections + cpio payload (v4) or custom format (v6)<sup id="fnref:rpm5"><a class="footnote" href="https://nesbitt.io/2026/02/18/what-package-registries-could-borrow-from-oci.html#fn:rpm5" rel="footnote">1</a></sup></td>\n    </tr>\n    <tr>\n      <td>Alpine</td>\n      <td>Concatenated gzip streams</td>\n      <td>Signature + control tar + data tar</td>\n    </tr>\n    <tr>\n      <td>Conda</td>\n      <td><code class="language-plaintext highlighter-rouge">.conda</code> (zip of zstd tars) or <code class="language-plaintext highlighter-rouge">.tar.bz2</code></td>\n      <td><code class="language-plaintext highlighter-rouge">info/</code> metadata + package content</td>\n    </tr>\n    <tr>\n      <td>Dart/pub</td>\n      <td><code class="language-plaintext highlighter-rouge">.tar.gz</code></td>\n      <td>Source + <code class="language-plaintext highlighter-rouge">pubspec.yaml</code></td>\n    </tr>\n    <tr>\n      <td>Swift PM</td>\n      <td><code class="language-plaintext highlighter-rouge">.zip</code></td>\n      <td>Source archive</td>\n    </tr>\n    <tr>\n      <td>CPAN</td>\n      <td><code class="language-plaintext highlighter-rouge">.tar.gz</code></td>\n      <td><code class="language-plaintext highlighter-rouge">.pm</code> files + <code class="language-plaintext highlighter-rouge">Makefile.PL</code> + <code class="language-plaintext highlighter-rouge">META.yml</code> + <code class="language-plaintext highlighter-rouge">MANIFEST</code></td>\n    </tr>\n    <tr>\n      <td>CocoaPods</td>\n      <td>No archive format</td>\n      <td><code class="language-plaintext highlighter-rouge">.podspec</code> points to source URLs</td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id="the-weird-ones">The weird ones</h3>\n\n<p><strong>RubyGems</strong> nests compression inside archiving instead of the other way around. A <code class="language-plaintext highlighter-rouge">.gem</code> is an uncompressed tar containing individually gzipped files. So the outer archive provides no compression, and each component is compressed separately. This means you can extract the metadata without decompressing the data, which is a reasonable optimization, but the format looks strange at first glance because everything else in the Unix world puts gzip on the outside.</p>\n\n<p><strong>Alpine APK</strong> abuses a quirk of the gzip specification. The gzip format allows concatenation of multiple streams into a single file, and technically any compliant decompressor should handle it. Alpine packages are three separate gzip streams (signature, control, data) concatenated into one file. Since gzip provides no metadata about where one stream ends and the next begins, you have to fully decompress each segment to find the boundary. Kernel modules inside APK packages are often already gzipped, so you get gzip-inside-tar-inside-gzip.</p>\n\n<p><strong>RPM</strong> used cpio as its payload format from 1995 until RPM v6 shipped in September 2025. The cpio format has a 4GB file size limit baked into its header fields. For 30 years, no RPM package could contain a file larger than 4GB. RPM v6 finally dropped cpio in favor of a custom format.</p>\n\n<p><strong>Debian</strong> deliberately chose the <code class="language-plaintext highlighter-rouge">ar</code> archive format from the 1970s. The reasoning was practical: the extraction tools (<code class="language-plaintext highlighter-rouge">ar</code>, <code class="language-plaintext highlighter-rouge">tar</code>, <code class="language-plaintext highlighter-rouge">gzip</code>) are available on virtually every Unix system, even in minimal rescue environments. You can unpack a <code class="language-plaintext highlighter-rouge">.deb</code> with nothing but POSIX utilities. Probably the most intentional format choice on this list.</p>\n\n<p><strong>npm’s <code class="language-plaintext highlighter-rouge">package/</code> prefix</strong> means every tarball wraps its contents in a <code class="language-plaintext highlighter-rouge">package/</code> directory that gets stripped during install. This causes issues with relative <code class="language-plaintext highlighter-rouge">file:</code> dependencies inside tarballs, where npm tries to resolve paths relative to the tarball rather than the unpacked directory.</p>\n\n<p><strong>Python</strong> cycled through four distribution formats. Source tarballs with <code class="language-plaintext highlighter-rouge">setup.py</code> (1990s), eggs (2004, inspired by Java JARs, could be imported while still zipped), sdists (standardized tar.gz), and finally wheels (2012). Eggs lived for nineteen years before PyPI stopped accepting them in August 2023. The wheel format encodes Python version, ABI tag, and platform tag in the filename, which is more metadata than most ecosystems put in the filename but less than what goes in the manifest.</p>\n\n<p><strong>Conda</strong> maintained two incompatible formats for years. The legacy <code class="language-plaintext highlighter-rouge">.tar.bz2</code> and the modern <code class="language-plaintext highlighter-rouge">.conda</code> (a zip containing zstandard-compressed tars). The switch from bzip2 to zstandard yielded significant decompression speedups, but every tool in the ecosystem had to support both formats indefinitely.</p>\n\n<p><strong>Hex</strong> (Erlang/Elixir) has two checksum schemes in the same package. The deprecated “inner checksum” hashes concatenated file contents. The current “outer checksum” hashes the entire tarball. Both are present for backward compatibility.</p>\n\n<h3 id="whos-already-using-oci">Who’s already using OCI</h3>\n\n<p>Homebrew is a traditional package manager, not a “cloud-native” tool, and its migration to OCI already happened under pressure.</p>\n\n<p>In February 2021, JFrog <a href="https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter/">announced</a> that Bintray would shut down on May 1. Homebrew’s bottles were hosted on Bintray. The maintainers had about three months to move their entire archive of precompiled binaries somewhere else, and they landed on GitHub Packages, which stores everything as OCI blobs on <code class="language-plaintext highlighter-rouge">ghcr.io</code>. <a href="https://brew.sh/2021/04/12/homebrew-3.1.0/">Homebrew 3.1.0</a> shipped April 12, 2021, with GHCR as the default download location.</p>\n\n<p>The transition was rough in the ways you’d expect. CI pipelines across the industry broke because macOS images on services like <a href="https://discuss.circleci.com/t/macos-image-users-homebrew-brownout-2021-04-26/39872">CircleCI</a> shipped with old Homebrew versions that still pointed at Bintray. During a brownout on April 26, any system running an older Homebrew got 502 errors. Older bottle versions were never migrated, so anyone pinned to an old formula version got 404s and had to build from source. The fix was <code class="language-plaintext highlighter-rouge">brew update</code>, but CI environments cached old Homebrew versions and didn’t auto-update.</p>\n\n<p>After the dust settled, the OCI-based storage enabled things that wouldn’t have been practical on Bintray. Homebrew 4.0.0 (February 2023) switched from git-cloned tap metadata to a <a href="https://brew.sh/2023/02/16/homebrew-4.0.0/">JSON API</a> that leverages the structured OCI manifests, and <code class="language-plaintext highlighter-rouge">brew update</code> dropped from running every 5 minutes to every 24 hours.</p>\n\n<p>Manifest-based integrity checking replaced the old checksum approach, though this introduced <a href="https://github.com/Homebrew/brew/issues/12300">its own class of bugs</a> where manifest checksums wouldn’t match. Platform multiplexing came naturally from OCI image indexes, which map platform variants (<code class="language-plaintext highlighter-rouge">arm64_sonoma</code>, <code class="language-plaintext highlighter-rouge">x86_64_linux</code>) to individual manifests without Homebrew having to build that logic itself.</p>\n\n<p>When you run <code class="language-plaintext highlighter-rouge">brew install</code>, the client fetches the OCI image index manifest from <code class="language-plaintext highlighter-rouge">ghcr.io/v2/homebrew/core/&lt;formula&gt;/manifests/&lt;version&gt;</code>, selects the right platform manifest, then HEADs the blob URL to get a 307 redirect to a signed URL on <code class="language-plaintext highlighter-rouge">pkg-containers.githubusercontent.com</code> where Fastly’s CDN serves the actual bytes. GHCR requires a bearer token even for public images, so Homebrew hardcodes <code class="language-plaintext highlighter-rouge">QQ==</code> as the bearer token. The bottle inside the blob is still a gzipped tarball with the same internal structure it always had.</p>\n\n<p>Helm charts followed a similar path. Helm v3.8 added native OCI registry support, and the old <code class="language-plaintext highlighter-rouge">index.yaml</code> repository format is being phased out. Azure CLI retired legacy Helm repository support in September 2025. Charts push with <code class="language-plaintext highlighter-rouge">helm push</code> using <code class="language-plaintext highlighter-rouge">oci://</code> prefixed references, and the chart tarball goes into a layer blob.</p>\n\n<h3 id="what-would-change">What would change</h3>\n\n<p><strong>Platform variants get first-class support.</strong> OCI image indexes map platform descriptors to manifests. A package with builds for five platforms would have an index pointing to five manifests, each pointing to the right blob. This is cleaner than npm’s convention of publishing platform-specific binaries as separate <code class="language-plaintext highlighter-rouge">optionalDependencies</code> packages, or Python’s approach of uploading multiple wheels with platform-encoded filenames and letting pip pick the right one.</p>\n\n<p><strong>Signing and attestation come built in.</strong> Every ecosystem is building its own signing infrastructure independently. npm added <a href="https://docs.npmjs.com/generating-provenance-statements">Sigstore-based provenance</a> in 2023, PyPI added <a href="https://docs.pypi.org/attestations/">attestations</a> in 2024, Cargo has <a href="https://github.com/rust-lang/rfcs/pull/3403">RFC 3403</a> open, and RubyGems has had signature support for years that almost nobody uses because the tooling never reached the point where it was easy enough to be default behavior. Each effort required dedicated engineering time from small registry teams who were already stretched thin.</p>\n\n<p>OCI’s <code class="language-plaintext highlighter-rouge">subject</code> field and referrers API provide a single mechanism for all of this. Cosign and Notation can sign any OCI artifact, storing the signature as a separate artifact in the same registry that references the signed content via <code class="language-plaintext highlighter-rouge">subject</code>. SBOMs attach the same way, as do build provenance attestations, vulnerability scan results, and license audits: push an artifact with <code class="language-plaintext highlighter-rouge">subject</code> pointing to the thing it describes, and any client can discover it through the referrers API.</p>\n\n<p>The security ecosystem around OCI registries (cosign, notation, Kyverno, OPA Gatekeeper, Ratify) represents years of investment that package registries could inherit. A policy engine enforcing “all artifacts must be signed before deployment” wouldn’t care whether it’s looking at a container image or a RubyGem, because the referrers API works the same way for both.</p>\n\n<p><strong>Deduplication and registry sustainability.</strong> Content-addressable storage identifies every blob by its SHA-256 digest, so if two packages contain an identical file the registry stores it once, and if two concurrent uploads push the same blob the registry accepts both but keeps one copy.</p>\n\n<p>Shared content between unrelated source packages is rare, so this matters more for binary packages where the same shared libraries get bundled into Homebrew bottles for different formulas, the same runtime components appear in multiple Conda packages, and Debian’s archive carries the same <code class="language-plaintext highlighter-rouge">.so</code> files across dozens of packages and versions.</p>\n\n<p>The community-funded registries are where this adds up. rubygems.org, crates.io, PyPI, and hex.pm run on bandwidth donated by CDN providers, primarily Fastly. These registries serve terabytes of package data to millions of developers on infrastructure that someone is volunteering to cover.</p>\n\n<p>Content-addressable storage won’t eliminate those costs, but a registry that’s been running for ten years has accumulated a lot of identical blobs that a content-addressable backend would collapse into single copies, and the savings compound as the registry grows.</p>\n\n<p><strong>Content-addressed mirroring.</strong> Mirroring a package registry today requires reimplementing each registry’s API and storage format, and every ecosystem’s mirror implementation is different: the Simple Repository API for PyPI, the registry API for npm, the compact index for RubyGems. Anyone can stand up an OCI-compliant mirror with off-the-shelf software like Harbor, Zot, or the CNCF Distribution project, which is a much lower bar than reverse-engineering a bespoke registry protocol.</p>\n\n<p>Content-addressable storage changes the trust model. If you have a blob’s SHA-256 digest, you can verify its integrity regardless of which server you downloaded it from, because two registries serving the same digest are provably serving the same bytes. This is the same property that makes <a href="https://nesbitt.io/2025/12/18/docker-is-the-lockfile-for-system-packages.html">Docker images work as lockfiles for system packages</a>: once you have the digest, the content is immutable and verifiable no matter where it came from.</p>\n\n<p>A mirror doesn’t need to be trusted to be honest, only to be available. The manifest contains the digests, and the blobs can come from anywhere: geographic mirrors, corporate caches, peer-to-peer distribution, even a USB drive with an OCI layout directory. When Fastly has an outage and rubygems.org goes down with it, any alternative source that can serve matching bytes becomes a valid mirror without any special trust relationship.</p>\n\n<p><strong>Registry infrastructure is already built.</strong> Running rubygems.org or crates.io means running custom storage, custom CDN configuration, and custom authentication. A package registry built on OCI offloads the most expensive parts to infrastructure that already exists with SLAs and dedicated engineering teams, and the registry team can spend more time on what actually matters: <a href="https://nesbitt.io/2025/12/22/package-registries-are-governance-as-a-service.html">governance</a>, the package index, dependency resolution, and search.</p>\n\n<h3 id="what-wouldnt-work-well">What wouldn’t work well</h3>\n\n<p><strong>The two-step fetch.</strong> If a package manager client talks directly to the OCI registry, it needs to fetch the manifest, parse it, then download the blob before extraction can start. The container world doesn’t care about this because you’re pulling maybe 5-10 layers for a single image. Package installs fan out across the dependency graph: a fresh <code class="language-plaintext highlighter-rouge">npm install</code> on a mid-sized project might resolve 800 transitive dependencies, each needing its own manifest fetch before the content download can begin.</p>\n\n<p>A client could pipeline aggressively and fetch manifests concurrently, but the OCI Distribution Spec doesn’t have a batch manifest endpoint, so 800 packages still means 800 separate HTTP requests that don’t exist in the current model where npm can GET a tarball directly by URL.</p>\n\n<p>There’s a way around this: if registries included OCI blob digests in their existing metadata responses instead of (or alongside) direct tarball URLs, clients could skip the manifest fetch entirely and download blobs by digest. The difference in request flow looks like this:</p>\n\n<p>A pure OCI pull requires three hops: fetch the manifest, request the blob (which returns a 307 redirect), then download from the signed CDN URL. A smarter integration where the registry resolves the manifest internally reduces that to two: the registry’s metadata API returns the digest and a direct CDN URL, and the client downloads the blob and verifies it against the digest.</p>\n\n<p>Homebrew doesn’t quite do this yet. The <code class="language-plaintext highlighter-rouge">brew install</code> flow described earlier requires two extra round-trips on top of the content transfer: one for the manifest, one for the redirect.</p>\n\n<p>The 307 redirect isn’t purely a latency cost; it’s also how the registry verifies the bearer token before handing off to the CDN, so registries adopting this pattern would need to decide whether their blobs are truly public or whether they want to keep that gatekeeper step. For registries with private package tiers, like npm’s paid plans or NuGet’s Azure Artifacts integration, the redirect model matters because access control at the blob level is part of the product.</p>\n\n<p>The formula metadata already knows the GHCR repository and tag, so the index service is already doing part of the resolution. If the formula JSON included the blob digest and a direct CDN URL, both hops disappear and the client downloads the blob in a single request while still verifying integrity by digest. Package managers that <a href="https://nesbitt.io/2026/02/15/separating-download-from-install-in-docker-builds.html">separate download from install</a> could take it further by batching blob fetches during a dedicated download phase.</p>\n\n<p><strong>Metadata is the actual hard problem.</strong> OCI manifests have annotations (arbitrary key-value strings) and a config blob, but package metadata like dependency trees, version constraints, platform compatibility rules, and license information doesn’t fit naturally into either. Each ecosystem would end up defining its own conventions for encoding metadata, its own <code class="language-plaintext highlighter-rouge">mediaType</code> for its config blob, its own annotation keys.</p>\n\n<p>The reason every package manager invented its own archive format is not because tar and zip are insufficient for archiving files, but because the metadata conventions are what make each ecosystem different. What makes a <code class="language-plaintext highlighter-rouge">.gem</code> different from a <code class="language-plaintext highlighter-rouge">.crate</code> is how dependencies are expressed and what platform compatibility means, not the compression algorithm wrapping the source code. OCI standardizes how bytes move between machines, not what those bytes mean to a package manager.</p>\n\n<p><strong>Small package overhead.</strong> The OCI ceremony of manifests, layers, media types, and digest computation makes sense for multi-layer container images that can be gigabytes. For a 50KB npm package, the manifest JSON, config blob, digest computation for each, and the multi-step chunked upload API add up to several HTTP round-trips and a few hundred bytes of protocol overhead where the current model needs a single PUT. The fixed cost doesn’t scale down with the artifact, and a large share of packages on registries like npm and PyPI are small enough that the protocol overhead becomes a meaningful fraction of the payload.</p>\n\n<p><strong>Registry UI confusion.</strong> When a registry contains both container images and packages, the user experience gets muddled. GitHub Container Registry shows <code class="language-plaintext highlighter-rouge">docker pull</code> commands for everything, but a Homebrew bottle needs <code class="language-plaintext highlighter-rouge">brew install</code> and a Helm chart needs <code class="language-plaintext highlighter-rouge">helm pull</code>. The UX for this is generally not great.</p>\n\n<p><strong>Not all registries are equal.</strong> The OCI 1.1 features that make non-container artifacts work well (custom <code class="language-plaintext highlighter-rouge">artifactType</code>, the referrers API, the <code class="language-plaintext highlighter-rouge">subject</code> field) aren’t universally supported. The OCI Image Specification advises that artifacts concerned with portability should follow specific conventions for <code class="language-plaintext highlighter-rouge">config.mediaType</code>, and not all registries handle custom media types consistently. Registry implementations lag the spec, and the gap between what the spec allows and what any given registry supports is a source of bugs.</p>\n\n<p><strong>Offline and air-gapped use.</strong> A <code class="language-plaintext highlighter-rouge">.deb</code> or <code class="language-plaintext highlighter-rouge">.rpm</code> file is self-contained. You can copy it to a USB drive and install it on an air-gapped machine. An OCI artifact requires a manifest and one or more blobs, stored by digest in a registry’s content-addressable layout. Exporting to a self-contained format (OCI layout on disk) is possible but adds a step that simpler archive formats don’t need.</p>\n\n<p><strong>Who pays.</strong> GHCR storage and bandwidth are <a href="https://docs.github.com/en/billing/concepts/product-billing/github-packages">currently free</a> for public images, with a promise of at least one month’s notice before that changes. At standard GitHub Packages rates ($0.25/GB/month for storage, $0.50/GB for bandwidth), Homebrew’s bottle archive would cost substantially more than zero. GitHub absorbs that as an in-kind subsidy, and the Homebrew 3.1.0 release notes explicitly thank them for it.</p>\n\n<p>If rubygems.org or PyPI moved all their package storage to GHCR tomorrow, someone would need to have a similar conversation with GitHub, or AWS, or Google. The current model of Fastly donating CDN bandwidth is fragile, but it exists and it’s understood.</p>\n\n<p>Adopting OCI for distribution is partly a technical decision about storage and protocols, but it’s also a decision about who funds the infrastructure that the ecosystem depends on and what leverage that creates. Shifting from Fastly-donated CDN to GitHub-donated OCI storage changes the answer to that question without necessarily improving it.</p>\n\n<h3 id="the-smarter-integration">The smarter integration</h3>\n\n<p>Package registries do more than serve archives. They maintain an index of all packages, versions, and metadata that clients can search and resolve dependencies against, whether that’s npm’s registry API, PyPI’s Simple Repository API, crates.io’s <a href="https://github.com/rust-lang/crates.io-index">git-based index</a>, RubyGems’ compact index, or Go’s module proxy protocol. OCI registries have no equivalent: you can list tags for a repository, but there’s no API for “give me all packages matching this query” or “resolve this dependency tree.”</p>\n\n<p>Splitting the roles this way makes more sense than having clients talk to the OCI registry directly. The registry uses OCI as a blob storage backend and integrates the content-addressable properties into the metadata APIs it already operates.</p>\n\n<p>Every package manager client already makes a metadata request before downloading anything. npm fetches the packument, pip fetches the Simple Repository API, Bundler fetches the compact index, <code class="language-plaintext highlighter-rouge">go</code> hits the module proxy. These responses already include download URLs for specific versions.</p>\n\n<p>If those responses included OCI blob digests and direct download URLs pointing at OCI-backed storage, clients would get the content-addressable integrity checks, the mirroring properties, and the deduplication without ever needing to speak the OCI Distribution protocol themselves. The registry’s index service resolves the OCI manifest internally and hands the client a digest and a URL.</p>\n\n<p>The registry keeps full control of discovery, dependency resolution, version selection, and platform matching, all the ecosystem-specific logic that OCI doesn’t and shouldn’t try to handle. The OCI layer underneath provides content-addressable blob storage, signing via the referrers API, and the ability for mirrors to serve blobs by digest without special trust.</p>\n\n<p>Clients don’t need to know they’re talking to OCI-backed storage any more than they need to know whether the registry uses S3 or GCS underneath today. Homebrew already works roughly this way: the formula metadata points clients at GHCR, and the OCI manifest and redirect are implementation details of the download path.</p>\n\n<p>A registry doesn’t even need to migrate its existing packages to get some of these benefits. OCI 1.1’s <code class="language-plaintext highlighter-rouge">artifactType</code> allows minimal manifests that exist purely as anchors for the referrers API. A registry could push a small OCI manifest for each package version, with the package’s digest in the annotations, and use it as the <code class="language-plaintext highlighter-rouge">subject</code> that signatures and SBOMs attach to. The actual tarball continues to be served from the existing CDN. The signing and attestation infrastructure works without moving a single byte of package data.</p>\n\n<p>The OCI metadata model could also inform how registries design their own APIs. The Distribution Spec separates “list of versions” (the paginated tags endpoint, <code class="language-plaintext highlighter-rouge">?n=&lt;limit&gt;&amp;last=&lt;tag&gt;</code>) from “metadata for a specific version” (the manifest for that tag). npm’s packument does neither: it returns a single JSON document containing metadata for every version of a package, with no pagination.</p>\n\n<p>For a package with thousands of versions that response can be megabytes. When <a href="https://github.com/npm/cli/issues/7529">npm 10.4.0 stopped using the abbreviated metadata format</a>, installing npm itself went from downloading 2.1MB of metadata to 21MB. The full packuments also caused <a href="https://github.com/npm/cli/issues/7276">out-of-memory crashes</a> when the CLI cached them in an unbounded map during dependency resolution.</p>\n\n<p>Most registries were designed when packages had dozens of versions, not thousands, and pagination wasn’t an obvious concern. PyPI’s Simple Repository API lists all files for a package in one response, though <a href="https://peps.python.org/pep-0700/">PEP 700</a> added version listing metadata after the fact. crates.io takes a different approach with a git-based index that stores one file per crate, all versions as line-delimited JSON, while RubyGems’ compact index and Go’s module proxy both return complete version lists in a single response. None of these designed for pagination early on because the scale wasn’t there yet, and retrofitting pagination onto an existing API is harder than building it in from the start.</p>\n\n<p>If a registry is already rethinking its metadata endpoints to integrate OCI blob digests, that’s a natural time to adopt the structural pattern of paginated version listing plus per-version metadata fetched on demand.</p>\n\n<h3 id="would-it-actually-help">Would it actually help</h3>\n\n<p>Homebrew’s migration happened under duress when Bintray died, and the rough edges were real: broken CI, missing old versions, a new class of checksum bugs. None of it required changing the archive format: the bottles are the same gzipped tarballs they always were, just stored and addressed differently.</p>\n\n<p>Most of the drawbacks, the manifest fan-out, the redirect tax, the metadata gap, come from treating OCI as the client-facing protocol rather than as infrastructure behind the registry’s existing API. The technical path through that is less disruptive than adopting a new distribution protocol from scratch.</p>\n\n<p>The registries that would benefit most from OCI’s storage and signing primitives are the community-funded ones: rubygems.org, crates.io, PyPI, hex.pm. They’re also the ones least able to afford the migration or negotiate the hosting arrangements that make it sustainable. This question is becoming less hypothetical as funding conversations around open source registries increasingly reference OCI adoption, and the registries on the receiving end of those conversations should understand what they’d be gaining and what they’d be giving up.</p>\n\n<p>Converging on shared storage primitives is the easy part of the problem. Each ecosystem’s metadata semantics are genuinely different and will stay that way. The harder question is whether the funding arrangements that come with OCI adoption serve the registries or the infrastructure providers offering to host them.</p>\n<div class="footnotes">\n  <ol>\n    <li id="fn:rpm5">\n      <p>v5 was a fork by Jeff Johnson, RPM’s long-time maintainer, after he split from Red Hat around 2007. No major distribution adopted it. The mainline project skipped to v6 to avoid confusion.\xa0<a class="reversefootnote" href="https://nesbitt.io/2026/02/18/what-package-registries-could-borrow-from-oci.html#fnref:rpm5">&#8617;</a></p>\n    </li>\n  </ol>\n</div>'}</p>
+<hr />
+<p><em>抓取时间: 2026-02-18 18:04:17</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月18日 10:04:23 UTC">2026-02-18</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

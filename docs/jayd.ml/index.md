@@ -6,7 +6,9 @@
 - [Golang’s encoding-XML is broken and no one seems to care 20250615](Golang’s encoding-XML is broken and no one seems to care_20250615.md)
 - [I Finally Fixed My Locales In Arch Linux (Yes I Am Smart) 20251029](I Finally Fixed My Locales In Arch Linux (Yes I Am Smart)_20251029.md)
 - [MORE ENTICING THAN EVER- THE HYPNOVERSE 20260105](MORE ENTICING THAN EVER- THE HYPNOVERSE_20260105.md)
+- [Microsoft Game Pass Ultimate Billing Fraud 20260214](Microsoft Game Pass Ultimate Billing Fraud_20260214.md)
 - [Someone At YouTube Needs Glasses- The Prophecy Has Been Fulfilled 20251110](Someone At YouTube Needs Glasses- The Prophecy Has Been Fulfilled_20251110.md)
+- [Windows 2000 Minesweeper recreated in Godot 4.1 20260214](Windows 2000 Minesweeper recreated in Godot 4.1_20260214.md)
 
 ---
 

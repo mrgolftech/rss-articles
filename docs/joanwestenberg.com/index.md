@@ -8,6 +8,8 @@
 - [Members only- -Won't Fix- self help 20260213](Members only- -Won't Fix- self help_20260213.md)
 - [The Coherence Premium 20260202](The Coherence Premium_20260202.md)
 - [The Discourse is a Distributed Denial-of-Service Attack 20260205](The Discourse is a Distributed Denial-of-Service Attack_20260205.md)
+- [The case for gatekeeping, or- why medieval guilds had it figured out 20260218](The case for gatekeeping, or- why medieval guilds had it figured out_20260218.md)
+- [The empire always falls 20260215](The empire always falls_20260215.md)
 - [The pitch deck is dead. Write a pitch.md instead. 20260209](The pitch deck is dead. Write a pitch.md instead._20260209.md)
 - [Why Intelligence Is a Terrible Proxy for Wisdom 20260205](Why Intelligence Is a Terrible Proxy for Wisdom_20260205.md)
 - [Your Life is the Sum Total of 2,000 Mondays 20260131](Your Life is the Sum Total of 2,000 Mondays_20260131.md)

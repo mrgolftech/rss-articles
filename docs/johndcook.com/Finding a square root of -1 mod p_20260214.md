@@ -1,0 +1,13 @@
+# Finding a square root of -1 mod p
+
+**来源:** [johndcook.com](https://johndcook.com)
+**发布时间:** Sat, 14 Feb 2026 22:07:05 +0000
+**链接:** https://www.johndcook.com/blog/2026/02/14/square-root-minus-1-mod-p/
+
+---
+
+{'type': 'text/html', 'language': None, 'base': 'https://www.johndcook.com/blog/feed/', 'value': '<p>If <em>p</em> is an odd prime, there is a theorem that says</p>\n<p style="padding-left: 40px;"><em>x</em>² = −1 mod <em>p</em></p>\n<p>has a solution if and only if <em>p</em> = 1 mod 4. When a solution\xa0<em>x</em> exists, how do you find it?</p>\n<p>The previous two posts have discussed Stan Wagon&#8217;s algorithm for expressing an odd prime <em>p</em> as a sum of two squares. This is possible if and only if\xa0<em>p</em> = 1 mod 4, the same condition on\xa0<em>p</em> for −1 to have a square root.</p>\n<p>In the <a href="https://www.johndcook.com/blog/2026/02/14/finding-a-non-square/">previous post</a> we discussed how to find\xa0<em>c</em> such that\xa0<em>c</em> does not have a square root mod\xa0<em>p</em>. This is most of the work for finding a square root of −1. Once you have\xa0<em>c</em>, set</p>\n<p style="padding-left: 40px;"><em>x</em> =\xa0<em>c</em><sup><em>k</em></sup></p>\n<p>where <em>p</em> = 4<em>k</em> + 1.</p>\n<p>For example, let&#8217;s find a square root of −1 mod\xa0<em>p</em> where\xa0<em>p</em> = 2<sup>255</sup> − 19. We found in the previous post that <em>c</em> = 2 is a non-residue for this value of <em>p</em>.</p>\n<pre>&gt;&gt;&gt; p = 2**255 - 19\n&gt;&gt;&gt; k = p // 4\n&gt;&gt;&gt; x = pow(2, k, p)</pre>\n<p>Let&#8217;s view\xa0<em>x</em> and verify that it is a solution.</p>\n<pre>&gt;&gt;&gt; x\n19681161376707505956807079304988542015446066515923890162744021073123829784752\n&gt;&gt;&gt; (x**2 + 1) % p\n0\n</pre>\n<p>Sometimes you&#8217;ll see a square root of −1 mod <em>p</em> written as <em>i</em>. This makes sense in context, but it&#8217;s a little jarring at first since here <em>i</em> is an integer, not a complex number.</p>\n<p>The <a href="https://www.johndcook.com/blog/2026/02/14/wagons-algorithm-in-python/">next post</a> completes this series, giving a full implementation of Wagon&#8217;s algorithm.</p>The post <a href="https://www.johndcook.com/blog/2026/02/14/square-root-minus-1-mod-p/">Finding a square root of -1 mod p</a> first appeared on <a href="https://www.johndcook.com/blog">John D. Cook</a>.'}
+
+---
+
+*抓取时间: 2026-02-18 18:04:21*

@@ -4,6 +4,7 @@
 
 - [Buy.com’s Feb 2000 IPO 20260209](Buy.com’s Feb 2000 IPO_20260209.md)
 - [Deja News- Google’s first acquisition 20260212](Deja News- Google’s first acquisition_20260212.md)
+- [First BBS goes online Feb. 16, 1978 20260217](First BBS goes online Feb. 16, 1978_20260217.md)
 - [Gateway announces merger with eMachines, 1-30-2004 20260129](Gateway announces merger with eMachines, 1-30-2004_20260129.md)
 - [Gateway announces merger with eMachines, 1-30-2004 20260205](Gateway announces merger with eMachines, 1-30-2004_20260205.md)
 - [Intel 286 introduced Feb 2, 1982 20260202](Intel 286 introduced Feb 2, 1982_20260202.md)
@@ -19,6 +20,7 @@
 - [When Bill Gates claimed to work for $2 an hour 20260203](When Bill Gates claimed to work for $2 an hour_20260203.md)
 - [When Bill Gates claimed to work for $2 an hour 20260205](When Bill Gates claimed to work for $2 an hour_20260205.md)
 - [Why Pets.com failed and became a dotcom joke 20260210](Why Pets.com failed and became a dotcom joke_20260210.md)
+- [Youtube founding date- February 15, 2005 20260216](Youtube founding date- February 15, 2005_20260216.md)
 
 ---
 

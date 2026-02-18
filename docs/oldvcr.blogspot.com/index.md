@@ -4,6 +4,7 @@
 
 - [A Christmas 2007 video present from Old VCR with Jack Tramiel et al 20260205](A Christmas 2007 video present from Old VCR with Jack Tramiel et al_20260205.md)
 - [Hands-on with two Apple Network Server prototype ROMs 20260205](Hands-on with two Apple Network Server prototype ROMs_20260205.md)
+- [Hideki Sato has died 20260215](Hideki Sato has died_20260215.md)
 - [Oblast- a better Blasto game for the Commodore 64 20260205](Oblast- a better Blasto game for the Commodore 64_20260205.md)
 - [Stewart Cheifet has died 20260205](Stewart Cheifet has died_20260205.md)
 - [The Scriptovision Super Micro Script video titler is almost a home computer 20260208](The Scriptovision Super Micro Script video titler is almost a home computer_20260208.md)

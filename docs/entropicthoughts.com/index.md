@@ -5,6 +5,7 @@
 - [ACX 2025 Prediction Contest Retrospective 20260205](ACX 2025 Prediction Contest Retrospective_20260205.md)
 - [Laws of Succession 20260202](Laws of Succession_20260202.md)
 - [Laws of Succession 20260205](Laws of Succession_20260205.md)
+- [Learning KeyBee 20260216](Learning KeyBee_20260216.md)
 - [Nvidia Stock Crash Prediction 20260205](Nvidia Stock Crash Prediction_20260205.md)
 - [Solving Systems of Equations Faster 20260205](Solving Systems of Equations Faster_20260205.md)
 - [Survival Analysis of the Supreme Court 20260205](Survival Analysis of the Supreme Court_20260205.md)

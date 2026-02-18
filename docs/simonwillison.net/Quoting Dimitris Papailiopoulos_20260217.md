@@ -1,0 +1,17 @@
+# Quoting Dimitris Papailiopoulos
+
+**来源:** [simonwillison.net](https://simonwillison.net)
+**发布时间:** 2026-02-17T14:04:44+00:00
+**链接:** https://simonwillison.net/2026/Feb/17/dimitris-papailiopoulos/#atom-everything
+
+---
+
+<blockquote cite="https://twitter.com/dimitrispapail/status/2023080289828831349"><p>But the intellectually interesting part for me is something else. <strong>I now have something close to a magic box where I throw in a question and a first answer comes back basically for free, in terms of human effort</strong>. Before this, the way I'd explore a new idea is to either clumsily put something together myself or ask a student to run something short for signal, and if it's there, we’d go deeper. That quick signal step, i.e., finding out if a question has any meat to it, is what I can now do without taking up anyone else's time. It’s now between just me, Claude Code, and a few days of GPU time.</p>
+<p>I don’t know what this means for how we do research long term. I don’t think anyone does yet. But <strong>the distance between a question and a first answer just got very small</strong>.</p></blockquote>
+<p class="cite">&mdash; <a href="https://twitter.com/dimitrispapail/status/2023080289828831349">Dimitris Papailiopoulos</a>, on running research questions though Claude Code</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/research">research</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>
+
+---
+
+*抓取时间: 2026-02-18 18:04:17*

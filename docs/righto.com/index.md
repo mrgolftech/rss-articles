@@ -4,6 +4,7 @@
 
 - [Conditions in the Intel 8087 floating-point chip's microcode 20251230](Conditions in the Intel 8087 floating-point chip's microcode_20251230.md)
 - [Conditions in the Intel 8087 floating-point chip's microcode 20260205](Conditions in the Intel 8087 floating-point chip's microcode_20260205.md)
+- [Instruction decoding in the Intel 8087 floating-point chip 20260214](Instruction decoding in the Intel 8087 floating-point chip_20260214.md)
 - [Notes on the Intel 8086 processor's arithmetic-logic unit 20260123](Notes on the Intel 8086 processor's arithmetic-logic unit_20260123.md)
 - [Notes on the Intel 8086 processor's arithmetic-logic unit 20260205](Notes on the Intel 8086 processor's arithmetic-logic unit_20260205.md)
 - [Solving the NYTimes Pips puzzle with a constraint solver 20251018](Solving the NYTimes Pips puzzle with a constraint solver_20251018.md)

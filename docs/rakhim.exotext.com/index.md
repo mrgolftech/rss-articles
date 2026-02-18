@@ -12,6 +12,7 @@
 - [Benjamin Button Reviews macOS 20260205](Benjamin Button Reviews macOS_20260205.md)
 - [Examples are the best documentation 20260205](Examples are the best documentation_20260205.md)
 - [Finland is a high-context society that loves defaults 20260205](Finland is a high-context society that loves defaults_20260205.md)
+- [Modern UI is clean and invisible- Ha, I wish! 20260216](Modern UI is clean and invisible- Ha, I wish!_20260216.md)
 
 ---
 

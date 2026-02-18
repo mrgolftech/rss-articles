@@ -2,6 +2,7 @@
 
 以下是本博客的所有文章：
 
+- [AI is destroying Open Source, and it's not even good yet 20260216](AI is destroying Open Source, and it's not even good yet_20260216.md)
 - [Exploring a Modern SMPTE 2110 Broadcast Truck With My Dad 20260207](Exploring a Modern SMPTE 2110 Broadcast Truck With My Dad_20260207.md)
 - [Exploring a Modern SMTPE 2110 Broadcast Truck With My Dad 20260207](Exploring a Modern SMTPE 2110 Broadcast Truck With My Dad_20260207.md)
 - [Migrating 13,000 Comments from Drupal to Hugo 20260205](Migrating 13,000 Comments from Drupal to Hugo_20260205.md)

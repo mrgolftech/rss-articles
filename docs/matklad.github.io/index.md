@@ -4,6 +4,8 @@
 
 - [CI In a Box 20260206](CI In a Box_20260206.md)
 - [Considering Strictly Monotonic Time 20260123](Considering Strictly Monotonic Time_20260123.md)
+- [Diagnostics Factory 20260216](Diagnostics Factory_20260216.md)
+- [Justifying text-wrap- pretty 20260214](Justifying text-wrap- pretty_20260214.md)
 - [Memory Safety Is 20251230](Memory Safety Is_20251230.md)
 - [Programming Aphorisms 20260211](Programming Aphorisms_20260211.md)
 - [The Second Great Error Model Convergence 20251229](The Second Great Error Model Convergence_20251229.md)

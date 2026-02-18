@@ -3,12 +3,14 @@
 以下是本博客的所有文章：
 
 - [Everyone's okay with their AI, just not yours 20260205](Everyone's okay with their AI, just not yours_20260205.md)
+- [Factional Drift- How online discussion clusters into factions 20260213](Factional Drift- How online discussion clusters into factions_20260213.md)
 - [Factional Drift- We cluster into factions online 20260213](Factional Drift- We cluster into factions online_20260213.md)
 - [LLM Adblockers are coming! 20260205](LLM Adblockers are coming!_20260205.md)
 - [Last year, all my non-programmer friends built apps 20260211](Last year, all my non-programmer friends built apps_20260211.md)
 - [Markdown.exe 20260212](Markdown.exe_20260212.md)
 - [Microsoft Should Watch The Expanse 20260209](Microsoft Should Watch The Expanse_20260209.md)
 - [Open Molten Claw 20260206](Open Molten Claw_20260206.md)
+- [Programming is free 20260216](Programming is free_20260216.md)
 - [The Shoe on The Other Foot 20260202](The Shoe on The Other Foot_20260202.md)
 - [The Shoe on The Other Foot 20260205](The Shoe on The Other Foot_20260205.md)
 - [We installed a single turnstile to feel secure 20260204](We installed a single turnstile to feel secure_20260204.md)

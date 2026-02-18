@@ -12,6 +12,7 @@
 - [It's all a blur 20260206](It's all a blur_20260206.md)
 - [See it with your lying ears 20260205](See it with your lying ears_20260205.md)
 - [The toil of (blog) art 20260205](The toil of (blog) art_20260205.md)
+- [Unreal numbers 20260215](Unreal numbers_20260215.md)
 - [You gotta think outside the hypercube 20260205](You gotta think outside the hypercube_20260205.md)
 
 ---

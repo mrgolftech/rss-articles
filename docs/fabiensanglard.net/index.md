@@ -11,6 +11,7 @@
 - [Building a 1997 Quake PC- Benchmarking GLquake 20260205](Building a 1997 Quake PC- Benchmarking GLquake_20260205.md)
 - [Building a 1997 Quake PC- Benchmarking Quake 20260205](Building a 1997 Quake PC- Benchmarking Quake_20260205.md)
 - [Building a 1997 Quake PC- Benchmarking Vquake 20260205](Building a 1997 Quake PC- Benchmarking Vquake_20260205.md)
+- [How Michael Abrash doubled Quake framerate 20260214](How Michael Abrash doubled Quake framerate_20260214.md)
 - [Is QSpy still cool- Let's play QuakeWorld! 20260205](Is QSpy still cool- Let's play QuakeWorld!_20260205.md)
 - [Let's compile Quake like it's 1997! 20260205](Let's compile Quake like it's 1997!_20260205.md)
 

@@ -9,6 +9,7 @@
 - [How to Add a Quick Interactive Map to your Website 20260129](How to Add a Quick Interactive Map to your Website_20260129.md)
 - [How to Add a Quick Interactive Map to your Website 20260205](How to Add a Quick Interactive Map to your Website_20260205.md)
 - [How to Securely Store Secrets in Environment Variables 20260205](How to Securely Store Secrets in Environment Variables_20260205.md)
+- [My Courses Site is Moving to a New Home 20260215](My Courses Site is Moving to a New Home_20260215.md)
 
 ---
 

@@ -9,6 +9,7 @@
 - [05_Greenland_is_a_beautiful_nightmare](05_Greenland_is_a_beautiful_nightmare.md)
 - [GitButler CLI Is Really Good 20260209](GitButler CLI Is Really Good_20260209.md)
 - [Greenland is a beautiful nightmare 20260205](Greenland is a beautiful nightmare_20260205.md)
+- [I Sold Out for $20 a Month and All I Got Was This Perfectly Generated Terraform 20260216](I Sold Out for $20 a Month and All I Got Was This Perfectly Generated Terraform_20260216.md)
 - [I broke and fixed my Ghost blog 20260205](I broke and fixed my Ghost blog_20260205.md)
 - [Making RSS More Fun 20260205](Making RSS More Fun_20260205.md)
 - [SQLite for a REST API Database- 20260205](SQLite for a REST API Database-_20260205.md)

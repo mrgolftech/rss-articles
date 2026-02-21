@@ -12,6 +12,7 @@
 - [Two kinds of AI users are emerging. The gap between them is astonishing 20260205](Two kinds of AI users are emerging. The gap between them is astonishing_20260205.md)
 - [Wall Street just lost $285 billion because of 13 markdown files 20260205](Wall Street just lost $285 billion because of 13 markdown files_20260205.md)
 - [Which programming languages are most token-efficient- 20260205](Which programming languages are most token-efficient-_20260205.md)
+- [Who fixes the zero-days AI finds in abandoned software- 20260217](Who fixes the zero-days AI finds in abandoned software-_20260217.md)
 - [Why sandboxing coding agents is harder than you think 20260205](Why sandboxing coding agents is harder than you think_20260205.md)
 
 ---

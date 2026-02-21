@@ -9,6 +9,8 @@
 - [Gateway announces merger with eMachines, 1-30-2004 20260205](Gateway announces merger with eMachines, 1-30-2004_20260205.md)
 - [Intel 286 introduced Feb 2, 1982 20260202](Intel 286 introduced Feb 2, 1982_20260202.md)
 - [Intel 286 introduced Feb 2, 1982 20260205](Intel 286 introduced Feb 2, 1982_20260205.md)
+- [Office Space released Feb. 19, 1999 20260219](Office Space released Feb. 19, 1999_20260219.md)
+- [On February 20, 2010 a VIC-20 tweeted 20260220](On February 20, 2010 a VIC-20 tweeted_20260220.md)
 - [Radio Shack’s 2015 bankruptcy 20260204](Radio Shack’s 2015 bankruptcy_20260204.md)
 - [Radio Shack’s 2015 bankruptcy 20260205](Radio Shack’s 2015 bankruptcy_20260205.md)
 - [The first computer chip 20260206](The first computer chip_20260206.md)
@@ -20,6 +22,7 @@
 - [When Bill Gates claimed to work for $2 an hour 20260203](When Bill Gates claimed to work for $2 an hour_20260203.md)
 - [When Bill Gates claimed to work for $2 an hour 20260205](When Bill Gates claimed to work for $2 an hour_20260205.md)
 - [Why Pets.com failed and became a dotcom joke 20260210](Why Pets.com failed and became a dotcom joke_20260210.md)
+- [Windows 2000 release date 20260218](Windows 2000 release date_20260218.md)
 - [Youtube founding date- February 15, 2005 20260216](Youtube founding date- February 15, 2005_20260216.md)
 
 ---

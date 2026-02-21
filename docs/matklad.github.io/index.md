@@ -10,6 +10,7 @@
 - [Programming Aphorisms 20260211](Programming Aphorisms_20260211.md)
 - [The Second Great Error Model Convergence 20251229](The Second Great Error Model Convergence_20251229.md)
 - [Vibecoding #2 20260120](Vibecoding #2_20260120.md)
+- [Wrapping Code Comments 20260221](Wrapping Code Comments_20260221.md)
 - [make.ts 20260127](make.ts_20260127.md)
 
 ---

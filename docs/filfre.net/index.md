@@ -3,6 +3,7 @@
 以下是本博客的所有文章：
 
 - [1998 Ebook! 20260216](1998 Ebook!_20260216.md)
+- [Gabriel Knight 3- Blood of the Sacred, Blood of the Damned 20260220](Gabriel Knight 3- Blood of the Sacred, Blood of the Damned_20260220.md)
 - [Homeworld 20260205](Homeworld_20260205.md)
 - [Huge for the Holidays- Epic Interactive Fiction of the Millennial Period 20260205](Huge for the Holidays- Epic Interactive Fiction of the Millennial Period_20260205.md)
 - [Mr. Roberts Goes to Hollywood, Part 2- The Producer 20260205](Mr. Roberts Goes to Hollywood, Part 2- The Producer_20260205.md)

@@ -7,6 +7,8 @@
 - [03_Pebble_Relaunch_-_Year_One_Done_](03_Pebble_Relaunch_-_Year_One_Done_.md)
 - [04_Meet_Pebble_Index_01_-_External_Memory_For_Your_Br](04_Meet_Pebble_Index_01_-_External_Memory_For_Your_Br.md)
 - [05_Pebble_Watch_Software_Is_Now_100__Open_Source___Ti](05_Pebble_Watch_Software_Is_Now_100__Open_Source___Ti.md)
+- [CloudPebble Returns! Plus New Pure JavaScript and Round 2 SDK 20260220](CloudPebble Returns! Plus New Pure JavaScript and Round 2 SDK_20260220.md)
+- [February Pebble Production and Software Updates 20260218](February Pebble Production and Software Updates_20260218.md)
 - [Meet Pebble Index 01 - External Memory For Your Brain 20260205](Meet Pebble Index 01 - External Memory For Your Brain_20260205.md)
 - [On Being A Canadian In America In 2026 20260205](On Being A Canadian In America In 2026_20260205.md)
 - [Pebble Relaunch - Year One Done! 20260205](Pebble Relaunch - Year One Done!_20260205.md)

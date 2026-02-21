@@ -2,6 +2,7 @@
 
 以下是本博客的所有文章：
 
+- [Pluralistic- A perforated corporate veil (20 Feb 2026) 20260220](Pluralistic- A perforated corporate veil (20 Feb 2026)_20260220.md)
 - [Pluralistic- All laws are local (05 Feb 2026) 20260205](Pluralistic- All laws are local (05 Feb 2026)_20260205.md)
 - [Pluralistic- Disenshittification Nation (29 Jan 2026) 20260129](Pluralistic- Disenshittification Nation (29 Jan 2026)_20260129.md)
 - [Pluralistic- Doctors' union may yet save the NHS from Palantir (12 Feb 2026) 20260212](Pluralistic- Doctors' union may yet save the NHS from Palantir (12 Feb 2026)_20260212.md)
@@ -10,6 +11,7 @@
 - [Pluralistic- Justin Key's -The Hospital at the End Of the World- (04 Feb 2026) 20260204](Pluralistic- Justin Key's -The Hospital at the End Of the World- (04 Feb 2026)_20260204.md)
 - [Pluralistic- Luxury Kafka (06 Feb 2026) 20260206](Pluralistic- Luxury Kafka (06 Feb 2026)_20260206.md)
 - [Pluralistic- Michael Swanwick's -The Universe Box- (03 Feb 2026) 20260203](Pluralistic- Michael Swanwick's -The Universe Box- (03 Feb 2026)_20260203.md)
+- [Pluralistic- Six Years of Pluralistic (19 Feb 2026) 20260219](Pluralistic- Six Years of Pluralistic (19 Feb 2026)_20260219.md)
 - [Pluralistic- Stock swindles (02 Feb 2026) 20260202](Pluralistic- Stock swindles (02 Feb 2026)_20260202.md)
 - [Pluralistic- The Epstein class and collapse porn (09 Feb 2026) 20260209](Pluralistic- The Epstein class and collapse porn (09 Feb 2026)_20260209.md)
 - [Pluralistic- The Nuremberg Caucus (10 Feb 2026) 20260210](Pluralistic- The Nuremberg Caucus (10 Feb 2026)_20260210.md)

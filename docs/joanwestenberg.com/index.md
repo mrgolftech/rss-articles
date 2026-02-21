@@ -11,6 +11,7 @@
 - [The case for gatekeeping, or- why medieval guilds had it figured out 20260218](The case for gatekeeping, or- why medieval guilds had it figured out_20260218.md)
 - [The empire always falls 20260215](The empire always falls_20260215.md)
 - [The pitch deck is dead. Write a pitch.md instead. 20260209](The pitch deck is dead. Write a pitch.md instead._20260209.md)
+- [The unbearable weight of cruft 20260220](The unbearable weight of cruft_20260220.md)
 - [Why Intelligence Is a Terrible Proxy for Wisdom 20260205](Why Intelligence Is a Terrible Proxy for Wisdom_20260205.md)
 - [Your Life is the Sum Total of 2,000 Mondays 20260131](Your Life is the Sum Total of 2,000 Mondays_20260131.md)
 - [Your Life is the Sum Total of 2,000 Mondays 20260205](Your Life is the Sum Total of 2,000 Mondays_20260205.md)

@@ -1,0 +1,13 @@
+# Book Review: All Systems Red - The Murderbot Diaries by Martha Wells ★★⯪☆☆
+
+**来源:** [shkspr.mobi](https://shkspr.mobi)
+**发布时间:** Wed, 18 Feb 2026 12:34:05 +0000
+**链接:** https://shkspr.mobi/blog/2026/02/book-review-all-systems-red-the-murderbot-diaries-by-martha-wells/
+
+---
+
+{'type': 'text/html', 'language': None, 'base': 'https://shkspr.mobi/blog/feed/', 'value': '<img alt="Book cover featuring the severed head of a cyborg." class="alignleft size-full wp-image-66667" src="https://shkspr.mobi/blog/wp-content/uploads/2026/03/All-systems-red.webp" width="221" />\n\n<p>Everyone raves about this series, so I thought I\'d grab the first book. It\'s basically fine, I guess.</p>\n\n<p>It is moderately amusing having the Muderbot be an awkward teenage boy who just wants to watch videos and cringes when people stare at him. But it is a bit one-note. Similarly, evil corporations hiding details from exo-planet surveyors is a trope which has been a thousand times before.</p>\n\n<p>This is a novella, serving to introduce the protagonist and fill us with a little too much exposition. The trouble is that nothing much happens. There\'s a bit of world building and a light smattering of action - although I found it rather plodding.</p>\n\n<p>Essentially, a lot of telling and not much showing. Rather underwhelming given the hype. I might give one of the many (many!) sequels a go once I reach the end of my reading list.</p>'}
+
+---
+
+*抓取时间: 2026-02-21 00:09:49*

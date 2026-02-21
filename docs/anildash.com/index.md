@@ -4,6 +4,7 @@
 
 - [500,000 tech workers have been laid off since ChatGPT was released](500,000 tech workers have been laid off since ChatGPT was released.md)
 - [500,000 tech workers have been laid off since ChatGPT was released 20260106](500,000 tech workers have been laid off since ChatGPT was released_20260106.md)
+- [Codeless- From idea to software](Codeless- From idea to software.md)
 - [How Markdown took over the world](How Markdown took over the world.md)
 - [How the hell are you supposed to have a career in tech in 2026-](How the hell are you supposed to have a career in tech in 2026-.md)
 - [How the hell are you supposed to have a career in tech in 2026- 20260105](How the hell are you supposed to have a career in tech in 2026-_20260105.md)

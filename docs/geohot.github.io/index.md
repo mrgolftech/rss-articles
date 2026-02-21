@@ -2,6 +2,7 @@
 
 以下是本博客的所有文章：
 
+- [AI is the Best Thing to Happen to Art 20260218](AI is the Best Thing to Happen to Art_20260218.md)
 - [Cost of Housing 20260215](Cost of Housing_20260215.md)
 - [I Told You So 20260212](I Told You So_20260212.md)
 - [The Coming War on Car Ownership 20260125](The Coming War on Car Ownership_20260125.md)

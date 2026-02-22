@@ -15,6 +15,7 @@
 - [OpenAI’s Codex 20260204](OpenAI’s Codex_20260204.md)
 - [OpenAI’s Codex 20260205](OpenAI’s Codex_20260205.md)
 - [Paul Ford- ‘The A.I. Disruption Has Arrived, and It Sure Is Fun’ 20260218](Paul Ford- ‘The A.I. Disruption Has Arrived, and It Sure Is Fun’_20260218.md)
+- [Sentry 20260222](Sentry_20260222.md)
 - [WorkOS Pipes 20260215](WorkOS Pipes_20260215.md)
 - [Xcode 26.3 ‘Unlocks the Power of Agentic Coding’ 20260204](Xcode 26.3 ‘Unlocks the Power of Agentic Coding’_20260204.md)
 - [Xcode 26.3 ‘Unlocks the Power of Agentic Coding’ 20260205](Xcode 26.3 ‘Unlocks the Power of Agentic Coding’_20260205.md)

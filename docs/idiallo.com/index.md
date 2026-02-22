@@ -9,6 +9,7 @@
 - [Last year, all my non-programmer friends built apps 20260211](Last year, all my non-programmer friends built apps_20260211.md)
 - [Markdown.exe 20260212](Markdown.exe_20260212.md)
 - [Microsoft Should Watch The Expanse 20260209](Microsoft Should Watch The Expanse_20260209.md)
+- [Nvidia was only invited to invest 20260221](Nvidia was only invited to invest_20260221.md)
 - [Open Molten Claw 20260206](Open Molten Claw_20260206.md)
 - [Programming is free 20260216](Programming is free_20260216.md)
 - [Teleoperation is Always the Butt of the Joke 20260220](Teleoperation is Always the Butt of the Joke_20260220.md)

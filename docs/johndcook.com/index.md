@@ -2,9 +2,11 @@
 
 以下是本博客的所有文章：
 
+- [10,000,000th Fibonacci number 20260222](10,000,000th Fibonacci number_20260222.md)
 - [AGI, ASI, A-I – Do we have all we need to get there- 20260130](AGI, ASI, A-I – Do we have all we need to get there-_20260130.md)
 - [Aligning one matrix with another 20260211](Aligning one matrix with another_20260211.md)
 - [Bridging secrets is hard 20260130](Bridging secrets is hard_20260130.md)
+- [Computing big, certified Fibonacci numbers 20260221](Computing big, certified Fibonacci numbers_20260221.md)
 - [Computing large Fibonacci numbers 20260208](Computing large Fibonacci numbers_20260208.md)
 - [Eigenvalue homework problems are backward 20260206](Eigenvalue homework problems are backward_20260206.md)
 - [Expressing a prime as the sum of two squares 20260213](Expressing a prime as the sum of two squares_20260213.md)

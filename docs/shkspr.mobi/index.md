@@ -22,6 +22,7 @@
 - [Gadget Review- Orico Power Strip (UK) ★★⯪☆☆ 20260209](Gadget Review- Orico Power Strip (UK) ★★⯪☆☆_20260209.md)
 - [Gadget Review- Topdon TS004 Thermal Monocular ★★★★⯪ 20260213](Gadget Review- Topdon TS004 Thermal Monocular ★★★★⯪_20260213.md)
 - [Get all the reactions to your GitHub content using GraphQL 20260205](Get all the reactions to your GitHub content using GraphQL_20260205.md)
+- [How close are we to a vision for 2010- 20260222](How close are we to a vision for 2010-_20260222.md)
 - [OpenBenches at FOSDEM 20260221](OpenBenches at FOSDEM_20260221.md)
 - [Reputation Scores for GitHub Accounts 20260207](Reputation Scores for GitHub Accounts_20260207.md)
 - [Social Media Payments and Perverse Incentives 20260215](Social Media Payments and Perverse Incentives_20260215.md)

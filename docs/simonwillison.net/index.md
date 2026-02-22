@@ -17,6 +17,7 @@
 - [GLM-5- From Vibe Coding to Agentic Engineering 20260211](GLM-5- From Vibe Coding to Agentic Engineering_20260211.md)
 - [Gemini 3 Deep Think 20260212](Gemini 3 Deep Think_20260212.md)
 - [Gemini 3.1 Pro 20260219](Gemini 3.1 Pro_20260219.md)
+- [How I think about Codex 20260222](How I think about Codex_20260222.md)
 - [How StrongDM's AI team build serious software without even looking at the code 20260207](How StrongDM's AI team build serious software without even looking at the code_20260207.md)
 - [Introducing Claude Sonnet 4.6 20260217](Introducing Claude Sonnet 4.6_20260217.md)
 - [Introducing Deno Sandbox 20260203](Introducing Deno Sandbox_20260203.md)

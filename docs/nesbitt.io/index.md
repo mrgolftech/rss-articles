@@ -6,6 +6,7 @@
 - [CHANGELOG.md 20260216](CHANGELOG.md_20260216.md)
 - [Crates.io’s Freaky Friday 20260206](Crates.io’s Freaky Friday_20260206.md)
 - [Dependency Resolution Methods 20260206](Dependency Resolution Methods_20260206.md)
+- [Forge-Specific Repository Folders 20260222](Forge-Specific Repository Folders_20260222.md)
 - [Git’s Magic Files 20260205](Git’s Magic Files_20260205.md)
 - [Go Modules for Package Management Tooling 20260219](Go Modules for Package Management Tooling_20260219.md)
 - [Incident Report- CVE-2024-YIKES 20260203](Incident Report- CVE-2024-YIKES_20260203.md)

@@ -19,6 +19,7 @@
 - [Some disconcerting facts about AI and banking that may have profound consequences 20260210](Some disconcerting facts about AI and banking that may have profound consequences_20260210.md)
 - [Super Bowl Matchup- Anthropic vs OpenAI 20260208](Super Bowl Matchup- Anthropic vs OpenAI_20260208.md)
 - [The literal enshittification of The United States 20260211](The literal enshittification of The United States_20260211.md)
+- [Turns out Generative AI was a scam 20260223](Turns out Generative AI was a scam_20260223.md)
 - [We URGENTLY need a federal law forbidding AI from impersonating humans 20260214](We URGENTLY need a federal law forbidding AI from impersonating humans_20260214.md)
 - [Where is AI headed- 8 perspectives at The New York Times 20260202](Where is AI headed- 8 perspectives at The New York Times_20260202.md)
 - [Where is AI headed- 8 perspectives at The New York Times 20260205](Where is AI headed- 8 perspectives at The New York Times_20260205.md)

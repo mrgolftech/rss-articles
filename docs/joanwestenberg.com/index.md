@@ -4,6 +4,7 @@
 
 - [AI twitter's favourite lie- everyone wants to be a developer 20260214](AI twitter's favourite lie- everyone wants to be a developer_20260214.md)
 - [Communities are not fungible 20260211](Communities are not fungible_20260211.md)
+- [Everyone in AI is building the wrong thing for the same reason 20260223](Everyone in AI is building the wrong thing for the same reason_20260223.md)
 - [How to stop being boring 20260205](How to stop being boring_20260205.md)
 - [Members only- -Won't Fix- self help 20260213](Members only- -Won't Fix- self help_20260213.md)
 - [The Coherence Premium 20260202](The Coherence Premium_20260202.md)

@@ -20,6 +20,7 @@
 - [Polish serenity 20260203](Polish serenity_20260203.md)
 - [Race between primes of the forms 4k + 1 and 4k + 3 20260215](Race between primes of the forms 4k + 1 and 4k + 3_20260215.md)
 - [Satellites have a lot of room 20260202](Satellites have a lot of room_20260202.md)
+- [Tritone substitution 20260223](Tritone substitution_20260223.md)
 - [Visualizing orbital velocity 20260216](Visualizing orbital velocity_20260216.md)
 - [Wagon’s algorithm in Python 20260214](Wagon’s algorithm in Python_20260214.md)
 - [Γ(1-n) 20260204](Γ(1-n)_20260204.md)

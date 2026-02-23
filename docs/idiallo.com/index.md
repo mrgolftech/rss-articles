@@ -13,6 +13,7 @@
 - [Open Molten Claw 20260206](Open Molten Claw_20260206.md)
 - [Programming is free 20260216](Programming is free_20260216.md)
 - [Teleoperation is Always the Butt of the Joke 20260220](Teleoperation is Always the Butt of the Joke_20260220.md)
+- [The Little Red Dot 20260223](The Little Red Dot_20260223.md)
 - [The Shoe on The Other Foot 20260202](The Shoe on The Other Foot_20260202.md)
 - [The Shoe on The Other Foot 20260205](The Shoe on The Other Foot_20260205.md)
 - [Thinking Improves Thinking 20260218](Thinking Improves Thinking_20260218.md)

@@ -23,6 +23,7 @@
 - [The Many Flavors of Ignore Files 20260212](The Many Flavors of Ignore Files_20260212.md)
 - [Whale Fall 20260221](Whale Fall_20260221.md)
 - [What Package Registries Could Borrow from OCI 20260218](What Package Registries Could Borrow from OCI_20260218.md)
+- [Where Do Specifications Fit in the Dependency Tree- 20260223](Where Do Specifications Fit in the Dependency Tree-_20260223.md)
 - [Will AI Make Package Managers Redundant- 20260130](Will AI Make Package Managers Redundant-_20260130.md)
 - [Zig and the M×N Supply Chain Problem 20260129](Zig and the M×N Supply Chain Problem_20260129.md)
 

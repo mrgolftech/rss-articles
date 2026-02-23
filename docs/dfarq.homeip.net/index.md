@@ -7,6 +7,7 @@
 - [First BBS goes online Feb. 16, 1978 20260217](First BBS goes online Feb. 16, 1978_20260217.md)
 - [Gateway announces merger with eMachines, 1-30-2004 20260129](Gateway announces merger with eMachines, 1-30-2004_20260129.md)
 - [Gateway announces merger with eMachines, 1-30-2004 20260205](Gateway announces merger with eMachines, 1-30-2004_20260205.md)
+- [History of Dell computers 20260223](History of Dell computers_20260223.md)
 - [Intel 286 introduced Feb 2, 1982 20260202](Intel 286 introduced Feb 2, 1982_20260202.md)
 - [Intel 286 introduced Feb 2, 1982 20260205](Intel 286 introduced Feb 2, 1982_20260205.md)
 - [Office Space released Feb. 19, 1999 20260219](Office Space released Feb. 19, 1999_20260219.md)

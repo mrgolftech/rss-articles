@@ -1,0 +1,567 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/nesbitt.io/Where%20Do%20Specifications%20Fit%20in%20the%20Dependency%20Tree-_20260223/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Where Do Specifications Fit in the Dependency Tree? - Hacker News 精选博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#where-do-specifications-fit-in-the-dependency-tree" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Hacker News 精选博客" class="md-header__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker News 精选博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Where Do Specifications Fit in the Dependency Tree?
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker News 精选博客" class="md-nav__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hacker News 精选博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/nesbitt.io/Where Do Specifications Fit in the Dependency Tree-_20260223.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="where-do-specifications-fit-in-the-dependency-tree">Where Do Specifications Fit in the Dependency Tree?<a class="headerlink" href="#where-do-specifications-fit-in-the-dependency-tree" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> <a href="https://nesbitt.io">nesbitt.io</a>
+<strong>发布时间:</strong> 2026-02-23T10:00:00+00:00
+<strong>链接:</strong> https://nesbitt.io/2026/02/23/where-do-specifications-fit-in-the-dependency-tree.html</p>
+<hr />
+<p>{'type': 'text/html', 'language': None, 'base': 'https://nesbitt.io/2026/02/23/where-do-specifications-fit-in-the-dependency-tree.html', 'value': '<p>Your Ruby gem declares <code class="language-plaintext highlighter-rouge">required_ruby_version &gt;= 3.0</code>. That constraint references the Ruby 3.0 language specification, expressed through the implementation version, checked against whichever runtime happens to be running, with no distinction between MRI and JRuby, and no connection to the specification document that defines what Ruby 3.0 even is.</p>\n\n<p>Runtimes at least show up somewhere in the tooling. Your HTTP library also depends on RFC 9110, your JSON parser on ECMA-404, your TLS implementation on RFC 8446, and none of those appear in any manifest, lockfile, or SBOM.</p>\n\n<p>Library dependencies get the full treatment: manifests declare them, lockfiles pin them, SBOMs track them, scanners check them for vulnerabilities. Runtime versions sit one layer down, handled differently by every ecosystem. Python has <code class="language-plaintext highlighter-rouge">Requires-Python</code> in package metadata, enforced by pip but ignored by trove classifiers that may disagree with it. Ruby has <code class="language-plaintext highlighter-rouge">required_ruby_version</code> in the gemspec, enforced by both RubyGems and Bundler. Node.js has the <code class="language-plaintext highlighter-rouge">engines</code> field in package.json, advisory by default in npm unless you flip a config flag. Go’s <code class="language-plaintext highlighter-rouge">go</code> directive in go.mod was advisory until Go 1.21, when it flipped to a hard minimum in a single release and started auto-downloading the required toolchain if yours is too old.</p>\n\n<p>Developers keep inventing new layers because none of these are reliable enough on their own. A Ruby project might have <code class="language-plaintext highlighter-rouge">required_ruby_version &gt;= 3.0</code> in the gemspec, <code class="language-plaintext highlighter-rouge">ruby "3.2.2"</code> in the Gemfile, and <code class="language-plaintext highlighter-rouge">ruby 3.2.2</code> in <code class="language-plaintext highlighter-rouge">.tool-versions</code> for asdf or mise. That’s the same dependency declared in three places with three enforcement mechanisms, and they can disagree. The <code class="language-plaintext highlighter-rouge">.tool-versions</code> file exists because the gemspec constraint is too loose and the Gemfile directive doesn’t control which binary is on your PATH.</p>\n\n<p>Runtime implementation is barely tracked at all. JRuby 9.4 reports <code class="language-plaintext highlighter-rouge">RUBY_VERSION</code> as <code class="language-plaintext highlighter-rouge">"3.1.0"</code>, so a gem requiring <code class="language-plaintext highlighter-rouge">&gt;= 3.0</code> passes. If the gem has a C extension, it fails at build time because JRuby can’t run C extensions, and the gemspec has no way to express that it needs MRI specifically. .NET is the only ecosystem that formally addressed this with .NET Standard, a versioned API surface that works across .NET Framework, .NET Core, Mono, and Xamarin, essentially a spec for the spec implementations.</p>\n\n<p>And below all of this sit the specifications themselves, language definitions and protocol standards and encoding rules, none of which appear in any dependency graph.</p>\n\n<h3 id="spack">Spack</h3>\n\n<p>Spack, the HPC package manager, spent seven years learning what happens when you leave a dependency implicit.</p>\n\n<p>Before Spack v1.0, compilers were a special “node attribute” rather than actual nodes in the dependency graph. You configured them in <code class="language-plaintext highlighter-rouge">compilers.yaml</code> as external tools. Every package carried a compiler annotation, but compilers weren’t dependencies in any meaningful sense.</p>\n\n<p>Compiler runtime libraries like <code class="language-plaintext highlighter-rouge">gcc-runtime</code> (libgcc, libstdc++) were invisible. If you needed clang for C but gfortran for Fortran, the monolithic compiler attribute couldn’t express that. Build tools like cmake inherited the same exotic compiler as your main software even when they could have used a standard one. And if a Fortran compiler was missing, you’d find out deep in the dependency tree at build time rather than upfront during resolution.</p>\n\n<p>The idea to fix this was <a href="https://github.com/spack/spack/issues/896">filed in 2016</a>. The motivation came from a debugging story: a sysadmin installed a large dependency graph, gfortran was missing, openmpi built without Fortran support, and then hypre failed much later. If packages declared language dependencies, resolution itself would have caught the missing compiler before anything started building.</p>\n\n<p>It took until March 2025 for <a href="https://github.com/spack/spack/pull/45189">PR #45189</a> (“Turn compilers into nodes”) to merge. In Spack v1.0, languages like <code class="language-plaintext highlighter-rouge">c</code>, <code class="language-plaintext highlighter-rouge">cxx</code>, and <code class="language-plaintext highlighter-rouge">fortran</code> are virtual packages. Compilers are providers of those virtuals. A package declares <code class="language-plaintext highlighter-rouge">depends_on("c")</code> and <code class="language-plaintext highlighter-rouge">depends_on("cxx")</code>, and the resolver finds a compiler that satisfies both. The DAG now shows gcc injecting <code class="language-plaintext highlighter-rouge">gcc-runtime</code> as a visible runtime dependency, and the compiler wrapper is an explicit node included in the hash. The whole journey spanned dozens of intermediate issues, a <a href="https://archive.fosdem.org/2018/schedule/event/spack/">FOSDEM 2018 talk</a>, and a complete rethinking of how Spack’s concretizer works.</p>\n\n<p>Nix has always treated the compiler as a hashed dependency. Every derivation gets its build tools through <code class="language-plaintext highlighter-rouge">stdenv</code>, and the compiler toolchain is a content-addressed derivation like anything else. Bazel does something similar with hermetic toolchains. conda-forge uses `` in recipe metadata, which expands to platform-specific compiler packages. But even Nix stops at the same boundary, with the runtime, compiler, and glibc as content-addressed nodes while the specifications those tools implement remain outside the graph entirely.</p>\n\n<h3 id="spec-transitions">Spec transitions</h3>\n\n<p>What happens at that boundary, when a spec changes and the implementations have to follow? The results are rarely clean.</p>\n\n<p>When Chrome and Firefox enabled TLS 1.3 for testing in February 2017, failure rates were unexpectedly high. Chrome-to-Gmail connections succeeded 98.3% of the time with TLS 1.2 but only 92.3% with TLS 1.3. The culprit was middleboxes: corporate proxies and firewalls that had hardcoded expectations about TLS handshake fields. The TLS spec always allowed those fields to change, but because they had been stable for so long, middlebox developers treated them as constants.</p>\n\n<p>TLS 1.3 now lies about its own version. The ClientHello claims to be TLS 1.2, includes dummy session_id and ChangeCipherSpec fields that TLS 1.3 doesn’t need, and uses a <code class="language-plaintext highlighter-rouge">supported_versions</code> extension to negotiate the real protocol. Separately, GREASE (Generate Random Extensions And Sustain Extensibility, RFC 8701) has implementations advertise reserved IANA values for cipher suites, extensions, and other fields, training middleboxes to tolerate unknown values rather than ossifying around a fixed set. A spec had to disguise itself as an older version of itself because the ecosystem had ossified around implicit assumptions about the previous version.</p>\n\n<p>Unicode releases new versions roughly annually, and each version can change character properties for existing characters, not just add new ones. When Chrome updated its ICU data, the wrestler and handshake emoji lost their <code class="language-plaintext highlighter-rouge">Emoji_Base</code> classification, causing emoji with skin tone modifiers to visually split into a base character and an orphaned modifier. Most software has no way to declare “I depend on Unicode 14.0 character properties.” The Unicode version is baked into whatever runtime you happen to be using, and it changes when you update your JDK or system ICU library. Breakage happens not because developers chose to upgrade the spec, but because they upgraded something else and the spec came along for the ride.</p>\n\n<p>PyPI classifiers let packages declare <code class="language-plaintext highlighter-rouge">Programming Language :: Python :: 3</code>, and Brett Cannon built <code class="language-plaintext highlighter-rouge">caniusepython3</code> to analyze dependency trees and report which packages blocked the Python 2 to 3 migration. But classifiers were optional and often wrong. If <code class="language-plaintext highlighter-rouge">python_requires</code> had been mandatory and machine-enforced from the start, pip could have refused to install incompatible packages automatically. The <a href="https://python3wos.appspot.com/">Python 3 Wall of Shame</a>, launched in February 2011, showed only 9% of the top 200 packages supporting Python 3 more than two years after its release. Guido van Rossum later called the transition a mistake, not because Python 3 was wrong, but because the core team underestimated how much Python 2 code existed.</p>\n\n<p>CommonJS and ES Modules in Node.js are two incompatible module specs: ESM can import CJS, but CJS cannot <code class="language-plaintext highlighter-rouge">require()</code> ESM because ESM loads asynchronously and supports top-level <code class="language-plaintext highlighter-rouge">await</code>. If package.json had required declaring module system compatibility from the start, npm could have flagged incompatibilities at install time instead of leaving developers to discover them at runtime.</p>\n\n<p>SMTP’s transition to ESMTP negotiates at the protocol level: clients send <code class="language-plaintext highlighter-rouge">EHLO</code> instead of <code class="language-plaintext highlighter-rouge">HELO</code>, and if the server doesn’t understand it, they fall back. The server’s response lists supported extensions, essentially runtime dependency resolution for protocol capabilities. HTTP/1.1 to HTTP/2 used similar ALPN negotiation.</p>\n\n<h3 id="executable-specs">Executable specs</h3>\n\n<p>Web Platform Tests has over 56,000 tests and 1.8 million subtests, each mapped to a specific section of a W3C or WHATWG specification. The <a href="https://wpt.fyi/about">WPT Dashboard</a> shows which browser engines pass which tests. TC39’s Test262 does the same for ECMAScript. When a browser team says “we implement CSS Grid Level 1,” what they mean in practice is that they pass a specific set of WPT tests.</p>\n\n<p>These test suites are closer to something you could declare as a dependency than any prose RFC. They’re versioned, concrete artifacts with commit hashes. If you wanted a PURL-like identifier for spec dependencies, the test suite version might be more useful than the spec document version: <code class="language-plaintext highlighter-rouge">pkg:spec/w3c/wpt-css-grid@sha256:abc123</code> pins actual behavior, while <code class="language-plaintext highlighter-rouge">pkg:spec/w3c/css-grid@level-1</code> pins intent. They don’t always agree, and they don’t always change at the same time. A browser can pass all current WPT tests for a spec while the spec itself is still being revised, or a spec can be finalized while the test suite lags behind. When they diverge, you get a new class of version mismatch beyond the usual “pinned vs. unpinned” problem: did your package depend on what the spec said, or on what the test suite checked? A library might conform to the prose spec but fail the test suite because the tests encode a stricter interpretation, or pass every test while relying on behaviour the spec committee is about to remove. Tracking spec dependencies would need to account for both, and for the fact that they drift independently.</p>\n\n<p>Most specs have no conformance suite at all, though. IETF RFCs rarely ship with official tests. Where tests exist, they tend to emerge from interoperability testing during standardization and then go unmaintained. The dependency chain for most software is still <code class="language-plaintext highlighter-rouge">package -&gt; implementation -&gt; implicit understanding of a prose document</code>, with no machine-readable contract in between.</p>\n\n<p>TypeScript’s DefinitelyTyped ecosystem already does something like this for runtime APIs. <code class="language-plaintext highlighter-rouge">@types/node</code> describes what the Node.js runtime provides as a versioned npm package with its own semver, tracked in lockfiles and resolved by the same dependency machinery as any other package, but it declares the shape of an API without providing it. They version independently from the runtime they describe, so <code class="language-plaintext highlighter-rouge">@types/node@20</code> might not match the actual Node 20 API surface perfectly, and the mismatch only surfaces when someone notices. Developers voluntarily create and maintain these artifacts because the tooling rewards it, which suggests the main barrier to spec-as-a-package isn’t willingness but infrastructure.</p>\n\n<h3 id="de-facto-specifications">De facto specifications</h3>\n\n<p>Not all specifications live in standards bodies. Node.js module resolution has no formal spec; it’s defined by Node’s behavior, and anything that resolves modules the same way is depending on that behavior whether or not anyone writes it down.</p>\n\n<p>Oracle donated Java EE to the Eclipse Foundation but retained the Java trademark, which prevented the Eclipse Foundation from modifying the <code class="language-plaintext highlighter-rouge">javax</code> namespace. The compromise was renaming every package from <code class="language-plaintext highlighter-rouge">javax.<em></code> to <code class="language-plaintext highlighter-rouge">jakarta.</em></code> in Jakarta EE 9, keeping the APIs identical under different names. Every application, library, and framework that imported <code class="language-plaintext highlighter-rouge">javax.servlet</code> or <code class="language-plaintext highlighter-rouge">javax.persistence</code> broke. Tools like OpenRewrite automated the rename, but it remains one of the most disruptive compatibility events in Java’s history, caused entirely by a trademark dispute rather than any technical change. If Java EE’s spec dependency had been an explicit, versioned node in the graph, the scope of the breakage would at least have been visible before the rename happened.</p>\n\n<h3 id="spec-to-spec-dependencies">Spec-to-spec dependencies</h3>\n\n<p>Specifications have their own dependency graphs. JSON relies on UTF-8 and through it on Unicode. HTTP sits on TLS, which sits on X.509 and ASN.1, so a breaking change to ASN.1 encoding would ripple through TLS implementations into HTTP libraries and from there into everything that makes network requests. CSS Grid builds on the Box Model and Visual Formatting contexts.</p>\n\n<p>The <a href="https://github.com/raybellis/rfcdeps">rfcdeps</a> tool graphs these relationships by parsing the “obsoletes” and “updates” headers from the RFC Editor’s XML index, but it has no way to connect the spec graph to the software dependency graph, and nobody seems to have tried.</p>\n\n<h3 id="naming">Naming</h3>\n\n<p><a href="https://nesbitt.io/2026/02/14/package-management-namespaces.html">Package management is naming</a>, and the naming problem for specifications is worse than for packages.</p>\n\n<p>The IETF uses sequential numbers where a new version of a spec gets a new number entirely. RFC 9110 obsoletes RFC 7231, which obsoleted RFC 2616. If you want to reference “HTTP semantics,” you need to pick which RFC number, and that choice encodes a point in time rather than a version range. W3C uses levels for CSS (CSS Grid Level 1, Level 2), numbered versions for older specs (HTML 4.01), and maturity stages (Working Draft, Candidate Recommendation, Recommendation). WHATWG abandoned versioning entirely; HTML is a “Living Standard” with no version number and no snapshots. ECMA uses both edition numbers and year names (ECMA-262 6th Edition is also ES2015). ISO uses structured identifiers with amendment and corrigenda layers (<code class="language-plaintext highlighter-rouge">ISO/IEC 5962:2021</code>). IEEE uses base number plus year (IEEE 754-2019).</p>\n\n<p>An Internet-Draft (<a href="https://datatracker.ietf.org/doc/html/draft-claise-semver-02">draft-claise-semver-02</a>) proposed applying semver to IETF specifications, giving RFCs the same kind of machine-comparable version identifiers that packages use, but it expired without adoption. The barriers weren’t really technical; standards bodies have versioned things their own way for decades, and the conventions are embedded in their tooling, citation practices, and organizational processes. Getting the IETF, W3C, WHATWG, ECMA, ISO, and IEEE to agree on a common versioning scheme is a harder coordination problem than getting package managers to agree on lockfile formats.</p>\n\n<p>If you wanted a PURL-like scheme for specifications, something like <code class="language-plaintext highlighter-rouge">pkg:spec/ietf/rfc9110@2022</code>, you’d need to normalize across all of these conventions. PURL already handles per-ecosystem naming differences for packages, so the approach isn’t unprecedented, but someone would need to define the type mappings and get buy-in from communities that see no reason to change. PURL itself is now a spec (ECMA-427), so the identifier scheme for tracking spec dependencies would itself be a spec dependency that needs tracking.</p>\n\n<p>Making specs explicit doesn’t require solving the whole problem at once. Some of the data model already exists: <a href="https://spdx.github.io/spdx-spec/v3.0.1/">SPDX 3.0</a> includes a <code class="language-plaintext highlighter-rouge">hasSpecification</code> relationship type linking software elements to specifications, and <a href="https://cyclonedx.org/">CycloneDX 1.6</a> introduced “definitions” for standards and “declarations” for conformance attestation. But no package manager reads any of this, and no SBOM generator populates it automatically. A <code class="language-plaintext highlighter-rouge">spec</code> field in package metadata, even if it were just a list of RFC numbers or W3C shortnames, would let tooling answer questions that are currently impossible: which packages implement RFC 9110, how many depend on Unicode 15 character properties, which of your dependencies still implement TLS 1.2 and need to migrate. Spec authors, currently invisible in the software supply chain, would get the same transitive-dependent counts that help make the case for funding open source libraries. The Sovereign Tech Agency funds protocol implementations like curl and OpenSSL and is <a href="https://bsky.app/profile/sovereign.tech/post/3menmziyjy225">starting to explore</a> supporting standards work directly, but nobody can yet point to a number and say this RFC has 400,000 transitive dependents.</p>'}</p>
+<hr />
+<p><em>抓取时间: 2026-02-24 00:06:53</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月23日 16:06:54 UTC">2026-02-23</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

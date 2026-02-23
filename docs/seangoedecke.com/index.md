@@ -7,6 +7,7 @@
 - [How does AI impact skill formation- 20260131](How does AI impact skill formation-_20260131.md)
 - [How does AI impact skill formation- 20260205](How does AI impact skill formation-_20260205.md)
 - [I'm addicted to being useful 20260205](I'm addicted to being useful_20260205.md)
+- [Insider amnesia 20260223](Insider amnesia_20260223.md)
 - [LLM-generated skills work, if you generate them afterwards 20260217](LLM-generated skills work, if you generate them afterwards_20260217.md)
 - [Large tech companies don't need heroes 20260208](Large tech companies don't need heroes_20260208.md)
 - [On screwing up 20260211](On screwing up_20260211.md)

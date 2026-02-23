@@ -42,6 +42,7 @@
 - [Quoting Thomas Ptacek 20260208](Quoting Thomas Ptacek_20260208.md)
 - [Quoting Thoughtworks 20260214](Quoting Thoughtworks_20260214.md)
 - [Quoting Tom Dale 20260206](Quoting Tom Dale_20260206.md)
+- [Red-green TDD 20260223](Red-green TDD_20260223.md)
 - [Rodney v0.4.0 20260217](Rodney v0.4.0_20260217.md)
 - [Running Pydantic's Monty Rust sandboxed Python subset in WebAssembly 20260206](Running Pydantic's Monty Rust sandboxed Python subset in WebAssembly_20260206.md)
 - [SWE-bench February 2026 leaderboard update 20260219](SWE-bench February 2026 leaderboard update_20260219.md)

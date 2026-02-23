@@ -16,6 +16,7 @@
 - [Fibonacci numbers and time-space tradeoffs 20260208](Fibonacci numbers and time-space tradeoffs_20260208.md)
 - [Finding a non-square mod p 20260214](Finding a non-square mod p_20260214.md)
 - [Finding a square root of -1 mod p 20260214](Finding a square root of -1 mod p_20260214.md)
+- [Giant Steps 20260223](Giant Steps_20260223.md)
 - [Minimum of cosine sum 20260207](Minimum of cosine sum_20260207.md)
 - [Polish serenity 20260203](Polish serenity_20260203.md)
 - [Race between primes of the forms 4k + 1 and 4k + 3 20260215](Race between primes of the forms 4k + 1 and 4k + 3_20260215.md)

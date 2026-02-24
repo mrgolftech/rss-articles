@@ -1,0 +1,13 @@
+# Weekly Update 492
+
+**来源:** [troyhunt.com](https://troyhunt.com)
+**发布时间:** Tue, 24 Feb 2026 00:38:59 GMT
+**链接:** https://www.troyhunt.com/weekly-update-492/
+
+---
+
+{'type': 'text/html', 'language': None, 'base': 'https://www.troyhunt.com/rss/', 'value': '<img alt="Weekly Update 492" src="https://www.troyhunt.com/content/images/2026/02/Splash-Template-1.jpg" /><p>The recurring theme this week seems to be around the gap between breaches happening and individual victims finding out about them. It&apos;s tempting to blame this on the corporate victim of the breach (the hacked company), but they&apos;re simultaneously dealing with a criminal intrusion, a ransom demand, and class-action lawyers knocking down their doors. They&apos;re in a lose-lose position: pay the ransom and fuel the criminals whilst still failing to escape regulatory disclosure obligations. Disclose early and transparently to individuals, which then provides fuel to the lawyers. Try to sweep the whole thing under the rug and risk attracting the ire of customers and regulators alike. It&apos;s a very big mess, and it doesn&apos;t seem to be getting any better.</p>\n<!--kg-card-begin: html-->\n<div><div style="width: 170px; display: inline-block; margin-right: 3px;"><a href="https://itunes.apple.com/au/podcast/troy-hunts-weekly-update-podcast/id1176454699?ref=troy-hunt"><img alt="Weekly Update 492" src="https://www.troyhunt.com/content/images/2018/05/Listen-on-Apple-Podcasts.svg" /></a></div><div style="width: 175px; display: inline-block; margin-right: 3px;"><a href="https://www.youtube.com/playlist?list=PL7LAAxaabizMAXnJe0s3xjQ30q12EVmjt&amp;ref=troyhunt.com"><img alt="Weekly Update 492" src="https://www.troyhunt.com/content/images/2024/09/Watch-and-Listen-on-YouTube.svg" /></a></div><div style="width: 118px; display: inline-block; margin-right: 3px;"><a href="https://open.spotify.com/show/7jMtKFohdrw6qmz8AkLqit?ref=troy-hunt"><img alt="Weekly Update 492" class="kg-image" src="https://www.troyhunt.com/content/images/2019/10/spotify.svg" /></a></div><div style="width: 120px; display: inline-block;"><a href="https://omny.fm/shows/troy-hunt-weekly-update/playlists/podcast.rss?ref=troy-hunt"><img alt="Weekly Update 492" src="https://www.troyhunt.com/content/images/2018/07/Download-via-RSS.svg" /></a></div></div>\n<!--kg-card-end: html-->'}
+
+---
+
+*抓取时间: 2026-02-24 12:08:41*

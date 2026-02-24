@@ -15,6 +15,7 @@
 - [Vibe Coding- Empowering and Imprisoning 20251202](Vibe Coding- Empowering and Imprisoning_20251202.md)
 - [What about “Nothing about us without us-”](What about “Nothing about us without us-”.md)
 - [What about “Nothing about us without us-” 20251208](What about “Nothing about us without us-”_20251208.md)
+- [Why We Speak](Why We Speak.md)
 - [Wikipedia at 25- What the web can be](Wikipedia at 25- What the web can be.md)
 
 ---

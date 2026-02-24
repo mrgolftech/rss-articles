@@ -9,6 +9,7 @@
 - [Bridging secrets is hard 20260130](Bridging secrets is hard_20260130.md)
 - [Computing big, certified Fibonacci numbers 20260221](Computing big, certified Fibonacci numbers_20260221.md)
 - [Computing large Fibonacci numbers 20260208](Computing large Fibonacci numbers_20260208.md)
+- [Copy and paste law 20260224](Copy and paste law_20260224.md)
 - [Eigenvalue homework problems are backward 20260206](Eigenvalue homework problems are backward_20260206.md)
 - [Exahash, Zettahash, Yottahash 20260222](Exahash, Zettahash, Yottahash_20260222.md)
 - [Expressing a prime as the sum of two squares 20260213](Expressing a prime as the sum of two squares_20260213.md)

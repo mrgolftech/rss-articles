@@ -3,6 +3,7 @@
 以下是本博客的所有文章：
 
 - [AI twitter's favourite lie- everyone wants to be a developer 20260214](AI twitter's favourite lie- everyone wants to be a developer_20260214.md)
+- [Agentic swarms are an org-chart delusion 20260224](Agentic swarms are an org-chart delusion_20260224.md)
 - [Communities are not fungible 20260211](Communities are not fungible_20260211.md)
 - [Everyone in AI is building the wrong thing for the same reason 20260223](Everyone in AI is building the wrong thing for the same reason_20260223.md)
 - [How to stop being boring 20260205](How to stop being boring_20260205.md)
@@ -13,6 +14,7 @@
 - [The empire always falls 20260215](The empire always falls_20260215.md)
 - [The pitch deck is dead. Write a pitch.md instead. 20260209](The pitch deck is dead. Write a pitch.md instead._20260209.md)
 - [The unbearable weight of cruft 20260220](The unbearable weight of cruft_20260220.md)
+- [Thoughts on Farcaster 20260223](Thoughts on Farcaster_20260223.md)
 - [Why Intelligence Is a Terrible Proxy for Wisdom 20260205](Why Intelligence Is a Terrible Proxy for Wisdom_20260205.md)
 - [Your Life is the Sum Total of 2,000 Mondays 20260131](Your Life is the Sum Total of 2,000 Mondays_20260131.md)
 - [Your Life is the Sum Total of 2,000 Mondays 20260205](Your Life is the Sum Total of 2,000 Mondays_20260205.md)

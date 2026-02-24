@@ -1,0 +1,13 @@
+# Apple Will Begin Manufacturing Mac Minis in Houston Later This Year
+
+**来源:** [daringfireball.net](https://daringfireball.net)
+**发布时间:** 2026-02-24T19:35:12Z
+**链接:** https://www.apple.com/newsroom/2026/02/apple-accelerates-us-manufacturing-with-mac-mini-production/
+
+---
+
+{'type': 'text/html', 'language': 'en', 'base': 'https://daringfireball.net/linked/', 'value': '<p>Apple Newsroom:</p>\n\n<blockquote>\n  <p>Apple today announced a significant expansion of factory\noperations in Houston, bringing the future production of Mac mini\nto the U.S. for the first time. The company will also expand\nadvanced AI server manufacturing at the factory and provide\nhands-on training at its new Advanced Manufacturing Center\nbeginning later this year. Altogether, Apple’s Houston operations\nwill create thousands of jobs.</p>\n</blockquote>\n\n<p><strong>See also:</strong> Rolfe Winkler at The Wall Street Journal (<a href="https://www.wsj.com/tech/inside-apples-push-to-build-an-all-american-chip-0cf39c16?st=p1eZog">gift link</a>, <a href="https://apple.news/AmOmQKHZFSA291qvy0Ezzkg">News+ link</a>): “<a href="https://www.wsj.com/tech/inside-apples-push-to-build-an-all-american-chip-0cf39c16?st=p1eZog">Inside Apple’s Push to Build an All-American Chip</a>”.</p>\n\n<div>\n<a href="https://daringfireball.net/linked/2026/02/24/apple-will-begin-manufacturing-mac-minis-in-houston-later-this-year" title="Permanent link to ‘Apple Will Begin Manufacturing Mac Minis in Houston Later This Year’">&nbsp;★&nbsp;</a>\n</div>'}
+
+---
+
+*抓取时间: 2026-02-25 06:06:45*

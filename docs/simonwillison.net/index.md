@@ -64,6 +64,7 @@
 - [Writing code is cheap now 20260223](Writing code is cheap now_20260223.md)
 - [cysqlite - a new sqlite driver 20260211](cysqlite - a new sqlite driver_20260211.md)
 - [ggml.ai joins Hugging Face to ensure the long-term progress of Local AI 20260220](ggml.ai joins Hugging Face to ensure the long-term progress of Local AI_20260220.md)
+- [go-size-analyzer 20260224](go-size-analyzer_20260224.md)
 
 ---
 

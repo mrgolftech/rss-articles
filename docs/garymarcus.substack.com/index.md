@@ -10,6 +10,7 @@
 - [Four theories about the SpaceX - xAI merger 20260205](Four theories about the SpaceX - xAI merger_20260205.md)
 - [Irony, Irony laced with Karma, and Terror 20260213](Irony, Irony laced with Karma, and Terror_20260213.md)
 - [Is the Great AI meltdown imminent- [NSFW] 20260205](Is the Great AI meltdown imminent- [NSFW]_20260205.md)
+- [Marilyn (Molly) Marcus, 1942-2026 20260224](Marilyn (Molly) Marcus, 1942-2026_20260224.md)
 - [OpenClaw (a.k.a. Moltbot) is everywhere all at once, and a disaster waiting to happen 20260201](OpenClaw (a.k.a. Moltbot) is everywhere all at once, and a disaster waiting to happen_20260201.md)
 - [OpenClaw (a.k.a. Moltbot) is everywhere all at once, and a disaster waiting to happen 20260205](OpenClaw (a.k.a. Moltbot) is everywhere all at once, and a disaster waiting to happen_20260205.md)
 - [Promises are cheap 20260212](Promises are cheap_20260212.md)

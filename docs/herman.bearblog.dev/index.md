@@ -8,6 +8,7 @@
 - [Messing with bots 20260205](Messing with bots_20260205.md)
 - [Pockets of Humanity 20260223](Pockets of Humanity_20260223.md)
 - [Things that work (for me) 20260205](Things that work (for me)_20260205.md)
+- [Vulnerability as a Service 20260224](Vulnerability as a Service_20260224.md)
 
 ---
 

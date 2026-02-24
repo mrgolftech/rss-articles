@@ -3,6 +3,7 @@
 以下是本博客的所有文章：
 
 - [ACX 2025 Prediction Contest Retrospective 20260205](ACX 2025 Prediction Contest Retrospective_20260205.md)
+- [Flake Checks in Shell 20260223](Flake Checks in Shell_20260223.md)
 - [Laws of Succession 20260202](Laws of Succession_20260202.md)
 - [Laws of Succession 20260205](Laws of Succession_20260205.md)
 - [Learning KeyBee 20260216](Learning KeyBee_20260216.md)

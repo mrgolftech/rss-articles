@@ -16,6 +16,7 @@
 - [Package Management at FOSDEM 2026 20260204](Package Management at FOSDEM 2026_20260204.md)
 - [Package Manager Podcast Episodes 20260209](Package Manager Podcast Episodes_20260209.md)
 - [Platform Strings 20260217](Platform Strings_20260217.md)
+- [Reproducible Builds in Language Package Managers 20260224](Reproducible Builds in Language Package Managers_20260224.md)
 - [Respectful Open Source 20260213](Respectful Open Source_20260213.md)
 - [Sandwich Bill of Materials 20260208](Sandwich Bill of Materials_20260208.md)
 - [Separating Download from Install in Docker Builds 20260215](Separating Download from Install in Docker Builds_20260215.md)

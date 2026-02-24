@@ -13,6 +13,7 @@
 - [Pluralistic- Luxury Kafka (06 Feb 2026) 20260206](Pluralistic- Luxury Kafka (06 Feb 2026)_20260206.md)
 - [Pluralistic- Michael Swanwick's -The Universe Box- (03 Feb 2026) 20260203](Pluralistic- Michael Swanwick's -The Universe Box- (03 Feb 2026)_20260203.md)
 - [Pluralistic- Six Years of Pluralistic (19 Feb 2026) 20260219](Pluralistic- Six Years of Pluralistic (19 Feb 2026)_20260219.md)
+- [Pluralistic- Socialist excellence in New York City (24 Feb 2026) 20260224](Pluralistic- Socialist excellence in New York City (24 Feb 2026)_20260224.md)
 - [Pluralistic- Stock swindles (02 Feb 2026) 20260202](Pluralistic- Stock swindles (02 Feb 2026)_20260202.md)
 - [Pluralistic- The Epstein class and collapse porn (09 Feb 2026) 20260209](Pluralistic- The Epstein class and collapse porn (09 Feb 2026)_20260209.md)
 - [Pluralistic- The Nuremberg Caucus (10 Feb 2026) 20260210](Pluralistic- The Nuremberg Caucus (10 Feb 2026)_20260210.md)

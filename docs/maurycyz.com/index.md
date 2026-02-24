@@ -7,6 +7,7 @@
 - [03_How_to_write_your_own_website](03_How_to_write_your_own_website.md)
 - [04_The_horsehead_nebula__2026_](04_The_horsehead_nebula__2026_.md)
 - [05_You_should_start_a_blog](05_You_should_start_a_blog.md)
+- [Be careful with LLM -Agents- 20260223](Be careful with LLM -Agents-_20260223.md)
 - [How to write your own website 20260205](How to write your own website_20260205.md)
 - [Inside an alpha-beta scintillator- 20260212](Inside an alpha-beta scintillator-_20260212.md)
 - [Notes on blog future-proofing 20260205](Notes on blog future-proofing_20260205.md)

@@ -3,6 +3,7 @@
 以下是本博客的所有文章：
 
 - [AI is a NAND Maximiser 20260219](AI is a NAND Maximiser_20260219.md)
+- [Adding OpenStreetMap login to Auth0 20260224](Adding OpenStreetMap login to Auth0_20260224.md)
 - [Book Review- 20 Goto 10 - 10101001 facts about retro computers by Steven Goodwin ★★★★☆ 20260214](Book Review- 20 Goto 10 - 10101001 facts about retro computers by Steven Goodwin ★★★★☆_20260214.md)
 - [Book Review- A Geography of Time by Robert V. Levine ★★★☆☆ 20260223](Book Review- A Geography of Time by Robert V. Levine ★★★☆☆_20260223.md)
 - [Book Review- All Systems Red - The Murderbot Diaries by Martha Wells ★★⯪☆☆ 20260218](Book Review- All Systems Red - The Murderbot Diaries by Martha Wells ★★⯪☆☆_20260218.md)

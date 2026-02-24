@@ -5,6 +5,7 @@
 - [Could Write­Process­Memory be made faster by avoiding the intermediate buffer- 20260218](Could Write­Process­Memory be made faster by avoiding the intermediate buffer-_20260218.md)
 - [Customizing the ways the dialog manager dismisses itself- Detecting the ESC key, first (failed) atte 20260220](Customizing the ways the dialog manager dismisses itself- Detecting the ESC key, first (failed) atte_20260220.md)
 - [Customizing the ways the dialog manager dismisses itself- Detecting the ESC key, second (failed) att 20260223](Customizing the ways the dialog manager dismisses itself- Detecting the ESC key, second (failed) att_20260223.md)
+- [Customizing the ways the dialog manager dismisses itself- Isolating the Close pathway 20260224](Customizing the ways the dialog manager dismisses itself- Isolating the Close pathway_20260224.md)
 - [Exploring the signals the dialog manager uses for dismissing a dialog 20260219](Exploring the signals the dialog manager uses for dismissing a dialog_20260219.md)
 - [How can I distinguish between the numeric keypad 0 and the top-row 0 in the WM_CHAR message- 20260213](How can I distinguish between the numeric keypad 0 and the top-row 0 in the WM_CHAR message-_20260213.md)
 - [How can I distinguish between the numeric keypad 0 and the top-row 0 in the WM_KEY­DOWN message- 20260212](How can I distinguish between the numeric keypad 0 and the top-row 0 in the WM_KEY­DOWN message-_20260212.md)

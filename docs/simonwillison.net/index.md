@@ -14,6 +14,7 @@
 - [Distributing Go binaries like sqlite-scanner through PyPI using go-to-wheel 20260205](Distributing Go binaries like sqlite-scanner through PyPI using go-to-wheel_20260205.md)
 - [Experimenting with sponsorship for my blog and newsletter 20260219](Experimenting with sponsorship for my blog and newsletter_20260219.md)
 - [First kākāpō chick in four years hatches on Valentine's Day 20260217](First kākāpō chick in four years hatches on Valentine's Day_20260217.md)
+- [First run the tests 20260224](First run the tests_20260224.md)
 - [GLM-5- From Vibe Coding to Agentic Engineering 20260211](GLM-5- From Vibe Coding to Agentic Engineering_20260211.md)
 - [Gemini 3 Deep Think 20260212](Gemini 3 Deep Think_20260212.md)
 - [Gemini 3.1 Pro 20260219](Gemini 3.1 Pro_20260219.md)

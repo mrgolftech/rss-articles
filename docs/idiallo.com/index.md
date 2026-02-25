@@ -19,6 +19,7 @@
 - [Thinking Improves Thinking 20260218](Thinking Improves Thinking_20260218.md)
 - [We installed a single turnstile to feel secure 20260204](We installed a single turnstile to feel secure_20260204.md)
 - [We installed a single turnstile to feel secure 20260205](We installed a single turnstile to feel secure_20260205.md)
+- [When access to knowledge is no longer the limitation 20260225](When access to knowledge is no longer the limitation_20260225.md)
 - [You Don't Understand Things Better, You Just Feel Smarter 20260130](You Don't Understand Things Better, You Just Feel Smarter_20260130.md)
 - [You Don't Understand Things Better, You Just Feel Smarter 20260205](You Don't Understand Things Better, You Just Feel Smarter_20260205.md)
 

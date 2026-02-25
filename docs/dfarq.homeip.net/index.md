@@ -5,6 +5,7 @@
 - [Buy.com’s Feb 2000 IPO 20260209](Buy.com’s Feb 2000 IPO_20260209.md)
 - [Deja News- Google’s first acquisition 20260212](Deja News- Google’s first acquisition_20260212.md)
 - [First BBS goes online Feb. 16, 1978 20260217](First BBS goes online Feb. 16, 1978_20260217.md)
+- [Game designer Sid Meier born Feb. 24, 1954 20260225](Game designer Sid Meier born Feb. 24, 1954_20260225.md)
 - [Gateway announces merger with eMachines, 1-30-2004 20260129](Gateway announces merger with eMachines, 1-30-2004_20260129.md)
 - [Gateway announces merger with eMachines, 1-30-2004 20260205](Gateway announces merger with eMachines, 1-30-2004_20260205.md)
 - [History of Dell computers 20260223](History of Dell computers_20260223.md)

@@ -17,6 +17,7 @@
 - [Splitting Machines 17251925](Splitting Machines_17251925.md)
 - [They Were Robbed](They Were Robbed.md)
 - [They Were Robbed 17256459](They Were Robbed_17256459.md)
+- [They’re Vibe-Coding Spam Now](They’re Vibe-Coding Spam Now.md)
 
 ---
 

@@ -18,6 +18,7 @@
 - [Pluralistic- The Epstein class and collapse porn (09 Feb 2026) 20260209](Pluralistic- The Epstein class and collapse porn (09 Feb 2026)_20260209.md)
 - [Pluralistic- The Nuremberg Caucus (10 Feb 2026) 20260210](Pluralistic- The Nuremberg Caucus (10 Feb 2026)_20260210.md)
 - [Pluralistic- The online community trilemma (16 Feb 2026) 20260216](Pluralistic- The online community trilemma (16 Feb 2026)_20260216.md)
+- [Pluralistic- The whole economy pays the Amazon tax (25 Feb 2026) 20260225](Pluralistic- The whole economy pays the Amazon tax (25 Feb 2026)_20260225.md)
 - [Pluralistic- Threads' margin is the Eurostack's opportunity (30 Jan 2026) 20260130](Pluralistic- Threads' margin is the Eurostack's opportunity (30 Jan 2026)_20260130.md)
 - [Pluralistic- Trump antitrust is dead (13 Feb 2026) 20260213](Pluralistic- Trump antitrust is dead (13 Feb 2026)_20260213.md)
 - [Pluralistic- What's a -gig work minimum wage- (17 Feb 2026) 20260217](Pluralistic- What's a -gig work minimum wage- (17 Feb 2026)_20260217.md)

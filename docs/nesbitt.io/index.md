@@ -22,6 +22,7 @@
 - [Separating Download from Install in Docker Builds 20260215](Separating Download from Install in Docker Builds_20260215.md)
 - [The Dependency Layer in Digital Sovereignty 20260128](The Dependency Layer in Digital Sovereignty_20260128.md)
 - [The Many Flavors of Ignore Files 20260212](The Many Flavors of Ignore Files_20260212.md)
+- [Two Kinds of Attestation 20260225](Two Kinds of Attestation_20260225.md)
 - [Whale Fall 20260221](Whale Fall_20260221.md)
 - [What Package Registries Could Borrow from OCI 20260218](What Package Registries Could Borrow from OCI_20260218.md)
 - [Where Do Specifications Fit in the Dependency Tree- 20260223](Where Do Specifications Fit in the Dependency Tree-_20260223.md)

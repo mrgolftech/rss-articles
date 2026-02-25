@@ -11,6 +11,7 @@
 - [Book Review- Diversifying Open Source - An Open Standards Playbook for Inclusive and Equitable Tech  20260206](Book Review- Diversifying Open Source - An Open Standards Playbook for Inclusive and Equitable Tech _20260206.md)
 - [Book Review- Families And How To Survive Them by John Cleese and Robin Skynner ★★⯪☆☆ 20260220](Book Review- Families And How To Survive Them by John Cleese and Robin Skynner ★★⯪☆☆_20260220.md)
 - [Book Review- Me vs Brain - An Overthinker’s Guide to Life by Hayley Morris ★★★★☆ 20260208](Book Review- Me vs Brain - An Overthinker’s Guide to Life by Hayley Morris ★★★★☆_20260208.md)
+- [Book Review- Of Monsters and Mainframes - Barbara Truelove ★★★⯪☆ 20260225](Book Review- Of Monsters and Mainframes - Barbara Truelove ★★★⯪☆_20260225.md)
 - [Book Review- On the Calculation of Volume - Solvej Balle ★★★★★ 20260212](Book Review- On the Calculation of Volume - Solvej Balle ★★★★★_20260212.md)
 - [Book Review- The Examiner - Janice Hallett ★★★★⯪ 20260204](Book Review- The Examiner - Janice Hallett ★★★★⯪_20260204.md)
 - [Book Review- The Examiner - Janice Hallett ★★★★⯪ 20260205](Book Review- The Examiner - Janice Hallett ★★★★⯪_20260205.md)

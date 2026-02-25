@@ -6,6 +6,7 @@
 - [02_The_GDB_JIT_interface](02_The_GDB_JIT_interface.md)
 - [03_Load_and_store_forwarding_in_the_Toy_Optimizer](03_Load_and_store_forwarding_in_the_Toy_Optimizer.md)
 - [04_ZJIT_is_now_available_in_Ruby_4.0](04_ZJIT_is_now_available_in_Ruby_4.0.md)
+- [A fuzzer for the Toy Optimizer 20260225](A fuzzer for the Toy Optimizer_20260225.md)
 - [A multi-entry CFG design conundrum 20260205](A multi-entry CFG design conundrum_20260205.md)
 - [Load and store forwarding in the Toy Optimizer 20260205](Load and store forwarding in the Toy Optimizer_20260205.md)
 - [Sorry for marking all the posts as unread 20260205](Sorry for marking all the posts as unread_20260205.md)

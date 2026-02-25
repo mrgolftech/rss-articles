@@ -3,6 +3,7 @@
 以下是本博客的所有文章：
 
 - [10,000,000th Fibonacci number 20260222](10,000,000th Fibonacci number_20260222.md)
+- [A curious trig identity 20260224](A curious trig identity_20260224.md)
 - [AGI, ASI, A-I – Do we have all we need to get there- 20260130](AGI, ASI, A-I – Do we have all we need to get there-_20260130.md)
 - [Aligning one matrix with another 20260211](Aligning one matrix with another_20260211.md)
 - [Bitcoin mining difficulty 20260222](Bitcoin mining difficulty_20260222.md)

@@ -6,6 +6,7 @@
 - [Agentic swarms are an org-chart delusion 20260224](Agentic swarms are an org-chart delusion_20260224.md)
 - [Communities are not fungible 20260211](Communities are not fungible_20260211.md)
 - [Everyone in AI is building the wrong thing for the same reason 20260223](Everyone in AI is building the wrong thing for the same reason_20260223.md)
+- [Everything is awesome (why I'm an optimist) 20260225](Everything is awesome (why I'm an optimist)_20260225.md)
 - [How to stop being boring 20260205](How to stop being boring_20260205.md)
 - [Members only- -Won't Fix- self help 20260213](Members only- -Won't Fix- self help_20260213.md)
 - [The Coherence Premium 20260202](The Coherence Premium_20260202.md)

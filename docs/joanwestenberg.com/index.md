@@ -8,6 +8,7 @@
 - [Everyone in AI is building the wrong thing for the same reason 20260223](Everyone in AI is building the wrong thing for the same reason_20260223.md)
 - [Everything is awesome (why I'm an optimist) 20260225](Everything is awesome (why I'm an optimist)_20260225.md)
 - [How to stop being boring 20260205](How to stop being boring_20260205.md)
+- [Members Only- Your anonymity set has collapsed and you don't know it yet 20260226](Members Only- Your anonymity set has collapsed and you don't know it yet_20260226.md)
 - [Members only- -Won't Fix- self help 20260213](Members only- -Won't Fix- self help_20260213.md)
 - [The Coherence Premium 20260202](The Coherence Premium_20260202.md)
 - [The Discourse is a Distributed Denial-of-Service Attack 20260205](The Discourse is a Distributed Denial-of-Service Attack_20260205.md)

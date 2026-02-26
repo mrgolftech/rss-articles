@@ -10,6 +10,7 @@
 - [Turns out I was wrong about TDD 20260205](Turns out I was wrong about TDD_20260205.md)
 - [Two kinds of AI users are emerging. The gap between them is astonishing. 20260201](Two kinds of AI users are emerging. The gap between them is astonishing._20260201.md)
 - [Two kinds of AI users are emerging. The gap between them is astonishing 20260205](Two kinds of AI users are emerging. The gap between them is astonishing_20260205.md)
+- [Using OpenCode in CI-CD for AI pull request reviews 20260226](Using OpenCode in CI-CD for AI pull request reviews_20260226.md)
 - [Wall Street just lost $285 billion because of 13 markdown files 20260205](Wall Street just lost $285 billion because of 13 markdown files_20260205.md)
 - [Which programming languages are most token-efficient- 20260205](Which programming languages are most token-efficient-_20260205.md)
 - [Which web frameworks are most token-efficient for AI agents- 20260223](Which web frameworks are most token-efficient for AI agents-_20260223.md)

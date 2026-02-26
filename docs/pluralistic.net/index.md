@@ -9,6 +9,7 @@
 - [Pluralistic- Doctors' union may yet save the NHS from Palantir (12 Feb 2026) 20260212](Pluralistic- Doctors' union may yet save the NHS from Palantir (12 Feb 2026)_20260212.md)
 - [Pluralistic- End of the line for video essays (07 Feb 2026) 20260207](Pluralistic- End of the line for video essays (07 Feb 2026)_20260207.md)
 - [Pluralistic- Europe takes a big step towards a post-dollar world (11 Feb 2026) 20260211](Pluralistic- Europe takes a big step towards a post-dollar world (11 Feb 2026)_20260211.md)
+- [Pluralistic- If you build it (and it works), Trump will come (and take it) (26 Feb 2026) 20260226](Pluralistic- If you build it (and it works), Trump will come (and take it) (26 Feb 2026)_20260226.md)
 - [Pluralistic- Justin Key's -The Hospital at the End Of the World- (04 Feb 2026) 20260204](Pluralistic- Justin Key's -The Hospital at the End Of the World- (04 Feb 2026)_20260204.md)
 - [Pluralistic- Luxury Kafka (06 Feb 2026) 20260206](Pluralistic- Luxury Kafka (06 Feb 2026)_20260206.md)
 - [Pluralistic- Michael Swanwick's -The Universe Box- (03 Feb 2026) 20260203](Pluralistic- Michael Swanwick's -The Universe Box- (03 Feb 2026)_20260203.md)

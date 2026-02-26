@@ -4,8 +4,10 @@
 
 - [AI bot swarms threaten to undermine democracy 20260205](AI bot swarms threaten to undermine democracy_20260205.md)
 - [About that Matt Shumer post that has nearly 50 million views 20260211](About that Matt Shumer post that has nearly 50 million views_20260211.md)
+- [America, and probably the world, stands on a precipice. 20260226](America, and probably the world, stands on a precipice._20260226.md)
 - [BREAKING- LLM “reasoning” continues to be deeply flawed 20260210](BREAKING- LLM “reasoning” continues to be deeply flawed_20260210.md)
 - [Breaking- OpenAI is probably toast 20260213](Breaking- OpenAI is probably toast_20260213.md)
+- [Code Red for Humanity- 20260225](Code Red for Humanity-_20260225.md)
 - [Four theories about the SpaceX - xAI merger 20260203](Four theories about the SpaceX - xAI merger_20260203.md)
 - [Four theories about the SpaceX - xAI merger 20260205](Four theories about the SpaceX - xAI merger_20260205.md)
 - [Irony, Irony laced with Karma, and Terror 20260213](Irony, Irony laced with Karma, and Terror_20260213.md)

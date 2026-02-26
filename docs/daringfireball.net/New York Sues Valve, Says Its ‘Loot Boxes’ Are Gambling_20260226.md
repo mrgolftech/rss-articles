@@ -1,0 +1,13 @@
+# New York Sues Valve, Says Its ‘Loot Boxes’ Are Gambling
+
+**来源:** [daringfireball.net](https://daringfireball.net)
+**发布时间:** 2026-02-26T17:14:58Z
+**链接:** https://www.reuters.com/legal/government/new-york-sues-video-game-developer-valve-says-its-loot-boxes-are-gambling-2026-02-25/
+
+---
+
+{'type': 'text/html', 'language': 'en', 'base': 'https://daringfireball.net/linked/', 'value': '<p>Reuters:</p>\n\n<blockquote>\n  <p>New York’s attorney general sued Valve, a video game developer\nwhose franchises include Counter-Strike, Team Fortress and Dota,\naccusing it of promoting illegal gambling and threatening to\naddict children through its use of “loot boxes.” In a complaint\nfiled on Wednesday in a state court in Manhattan, Attorney General\nLetitia James said Valve’s loot boxes amounted to “quintessential\ngambling,” violating the state’s constitution and penal law, with\nvaluable items often hard to win and many items worth pennies.</p>\n</blockquote>\n\n<div>\n<a href="https://daringfireball.net/linked/2026/02/26/new-york-sues-valve" title="Permanent link to ‘New York Sues Valve, Says Its ‘Loot Boxes’ Are Gambling’">&nbsp;★&nbsp;</a>\n</div>'}
+
+---
+
+*抓取时间: 2026-02-27 02:38:48*

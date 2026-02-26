@@ -1,0 +1,13 @@
+# Research Firm Says Podcasts Have Passed AM/FM Talk Radio in Spoken-Word Listening Time
+
+**来源:** [daringfireball.net](https://daringfireball.net)
+**发布时间:** 2026-02-26T17:27:04Z
+**链接:** https://www.edisonresearch.com/podcasts-lead-am-fm-in-spoken-word-listening-marking-a-first/
+
+---
+
+{'type': 'text/html', 'language': 'en', 'base': 'https://daringfireball.net/linked/', 'value': '<p>Edison Research:</p>\n\n<blockquote>\n  <p>In 2015, AM/FM radio accounted for 75% of the time Americans spent\nwith spoken-word audio sources. AM/FM radio was not only the most\ndominant spoken-word audio listening platform, but it was fully\nsixty-five percentage points higher than podcasts, which accounted\nfor 10% of listening time back then. Quarter by quarter and year\nover year, time spent using AM/FM radio to listen to spoken-word\naudio has declined significantly and shifted to time spent with\npodcasts. As of Q4 2025, 40% of time spent listening to\nspoken-word is now spent with podcasts and 39% of time is spent\nwith AM/FM radio. Not only does radio not beat podcasts by a\nsignificant margin, it now trails the on-demand platform for\nspoken-word audio listening.</p>\n</blockquote>\n\n<p>Most of you reading this on Daring Fireball are surely thinking what I thought when I saw this (<a href="https://techcrunch.com/2026/02/25/americans-now-listen-to-podcasts-more-often-than-talk-radio-study-shows/">via TechCrunch</a>): <em>This only happened in 2025?</em> But it goes to show just how long it takes for media consumption habits, in the aggregate, to change.</p>\n\n<div>\n<a href="https://daringfireball.net/linked/2026/02/26/podcasts-pass-talk-radio" title="Permanent link to ‘Research Firm Says Podcasts Have Passed AM/FM Talk Radio in Spoken-Word Listening Time’">&nbsp;★&nbsp;</a>\n</div>'}
+
+---
+
+*抓取时间: 2026-02-27 02:38:48*

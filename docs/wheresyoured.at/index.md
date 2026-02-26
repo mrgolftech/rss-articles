@@ -4,6 +4,7 @@
 
 - [2025, A Retrospective 20251231](2025, A Retrospective_20251231.md)
 - [2025, A Retrospective 20260205](2025, A Retrospective_20260205.md)
+- [On NVIDIA and Analyslop 20260226](On NVIDIA and Analyslop_20260226.md)
 - [Premium- The AI Bubble Is A Time Bomb 20260123](Premium- The AI Bubble Is A Time Bomb_20260123.md)
 - [Premium- The AI Bubble Is A Time Bomb 20260205](Premium- The AI Bubble Is A Time Bomb_20260205.md)
 - [Premium- The AI Data Center Financial Crisis 20260213](Premium- The AI Data Center Financial Crisis_20260213.md)

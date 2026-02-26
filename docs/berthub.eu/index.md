@@ -3,6 +3,7 @@
 以下是本博客的所有文章：
 
 - [AWS and Microsoft are selling much more than cloud services 20260205](AWS and Microsoft are selling much more than cloud services_20260205.md)
+- [Amerika runt binnenkort onze BTW 20260226](Amerika runt binnenkort onze BTW_20260226.md)
 - [Betere Kamerstukken, en hoe lastig innovatie is 20260216](Betere Kamerstukken, en hoe lastig innovatie is_20260216.md)
 - [Dashboard totale Amerikaanse afhankelijkheden 20260205](Dashboard totale Amerikaanse afhankelijkheden_20260205.md)
 - [De digitale coalitieplannen- gaat het ook echt gebeuren- 20260217](De digitale coalitieplannen- gaat het ook echt gebeuren-_20260217.md)

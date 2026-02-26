@@ -2,6 +2,7 @@
 
 以下是本博客的所有文章：
 
+- [Against Query Based Compilers 20260225](Against Query Based Compilers_20260225.md)
 - [CI In a Box 20260206](CI In a Box_20260206.md)
 - [Considering Strictly Monotonic Time 20260123](Considering Strictly Monotonic Time_20260123.md)
 - [Diagnostics Factory 20260216](Diagnostics Factory_20260216.md)

@@ -16,13 +16,18 @@
 - [IMAX and Apple Collaborate to Screen F1 Races Live in Theaters 20260219](IMAX and Apple Collaborate to Screen F1 Races Live in Theaters_20260219.md)
 - [Lego Group and Crocs Enter Multi-Year Global Partnership 20260130](Lego Group and Crocs Enter Multi-Year Global Partnership_20260130.md)
 - [Major Candy Brands Are Switching From Actual Chocolate to ‘Chocolately Candy’ (Read- Brown Candle Wa 20260225](Major Candy Brands Are Switching From Actual Chocolate to ‘Chocolately Candy’ (Read- Brown Candle Wa_20260225.md)
+- [Microsoft Adds Additional Markdown Features to Windows Notepad 20260226](Microsoft Adds Additional Markdown Features to Windows Notepad_20260226.md)
 - [More MacOS 26.3 Finder Column View Silliness 20260212](More MacOS 26.3 Finder Column View Silliness_20260212.md)
 - [NetNewsWire 7 for Mac 20260223](NetNewsWire 7 for Mac_20260223.md)
+- [New York Sues Valve, Says Its ‘Loot Boxes’ Are Gambling 20260226](New York Sues Valve, Says Its ‘Loot Boxes’ Are Gambling_20260226.md)
 - [One More Spitball Idea for Apple’s March 4 Media Event ‘Experience’- Immersive F1 on Vision Pro- 20260219](One More Spitball Idea for Apple’s March 4 Media Event ‘Experience’- Immersive F1 on Vision Pro-_20260219.md)
 - [OpenAI’s Codex 20260204](OpenAI’s Codex_20260204.md)
 - [OpenAI’s Codex 20260205](OpenAI’s Codex_20260205.md)
 - [PageMaker Pioneer Paul Brainerd Dies at 78 20260224](PageMaker Pioneer Paul Brainerd Dies at 78_20260224.md)
 - [Paul Ford- ‘The A.I. Disruption Has Arrived, and It Sure Is Fun’ 20260218](Paul Ford- ‘The A.I. Disruption Has Arrived, and It Sure Is Fun’_20260218.md)
+- [Prediction Market Kalshi Accuses MrBeast Editor of Insider Trading 20260226](Prediction Market Kalshi Accuses MrBeast Editor of Insider Trading_20260226.md)
+- [Research Firm Says Podcasts Have Passed AM-FM Talk Radio in Spoken-Word Listening Time 20260226](Research Firm Says Podcasts Have Passed AM-FM Talk Radio in Spoken-Word Listening Time_20260226.md)
+- [Samsung Galaxy S26 Ultra’s Privacy Display 20260225](Samsung Galaxy S26 Ultra’s Privacy Display_20260225.md)
 - [Sentry 20260222](Sentry_20260222.md)
 - [The Pants-Shitting Saga of Resizing Windows on MacOS 26 Tahoe Continues 20260224](The Pants-Shitting Saga of Resizing Windows on MacOS 26 Tahoe Continues_20260224.md)
 - [The Steve Jobs Archive- ‘Letters to a Young Creator’ 20260224](The Steve Jobs Archive- ‘Letters to a Young Creator’_20260224.md)
@@ -36,7 +41,9 @@
 - [[Sponsor] WorkOS Pipes- Ship Third-Party Integrations Without Rebuilding OAuth 20260210]([Sponsor] WorkOS Pipes- Ship Third-Party Integrations Without Rebuilding OAuth_20260210.md)
 - [‘Backseat Software’ 20260129](‘Backseat Software’_20260129.md)
 - [‘Backseat Software’ 20260205](‘Backseat Software’_20260205.md)
+- [‘Steve Jobs in Exile’ 20260226](‘Steve Jobs in Exile’_20260226.md)
 - [★ Apple Releases iOS 26 Adoption Rates, and They’re Pretty Much in Line With the Last Few Years 20260217](★ Apple Releases iOS 26 Adoption Rates, and They’re Pretty Much in Line With the Last Few Years_20260217.md)
+- [★ My 2025 Apple Report Card 20260225](★ My 2025 Apple Report Card_20260225.md)
 
 ---
 

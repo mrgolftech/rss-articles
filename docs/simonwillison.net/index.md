@@ -8,6 +8,7 @@
 - [An Update on Heroku 20260206](An Update on Heroku_20260206.md)
 - [Andrej Karpathy talks about -Claws- 20260221](Andrej Karpathy talks about -Claws-_20260221.md)
 - [Anthropic's public benefit mission 20260213](Anthropic's public benefit mission_20260213.md)
+- [Claude Code Remote Control 20260225](Claude Code Remote Control_20260225.md)
 - [Claude- Speed up responses with fast mode 20260207](Claude- Speed up responses with fast mode_20260207.md)
 - [Covering electricity price increases from our data centers 20260212](Covering electricity price increases from our data centers_20260212.md)
 - [Distributing Go binaries like sqlite-scanner through PyPI using go-to-wheel 20260204](Distributing Go binaries like sqlite-scanner through PyPI using go-to-wheel_20260204.md)
@@ -18,8 +19,10 @@
 - [GLM-5- From Vibe Coding to Agentic Engineering 20260211](GLM-5- From Vibe Coding to Agentic Engineering_20260211.md)
 - [Gemini 3 Deep Think 20260212](Gemini 3 Deep Think_20260212.md)
 - [Gemini 3.1 Pro 20260219](Gemini 3.1 Pro_20260219.md)
+- [Google API Keys Weren't Secrets. But then Gemini Changed the Rules. 20260226](Google API Keys Weren't Secrets. But then Gemini Changed the Rules._20260226.md)
 - [How I think about Codex 20260222](How I think about Codex_20260222.md)
 - [How StrongDM's AI team build serious software without even looking at the code 20260207](How StrongDM's AI team build serious software without even looking at the code_20260207.md)
+- [I vibe coded my dream macOS presentation app 20260225](I vibe coded my dream macOS presentation app_20260225.md)
 - [Introducing Claude Sonnet 4.6 20260217](Introducing Claude Sonnet 4.6_20260217.md)
 - [Introducing Deno Sandbox 20260203](Introducing Deno Sandbox_20260203.md)
 - [Introducing Deno Sandbox 20260205](Introducing Deno Sandbox_20260205.md)
@@ -36,6 +39,7 @@
 - [Opus 4.6 and Codex 5.3 20260205](Opus 4.6 and Codex 5.3_20260205.md)
 - [Quoting Andrew Deck for Niemen Lab 20260211](Quoting Andrew Deck for Niemen Lab_20260211.md)
 - [Quoting Anthropic 20260212](Quoting Anthropic_20260212.md)
+- [Quoting Benedict Evans 20260226](Quoting Benedict Evans_20260226.md)
 - [Quoting David Crawshaw 20260207](Quoting David Crawshaw_20260207.md)
 - [Quoting Dimitris Papailiopoulos 20260217](Quoting Dimitris Papailiopoulos_20260217.md)
 - [Quoting Karel D'Oosterlinck 20260206](Quoting Karel D'Oosterlinck_20260206.md)
@@ -67,6 +71,7 @@
 - [cysqlite - a new sqlite driver 20260211](cysqlite - a new sqlite driver_20260211.md)
 - [ggml.ai joins Hugging Face to ensure the long-term progress of Local AI 20260220](ggml.ai joins Hugging Face to ensure the long-term progress of Local AI_20260220.md)
 - [go-size-analyzer 20260224](go-size-analyzer_20260224.md)
+- [tldraw issue- Move tests to closed source repo 20260225](tldraw issue- Move tests to closed source repo_20260225.md)
 
 ---
 

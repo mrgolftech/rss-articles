@@ -1,0 +1,567 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/wheresyoured.at/On%20NVIDIA%20and%20Analyslop_20260226/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>On NVIDIA and Analyslop - Hacker News 精选博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#on-nvidia-and-analyslop" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Hacker News 精选博客" class="md-header__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker News 精选博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              On NVIDIA and Analyslop
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker News 精选博客" class="md-nav__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hacker News 精选博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/wheresyoured.at/On NVIDIA and Analyslop_20260226.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="on-nvidia-and-analyslop">On NVIDIA and Analyslop<a class="headerlink" href="#on-nvidia-and-analyslop" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> <a href="https://wheresyoured.at">wheresyoured.at</a>
+<strong>发布时间:</strong> Thu, 26 Feb 2026 16:22:58 GMT
+<strong>链接:</strong> https://www.wheresyoured.at/on-nvidia-and-analyslop/</p>
+<hr />
+<p>{'type': 'text/html', 'language': None, 'base': 'https://www.wheresyoured.at/rss/', 'value': '<blockquote><strong>Editor&apos;s note: a previous version of this newsletter went out with Matt Hughes&apos; name on it, that&apos;s my editor who went over it for spelling errors and loaded it into the CMS. Sorry!</strong></blockquote><p>Hey all! I&#x2019;m going to start hammering out free pieces again after a brief hiatus, mostly because I found myself trying to boil the ocean with each one, fearing that if I regularly emailed you you&#x2019;d unsubscribe. I eventually realized how silly that was, so I&#x2019;m back, and will be back more regularly. I&#x2019;ll treat it like a column, which will be both easier to write and a lot more fun.</p><p>As ever, if you like this piece and want to support my work, please subscribe to my premium newsletter. It&#x2019;s $70 a year, or $7 a month, and in return you get a weekly newsletter that&#x2019;s usually anywhere from 5000 to 18,000 words, including vast, extremely detailed analyses of <a href="https://www.wheresyoured.at/the-haters-guide-to-nvidia/"><u>NVIDIA</u></a>, <a href="https://www.wheresyoured.at/howmuchmoney/"><u>Anthropic and OpenAI&#x2019;s finances</u></a>, and <a href="https://www.wheresyoured.at/premium-the-haters-guide-to-the-ai-bubble-vol-2/"><u>the AI bubble writ large</u></a>. I am regularly several steps ahead in my coverage, and you get an absolute ton of value. In the bottom right hand corner of your screen you&#x2019;ll see a red circle &#x2014; click that and select either monthly or annual.&#xa0; Next year I expect to expand to other areas too. It&#x2019;ll be great. You&#x2019;re gonna love it.&#xa0;</p><hr /><p>Before we go any further, I want to remind everybody I&#x2019;m not a stock analyst nor do I give investment advice.&#xa0;</p><p>I do, however, want to say a few things about NVIDIA and <a href="https://d18rn0p25nwr6d.cloudfront.net/CIK-0001045810/e361e58a-7483-44f5-bc62-a9080ae6ec72.pdf?ref=wheresyoured.at"><u>its annual earnings</u></a> report, which it published on Wednesday, February 25:</p><ol><li>NVIDIA beat estimates and raised expectations, as it has quarter after quarter. People were initially excited, then started reading the 10-K and seeing weird little things that stood out.</li><li>$68.1 billion in revenue is a lot of money! That&#x2019;s what you should expect from a company that is the single vendor in the only thing anybody talks about.&#xa0;</li><li><a href="https://d18rn0p25nwr6d.cloudfront.net/CIK-0001045810/5f86707e-03f3-4e5e-b9bd-048e42123723.pdf?ref=wheresyoured.at"><u>Hyperscaler revenue accounted for slightly more than 50% of NVIDIA&#x2019;s data center revenue</u></a>. <a href="https://www.wheresyoured.at/the-enshittifinancial-crisis/#:~:text=Worse%20still%2C%20NVIDIA%E2%80%99s,this%20is%20bad%3A"><u>As I wrote about last year</u></a>, NVIDIA&#x2019;s diversified revenue &#x2014; that&#x2019;s the revenue that comes from companies that <em>aren&#x2019;t</em> in the magnificent 7 &#x2014; continues to collapse. While data center revenue was $62.3 billion, 50% ($31.15 billion) was taken up by hyperscalers&#x2026;and because we don&#x2019;t get a 10-Q for the fourth quarter, we don&#x2019;t get a breakdown of how many individual customers made up that quarter&#x2019;s revenue. Boo!</li><li>It is both peculiar and worrying that 36% (around $77.7 billion) of its $215.938 billion in FY2026 revenue came from <em>two customers.</em> If I had to guess, they&#x2019;re likely Foxconn or Quanta computing, two large Taiwanese ODMs (Original Design Manufacturers) that build the servers for most hyperscalers.&#xa0;<ol><li>If you want to know more, <a href="https://www.wheresyoured.at/dot-com-bubble/#the-taiwan-problem-%E2%80%94-and-the-location-of-the-warehouses-of-gpus"><u>I wrote a long premium piece that goes into it</u></a> (among the ways in which AI is worse than the dot com bubble). In simple terms, when a hyperscaler buys GPUs, they go straight to one of these ODMs to put them into servers. This isn&#x2019;t out of the ordinary, but I keep an eye on the ODM revenues (which publish every month) to see if anything shifts, as I think it&#x2019;ll be one of the first signs that things are collapsing.</li></ol></li><li>NVIDIA&#x2019;s inventories continue to grow, sitting at over $21 billion (up from around $19 billion last quarter). Could be normal! Could mean stuff isn&#x2019;t shipping.</li><li>NVIDIA has now agreed to $27 billion in multi-year-long cloud service agreements &#x2014; literally renting its GPUs back from the people it sells them to &#x2014; with <strong><em>$7 billion</em></strong> of that expected in its FY2027 (Q1 FY2027 will report in May 2026).&#xa0;<ol><li>For some context, CoreWeave (which reports FY2025 earnings today, February 26) gave guidance last November that it expected its entire annual revenue to be between $5 billion and $5.15 billion. CoreWeave is arguably the largest AI compute vendor outside of the hyperscalers. If there was significant demand, none of this would be necessary.</li></ol></li><li>NVIDIA &#x201c;invested&#x201d; $17.5bn in AI model makers and other early-stage AI startups, and made a further $3.5bn in land, power, and shell guarantees to &#x201c;support the build-out of complex datacenter infrastructures.&#x201d; In total, it spent $21bn propping up the ecosystem that, in turn, feeds billions of dollars into its coffers.&#xa0;</li><li>NVIDIA&#x2019;s l<a href="https://x.com/dariocpx/status/2026837276731617390?ref=wheresyoured.at"><u>ong-term supply and capacity obligations soared from $30.8bn to $95.2bn</u></a>, largely because NVIDIA&#x2019;s latest chips are extremely complex and <a href="https://michaeljburry.substack.com/p/short-thought-nvidia-ratchets-up?utm_campaign=post-expanded-share&amp;utm_medium=web&amp;triedRedirect=true&amp;ref=wheresyoured.at"><u>require TSMC to make significant investments in hardware and facilities</u></a>, and it&#x2019;s unwilling to do that without receiving guarantees that it&#x2019;ll make its money back.&#xa0;<ol><li>NVIDIA expects these obligations to <em>grow</em>.&#xa0;</li></ol></li><li>NVIDIA&#x2019;s accounts receivable (as in goods that have been shipped but are yet to be paid for) now sits at $38.4 billion, of which 56% ($21.5 billion) is from three customers.</li></ol><p>NVIDIA&#x2019;s entire future is built on the idea that hyperscalers will buy GPUs at increasingly-higher prices and at increasingly-higher rates every single year. It is completely reliant on maybe four or five companies being willing to shove tens of billions of dollars a quarter directly into Jensen Huang&#x2019;s wallet. If anything changes here &#x2014; such as difficulty acquiring debt or investor pressure cutting capex &#x2014; NVIDIA is in real trouble, <a href="https://x.com/kakashiii111/status/2026781660386308407?s=20&amp;ref=wheresyoured.at"><u>as it&#x2019;s made over $95 billion in commitments to build out for the AI bubble</u></a>.&#xa0;</p><p>Yet the real gem was this part:</p><blockquote>We are finalizing an investment and partnership agreement with OpenAI. There is no assurance that we will enter into an investment and partnership agreement with OpenAI or that a transaction will be completed.</blockquote><p>Hell yeah dude! After misleading everybody that it intended to invest $100 billion in OpenAI last year (<a href="https://www.wheresyoured.at/the-enshittifinancial-crisis/#nvidia-september-22-2025"><u>as I warned everybody about months ago</u></a>, <a href="https://www.wsj.com/tech/ai/the-100-billion-megadeal-between-openai-and-nvidia-is-on-ice-aa3025e3?gaa_at=eafs&amp;gaa_n=AWEtsqfaJ1yS-_SqNb1VZuI5QYU2i1No1IA1M9JCtBY3UdxxppcBHbZ9xb09OuM3Xys%3D&amp;gaa_ts=6984e688&amp;gaa_sig=2LYGlQ4unjDuUJgfSAC-ASFiNLGdQjrK9_i85I2kcL53oafi1aeKINkk3caxtOK4i2rcks93XFq5qKyqtCgf5g%3D%3D&amp;ref=wheresyoured.at"><u>the deal never existed and is now effectively dead</u></a>), <a href="https://www.cnbc.com/2026/02/19/nvidia-is-in-talks-to-invest-up-to-30-billion-in-openai-source-says.html?ref=wheresyoured.at"><u>NVIDIA was allegedly &#x201c;close&#x201d; to investing $30 billion</u></a>. One would think that NVIDIA would, after Huang awkwardly tried to claim that the $100 billion was &#x201c;<a href="https://www.bloomberg.com/news/articles/2026-02-01/openai-investment-was-never-a-commitment-nvidia-s-huang-says?ref=wheresyoured.at"><u>never a commitment</u></a>,&#x201d; say with its full chest how badly it wanted to support OpenAI and how <em>intentionally it would do so.</em></p><p>Especially when you have this note in your 10-K:</p><blockquote>We estimate that one AI research and deployment company contributed to a meaningful amount of our revenue purchasing cloud services from our customers in fiscal year 2026</blockquote><p>What a peculiar world we live in. <a href="https://x.com/BrianSozzi/status/2026784759217557972?s=20&amp;ref=wheresyoured.at"><u>Apparently NVIDIA is &#x201c;so close&#x201d; to a &#x201c;partnership agreement&#x201d; too</u></a>, though it&#x2019;s important to remember that <a href="https://www.cnbc.com/video/2025/09/22/watch-cnbcs-full-interview-with-nvidia-ceo-jensen-huang-and-openai-leaders-sam-altman-and-greg-brockman.html?ref=wheresyoured.at"><u>Altman, Brockman, and Huang went on CNBC to talk about the last deal</u></a> and that never came together.</p><p>All of this adds a little more anxiety to OpenAI&apos;s alleged $100 billion funding round which, as <a href="https://www.theinformation.com/articles/amazons-50-billion-investment-openai-hinge-ipo-agi?rc=kz8jh3&amp;ref=wheresyoured.at" rel="noreferrer">The Information reports</a>, Amazon&apos;s alleged $50 billion investment will actually be $15 billion, with the next $35 billion contingent on AGI or an IPO:</p><blockquote>Under the terms of the investment, which are still being negotiated,&#xa0;<a href="https://www.theinformation.com/articles/openai-talks-raise-least-10-billion-amazon-use-ai-chips?preview=true&amp;rc=8tzurb&amp;ref=wheresyoured.at">Amazon would initially invest $15 billion</a>&#xa0;into OpenAI, these people said. The other $35 billion could hinge on OpenAI reaching AGI or going public, the people said. The proposed Amazon investment is part of OpenAI&#x2019;s current funding round, which could top $100 billion at a valuation of&#xa0;<a href="https://www.theinformation.com/articles/openai-discussed-raising-tens-billions-valuation-around-750-billion?rc=8tzurb&amp;ref=wheresyoured.at">$730 billion before the financing</a>.</blockquote><p>And that $30 billion from NVIDIA is shaping up to be a Klarna-esque three-installment payment plan:</p><blockquote>In addition, SoftBank and Nvidia each plan to invest $30 billion in three installments through the year as part of the round, said the people. Microsoft had been expected to invest low billions of dollars,&#xa0;<a href="https://www.theinformation.com/articles/openai-finalizing-first-commitments-100-billion-mega-round?ref=wheresyoured.at">The Information previously reported</a>, but it could invest a smaller amount or none at all, according to two of the people.</blockquote><p>A few thoughts:</p><ul><li>This is turning into a very involved and convoluted process! It turns out that it&apos;s pretty difficult to actually raise $100 billion. </li><li>This is a big problem, <a href="https://www.theinformation.com/articles/openai-boost-revenue-forecasts-predicts-112-billion-cash-burn-2030?rc=kz8jh3&amp;ref=wheresyoured.at" rel="noreferrer">because OpenAI needs $655 billion in the next five years to pay all its bills</a>, and loses billions of dollars a year. </li><li> If OpenAI is struggling to raise $100 billion today, I don&apos;t see how it&apos;s possible it survives. If you&apos;re to believe reports, <a href="https://www.cnbc.com/2026/02/20/openai-resets-spend-expectations-targets-around-600-billion-by-2030.html?ref=wheresyoured.at" rel="noreferrer">OpenAI made $13.1 billion in revenue in 2025 on $8 billion of losses</a>, but <a href="https://www.wheresyoured.at/oai_docs/" rel="noreferrer">remember, my own reporting from last year said that OpenAI only made around $4.329 billion through September 2025</a> with $8.67 billion of inference costs alone. <ul><li>It is kind of weird that nobody seems to acknowledge my reporting on this subject. </li></ul></li><li>I do not see how OpenAI survives. </li></ul><p>Anyway, on to the main event.</p><hr /><p>New term: analyslop, when somebody writes a long, specious piece of writing with few facts or actual statements with the intention of it being read as thorough analysis.&#xa0;</p><p>This week, alleged financial analyst Citrini Research (not to be confused with Andrew Left&#x2019;s Citron Research)&#xa0; put out a truly awful piece called the &#x201c;2028 Global Intelligence Crisis,&#x201d; slop-filled scare-fiction written and framed with the authority of deeply-founded analysis, <a href="https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-tariffs-02-23-2026/card/software-stocks-are-having-another-ugly-day-LlAj9avDeFocxKHzVwRZ?ref=wheresyoured.at"><u>so much so that it caused a global selloff in stocks</u></a>.&#xa0;</p><p>This piece &#x2014;<a href="https://www.dropbox.com/scl/fi/1p1n0y1ip48ianok9dvbp/Annotation-The-Global-Intelligence-Crisis.pdf?rlkey=qaar8ea6l5hh6jqls4x6g8q4b&amp;e=1&amp;dl=0&amp;ref=wheresyoured.at"><u> if you haven&#x2019;t read it, please do so using my annotated version</u></a> &#x2014; spends 7000 or more words telling the dire tale of what would happen if AI made an indeterminately-large amount of white collar workers redundant.&#xa0;</p><p>It isn&#x2019;t clear<em> what</em> exactly AI does, who makes the AI, or how the AI works, just that it replaces people, and then bad stuff happens. Citrini insists that this &#x201c;isn&#x2019;t bear porn or AI-doomer fan-fiction,&#x201d; but that&#x2019;s exactly what it is &#x2014; mediocre analyslop framed in the trappings of analysis, sold on a Substack with &#x201c;research&#x201d; in the title, specifically written to spook<em> and </em>ingratiate anyone involved in the financial markets.&#xa0;</p><p>Its goal is to convince you that AI (non-specifically) is scary, that your current stocks are bad, and that AI stocks (unclear which ones those are, by the way) are the future. Also, find out more for $999 a year.</p><p>Let me give you an example:</p><blockquote>It should have been clear all along that a single GPU cluster in North Dakota generating the output previously attributed to 10,000 white collar workers in midtown Manhattan is more economic pandemic than economic panacea.</blockquote><p>The goal of a paragraph like this is for you to say &#x201c;wow, that&#x2019;s what GPUs are doing now!&#x201d; It isn&#x2019;t, of course. <a href="https://www.theregister.com/2026/01/20/pwc_ai_ceo_survey/?ref=wheresyoured.at"><u>The majority of CEOs report little or no return on investment from AI</u></a>, with a study of 6000 CEOs across the US, UK, Germany and Australia finding that &#x201c;<a href="https://www.theregister.com/2026/02/18/ai_productivity_survey/?ref=wheresyoured.at"><u>more than 80%&#xa0;</u></a></p><p><a href="https://www.theregister.com/2026/02/18/ai_productivity_survey/?ref=wheresyoured.at"><u>[detected] no discernable impact from AI on either employment or productivity</u></a>.&#x201d; Nevertheless, you read &#x201c;GPU&#x201d; and &#x201c;North Dakota&#x201d; and you think &#x201c;wow! That&#x2019;s a place I know, and I know that GPUs power AI!&#x201d;&#xa0;</p><p>I know a GPU cluster in North Dakota &#x2014; <a href="https://www.wheresyoured.at/data-center-crisis/#model-case-study-1-coreweaveapplied-digital-ellendale-north-dakota"><u>CoreWeave&#x2019;s one with Applied Digital that has debt so severe that it loses both companies money even if they have the capacity rented out 24/7</u></a>. But let&#x2019;s not let facts get in the way of a poorly-written story.</p><p>I don&#x2019;t need to go line-by-line &#x2014; mostly because I&#x2019;ll end up writing a legally-actionable threat &#x2014; but I need you to know that most of this piece&#x2019;s arguments come down to magical thinking and the utterly empty prose.</p><p>For example, how does AI take over the entire economy?&#xa0;</p><blockquote>AI capabilities improved, companies needed fewer workers, white collar layoffs increased, displaced workers spent less, margin pressure pushed firms to invest more in AI, AI capabilities improved&#x2026;</blockquote><p>That&#x2019;s right, they just get better. No need to discuss anything happening today. Even <a href="https://www.wheresyoured.at/ai-mythbusters/#ai-2027-is-an-accurate-and-trustworthy-representation-of-the-future"><u>AI 2027</u></a> had the balls to start making stuff about &#x201c;OpenBrain&#x201d; or whatever. </p><p>This piece literally just says stuff, including one particularly-egregious lie:&#xa0;</p><blockquote>In late 2025, agentic coding tools took a step function jump in capability.<br /><br />A competent developer working with Claude Code or Codex could now replicate the core functionality of a mid-market SaaS product in weeks. Not perfectly or with every edge case handled, but well enough that the CIO reviewing a $500k annual renewal started asking the question &#x201c;what if we just built this ourselves?&#x201d;</blockquote><p>This is a complete and utter lie. A bald-faced lie. This is not something that Claude Code can do. The fact that we have major media outlets quoting this piece suggests that those responsible for explaining how things work don&#x2019;t actually bother to do any of the work to find out, and it&#x2019;s both a disgrace and embarrassment for the tech and business media that these lies continue to be peddled.&#xa0;</p><p>I&#x2019;m now going to quote part of my upcoming premium (the Hater&#x2019;s Guide To Private Equity, out Friday), because I think it&#x2019;s time we talked about what Claude Code actually does.</p><blockquote>It is not just a matter of &#x201c;enough prompts until it does this.&#x201d;&#xa0; Good (or even functional!) software engineering is technical, infrastructural and philosophical, and the thing you are &#x201c;automating&#x201d; is not just the code that makes a thing run.&#xa0;<br /><br />Let&apos;s start with the simplest, and least-technical way of putting it: even in the best-case scenario, you do not just type &quot;Build Be A Salesforce Competitor&quot; and it erupts, fully-formed, from your Terminal window. It is not capable of building it, but even if it were, it would need to actually be on a cloud hosting platform, and have all manner of actual customer data entered into it.&#xa0;<br /><br />Building software is not writing code and then hitting enter and a website appears, requiring all manner of infrastructural things (such as &quot;how does a customer access it in a consistent and reliable way,&quot; &quot;how do I make sure that this can handle a lot of people at once,&quot; and &quot;is it quick to access,&quot; with the more-complex database systems requiring entirely separate subscriptions just to keep them connecting).&#xa0;<br /><br />Software is a tremendous pain in the ass. You write code, then you have to make sure the code actually runs, and that code needs to run in some cases on specific hardware, and that hardware needs to be set up right, and some things are written in different languages, and those languages sometimes use more memory or less memory and if you give them the wrong amounts or forget to close the door in your code on something everything breaks, sometimes costing you money or introducing security vulnerabilities.&#xa0;<br /><br />In any case, even for experienced, well-versed software engineers, maintaining software that involves any kind of customer data requires significant investments in compliance, including things like SOC-2 audits if the customer itself ever has to interact with the system, as well as security.&#xa0;<br /><br />And yet, the myth that LLMs are an existential threat to existing software companies has taken root in the market, sending the share prices of the legacy incumbents tumbling. A great example would be SAP, down 10% in the last month.&#xa0;<br /><br />SAP makes ERP software (Enterprise Resource Planning, which I wrote about in the Hater&apos;s Guide To Oracle), and has been affected by the sell-off. SAP is also a massive, complex, resource-intensive database-driven system that involves things like accounting, provisioning, and HR, and is so heinously complex that you often have to pay SAP just to make it function (if you&apos;re lucky it might even do so). If you were to build this kind of system yourself, even with &quot;the magic of Claude Code&quot; (which I will get to shortly), it would be an incredible technological, infrastructural, and legal undertaking.&#xa0;<br /><br />Most software is like this. I&#x2019;d say all software that people rely on is like this. I am begging with you, pleading with you to think about how much you trust the software that&#x2019;s on every single thing you use, and what you do when a piece of software stops working, and how you feel about the company that does that. If your money or personal information touches it, they&#x2019;ve had to go through all sorts of shit that doesn&#x2019;t involve the code to bring you the software.&#xa0;<br /><br /><strong>Sidenote</strong>: <em>I want to be clear that there is nothing good about this. To quote a friend of mine &#x2014; an editor at a large tech publication &#x2014; &#x201c;Oracle is a law firm with a software company attached.&#x201d; SaaS companies regularly get by through scurrilous legal means and bullshit contracts, and their features are, in many cases, only as good as they need to be. Regardless, my point is that you will not just &#x201c;make your own software.&#x201d;&#xa0;</em><br /><br />Any company of a reasonable size would likely be committing hundreds of thousands if not millions of dollars of legal and accounting fees to make sure it worked, engineers would have to be hired to maintain it, and you, as the sole customer of this massive ERP system, would have to build every single new feature and integration you want. Then you&apos;d have to keep it running, this massive thing that involves, in many cases, tons of personally identifiable information. You&apos;d also need to make sure, without fail, that this system that involves money was aware of any and all currencies and how they fluctuate, because that is now your problem. Mess up that part and your system of record could massively over or underestimate your revenue or inventory, which could destroy your business.<br /><br />If that happens, you won&apos;t have anyone to sue. When bugs happen, you&apos;ll have someone whose job it is to fix it that you can fire, but replacing them will mean finding a new person to fix the mess that another guy made.&#xa0;<br /><br />And then we get to the fact that building stuff with Claude Code is not that straightforward. Every example you&apos;ve read about somebody being amazed by it has built a toy app or website that&apos;s very similar to many open source projects or website templates that Anthropic trained its training data on. Every single piece of SaaS anyone pays for is paying for both access to the product and a transfer of the inherent risk or chaos of running software that involves people or money. Claude Code does not actually build unique software. You can say &quot;create me a CRM,&quot; but whatever CRM it pops out will not magically jump onto Amazon Web Services, nor will it magically be efficient, or functional, or compliant, or secure, nor will it be differentiated at all from, I assume, the open source or publicly-available SaaS it was trained on. You really still need engineers, if not more of them than you had before.<br /><br />It might tell you it&apos;s completely compliant and that it will run like a hot knife through butter &#x2014; but LLMs don&#x2019;t know anything, and you cannot be sure Claude is telling the truth as a result.&#xa0;<br /><br />Is your argument that you&#x2019;d still have a team of engineers (so they know what the outputs mean), but they&#x2019;d be working on replacing your SaaS subscription? You&#x2019;re basically becoming a startup with none of the benefits.&#xa0;<br /><br />To quote Nik Suresh, an incredibly well-credentialed and respected software engineer (author of <a href="https://ludic.mataroa.blog/blog/i-will-fucking-piledrive-you-if-you-mention-ai-again/?ref=wheresyoured.at"><u>I Will Fucking Piledrive You If You Mention AI Again</u></a>), &#x201c;...for some engineers, [Claude Code] is a great way to solve certain, tedious problems more quickly, and the responsible ones understand you have to read most of the output, which takes an appreciable fraction of the time it would take to write the code in many cases. Claude doesn&apos;t write terrible code all the time, it&apos;s actually good for many cases because many cases are boring. You just have to read all of it if you aren&apos;t a fucking moron because it periodically makes company-ending decisions.&#x201d;<br /></blockquote><p>I&#x2019;ve worked in or around SaaS since 2012, and I know the industry well. I may not be able to code, but I take the time to speak with software engineers so that I understand what things actually do and how &#x201c;impressive&#x201d; they are. Similarly, I make the effort to understand the underlying business models in a way that I&#x2019;m not sure everybody else is trying to, and if I&#x2019;m wrong, please show me an analysis of the financial condition of OpenAI or Anthropic from a booster. You won&#x2019;t find one, because they&#x2019;re not interested in interacting with reality.</p><h2 id="the-great-intelligence-crisis-in-the-media">The Great Intelligence Crisis In The Media</h2><p>So, despite all of this being <em>very obvious</em>, it&#x2019;s clear that the markets and an alarming number of people in the media<em> simply do not know what they are talking about or are intentionally avoiding thinking about it.</em> The &#x201c;AI replaces software&#x201d; story is literally &#x201c;Anthropic has released a product and now the resulting industry is selling off,&#x201d; such as when it launched a cybersecurity tool that could check for vulnerabilities (a product that has existed in some form for nearly a decade) <a href="https://www.cnbc.com/2026/02/23/cybersecurity-stocks-anthropic-ai-crowdstrike.html?ref=wheresyoured.at"><u>causing a sell-off in cybersecurity stocks like Crowdstrike</u></a> &#x2014; you know, <a href="https://www.wheresyoured.at/crowdstruck-2/"><u>the one that had a faulty bit of code cause a global cybersecurity incident</u></a> that <a href="https://www.theguardian.com/technology/article/2024/jul/24/crowdstrike-outage-companies-cost?ref=wheresyoured.at"><u>lost the Fortune 500 billions</u></a>, and resulted in <a href="https://www.wsj.com/lifestyle/travel/flight-cancellations-caused-by-tech-outage-continue-through-weekend-de3cff9c?ref=wheresyoured.at"><u>Delta Airlines having to cancel over 1,200 flights over a period of several days</u></a>.&#xa0;</p><p>There is no rational basis for anything about this sell-off other than that our financial media and markets do not appear to understand the very basic things about the stuff they invest in. Software may seem complex, but (especially in these cases) it&#x2019;s really quite simple: investors are conflating &#x201c;an AI model can spit out code&#x201d; with &#x201c;an AI model can create the entire experience of what we know as &#x2018;software,&#x2019; or is close enough that we have to start freaking out.&#x201d;</p><p>This is thanks to the intentionally-deceptive marketing pedalled by Anthropic and validated by the media. In a piece from September 2025, <a href="https://archive.is/6mKsM?ref=wheresyoured.at"><u>Bloomberg reported</u></a> that Claude Sonnet 4.5 could &#x201c;code on its own for up to 30 hours straight,&#x201d;&#xa0; <a href="https://arstechnica.com/ai/2025/09/anthropic-says-its-new-ai-model-maintained-focus-for-30-hours-on-multistep-tasks/?ref=wheresyoured.at"><u>a statement directly from Anthropic repeated by other outlets</u></a> that added that it did so &#x201c;on complex, multi-step tasks,&#x201d; none of which were explained. The Verge, however, added that apparently Anthropic &#x201c;<a href="https://archive.is/yglfX?ref=wheresyoured.at"><u>coded a chat app akin to Slack or Teams</u></a>,&#x201d; <strong>and no, you can&#x2019;t see it, or know anything about how much it costs or its functionality. </strong>Does it run? Is it useful? Does it work in any way? What does it look like? We have <strong>absolutely no proof this happened other than Anthropic saying it, but because the media repeated it it&#x2019;s now a fact.&#xa0;</strong></p><p>As I discussed last week, <a href="https://www.wheresyoured.at/premium-the-haters-guide-to-anthropic/#anthropic%E2%80%99s-isnt-a-real-business-and-its-primary-business-model-is-deception"><u>Anthropic&#x2019;s primary business model is deception</u></a>, muddying the waters of what&#x2019;s possible<em> today</em> and what might be possible <em>tomorrow</em> through a mixture of flimsy marketing statements and <a href="https://www.forbes.com/sites/kolawolesamueladebayo/2026/02/21/dario-amodei-doubled-down-on-his-ai-jobs-warning-heres-whats-different-now/?ref=wheresyoured.at"><u>chief executive Dario Amodei&#x2019;s doomerist lies about all white collar labor disappearing</u></a><strong>.&#xa0;</strong></p><p><strong>Anthropic tells lies of obfuscation and omission.&#xa0;</strong></p><ul><li>it coded for 30 hours [from which you are meant to intimate the code was useful or good and that these hours were productive].&#xa0;</li><li>it made a Microsoft Teams competitor [that you are meant to assume was full-featured and functional like Teams or Slack, or&#x2026;functional? And they didn&#x2019;t even have to prove it by showing you it]&#xa0;</li><li>It was able to write uninterruptedly [which you assume was because it was doing good work that didn&#x2019;t need interruption].&#xa0;</li></ul><p><u>Anthropic exploits bad journalism, ignorance and a lack of critical thinking.</u></p><p>As I said earlier, the &#x201c;wow, Claude Code!&#x201d; articles are mostly from captured boosters and people that do not actually build software being amazed that it can burp up its training data and make an impression of software engineering.&#xa0;</p><p>And even if we believe <a href="https://techcrunch.com/2026/02/12/spotify-says-its-best-developers-havent-written-a-line-of-code-since-december-thanks-to-ai/?ref=wheresyoured.at"><u>the idea that Spotify&#x2019;s best engineers are not writing any code</u></a>, I have to ask: to what end? Is Spotify shipping more software? Is the software better? Are there more features? Are there less bugs? What are the engineers doing with the time they&#x2019;re saving? <a href="https://www.theregister.com/2025/07/11/ai_code_tools_slow_down/?ref=wheresyoured.at"><u>A study from last year from METR</u></a> said that despite thinking they were 24% faster, LLM coding tools made engineers 19% slower.&#xa0;</p><p>I also think we need to really think deeply about how, for the second time in a month, the markets and the media have had a miniature shitfit based on blogs that tell lies using fan fiction. <a href="https://www.dropbox.com/scl/fi/qw6k5c3m575cq21p7jjac/Something-Big-Is-Coming-Annotated.pdf?rlkey=qlr0mgnlpjifo5xkon2crhrhw&amp;e=1&amp;dl=0&amp;ref=wheresyoured.at"><u>As I covered in my annotations</u></a> of Matt Shumer&#x2019;s &#x201c;Something Big Is Happening,&#x201d; the people that are meant to tell the general public what&#x2019;s happening in the world appear to be falling for ghost stories that confirm their biases or investment strategies, even if said stories are full of half-truths and outright lies.</p><p>I am despairing a little. When I see Matt Shumer on CNN or hear from the head of a PE firm about Citrini Research, I begin to wonder whether everybody got where they were not through any actual work but by making the right noises.&#xa0;</p><p>This is the grifter economy, and the people that should be stopping them are asleep at the wheel.</p>'}</p>
+<hr />
+<p><em>抓取时间: 2026-02-27 02:38:48</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月26日 18:38:55 UTC">2026-02-26</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1163 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术博客文章聚合 - Hacker News 2025年最受欢迎的博客">
+      
+      
+        <meta name="author" content="OpenClaw">
+      
+      
+        <link rel="canonical" href="https://mrgolftech.github.io/rss-articles/maurycyz.com/How%20to%20write%20your%20own%20website_20260114/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>How to write your own website - Hacker News 精选博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-write-your-own-website" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Hacker News 精选博客" class="md-header__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker News 精选博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              How to write your own website
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blogs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  所有博客
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker News 精选博客" class="md-nav__button md-logo" aria-label="Hacker News 精选博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hacker News 精选博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mrgolftech/rss-articles" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rss-articles
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    所有博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/mrgolftech/rss-articles/edit/master/docs/maurycyz.com/How to write your own website_20260114.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="how-to-write-your-own-website">How to write your own website<a class="headerlink" href="#how-to-write-your-own-website" title="Permanent link">&para;</a></h1>
+<p><strong>来源:</strong> <a href="https://maurycyz.com">maurycyz.com</a>
+<strong>发布时间:</strong> Wed, 14 Jan 2026 00:00:00 +0000
+<strong>链接:</strong> https://maurycyz.com/tutorials/website/</p>
+<hr />
+<!-- mksite: start of content -->
+<p class="dropcap">
+
+I recently wrote <a href="https://maurycyz.com/misc/starting_a_blog/">an essay</a> on why you should set up a personal website rather then using social media. 
+Doing so lets you own your space on the internet, customize it and free your readers from constant advertising and algorithmic feeds designed to keep you stuck doomscrolling all day.
+</p>
+<p>
+<em>Despite how much time we spend using it</em>, creating something for the intenet is seen as arcane wizardy by most people.
+This is a fairly accessable guide to getting started.
+</p>
+<p>
+You'll need a text editor (any will do) and a browser (you already have one).
+</p>
+<p>
+<!-- snip -->
+</p>
+<p>
+
+
+</p>
+<p>
+<em>All sites are written in HTML</em>, which is a simple text-based format.
+To start with, this is a perfectly valid HTML document:
+</p>
+<p>
+<pre>
+Check out my epic site!
+</pre>
+</p>
+<p>
+To try this, just create a text file with a ".html" extension, and open it in your favorite browser. 
+Do this now: experimenting is the best way to learn how everything works.
+</p>
+<p>
+This is what it should look like:
+</p>
+<p>
+
+Check out my epic site!
+
+</p>
+<p>
+<em>Plain text is boring</em>, so let's add some formatting:
+</p>
+<p>
+<pre>
+Check out my &lt;b&gt;epic&lt;/b&gt; site!
+</pre>
+</p>
+<p>
+
+Check out my <b>epic</b> site!
+
+</p>
+<p>
+
+</p>
+<p>
+
+If your browser shows angle brackets on the page, it's likely you accidentally created a file with double extentions.
+You can check for this by looking at the URL bar: It should look something like this "file://.../site.html"
+If it doesn't end with ".html" but instead ".html.txt" or similar, will will need to fix the file name. 
+<br />
+<br />
+Windows will hide the real file extention by default:
+If you are using it, ensure that "Show file extentions" is enabled in the file explorer settings. 
+
+</p>
+<p>
+The angle bracket things are tags: "&lt;b&gt;" is an opening tag, and "&lt;/b&gt;" is the matching closing tag.
+The word surrounded by brackets ("b") is the tag name, which tells the browser what to do:
+In this case, <b>b</b>olding the enclosed text. 
+</p>
+<p>
+The other formatting tags are &lt;em&gt; <b>em</b><i>phasis</i>,
+&lt;u&gt; <u><b>u</b>nderline</u>,
+&lt;sub&gt; <sub><b>sub</b>scipt</sub>,
+&lt;sup&gt; <sup><b>sup</b>erscript</sup>,
+&lt;small&gt; <small><b>small</b> text</small>, 
+&lt;mark&gt; highlight and &lt;del&gt;
+<del><b>del</b>eted</del>. 
+</p>
+<p>
+You don't have to memorize this list, but go and try a few out.
+</p>
+<p>
+There's also &lt;br/&gt; (<b>br</b>eak), which adds a line break. 
+It's special because there's no closing tag: It's always closes immediatly and can't contain any text.
+I like to add a slash after the tag name to indicate this
+</p>
+<p>
+<em>A big wall of text can get quite ugly</em>, so it's good to break it up with &lt;p&gt; (<b>p</b>aragraph) tags.
+Each paragraph will be visually separated from other content on the page:
+</p>
+<p>
+<pre>
+&lt;p&gt;
+Check out my &lt;em&gt;new&lt;/em&gt; site
+&lt;/p&gt;
+&lt;p&gt;
+I have many &lt;b&gt;epic&lt;/b&gt; things here.
+&lt;/p&gt;
+</pre>
+</p>
+
+<p>
+Check out my <i>new</i> site:
+</p>
+<p>
+I have many <b>epic</b> things here.
+</p>
+
+<p>
+Together, the maching tags and their contents form an an <b>element</b>.
+Elements can contain other elements, but it's important that they are closed in the correct order:
+</p>
+<p>
+<em>This is wrong</em>:
+</p>
+<p>
+<pre>
+&lt;em&gt;Some &lt;b&gt;random&lt;/em&gt; text&lt;b&gt;
+&lt;!-- &lt;em&gt; (parent) is closed *before* &lt;b&gt; (child) --&gt;
+&lt;!-- Don't do this! --&gt;
+</pre>
+</p>
+<p>
+... but this is fine:
+</p>
+<p>
+<pre>
+&lt;em&gt;Some &lt;b&gt;random&lt;/b&gt; text&lt;em&gt;
+&lt;!-- &lt;em&gt; (parent) is closed *after* &lt;b&gt; (child) --&gt;
+&lt;!-- Perfectly fine. --&gt;
+</pre>
+</p>
+<p>
+Browsers will attempt to render invalid HTML, but the results may not be what you intended:
+It's best to make it easy for them.
+</p>
+<p>
+<em>On that topic, it's good practice</em> to put all your content inside a &lt;body&gt; element which is itself inside a &lt;html&gt; element:
+</p>
+<p>
+<pre>
+&lt;html&gt;
+    &lt;body&gt;
+        &lt;p&gt;Check out my new site:&lt;/p&gt;
+        &lt;p&gt;I have many &lt;b&gt;epic&lt;/b&gt; things here.&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</p>
+
+<p>Check out my new site:</p>
+<p>I have many <b>epic</b> things here.</p>
+
+<p>
+This isn't mandatory, but helps browsers render your page correctly:
+In the case of an old browser, you don't want metadata (we'll add some later) getting confused for page content. 
+</p>
+<p>
+<em>Back to text-wall-avoidance:</em>
+the &lt;ul&gt; and &lt;ol&gt; (<b>u</b>nordered/<b>o</b>rdered <b>l</b>ist) tags create, well, lists.
+Each item should be wraped in &lt;li&gt; tags (<b>l</b>ist <b>i</b>tem)
+</p>
+<pre>
+&lt;html&gt;&lt;body&gt;
+
+&lt;p&gt;About this site (unordered):
+    &lt;ul&gt;
+        &lt;li&gt;This site has &lt;b&gt;epic&lt;/b&gt; things&lt;/li&gt;
+        &lt;li&gt;... and I wrote it myself&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+    It uses these tags: (ordered)
+    &lt;ol&gt;
+        &lt;li&gt;&amp;lt;html&amp;gt;&lt;/li&gt;
+        &lt;li&gt;&amp;lt;body&amp;gt;&lt;/li&gt;
+        &lt;li&gt;&amp;lt;p&amp;gt;&lt;/li&gt;
+        &lt;li&gt;&amp;lt;ul&amp;gt; and &amp;lt;ol&amp;gt;&lt;/li&gt;
+        &lt;li&gt;&amp;lt;li&amp;gt;&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/p&gt;
+
+&lt;/body&gt;&lt;/html&gt;
+</pre>
+
+<p>About this site (unordered):
+    <ul>
+        <li>It has <b>epic</b> things</li>
+        <li>... and is handwritten HTML</li>
+    </ul>
+</p>
+
+<p>
+    It uses these tags: (ordered)
+    <ol>
+        <li>&lt;html&gt;</li>
+        <li>&lt;body&gt;</li>
+        <li>&lt;p&gt;</li>
+        <li>&lt;ul&gt; and &lt;ol&gt;</li>
+        <li>&lt;li&gt;</li>
+    </ol>
+</p>
+
+<p>
+
+<em>You can add angle brackets</em> to a page with &amp;gt; (&gt;), &amp;lt; (&lt;) and &amp;amp; (&amp;).
+These entities will render as the corresponding charater, but won't form tags.
+</p>
+<p>
+<em>Headings use</em> &lt;h1&gt; (<b>h</b>eading <b>1</b>) through &lt;h5&gt; (<b>h</b>eading <b>5</b>), with larger numbers using smaller font sizes:
+
+</p>
+<pre>
+&lt;html&gt;&lt;body&gt;
+
+&lt;h1&gt;My cool site:&lt;/h1&gt;
+
+&lt;p&gt;This site has &lt;b&gt;epic&lt;/b&gt; things and I wrote it myself.&lt;/p&gt;
+
+&lt;h3&gt;Other cool places:&lt;/h3&gt;
+
+&lt;p&gt;To do: Figure out how to add links.&lt;/p&gt;
+
+&lt;/body&gt;&lt;/html&gt;
+</pre>
+
+<h1>My cool site:</h1>
+
+<p>This site has <b>epic</b> things and I wrote it myself.</p>
+
+<h3>Other cool places:</h3>
+
+<p>To do: Figure out how to add links.</p>
+
+<p>
+<em>About that. Links are just &lt;a&gt; (<b>a</b>nchor) tags</em>, but they have something new:
+an attribute after the tag name but before the bracket.
+</p>
+
+<pre>
+I found this &lt;a href=https://www.righto.com/&gt;cool blog&lt;/a&gt; about electronics. 
+</pre>
+
+<p>I found this <a class="default" href="https://www.righto.com/">cool blog</a> about electronics.</p>
+<p>
+The "href= " attribute sets where the link points to.
+A lot of other tags can also have attributes: For example, ordered lists with "reverse=true" count backwards.
+</p>
+<p>
+The URL in "href=" can be relative:
+If linking up multiple pages on the same site, instead of this:
+</p>
+
+<pre>
+&lt;a href=https://example.com/some/page&gt;Some page&lt;/a&gt;
+</pre>
+
+<p>
+... just write this: 
+</p>
+
+<pre>
+&lt;a href=https://example.com/some/page&gt;Some page&lt;/a&gt;
+</pre>
+
+<p>
+<em>Images work similarly to links</em>, except that they are self-closing elements like &lt;br/&gt;:
+</p>
+
+<pre>
+&lt;p&gt;Check out this &lt;a href=/astro/m27&gt;picture&lt;/a&gt; of a nebula I took!&lt;/p&gt;
+
+&lt;img src=/astro/m27/small.jpg /&gt;
+</pre>
+</p>
+<p>
+Check out this <a class="default" href="https://maurycyz.com/astro/m27">picture</a> of a nebula I took!
+</p>
+<p><img class="narrow" src="https://maurycyz.com/astro/m27/small.jpg" /></p>
+<p>
+</p>
+<p>
+(If you don't have a URL for your image, skip to the <a href="https://maurycyz.com/index.xml#hosting">hosting</a> section to set one up)
+</p>
+<p>
+That's all the essentials, but there's a lot of other useful tags.
+For example &lt;details&gt; creates a dropdown that works with ctrl-f:
+</p>
+
+<details>
+Awsome dropdown (click me!)
+<p>
+This is a dropdown with just HTML. It works well with browser features (ctrl-f, fragment identifiers, screen readers, etc) by default.
+</p>
+<p>
+(better usability than 99% of commercial sites!)
+</details>
+
+<p>
+...but I can't cover everything without writing a whole book. 
+(The <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements">Mozilla Docs</a> are a fantastic reference)
+</p>
+<p>
+<h1>Making it look nice:</h1>
+</p>
+<p>
+<em>At this point</em>, you should have something like this:
+</p>
+
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+    &lt;h1&gt;Check out my cool site:&lt;/h1&gt;
+    &lt;p&gt;
+        I made this site to write about things I do.
+        More updates &lt;em&gt;soon™&lt;/em&gt;.
+    &lt;/p&gt;
+
+    &lt;h2&gt;Other cool places:&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=https://www.righto.com/&gt;Ken Shirriff's blog&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h2&gt;Photography:&lt;/h2&gt;
+    &lt;p&gt;Here's my &lt;a href=/astro/m27&gt;picture&lt;/a&gt; of the Dumbbell Nebula:&lt;/p&gt;
+    &lt;img src=/astro/m27/small.jpg /&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<h1>Check out my cool site:</h1>
+<p>
+I made this site to write about things I do.
+More updates <i>soon™</i>.
+</p>
+<h2>Other cool places:</h2>
+<ul>
+    <li><a class="default" href="https://www.righto.com/">Ken Shirriff's blog</a></li>
+</ul>
+<h2>Photography:</h2>
+<p>Here's my <a class="default" href="https://maurycyz.com/astro/m27">picture</a> of the Dumbbell Nebula:</p>
+<p><img class="narrow" src="https://maurycyz.com/astro/m27/small.jpg" /></p>
+<p>
+
+<p>
+Let's start by giving the page a machine-readable title:
+</p><p>
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;My epic site&lt;/title&gt;
+&lt;/head&gt;
+&lt;!-- snip --&gt;
+</pre>
+</p><p>
+Like with &lt;body&gt;, the &lt;head&gt; tag isn't required, but it is good to include it:
+Otherwise, any metadata that the browser doesn't understand might be mistaken for content.
+</p><p>
+<em>The page still looks kinda bad</em>: 
+Text extending the edges of the page isn't exactly easy to read.
+It's not too bad when crammed into my blog, but longer paragraphs will look terrible on large monitors. 
+(You might have to switch to landscape to see this problem on mobile)
+</p><p>
+To fix this, we need to add some style and layout information using the &lt;style&gt; tag:
+</p><p>
+<pre>
+&lt;!-- snip --&gt;
+    &lt;style&gt;
+        body {
+            max-width: 30em;
+        }
+
+        img {
+            width: 100%;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;!-- snip --&gt;
+</pre>
+</p><p>
+<em>Unlike other tags, the contents of &lt;style&gt; isn't HTML</em>, its CSS: a whole other langauge embedded within the file.
+CSS is compoosed of blocks, each begining with a selector to control what gets effected.
+Here, these are just tag names: "head" and "img"
+</p><p>
+The selector is followed by a series of declarations wraped in curly braces.
+The first block only has one: "max-width: 30em;"
+This limits the width of the &lt;body&gt; element to 30 times the font size ("em" unit):
+</p>
+
+
+
+
+
+<h1>Check out my cool site:</h1>
+<p>
+I made this site to write about things I do.
+More updates <i>soon™</i>.
+</p>
+<h2>Other cool places:</h2>
+<ul>
+    <li><a class="default" href="https://www.righto.com/">Ken Shirriff's blog</a></li>
+</ul>
+<h2>Photography:</h2>
+<p>Here's my <a class="default" href="https://maurycyz.com/astro/m27">picture</a> of the Dumbbell Nebula:</p>
+<img class="narrow" src="https://maurycyz.com/astro/m27/small.jpg" />
+
+
+
+<p>
+The second block...
+</p>
+<pre>
+img {
+    width: 100%;
+}
+</pre>
+<p>
+... sets the width of images to (100%) the size of their container.
+This ensures that they are properly sized for the column regardless of resolution:
+Otherwise, particularly big images can overflow the column, and low-res ones will be tiny.
+</p>
+
+<p>
+<em>The page is looking rather asymetrical</em>, so lets center the column.
+For fixed-width elements, this can be done using the "margin" property:
+</p>
+
+<pre>
+&lt;!-- snip --&gt;
+    &lt;style&gt;
+        body {
+            max-width: 30em;
+            margin: auto;
+        }
+
+        img {
+            width: 100%;
+        }
+    &lt;/style&gt;
+&lt;!-- snip --&gt;
+</pre>
+
+
+</p>
+
+<h1>Check out my cool site:</h1>
+<p>
+I made this site to write about things I do.
+More updates <i>soon™</i>.
+</p>
+<h2>Other cool places:</h2>
+<ul>
+    <li><a class="default" href="https://www.righto.com/">Ken Shirriff's blog</a></li>
+</ul>
+<h2>Photography:</h2>
+<p>Here's my <a class="default" href="https://maurycyz.com/astro/m27">picture</a> of the Dumbbell Nebula:</p>
+<p><img class="narrow" src="https://maurycyz.com/astro/m27/small.jpg" /></p>
+<p>
+(For varable width elements, use flexbox for centering and other fancy layouts.
+A single line of text can be centered with "text-align=center")
+</p>
+<p>
+<em>Personally, I like dark themed sites</em>, so lets change some of the colors:
+</p>
+
+<pre>
+&lt;!-- snip --&gt;
+    &lt;style&gt;
+        html {
+            background-color: black;
+        }
+
+        html {
+            max-width: 30em;
+            margin: auto;
+            color: white;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        /* Fancy selectors to make visited and unvisited links different colors */
+        a:link {color: #4ee;}
+        a:visited {color: #399;}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;!-- snip --&gt;
+</pre>
+
+<h1>Check out my cool site:</h1>
+<p>
+I made this site to write about things I do.
+More updates <i>soon™</i>.
+</p>
+<h2>Other cool places:</h2>
+<ul>
+    <li><a class="darklink" href="https://www.righto.com/">Ken Shirriff's blog</a></li>
+</ul>
+<h2>Photography:</h2>
+<p>Here's my <a class="darklink" href="https://maurycyz.com/astro/m27">picture</a> of the Dumbbell Nebula:</p>
+<p><img class="narrow" src="https://maurycyz.com/astro/m27/small.jpg" /></p>
+<p>
+The "color" style will carry over to every element inside of the styled tag, so there's no need to individually change the text-color of every element.
+However, the links do need to be changed because they override the color by default.
+</p>
+<p>
+<em>That's it:</em>
+Everything needed to replicate my blog, minus a few small bits like the sans-serif font, nagivation box, etc.
+Of course, your website can and should be different: It's yours.
+</p>
+<p>
+<em>I highly recomend you read <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">some documentation</a></em> and play around with CSS.
+There's also way more to it then I can possbly cover here.
+Every website you see was created with it, and it even supports animations and <a href="https://lyra.horse/blog/2025/08/you-dont-need-js/">some interactivity</a>
+</p>
+<p>
+... also, check out your browser's devtools (ctrl-shift-i):
+It will have a nice GUI for editing which shows you the result in real time and shows you what's going on under the hood.
+</p>
+<p>
+<em>If you ever run out of tags</em>, you can just <a href="https://maurycyz.com/misc/make-up-tags/">make up your own</a> and style them as needed.
+As long as the name includes a hypen, it's guaranteed not to be included in any future version of HTML.
+The specification even lists &lt;math-α&gt; and &lt;emotion-😍&gt; as allowed custom elements names. 
+</p>
+<p>
+I've used this heavily on this page: 
+All the example websites aren't screenshots, they are &lt;fake-frame&gt; elements styled up to look like a browser window.
+Custom tags are also very handy for styling text:
+</p>
+
+<pre>
+&lt;html&gt;
+    &lt;style&gt;
+        html {
+            color: white;
+            background-color: black;
+        }
+        green-text {
+            color: green;
+        }
+    &lt;/style&gt;
+
+    It &lt;green-text&gt;works&lt;/green-text&gt;!
+&lt;/html&gt;
+</pre>
+
+<p>It works!</p>
+<p>
+<h1 id="hosting">Sharing it:</h1>
+</p>
+<p>
+<em>You should now have a reasonably nice page</em> ready to put up on the internet. 
+The easiest way to do this is to use a static file hosting service like <a href="https://docs.github.com/en/pages">Github pages</a> or <a href="https://pages.cloudflare.com/">Cloudflare pages</a>. 
+Both of these have generous free tiers that should last a very long time. 
+</p>
+<p>
+If you don't like big companies, there are plenty of similar, smaller services. 
+These can be more limited: The popular <a href="https://neocities.org/">Neocities</a> charges $5/mo to use a custom domain. 
+</p>
+<p>
+Another option is to rent a server ($3-$5/mo) or, if you have good internet, run one yourself. 
+This is by far the most fiddly option: I would not recommend it unless you like playing with computers. 
+</p>
+<p>
+All off these (except a server) will give you a subdomain by default.
+For example, Github Pages will give you <b>your-username</b>.github.io 
+However, I do recommend setting up a custom domain:
+This will let you switch providers seamlessly should anything happen.
+</p>
+<p>
+<em>They all work in a similar way:</em>
+Upload a file with some name, and it will given a URL with that same name.
+The one exception is that files called "index.html" will be viewable at the root of the folder they are in.
+</p>
+<pre>
+Filename          URL
+
+root/
++- my_cats.html   https://example.com/my_cats.html
++- cat_photos/    
+|   +- cat1.jpg   https://example.com/cat_photos/cat1.jpg
+|   +- cat2.jpg   https://example.com/cat_photos/cat2.jpg
+|   +- index.html https://example.com/cat_photos/
+|
++- index.html     https://example.com/ 
+</pre>
+<p>
+You should put an index.html in the root of your site to serve as the homepage, but apart from that, the organization is up to you.
+</p>
+<!-- mksite: end of content -->
+
+<hr />
+<p><em>抓取时间: 2026-02-26 06:10:02</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月26日 18:38:55 UTC">2026-02-26</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        这篇文章有帮助吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="有帮助" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="没帮助" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              感谢反馈！我们会改进。
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 - OpenClaw
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mrgolftech" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

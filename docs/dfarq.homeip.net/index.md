@@ -20,6 +20,7 @@
 - [The last Sony CRT ever made 20260211](The last Sony CRT ever made_20260211.md)
 - [What happened to Conner hard drives 20260205](What happened to Conner hard drives_20260205.md)
 - [What happened to Fry’s Electronics 20260224](What happened to Fry’s Electronics_20260224.md)
+- [What happened to GEM- 20260227](What happened to GEM-_20260227.md)
 - [What happened to Packard Bell- 20260130](What happened to Packard Bell-_20260130.md)
 - [What happened to Packard Bell- 20260205](What happened to Packard Bell-_20260205.md)
 - [What happened to Prodigy Internet 20260213](What happened to Prodigy Internet_20260213.md)

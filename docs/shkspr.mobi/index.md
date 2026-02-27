@@ -18,6 +18,7 @@
 - [Book Review- The Voyage of the Space Beagle by Alfred Elton Van Vogt ★★☆☆☆ 20260202](Book Review- The Voyage of the Space Beagle by Alfred Elton Van Vogt ★★☆☆☆_20260202.md)
 - [Book Review- The Voyage of the Space Beagle by Alfred Elton Van Vogt ★★☆☆☆ 20260205](Book Review- The Voyage of the Space Beagle by Alfred Elton Van Vogt ★★☆☆☆_20260205.md)
 - [Book Review- This Is How They Tell Me the World Ends - Nicole Perlroth ★⯪☆☆☆ 20260216](Book Review- This Is How They Tell Me the World Ends - Nicole Perlroth ★⯪☆☆☆_20260216.md)
+- [Book Review- Weird Things Customers Say in Bookshops by Jen Campbell ★★☆☆☆ 20260227](Book Review- Weird Things Customers Say in Bookshops by Jen Campbell ★★☆☆☆_20260227.md)
 - [Book Review- With the End in Mind - Dying, Death and Wisdom in an Age of Denial by Kathryn Mannix ★★ 20260131](Book Review- With the End in Mind - Dying, Death and Wisdom in an Age of Denial by Kathryn Mannix ★★_20260131.md)
 - [Book Review- With the End in Mind - Dying, Death and Wisdom in an Age of Denial by Kathryn Mannix ★★★⯪☆ 20260205](Book Review- With the End in Mind - Dying, Death and Wisdom in an Age of Denial by Kathryn Mannix ★★★⯪☆_20260205.md)
 - [Gadget Review- Epomaker Split 70 Mechanical Keyboard ★★★★⯪ 20260217](Gadget Review- Epomaker Split 70 Mechanical Keyboard ★★★★⯪_20260217.md)

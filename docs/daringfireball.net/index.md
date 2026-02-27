@@ -9,6 +9,7 @@
 - [Apple Reports Record-Breaking Revenue and Profit for Q1 FY26 20260205](Apple Reports Record-Breaking Revenue and Profit for Q1 FY26_20260205.md)
 - [Apple Will Begin Manufacturing Mac Minis in Houston Later This Year 20260224](Apple Will Begin Manufacturing Mac Minis in Houston Later This Year_20260224.md)
 - [Apple in 2025- The Six Colors Report Card 20260224](Apple in 2025- The Six Colors Report Card_20260224.md)
+- [Block Lays Off 4,000 (of 10,000) Employees 20260227](Block Lays Off 4,000 (of 10,000) Employees_20260227.md)
 - [Energym 20260227](Energym_20260227.md)
 - [FTC Chairman Sends Letter to Apple Complaining That MAGA ‘News’ Sources Aren’t Represented in Apple  20260224](FTC Chairman Sends Letter to Apple Complaining That MAGA ‘News’ Sources Aren’t Represented in Apple _20260224.md)
 - [Grandson of Inventor of Reese’s Peanut Butter Cups Goes Public With the Obvious- They Taste Like Shi 20260223](Grandson of Inventor of Reese’s Peanut Butter Cups Goes Public With the Obvious- They Taste Like Shi_20260223.md)

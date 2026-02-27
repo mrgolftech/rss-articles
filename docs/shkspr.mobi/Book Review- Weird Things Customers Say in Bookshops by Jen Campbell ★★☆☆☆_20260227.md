@@ -1,0 +1,13 @@
+# Book Review: Weird Things Customers Say in Bookshops by Jen Campbell ★★☆☆☆
+
+**来源:** [shkspr.mobi](https://shkspr.mobi)
+**发布时间:** Fri, 27 Feb 2026 12:34:11 +0000
+**链接:** https://shkspr.mobi/blog/2026/02/book-review-weird-things-customers-say-in-bookshops-by-jen-campbell/
+
+---
+
+{'type': 'text/html', 'language': None, 'base': 'https://shkspr.mobi/blog/feed/', 'value': '<img alt="Book cover" class="alignleft size-full wp-image-66622" src="https://shkspr.mobi/blog/wp-content/uploads/2026/03/1366054116.webp" width="200" />\n\n<p>Remember back in the early 2010s when any moderately popular Twitter account could become a book (or even a <a href="https://en.wikipedia.org/wiki/Shit_My_Dad_Says">TV series</a>)?</p>\n\n<p>This is a collection of Tweet-sized "overheard in" stories. All set in book shops.</p>\n\n<p>Isn\'t it funny that some people don\'t know how books work! ROFL!</p>\n\n<p>Aren\'t the general public strange? LOLOL!</p>\n\n<p>That\'s a bit harsh of me. It only rarely becomes mean-spirited. But in a book this short, it rather contaminates the joy.</p>\n\n<p>That said, this one will live rent-free in my head for a while:</p>\n\n<blockquote><p>Did Beatrix Potter ever write a book about dinosaurs?</p></blockquote>\n\n<p>It\'s the sort of stocking-filler book which is reasonable for perusing on the loo. Light-hearted but ultimately disposable.</p>\n\n<p>Still, at least Neil Gaiman found it funny enough to leave a blurb…</p>'}
+
+---
+
+*抓取时间: 2026-02-28 00:06:51*

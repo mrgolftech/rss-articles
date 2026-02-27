@@ -16,6 +16,7 @@
 - [Testing Reachy Mini - Hugging Face's Pi powered robot 20260213](Testing Reachy Mini - Hugging Face's Pi powered robot_20260213.md)
 - [The first good Raspberry Pi Laptop 20260206](The first good Raspberry Pi Laptop_20260206.md)
 - [This AI robot didn't replace my parent-child interactions 20260213](This AI robot didn't replace my parent-child interactions_20260213.md)
+- [Upgrading my Open Source Pi Surveillance Server with Frigate 20260227](Upgrading my Open Source Pi Surveillance Server with Frigate_20260227.md)
 
 ---
 

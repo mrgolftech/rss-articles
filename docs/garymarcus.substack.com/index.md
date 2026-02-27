@@ -8,6 +8,7 @@
 - [BREAKING- LLM “reasoning” continues to be deeply flawed 20260210](BREAKING- LLM “reasoning” continues to be deeply flawed_20260210.md)
 - [Breaking- OpenAI is probably toast 20260213](Breaking- OpenAI is probably toast_20260213.md)
 - [Code Red for Humanity- 20260225](Code Red for Humanity-_20260225.md)
+- [Does OpenAI’s new financing make sense- 20260227](Does OpenAI’s new financing make sense-_20260227.md)
 - [Four theories about the SpaceX - xAI merger 20260203](Four theories about the SpaceX - xAI merger_20260203.md)
 - [Four theories about the SpaceX - xAI merger 20260205](Four theories about the SpaceX - xAI merger_20260205.md)
 - [Historic statement from Dario Amodei 20260226](Historic statement from Dario Amodei_20260226.md)

@@ -15,6 +15,7 @@
 - [How did Windows 95 get permission to put the Weezer video Buddy Holly on the CD- 20260210](How did Windows 95 get permission to put the Weezer video Buddy Holly on the CD-_20260210.md)
 - [How do I suppress the hover effects when I put a Win32 common controls ListView in single-click mode 20260211](How do I suppress the hover effects when I put a Win32 common controls ListView in single-click mode_20260211.md)
 - [Intercepting messages before Is­Dialog­Message can process them 20260225](Intercepting messages before Is­Dialog­Message can process them_20260225.md)
+- [Intercepting messages inside Is­Dialog­Message, fine-tuning the message filter 20260227](Intercepting messages inside Is­Dialog­Message, fine-tuning the message filter_20260227.md)
 - [Intercepting messages inside Is­Dialog­Message, installing the message filter 20260226](Intercepting messages inside Is­Dialog­Message, installing the message filter_20260226.md)
 - [It rather involved being on the other side of the airtight hatchway- Tricking(-) a program into read 20260216](It rather involved being on the other side of the airtight hatchway- Tricking(-) a program into read_20260216.md)
 - [Microspeak- Escrow 20260217](Microspeak- Escrow_20260217.md)

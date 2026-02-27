@@ -11,6 +11,7 @@
 - [This Week on The Analog Antiquarian 20260130](This Week on The Analog Antiquarian_20260130.md)
 - [This Week on The Analog Antiquarian 20260205](This Week on The Analog Antiquarian_20260205.md)
 - [This Week on The Analog Antiquarian 20260213](This Week on The Analog Antiquarian_20260213.md)
+- [This Week on The Analog Antiquarian 20260227](This Week on The Analog Antiquarian_20260227.md)
 - [Ultima IX 20260206](Ultima IX_20260206.md)
 
 ---

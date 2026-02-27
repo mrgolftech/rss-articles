@@ -7,6 +7,7 @@
 - [03_Claude_Haiku_4.5_does_not_appreciate_my_attempts_t](03_Claude_Haiku_4.5_does_not_appreciate_my_attempts_t.md)
 - [04_Can_modern_LLMs_actually_count_the_number_of_b_s_i](04_Can_modern_LLMs_actually_count_the_number_of_b_s_i.md)
 - [05_LLMs_can_now_identify_public_figures_in_images](05_LLMs_can_now_identify_public_figures_in_images.md)
+- [An AI agent coding skeptic tries AI agent coding, in excessive detail 20260227](An AI agent coding skeptic tries AI agent coding, in excessive detail_20260227.md)
 - [Can modern LLMs actually count the number of b's in -blueberry-- 20260205](Can modern LLMs actually count the number of b's in -blueberry--_20260205.md)
 - [Claude Haiku 4.5 does not appreciate my attempts to jailbreak it 20260205](Claude Haiku 4.5 does not appreciate my attempts to jailbreak it_20260205.md)
 - [LLMs can now identify public figures in images 20260205](LLMs can now identify public figures in images_20260205.md)

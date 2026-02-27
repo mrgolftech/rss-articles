@@ -12,6 +12,7 @@
 - [Premium- The Hater's Guide to Anthropic 20260220](Premium- The Hater's Guide to Anthropic_20260220.md)
 - [Premium- The Hater's Guide to Oracle 20260130](Premium- The Hater's Guide to Oracle_20260130.md)
 - [Premium- The Hater's Guide to Oracle 20260205](Premium- The Hater's Guide to Oracle_20260205.md)
+- [Premium- The Hater's Guide to Private Equity 20260227](Premium- The Hater's Guide to Private Equity_20260227.md)
 - [Premium- This Is Worse Than The Dot Com Bubble 20260116](Premium- This Is Worse Than The Dot Com Bubble_20260116.md)
 - [Premium- This Is Worse Than The Dot Com Bubble 20260205](Premium- This Is Worse Than The Dot Com Bubble_20260205.md)
 - [The Enshittifinancial Crisis 20251229](The Enshittifinancial Crisis_20251229.md)

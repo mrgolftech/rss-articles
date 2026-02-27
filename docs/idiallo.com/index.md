@@ -17,6 +17,7 @@
 - [The Shoe on The Other Foot 20260202](The Shoe on The Other Foot_20260202.md)
 - [The Shoe on The Other Foot 20260205](The Shoe on The Other Foot_20260205.md)
 - [Thinking Improves Thinking 20260218](Thinking Improves Thinking_20260218.md)
+- [We Need Process, But Process Gets in the Way 20260227](We Need Process, But Process Gets in the Way_20260227.md)
 - [We installed a single turnstile to feel secure 20260204](We installed a single turnstile to feel secure_20260204.md)
 - [We installed a single turnstile to feel secure 20260205](We installed a single turnstile to feel secure_20260205.md)
 - [When access to knowledge is no longer the limitation 20260225](When access to knowledge is no longer the limitation_20260225.md)

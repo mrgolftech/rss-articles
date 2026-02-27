@@ -2,12 +2,14 @@
 
 以下是本博客的所有文章：
 
+- [Apple Announces F1 Broadcast Details, and a Surprising Netflix Partnership 20260227](Apple Announces F1 Broadcast Details, and a Surprising Netflix Partnership_20260227.md)
 - [Apple Creator Studio Usage Restrictions 20260211](Apple Creator Studio Usage Restrictions_20260211.md)
 - [Apple Invites Media to Special ‘Experience’ in New York, London, and Shanghai on March 4 20260218](Apple Invites Media to Special ‘Experience’ in New York, London, and Shanghai on March 4_20260218.md)
 - [Apple Reports Record-Breaking Revenue and Profit for Q1 FY26 20260130](Apple Reports Record-Breaking Revenue and Profit for Q1 FY26_20260130.md)
 - [Apple Reports Record-Breaking Revenue and Profit for Q1 FY26 20260205](Apple Reports Record-Breaking Revenue and Profit for Q1 FY26_20260205.md)
 - [Apple Will Begin Manufacturing Mac Minis in Houston Later This Year 20260224](Apple Will Begin Manufacturing Mac Minis in Houston Later This Year_20260224.md)
 - [Apple in 2025- The Six Colors Report Card 20260224](Apple in 2025- The Six Colors Report Card_20260224.md)
+- [Energym 20260227](Energym_20260227.md)
 - [FTC Chairman Sends Letter to Apple Complaining That MAGA ‘News’ Sources Aren’t Represented in Apple  20260224](FTC Chairman Sends Letter to Apple Complaining That MAGA ‘News’ Sources Aren’t Represented in Apple _20260224.md)
 - [Grandson of Inventor of Reese’s Peanut Butter Cups Goes Public With the Obvious- They Taste Like Shi 20260223](Grandson of Inventor of Reese’s Peanut Butter Cups Goes Public With the Obvious- They Taste Like Shi_20260223.md)
 - [Gurman- New Siri Might Be Delayed Again 20260212](Gurman- New Siri Might Be Delayed Again_20260212.md)
@@ -19,6 +21,7 @@
 - [Microsoft Adds Additional Markdown Features to Windows Notepad 20260226](Microsoft Adds Additional Markdown Features to Windows Notepad_20260226.md)
 - [More MacOS 26.3 Finder Column View Silliness 20260212](More MacOS 26.3 Finder Column View Silliness_20260212.md)
 - [NetNewsWire 7 for Mac 20260223](NetNewsWire 7 for Mac_20260223.md)
+- [Netflix Backs Out of Bid for Warner Bros., Paving Way for Paramount Takeover 20260227](Netflix Backs Out of Bid for Warner Bros., Paving Way for Paramount Takeover_20260227.md)
 - [New York Sues Valve, Says Its ‘Loot Boxes’ Are Gambling 20260226](New York Sues Valve, Says Its ‘Loot Boxes’ Are Gambling_20260226.md)
 - [One More Spitball Idea for Apple’s March 4 Media Event ‘Experience’- Immersive F1 on Vision Pro- 20260219](One More Spitball Idea for Apple’s March 4 Media Event ‘Experience’- Immersive F1 on Vision Pro-_20260219.md)
 - [OpenAI’s Codex 20260204](OpenAI’s Codex_20260204.md)

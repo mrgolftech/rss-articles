@@ -7,6 +7,7 @@
 - [I Told You So 20260212](I Told You So_20260212.md)
 - [The Coming War on Car Ownership 20260125](The Coming War on Car Ownership_20260125.md)
 - [The Importance of Diversity 20260127](The Importance of Diversity_20260127.md)
+- [The Insane Stupidity of UBI 20260226](The Insane Stupidity of UBI_20260226.md)
 - [The Last Gasps of the Rent Seeking Class 20260225](The Last Gasps of the Rent Seeking Class_20260225.md)
 - [Will I ever own a zettaflop- 20260126](Will I ever own a zettaflop-_20260126.md)
 - [how do I stop participating- 20260118](how do I stop participating-_20260118.md)

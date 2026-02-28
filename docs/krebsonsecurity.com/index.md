@@ -14,6 +14,7 @@
 - [Who Benefited from the Aisuru and Kimwolf Botnets- 20260205](Who Benefited from the Aisuru and Kimwolf Botnets-_20260205.md)
 - [Who Operates the Badbox 2.0 Botnet- 20260126](Who Operates the Badbox 2.0 Botnet-_20260126.md)
 - [Who Operates the Badbox 2.0 Botnet- 20260205](Who Operates the Badbox 2.0 Botnet-_20260205.md)
+- [Who is the Kimwolf Botmaster “Dort”- 20260228](Who is the Kimwolf Botmaster “Dort”-_20260228.md)
 - [‘Starkiller’ Phishing Service Proxies Real Login Pages, MFA 20260220](‘Starkiller’ Phishing Service Proxies Real Login Pages, MFA_20260220.md)
 
 ---

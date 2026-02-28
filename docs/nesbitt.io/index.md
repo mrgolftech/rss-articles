@@ -29,6 +29,7 @@
 - [Where Do Specifications Fit in the Dependency Tree- 20260223](Where Do Specifications Fit in the Dependency Tree-_20260223.md)
 - [Will AI Make Package Managers Redundant- 20260130](Will AI Make Package Managers Redundant-_20260130.md)
 - [Zig and the M×N Supply Chain Problem 20260129](Zig and the M×N Supply Chain Problem_20260129.md)
+- [npm Data Subject Access Request 20260228](npm Data Subject Access Request_20260228.md)
 - [xkcd 2347 20260227](xkcd 2347_20260227.md)
 
 ---

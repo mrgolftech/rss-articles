@@ -4,6 +4,7 @@
 
 - [Pluralistic- A perforated corporate veil (20 Feb 2026) 20260220](Pluralistic- A perforated corporate veil (20 Feb 2026)_20260220.md)
 - [Pluralistic- All laws are local (05 Feb 2026) 20260205](Pluralistic- All laws are local (05 Feb 2026)_20260205.md)
+- [Pluralistic- California can stop Larry Ellison from buying Warners (28 Feb 2026) 20260228](Pluralistic- California can stop Larry Ellison from buying Warners (28 Feb 2026)_20260228.md)
 - [Pluralistic- Deplatform yourself (23 Feb 2026) 20260223](Pluralistic- Deplatform yourself (23 Feb 2026)_20260223.md)
 - [Pluralistic- Disenshittification Nation (29 Jan 2026) 20260129](Pluralistic- Disenshittification Nation (29 Jan 2026)_20260129.md)
 - [Pluralistic- Doctors' union may yet save the NHS from Palantir (12 Feb 2026) 20260212](Pluralistic- Doctors' union may yet save the NHS from Palantir (12 Feb 2026)_20260212.md)

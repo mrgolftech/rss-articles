@@ -2,6 +2,7 @@
 
 以下是本博客的所有文章：
 
+- [30 months to 3MWh - some more home battery stats 20260228](30 months to 3MWh - some more home battery stats_20260228.md)
 - [AI is a NAND Maximiser 20260219](AI is a NAND Maximiser_20260219.md)
 - [Adding OpenStreetMap login to Auth0 20260224](Adding OpenStreetMap login to Auth0_20260224.md)
 - [Book Review- 20 Goto 10 - 10101001 facts about retro computers by Steven Goodwin ★★★★☆ 20260214](Book Review- 20 Goto 10 - 10101001 facts about retro computers by Steven Goodwin ★★★★☆_20260214.md)

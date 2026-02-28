@@ -7,6 +7,7 @@
 - [03_See_it_with_your_lying_ears](03_See_it_with_your_lying_ears.md)
 - [04_Cursed_circuits__4__PLL_frequency_multiplier](04_Cursed_circuits__4__PLL_frequency_multiplier.md)
 - [05_Cursed_circuits__3__true_mathematics](05_Cursed_circuits__3__true_mathematics.md)
+- [Approximation game 20260228](Approximation game_20260228.md)
 - [Cursed circuits #3- true mathematics 20260205](Cursed circuits #3- true mathematics_20260205.md)
 - [Cursed circuits #4- PLL frequency multiplier 20260205](Cursed circuits #4- PLL frequency multiplier_20260205.md)
 - [It's all a blur 20260206](It's all a blur_20260206.md)

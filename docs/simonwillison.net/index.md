@@ -40,6 +40,7 @@
 - [London Stock Exchange- Raspberry Pi Holdings plc 20260222](London Stock Exchange- Raspberry Pi Holdings plc_20260222.md)
 - [Mitchell Hashimoto- My AI Adoption Journey 20260205](Mitchell Hashimoto- My AI Adoption Journey_20260205.md)
 - [Opus 4.6 and Codex 5.3 20260205](Opus 4.6 and Codex 5.3_20260205.md)
+- [Please, please, please stop using passkeys for encrypting user data 20260227](Please, please, please stop using passkeys for encrypting user data_20260227.md)
 - [Quoting Andrej Karpathy 20260226](Quoting Andrej Karpathy_20260226.md)
 - [Quoting Andrew Deck for Niemen Lab 20260211](Quoting Andrew Deck for Niemen Lab_20260211.md)
 - [Quoting Anthropic 20260212](Quoting Anthropic_20260212.md)

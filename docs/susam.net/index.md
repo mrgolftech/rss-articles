@@ -10,6 +10,7 @@
 - [Attention Media ≠ Social Media 20260205](Attention Media ≠ Social Media_20260205.md)
 - [Deep Blue- Chess vs Programming 20260215](Deep Blue- Chess vs Programming_20260215.md)
 - [From ZNC to Soju 20260212](From ZNC to Soju_20260212.md)
+- [HN Skins 0.1.0 20260228](HN Skins 0.1.0_20260228.md)
 - [Minimal GitHub Workflow 20260205](Minimal GitHub Workflow_20260205.md)
 - [Nerd Quiz #4 20260222](Nerd Quiz #4_20260222.md)
 - [Nested Code Fences in Markdown 20260205](Nested Code Fences in Markdown_20260205.md)

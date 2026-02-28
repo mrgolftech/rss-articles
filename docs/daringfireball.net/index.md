@@ -39,6 +39,7 @@
 - [The Pants-Shitting Saga of Resizing Windows on MacOS 26 Tahoe Continues 20260224](The Pants-Shitting Saga of Resizing Windows on MacOS 26 Tahoe Continues_20260224.md)
 - [The Steve Jobs Archive- ‘Letters to a Young Creator’ 20260224](The Steve Jobs Archive- ‘Letters to a Young Creator’_20260224.md)
 - [Trader Joe’s Dark Chocolate Peanut Butter Cups 20260223](Trader Joe’s Dark Chocolate Peanut Butter Cups_20260223.md)
+- [Trump’s Enormous Gamble on Regime Change in Iran 20260228](Trump’s Enormous Gamble on Regime Change in Iran_20260228.md)
 - [Upgrade- ‘The Shifting Sands of Liquid Glass’ 20260224](Upgrade- ‘The Shifting Sands of Liquid Glass’_20260224.md)
 - [West Virginia’s Anti-Apple CSAM Lawsuit Would Help Child Predators Walk Free 20260227](West Virginia’s Anti-Apple CSAM Lawsuit Would Help Child Predators Walk Free_20260227.md)
 - [WorkOS Pipes 20260215](WorkOS Pipes_20260215.md)

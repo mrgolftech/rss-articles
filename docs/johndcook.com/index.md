@@ -28,6 +28,7 @@
 - [Tritone substitution 20260223](Tritone substitution_20260223.md)
 - [Visualizing orbital velocity 20260216](Visualizing orbital velocity_20260216.md)
 - [Wagon’s algorithm in Python 20260214](Wagon’s algorithm in Python_20260214.md)
+- [Working with file extensions in bash scripts 20260228](Working with file extensions in bash scripts_20260228.md)
 - [Γ(1-n) 20260204](Γ(1-n)_20260204.md)
 - [Γ(1-n) 20260205](Γ(1-n)_20260205.md)
 

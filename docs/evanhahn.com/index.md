@@ -10,6 +10,7 @@
 - [Notes from February 2026 20260228](Notes from February 2026_20260228.md)
 - [Notes from January 2026 20260131](Notes from January 2026_20260131.md)
 - [Notes from January 2026 20260205](Notes from January 2026_20260205.md)
+- [The two kinds of error 20260301](The two kinds of error_20260301.md)
 - [Track Zelda release anniversaries in your calendar 20260221](Track Zelda release anniversaries in your calendar_20260221.md)
 
 ---

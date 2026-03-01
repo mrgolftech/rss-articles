@@ -15,6 +15,7 @@
 - [Which programming languages are most token-efficient- 20260205](Which programming languages are most token-efficient-_20260205.md)
 - [Which web frameworks are most token-efficient for AI agents- 20260223](Which web frameworks are most token-efficient for AI agents-_20260223.md)
 - [Who fixes the zero-days AI finds in abandoned software- 20260217](Who fixes the zero-days AI finds in abandoned software-_20260217.md)
+- [Why on-device agentic AI can't keep up 20260301](Why on-device agentic AI can't keep up_20260301.md)
 - [Why sandboxing coding agents is harder than you think 20260205](Why sandboxing coding agents is harder than you think_20260205.md)
 
 ---

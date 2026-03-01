@@ -6,6 +6,7 @@
 - [CHANGELOG.md 20260216](CHANGELOG.md_20260216.md)
 - [Crates.io’s Freaky Friday 20260206](Crates.io’s Freaky Friday_20260206.md)
 - [Dependency Resolution Methods 20260206](Dependency Resolution Methods_20260206.md)
+- [Downstream Testing 20260301](Downstream Testing_20260301.md)
 - [Forge-Specific Repository Folders 20260222](Forge-Specific Repository Folders_20260222.md)
 - [Git in Postgres 20260226](Git in Postgres_20260226.md)
 - [Git’s Magic Files 20260205](Git’s Magic Files_20260205.md)

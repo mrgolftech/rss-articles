@@ -2,6 +2,7 @@
 
 以下是本博客的所有文章：
 
+- [&ldquo;How old are you-&rdquo; Asked the OS 20260301](&ldquo;How old are you-&rdquo; Asked the OS_20260301.md)
 - [Everyone's okay with their AI, just not yours 20260205](Everyone's okay with their AI, just not yours_20260205.md)
 - [Factional Drift- How online discussion clusters into factions 20260213](Factional Drift- How online discussion clusters into factions_20260213.md)
 - [Factional Drift- We cluster into factions online 20260213](Factional Drift- We cluster into factions online_20260213.md)

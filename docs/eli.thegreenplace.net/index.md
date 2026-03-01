@@ -3,6 +3,7 @@
 以下是本博客的所有文章：
 
 - [Compiling Scheme to WebAssembly 20260205](Compiling Scheme to WebAssembly_20260205.md)
+- [Notes on Lagrange Interpolating Polynomials 20260301](Notes on Lagrange Interpolating Polynomials_20260301.md)
 - [Notes on Linear Algebra for Polynomials 20260226](Notes on Linear Algebra for Polynomials_20260226.md)
 - [Plugins case study- mdBook preprocessors 20260205](Plugins case study- mdBook preprocessors_20260205.md)
 - [Revisiting -Let's Build a Compiler- 20260205](Revisiting -Let's Build a Compiler-_20260205.md)

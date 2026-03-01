@@ -14,6 +14,7 @@
 - [Notes on blog future-proofing 20260123](Notes on blog future-proofing_20260123.md)
 - [Notes on blog future-proofing 20260205](Notes on blog future-proofing_20260205.md)
 - [The horsehead nebula (2026) 20260205](The horsehead nebula (2026)_20260205.md)
+- [Why does C have the best file API- 20260228](Why does C have the best file API-_20260228.md)
 - [Writing my own static site generator 20260116](Writing my own static site generator_20260116.md)
 - [Writing my own static site generator 20260205](Writing my own static site generator_20260205.md)
 - [You should start a blog 20260205](You should start a blog_20260205.md)

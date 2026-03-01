@@ -26,6 +26,7 @@
 - [How I think about Codex 20260222](How I think about Codex_20260222.md)
 - [How StrongDM's AI team build serious software without even looking at the code 20260207](How StrongDM's AI team build serious software without even looking at the code_20260207.md)
 - [I vibe coded my dream macOS presentation app 20260225](I vibe coded my dream macOS presentation app_20260225.md)
+- [Interactive explanations 20260228](Interactive explanations_20260228.md)
 - [Introducing Claude Sonnet 4.6 20260217](Introducing Claude Sonnet 4.6_20260217.md)
 - [Introducing Deno Sandbox 20260203](Introducing Deno Sandbox_20260203.md)
 - [Introducing Deno Sandbox 20260205](Introducing Deno Sandbox_20260205.md)

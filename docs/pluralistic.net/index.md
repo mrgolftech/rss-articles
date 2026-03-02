@@ -14,6 +14,7 @@
 - [Pluralistic- Justin Key's -The Hospital at the End Of the World- (04 Feb 2026) 20260204](Pluralistic- Justin Key's -The Hospital at the End Of the World- (04 Feb 2026)_20260204.md)
 - [Pluralistic- Luxury Kafka (06 Feb 2026) 20260206](Pluralistic- Luxury Kafka (06 Feb 2026)_20260206.md)
 - [Pluralistic- Michael Swanwick's -The Universe Box- (03 Feb 2026) 20260203](Pluralistic- Michael Swanwick's -The Universe Box- (03 Feb 2026)_20260203.md)
+- [Pluralistic- No one wants to read your AI slop (02 Mar 2026) 20260302](Pluralistic- No one wants to read your AI slop (02 Mar 2026)_20260302.md)
 - [Pluralistic- Six Years of Pluralistic (19 Feb 2026) 20260219](Pluralistic- Six Years of Pluralistic (19 Feb 2026)_20260219.md)
 - [Pluralistic- Socialist excellence in New York City (24 Feb 2026) 20260224](Pluralistic- Socialist excellence in New York City (24 Feb 2026)_20260224.md)
 - [Pluralistic- Stock swindles (02 Feb 2026) 20260202](Pluralistic- Stock swindles (02 Feb 2026)_20260202.md)

@@ -10,6 +10,7 @@
 - [Weekly Update 490 20260209](Weekly Update 490_20260209.md)
 - [Weekly Update 491 20260217](Weekly Update 491_20260217.md)
 - [Weekly Update 492 20260224](Weekly Update 492_20260224.md)
+- [Weekly Update 493 20260302](Weekly Update 493_20260302.md)
 - [Who Decides Who Doesn’t Deserve Privacy- 20260205](Who Decides Who Doesn’t Deserve Privacy-_20260205.md)
 
 ---

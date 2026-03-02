@@ -3,6 +3,7 @@
 以下是本博客的所有文章：
 
 - [AI is destroying Open Source, and it's not even good yet 20260216](AI is destroying Open Source, and it's not even good yet_20260216.md)
+- [Expert Beginners and Lone Wolves will dominate this early LLM era 20260301](Expert Beginners and Lone Wolves will dominate this early LLM era_20260301.md)
 - [Exploring a Modern SMPTE 2110 Broadcast Truck With My Dad 20260207](Exploring a Modern SMPTE 2110 Broadcast Truck With My Dad_20260207.md)
 - [Exploring a Modern SMTPE 2110 Broadcast Truck With My Dad 20260207](Exploring a Modern SMTPE 2110 Broadcast Truck With My Dad_20260207.md)
 - [Frigate with Hailo for object detection on a Raspberry Pi 20260218](Frigate with Hailo for object detection on a Raspberry Pi_20260218.md)

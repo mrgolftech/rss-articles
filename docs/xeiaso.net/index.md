@@ -15,6 +15,7 @@
 - [Matrix ain't it chief 20260211](Matrix ain't it chief_20260211.md)
 - [Portable monitors are good 20260224](Portable monitors are good_20260224.md)
 - [The Discourse has been Automated 20260212](The Discourse has been Automated_20260212.md)
+- [The Unbound Scepter 20260302](The Unbound Scepter_20260302.md)
 - [Tormentmaxxing 'simple requests' 20260205](Tormentmaxxing 'simple requests'_20260205.md)
 - [Zendesk, get your shit together please 20260207](Zendesk, get your shit together please_20260207.md)
 

@@ -19,6 +19,7 @@
 - [First kākāpō chick in four years hatches on Valentine's Day 20260217](First kākāpō chick in four years hatches on Valentine's Day_20260217.md)
 - [First run the tests 20260224](First run the tests_20260224.md)
 - [Free Claude Max for (large project) open source maintainers 20260227](Free Claude Max for (large project) open source maintainers_20260227.md)
+- [GIF optimization tool using WebAssembly and Gifsicle 20260302](GIF optimization tool using WebAssembly and Gifsicle_20260302.md)
 - [GLM-5- From Vibe Coding to Agentic Engineering 20260211](GLM-5- From Vibe Coding to Agentic Engineering_20260211.md)
 - [Gemini 3 Deep Think 20260212](Gemini 3 Deep Think_20260212.md)
 - [Gemini 3.1 Pro 20260219](Gemini 3.1 Pro_20260219.md)

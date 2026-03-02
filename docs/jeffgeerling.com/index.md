@@ -8,6 +8,7 @@
 - [Exploring a Modern SMTPE 2110 Broadcast Truck With My Dad 20260207](Exploring a Modern SMTPE 2110 Broadcast Truck With My Dad_20260207.md)
 - [Frigate with Hailo for object detection on a Raspberry Pi 20260218](Frigate with Hailo for object detection on a Raspberry Pi_20260218.md)
 - [How to Securely Erase an old Hard Drive on macOS Tahoe 20260226](How to Securely Erase an old Hard Drive on macOS Tahoe_20260226.md)
+- [I built a pint-sized Macintosh 20260302](I built a pint-sized Macintosh_20260302.md)
 - [Migrating 13,000 Comments from Drupal to Hugo 20260205](Migrating 13,000 Comments from Drupal to Hugo_20260205.md)
 - [Ode to the AA Battery 20260129](Ode to the AA Battery_20260129.md)
 - [Ode to the AA Battery 20260205](Ode to the AA Battery_20260205.md)

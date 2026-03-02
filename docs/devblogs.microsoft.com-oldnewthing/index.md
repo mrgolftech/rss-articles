@@ -24,6 +24,7 @@
 - [Super Bowl LX creates an opportunity for symphonic friendly wagering 20260204](Super Bowl LX creates an opportunity for symphonic friendly wagering_20260204.md)
 - [The 2026-2027 Seattle Symphony subscription season at a glance 20260220](The 2026-2027 Seattle Symphony subscription season at a glance_20260220.md)
 - [What should I do if a wait call reports WAIT_ABANDONED- 20260209](What should I do if a wait call reports WAIT_ABANDONED-_20260209.md)
+- [What sort of horrible things happen if my dialog has a non-button with the control ID of IDCANCEL- 20260302](What sort of horrible things happen if my dialog has a non-button with the control ID of IDCANCEL-_20260302.md)
 
 ---
 

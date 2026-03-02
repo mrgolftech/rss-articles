@@ -2,6 +2,7 @@
 
 以下是本博客的所有文章：
 
+- [AMD Am386 released March 2, 1991 20260302](AMD Am386 released March 2, 1991_20260302.md)
 - [Buy.com’s Feb 2000 IPO 20260209](Buy.com’s Feb 2000 IPO_20260209.md)
 - [Deja News- Google’s first acquisition 20260212](Deja News- Google’s first acquisition_20260212.md)
 - [First BBS goes online Feb. 16, 1978 20260217](First BBS goes online Feb. 16, 1978_20260217.md)

@@ -15,6 +15,7 @@
 - [Distributing Go binaries like sqlite-scanner through PyPI using go-to-wheel 20260204](Distributing Go binaries like sqlite-scanner through PyPI using go-to-wheel_20260204.md)
 - [Distributing Go binaries like sqlite-scanner through PyPI using go-to-wheel 20260205](Distributing Go binaries like sqlite-scanner through PyPI using go-to-wheel_20260205.md)
 - [Experimenting with sponsorship for my blog and newsletter 20260219](Experimenting with sponsorship for my blog and newsletter_20260219.md)
+- [February sponsors-only newsletter 20260302](February sponsors-only newsletter_20260302.md)
 - [First kākāpō chick in four years hatches on Valentine's Day 20260217](First kākāpō chick in four years hatches on Valentine's Day_20260217.md)
 - [First run the tests 20260224](First run the tests_20260224.md)
 - [Free Claude Max for (large project) open source maintainers 20260227](Free Claude Max for (large project) open source maintainers_20260227.md)

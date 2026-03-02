@@ -4,6 +4,7 @@
 
 - [30 months to 3MWh - some more home battery stats 20260228](30 months to 3MWh - some more home battery stats_20260228.md)
 - [AI is a NAND Maximiser 20260219](AI is a NAND Maximiser_20260219.md)
+- [Adding -Log In With Mastodon- to Auth0 20260302](Adding -Log In With Mastodon- to Auth0_20260302.md)
 - [Adding OpenStreetMap login to Auth0 20260224](Adding OpenStreetMap login to Auth0_20260224.md)
 - [Book Review- 20 Goto 10 - 10101001 facts about retro computers by Steven Goodwin ★★★★☆ 20260214](Book Review- 20 Goto 10 - 10101001 facts about retro computers by Steven Goodwin ★★★★☆_20260214.md)
 - [Book Review- A Geography of Time by Robert V. Levine ★★★☆☆ 20260223](Book Review- A Geography of Time by Robert V. Levine ★★★☆☆_20260223.md)

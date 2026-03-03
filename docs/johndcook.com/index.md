@@ -6,6 +6,7 @@
 - [A curious trig identity 20260224](A curious trig identity_20260224.md)
 - [AGI, ASI, A-I – Do we have all we need to get there- 20260130](AGI, ASI, A-I – Do we have all we need to get there-_20260130.md)
 - [Aligning one matrix with another 20260211](Aligning one matrix with another_20260211.md)
+- [An AI Odyssey, Part 1- Correctness Conundrum 20260303](An AI Odyssey, Part 1- Correctness Conundrum_20260303.md)
 - [Bitcoin mining difficulty 20260222](Bitcoin mining difficulty_20260222.md)
 - [Bridging secrets is hard 20260130](Bridging secrets is hard_20260130.md)
 - [Computing big, certified Fibonacci numbers 20260221](Computing big, certified Fibonacci numbers_20260221.md)

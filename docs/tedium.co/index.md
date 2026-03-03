@@ -5,6 +5,7 @@
 - [A Number Of Surprising Importance](A Number Of Surprising Importance.md)
 - [A Number Of Surprising Importance 17245690](A Number Of Surprising Importance_17245690.md)
 - [A Quiet Townhouse, A Great Gift](A Quiet Townhouse, A Great Gift.md)
+- [Betting Against Substack](Betting Against Substack.md)
 - [Design Deconstruction](Design Deconstruction.md)
 - [Markdown’s Moment](Markdown’s Moment.md)
 - [Minus World](Minus World.md)

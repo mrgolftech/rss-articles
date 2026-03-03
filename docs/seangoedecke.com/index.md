@@ -3,6 +3,7 @@
 以下是本博客的所有文章：
 
 - [Getting the main thing right 20260205](Getting the main thing right_20260205.md)
+- [Giving LLMs a personality is just good engineering 20260303](Giving LLMs a personality is just good engineering_20260303.md)
 - [How I estimate work as a staff software engineer 20260205](How I estimate work as a staff software engineer_20260205.md)
 - [How does AI impact skill formation- 20260131](How does AI impact skill formation-_20260131.md)
 - [How does AI impact skill formation- 20260205](How does AI impact skill formation-_20260205.md)

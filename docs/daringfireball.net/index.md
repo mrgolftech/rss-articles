@@ -45,6 +45,7 @@
 - [The Talk Show- ‘Bad Dates’ 20260301](The Talk Show- ‘Bad Dates’_20260301.md)
 - [Trader Joe’s Dark Chocolate Peanut Butter Cups 20260223](Trader Joe’s Dark Chocolate Peanut Butter Cups_20260223.md)
 - [Trump’s Enormous Gamble on Regime Change in Iran 20260228](Trump’s Enormous Gamble on Regime Change in Iran_20260228.md)
+- [Unsung Heroes- Flickr’s URLs Scheme 20260302](Unsung Heroes- Flickr’s URLs Scheme_20260302.md)
 - [Upgrade- ‘The Shifting Sands of Liquid Glass’ 20260224](Upgrade- ‘The Shifting Sands of Liquid Glass’_20260224.md)
 - [WSJ- ‘Trump Administration Shuns Anthropic, Embraces OpenAI in Clash Over Guardrails’ 20260302](WSJ- ‘Trump Administration Shuns Anthropic, Embraces OpenAI in Clash Over Guardrails’_20260302.md)
 - [Welcome (Back) to Macintosh 20260302](Welcome (Back) to Macintosh_20260302.md)
@@ -55,6 +56,7 @@
 - [[Sponsor] Hands-On Workshop- Fix It Faster — Crash Reporting, Tracing, and Logs for iOS in Sentry 20260217]([Sponsor] Hands-On Workshop- Fix It Faster — Crash Reporting, Tracing, and Logs for iOS in Sentry_20260217.md)
 - [[Sponsor] Hands-On Workshop- Fix It Faster — Crash Reporting, Tracing, and Logs for iOS in Sentry 20260225]([Sponsor] Hands-On Workshop- Fix It Faster — Crash Reporting, Tracing, and Logs for iOS in Sentry_20260225.md)
 - [[Sponsor] WorkOS Pipes- Ship Third-Party Integrations Without Rebuilding OAuth 20260210]([Sponsor] WorkOS Pipes- Ship Third-Party Integrations Without Rebuilding OAuth_20260210.md)
+- [[Sponsor] npx workos- An AI Agent That Writes Auth Directly Into Your Codebase 20260303]([Sponsor] npx workos- An AI Agent That Writes Auth Directly Into Your Codebase_20260303.md)
 - [iPhone and iPad Approved to Handle Classified NATO Information 20260226](iPhone and iPad Approved to Handle Classified NATO Information_20260226.md)
 - [‘Anthropic and Alignment’ 20260302](‘Anthropic and Alignment’_20260302.md)
 - [‘Backseat Software’ 20260129](‘Backseat Software’_20260129.md)
@@ -62,6 +64,7 @@
 - [‘Steve Jobs in Exile’ 20260226](‘Steve Jobs in Exile’_20260226.md)
 - [★ A Sometimes-Hidden Setting Controls What Happens When You Tap a Call in the iOS 26 Phone App 20260227](★ A Sometimes-Hidden Setting Controls What Happens When You Tap a Call in the iOS 26 Phone App_20260227.md)
 - [★ Apple Releases iOS 26 Adoption Rates, and They’re Pretty Much in Line With the Last Few Years 20260217](★ Apple Releases iOS 26 Adoption Rates, and They’re Pretty Much in Line With the Last Few Years_20260217.md)
+- [★ HazeOver — Mac Utility for Highlighting the Frontmost Window 20260302](★ HazeOver — Mac Utility for Highlighting the Frontmost Window_20260302.md)
 - [★ My 2025 Apple Report Card 20260225](★ My 2025 Apple Report Card_20260225.md)
 
 ---

@@ -16,6 +16,7 @@
 - [Package Management Consulting 20260211](Package Management Consulting_20260211.md)
 - [Package Management Namespaces 20260214](Package Management Namespaces_20260214.md)
 - [Package Management at FOSDEM 2026 20260204](Package Management at FOSDEM 2026_20260204.md)
+- [Package Management is Naming All the Way Down 20260303](Package Management is Naming All the Way Down_20260303.md)
 - [Package Manager Podcast Episodes 20260209](Package Manager Podcast Episodes_20260209.md)
 - [Platform Strings 20260217](Platform Strings_20260217.md)
 - [Reproducible Builds in Language Package Managers 20260224](Reproducible Builds in Language Package Managers_20260224.md)

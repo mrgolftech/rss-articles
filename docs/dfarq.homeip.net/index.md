@@ -12,6 +12,7 @@
 - [History of Dell computers 20260223](History of Dell computers_20260223.md)
 - [Intel 286 introduced Feb 2, 1982 20260202](Intel 286 introduced Feb 2, 1982_20260202.md)
 - [Intel 286 introduced Feb 2, 1982 20260205](Intel 286 introduced Feb 2, 1982_20260205.md)
+- [Intel 486DX2 CPU 20260303](Intel 486DX2 CPU_20260303.md)
 - [Office Space released Feb. 19, 1999 20260219](Office Space released Feb. 19, 1999_20260219.md)
 - [On February 20, 2010 a VIC-20 tweeted 20260220](On February 20, 2010 a VIC-20 tweeted_20260220.md)
 - [Pentium III launched Feb 28, 1999 20260226](Pentium III launched Feb 28, 1999_20260226.md)

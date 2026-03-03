@@ -10,6 +10,7 @@
 - [Nvidia Stock Crash Prediction 20260205](Nvidia Stock Crash Prediction_20260205.md)
 - [Solving Systems of Equations Faster 20260205](Solving Systems of Equations Faster_20260205.md)
 - [Survival Analysis of the Supreme Court 20260205](Survival Analysis of the Supreme Court_20260205.md)
+- [Teaching Children to Bicycle 20260302](Teaching Children to Bicycle_20260302.md)
 - [Wilks' Tolerance Intervals 20260209](Wilks' Tolerance Intervals_20260209.md)
 
 ---
